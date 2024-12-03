@@ -1,0 +1,34 @@
+<html>
+
+ <body>
+ <h1>Welch Window</h1>
+
+ <p>The Welch apodization window is a downward-sloping parabola
+ that is zero outside of its x-intercepts.</p>
+
+ <p align="center"><img src="welchwindow.png"></p>
+
+<p> Apodization windows are used when taking the FFT of discrete data. 
+The FFT assumes that the N-sample array
+is periodic. If this is not the case, the resulting transform will exhibit 
+"false" frequency content known as "leakage" due to the discontinuity at the
+ edges of the array. Apodization windows have zero amplitude (or nearly so) 
+ at the array "edges", and may be used to modulate nonperiodic input 
+ to ensure that the product function is periodic over N samples.
+ </p>
+ 
+
+ <p>Parameters:</p>
+<ul type="square">
+<li>Amplitude, A<sub>0</sub></li>
+<li>Center, x<sub>0</sub></li>
+<li>Width, b</li>
+</ul>
+
+ <p>Read more about Window functions at:</p>
+<ul type="square">
+<li><a href="http://en.wikipedia.org/wiki/Window_function" target="_blank">Wikipedia</a></li>
+</ul>
+
+ </body>
+ </html>

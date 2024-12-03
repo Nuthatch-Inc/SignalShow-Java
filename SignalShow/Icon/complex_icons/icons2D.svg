@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg8666"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   width="64"
+   height="64"
+   version="1.0"
+   sodipodi:docname="icons2D.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata8671">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8669">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective8673" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-height="694"
+     inkscape:window-width="1131"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="2"
+     inkscape:cx="12.220563"
+     inkscape:cy="30.290368"
+     inkscape:window-x="15"
+     inkscape:window-y="0"
+     inkscape:current-layer="svg8666" />
+  <image
+     xlink:href="/Users/julietbernstein/Desktop/real_fourierbasis_2D.tiff"
+     sodipodi:absref="/Users/julietbernstein/Desktop/real_fourierbasis_2D.tiff"
+     width="64"
+     height="64"
+     id="image8675"
+     x="0"
+     y="0" />
+  <rect
+     style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#eeeeec;stroke-width:6.05062056;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect8677"
+     width="63.949375"
+     height="63.949379"
+     x="1.2542261"
+     y="-0.90239793"
+     inkscape:export-filename="/Users/julietbernstein/Documents/workspace/SignalShow/guiIcons/fourierBasis2D.png"
+     inkscape:export-xdpi="61.714287"
+     inkscape:export-ydpi="61.714287" />
+  <image
+     xlink:href="/Users/julietbernstein/Desktop/real_chirp_2D.tiff"
+     sodipodi:absref="/Users/julietbernstein/Desktop/real_chirp_2D.tiff"
+     width="64"
+     height="64"
+     id="image8745"
+     x="95.5"
+     y="4" />
+  <image
+     xlink:href="/Users/julietbernstein/Desktop/real_sinusoid_2D.tiff"
+     sodipodi:absref="/Users/julietbernstein/Desktop/real_sinusoid_2D.tiff"
+     width="64"
+     height="64"
+     id="image8794"
+     x="173.5"
+     y="3.5" />
+  <rect
+     inkscape:export-ydpi="61.714287"
+     inkscape:export-xdpi="61.714287"
+     inkscape:export-filename="/Users/julietbernstein/Documents/workspace/SignalShow/guiIcons/fourierBasis2D.png"
+     y="3.0976021"
+     x="96.254227"
+     height="63.949379"
+     width="63.949375"
+     id="rect8797"
+     style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#eeeeec;stroke-width:6.05062056;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+  <rect
+     inkscape:export-ydpi="61.714287"
+     inkscape:export-xdpi="61.714287"
+     inkscape:export-filename="/Users/julietbernstein/Documents/workspace/SignalShow/guiIcons/sinusoid2D.png"
+     y="3.0976021"
+     x="174.25423"
+     height="63.949379"
+     width="63.949375"
+     id="rect8799"
+     style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#eeeeec;stroke-width:6.05062056;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+</svg>
