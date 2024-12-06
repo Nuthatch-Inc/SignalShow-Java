@@ -100,7 +100,7 @@ public class PlotGraphic extends JPanel {
 	public PlotGraphic() {
 
 		super( true ); 
-		defaultPlotStyle = PlotStyle.FILLED;
+		defaultPlotStyle = PlotStyle.SMOOTH;
 
 		verticalGridlinesOn = false; 
 		horizontalGridlinesOn = false; 
