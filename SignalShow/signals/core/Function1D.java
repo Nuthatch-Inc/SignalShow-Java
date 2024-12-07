@@ -9,6 +9,7 @@ import signals.operation.PhaseUnwrapper1D;
 /**
  * Represents a 1D complex function in terms of real and imaginary parts or magnitude and phase. 
  * @author Juliet
+ * 
  */
 public abstract class Function1D extends Function { 
 	
