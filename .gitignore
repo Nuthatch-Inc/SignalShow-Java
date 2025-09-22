@@ -1,0 +1,46 @@
+# Root-level ignore file
+# Core Java build artifacts
+*.class
+*.log
+hs_err_pid*
+replay_pid*
+
+# Packaged archives (optional keep release jars under /dist if produced)
+*.jar
+*.war
+*.ear
+
+# IDE metadata
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Exclude local debug helper patterns
+Launcher.java
+Launcher.class
+LoadFromJar.java
+LoadFromJar.class
+TestLoad.java
+TestLoad.class
+TestLoad$*.class
+
+# Keep bundled JAI jars (negate pattern after broad *.jar ignore)
+!SignalShow/jai_core.jar
+!SignalShow/jai_codec.jar
+
+# Do not ignore the launcher script
+!run-signalshow.sh
+
