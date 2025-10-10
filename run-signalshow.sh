@@ -16,6 +16,14 @@ CLASSPATH="$SIG_DIR:${JARS[*]}"
 # convert spaces to colons
 CLASSPATH="${CLASSPATH// /:}"
 
+# Compile if SignalShow.class doesn't exist
+if [ ! -f "$SIG_DIR/SignalShow.class" ]; then
+  echo "Compiling SignalShow..."
+  cd "$SIG_DIR"
+  javac -cp "$CLASSPATH" SignalShow.java signals/**/*.java
+  cd "$ROOT_DIR"
+fi
+
 echo "Starting SignalShow with classpath: $CLASSPATH"
 
 java -cp "$CLASSPATH" SignalShow
