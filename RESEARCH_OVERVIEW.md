@@ -5,6 +5,7 @@
 **Date Started**: October 25, 2025  
 **Last Updated**: October 25, 2025  
 **Project Status**: ✅ **Phase 1 (Web UI) COMPLETE** - Fully functional web application with 4 UI components tested in both web and desktop modes  
+**Strategic Memo**: See [`SIGNALSHOW_STRATEGIC_RECOMMENDATIONS.md`](./SIGNALSHOW_STRATEGIC_RECOMMENDATIONS.md) for long-term positioning and roadmap guidance  
 **Target Audience**: University educators, students, researchers, and educational content creators  
 **Visual Style Goal**: Interactive demos with 3Blue1Brown-quality aesthetics
 

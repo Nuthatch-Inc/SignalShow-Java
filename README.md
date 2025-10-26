@@ -55,6 +55,7 @@ npm run tauri dev
 - [Development Status](DEVELOPMENT_STATUS.md) - Current implementation details
 - [Implementation Summary](IMPLEMENTATION_SUMMARY.md) - Complete architecture and testing results
 - [Research Overview](RESEARCH_OVERVIEW.md) - Technology decisions and roadmap
+- [Strategic Recommendations](SIGNALSHOW_STRATEGIC_RECOMMENDATIONS.md) - Long-term positioning and differentiation guidance
 
 #### Phase 2 (Planned)
 
