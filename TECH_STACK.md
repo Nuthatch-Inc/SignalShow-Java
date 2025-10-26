@@ -1443,6 +1443,237 @@ npm run build:web  # Uses Vite to bundle everything
 
 ---
 
+## Interoperability Stack (v1.0+)
+
+### File Format Support
+
+SignalShow must integrate with existing academic and research workflows, supporting industry-standard data formats.
+
+#### Priority 1: Core Formats (v1.0)
+
+**WAV (Audio Signals)**
+
+```javascript
+{
+  library: "wavefile",  // npm package
+  features: [
+    "Import: Read 16/24/32-bit PCM, IEEE float",
+    "Export: Publication-quality audio exports",
+    "Metadata: Sample rate, bit depth, channels"
+  ],
+  use_cases: [
+    "Audio signal analysis",
+    "Microphone recordings for student labs",
+    "Real-world data from instruments"
+  ]
+}
+```
+
+**CSV (Tabular Data)**
+
+```javascript
+{
+  library: "papaparse",  // Fast CSV parser
+  features: [
+    "Import: Auto-detect delimiters, headers",
+    "Export: Configurable precision, formatting",
+    "Large files: Streaming support for 100MB+ datasets"
+  ],
+  use_cases: [
+    "Oscilloscope data exports",
+    "MATLAB data via csvwrite()",
+    "Python NumPy savetxt() outputs"
+  ]
+}
+```
+
+**JSON (SignalShow Native Format)** - see RESEARCH_OVERVIEW.md for full schema
+
+**PNG/SVG (Figure Export)**
+
+- Plotly.js built-in export (already supported)
+- High-DPI support (300+ DPI for publications)
+- Embedded metadata (SVG title/desc tags, PNG tEXt chunks)
+
+#### Priority 2: Advanced Formats (v1.5)
+
+**MATLAB .mat Files**: `matfile.js` or `jmat` - Read v5/v7.3 formats  
+**NumPy .npy Files**: `npy-js` - Read 1D/2D arrays  
+**HDF5**: `jsfive` - Scientific hierarchical data  
+**TIFF**: `tiff.js` - Microscopy/interferogram images
+
+#### Priority 3: Integration APIs (v2.0)
+
+- **Python/Julia client libraries** - RPC protocol for headless rendering
+- **LMS integration** - LTI 1.3 standard (Canvas, Blackboard, Moodle)
+- **CLI mode** - Batch figure generation for LaTeX workflows
+
+See [ROADMAP_REVISIONS.md](./ROADMAP_REVISIONS.md) for detailed interoperability specifications.
+
+---
+
+## Accessibility Stack (v1.0+)
+
+### WCAG 2.2 AA Compliance
+
+SignalShow must be accessible to all users, including those with disabilities. Accessibility is a **first-class citizen**, not an afterthought.
+
+#### Keyboard Navigation
+
+**Component Library**: `react-aria` (Adobe)
+
+- Arrow keys, Tab, Enter, Escape patterns
+- Focus management for modals/dialogs
+- Automatic ARIA attributes
+
+**Keyboard Shortcuts**:
+
+```javascript
+// Presentation mode (instructors)
+"Space": "Next step", "F": "Fullscreen", "Esc": "Exit"
+
+// Plot navigation
+"Arrow keys": "Adjust parameter", "+/-": "Zoom", "0": "Reset"
+```
+
+#### Screen Reader Support
+
+**Plot Descriptions**:
+
+```jsx
+<Plot
+  aria-label="Signal waveform"
+  aria-describedby="plot-description"
+/>
+<div id="plot-description" className="sr-only">
+  Sinusoidal waveform with frequency 440 Hz, amplitude 1.0 V,
+  showing 3 complete cycles. Peak-to-peak: 2.0 V.
+</div>
+```
+
+**Data Export**: CSV tables for screen reader/Braille display compatibility
+
+#### Sonification (Audio Feedback)
+
+```javascript
+// Play signal as audio (accessibility + pedagogy)
+async function sonifySignal(signal) {
+  const audioContext = new AudioContext();
+  // Web Audio API implementation
+  // Use cases:
+  // 1. Visually impaired users hear the waveform
+  // 2. Students hear aliasing artifacts
+  // 3. Verify audio processing results
+}
+```
+
+#### Visual Accessibility
+
+**Color Schemes**:
+
+- ColorBrewer palettes (colorblind-safe)
+- High-contrast mode: 7:1 ratio (WCAG AAA)
+- Font scaling: 125%, 150%, 200% support
+
+**Localization**: English (v1.0), Spanish/Mandarin (v2.0)
+
+#### Compliance Checklist
+
+```
+☐ All interactive elements keyboard accessible
+☐ All images have alt text
+☐ Color contrast ≥4.5:1 (AA)
+☐ Focus indicators clearly visible
+☐ Screen reader descriptions for plots
+☐ No information conveyed by color alone
+☐ Captions/transcripts for videos
+☐ Skip navigation links
+```
+
+See [ROADMAP_REVISIONS.md](./ROADMAP_REVISIONS.md) for accessibility implementation timeline.
+
+---
+
+## Plugin Architecture (v2.0)
+
+### Extensibility Framework
+
+Allow universities and researchers to add custom operations without forking SignalShow.
+
+#### Plugin API Interface
+
+```javascript
+interface SignalShowPlugin {
+  // Metadata
+  id: string; // "edu.stanford.dsp.wiener-filter"
+  name: string; // "Wiener Filter"
+  version: string; // "1.0.0"
+  author: string;
+  license: string;
+
+  // Operation definition
+  operation: {
+    category: "filter" | "transform" | "analysis" | "visualization",
+    inputs: SignalDefinition[],
+    outputs: SignalDefinition[],
+    parameters: ParameterDefinition[],
+  };
+
+  // Execution (sandboxed Web Worker or WASM)
+  execute(inputs: Signal[], params: object): Promise<Signal[]>;
+
+  // UI component (React)
+  renderControls(params: object, onChange: Function): ReactElement;
+
+  // Documentation
+  description: string;
+  examples: Example[];
+  citation?: string; // Academic attribution
+}
+```
+
+#### Security & Sandboxing
+
+```javascript
+{
+  execution: {
+    environment: "Web Worker",  // Isolated from main thread
+    restrictions: [
+      "No DOM access",
+      "No network (except approved APIs)",
+      "Memory limits",
+      "CPU time limits (prevent infinite loops)"
+    ]
+  },
+
+  wasm_support: {
+    allowed: true,
+    memory_model: "wasm-safe (bounds checking)"
+  },
+
+  marketplace: {
+    certification: [
+      "Code review by SignalShow team",
+      "Automated security scanning",
+      "Performance benchmarks",
+      "Documentation quality"
+    ],
+    tiers: ["Certified", "Community"]
+  }
+}
+```
+
+#### Distribution
+
+- **Web**: Import from URL (ES modules)
+- **Desktop**: Plugin manager
+- **Discovery**: signalshow.org/plugins, npm (tag: `signalshow-plugin`)
+- **Versioning**: Semantic versioning with API compatibility declarations
+
+See [ROADMAP_REVISIONS.md](./ROADMAP_REVISIONS.md) for plugin API specification details.
+
+---
+
 ## Alternative Technologies Considered & Rejected
 
 ### Pure JavaScript (No Julia)

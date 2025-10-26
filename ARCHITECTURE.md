@@ -679,6 +679,294 @@ export function measureBackendPerformance(backend: DSPBackend) {
 
 ---
 
+## User Experience Architecture (v1.0+)
+
+Based on strategic recommendations and persona-driven development (see [PERSONAS.md](./PERSONAS.md)), SignalShow implements progressive disclosure with persona-optimized workflows.
+
+### Workspace Metaphor
+
+Inspired by GeoGebra's multi-view system, SignalShow uses **synchronized tabbed workspaces**:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ SignalShow - Workspace: Sampling Theorem Demo              │
+├─────────────────────────────────────────────────────────────┤
+│ [Time] [Frequency] [Spatial] [Parameter Study]             │  ← Tabs
+├──────────────┬──────────────┬──────────────────────────────┤
+│              │              │                              │
+│  Function    │   Time       │   Frequency                  │
+│  Generator   │   Domain     │   Domain                     │
+│              │   Plot       │   Plot                       │
+│  [Controls]  │              │                              │
+│              │  [Waveform]  │  [Spectrum]                  │
+│  Operations  │              │                              │
+│  Pipeline    │              │                              │
+│              │              │                              │
+│  [FFT]       │              │                              │
+│  [Filter]    │              │                              │
+│  [Window]    │              │                              │
+│              │              │                              │
+└──────────────┴──────────────┴──────────────────────────────┘
+│ Timeline: [●────────────────────] 0:00 / 0:45              │  ← Provenance
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Key Features**:
+
+- **Synchronized Cursors**: Click in time domain → highlight corresponding frequency bin
+- **Shared Annotations**: Arrows/text overlays appear in all relevant views
+- **Cross-View Dragging**: Drag element in one view → update in all
+- **Workspace Presets**: "1D Analysis", "Optics Lab", "Parameter Sweep"
+
+### Timeline & Provenance Recording (v1.0)
+
+Every parameter change and operation is recorded for replay and documentation:
+
+```typescript
+interface TimelineEvent {
+  timestamp: number; // Seconds from start
+  event: "parameter_change" | "operation_applied" | "annotation_added";
+  data: {
+    param?: string;
+    value?: any;
+    operation?: string;
+    annotation?: { text: string; position: { x: number; y: number } };
+  };
+  annotation: string; // Human-readable description
+}
+
+// Example timeline
+const timeline = [
+  {
+    timestamp: 0.0,
+    event: "parameter_change",
+    data: { param: "frequency", value: 440 },
+    annotation: "Start with A4 note (440 Hz)",
+  },
+  {
+    timestamp: 5.2,
+    event: "operation_applied",
+    data: { operation: "fft" },
+    annotation: "Take Fourier transform - see single peak",
+  },
+  {
+    timestamp: 12.8,
+    event: "parameter_change",
+    data: { param: "frequency", value: 880 },
+    annotation: "Double frequency to A5 (880 Hz)",
+  },
+];
+```
+
+**Use Cases** (Persona-Specific):
+
+- **Students**: Review what they did during lab session
+- **Instructors**: Create step-by-step demonstrations with annotations
+- **Content Creators**: Export timeline to Manim for video production
+- **Researchers**: Document analysis pipeline for reproducibility
+
+**Export Formats**:
+
+```javascript
+{
+  json: "workspace.json",           // Full workspace with timeline
+  markdown: "lab-report.md",        // Human-readable documentation
+  manim_script: "animation.py",     // 3Blue1Brown-style video (v2.0)
+  csv: "parameter-history.csv"      // Spreadsheet for analysis
+}
+```
+
+### Guided vs. Expert Mode
+
+Progressive disclosure system that scales from beginner (Student) to power user (Researcher):
+
+```typescript
+interface ModeConfig {
+  guided: {
+    constraints: {
+      frequencyRange: [20, 20000]; // Audible range only
+      sampleRate: "auto"; // Prevent aliasing automatically
+      warningsEnabled: true; // "Sample rate too low!"
+      hints: true; // Contextual tooltips
+    };
+    ui: {
+      advancedControls: "hidden"; // Hide complex parameters
+      presets: "prominent"; // Emphasize pre-built demos
+      help: "contextual"; // Inline hints
+      undo: true; // Always show undo/redo
+    };
+  };
+
+  expert: {
+    constraints: {
+      frequencyRange: null; // No limits
+      sampleRate: "manual"; // User control
+      warningsEnabled: false; // Assume expertise
+      hints: false;
+    };
+    ui: {
+      advancedControls: "visible"; // All parameters exposed
+      presets: "collapsed"; // De-emphasize presets
+      help: "on-demand"; // Help button only
+      shortcuts: true; // Show keyboard shortcuts
+    };
+  };
+}
+```
+
+**Mode Switcher** (Top-right corner):
+
+```jsx
+<ModeToggle>
+  <Button variant={mode === "guided" ? "primary" : "ghost"}>🎓 Guided</Button>
+  <Button variant={mode === "expert" ? "primary" : "ghost"}>🔬 Expert</Button>
+</ModeToggle>
+```
+
+**Adaptive Hints**:
+
+```jsx
+{
+  mode === "guided" && (
+    <Tooltip content="Sample rate must be 2× highest frequency (Nyquist)">
+      <InfoIcon />
+    </Tooltip>
+  );
+}
+```
+
+### Sonification Support
+
+Play signals as audio for accessibility (screen readers) and pedagogy (hear aliasing artifacts):
+
+```typescript
+async function sonifySignal(signal: Signal, duration: number = 2.0) {
+  const audioContext = new AudioContext();
+
+  // Create audio buffer from signal
+  const buffer = audioContext.createBuffer(
+    1, // mono
+    signal.samples.length,
+    signal.sampleRate || 48000
+  );
+  buffer.copyToChannel(new Float32Array(signal.samples), 0);
+
+  // Play audio
+  const source = audioContext.createBufferSource();
+  source.buffer = buffer;
+  source.connect(audioContext.destination);
+  source.start();
+
+  // Accessibility: Announce to screen readers
+  announceToScreenReader(`Playing waveform: ${signal.label}`);
+}
+```
+
+**UI Integration**:
+
+```jsx
+<PlotToolbar>
+  <Button
+    onClick={() => sonifySignal(currentSignal)}
+    aria-label="Play signal as audio"
+  >
+    🔊 Sonify
+  </Button>
+</PlotToolbar>
+```
+
+**Pedagogical Uses**:
+
+- Students **hear** aliasing when sample rate is too low
+- Students **hear** the effect of filters (lowpass removes high frequencies)
+- Students **hear** convolution (reverb, echo effects)
+
+### Presentation Mode (Instructor Persona)
+
+Fullscreen mode optimized for classroom lectures:
+
+```tsx
+interface PresentationMode {
+  trigger: "P" | fullscreenButton;
+  layout: {
+    chrome: "hidden"; // No toolbars/menus
+    plots: "maximized"; // Full viewport
+    controls: "overlay"; // Floating semi-transparent
+    annotations: "enabled"; // Live drawing tools
+  };
+  navigation: {
+    Space: "Next step in demo";
+    "Shift+Space": "Previous step";
+    B: "Blackout screen";
+    Esc: "Exit presentation";
+    "Arrow keys": "Adjust parameters";
+  };
+  features: [
+    "Laser pointer (mouse cursor highlights)",
+    "Live annotation (arrows, text)",
+    "Pause/resume animations",
+    "Hotkey-driven (hands-free)"
+  ];
+}
+```
+
+**Presentation Timeline** (Pre-recorded sequence):
+
+```javascript
+const lectureDemo = {
+  title: "Sampling Theorem",
+  slides: [
+    {
+      annotation: "Start with continuous sinusoid",
+      actions: [{ type: "setParam", param: "frequency", value: 1000 }],
+    },
+    {
+      annotation: "Sample at Nyquist rate (2000 Hz)",
+      actions: [{ type: "setParam", param: "sampleRate", value: 2000 }],
+    },
+    {
+      annotation: "Now undersample (500 Hz) - see aliasing!",
+      actions: [{ type: "setParam", param: "sampleRate", value: 500 }],
+      pause: 3000, // Auto-advance after 3s
+    },
+  ],
+};
+```
+
+### Accessibility Architecture
+
+All UX patterns must meet WCAG 2.2 AA standards (see [TECH_STACK.md](./TECH_STACK.md#accessibility-stack)):
+
+```tsx
+// Example: Accessible slider component
+<Slider
+  aria-label="Signal frequency in Hertz"
+  aria-valuemin={20}
+  aria-valuemax={20000}
+  aria-valuenow={frequency}
+  aria-valuetext={`${frequency} Hz`}
+  onKeyDown={(e) => {
+    if (e.key === "ArrowRight") setFrequency((f) => f + 10);
+    if (e.key === "ArrowLeft") setFrequency((f) => f - 10);
+    if (e.key === "PageUp") setFrequency((f) => f + 100);
+    if (e.key === "PageDown") setFrequency((f) => f - 100);
+  }}
+/>
+```
+
+**Accessibility Features**:
+
+- ✅ Keyboard-only navigation (no mouse required)
+- ✅ Screen reader descriptions for all plots
+- ✅ High-contrast mode toggle
+- ✅ Font size scaling (125%, 150%, 200%)
+- ✅ Colorblind-safe palettes (ColorBrewer)
+- ✅ Sonification for visual data
+- ✅ Skip navigation links
+- ✅ Focus indicators always visible
+
+---
+
 ## Component Breakdown
 
 ### Frontend Components (React)

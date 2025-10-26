@@ -1,12 +1,16 @@
 # SignalShow Web Modernization - Research Overview
 
+**Project Vision**: "SignalShow is to DSP what Desmos is to algebra" - the definitive interactive platform for signal processing and optics education, combining MATLAB's computational power, Desmos's beautiful simplicity, and 3Blue1Brown's pedagogical clarity.
+
 **Project Goal**: Transform SignalShow from a Java Swing desktop application into a modern web-based platform suitable for university teaching, research paper figure generation, and educational video production.
 
 **Date Started**: October 25, 2025  
-**Last Updated**: October 25, 2025  
+**Last Updated**: October 26, 2025  
 **Project Status**: ✅ **Phase 1 (Web UI) COMPLETE** - Fully functional web application with 4 UI components tested in both web and desktop modes  
+**Strategic Roadmap**: See [`ROADMAP_REVISIONS.md`](./ROADMAP_REVISIONS.md) for revised timeline and priorities based on expert architectural review  
 **Strategic Memo**: See [`SIGNALSHOW_STRATEGIC_RECOMMENDATIONS.md`](./SIGNALSHOW_STRATEGIC_RECOMMENDATIONS.md) for long-term positioning and roadmap guidance  
-**Target Audience**: University educators, students, researchers, and educational content creators  
+**User Personas**: See [`PERSONAS.md`](./PERSONAS.md) for detailed user stories and feature prioritization  
+**Target Audience**: University educators (40%), students (45%), researchers/authors (10%), content creators (5%)  
 **Visual Style Goal**: Interactive demos with 3Blue1Brown-quality aesthetics
 
 ---
@@ -27,9 +31,120 @@
 
 ### Next Priorities 📋
 
-1. **User Validation**: Collect feedback on Phase 1 web application
-2. **Phase 2 (WASM)**: Rust/WebAssembly backend for 10-20x performance boost
-3. **Phase 3 (Desktop/Julia)**: Optional Julia server for advanced features
+1. **v1.0 Public Release Additions**:
+
+   - Interoperability: WAV/CSV import/export (see ROADMAP_REVISIONS.md)
+   - Accessibility: WCAG 2.2 AA compliance (keyboard navigation, screen readers)
+   - Guided Mode: Parameter constraints and contextual hints for students
+   - Timeline Recording: Capture parameter changes for replay and documentation
+   - Concept Packs: 3 ABET-aligned educational demos (Sampling, Fourier, Optics)
+   - Metadata: Provenance tracking in JSON workspace exports
+
+2. **v1.5 Classroom Release**: WASM performance, LMS integration, Docker appliance
+3. **v2.0 Desktop/Extensions**: Tauri app, plugin API, Manim export, Julia runtime
+
+---
+
+## Product Positioning & Market Differentiation
+
+### Vision Statement
+
+**"SignalShow is to DSP what Desmos is to algebra"** - filling a clear market gap as the specialist platform for signal processing and optics education.
+
+### Unique Market Position
+
+SignalShow occupies a unique intersection that no competitor fully addresses:
+
+- **ONLY** web-based DSP education tool with publication-quality exports
+- **ONLY** platform coupling 1D signal analysis with 2D optics simulations
+- **ONLY** tool offering reproducible figure pipelines with provenance tracking
+- **ONLY** modern stack for DSP labs (J-DSP is legacy Java)
+
+### Competitive Differentiation
+
+Based on analysis of 8 major platforms (Observable, Desmos, GeoGebra, Mathigon, PhET, Wolfram, J-DSP, Falstad):
+
+**vs. MATLAB**: Free, web-based, beautiful UI, instant sharing (vs. expensive licensing, dated figures)  
+**vs. Desmos**: Deep DSP/optics vs. general math; advanced operations vs. simple graphing  
+**vs. GeoGebra**: Focused expertise in signals vs. broad math topics  
+**vs. Observable**: GUI-first vs. code-first; Julia backend vs. JavaScript only  
+**vs. J-DSP**: Modern React/Julia stack vs. legacy Java; story-driven demos vs. block diagrams  
+**vs. PhET**: Specialist DSP/optics vs. general physics; publication workflow vs. K-12 focus
+
+### Target Partnerships
+
+- **Textbook Publishers**: Companion interactive demos (like Wolfram Demonstrations)
+- **OpenStax**: Integration into open-source DSP textbooks
+- **IEEE Education Society**: Co-sponsor workshops and concept pack development
+- **ABET**: Align concept packs with accreditation outcomes
+
+### Signature Features
+
+1. **Concept Studio**: Curated interactive narratives with educator commentary
+2. **Optics Lab**: 2D aperture design and real-time diffraction simulation
+3. **Signal Clinic**: Guided diagnostic workflows for analyzing real data
+4. **Timeline Provenance**: Replay and export entire analysis workflow
+5. **Publication Pipeline**: Metadata-rich exports for reproducible research
+
+---
+
+## Persona-Driven Development
+
+SignalShow serves **4 distinct user personas** with different needs and workflows:
+
+### 1. Dr. Elena Martinez - The Instructor (40%)
+
+**Primary Goal**: Make abstract DSP concepts tangible through interactive demonstrations
+
+**Critical Features**:
+
+- Pre-built concept packs aligned to common curricula
+- Presentation mode with keyboard shortcuts
+- LMS integration (Canvas, Blackboard)
+- Student progress tracking
+
+**Success Metric**: Adopts SignalShow for ≥50% of lecture demos
+
+### 2. Alex Chen - The Student (45%)
+
+**Primary Goal**: Build intuition for signal processing through hands-on exploration
+
+**Critical Features**:
+
+- Guided Mode with parameter constraints and hints
+- Undo/redo for fearless experimentation
+- WAV/CSV import for homework datasets
+- Lab report export (PNG figures + workspace JSON)
+
+**Success Metric**: Uses tool voluntarily outside required assignments
+
+### 3. Dr. Raj Patel - The Researcher/Author (10%)
+
+**Primary Goal**: Generate publication-quality figures with reproducible workflows
+
+**Critical Features**:
+
+- High-DPI exports (300+ DPI PNG/SVG) with embedded metadata
+- CLI for batch figure generation
+- Expert Mode (no constraints)
+- Python/Julia API for scripting
+
+**Success Metric**: Publishes ≥1 paper with SignalShow-generated figures
+
+### 4. Maya Rodriguez - The Content Creator (5%)
+
+**Primary Goal**: Create visually stunning educational videos explaining DSP
+
+**Critical Features**:
+
+- Timeline recording of parameter changes
+- Manim export for 3Blue1Brown-style animations
+- Custom branding (color schemes, fonts)
+- 4K/8K rendering
+
+**Success Metric**: Produces video with 50%+ time savings vs. manual animation
+
+**Full Personas**: See [`PERSONAS.md`](./PERSONAS.md) for detailed user stories, workflows, and feature mapping.
 
 ---
 
@@ -55,12 +170,12 @@
 - **Visualization**: Beautiful, interactive, 3Blue1Brown-inspired graphics
 - **Data Model**: File-based architecture with portable signal files
 - **File Extensions**: `.sig1d`, `.sig2d`, `.sigOp`, `.sigWorkspace`, `.sigDemo`
-- **Use Cases**:
-  1. Live classroom demonstrations
-  2. Student experimentation and learning
-  3. Figure generation for publications
-  4. Educational video content creation
-  5. Shareable signal files and workspaces
+- **Primary Use Cases** (Persona-Aligned):
+  1. **Instructor**: Live classroom demonstrations with presentation mode
+  2. **Student**: Guided lab assignments with scaffolded exploration
+  3. **Researcher**: Publication-quality figure generation with provenance
+  4. **Content Creator**: Educational video production with Manim export
+  5. **All Users**: Shareable workspaces and reproducible workflows
 
 ---
 
