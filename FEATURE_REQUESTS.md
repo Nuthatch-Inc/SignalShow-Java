@@ -6,6 +6,45 @@ ID format: FEAT-### (e.g. FEAT-001)
 
 ---
 
+## Implementation Order for Pending Features
+
+The following implementation order is recommended for the remaining advanced transform features (FEAT-003 through FEAT-006):
+
+### Priority Order & Rationale:
+
+1. **FEAT-004: Wigner Distribution Function (WDF)** - Implement FIRST
+
+   - Timeline: 7-10 hours
+   - Rationale: Establishes patterns for 1D→2D transforms; simpler real-valued output
+   - Plan: `WDF_IMPLEMENTATION_PLAN.md`
+   - Benefits: Template for subsequent time-frequency features
+
+2. **FEAT-005: Ambiguity Function** - Implement SECOND
+
+   - Timeline: 7-10 hours (faster due to WDF code reuse)
+   - Rationale: Very similar to WDF; reuses infrastructure and GUI components
+   - Plan: `AMBIGUITY_FUNCTION_PLAN.md`
+   - Benefits: Leverages WDF patterns, adds complex-valued output handling
+
+3. **FEAT-003: Radon Transform** - Implement THIRD
+
+   - Timeline: 10-15 hours
+   - Rationale: Different algorithm but uses rotation/interpolation concepts
+   - Plan: `RADON_TRANSFORM_PLAN.md`
+   - Benefits: Important for CT/MRI education; complements time-frequency features
+
+4. **FEAT-006: Fractional Fourier Transform** - Implement LAST (Low Priority)
+   - Timeline: 9-13 hours
+   - Rationale: Most complex mathematics; research/advanced feature
+   - Plan: `FRACTIONAL_FOURIER_PLAN.md`
+   - Benefits: Benefits from experience with all prior 1D→2D transforms
+
+### Total Estimated Time: 33-48 hours
+
+**Note**: Each feature is independently useful and can be implemented incrementally. All planning documents are complete and ready for advisor review.
+
+---
+
 ## Template
 
 - ID: FEAT-XXX
