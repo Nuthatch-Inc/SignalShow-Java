@@ -71,7 +71,7 @@ public class PlusOp extends BinaryOperation {
 		super.initTypeModel(model);
 //		model.setLargeIcon("/operationIcons/PlusLarge.png");
 //		model.setSmallIcon("/operationIcons/PlusSmall.png");
-		model.setName("Plus Addition +");
+		model.setName("Sum +");
 		
 		model.setDocPath("/operationdoc/plus.html");
 	}

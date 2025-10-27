@@ -71,7 +71,7 @@ public class MinusOp extends BinaryOperation {
 		super.initTypeModel(model);
 //		model.setLargeIcon("/operationIcons/SubtractLarge.png");
 //		model.setSmallIcon("/operationIcons/SubtractSmall.png");
-		model.setName("Subtract Minus -");
+		model.setName("Difference -");
 		
 		model.setDocPath("/operationdoc/minus.html");
 	}

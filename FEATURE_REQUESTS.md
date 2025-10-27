@@ -195,7 +195,7 @@ ID format: FEAT-### (e.g. FEAT-001)
 
 - ID: FEAT-008
 - Title: Rename binary operations for clarity
-- Status: open
+- Status: ✅ completed (2024-10-26)
 - Requested by: Roger Easton Jr
 - Date: 2024-12-03
 - Priority: low
@@ -208,6 +208,11 @@ ID format: FEAT-### (e.g. FEAT-001)
   - Clearer mathematical terminology
   - Better alignment with standard mathematical language
 - Implementation notes: Simple UI text changes
+- Resolution notes:
+  - Modified PlusOp.java: "Plus Addition +" → "Sum +"
+  - Modified MinusOp.java: "Subtract Minus -" → "Difference -"
+  - Modified TimesOp.java: "Times Multiply" → "Multiply x"
+  - Operations now display with clearer, more concise names in the GUI menus
 - Related issues: N/A
 
 ---

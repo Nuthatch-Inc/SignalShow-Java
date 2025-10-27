@@ -71,7 +71,7 @@ public class TimesOp extends BinaryOperation {
 		super.initTypeModel(model);
 //		model.setLargeIcon("/operationIcons/TimesLarge.png");
 //		model.setSmallIcon("/operationIcons/TimesSmall.png");
-		model.setName("Times Multiply");
+		model.setName("Multiply x");
 		
 		model.setDocPath("/operationdoc/times.html");
 	}
