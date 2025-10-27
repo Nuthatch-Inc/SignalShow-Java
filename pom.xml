@@ -89,4 +89,70 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Profile for creating native installers -->
+        <profile>
+            <id>native-installer</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.panteleyev</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <version>1.6.5</version>
+                        <configuration>
+                            <name>SignalShow</name>
+                            <appVersion>${project.version}</appVersion>
+                            <vendor>SignalShow</vendor>
+                            <destination>target/dist</destination>
+                            <module>SignalShow</module>
+                            <mainJar>signalshow-${project.version}.jar</mainJar>
+                            <mainClass>SignalShow</mainClass>
+                            <javaOptions>
+                                <option>-Xmx2g</option>
+                                <option>-Dapple.awt.application.name=SignalShow</option>
+                            </javaOptions>
+                            <input>target</input>
+                            
+                            <!-- Mac-specific -->
+                            <macPackageIdentifier>org.signalshow</macPackageIdentifier>
+                            <macPackageName>SignalShow</macPackageName>
+                            
+                            <!-- Windows-specific -->
+                            <winDirChooser>true</winDirChooser>
+                            <winMenu>true</winMenu>
+                            <winShortcut>true</winShortcut>
+                            <winMenuGroup>SignalShow</winMenuGroup>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>mac-dmg</id>
+                                <configuration>
+                                    <type>DMG</type>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>mac-pkg</id>
+                                <configuration>
+                                    <type>PKG</type>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>win-exe</id>
+                                <configuration>
+                                    <type>EXE</type>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>win-msi</id>
+                                <configuration>
+                                    <type>MSI</type>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
