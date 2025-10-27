@@ -174,7 +174,7 @@ ID format: FEAT-### (e.g. FEAT-001)
 
 - ID: FEAT-007
 - Title: Add CSV export format for 2D data
-- Status: open
+- Status: ✅ completed (2024-10-26)
 - Requested by: Roger Easton Jr
 - Date: 2024-12-03
 - Priority: medium
@@ -190,6 +190,15 @@ ID format: FEAT-### (e.g. FEAT-001)
   - Standard format for numerical data exchange
 - Implementation notes: Note that BUG-005 has been resolved - real and imaginary parts are now normalized to same scale when exported together
 - Related issues: BUG-005 (resolved)
+- Resolution notes:
+  - Added CSV to ImageType enum in ImageWriter.java
+  - Implemented writeCSV() method with proper CSV formatting
+  - CSV files include metadata headers (dimensions, part type, function name)
+  - Column headers show x-axis indices
+  - Data is comma-separated (standard CSV format)
+  - Updated SaveFunction2DDialog.java to handle CSV export
+  - CSV exports work for all parts (real, imaginary, magnitude, phase)
+  - Compatible with Excel, Google Sheets, and data analysis tools
 
 ---
 

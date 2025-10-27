@@ -20,7 +20,7 @@ import signals.gui.plot.ImageDisplayMath;
 public class ImageWriter {
 
 	public static enum ImageType {
-		TIFF, PNG, JPG, BMP, TEXT
+		TIFF, PNG, JPG, BMP, TEXT, CSV
 	};
 
 	public static boolean writeImage(File file, Function2D function, Part part, String extension) {
@@ -117,6 +117,10 @@ public class ImageWriter {
 
 				return ".txt";
 
+			case CSV:
+
+				return ".csv";
+
 		}
 
 		return null;
@@ -159,6 +163,10 @@ public class ImageWriter {
 
 			return ImageType.TEXT;
 
+		} else if (ext.equals(".csv")) {
+
+			return ImageType.CSV;
+
 		} else if (ext.equals(".bmp")) {
 
 			return ImageType.BMP;
@@ -197,6 +205,11 @@ public class ImageWriter {
 					JAI.create("filestore", image, path, "TIFF");
 
 					break;
+
+				case TEXT:
+				case CSV:
+					// These formats are handled by writeText() and writeCSV() methods
+					return false;
 
 			}
 
@@ -251,6 +264,82 @@ public class ImageWriter {
 					writer.write("" + data[i++] + " ");
 
 				}
+
+			}
+
+			// close the file
+			writer.close();
+
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(Core.getFrame(),
+					"Data was not saved.",
+					"File I/O Error",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Write function data to CSV (Comma-Separated Values) file.
+	 * CSV format is more suitable for spreadsheets and data analysis tools.
+	 * 
+	 * @param file     Output file
+	 * @param function Function to export
+	 * @param part     Which part to export (real, imaginary, magnitude, phase)
+	 * @return true if successful
+	 */
+	public static boolean writeCSV(File file, Function2D function, Part part) {
+
+		String path = file.getPath();
+		String extension = Utils.getExtension(path);
+
+		if (extension == null || extension.trim().length() == 0 || ImageType.CSV != extensionToType(extension)) {
+
+			path = path + typeToExtension(ImageType.CSV);
+
+		}
+
+		// open the file
+		FileWriter writer = null;
+		try {
+
+			writer = new FileWriter(new File(path));
+
+			// write CSV header with metadata
+			writer.write("# SignalShow 2D Function Export\n");
+			writer.write("# Dimensions: " + function.getDimensionX() + " x " + function.getDimensionY() + "\n");
+			writer.write("# Part: " + part.toString() + "\n");
+			writer.write("# Function: " + function.getDescriptor() + "\n");
+
+			// write column headers (x indices)
+			for (int x = 0; x < function.getDimensionX(); ++x) {
+				if (x > 0)
+					writer.write(",");
+				writer.write("" + x);
+			}
+			writer.write("\n");
+
+			// write the data to the file
+			double[] data = ((Function) function).getPart(part);
+
+			int i = 0;
+
+			// for each row (y)
+			for (int y = 0; y < function.getDimensionY(); ++y) {
+
+				// for each col (x)
+				for (int x = 0; x < function.getDimensionX(); ++x) {
+
+					if (x > 0)
+						writer.write(",");
+					writer.write("" + data[i++]);
+
+				}
+
+				// write a newline after each row
+				writer.write("\n");
 
 			}
 
