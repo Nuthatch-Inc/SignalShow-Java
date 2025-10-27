@@ -84,7 +84,7 @@ declare -a CHAPTERS=(
     
     # Part VI: Appendices
     "BUGS|Chapter 17: Known Issues and Bug Tracking|chapter-17-bugs"
-    "MAVEN_MIGRATION_PLAN|Chapter 18: Maven Migration Plan (Historical Reference)|chapter-18-maven"
+    "MAVEN_BUILD_SYSTEM|Chapter 18: Maven Build System and Distribution|chapter-18-maven"
 )
 
 echo -e "${YELLOW}Building combined markdown file with hyperlinks...${NC}"
@@ -159,7 +159,7 @@ convert_links_to_anchors() {
         "ROADMAP_REVISIONS|chapter-17-revisions|Chapter 17: Roadmap Revisions"
         "NUTHATCH_PLATFORM_PORT_ANALYSIS|chapter-18-nuthatch|Chapter 18: Nuthatch Platform Integration"
         "RUST_DSP_RESEARCH|chapter-19-rust|Chapter 19: Rust DSP Research"
-        "MAVEN_MIGRATION_PLAN|chapter-20-maven|Chapter 20: Maven Migration Plan"
+        "MAVEN_BUILD_SYSTEM|chapter-20-maven|Chapter 20: Maven Build System and Distribution"
         "BUGS|chapter-21-bugs|Chapter 21: Known Issues"
     )
     
