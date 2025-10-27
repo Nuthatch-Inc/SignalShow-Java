@@ -55,9 +55,9 @@ npm run dev
 
 ---
 
-## Java Desktop Version (Original)
+## Java Desktop Version
 
-The original implementation with 80+ functions and 40+ operations.
+The original implementation with 80+ functions and 40+ operations, now using Maven.
 
 ### Key Features
 
@@ -67,15 +67,33 @@ The original implementation with 80+ functions and 40+ operations.
 - Educational demos (sampling, filtering, holography, more)
 - Modular operation architecture
 
+### Building with Maven
+
+```bash
+# Compile
+mvn clean compile
+
+# Run directly
+mvn exec:java
+
+# Or use convenience scripts
+./compile.sh    # Compile the project
+./run-maven.sh  # Run with Maven
+./package.sh    # Create executable JAR
+./run.sh        # Run from JAR
+```
+
 ### Project Structure
 
 ```
-SignalShow/
-  SignalShow.java          # Main entry point
-  jai_core.jar             # JAI core classes (bundled)
-  jai_codec.jar            # JAI codec classes (bundled)
-  signals/                 # Application packages
-  run-signalshow.sh        # Launcher script
+src/main/java/           # Java source files
+  SignalShow.java        # Main entry point
+  signals/               # Application packages
+src/main/resources/      # Images, icons, documentation
+pom.xml                  # Maven configuration
+legacy-build/            # Original build artifacts
+  jai_core.jar           # JAI core classes (installed to local Maven)
+  jai_codec.jar          # JAI codec classes (installed to local Maven)
 ```
 
 ### Prerequisites
