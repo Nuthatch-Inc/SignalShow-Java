@@ -47,6 +47,17 @@ echo ""
 # Create distribution directory
 mkdir -p target/dist
 
+# Check if icon exists
+ICON_PATH="assets/icons/SignalShow.ico"
+if [ ! -f "$ICON_PATH" ]; then
+    echo "⚠️  Warning: Icon not found at $ICON_PATH"
+    echo "   Run ./create-windows-icon.sh to create it"
+    ICON_ARG=""
+else
+    echo "✓ Using icon: $ICON_PATH"
+    ICON_ARG="--icon $ICON_PATH"
+fi
+
 # Build Windows installer
 echo "🪟 Creating Windows installer ($TYPE)..."
 jpackage \
@@ -64,7 +75,8 @@ jpackage \
   --win-menu \
   --win-shortcut \
   --win-menu-group SignalShow \
-  --java-options -Xmx2g
+  --java-options -Xmx2g \
+  $ICON_ARG
 
 echo ""
 echo "✅ Build complete!"

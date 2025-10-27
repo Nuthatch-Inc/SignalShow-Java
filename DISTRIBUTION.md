@@ -11,14 +11,16 @@ SignalShow can be distributed as native installers for Mac and Windows, or as a 
 Professional installers with bundled Java runtime - users don't need to install Java.
 
 #### macOS (.dmg)
+
 - Drag-to-install disk image
 - Bundles Java 25 runtime
 - ~100-150 MB download
 - Works on macOS 10.15+
 
 #### Windows (.exe or .msi)
+
 - Standard Windows installer
-- Bundles Java 25 runtime  
+- Bundles Java 25 runtime
 - ~100-150 MB download
 - Works on Windows 10+
 
@@ -38,11 +40,13 @@ Universal Java application - requires users to have Java installed.
 ### Prerequisites
 
 **For Mac builds:**
+
 - macOS computer
 - Java 17 or later (with jpackage)
 - Xcode Command Line Tools
 
 **For Windows builds:**
+
 - Windows computer
 - Java 17 or later (with jpackage)
 - WiX Toolset 3.11+ (for .msi) - https://wixtoolset.org/
@@ -50,18 +54,21 @@ Universal Java application - requires users to have Java installed.
 ### Local Builds
 
 **Build Mac installer:**
+
 ```bash
 ./build-installer-mac.sh
 # Creates: target/dist/SignalShow-1.0.0.dmg
 ```
 
 **Build Windows installer:**
+
 ```bash
 ./build-installer-windows.sh
 # Creates: target/dist/SignalShow-1.0.0.exe or .msi
 ```
 
 **Build current platform:**
+
 ```bash
 ./build-all-platforms.sh
 ```
@@ -73,10 +80,12 @@ The repository includes a GitHub Actions workflow that automatically builds inst
 **Trigger automated build:**
 
 1. **On version tag:**
+
    ```bash
    git tag v1.0.0
    git push origin v1.0.0
    ```
+
    This creates a draft release with installers attached.
 
 2. **Manual trigger:**
@@ -85,6 +94,7 @@ The repository includes a GitHub Actions workflow that automatically builds inst
    - Click "Run workflow"
 
 **Artifacts:**
+
 - Builds run on macOS and Windows runners
 - Installers saved as artifacts (90 days)
 - On version tags: Creates GitHub release with installers
@@ -96,12 +106,14 @@ The repository includes a GitHub Actions workflow that automatically builds inst
 If you prefer simple JAR distribution:
 
 **Build:**
+
 ```bash
 mvn clean package
 # Creates: target/signalshow-1.0.0-SNAPSHOT.jar
 ```
 
 **Distribute:**
+
 1. Upload JAR to your website/server
 2. Provide installation instructions:
    ```
@@ -161,16 +173,17 @@ signtool sign /f certificate.pfx /p password \
 
 Approximate download sizes:
 
-| Format | Size | Java Included |
-|--------|------|---------------|
-| JAR only | ~8 MB | No |
-| macOS DMG | ~120 MB | Yes |
-| Windows EXE/MSI | ~130 MB | Yes |
+| Format          | Size    | Java Included |
+| --------------- | ------- | ------------- |
+| JAR only        | ~8 MB   | No            |
+| macOS DMG       | ~120 MB | Yes           |
+| Windows EXE/MSI | ~130 MB | Yes           |
 
 ---
 
 ## Support
 
 For distribution questions, see:
+
 - Maven jpackage plugin: https://github.com/petr-panteleyev/jpackage-maven-plugin
 - Java jpackage docs: https://docs.oracle.com/en/java/javase/21/docs/specs/man/jpackage.html

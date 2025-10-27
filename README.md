@@ -11,7 +11,7 @@ SignalShow is an educational signal processing application, originally built in 
 ### Versions
 
 1. **Web Version** - Browser-based prototype in React/Plotly.js
-2. **Desktop Version** - Proposed Tauri app with optional Julia backend  
+2. **Desktop Version** - Proposed Tauri app with optional Julia backend
 3. **Java Version** - Original Swing GUI with 80+ functions (legacy)
 
 ---
@@ -128,11 +128,11 @@ java -cp "SignalShow:SignalShow/jai_core.jar:SignalShow/jai_codec.jar" SignalSho
 
 ## Troubleshooting
 
-| Symptom | Likely Cause | Resolution |
-|---------|--------------|------------|
-| `NoClassDefFoundError: javax/media/jai/PlanarImage` | JAI jars not on classpath | Ensure classpath includes JAI jars. Remove any extracted `SignalShow/javax` directory. |
-| `SecurityException: sealing violation` | Duplicate package definition | Delete stray `javax/` directory. |
-| `UnsatisfiedLinkError` for JAI native libs | Platform mismatch (x86 vs arm64) | Run under Rosetta with x86 JDK, or obtain arm64 native builds. |
+| Symptom                                             | Likely Cause                     | Resolution                                                                             |
+| --------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------- |
+| `NoClassDefFoundError: javax/media/jai/PlanarImage` | JAI jars not on classpath        | Ensure classpath includes JAI jars. Remove any extracted `SignalShow/javax` directory. |
+| `SecurityException: sealing violation`              | Duplicate package definition     | Delete stray `javax/` directory.                                                       |
+| `UnsatisfiedLinkError` for JAI native libs          | Platform mismatch (x86 vs arm64) | Run under Rosetta with x86 JDK, or obtain arm64 native builds.                         |
 
 ### Diagnostics
 

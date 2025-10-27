@@ -5,16 +5,19 @@
 ### Download Options
 
 **macOS:**
+
 - Download `SignalShow-1.0.0.dmg`
 - Open DMG, drag to Applications
 - No Java installation needed
 
 **Windows:**
+
 - Download `SignalShow-1.0.0.exe`
 - Run installer, follow wizard
 - No Java installation needed
 
 **Any Platform (requires Java 17+):**
+
 - Download `signalshow-1.0.0-SNAPSHOT.jar`
 - Run: `java -jar signalshow-1.0.0-SNAPSHOT.jar`
 

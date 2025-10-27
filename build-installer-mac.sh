@@ -33,6 +33,17 @@ echo ""
 # Create distribution directory
 mkdir -p target/dist
 
+# Check if icon exists
+ICON_PATH="assets/icons/SignalShow.icns"
+if [ ! -f "$ICON_PATH" ]; then
+    echo "⚠️  Warning: Icon not found at $ICON_PATH"
+    echo "   Run ./create-mac-icon.sh to create it"
+    ICON_ARG=""
+else
+    echo "✓ Using icon: $ICON_PATH"
+    ICON_ARG="--icon $ICON_PATH"
+fi
+
 # Build DMG installer
 echo "🍎 Creating Mac DMG installer..."
 jpackage \
@@ -49,7 +60,8 @@ jpackage \
   --mac-package-identifier org.signalshow \
   --mac-package-name SignalShow \
   --java-options -Xmx2g \
-  --java-options "-Dapple.awt.application.name=SignalShow"
+  --java-options "-Dapple.awt.application.name=SignalShow" \
+  $ICON_ARG
 
 echo ""
 echo "✅ Build complete!"
