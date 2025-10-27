@@ -54,7 +54,7 @@ ID format: BUG-### (e.g. BUG-001)
 
 - ID: BUG-002
 - Title: Cross-correlation operation is backwards (f2 correlated with f1 instead of f1 with f2)
-- Status: open
+- Status: resolved
 - Reported by: Roger Easton Jr
 - Date: 2024-12-03
 - Environment: All platforms, all versions
@@ -67,13 +67,13 @@ ID format: BUG-### (e.g. BUG-001)
 - Actual behavior: Computes f2[x] correlated with f1[x] (backwards)
 - Logs / stacktrace: N/A
 - Temporary workaround: Swap the order of inputs (use f2 "box" f1 instead of f1 "box" f2)
-- Notes / PR: Affects both 1-D and 2-D operations
+- Notes / PR: Fixed in CombineOpsRule.java by swapping operand order in create() call (line 241). The stack pops operands in reverse order, so operand2 (second pop) is actually the first input. Changed from `operator.create(operand1, operand2)` to `operator.create(operand2, operand1)`. This fix affects all binary operations (1-D and 2-D). Date resolved: 2025-10-26
 
 ---
 
 - ID: BUG-003
 - Title: 2D chirp function default alpha parameter is incorrect
-- Status: open
+- Status: resolved
 - Reported by: Roger Easton Jr
 - Date: 2024-12-03
 - Environment: All platforms, all versions
@@ -85,32 +85,13 @@ ID format: BUG-### (e.g. BUG-001)
 - Actual behavior: Function does not display properly with current default alpha value
 - Logs / stacktrace: N/A
 - Temporary workaround: Manually set alpha to sqrt(number of pixels)
-- Notes / PR: May affect other functions as well - needs investigation
-
----
-
-- ID: BUG-004
-- Title: 2D export only supports TIFF or TXT formats
-- Status: open
-- Reported by: Roger Easton Jr
-- Date: 2024-12-03
-- Environment: All platforms, all versions
-- Description: When exporting 2D data, the application currently only supports TIFF or TXT formats. CSV export would be more useful for data analysis.
-- Steps to reproduce:
-  1. Create a 2D function
-  2. Attempt to export data
-  3. Note available formats
-- Expected behavior: Should support CSV export format for 2D data
-- Actual behavior: Only TIFF or TXT export available
-- Logs / stacktrace: N/A
-- Temporary workaround: Export as TXT and manually convert to CSV
-- Notes / PR: Feature request - add CSV export for 2D data
+- Notes / PR: Fixed in ChirpFunctionTerm1D.java and SineChirpFunctionTerm1D.java by changing default alpha from 32 to 16. Since the default dimension is 256, sqrt(256) = 16. Changed both the param_defaults array and the widthSpinnerModel. Date resolved: 2025-10-26
 
 ---
 
 - ID: BUG-005
 - Title: Real and imaginary parts not normalized to same scale in 2D export
-- Status: open
+- Status: resolved
 - Reported by: Roger Easton Jr
 - Date: 2024-12-03
 - Environment: All platforms, all versions
@@ -123,4 +104,4 @@ ID format: BUG-### (e.g. BUG-001)
 - Actual behavior: Real and imaginary parts use different normalization scales
 - Logs / stacktrace: N/A
 - Temporary workaround: Manually normalize after export
-- Notes / PR: N/A
+- Notes / PR: Fixed by adding shared normalization support. Modified ImageWriter.java to add overloaded writeImage() method that accepts explicit min/max values, and added calculateSharedMinMax() method. Modified SaveFunction2DDialog.java to detect when both real and imaginary parts are being exported and use shared min/max for normalization. Date resolved: 2025-10-26

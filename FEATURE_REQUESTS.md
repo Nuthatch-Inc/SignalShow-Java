@@ -188,8 +188,8 @@ ID format: FEAT-### (e.g. FEAT-001)
   - Easier data analysis in spreadsheet applications
   - Better integration with data analysis tools
   - Standard format for numerical data exchange
-- Implementation notes: See BUG-004 and BUG-005
-- Related issues: BUG-004, BUG-005
+- Implementation notes: Note that BUG-005 has been resolved - real and imaginary parts are now normalized to same scale when exported together
+- Related issues: BUG-005 (resolved)
 
 ---
 

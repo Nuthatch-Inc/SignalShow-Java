@@ -10,56 +10,79 @@ import signals.io.ImageWriter.ImageType;
 @SuppressWarnings("serial")
 public class SaveFunction2DDialog extends SaveFunctionDialog {
 
-	Function2D function; 
-	JComboBox formatBox; 
+	Function2D function;
+	JComboBox formatBox;
 
-	String[] formats; 
+	String[] formats;
 
-	public SaveFunction2DDialog( Function2D function ) {
+	public SaveFunction2DDialog(Function2D function) {
 		super("Save Image", function.getDescriptor());
 		this.function = function;
 
 		formats = new String[ImageType.values().length];
 
-		int i = 0; 
-		for( ImageType type : ImageType.values() ) { 
+		int i = 0;
+		for (ImageType type : ImageType.values()) {
 
-			formats[i] = ImageWriter.typeToExtension(type); 
-			i++; 
+			formats[i] = ImageWriter.typeToExtension(type);
+			i++;
 		}
 
 		addPartSelectors();
 
-		formatBox = new JComboBox( formats ); 
-		pathPanel.add(formatBox); 
+		formatBox = new JComboBox(formats);
+		pathPanel.add(formatBox);
 
 	}
-
 
 	@Override
 	public boolean commitSettings() {
 
 		int formatIndex = formatBox.getSelectedIndex();
-		String format = formats[formatIndex]; 
-		boolean returnflag = true; 
+		String format = formats[formatIndex];
+		boolean returnflag = true;
 
-		if( format.equals(ImageType.TEXT) ) {
+		//  et selected parts
+		Part[] selectedParts = getSelectedParts().toArray(new Part[0]);
+ 
+		if( format.equals(ImageWriter.typeToExtension(ImageType.TEXT)) ) {
 
-			for( Part part : getSelectedParts() ) {
-
-				returnflag &= ImageWriter.writeText(getSelectedFile(part.toString(), format), function, part);
-			}
-
-
-		} else {
-
-			for( Part part : getSelectedParts() ) {
-
-				returnflag &= ImageWriter.writeImage(getSelectedFile(part.toString(), format), function, part, format );
+			f
 
 			}
 
+		} el s {
 			
+			// Fixed BUG-005: Calculate shared min/max for real and imaginary parts
+			// to ensure they are normalized to the same scale
+			D
+
+			// Check if both real and imaginary parts are being exported
+			boolean hasReal = false;
+			boolean hasImaginary = false;
+		
+
+			}
+			
+			// If exporting both real and imaginary, use shared normalization
+			if (hasReal && hasImaginary) {
+				double[] minMax = ImageWriter.calculateSharedMinMax(function, 
+					new Part[] { Part.REAL_PART, Part.IMAGINARY_PART });
+				sharedMin = minMax[0];
+				sharedMax = minMax[1];
+			}
+
+			for( Part part : selectedParts ) {
+				
+				// Use shared normalization for real and imaginary parts
+				if ((part == Part.REAL_PART || part == Part.IMAGINARY_PART) && sharedMin != null && sharedMax != null) {
+					returnflag &= ImageWriter.writeImage(getSelectedFile(part.toString(), format), 
+						function, part, ImageWriter.extensionToType(format), sharedMin, sharedMax);
+				} else {
+					returnflag &= ImageWriter.writeImage(getSelectedFile(part.toString(), format), 
+						function, part, format);
+				}
+			}
 		}
 		return returnflag;
 

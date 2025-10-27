@@ -19,203 +19,253 @@ import signals.gui.plot.ImageDisplayMath;
 
 public class ImageWriter {
 
-	public static enum ImageType { TIFF, PNG, JPG, BMP, TEXT }; 
+	public static enum ImageType {
+		TIFF, PNG, JPG, BMP, TEXT
+	};
 
-	public static boolean writeImage( File file, Function2D function, Part part, String extension ) {
-		
-		return writeImage( file, function, part, extensionToType( extension ) ); 
+	public static boolean writeImage(File file, Function2D function, Part part, String extension) {
+
+		return writeImage(file, function, part, extensionToType(extension));
 	}
-	
-	public static boolean writeImage( File file, Function2D function, Part part, ImageType type ) {
 
-		double[] data = ((Function)function).getPart(part); 
-		RenderedImage tiledImage = ImageDisplayMath.data2Image( data, function.getDimensionX(), function.getDimensionY() );
+	public static boolean writeImage(File file, Function2D function, Part part, ImageType type) {
+		return writeImage(file, function, part, type, null, null);
+	}
 
-		ImageDisplayMath disp = new ImageDisplayMath(); 
-		RenderedImage scaled = disp.autoScale(tiledImage); 
+	/**
+	 * Write image with explicit min/max values for normalization.
+	 * This allows multiple parts (real, imaginary) to be normalized to the same
+	 * scale.
+	 * 
+	 * @param file     Output file
+	 * @param function Function to export
+	 * @param part     Which part to export (real, imaginary, magnitude, phase)
+	 * @param type     Image type
+	 * @param minValue Minimum value for normalization (null for auto)
+	 * @param maxValue Maximum value for normalization (null for auto)
+	 * @return true if successful
+	 */
+	public static boolean writeImage(File file, Function2D function, Part part, ImageType type,
+			Double minValue, Double maxValue) {
+
+		double[] data = ((Function) function).getPart(part);
+		RenderedImage tiledImage = ImageDisplayMath.data2Image(data, function.getDimensionX(), function.getDimensionY());
+
+		ImageDisplayMath disp = new ImageDisplayMath();
+		RenderedImage scaled;
+
+		// Fixed BUG-005: Use shared min/max for normalization if provided
+		if (minValue != null && maxValue != null) {
+			disp.setMinValue(minValue);
+			disp.setMaxValue(maxValue);
+			scaled = disp.scale(tiledImage);
+		} else {
+			scaled = disp.autoScale(tiledImage);
+		}
+
 		PlanarImage output = (PlanarImage) ImageDisplayMath.convertToDisplayType(scaled);
 		BufferedImage bi = output.getAsBufferedImage();
 
-		return writeImage( file, bi, type ); 
+		return writeImage(file, bi, type);
 	}
 
-	public static String typeToExtension( ImageType type ) { 
+	/**
+	 * Calculate shared min/max values across multiple parts of a function.
+	 * This ensures real and imaginary parts can be normalized to the same scale.
+	 * 
+	 * @param function The function to analyze
+	 * @param parts    Array of parts to include in min/max calculation
+	 * @return double array [minValue, maxValue]
+	 */
+	public static double[] calculateSharedMinMax(Function2D function, Part[] parts) {
+		double min = Double.MAX_VALUE;
+		double max = Double.MIN_VALUE;
 
-		switch( type ) {
+		for (Part part : parts) {
+			double[] data = ((Function) function).getPart(part);
+			for (double value : data) {
+				if (value < min)
+					min = value;
+				if (value > max)
+					max = value;
+			}
+		}
 
-		case BMP: 
+		return new double[] { min, max };
+	}
 
-			return ".bmp"; 
-		case JPG: 
+	public static String typeToExtension(ImageType type) {
 
-			return ".jpg"; 
+		switch (type) {
 
-		case PNG: 
+			case BMP:
 
-			return ".png"; 
+				return ".bmp";
+			case JPG:
 
-		case TIFF: 
+				return ".jpg";
 
-			return ".tiff"; 
+			case PNG:
 
-		case TEXT: 
+				return ".png";
 
-			return ".txt"; 
+			case TIFF:
+
+				return ".tiff";
+
+			case TEXT:
+
+				return ".txt";
 
 		}
 
-		return null; 
+		return null;
 	}
-	
-	public static String replaceExtension( String filename, ImageType type ) {
-		
+
+	public static String replaceExtension(String filename, ImageType type) {
+
 		String extension = Utils.getExtension(filename);
-		
-		if( extension == null || extension.trim().length() == 0 ) {
-			
-			filename = filename + typeToExtension( type ); 
-			
-		} else if( type != extensionToType( extension ) ) {
-			
-			String strippedName = Utils.getNameNoExtension(filename); 
-			filename = strippedName + typeToExtension( type ); 
+
+		if (extension == null || extension.trim().length() == 0) {
+
+			filename = filename + typeToExtension(type);
+
+		} else if (type != extensionToType(extension)) {
+
+			String strippedName = Utils.getNameNoExtension(filename);
+			filename = strippedName + typeToExtension(type);
 		}
-		
-		return filename; 
+
+		return filename;
 	}
 
-	public static ImageType extensionToType( String extension ) { 
+	public static ImageType extensionToType(String extension) {
 
-		String ext = extension.toLowerCase(); 
+		String ext = extension.toLowerCase();
 
-		if( ext.equals( ".tiff") || ext.equals( ".tif")) {
+		if (ext.equals(".tiff") || ext.equals(".tif")) {
 
-			return ImageType.TIFF; 
+			return ImageType.TIFF;
 
-		} else if( ext.equals( ".png")) {
+		} else if (ext.equals(".png")) {
 
-			return ImageType.PNG; 
+			return ImageType.PNG;
 
-		} else if( ext.equals( ".jpg") || ext.equals( ".jpeg")) {
+		} else if (ext.equals(".jpg") || ext.equals(".jpeg")) {
 
-			return ImageType.JPG; 
+			return ImageType.JPG;
 
-		} else if( ext.equals( ".txt")) {
+		} else if (ext.equals(".txt")) {
 
-			return ImageType.TEXT; 
-			
-		} else if( ext.equals( ".bmp")) {
+			return ImageType.TEXT;
 
-			return ImageType.BMP; 
-		} 
+		} else if (ext.equals(".bmp")) {
 
-		return null; 
+			return ImageType.BMP;
+		}
+
+		return null;
 	}
 
-	public static boolean writeImage( File file, BufferedImage image, ImageType type ) { 
+	public static boolean writeImage(File file, BufferedImage image, ImageType type) {
 
-		String path = file.getPath(); 
+		String path = file.getPath();
 
-		try{ 
-			switch( type ) {
+		try {
+			switch (type) {
 
-			case BMP: 
+				case BMP:
 
-				JAI.create("filestore",image,path,"BMP"); 
-				
-				break; 
+					JAI.create("filestore", image, path, "BMP");
 
-			case JPG: 
+					break;
 
-				ImageIO.write(image,"JPG",new File( path )); 
+				case JPG:
 
-				break; 
+					ImageIO.write(image, "JPG", new File(path));
 
-			case PNG: 
+					break;
 
-				ImageIO.write(image,"PNG",new File( path )); 
-				
-				break; 
+				case PNG:
 
-			case TIFF: 
+					ImageIO.write(image, "PNG", new File(path));
 
-				JAI.create("filestore",image,path,"TIFF");  
+					break;
 
-				break; 
+				case TIFF:
 
-			} 
+					JAI.create("filestore", image, path, "TIFF");
 
-		} catch(Exception e) { 
+					break;
+
+			}
+
+		} catch (Exception e) {
 
 			JOptionPane.showMessageDialog(Core.getFrame(),
 					"Image was not saved.",
 					"File I/O Error",
 					JOptionPane.ERROR_MESSAGE);
 
-			return false; 
+			return false;
 
 		}
 
-		return true; 
+		return true;
 	}
 
-
-	public static boolean writeText( File file, Function2D function, Part part ) {
+	public static boolean writeText(File file, Function2D function, Part part) {
 
 		String path = file.getPath();
-		String extension = Utils.getExtension(path); 
+		String extension = Utils.getExtension(path);
 
-		if( extension == null || extension.trim().length() == 0 || ImageType.TEXT != extensionToType( extension ) ) {
+		if (extension == null || extension.trim().length() == 0 || ImageType.TEXT != extensionToType(extension)) {
 
-			path = path + typeToExtension( ImageType.TEXT ); 
+			path = path + typeToExtension(ImageType.TEXT);
 
 		}
-		
-		
-		//open the file
-		FileWriter writer = null; 
+
+		// open the file
+		FileWriter writer = null;
 		try {
 
 			writer = new FileWriter(new File(path));
 
-			//write the dimension to the file
-			writer.write( ""+function.getDimensionX() + " " + function.getDimensionY() ); 
+			// write the dimension to the file
+			writer.write("" + function.getDimensionX() + " " + function.getDimensionY());
 
-			//write the data to the file
-			double[] data = ((Function)function).getPart(part); 
+			// write the data to the file
+			double[] data = ((Function) function).getPart(part);
 
-			int i = 0; 
+			int i = 0;
 
-			//for each row
-			for( int y = 0; y < function.getDimensionY(); ++y ) {
+			// for each row
+			for (int y = 0; y < function.getDimensionY(); ++y) {
 
-				//write a newline
+				// write a newline
 				writer.write('\n');
 
-				//for each col 
-				for( int x = 0; x < function.getDimensionX(); ++x ) {
+				// for each col
+				for (int x = 0; x < function.getDimensionX(); ++x) {
 
-					writer.write(""+data[i++] + " "); 
+					writer.write("" + data[i++] + " ");
 
 				}
 
 			}
 
-			//close the file
+			// close the file
 			writer.close();
-
 
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(Core.getFrame(),
 					"Data was not saved.",
 					"File I/O Error",
 					JOptionPane.ERROR_MESSAGE);
-			return false; 
-		} 
+			return false;
+		}
 
-		return true; 
+		return true;
 	}
-
-
 
 }
