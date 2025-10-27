@@ -17,16 +17,23 @@ if [ ! -f "$ICON_PNG" ]; then
 fi
 
 # Check if ImageMagick is installed
-if ! command -v convert &> /dev/null; then
+if ! command -v magick &> /dev/null && ! command -v convert &> /dev/null; then
     echo "❌ Error: ImageMagick not found"
-    echo "   Install with: brew install imagemagick"
+    echo "   Install with: choco install imagemagick (Windows) or brew install imagemagick (Mac)"
     exit 1
 fi
 
 echo "📐 Generating Windows .ico with multiple sizes..."
 
+# Use 'magick convert' on Windows, 'convert' on Unix
+if command -v magick &> /dev/null; then
+    CONVERT_CMD="magick convert"
+else
+    CONVERT_CMD="convert"
+fi
+
 # Create .ico with multiple resolutions (16, 32, 48, 256)
-convert "$ICON_PNG" \
+$CONVERT_CMD "$ICON_PNG" \
     \( -clone 0 -resize 16x16 \) \
     \( -clone 0 -resize 32x32 \) \
     \( -clone 0 -resize 48x48 \) \
