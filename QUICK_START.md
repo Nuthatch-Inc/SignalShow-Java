@@ -1,8 +1,16 @@
-# Quick Start: Julia Server Auto-Start
+# Quick Start: Julia Server Auto-Start (Desktop Version Prototype)
 
-## 🎯 What Was Built
+**⚠️ PROTOTYPE STATUS**: This document describes an **early prototype** that is **not ready for use or testing**. All features described are proposals subject to change.
 
-SignalShow now **automatically starts the Julia backend server** when launched in Nuthatch Desktop!
+## 🎯 Prototype Implementation
+
+This describes the prototype Julia backend server auto-start implementation being explored for SignalShow's **Desktop Version**.
+
+**Important**:
+
+- Both the **Web Version** and **Desktop Version** are prototypes in development
+- Neither version is ready for use or testing
+- This documentation describes proposed features subject to change
 
 ## ✅ What's Working Now
 

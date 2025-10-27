@@ -1,10 +1,19 @@
-# Julia Installation Guide for SignalShow
+# Julia Installation Guide for SignalShow (Proposed)
 
-**Purpose**: This guide walks you through installing Julia locally so you can run the SignalShow backend server for signal processing computations.
+**⚠️ PROTOTYPE STATUS**: The Desktop Version is an early-stage prototype and **not ready for use or testing**. This guide describes a **proposed** feature that is subject to change.
 
-**Target Audience**: Educators, students, and researchers who want to use SignalShow for DSP education and research.
+**Purpose**: This guide describes the proposed Julia installation process for the SignalShow Desktop Version backend server.
 
-**Time Required**: 10-15 minutes
+**Important**: SignalShow has two versions under development:
+
+- **Web Version**: Browser-based prototype in development, no Julia installation required
+- **Desktop Version (Nuthatch/Tauri)**: Early prototype with proposed Julia backend integration
+
+**Both versions are prototypes not ready for testing or use.** This guide is for reference only.
+
+**Target Audience**: Developers reviewing the proposed architecture
+
+**Time Required**: Reference documentation only
 
 ---
 

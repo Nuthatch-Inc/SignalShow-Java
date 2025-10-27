@@ -1,8 +1,12 @@
-# Julia Server Lifecycle Management
+# Julia Server Lifecycle Management (Proposed)
+
+**⚠️ PROTOTYPE STATUS**: This document describes a **proposed** feature for the Desktop Version prototype. The Desktop Version is not ready for use or testing. All information is subject to change.
 
 ## Overview
 
-The SignalShow Julia backend server is designed to persist across app sessions for optimal performance while automatically shutting down after periods of inactivity to conserve system resources.
+This document outlines the proposed design for the SignalShow Julia backend server lifecycle management. The proposed system would persist across app sessions for optimal performance while automatically shutting down after periods of inactivity.
+
+**Important**: This applies only to the **Desktop Version prototype** of SignalShow (Nuthatch/Tauri). The **Web Version** is also a prototype in development. Both versions are not ready for testing or use.
 
 ## Server Behavior
 

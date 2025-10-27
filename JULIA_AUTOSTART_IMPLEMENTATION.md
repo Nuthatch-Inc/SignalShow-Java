@@ -1,13 +1,21 @@
-# SignalShow Auto-Start Implementation Summary
+# SignalShow Auto-Start Implementation Summary (Desktop Version Prototype)
 
 **Date**: October 25, 2025  
-**Status**: ✅ Implemented and Tested
+**Status**: ⚠️ Early Prototype - Not Ready for Use
+
+**⚠️ PROTOTYPE STATUS**: This document describes an early-stage prototype implementation that is **not ready for use or testing**. All features are proposals subject to change.
+
+**Important**:
+
+- Both the **Web Version** and **Desktop Version** are experimental prototypes
+- Neither version is ready for use or testing
+- All features described are proposals subject to change
 
 ---
 
-## What Was Implemented
+## Prototype Implementation Overview
 
-We've added **automatic Julia backend server management** to the SignalShow app in Nuthatch Desktop. When users launch SignalShow, it now:
+This describes the experimental **automatic Julia backend server management** prototype being explored for the SignalShow Desktop app. The proposed behavior includes:
 
 ✅ **Automatically checks** if the Julia server is running  
 ✅ **Automatically starts** the server if it's not running  

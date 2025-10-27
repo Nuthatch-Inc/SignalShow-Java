@@ -56,38 +56,35 @@ declare -a CHAPTERS=(
     "BOOK_INTRODUCTION|Introduction|introduction"
     "BOOK_TOC|Table of Contents|table-of-contents"
     
-    # Part I: Getting Started
-    "QUICK_START|Chapter 1: Quick Start Guide|chapter-1-quick-start"
-    "README|Chapter 2: README and Project Overview|chapter-2-readme"
+    # Part I: Project Overview & Vision
+    "README|Chapter 1: Project Overview and Introduction|chapter-1-overview"
+    "RESEARCH_OVERVIEW|Chapter 2: Research Overview and Modernization Strategy|chapter-2-research"
     
-    # Part II: Understanding SignalShow
-    "PERSONAS|Chapter 3: User Personas and Use Cases|chapter-3-personas"
-    "FEATURE_MAPPING|Chapter 4: Feature Overview and Mapping|chapter-4-features"
+    # Part II: Literature Review
+    "SIMILAR_PROJECTS_COMPARISON|Chapter 3: Competitive Analysis and Market Positioning|chapter-3-competitive"
     
-    # Part III: Architecture & Technology
-    "ARCHITECTURE|Chapter 5: System Architecture|chapter-5-architecture"
-    "TECH_STACK|Chapter 6: Technology Stack|chapter-6-tech-stack"
-    "FILE_BASED_ARCHITECTURE|Chapter 7: File-Based Architecture|chapter-7-file-architecture"
-    "FEATURE_ADDITIONS|Chapter 8: Feature Implementation Roadmap|chapter-8-roadmap"
+    # Part III: Strategic Goals & User Scenarios
+    "SIGNALSHOW_STRATEGIC_RECOMMENDATIONS|Chapter 4: Strategic Recommendations and Positioning|chapter-4-strategy"
+    "PERSONAS|Chapter 5: User Personas and Use Cases|chapter-5-personas"
+    "ROADMAP_REVISIONS|Chapter 6: Roadmap and Implementation Priorities|chapter-6-roadmap"
     
-    # Part IV: Research & Strategy
-    "SIMILAR_PROJECTS_COMPARISON|Chapter 9: Competitive Analysis|chapter-9-competitive"
-    "RESEARCH_OVERVIEW|Chapter 15: Research Overview|chapter-15-research"
-    "SIGNALSHOW_STRATEGIC_RECOMMENDATIONS|Chapter 16: Strategic Recommendations|chapter-16-strategy"
-    "ROADMAP_REVISIONS|Chapter 17: Roadmap Revisions|chapter-17-revisions"
-    "NUTHATCH_PLATFORM_PORT_ANALYSIS|Chapter 18: Nuthatch Platform Integration|chapter-18-nuthatch"
+    # Part IV: Proposed Technical Implementation
+    "ARCHITECTURE|Chapter 7: System Architecture (Proposed)|chapter-7-architecture"
+    "TECH_STACK|Chapter 8: Technology Stack (Proposed)|chapter-8-tech-stack"
+    "FILE_BASED_ARCHITECTURE|Chapter 9: File-Based Architecture (Proposed)|chapter-9-file-architecture"
+    "FEATURE_MAPPING|Chapter 10: Feature Overview and Implementation Mapping|chapter-10-features"
+    "FEATURE_ADDITIONS|Chapter 11: Feature Implementation Roadmap|chapter-11-feature-roadmap"
+    "JAVASCRIPT_DSP_RESEARCH|Chapter 12: JavaScript DSP Library Research|chapter-12-javascript"
+    "RUST_DSP_RESEARCH|Chapter 13: Rust DSP Library Research|chapter-13-rust"
+    "ANIMATION_AND_3D_STRATEGY|Chapter 14: Animation and 3D Visualization Strategy|chapter-14-animation"
+    "NUTHATCH_PLATFORM_PORT_ANALYSIS|Chapter 15: Nuthatch Platform Integration Analysis|chapter-15-nuthatch"
     
-    # Part V: Implementation Guides
-    "JULIA_SERVER_LIFECYCLE|Chapter 10: Julia Server Lifecycle|chapter-10-lifecycle"
-    "JULIA_INSTALLATION_GUIDE|Chapter 11: Julia Installation Guide|chapter-11-installation"
-    "JULIA_AUTOSTART_IMPLEMENTATION|Chapter 12: Julia Auto-Start Implementation|chapter-12-autostart"
-    "ANIMATION_AND_3D_STRATEGY|Chapter 13: Animation and 3D Strategy|chapter-13-animation"
-    "JAVASCRIPT_DSP_RESEARCH|Chapter 14: JavaScript DSP Research|chapter-14-javascript"
-    "RUST_DSP_RESEARCH|Chapter 19: Rust DSP Research|chapter-19-rust"
-    "MAVEN_MIGRATION_PLAN|Chapter 20: Maven Migration Plan|chapter-20-maven"
+    # Part V: Desktop Backend & Implementation Reference
+    "DESKTOP_BACKEND_REFERENCE|Chapter 16: Desktop Backend and Implementation Reference|chapter-16-desktop-backend"
     
-    # Part VI: Reference
-    "BUGS|Chapter 21: Known Issues and Bug Tracking|chapter-21-bugs"
+    # Part VI: Appendices
+    "BUGS|Chapter 17: Known Issues and Bug Tracking|chapter-17-bugs"
+    "MAVEN_MIGRATION_PLAN|Chapter 18: Maven Migration Plan (Historical Reference)|chapter-18-maven"
 )
 
 echo -e "${YELLOW}Building combined markdown file with hyperlinks...${NC}"

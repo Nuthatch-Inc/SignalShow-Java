@@ -1,63 +1,42 @@
-# SignalShow File-Based Architecture
+# File-Based Architecture
 
-**Date**: October 25, 2025  
-**Status**: Planning Phase  
-**Related Documents**:
-
-- [NUTHATCH_PLATFORM_PORT_ANALYSIS.md](./NUTHATCH_PLATFORM_PORT_ANALYSIS.md)
-- [ARCHITECTURE.md](./ARCHITECTURE.md)
+**Purpose**: Transform SignalShow into a file-based system where all user objects (signals, operations, workspaces) are portable files
 
 ---
 
-## Overview
+## Current vs Proposed
 
-### Current State (Java SignalShow)
+**Java SignalShow** (Current):
+- All objects exist in memory only
+- No persistence between sessions
+- Cannot share work easily
 
-In the Java version of SignalShow, all objects the user interacts with to craft visualizations are **internal to the application**:
-
-- 1D functions
-- 2D signals/images
-- Operation chains
-- Filter parameters
-- Workspaces
-
-These objects exist only in memory and are not directly portable or editable outside the SignalShow environment.
-
-### Proposed State (Nuthatch Desktop SignalShow)
-
-Transform SignalShow into a **file-based system** where:
-
-- All user-created objects are stored as files
-- Files are portable across sessions and systems
-- Files can be edited externally (with appropriate tools)
-- Entire workspaces can be saved, shared, and version-controlled
-- Integration with Nuthatch Desktop's Files.app for browsing and management
+**Nuthatch SignalShow** (Proposed):
+- All objects stored as files
+- Automatic persistence
+- Portable across sessions/systems
+- External editing supported
+- Version control compatible
 
 ---
 
 ## Design Goals
 
-1. **Portability**: Users can share signals, functions, and workspaces as files
-2. **Persistence**: Work is automatically saved and recoverable
-3. **Editability**: Power users can edit files externally (text editors, scripts)
-4. **Composability**: Files can be combined, imported, and referenced
-5. **Version Control**: Files work with Git and other VCS systems
-6. **File System Integration**: Leverage Nuthatch Desktop's native file operations
-7. **Educational Value**: Students can examine and modify signal files to learn
+1. **Portability** - Share signals, functions, workspaces as files
+2. **Persistence** - Work auto-saved and recoverable
+3. **Editability** - Power users can edit files externally
+4. **Composability** - Files can be combined and referenced
+5. **Version Control** - Works with Git
+6. **File System Integration** - Leverages Nuthatch Desktop's Files.app
+7. **Educational** - Students can examine/modify files to learn
 
 ---
 
-## File Types & Extensions
+## File Types
 
-### Primary File Types
-
-#### 1. **1D Function Files** (`.sig1d`)
-
-**Purpose**: Store 1D signal data and metadata
+### 1D Signals (`.sig1d`)
 
 **Example**: `chirp_signal.sig1d`
-
-**Proposed Schema**:
 
 ```json
 {
@@ -65,22 +44,15 @@ Transform SignalShow into a **file-based system** where:
   "version": "1.0",
   "metadata": {
     "name": "Chirp Signal",
-    "description": "Linear frequency sweep from 10Hz to 100Hz",
+    "description": "Linear frequency sweep 10Hz to 100Hz",
     "created": "2025-10-25T14:30:00Z",
-    "modified": "2025-10-25T15:45:00Z",
-    "author": "Jane Doe",
-    "tags": ["chirp", "frequency-sweep", "demo"]
+    "tags": ["chirp", "frequency-sweep"]
   },
   "parameters": {
     "sampleRate": 1000,
     "duration": 1.0,
-    "numSamples": 1000,
     "generator": "chirp",
-    "generatorParams": {
-      "startFreq": 10,
-      "endFreq": 100,
-      "amplitude": 1.0
-    }
+    "generatorParams": {"startFreq": 10, "endFreq": 100, "amplitude": 1.0}
   },
   "data": {
     "format": "json-array",
@@ -90,534 +62,372 @@ Transform SignalShow into a **file-based system** where:
 }
 ```
 
-**Alternative Compact Format** (for large datasets):
-
+**Alternative compact** (large datasets):
 ```json
 {
-  "type": "signal1d",
-  "version": "1.0",
-  "metadata": { ... },
-  "parameters": { ... },
   "data": {
-    "format": "base64-float32",
-    "x": "base64-encoded-binary-data",
-    "y": "base64-encoded-binary-data"
+    "format": "binary-base64",
+    "encoding": "float32-le",
+    "x": "AAAAAAAA8D8AAABAAACAQAAAwEA...",
+    "y": "zcxMPZqZmT4AAIA+mpmZPgAA..."
   }
 }
 ```
 
+**Use cases**:
+- User-generated signals (chirps, pulses, noise)
+- Imported audio samples
+- Intermediate results
+
 ---
 
-#### 2. **2D Signal/Image Files** (`.sig2d`)
+### 2D Signals (`.sig2d`)
 
-**Purpose**: Store 2D signals, spectrograms, images
-
-**Example**: `gaussian_2d.sig2d`
-
-**Proposed Schema**:
+**Example**: `lena_image.sig2d`
 
 ```json
 {
   "type": "signal2d",
   "version": "1.0",
-  "metadata": {
-    "name": "2D Gaussian",
-    "description": "Gaussian function in 2D",
-    "created": "2025-10-25T14:30:00Z"
-  },
-  "dimensions": {
+  "metadata": {"name": "Lena Image", "tags": ["image", "test-pattern"]},
+  "parameters": {
     "width": 512,
     "height": 512,
-    "xRange": [-5, 5],
-    "yRange": [-5, 5]
-  },
-  "parameters": {
-    "generator": "gaussian2d",
-    "generatorParams": {
-      "centerX": 0,
-      "centerY": 0,
-      "sigmaX": 1.0,
-      "sigmaY": 1.0,
-      "amplitude": 1.0
-    }
+    "channels": 1,
+    "colorSpace": "grayscale",
+    "generator": "imported",
+    "sourceFile": "lena.png"
   },
   "data": {
-    "format": "png-base64",
-    "encoding": "base64",
-    "imageData": "iVBORw0KGgoAAAANSUhEUgAA..."
+    "format": "binary-base64",
+    "encoding": "uint8",
+    "values": "iVBORw0KGgoAAAANSUhEUg..."
   }
 }
 ```
 
+**Use cases**:
+- Imported images
+- 2D FFT results
+- Spectrograms
+- Diffraction patterns
+
 ---
 
-#### 3. **Operation Chain Files** (`.sigOp`)
+### Operation Chains (`.sigop`)
 
-**Purpose**: Store sequences of operations applied to signals
-
-**Example**: `lowpass_filter_chain.sigOp`
-
-**Proposed Schema**:
+**Example**: `lowpass_filter_chain.sigop`
 
 ```json
 {
   "type": "operation-chain",
   "version": "1.0",
-  "metadata": {
-    "name": "Low-Pass Filter Chain",
-    "description": "Butterworth filter + normalization"
-  },
+  "metadata": {"name": "Lowpass Filter + Normalize", "tags": ["filter"]},
   "operations": [
     {
       "id": "op1",
-      "type": "fft",
-      "params": {}
+      "type": "filter",
+      "params": {"filterType": "butterworth", "order": 4, "cutoff": 1000}
     },
     {
       "id": "op2",
-      "type": "lowpass-filter",
-      "params": {
-        "cutoffFreq": 50,
-        "order": 4,
-        "filterType": "butterworth"
-      }
-    },
-    {
-      "id": "op3",
-      "type": "ifft",
-      "params": {}
-    },
-    {
-      "id": "op4",
       "type": "normalize",
-      "params": {
-        "method": "peak"
-      }
+      "params": {"method": "peak", "targetAmplitude": 1.0}
     }
   ]
 }
 ```
 
+**Use cases**:
+- Reusable processing pipelines
+- Teaching examples (convolution, FFT, filtering)
+- Batch processing recipes
+
 ---
 
-#### 4. **Workspace Files** (`.sigWorkspace`)
+### Workspaces (`.sigws`)
 
-**Purpose**: Store entire SignalShow sessions with multiple signals and visualizations
-
-**Example**: `fourier_analysis_lab.sigWorkspace`
-
-**Proposed Schema**:
+**Example**: `lecture_5_fourier_analysis.sigws`
 
 ```json
 {
   "type": "workspace",
   "version": "1.0",
-  "metadata": {
-    "name": "Fourier Analysis Lab",
-    "description": "Demo workspace for teaching FFT concepts",
-    "created": "2025-10-25T14:00:00Z",
-    "modified": "2025-10-25T16:00:00Z"
-  },
-  "layout": {
-    "windows": [
-      {
-        "id": "win1",
-        "type": "plot1d",
-        "position": { "x": 0, "y": 0, "w": 600, "h": 400 },
-        "signal": "signal1"
-      },
-      {
-        "id": "win2",
-        "type": "plot1d",
-        "position": { "x": 620, "y": 0, "w": 600, "h": 400 },
-        "signal": "signal2"
-      }
-    ]
-  },
-  "signals": {
-    "signal1": {
-      "source": "embedded",
-      "data": {
-        /* 1D signal data */
-      }
-    },
-    "signal2": {
-      "source": "file",
-      "path": "./chirp_signal.ss1d"
-    },
-    "signal3": {
-      "source": "derived",
-      "baseSignal": "signal1",
-      "operations": {
-        "source": "file",
-        "path": "./lowpass_filter_chain.ssop"
-      }
-    }
-  },
-  "activeDemo": null
-}
-```
-
----
-
-#### 5. **Demo/Tutorial Files** (`.sigDemo`)
-
-**Purpose**: Interactive educational demos with guided steps
-
-**Example**: `sampling_theorem.sigDemo`
-
-**Proposed Schema**:
-
-```json
-{
-  "type": "demo",
-  "version": "1.0",
-  "metadata": {
-    "name": "Sampling Theorem Demonstration",
-    "description": "Interactive demo of Nyquist sampling",
-    "author": "SignalShow Team",
-    "difficulty": "beginner"
-  },
-  "steps": [
-    {
-      "title": "Create a sine wave",
-      "description": "We'll create a 10Hz sine wave",
-      "action": {
-        "type": "create-signal",
-        "params": {
-          "generator": "sinusoid",
-          "frequency": 10,
-          "sampleRate": 1000
-        }
-      }
-    },
-    {
-      "title": "Sample at Nyquist rate",
-      "description": "Sample at exactly 2x the frequency (20 Hz)",
-      "action": {
-        "type": "resample",
-        "params": {
-          "targetSampleRate": 20
-        }
-      }
-    },
-    {
-      "title": "Sample below Nyquist",
-      "description": "Now sample at 15Hz - observe aliasing!",
-      "action": {
-        "type": "resample",
-        "params": {
-          "targetSampleRate": 15
-        }
-      },
-      "highlight": {
-        "type": "warning",
-        "message": "Notice the aliased frequency!"
-      }
-    }
+  "metadata": {"name": "Lecture 5: Fourier Analysis", "created": "2025-10-25T09:00:00Z"},
+  "signals": [
+    {"id": "sig1", "file": "chirp_signal.sig1d", "position": {"x": 100, "y": 50}},
+    {"id": "sig2", "file": "square_wave.sig1d", "position": {"x": 100, "y": 200}}
+  ],
+  "operations": [
+    {"id": "fft1", "type": "fft", "input": "sig1", "output": "fft_result"}
+  ],
+  "plots": [
+    {"id": "plot1", "type": "waveform", "source": "sig1", "position": {"x": 400, "y": 50}},
+    {"id": "plot2", "type": "spectrum", "source": "fft_result", "position": {"x": 400, "y": 200}}
   ]
 }
 ```
 
----
-
-## File Format Considerations
-
-### JSON vs Binary
-
-**Option 1: JSON-based (Recommended for MVP)**
-
-- ✅ Human-readable and editable
-- ✅ Easy to debug and inspect
-- ✅ Works with version control (Git diff)
-- ✅ Easy to parse in JavaScript
-- ✅ Supports metadata and comments (via description fields)
-- ❌ Larger file sizes for big datasets
-- ❌ Slower for large arrays
-
-**Option 2: Binary with JSON header**
-
-- ✅ Compact for large datasets
-- ✅ Fast to load
-- ❌ Not human-readable
-- ❌ Harder to edit manually
-- ❌ Version control shows as binary blob
-
-**Option 3: Hybrid (Recommended for Production)**
-
-```
-.sig1d file structure:
-- JSON header (metadata, parameters)
-- Binary data section (signal samples)
-```
-
-**Recommendation**: Start with JSON for MVP, add binary support in Phase 2 when performance becomes critical.
+**Use cases**:
+- Lecture demonstrations
+- Student assignments
+- Complex multi-signal analysis
 
 ---
 
-## File System Integration
+### Project Files (`.sigproj`)
 
-### Integration with Nuthatch Desktop Files.app
+**Example**: `acoustic_analysis_project.sigproj`
 
-1. **File Type Registration**
-
-   ```json
-   // In SignalShow app.json
-   {
-     "fileExtensions": [
-       ".sig1d",
-       ".sig2d",
-       ".sigOp",
-       ".sigWorkspace",
-       ".sigDemo"
-     ]
-   }
-   ```
-
-2. **Double-click to open**: Files.app can launch SignalShow with the file
-3. **Thumbnails**: Generate preview images for signal files
-4. **Drag-and-drop**: Import signals by dragging files into SignalShow
-
-### File Operations
-
-**Save Signal**:
-
-```javascript
-async function saveSignal(signal, filename) {
-  const fileData = {
-    type: "signal1d",
-    version: "1.0",
-    metadata: {
-      name: signal.name,
-      created: new Date().toISOString(),
-    },
-    parameters: signal.params,
-    data: {
-      format: "json-array",
-      x: signal.x,
-      y: signal.y,
-    },
-  };
-
-  await window.fileSystem.writeFile(
-    filename,
-    JSON.stringify(fileData, null, 2)
-  );
-}
-```
-
-**Load Signal**:
-
-```javascript
-async function loadSignal(filename) {
-  const content = await window.fileSystem.readFile(filename);
-  const fileData = JSON.parse(content);
-
-  // Validate version and type
-  if (fileData.type !== "signal1d") {
-    throw new Error("Invalid file type");
+```json
+{
+  "type": "project",
+  "version": "1.0",
+  "metadata": {"name": "Acoustic Analysis Project", "description": "Room impulse response study"},
+  "structure": {
+    "signals/": ["microphone_1.sig1d", "microphone_2.sig1d"],
+    "operations/": ["noise_reduction.sigop", "cross_correlation.sigop"],
+    "results/": ["impulse_response.sig1d", "frequency_response.sig1d"],
+    "workspaces/": ["analysis_workspace.sigws"]
+  },
+  "settings": {
+    "defaultSampleRate": 48000,
+    "audioBackend": "julia-server"
   }
+}
+```
 
-  return {
-    name: fileData.metadata.name,
-    params: fileData.parameters,
-    x: fileData.data.x,
-    y: fileData.data.y,
-  };
+**Use cases**:
+- Complex multi-file projects
+- Research work
+- Student portfolios
+
+---
+
+## File Operations
+
+### Create
+```javascript
+// Generate signal → auto-save as .sig1d
+const signal = await backend.generateChirp(10, 100, 1.0, 1000);
+await fileManager.save(signal, 'chirp_signal.sig1d');
+```
+
+### Load
+```javascript
+// Load .sig1d → display
+const signal = await fileManager.load('chirp_signal.sig1d');
+plotManager.plotWaveform(signal);
+```
+
+### Edit
+```javascript
+// Modify parameters → save
+signal.metadata.tags.push('modified');
+await fileManager.save(signal, 'chirp_signal.sig1d');
+```
+
+### Reference
+```javascript
+// Workspace references signals by path
+workspace.addSignal({file: 'signals/chirp_signal.sig1d'});
+```
+
+---
+
+## Storage Locations
+
+### Desktop App (Tauri)
+- **User Files**: `~/Documents/SignalShow/`
+- **System ROM**: `/Applications/SignalShow.app/Contents/Resources/system-rom/`
+- **Temp Files**: `~/.signalshow/temp/`
+
+**File tree**:
+```
+~/Documents/SignalShow/
+  Projects/
+    acoustic_analysis/
+      acoustic_analysis_project.sigproj
+      signals/
+        microphone_1.sig1d
+      operations/
+        noise_reduction.sigop
+      results/
+  Signals/
+    chirp_signal.sig1d
+    square_wave.sig1d
+  Workspaces/
+    lecture_5_fourier.sigws
+```
+
+### Web App (Browser)
+- **IndexedDB**: Primary storage (unlimited quota)
+- **localStorage**: Settings/preferences (10MB limit)
+- **File System Access API**: Optional native file I/O (Chrome/Edge)
+
+**IndexedDB structure**:
+```javascript
+{
+  "signals": {
+    "chirp_signal": {blob, metadata},
+    "square_wave": {blob, metadata}
+  },
+  "workspaces": {
+    "lecture_5": {blob, metadata}
+  }
 }
 ```
 
 ---
 
-## File Naming Conventions
+## Integration with Nuthatch Desktop
 
-### Recommended Patterns
+### Files.app Integration
+- `.sig1d` / `.sig2d` files appear in Files.app
+- Double-click opens in SignalShow
+- Drag-and-drop support
+- Thumbnail previews (waveform icons)
 
-**Descriptive Names**:
+### Native File Dialogs
+- Use Tauri native dialogs (not browser input)
+- File picker shows .sig1d / .sig2d by default
+- Save dialog auto-adds extension
 
-- `chirp_10hz_to_100hz.sig1d`
-- `gaussian_sigma_2.sig2d`
-- `butterworth_lowpass_50hz.sigOp`
+### Drag-and-Drop
+- Drag `.sig1d` from Files.app → SignalShow canvas
+- Drag `.wav` / `.png` → auto-convert to `.sig1d` / `.sig2d`
+- Drag between SignalShow instances
 
-**Experiment Folders**:
+---
 
+## Import/Export
+
+### Import Formats
+| Format | Extension | Converts To | Notes |
+|--------|-----------|-------------|-------|
+| WAV audio | `.wav` | `.sig1d` | Sample rate preserved |
+| PNG/JPEG | `.png`, `.jpg` | `.sig2d` | Grayscale conversion |
+| CSV data | `.csv` | `.sig1d` | Two-column (x, y) format |
+| NumPy binary | `.npy` | `.sig1d` / `.sig2d` | 1D or 2D arrays |
+
+### Export Formats
+| Format | Extension | Exports From | Notes |
+|--------|-----------|--------------|-------|
+| WAV audio | `.wav` | `.sig1d` | For playback |
+| PNG image | `.png` | `.sig1d`, `.sig2d` | Plot snapshots |
+| CSV data | `.csv` | `.sig1d` | (x, y) columns |
+| JSON | `.json` | All | Human-readable |
+
+---
+
+## Version Control
+
+**Git-friendly**:
+- All files are JSON text (diffable)
+- Binary data in base64 (not ideal but manageable)
+- `.gitignore` template:
+
+```gitignore
+# SignalShow
+.signalshow/temp/
+*.sig1d.bak
+*.sig2d.bak
 ```
-/my-signals/
-  lab1-fourier/
-    square_wave.sig1d
-    fft_result.sig1d
-    lab1_workspace.sigWorkspace
-  lab2-filtering/
-    noisy_signal.sig1d
-    clean_signal.sig1d
-    denoise_chain.sigOp
+
+**Large file storage**:
+- Use Git LFS for large `.sig2d` files
+- Recommended for images >1MB
+- Configuration:
+```bash
+git lfs track "*.sig2d"
 ```
 
-**Demo Library**:
+---
 
+## Performance Considerations
+
+**File size targets**:
+- `.sig1d` (1000 samples): ~10KB JSON, ~4KB binary
+- `.sig2d` (512×512 image): ~300KB JSON, ~256KB binary
+- `.sigws` (workspace): ~5-20KB (references only)
+
+**Loading strategy**:
+- Lazy load: Load metadata first, data on demand
+- Streaming: For large files, load chunks progressively
+- Caching: Keep recently used files in memory
+
+**Auto-save**:
+- Debounced writes (500ms after edit)
+- Dirty flag tracking
+- Background save (non-blocking)
+
+---
+
+## Security
+
+**Tauri app**:
+- File access restricted to `~/Documents/SignalShow/`
+- No arbitrary file system access
+- Sandboxed Julia server (localhost only)
+
+**Web app**:
+- IndexedDB isolated per-origin
+- File System Access API requires user permission
+- No automatic network access
+
+**File validation**:
+- JSON schema validation on load
+- Reject malformed files
+- Sanitize user-provided metadata
+
+---
+
+## Educational Benefits
+
+1. **Transparency** - Students see exact signal parameters in JSON
+2. **Experimentation** - Edit files manually to learn effects
+3. **Sharing** - Email/post signal files for homework
+4. **Reproducibility** - Exact parameters preserved
+5. **Version control** - Track changes over time (Git)
+6. **Portability** - Works across desktop/web versions
+
+**Example use case**:
 ```
-/demos/
-  beginner/
-    sampling_theorem.sigDemo
-    fourier_series.sigDemo
-  advanced/
-    holography_simulation.sigDemo
-    doppler_effect.sigDemo
+Professor creates chirp_example.sig1d
+↓
+Posts to LMS (Moodle/Canvas)
+↓
+Students download and open in SignalShow
+↓
+Students modify parameters
+↓
+Students submit modified .sig1d files
 ```
 
 ---
 
 ## Implementation Phases
 
-### Phase 1: Basic File I/O (Weeks 1-2)
+### Phase 1 (v1.0) - Basic File I/O
+- Load/save `.sig1d` files
+- JSON format only
+- Desktop file dialogs (Tauri)
+- IndexedDB storage (web)
 
-- Implement `.sig1d` file format (JSON-based)
-- Save/Load buttons in UI
-- File picker integration
-- Simple metadata (name, created date)
+### Phase 2 (v1.5) - Advanced Features
+- `.sig2d` image support
+- `.sigop` operation chains
+- Binary format (base64 encoding)
+- Import/export WAV, PNG, CSV
 
-### Phase 2: Rich Metadata & Operations (Weeks 3-4)
-
-- Add `.sigOp` operation chain files
-- Generator parameter persistence
-- File preview/thumbnails
-- Recent files list
-
-### Phase 3: Workspaces (Weeks 5-6)
-
-- Implement `.sigWorkspace` format
-- Save entire session state
-- Multi-window layouts
-- Auto-save functionality
-
-### Phase 4: Advanced Features (Weeks 7-8)
-
-- Binary data support for large files
-- `.sigDemo` interactive tutorials
-- File templates/presets
-- Import/export to other formats (CSV, WAV, etc.)
+### Phase 3 (v2.0) - Full Integration
+- `.sigws` workspaces
+- `.sigproj` projects
+- Drag-and-drop between apps
+- Thumbnail previews
+- Auto-save
+- Git LFS support
 
 ---
 
-## Open Questions for Discussion
-
-1. **File Extension Naming**:
-
-   - Using `.sig1d`, `.sig2d`, `.sigOp`, `.sigWorkspace`, `.sigDemo`
-   - MIME type registration?
-   - Case sensitivity considerations?
-
-2. **Data Encoding**:
-
-   - When to use JSON arrays vs Base64 vs binary?
-   - Threshold file size for switching formats?
-   - Compression (gzip JSON)?
-
-3. **Referencing**:
-
-   - Relative vs absolute paths for workspace signal references?
-   - How to handle moved/missing files?
-   - Embed vs reference strategy?
-
-4. **Versioning**:
-
-   - Schema version migration strategy?
-   - Backward compatibility requirements?
-   - Forward compatibility (ignoring unknown fields)?
-
-5. **Metadata**:
-
-   - What metadata is essential vs optional?
-   - Custom user-defined metadata?
-   - Standard tags/categories?
-
-6. **Interoperability**:
-   - Export to MATLAB/Python/Julia formats?
-   - Import from common signal formats (WAV, CSV)?
-   - Standard interchange format (HDF5)?
-
----
-
-## Examples of Use Cases
-
-### Use Case 1: Student Lab Assignment
-
-**Scenario**: Professor assigns "Analyze this noisy ECG signal"
-
-1. Professor provides: `ecg_noisy.ss1d`
-2. Student opens in SignalShow
-3. Student applies filters, saves chain: `my_denoise.ssop`
-4. Student saves result: `ecg_clean.ss1d`
-5. Student saves workspace: `lab3_submission.sswork`
-6. Student submits workspace file for grading
-
-### Use Case 2: Signal Processing Research
-
-**Scenario**: Researcher experimenting with custom filters
-
-1. Create test signal: `test_chirp.ss1d`
-2. Develop filter chain: `experimental_filter_v1.ssop`
-3. Iterate on parameters, save versions: `v2.ssop`, `v3.ssop`
-4. Compare results in workspace: `filter_comparison.sswork`
-5. Version control with Git
-6. Share workspace with collaborators
-
-### Use Case 3: Educational Demo Library
-
-**Scenario**: Instructor creates reusable demos
-
-1. Create demo: `aliasing_demo.ssdemo`
-2. Include signals: `sine_10hz.ss1d`, `sine_10hz_undersampled.ss1d`
-3. Package in folder: `demos/aliasing/`
-4. Students download and run interactively
-5. Students can modify and explore on their own
-
----
-
-## Next Steps
-
-**When implementation reaches this phase**:
-
-1. **Review and finalize file format schemas**
-
-   - Discuss extension names (`.ss1d` vs alternatives)
-   - Agree on metadata fields
-   - Define required vs optional fields
-
-2. **Prototype file I/O**
-
-   - Implement basic save/load for 1D signals
-   - Test with Nuthatch Desktop file system APIs
-   - Validate JSON parsing performance
-
-3. **User testing**
-
-   - Create sample files for common scenarios
-   - Test file portability across systems
-   - Gather feedback on file browsing UX
-
-4. **Documentation**
-   - File format specification document
-   - API documentation for file operations
-   - User guide for file management
-
----
-
-## References
-
-**Related Nuthatch Desktop Documentation**:
-
-- [NATIVE_FILE_OPERATIONS.md](../nuthatch-desktop/docs/NATIVE_FILE_OPERATIONS.md)
-- [FILE_ASSOCIATIONS.md](../nuthatch-desktop/docs/FILE_ASSOCIATIONS.md)
-- Files.app integration guide
-
-**Similar Systems**:
-
-- MATLAB `.mat` files (binary + metadata)
-- NumPy `.npy` files (binary arrays)
-- HDF5 (hierarchical data format)
-- JSON with binary data (like Jupyter notebooks)
-
----
-
-**Status**: This document is a **planning reference** for when the SignalShow port reaches the file-based architecture phase. The schemas and formats are proposals for discussion, not final specifications.
+**Key Decision**: Start with simple JSON `.sig1d` files in v1.0, expand to full file-based architecture in v2.0.
