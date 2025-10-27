@@ -17,6 +17,7 @@ SignalShow has been successfully migrated from legacy shell-script-based compila
 **Java Target**: Java 25 LTS
 
 The `pom.xml` configures:
+
 - **Maven Shade Plugin**: Creates executable JAR with bundled dependencies
 - **Maven Exec Plugin**: Runs application via `mvn exec:java`
 - **JPackage Plugin**: Generates native installers for macOS and Windows
@@ -71,6 +72,7 @@ SignalShow depends on JAI libraries (`jai_core.jar`, `jai_codec.jar`) for image 
    - `javax.media.jai:jai-codec:1.1.3`
 
 Installation command:
+
 ```bash
 mvn install:install-file -Dfile=legacy-build/jai_core.jar \
   -DgroupId=javax.media.jai -DartifactId=jai-core \
@@ -92,6 +94,7 @@ mvn install:install-file -Dfile=legacy-build/jai_core.jar \
 **Windows Installer**: `./build-installer-windows.sh` → `target/dist/SignalShow-1.0.0.exe`
 
 Both installers:
+
 - Bundle Java Runtime Environment (JRE 17+)
 - Include application icon
 - Create desktop shortcuts
@@ -108,6 +111,7 @@ git push origin v1.0.0
 ```
 
 The workflow:
+
 1. Sets up Java 25 and Maven on both `macos-latest` and `windows-latest` runners
 2. Installs JAI dependencies to local Maven repository
 3. Generates platform-specific icons (`.icns` for macOS, `.ico` for Windows)
@@ -124,6 +128,7 @@ SignalShow uses a custom icon derived from the original `guiIcons/SignalShowIcon
 - **Windows**: `SignalShow.ico` (70KB, contains sizes: 16×16, 32×32, 48×48, 256×256)
 
 Icons are generated using:
+
 - **macOS**: `sips` and `iconutil` (native tools)
 - **Windows**: ImageMagick 7 (`magick convert` command)
 
