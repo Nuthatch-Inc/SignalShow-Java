@@ -43,7 +43,7 @@ ID format: FEAT-### (e.g. FEAT-001)
 
 - ID: FEAT-002
 - Title: Create default configuration file for user preferences
-- Status: open
+- Status: ✅ completed (2024-10-26)
 - Requested by: Roger Easton Jr
 - Date: 2024-12-03
 - Priority: medium
@@ -59,6 +59,20 @@ ID format: FEAT-### (e.g. FEAT-001)
 - Use cases: Users can customize the application to their preferred defaults without changing code
 - Implementation notes: Should use standard Java properties or JSON format
 - Related issues: FEAT-001
+- Resolution notes:
+  - Created Config.java class using Java Properties format
+  - Configuration file stored in user's home directory as `.signalshow.properties`
+  - Loads preferences on application startup (Core.launchMainGUI())
+  - Saves preferences on application exit (GUI window closing event)
+  - Default settings included:
+    - `default.graph1d.format`: "line" or "area" (default: "line")
+    - `default.graph2d.part`: "real", "imaginary", "magnitude", "phase" (default: "magnitude")
+    - `default.window.width`: window width in pixels (default: 1200)
+    - `default.window.height`: window height in pixels (default: 800)
+    - `default.export.format`: "tiff", "png", "jpg", "bmp", "txt", "csv" (default: "tiff")
+  - Provides type-safe getters/setters for String, int, and boolean values
+  - Config accessible via Core.getConfig()
+  - Foundation for future user customization features
 
 ---
 
