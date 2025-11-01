@@ -226,12 +226,10 @@ public class CombineOpsRule {
 
 					} else {
 
-						BinaryOperation operator = (BinaryOperation) opsIter.next();
-						operand2 = stack.pop();
-						// Fixed BUG-002: swap operand order for correct cross-correlation
-						// Stack pops in reverse, so operand2 (second pop) is actually the first input
-						operand1 = operator.create(operand2, operand1);
-						stack.push(operand1);
+					BinaryOperation operator = (BinaryOperation) opsIter.next();
+					operand2 = stack.pop();
+					operand1 = operator.create(operand1, operand2);
+					stack.push(operand1);
 					}
 
 					break;

@@ -28,6 +28,12 @@ public class Convolve1D extends AnimatedPane {
 
 	//reversed kernel 
 	Function reversedKernel;
+	
+	// Labels for display
+	String functionLabel, kernelLabel;
+	
+	// Whether this is convolution (true) or correlation (false)
+	boolean isConvolution;
 
 	//reversed and shifted kernel 
 	Function reversedShiftedKernel; 
@@ -63,7 +69,18 @@ public class Convolve1D extends AnimatedPane {
 		this.op = op; 
 		this.stepNumber = step; 
 		this.wrapAround = wrapAround; 
-		this.normalize = normalize; 
+		this.normalize = normalize;
+		this.isConvolution = reverseKernel;
+		
+		// For convolution: function=Input (stationary), kernel=Filter (sliding)
+		// For correlation: function=Function 2 (stationary), kernel=Function 1 (sliding)
+		if (isConvolution) {
+			functionLabel = "Input";
+			kernelLabel = "Filter";
+		} else {
+			functionLabel = "Function 2";
+			kernelLabel = "Function 1";
+		} 
 
 		dimension = ((Function1D)function).getDimension();
 		zeroCentered = function.isZeroCentered(); 
@@ -130,8 +147,8 @@ public class Convolve1D extends AnimatedPane {
 			output = FunctionFactory.createFunction1D(outputReal, outputImag, zeroCentered, "output"); 
 
 			inputPanel.removePlots(); 
-			inputPanel.addFunction((Function1D)function, "Input"); 
-			inputPanel.addFunction((Function1D)kernel, "Filter");
+			inputPanel.addFunction((Function1D)function, functionLabel); 
+			inputPanel.addFunction((Function1D)kernel, kernelLabel);
 
 			outputPanel.removePlots();
 			outputPanel.addFunction((Function1D)output, "Output");
@@ -149,8 +166,8 @@ public class Convolve1D extends AnimatedPane {
 			}
 			
 			inputPanel.removePlots();  
-			inputPanel.addFunction((Function1D)function, "Input"); 
-			inputPanel.addFunction((Function1D)reversedKernel, "Filter");
+			inputPanel.addFunction((Function1D)function, functionLabel); 
+			inputPanel.addFunction((Function1D)reversedKernel, kernelLabel);
 
 			break; 
 		case 2: 
@@ -160,8 +177,8 @@ public class Convolve1D extends AnimatedPane {
 			reversedShiftedKernel = rotateOp.create(reversedKernel);
 
 			inputPanel.removePlots();  
-			inputPanel.addFunction((Function1D)function, "Input"); 
-			inputPanel.addFunction((Function1D)reversedShiftedKernel, "Filter");
+			inputPanel.addFunction((Function1D)function, functionLabel); 
+			inputPanel.addFunction((Function1D)reversedShiftedKernel, kernelLabel);
 
 			break; 
 		default: 
@@ -172,8 +189,8 @@ public class Convolve1D extends AnimatedPane {
 		reversedShiftedKernel = rotateOp.create(reversedKernel);
 
 		inputPanel.removePlots();  
-		inputPanel.addFunction((Function1D)function, "Input"); 
-		inputPanel.addFunction((Function1D)reversedShiftedKernel, "Filter");
+		inputPanel.addFunction((Function1D)function, functionLabel); 
+		inputPanel.addFunction((Function1D)reversedShiftedKernel, kernelLabel);
 
 		//find the product of the input signals
 		double[][] productArray = ArrayMath.multiply( function.getReal(), function.getImaginary(),

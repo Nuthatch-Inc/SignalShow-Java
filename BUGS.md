@@ -53,21 +53,21 @@ ID format: BUG-### (e.g. BUG-001)
 ## Active Bugs
 
 - ID: BUG-002
-- Title: Cross-correlation operation is backwards (f2 correlated with f1 instead of f1 with f2)
+- Title: Cross-correlation demo has backwards input order
 - Status: resolved
 - Reported by: Roger Easton Jr
 - Date: 2024-12-03
 - Environment: All platforms, all versions
-- Description: The cross-correlation operations in both 1-D and 2-D (f "box" g) compute f2[x] correlated with f1[x] instead of the expected f1[x] correlated with f2[x]. This produces mathematically incorrect results.
+- Description: The cross-correlation demo appeared to compute the operation backwards because the input functions were passed to the demo in the wrong order. The cross-correlation operation itself is mathematically correct, but the demo should have the first selected function slide along the second.
 - Steps to reproduce:
   1. Load two functions f1 and f2
-  2. Select cross-correlation operation (f "box" g)
-  3. Observe result
-- Expected behavior: Should compute f1[x] correlated with f2[x]
-- Actual behavior: Computes f2[x] correlated with f1[x] (backwards)
+  2. Open cross-correlation demo
+  3. Select functions and observe behavior
+- Expected behavior: First selected function should slide along the second
+- Actual behavior: Second selected function slides along the first (backwards)
 - Logs / stacktrace: N/A
-- Temporary workaround: Swap the order of inputs (use f2 "box" f1 instead of f1 "box" f2)
-- Notes / PR: Fixed in CombineOpsRule.java by swapping operand order in create() call (line 241). The stack pops operands in reverse order, so operand2 (second pop) is actually the first input. Changed from `operator.create(operand1, operand2)` to `operator.create(operand2, operand1)`. This fix affects all binary operations (1-D and 2-D). Date resolved: 2025-10-26
+- Temporary workaround: Swap the order of function selection in the demo
+- Notes / PR: Initially misdiagnosed as an issue with CombineOpsRule.java. After testing, determined the operation itself was correct. Fixed in ConvolveDemoSetup.java by swapping input1 and input2 when calling getDemo() for correlation (line 135). Changed from `getDemo( input1, input2, false, correlateOp, ...)` to `getDemo( input2, input1, false, correlateOp, ...)`. Date resolved: 2025-10-31
 
 ---
 

@@ -47,7 +47,7 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 		wrapAround = new JCheckBox("Wrap Around"); 
 		wrapAround.setSelected(true); 
 		
-		normalizeFilter = new JCheckBox("Normalize Filter"); 
+		normalizeFilter = new JCheckBox("Normalize Second Function"); 
 		normalizeFilter.setSelected(true); 
 		
 		ButtonGroup bg = new ButtonGroup(); 
@@ -96,7 +96,7 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 		sp1.setPreferredSize(selectorSize); 
 		JPanel selectorPanel1 = new JPanel( new BorderLayout() ); 
 		selectorPanel1.add( sp1, BorderLayout.CENTER ); 
-		selectorPanel1.add( new JLabel("Input Function:"), BorderLayout.NORTH); 
+		selectorPanel1.add( new JLabel("Function 1:"), BorderLayout.NORTH); 
 		operationPanel.add( selectorPanel1 );
 		
 		//operation
@@ -107,7 +107,7 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 		sp2.setPreferredSize(selectorSize); 
 		JPanel selectorPanel2 = new JPanel( new BorderLayout() ); 
 		selectorPanel2.add( sp2, BorderLayout.CENTER ); 
-		selectorPanel2.add( new JLabel("Filter:"), BorderLayout.NORTH); 
+		selectorPanel2.add( new JLabel("Function 2:"), BorderLayout.NORTH); 
 		operationPanel.add( selectorPanel2 );
 		
 		addContentPanel(operationPanel, BorderLayout.CENTER); 
@@ -133,7 +133,8 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 			
 		} else {
 			
-			getDemo( input1, input2, false, correlateOp, wrapAround.isSelected(), normalizeFilter.isSelected() );
+			// For correlation, swap inputs so first function slides along the second
+			getDemo( input2, input1, false, correlateOp, wrapAround.isSelected(), normalizeFilter.isSelected() );
 
 		} 
 		

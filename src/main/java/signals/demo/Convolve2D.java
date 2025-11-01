@@ -31,6 +31,12 @@ public class Convolve2D extends AnimatedPane {
 
 	//reversed kernel 
 	Function reversedKernel;
+	
+	// Labels for display
+	String panelTitle;
+	
+	// Whether this is convolution (true) or correlation (false)
+	boolean isConvolution;
 
 	//reversed and shifted kernel 
 	Function reversedShiftedKernel; 
@@ -73,7 +79,16 @@ public class Convolve2D extends AnimatedPane {
 		this.kernel = kernel; 
 		this.op = op; 
 		this.wrapAround = wrapAround; 
-		this.normalize = normalize; 
+		this.normalize = normalize;
+		this.isConvolution = reverseKernel;
+		
+		// For convolution: Input and Filter
+		// For correlation: Function 2 and Function 1
+		if (isConvolution) {
+			panelTitle = "Input and Filter";
+		} else {
+			panelTitle = "Function 2 and Function 1";
+		} 
 		
 		dimensionX = ((Function2D)function).getDimensionX();
 		dimensionY = ((Function2D)function).getDimensionY();
@@ -90,7 +105,7 @@ public class Convolve2D extends AnimatedPane {
 		outputDisplay.setIndices(dimensionX, dimensionY, true);
 
 		inputPanel = new JPanel(); 
-		inputPanel.setBorder(BorderFactory.createTitledBorder("Input and Filter")); 
+		inputPanel.setBorder(BorderFactory.createTitledBorder(panelTitle)); 
 		outputPanel = new JPanel(); 
 		outputPanel.setBorder(BorderFactory.createTitledBorder("Output")); 
 
