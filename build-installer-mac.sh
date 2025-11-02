@@ -22,7 +22,7 @@ echo ""
 echo "📦 Building JAR with Maven..."
 mvn clean package -q
 
-if [ ! -f "target/signalshow-1.0.0-SNAPSHOT.jar" ]; then
+if [ ! -f "target/signalshow-1.1.1.jar" ]; then
     echo "❌ Error: JAR file not found after build"
     exit 1
 fi
@@ -49,9 +49,9 @@ echo "🍎 Creating Mac DMG installer..."
 jpackage \
   --type dmg \
   --name SignalShow \
-  --app-version 1.0.0 \
+  --app-version 1.1.1 \
   --input target \
-  --main-jar signalshow-1.0.0-SNAPSHOT.jar \
+  --main-jar signalshow-1.1.1.jar \
   --main-class SignalShow \
   --dest target/dist \
   --vendor "SignalShow" \
@@ -70,6 +70,6 @@ echo "Installer location:"
 ls -lh target/dist/*.dmg
 echo ""
 echo "To install:"
-echo "  1. Open target/dist/SignalShow-1.0.0.dmg"
+echo "  1. Open target/dist/SignalShow-1.1.1.dmg"
 echo "  2. Drag SignalShow to Applications folder"
 echo ""
