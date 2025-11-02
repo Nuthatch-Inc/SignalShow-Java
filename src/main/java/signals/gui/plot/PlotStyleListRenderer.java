@@ -32,31 +32,31 @@ public class PlotStyleListRenderer extends JLabel implements ListCellRenderer {
 		
 		case FILLED:
 			
-			setIcon( IconCache.getIcon("/plotIcons/filledPlot.png") ); 
+			setIcon( IconCache.getIcon("/plotIcons/filledplot.png") ); 
 			setText( "Area Plot"); 
 			break; 
 			
 		case SCATTER: 
 			
-			setIcon( IconCache.getIcon("/plotIcons/dotPlot.png") ); 
+			setIcon( IconCache.getIcon("/plotIcons/dotplot.png") ); 
 			setText( "Scatter Plot");
 			break; 
 			
 		case SMOOTH: 
 			
-			setIcon( IconCache.getIcon("/plotIcons/linePlot.png") ); 
+			setIcon( IconCache.getIcon("/plotIcons/lineplot.png") ); 
 			setText( "Line Plot");
 			break; 
 			
 		case STEM: 
 			
-			setIcon( IconCache.getIcon("/plotIcons/stemPlot.png") ); 
+			setIcon( IconCache.getIcon("/plotIcons/stemplot.png") ); 
 			setText( "Stem Plot");
 			break; 
 		
 		case HISTOGRAM: 
 			
-			setIcon( IconCache.getIcon("/plotIcons/barPlot.png") ); 
+			setIcon( IconCache.getIcon("/plotIcons/barplot.png") ); 
 			setText( "Bar Plot");
 			break; 
 		}

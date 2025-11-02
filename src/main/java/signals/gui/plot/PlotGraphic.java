@@ -271,6 +271,17 @@ public class PlotGraphic extends JPanel {
 	 */
 	public void autofit() {
 
+		// Handle empty data sequences
+		if (dataSequences == null || dataSequences.isEmpty()) {
+			// Set default extrema for empty plot
+			xExtrema = new double[] {0.0, 1.0};
+			yExtrema = new double[] {-1.0, 1.0};
+			plottingMath.setWindow(xExtrema, yExtrema);
+			origin = plottingMath.getOrigin();
+			setDirty();
+			return;
+		}
+
 		xExtrema = dataSequences.get( 0 ).getXExtrema(); 
 		yExtrema = dataSequences.get( 0 ).getYExtrema(); 
 
@@ -359,8 +370,11 @@ public class PlotGraphic extends JPanel {
 
 		if( dirtyTickMarks ) {
 
-			if(indexedXAxis) plottingMath.createTicksX( xExtrema ); else plottingMath.createTicksX();
-			plottingMath.createTicksY( piScaledYAxis );
+			// Only create tick marks if we have valid extrema
+			if (xExtrema != null && yExtrema != null) {
+				if(indexedXAxis) plottingMath.createTicksX( xExtrema ); else plottingMath.createTicksX();
+				plottingMath.createTicksY( piScaledYAxis );
+			}
 			dirtyTickMarks = false;
 		}
 	}

@@ -1,5 +1,6 @@
 package signals.gui.datagenerator;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +8,7 @@ import java.util.HashMap;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.event.ListSelectionEvent;
@@ -41,6 +43,7 @@ public abstract class CreateDataGeneratorPanel extends JPanel implements GUIEven
 	
 	//used to hold the static help documentation when editor is not available (i.e. for predefined functions)
 	protected JEditorPane docPane;
+	protected JPanel docWrapperPanel;
 
 	public CreateDataGeneratorPanel( final GUIEventBroadcaster broadcaster, boolean editable ) {
 
@@ -95,7 +98,6 @@ public abstract class CreateDataGeneratorPanel extends JPanel implements GUIEven
 
 			docPane = new JEditorPane();
 			docPane.setEditable(false);
-			docPane.setPreferredSize(new Dimension(300, 200));
 			docPane.setBorder(Core.getBorders().getBuffer()); 
 
 			docPane.addHyperlinkListener(new HyperlinkListener() {
@@ -108,6 +110,28 @@ public abstract class CreateDataGeneratorPanel extends JPanel implements GUIEven
 				}
 
 			}); 
+			
+			// Create fixed-width wrapper panel to prevent width jumping
+			JScrollPane docScrollPane = new JScrollPane(docPane);
+			docWrapperPanel = new JPanel(new BorderLayout()) {
+				@Override
+				public Dimension getPreferredSize() {
+					Dimension d = super.getPreferredSize();
+					d.width = 450;
+					return d;
+				}
+				@Override
+				public Dimension getMinimumSize() {
+					Dimension d = super.getMinimumSize();
+					d.width = 450;
+					return d;
+				}
+				@Override
+				public Dimension getMaximumSize() {
+					return new Dimension(450, Integer.MAX_VALUE);
+				}
+			};
+			docWrapperPanel.add(docScrollPane, BorderLayout.CENTER);
 		}
 
 		//other components and layout

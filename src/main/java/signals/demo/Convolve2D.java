@@ -82,12 +82,14 @@ public class Convolve2D extends AnimatedPane {
 		this.normalize = normalize;
 		this.isConvolution = reverseKernel;
 		
-		// For convolution: Input and Filter
-		// For correlation: Function 2 and Function 1
+		// For both convolution and correlation:
+		// - First function = Input (stationary)
+		// - Second function = Filter (convolution) or Reference (correlation) - this one slides
+		// Note: CorrelateOp swaps operands internally to match Roger Easton's notation
 		if (isConvolution) {
 			panelTitle = "Input and Filter";
 		} else {
-			panelTitle = "Function 2 and Function 1";
+			panelTitle = "Input and Reference";
 		} 
 		
 		dimensionX = ((Function2D)function).getDimensionX();

@@ -53,21 +53,21 @@ ID format: BUG-### (e.g. BUG-001)
 ## Active Bugs
 
 - ID: BUG-002
-- Title: Cross-correlation demo has backwards input order
+- Title: Cross-correlation notation inconsistency with Roger Easton's textbook
 - Status: resolved
 - Reported by: Roger Easton Jr
 - Date: 2024-12-03
 - Environment: All platforms, all versions
-- Description: The cross-correlation demo appeared to compute the operation backwards because the input functions were passed to the demo in the wrong order. The cross-correlation operation itself is mathematically correct, but the demo should have the first selected function slide along the second.
+- Description: The cross-correlation implementation followed the Wikipedia/Wolfram Alpha convention, but needed to be changed to match the notation used in Roger Easton's textbook. After a Zoom meeting on 2025-11-01, it was determined that the software was mathematically correct according to standard references, but used the opposite operand order from Roger's preferred notation. Both the binary operation (CorrelateOp) and the demo visualization were updated for consistency with the textbook.
 - Steps to reproduce:
   1. Load two functions f1 and f2
-  2. Open cross-correlation demo
-  3. Select functions and observe behavior
-- Expected behavior: First selected function should slide along the second
-- Actual behavior: Second selected function slides along the first (backwards)
+  2. Compute cross-correlation using binary operation menu
+  3. Compare with expected result from Roger's textbook notation
+- Expected behavior: Cross-correlation should follow Roger Easton's textbook notation
+- Actual behavior: Cross-correlation followed Wikipedia/Wolfram Alpha notation (opposite operand order)
 - Logs / stacktrace: N/A
-- Temporary workaround: Swap the order of function selection in the demo
-- Notes / PR: Initially misdiagnosed as an issue with CombineOpsRule.java. After testing, determined the operation itself was correct. Fixed in ConvolveDemoSetup.java by swapping input1 and input2 when calling getDemo() for correlation (line 135). Changed from `getDemo( input1, input2, false, correlateOp, ...)` to `getDemo( input2, input1, false, correlateOp, ...)`. Date resolved: 2025-10-31
+- Temporary workaround: None - required systematic code changes
+- Notes / PR: Investigation history: Initially attempted fix in CombineOpsRule.java (reverted). Then swapped inputs in ConvolveDemoSetup.java for correlation demo. After Zoom meeting with Roger on 2025-11-01, determined that coordinated changes were needed to both CorrelateOp.java (the operation) and the demo files. Fixed by swapping operands in CorrelateOp.create() method and removing the input swap in ConvolveDemoSetup.java. This ensures consistency between the binary operation and the demo visualization while matching Roger's textbook notation. Date resolved: 2025-11-01
 
 ---
 

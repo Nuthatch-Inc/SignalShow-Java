@@ -1,6 +1,7 @@
 package signals.gui.datagenerator;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,6 +17,7 @@ public abstract class CreateOperationPanel extends CreateDataGeneratorPanel {
 	
 	OperationOptionsPanel editor; 
 	JPanel editorHolder; 
+	OperationPreviewPanel previewPanel; // Preview panel for operation output
 
 	public CreateOperationPanel(GUIEventBroadcaster broadcaster ) {
 		
@@ -32,15 +34,32 @@ public abstract class CreateOperationPanel extends CreateDataGeneratorPanel {
 		
 		setLayout( new BorderLayout() );
 		add( selector, BorderLayout.WEST );
-		editorHolder = new JPanel(); 
-		add( editorHolder, BorderLayout.CENTER );
+		
+		// Wrap editorHolder to constrain its width
+		editorHolder = new JPanel();
+		JPanel editorWrapper = new JPanel(new BorderLayout()) {
+			@Override
+			public Dimension getPreferredSize() {
+				Dimension d = super.getPreferredSize();
+				d.width = Math.min(d.width, 300);
+				return d;
+			}
+			
+			@Override
+			public Dimension getMaximumSize() {
+				return new Dimension(300, Integer.MAX_VALUE);
+			}
+		};
+		editorWrapper.add(editorHolder, BorderLayout.CENTER);
+		add( editorWrapper, BorderLayout.CENTER );
 	}
 
 	@Override
 	public void setDataGenerator(DataGenerator updatedTerm) {
 		if(updatedTerm instanceof Operation)  
 		super.setDataGenerator(updatedTerm);
-		updateEditor(); 
+		updateEditor();
+		updatePreview();
 	}
 
 	@Override
@@ -91,6 +110,19 @@ public abstract class CreateOperationPanel extends CreateDataGeneratorPanel {
 	@Override
 	public void setDefaultWidth(boolean on) {
 		//Do nothing
+	}
+	
+	/**
+	 * Updates the operation preview panel if one is set
+	 */
+	protected void updatePreview() {
+		if (previewPanel == null || currentDataGenerator == null) {
+			return;
+		}
+		
+		// For now, we'll just clear the preview
+		// To show actual output, we'd need input functions which aren't available here
+		previewPanel.clearPreview();
 	}
 
 }

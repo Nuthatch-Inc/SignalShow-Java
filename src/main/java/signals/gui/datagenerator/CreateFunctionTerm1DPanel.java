@@ -90,7 +90,7 @@ public class CreateFunctionTerm1DPanel extends CreateDataGeneratorPanel {
 
 
 		contentPanel.setLayout( new SpringLayout() ); 
-		contentPanel.add( editable ? selector : new JScrollPane(docPane) );
+		contentPanel.add( editable ? selector : docWrapperPanel );
 		contentPanel.add( getEditor() );
 		SpringUtilities.makeCompactGrid(contentPanel, //parent
 				1, 2,

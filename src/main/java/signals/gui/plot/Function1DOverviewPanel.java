@@ -56,10 +56,13 @@ public class Function1DOverviewPanel extends FunctionOverviewPanel {
 		BoxLayout layout = new BoxLayout(equationPanel,BoxLayout.LINE_AXIS); 
 		equationPanel.setLayout( layout );  
 		JButton colorPicker = new JButton( new ColorPickerAction() ); 
+		colorPicker.setMaximumSize(colorPicker.getPreferredSize());
 		equationPanel.add( colorPicker ); 
+		equationPanel.add( Box.createHorizontalStrut(5) );
 
 		styleChooser = new JComboBox(availableStyles);
 		styleChooser.setRenderer(new PlotStyleListRenderer()); 
+		styleChooser.setMaximumSize(styleChooser.getPreferredSize());
 		plotStyle = ((PlotCursorPanel)plots[0]).getDefaultPlotStyle(); 
 		styleChooser.setSelectedItem( plotStyle );
 		styleChooser.addActionListener( new ActionListener() {
@@ -81,11 +84,12 @@ public class Function1DOverviewPanel extends FunctionOverviewPanel {
 
 		}); 
 		equationPanel.add( styleChooser );
+		equationPanel.add( Box.createHorizontalStrut(5) );
 		plotColor = Core.getColors().getDefaultColor( 0 );
 		equationPanel.add( Box.createHorizontalGlue() );
-		JComponent equation = super.createEquationArea();
-		equation.setBorder(Core.getBorders().getBuffer());
-		equationPanel.add( equation ); 
+		JComponent equationArea = super.createEquationArea();
+		equationArea.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
+		equationPanel.add( equationArea ); 
 		equationPanel.add( Box.createHorizontalGlue() );
 
 		return equationPanel; 

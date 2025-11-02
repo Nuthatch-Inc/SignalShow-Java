@@ -2,10 +2,13 @@ package signals.gui.datagenerator;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -44,6 +47,9 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 	
 	OperatorSystem system; 
 	
+	// Preview panel for showing operation output
+	OperationPreviewPanel systemPreviewPanel;
+	
 	public CreateOperationSystemPanel( OperatorSystem system ) {
 		
 		//create the event broadcaster
@@ -61,10 +67,30 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		createBinaryPanel(); 
 		createFunctionSelectorPanel(); 
 		
+		// Wrap the function selector scroll pane in a fixed-width panel
+		JScrollPane functionScrollPane = new JScrollPane(functionSelectorPanel);
+		JPanel functionPanelWrapper = new JPanel(new BorderLayout()) {
+			@Override
+			public Dimension getPreferredSize() {
+				return new Dimension(400, super.getPreferredSize().height);
+			}
+			
+			@Override
+			public Dimension getMaximumSize() {
+				return new Dimension(400, Integer.MAX_VALUE);
+			}
+			
+			@Override
+			public Dimension getMinimumSize() {
+				return new Dimension(400, 100);
+			}
+		};
+		functionPanelWrapper.add(functionScrollPane, BorderLayout.CENTER);
+		
 		contentPanel.add( blankPanel, BLANK_PANEL );
 		contentPanel.add( (JComponent)unaryOperationPanel, UNARY_PANEL );
 		contentPanel.add( (JComponent)binaryOperationPanel, BINARY_PANEL );
-		contentPanel.add( new JScrollPane( functionSelectorPanel ), FUNCTION_PANEL );
+		contentPanel.add( functionPanelWrapper, FUNCTION_PANEL );
 		
 		JButton saveButton = new JButton( "Export Result as Data"); 
 		saveButton.addActionListener( new ActionListener() {
@@ -97,11 +123,44 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		upperPanel.add( calculator, BorderLayout.CENTER ); 
 		upperPanel.add( buttonPanel, BorderLayout.SOUTH ); 
 		
+		// Create system-level preview panel
+		systemPreviewPanel = new OperationPreviewPanel();
+		
+		// Wrap contentPanel to constrain its width
+		JPanel contentPanelWrapper = new JPanel(new BorderLayout()) {
+			@Override
+			public Dimension getPreferredSize() {
+				return new Dimension(600, super.getPreferredSize().height);
+			}
+			
+			@Override
+			public Dimension getMaximumSize() {
+				return new Dimension(600, Integer.MAX_VALUE);
+			}
+			
+			@Override
+			public Dimension getMinimumSize() {
+				return new Dimension(600, 200);
+			}
+		};
+		contentPanelWrapper.add(contentPanel, BorderLayout.CENTER);
+		
+		// Use a horizontal box layout for the center area to respect max sizes
+		JPanel centerArea = new JPanel();
+		centerArea.setLayout(new BoxLayout(centerArea, BoxLayout.X_AXIS));
+		centerArea.add(contentPanelWrapper);
+		centerArea.add(Box.createHorizontalStrut(10)); // Add padding between content and preview
+		centerArea.add(systemPreviewPanel);
+		centerArea.add(Box.createHorizontalGlue());
+		
 		setLayout( new BorderLayout() ); 
 		add( upperPanel, BorderLayout.NORTH );
-		add( contentPanel, BorderLayout.CENTER ); 
+		add( centerArea, BorderLayout.CENTER );
 		setSystem( system ); 
-		initialized = true; 
+		initialized = true;
+		
+		// Initialize preview with current system output
+		updateSystemPreview();
 
 	}
 	
@@ -165,7 +224,25 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		system.setOpList(opList); 
 		int[] rule = calculator.getCodeList();
 		system.setCombineOpsRule(new CombineOpsRule( rule, opList ) );
-		Core.getFunctionList().refresh(); 
+		Core.getFunctionList().refresh();
+		
+		// Update the preview with new system output
+		updateSystemPreview();
+	}
+	
+	/**
+	 * Updates the system preview panel with the current output
+	 */
+	protected void updateSystemPreview() {
+		if (systemPreviewPanel != null) {
+			try {
+				Function output = getFunction();
+				systemPreviewPanel.updatePreview(output);
+			} catch (Exception e) {
+				// If we can't generate output, clear the preview
+				systemPreviewPanel.clearPreview();
+			}
+		}
 	}
 	
 	public void GUIEventOccurred(GUIEvent e) {

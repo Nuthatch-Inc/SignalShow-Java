@@ -29,6 +29,12 @@ public class CorrelateOp extends BinaryOperation {
 	@Override
 	public Function create(Function inputA, Function inputB) {
 		
+		// Swap operands to match Roger Easton's textbook notation
+		// (opposite of Wikipedia/Wolfram Alpha convention)
+		Function temp = inputA;
+		inputA = inputB;
+		inputB = temp;
+		
 		boolean zeroCentered = inputA.isZeroCentered();
 		
 		String name = inputA.getCompactDescriptor() + " * " + inputB.getCompactDescriptor();

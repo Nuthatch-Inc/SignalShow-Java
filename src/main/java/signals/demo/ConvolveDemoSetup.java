@@ -30,9 +30,11 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 	protected JRadioButton correlationButton;
 	protected JRadioButton convolutionButton;
 	protected JLabel operationLabel;
+	protected JLabel function2Label;
 	protected ConvolveOp convolveOp;
 	protected CorrelateOp correlateOp;
 	protected JCheckBox wrapAround, normalizeFilter; 
+	protected JPanel typePanel;
 	
 	public ConvolveDemoSetup( String title ) {
 		
@@ -47,7 +49,7 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 		wrapAround = new JCheckBox("Wrap Around"); 
 		wrapAround.setSelected(true); 
 		
-		normalizeFilter = new JCheckBox("Normalize Second Function"); 
+		normalizeFilter = new JCheckBox("Normalize Filter/Reference"); 
 		normalizeFilter.setSelected(true); 
 		
 		ButtonGroup bg = new ButtonGroup(); 
@@ -55,7 +57,7 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 		bg.add( convolutionButton ); 
 		convolutionButton.setSelected(true); 
 		
-		JPanel typePanel = new JPanel(); 
+		typePanel = new JPanel(); 
 		typePanel.add( correlationButton ); 
 		typePanel.add( convolutionButton ); 
 		typePanel.add( wrapAround ); 
@@ -70,11 +72,13 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 				
 				if( correlationButton.isSelected() ) {
 					
-					operationLabel.setIcon( correlateOp.getOpIcon() ); 
+					operationLabel.setIcon( correlateOp.getOpIcon() );
+					function2Label.setText("Reference:");
 					
 				} else {
 					
-					operationLabel.setIcon( convolveOp.getOpIcon() ); 
+					operationLabel.setIcon( convolveOp.getOpIcon() );
+					function2Label.setText("Filter:");
 				}
 				
 			}
@@ -96,7 +100,7 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 		sp1.setPreferredSize(selectorSize); 
 		JPanel selectorPanel1 = new JPanel( new BorderLayout() ); 
 		selectorPanel1.add( sp1, BorderLayout.CENTER ); 
-		selectorPanel1.add( new JLabel("Function 1:"), BorderLayout.NORTH); 
+		selectorPanel1.add( new JLabel("Input:"), BorderLayout.NORTH); 
 		operationPanel.add( selectorPanel1 );
 		
 		//operation
@@ -107,7 +111,8 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 		sp2.setPreferredSize(selectorSize); 
 		JPanel selectorPanel2 = new JPanel( new BorderLayout() ); 
 		selectorPanel2.add( sp2, BorderLayout.CENTER ); 
-		selectorPanel2.add( new JLabel("Function 2:"), BorderLayout.NORTH); 
+		function2Label = new JLabel("Filter:");
+		selectorPanel2.add( function2Label, BorderLayout.NORTH); 
 		operationPanel.add( selectorPanel2 );
 		
 		addContentPanel(operationPanel, BorderLayout.CENTER); 
@@ -133,8 +138,9 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 			
 		} else {
 			
-			// For correlation, swap inputs so first function slides along the second
-			getDemo( input2, input1, false, correlateOp, wrapAround.isSelected(), normalizeFilter.isSelected() );
+			// Correlation uses same input order as convolution
+			// CorrelateOp internally swaps operands to match Roger Easton's textbook notation
+			getDemo( input1, input2, false, correlateOp, wrapAround.isSelected(), normalizeFilter.isSelected() );
 
 		} 
 		

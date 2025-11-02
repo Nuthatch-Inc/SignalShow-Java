@@ -70,6 +70,8 @@ public class DataGeneratorSelectorPanel extends JPanel {
 	boolean initialized; 
 
 	ArrayList<Class< ? extends DataGenerator>> datageneratorList; 
+	
+	JPanel previewPanel; // Optional preview panel (e.g., for operation output plots)
 
 	public DataGeneratorSelectorPanel( ArrayList<Class< ? extends DataGenerator>> datageneratorList, 
 			final HashMap<String, ArrayList<Class< ? extends DataGenerator>>> map ) {
@@ -170,7 +172,6 @@ public class DataGeneratorSelectorPanel extends JPanel {
 		//doc pane
 		docPane = new JEditorPane();
 		docPane.setEditable(false);
-		docPane.setPreferredSize(new Dimension(300, 200));
 		docPane.setBorder(Core.getBorders().getBuffer()); 
 
 		docPane.addHyperlinkListener(new HyperlinkListener() {
@@ -199,9 +200,29 @@ public class DataGeneratorSelectorPanel extends JPanel {
 
 		//Put the editor pane in a scroll pane.
 		JScrollPane editorScrollPane = new JScrollPane(docPane);
-		editorScrollPane.setPreferredSize(new Dimension(300, 200));
-		editorScrollPane.setMinimumSize(new Dimension(10, 10));
-		editorScrollPane.setMaximumSize(new Dimension(300, 200));
+		editorScrollPane.setBorder( Core.getBorders().getLineBufferBorder() );
+		editorScrollPane.setBackground( new Color( 0, 0, 0, 0) );
+		
+		// Wrap scroll pane in fixed-width panel to prevent width changes when scrollbar appears
+		JPanel docWrapperPanel = new JPanel(new BorderLayout()) {
+			@Override
+			public Dimension getPreferredSize() {
+				Dimension d = super.getPreferredSize();
+				d.width = 450;
+				return d;
+			}
+			@Override
+			public Dimension getMinimumSize() {
+				Dimension d = super.getMinimumSize();
+				d.width = 450;
+				return d;
+			}
+			@Override
+			public Dimension getMaximumSize() {
+				return new Dimension(450, Integer.MAX_VALUE);
+			}
+		};
+		docWrapperPanel.add(editorScrollPane, BorderLayout.CENTER);
 
 		//layout
 		setLayout( new BorderLayout() );
@@ -228,16 +249,36 @@ public class DataGeneratorSelectorPanel extends JPanel {
 		typePanel.add(scrollPane, BorderLayout.CENTER);
 		typePanel.add(textPanel, BorderLayout.NORTH); 
 		typePanel.setBorder(Core.getBorders().getBuffer()); 
-		
-		editorScrollPane.setBorder( Core.getBorders().getLineBufferBorder() );
-		editorScrollPane.setBackground( new Color( 0, 0, 0, 0) ); 
 
 		add( typePanel, BorderLayout.WEST ); 
-		add( editorScrollPane, BorderLayout.CENTER ); 
+		add( docWrapperPanel, BorderLayout.CENTER ); 
 		
 		adjusting = false; 
 		initialized = true;
 
+	}
+	
+	/**
+	 * Sets an optional preview panel to display on the right side of the selector.
+	 * Useful for showing operation output plots or other previews.
+	 * @param panel The panel to display, or null to remove the preview
+	 */
+	public void setPreviewPanel(JPanel panel) {
+		// Remove existing preview if any
+		if (previewPanel != null) {
+			remove(previewPanel);
+		}
+		
+		previewPanel = panel;
+		
+		// Add new preview if provided
+		if (previewPanel != null) {
+			add(previewPanel, BorderLayout.EAST);
+		}
+		
+		// Update layout
+		revalidate();
+		repaint();
 	}
 	
 	public void setEnabled( boolean tf ) {

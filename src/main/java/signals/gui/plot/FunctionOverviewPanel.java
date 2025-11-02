@@ -102,9 +102,36 @@ public abstract class FunctionOverviewPanel extends JPanel implements MouseListe
 	
 	public JComponent createEquationArea() {
 		
-		equationArea = new JTextArea(); 
+		equationArea = new JTextArea() {
+			@Override
+			public Dimension getPreferredSize() {
+				Dimension d = super.getPreferredSize();
+				// Limit height to prevent vertical expansion
+				return new Dimension(d.width, Math.min(d.height, 60));
+			}
+			@Override
+			public Dimension getMaximumSize() {
+				return new Dimension(Integer.MAX_VALUE, 60);
+			}
+			@Override
+			public Dimension getMinimumSize() {
+				return new Dimension(1, 17);
+			}
+			@Override
+			public void setSize(Dimension d) {
+				// Clamp the height to prevent the component from being sized too tall
+				super.setSize(new Dimension(d.width, Math.min(d.height, 60)));
+			}
+			@Override
+			public void setSize(int width, int height) {
+				// Clamp the height to prevent the component from being sized too tall
+				super.setSize(width, Math.min(height, 60));
+			}
+		};
 		equationArea.setBackground(new Color( 0, 0, 0, 0 )); 
+		equationArea.setOpaque(false);  // Explicitly set non-opaque for transparency
 		equationArea.setEditable(false);
+		equationArea.setFocusable(false);
 		equationArea.setLineWrap(true);
 		equationArea.setFont(Core.getDisplayOptions().getLabelFont());
 		
@@ -119,7 +146,7 @@ public abstract class FunctionOverviewPanel extends JPanel implements MouseListe
 			function.setDescriptor(newName);
 			equationArea.setText(function.getLongDescriptor());
 			revalidate(); 
-			repaint(); 
+			repaint();
 		}
 	}
 	
@@ -138,7 +165,7 @@ public abstract class FunctionOverviewPanel extends JPanel implements MouseListe
 		refreshSmallPlots();
 		
 		revalidate(); 
-		repaint(); 
+		repaint();
 	}
 	
 	
