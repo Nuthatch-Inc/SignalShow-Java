@@ -77,15 +77,19 @@ ID format: BUG-### (e.g. BUG-001)
 - Reported by: Roger Easton Jr
 - Date: 2024-12-03
 - Environment: All platforms, all versions
-- Description: The default value for the alpha parameter in the 2D chirp function (and potentially other functions) is incorrect. The default should be the square root of the number of pixels to properly display the aliasing pattern.
+- Description: The default value for the alpha parameter in the 2D chirp function (and potentially other functions) is incorrect. The default should be the square root of the number of pixels to properly display the aliasing pattern. This issue had two parts: (1) the base default was 32 instead of 16, and (2) polar coordinate functions f(r)f(theta) were calculating width based on radial indices length (128) instead of full dimension (256).
 - Steps to reproduce:
   1. Create a 2D chirp function using default parameters
-  2. Observe the display
-- Expected behavior: Function should appear aliased with default alpha = sqrt(number of pixels)
-- Actual behavior: Function does not display properly with current default alpha value
+  2. For polar coordinates: Create 2D complex chirp from menu, then select "Real and Imaginary Parts" and choose f(r)f(theta)
+  3. Observe the alpha parameter value
+- Expected behavior: Function should appear aliased with default alpha = sqrt(number of pixels) = sqrt(256) = 16 for all coordinate systems
+- Actual behavior: (1) Initially showed default alpha = 32; (2) After first fix, polar coordinates showed alpha = 11.314 = sqrt(128)
 - Logs / stacktrace: N/A
 - Temporary workaround: Manually set alpha to sqrt(number of pixels)
-- Notes / PR: Fixed in ChirpFunctionTerm1D.java and SineChirpFunctionTerm1D.java by changing default alpha from 32 to 16. Since the default dimension is 256, sqrt(256) = 16. Changed both the param_defaults array and the widthSpinnerModel. Date resolved: 2025-10-26
+- Notes / PR: 
+  - Part 1 fixed 2025-10-26: Changed default alpha from 32 to 16 in ChirpFunctionTerm1D.java and SineChirpFunctionTerm1D.java. Modified both param_defaults array and widthSpinnerModel.
+  - Part 2 fixed 2025-11-05: For polar coordinate functions f(r)f(theta), radial indices only go from 0 to dimension/2 (128 for 256x256), but width calculation should still be based on full dimension (256). Added setDefaultWidthDimension() method to EditAnalyticFunctionTermPanel, EditAnalyticFunctionTerm1DPanel, and CreateAnalyticSubTerm1DPanel. Modified CreateFunctionTerm2DPolarPanel.setIndices() to call setDefaultWidthDimension(dimension) after setIndices(radialIndices). This ensures all polar coordinate functions (not just chirps) get correct default width parameter.
+  - Date resolved: 2025-11-05
 
 ---
 

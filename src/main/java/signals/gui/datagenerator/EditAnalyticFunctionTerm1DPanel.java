@@ -38,6 +38,17 @@ public class EditAnalyticFunctionTerm1DPanel extends EditAnalyticFunctionTermPan
 		this.indices = indices;
 		editor.setIndices( indices );
 	}
+	
+	/**
+	 * Sets the default width dimension for calculating the width parameter.
+	 * This is separate from setIndices() to support polar coordinates where
+	 * radial indices are 0 to dimension/2 but width should be based on full dimension.
+	 * @param dimension the full dimension to use for width calculation (e.g., 256)
+	 */
+	public void setDefaultWidthDimension( int dimension ) {
+		
+		setDefaultWidthOn( dimension );
+	}
 
 	public void addSelectors() {
 

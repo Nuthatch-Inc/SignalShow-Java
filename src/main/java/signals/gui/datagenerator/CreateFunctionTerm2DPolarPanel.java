@@ -59,7 +59,10 @@ public class CreateFunctionTerm2DPolarPanel extends CreateSeparableFunctionTerm2
 		
 		double[] polarIndices = zeroCentered ? Indices.indices1D(360, true) : Indices.indices1D(90, false);
 		double[] radialIndices = Indices.indices1D(dimension/2, false); 
-		termPanel1.setIndices(radialIndices); 
+		termPanel1.setIndices(radialIndices);
+		// Set default width based on full dimension, not radial indices length
+		// For a 256x256 image, radial indices go 0-128, but width should be sqrt(256)=16
+		termPanel1.setDefaultWidthDimension(dimension);
 		termPanel2.setIndices(polarIndices); 
 		
 		if( getSelectedIndex() == 2 ) {
