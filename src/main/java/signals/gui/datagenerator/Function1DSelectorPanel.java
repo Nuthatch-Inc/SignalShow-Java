@@ -24,8 +24,7 @@ public class Function1DSelectorPanel extends FunctionSelectorPanel {
 	
 	@Override
 	public Dimension getButtonSize() {
-
-		return GUIDimensions.smallPlotThumbnailDimension;
-	}
-
-}
+		// Slightly larger than small dimension to accommodate paintSmallGraphic + border
+		Dimension thumbSize = GUIDimensions.smallPlotThumbnailDimension;
+		return new Dimension(thumbSize.width + 30, thumbSize.height + 30);
+	}}

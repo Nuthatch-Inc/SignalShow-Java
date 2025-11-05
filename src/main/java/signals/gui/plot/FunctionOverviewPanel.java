@@ -154,18 +154,23 @@ public abstract class FunctionOverviewPanel extends JPanel implements MouseListe
 		
 		this.function = function;
 		
-		equationArea.setText(function.getLongDescriptor());
-		
-		if( largeSelectedIndex != -1 ) {
+		// Handle null function (e.g., when system hasn't generated output yet)
+		if (function != null) {
+			equationArea.setText(function.getLongDescriptor());
 			
-			largePlotPanel.removeAll(); 
-			setLargePlot(parts[largeSelectedIndex]); 
+			if( largeSelectedIndex != -1 ) {
+				
+				largePlotPanel.removeAll(); 
+				setLargePlot(parts[largeSelectedIndex]); 
+			}
+			
+			refreshSmallPlots();
+			
+			revalidate(); 
+			repaint();
+		} else {
+			equationArea.setText("No function available");
 		}
-		
-		refreshSmallPlots();
-		
-		revalidate(); 
-		repaint();
 	}
 	
 	

@@ -131,7 +131,9 @@ public abstract class FunctionSelectorPanel extends JPanel {
 		public void paintComponent( Graphics g ) {
 
 			super.paintComponent(g);
-			function.getFunction().paintSmallGraphic((Graphics2D)g); 
+			
+			// Use paintSmallGraphic() like the horizontal calculator does
+			function.getFunction().paintSmallGraphic((Graphics2D)g);
 		}
 
 
