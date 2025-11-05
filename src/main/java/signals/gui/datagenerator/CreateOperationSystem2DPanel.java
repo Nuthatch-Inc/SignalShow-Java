@@ -13,6 +13,9 @@ import signals.core.OperatorSystem2D;
 @SuppressWarnings("serial")
 public class CreateOperationSystem2DPanel extends CreateOperationSystemPanel {
 
+	public CreateOperationSystem2DPanel(OperatorSystem system) {
+		super(system, true); // Pass true to start in 2D mode
+	}
 
 	@Override
 	public void createBinaryPanel() {
@@ -28,10 +31,6 @@ public class CreateOperationSystem2DPanel extends CreateOperationSystemPanel {
 		
 	}
 
-	public CreateOperationSystem2DPanel(OperatorSystem system) {
-		super(system);
-	}
-
 	@Override
 	public void createCalculator() {
 		
@@ -44,6 +43,7 @@ public class CreateOperationSystem2DPanel extends CreateOperationSystemPanel {
 		functionSelectorPanel = new Function2DSelectorPanel(broadcaster, system); 
 	}
 
+	@Override
 	public Function getFunction() {
 		
 		ArrayList<FunctionProducer> inputList = calculator.getFunctionList();

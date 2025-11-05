@@ -51,6 +51,10 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 	OperationPreviewPanel systemPreviewPanel;
 	
 	public CreateOperationSystemPanel( OperatorSystem system ) {
+		this(system, false); // Default to 1D mode
+	}
+	
+	public CreateOperationSystemPanel( OperatorSystem system, boolean is2D ) {
 		
 		//create the event broadcaster
 		this.system = system; 
@@ -124,7 +128,7 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		upperPanel.add( buttonPanel, BorderLayout.SOUTH ); 
 		
 		// Create system-level preview panel
-		systemPreviewPanel = new OperationPreviewPanel();
+		systemPreviewPanel = new OperationPreviewPanel(is2D);
 		
 		// Wrap contentPanel to constrain its width
 		JPanel contentPanelWrapper = new JPanel(new BorderLayout()) {
