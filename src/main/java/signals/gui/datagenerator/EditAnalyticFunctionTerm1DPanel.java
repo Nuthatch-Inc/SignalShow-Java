@@ -17,6 +17,7 @@ public class EditAnalyticFunctionTerm1DPanel extends EditAnalyticFunctionTermPan
 	double[] indices;
 	ModeSelector modeSelector; 
 	protected AnalyticFunctionTerm1DEditor editor;
+	private boolean hasExplicitWidthDimension = false;
 
 	public EditAnalyticFunctionTerm1DPanel( GUIEventBroadcaster broadcaster, GUIEvent.Descriptor modifiedDescriptor ) {
 
@@ -47,6 +48,7 @@ public class EditAnalyticFunctionTerm1DPanel extends EditAnalyticFunctionTermPan
 	 */
 	public void setDefaultWidthDimension( int dimension ) {
 		
+		hasExplicitWidthDimension = true;
 		setDefaultWidthOn( dimension );
 	}
 
@@ -99,9 +101,15 @@ public class EditAnalyticFunctionTerm1DPanel extends EditAnalyticFunctionTermPan
 		
 		if( on ) {
 			
-			if( indices != null ) setDefaultWidthOn(indices.length); 
+			// Don't override if dimension was explicitly set (e.g., for polar coordinates)
+			if( !hasExplicitWidthDimension && indices != null ) {
+				setDefaultWidthOn(indices.length);
+			}
 			
-		} else setDefaultWidthOff(); 
+		} else {
+			hasExplicitWidthDimension = false;
+			setDefaultWidthOff(); 
+		}
 	}
 	
 	public void GUIEventOccurred(GUIEvent e) {
