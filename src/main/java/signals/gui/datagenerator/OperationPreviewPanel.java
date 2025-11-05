@@ -71,21 +71,23 @@ public class OperationPreviewPanel extends JPanel {
 		imagPlot.setCompactLabelMode(true);
 		plotsContainer1D.add(imagPlot);
 		
-		// Create 2D images container (side-by-side layout)
+		// Create 2D images container (vertical stacking)
 		plotsContainer2D = new JPanel();
-		plotsContainer2D.setLayout(new GridLayout(1, 2, 10, 0));
+		plotsContainer2D.setLayout(new BoxLayout(plotsContainer2D, BoxLayout.Y_AXIS));
 		
 		// Create real part image panel with border
 		JPanel realImageContainer = new JPanel(new BorderLayout());
 		realImageContainer.setBorder(BorderFactory.createTitledBorder("Real Part of Result"));
-		realImagePanel = new ImageDisplayPanel(new Dimension(160, 160));
+		realImagePanel = new ImageDisplayPanel(new Dimension(200, 200));
 		realImageContainer.add(realImagePanel, BorderLayout.CENTER);
 		plotsContainer2D.add(realImageContainer);
+		
+		plotsContainer2D.add(Box.createVerticalStrut(10));
 		
 		// Create imaginary part image panel with border
 		JPanel imagImageContainer = new JPanel(new BorderLayout());
 		imagImageContainer.setBorder(BorderFactory.createTitledBorder("Imaginary Part of Result"));
-		imagImagePanel = new ImageDisplayPanel(new Dimension(160, 160));
+		imagImagePanel = new ImageDisplayPanel(new Dimension(200, 200));
 		imagImageContainer.add(imagImagePanel, BorderLayout.CENTER);
 		plotsContainer2D.add(imagImageContainer);
 		
