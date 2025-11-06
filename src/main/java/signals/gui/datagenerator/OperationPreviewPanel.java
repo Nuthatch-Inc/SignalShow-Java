@@ -2,7 +2,6 @@ package signals.gui.datagenerator;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -15,6 +14,7 @@ import signals.core.Function1D;
 import signals.core.Function2D;
 import signals.core.SourceData1D;
 import signals.core.Constants.Part;
+import signals.gui.ResizablePane;
 import signals.gui.plot.ImageDisplayPanel;
 import signals.gui.plot.PlotCursorPanel;
 
@@ -24,7 +24,7 @@ import signals.gui.plot.PlotCursorPanel;
  * @author Juliet
  */
 @SuppressWarnings("serial")
-public class OperationPreviewPanel extends JPanel {
+public class OperationPreviewPanel extends JPanel implements ResizablePane {
 	
 	private PlotCursorPanel realPlot;
 	private PlotCursorPanel imagPlot;
@@ -72,11 +72,28 @@ public class OperationPreviewPanel extends JPanel {
 		plotsContainer1D.add(imagPlot);
 		
 		// Create 2D images container (vertical stacking)
-		plotsContainer2D = new JPanel();
+		plotsContainer2D = new JPanel() {
+			@Override
+			public Dimension getPreferredSize() {
+				// Calculate square size based on available width, maintaining aspect ratio
+				Dimension parentSize = getParent() != null ? getParent().getSize() : new Dimension(400, 600);
+				int availableWidth = Math.max(100, parentSize.width - 20); // Account for padding
+				int imageSize = Math.max(100, availableWidth - 20); // Leave some margin
+				return new Dimension(availableWidth, imageSize * 2 + 80); // Two images plus spacing and borders
+			}
+		};
 		plotsContainer2D.setLayout(new BoxLayout(plotsContainer2D, BoxLayout.Y_AXIS));
 		
 		// Create real part image panel with border
-		JPanel realImageContainer = new JPanel(new BorderLayout());
+		JPanel realImageContainer = new JPanel(new BorderLayout()) {
+			@Override
+			public Dimension getPreferredSize() {
+				Dimension parentSize = getParent() != null ? getParent().getSize() : new Dimension(400, 300);
+				int availableWidth = Math.max(100, parentSize.width - 20);
+				int imageSize = Math.max(100, availableWidth - 20);
+				return new Dimension(availableWidth, imageSize + 30); // Image plus border
+			}
+		};
 		realImageContainer.setBorder(BorderFactory.createTitledBorder("Real Part of Result"));
 		realImagePanel = new ImageDisplayPanel(new Dimension(200, 200));
 		realImageContainer.add(realImagePanel, BorderLayout.CENTER);
@@ -85,7 +102,15 @@ public class OperationPreviewPanel extends JPanel {
 		plotsContainer2D.add(Box.createVerticalStrut(10));
 		
 		// Create imaginary part image panel with border
-		JPanel imagImageContainer = new JPanel(new BorderLayout());
+		JPanel imagImageContainer = new JPanel(new BorderLayout()) {
+			@Override
+			public Dimension getPreferredSize() {
+				Dimension parentSize = getParent() != null ? getParent().getSize() : new Dimension(400, 300);
+				int availableWidth = Math.max(100, parentSize.width - 20);
+				int imageSize = Math.max(100, availableWidth - 20);
+				return new Dimension(availableWidth, imageSize + 30); // Image plus border
+			}
+		};
 		imagImageContainer.setBorder(BorderFactory.createTitledBorder("Imaginary Part of Result"));
 		imagImagePanel = new ImageDisplayPanel(new Dimension(200, 200));
 		imagImageContainer.add(imagImagePanel, BorderLayout.CENTER);
@@ -98,9 +123,37 @@ public class OperationPreviewPanel extends JPanel {
 			add(plotsContainer1D, BorderLayout.CENTER);
 		}
 		
-		// Set preferred size for the panel
-		setPreferredSize(new Dimension(350, 400));
-		setMinimumSize(new Dimension(300, 300));
+		// Set minimum size constraint (allow smaller sizes for flexibility)
+		setMinimumSize(new Dimension(100, 200));
+	}
+	
+	@Override
+	public void sizeChanged() {
+		// Notify child plot components of size change and force recalculation
+		if (realPlot != null) {
+			realPlot.sizeChanged();
+			realPlot.getGraphic().calculateDimension();
+			realPlot.revalidate();
+			realPlot.repaint();
+		}
+		if (imagPlot != null) {
+			imagPlot.sizeChanged();
+			imagPlot.getGraphic().calculateDimension();
+			imagPlot.revalidate();
+			imagPlot.repaint();
+		}
+		// ImageDisplayPanel doesn't have sizeChanged(), but the container's getPreferredSize()
+		// override will handle dynamic resizing for 2D images
+		if (realImagePanel != null) {
+			realImagePanel.revalidate();
+			realImagePanel.repaint();
+		}
+		if (imagImagePanel != null) {
+			imagImagePanel.revalidate();
+			imagImagePanel.repaint();
+		}
+		revalidate();
+		repaint();
 	}
 	
 	private void refreshPlots() {

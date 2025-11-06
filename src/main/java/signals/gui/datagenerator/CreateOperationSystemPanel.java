@@ -23,9 +23,10 @@ import signals.core.Operation;
 import signals.core.OperatorSystem;
 import signals.core.Savable;
 import signals.core.UnaryOperation;
+import signals.gui.ResizablePane;
 
 @SuppressWarnings("serial")
-public abstract class CreateOperationSystemPanel extends JPanel implements GUIEventListener, Savable {
+public abstract class CreateOperationSystemPanel extends JPanel implements GUIEventListener, Savable, ResizablePane {
 
 	//broadcasts events for this part of the interface	
 	GUIEventBroadcaster broadcaster; 
@@ -246,6 +247,14 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 				// If we can't generate output, clear the preview
 				systemPreviewPanel.clearPreview();
 			}
+		}
+	}
+	
+	@Override
+	public void sizeChanged() {
+		// Propagate resize event to preview panel
+		if (systemPreviewPanel != null) {
+			systemPreviewPanel.sizeChanged();
 		}
 	}
 	
