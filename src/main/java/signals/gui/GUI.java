@@ -219,6 +219,7 @@ public class GUI {
 
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.setBorder(Core.getBorders().getBuffer());
+		panel.setMinimumSize(new Dimension(GUIDimensions.LIST_WIDTH + getScrollBarWidth() + 30, 100));
 		panel.add(scroll, BorderLayout.CENTER);
 		panel.add(createVariableToolBar(), BorderLayout.SOUTH);
 
