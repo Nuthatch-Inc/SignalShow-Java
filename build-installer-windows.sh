@@ -36,7 +36,7 @@ echo ""
 echo "📦 Building JAR with Maven..."
 mvn clean package -q
 
-if [ ! -f "target/signalshow-1.1.1.jar" ]; then
+if [ ! -f "target/signalshow-1.2.0.jar" ]; then
     echo "❌ Error: JAR file not found after build"
     exit 1
 fi
@@ -63,9 +63,9 @@ echo "🪟 Creating Windows installer ($TYPE)..."
 jpackage \
   --type "$TYPE" \
   --name SignalShow \
-  --app-version 1.1.1 \
+  --app-version 1.2.0 \
   --input target \
-  --main-jar signalshow-1.1.1.jar \
+  --main-jar signalshow-1.2.0.jar \
   --main-class SignalShow \
   --dest target/dist \
   --vendor "SignalShow" \
