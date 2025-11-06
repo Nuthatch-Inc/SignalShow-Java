@@ -135,8 +135,8 @@ jobs:
 
             ### Downloads
 
-            - **macOS**: SignalShow-1.0.0.dmg
-            - **Windows**: SignalShow-1.0.0.exe or .msi
+            - **macOS**: SignalShow-1.2.0.dmg
+            - **Windows**: SignalShow-1.2.0.exe or .msi
 
             ### Installation
 

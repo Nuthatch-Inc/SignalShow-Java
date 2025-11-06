@@ -18,7 +18,7 @@ public class AboutAction extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		
 		JOptionPane.showMessageDialog(Core.getFrame(),
-			    "SignalShow 1.0 Beta \n" +
+			    "SignalShow 1.2.0 \n" +
 			    "Copyright Juliet Bernstein 2009 \n" + 
 			    "By: Juliet Bernstein \n" +
 			    "Advisor: Dr. Roger L. Easton Jr. \n" +
