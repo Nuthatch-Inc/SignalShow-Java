@@ -54,7 +54,6 @@ buildNumber.properties
 !legacy-build/jai_codec.jar
 
 # Do not ignore the launcher scripts
-!run-signalshow.sh
 !run-maven.sh
 !compile.sh
 !package.sh

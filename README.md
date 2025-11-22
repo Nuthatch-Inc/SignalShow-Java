@@ -91,37 +91,29 @@ src/main/java/           # Java source files
   signals/               # Application packages
 src/main/resources/      # Images, icons, documentation
 pom.xml                  # Maven configuration
-legacy-build/            # Original build artifacts
+legacy-build/            # JAI dependencies (not in Maven Central)
   jai_core.jar           # JAI core classes (installed to local Maven)
   jai_codec.jar          # JAI codec classes (installed to local Maven)
 ```
 
 ### Prerequisites
 
-- Java Development Kit (JDK) 11+
-- Bundled JAI jars: `jai_core.jar`, `jai_codec.jar`
+- Java Development Kit (JDK) 25+
+- Maven 3.8+
+- JAI libraries (automatically installed from `legacy-build/` directory)
 
-### Quick Start
+### First-Time Setup
 
-```bash
-./run-signalshow.sh
-```
-
-This script verifies JAI jars, sets the classpath, and launches the main class.
-
-### Building from Source
+Install JAI dependencies to your local Maven repository:
 
 ```bash
-find SignalShow -name "*.java" > /tmp/sigshow-srcs.txt
-javac -d . @/tmp/sigshow-srcs.txt
-java -cp "SignalShow:SignalShow/jai_core.jar:SignalShow/jai_codec.jar" SignalShow
-```
+mvn install:install-file -Dfile=legacy-build/jai_core.jar \
+  -DgroupId=javax.media.jai -DartifactId=jai-core \
+  -Dversion=1.1.3 -Dpackaging=jar
 
-Or one-liner:
-
-```bash
-find SignalShow -name "*.java" -print0 | xargs -0 javac -d . && \
-java -cp "SignalShow:SignalShow/jai_core.jar:SignalShow/jai_codec.jar" SignalShow
+mvn install:install-file -Dfile=legacy-build/jai_codec.jar \
+  -DgroupId=javax.media.jai -DartifactId=jai-codec \
+  -Dversion=1.1.3 -Dpackaging=jar
 ```
 
 ---

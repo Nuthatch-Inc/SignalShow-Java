@@ -40,9 +40,9 @@ SignalShow-Java/
 │   │       ├── functiondoc/
 │   │       └── operationdoc/
 │   └── test/java/               # Test sources (future)
-├── legacy-build/                # Archived original structure
-│   ├── jai_core.jar            # JAI dependency (installed to local Maven repo)
-│   └── jai_codec.jar           # JAI dependency (installed to local Maven repo)
+├── legacy-build/                # JAI dependencies (not available in Maven Central)
+    ├── jai_core.jar            # JAI dependency (installed to local Maven repo)
+    └── jai_codec.jar           # JAI dependency (installed to local Maven repo)
 ├── assets/icons/               # Application icons
 │   ├── SignalShowIcon.png      # Source icon (48x48)
 │   ├── SignalShow.icns         # macOS icon
@@ -63,10 +63,10 @@ SignalShow-Java/
 
 ### Java Advanced Imaging (JAI)
 
-SignalShow depends on JAI libraries (`jai_core.jar`, `jai_codec.jar`) for image processing operations. Since these are not available in Maven Central, they are:
+SignalShow depends on JAI libraries (`jai_core.jar`, `jai_codec.jar`) for image processing operations. Since these are not available in Maven Central, they must be:
 
-1. Stored in `legacy-build/` directory
-2. Installed to local Maven repository during build setup
+1. Stored in `legacy-build/` directory (required for builds)
+2. Installed to local Maven repository during initial setup
 3. Referenced in `pom.xml` with coordinates:
    - `javax.media.jai:jai-core:1.1.3`
    - `javax.media.jai:jai-codec:1.1.3`
@@ -144,7 +144,7 @@ The Maven migration preserved all functionality while modernizing the build syst
 **Runtime Status**: Application launches and functions correctly  
 **Distribution Status**: Native installers build successfully on macOS and Windows
 
-The original directory structure is preserved in `legacy-build/` for reference.
+JAI dependencies are preserved in `legacy-build/` directory as they are not available in public Maven repositories.
 
 ## Key Benefits
 
