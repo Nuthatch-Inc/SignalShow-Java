@@ -112,7 +112,7 @@
 **File**: `BUGS.md`  
 **Topics**: Current prototype issues, proposed workarounds, issue tracking
 
-### Chapter 18: Maven Migration Plan (Historical Reference)
+### Chapter 18: Maven Build System and Distribution
 
-**File**: `MAVEN_MIGRATION_PLAN.md`  
-**Topics**: Original Java codebase migration strategy
+**File**: `MAVEN_BUILD_SYSTEM.md`  
+**Topics**: Maven migration completion, build system architecture, native installer distribution, GitHub repository location, automated CI/CD pipeline

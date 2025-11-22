@@ -277,14 +277,18 @@ target/
 .settings/
 ```
 
-#### Step 5.4: Archive Old Build System
-Create `legacy-build/` directory:
+#### Step 5.4: Archive Old Build System ✅ COMPLETED
+
+The legacy build system has been removed. Only JAI dependencies remain in `legacy-build/`:
 ```
-mv run-signalshow.sh legacy-build/
-mv SignalShow/ legacy-build/ (if keeping old structure)
+legacy-build/
+├── jai_core.jar
+└── jai_codec.jar
 ```
 
-Or keep scripts with deprecation notices.
+These JAR files must be retained as they are not available in public Maven repositories and are required for:
+- Initial setup (installing to local Maven repository)
+- GitHub Actions CI/CD builds
 
 ---
 

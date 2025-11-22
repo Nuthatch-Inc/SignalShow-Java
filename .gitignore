@@ -37,10 +37,25 @@ TestLoad.java
 TestLoad.class
 TestLoad$*.class
 
-# Keep bundled JAI jars (negate pattern after broad *.jar ignore)
-!SignalShow/jai_core.jar
-!SignalShow/jai_codec.jar
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
 
-# Do not ignore the launcher script
-!run-signalshow.sh
+# Keep bundled JAI jars in legacy directory (negate pattern after broad *.jar ignore)
+!legacy-build/jai_core.jar
+!legacy-build/jai_codec.jar
+
+# Do not ignore the launcher scripts
+!run-maven.sh
+!compile.sh
+!package.sh
+!run.sh
 

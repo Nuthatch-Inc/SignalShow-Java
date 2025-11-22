@@ -11,7 +11,7 @@ SignalShow is an educational signal processing application, originally built in 
 ### Versions
 
 1. **Web Version** - Browser-based prototype in React/Plotly.js
-2. **Desktop Version** - Proposed Tauri app with optional Julia backend  
+2. **Desktop Version** - Proposed Tauri app with optional Julia backend
 3. **Java Version** - Original Swing GUI with 80+ functions (legacy)
 
 ---
@@ -55,9 +55,9 @@ npm run dev
 
 ---
 
-## Java Desktop Version (Original)
+## Java Desktop Version
 
-The original implementation with 80+ functions and 40+ operations.
+The original implementation with 80+ functions and 40+ operations, now using Maven.
 
 ### Key Features
 
@@ -67,54 +67,64 @@ The original implementation with 80+ functions and 40+ operations.
 - Educational demos (sampling, filtering, holography, more)
 - Modular operation architecture
 
+### Building with Maven
+
+```bash
+# Compile
+mvn clean compile
+
+# Run directly
+mvn exec:java
+
+# Or use convenience scripts
+./compile.sh    # Compile the project
+./run-maven.sh  # Run with Maven
+./package.sh    # Create executable JAR
+./run.sh        # Run from JAR
+```
+
 ### Project Structure
 
 ```
-SignalShow/
-  SignalShow.java          # Main entry point
-  jai_core.jar             # JAI core classes (bundled)
-  jai_codec.jar            # JAI codec classes (bundled)
-  signals/                 # Application packages
-  run-signalshow.sh        # Launcher script
+src/main/java/           # Java source files
+  SignalShow.java        # Main entry point
+  signals/               # Application packages
+src/main/resources/      # Images, icons, documentation
+pom.xml                  # Maven configuration
+legacy-build/            # JAI dependencies (not in Maven Central)
+  jai_core.jar           # JAI core classes (installed to local Maven)
+  jai_codec.jar          # JAI codec classes (installed to local Maven)
 ```
 
 ### Prerequisites
 
-- Java Development Kit (JDK) 11+
-- Bundled JAI jars: `jai_core.jar`, `jai_codec.jar`
+- Java Development Kit (JDK) 25+
+- Maven 3.8+
+- JAI libraries (automatically installed from `legacy-build/` directory)
 
-### Quick Start
+### First-Time Setup
 
-```bash
-./run-signalshow.sh
-```
-
-This script verifies JAI jars, sets the classpath, and launches the main class.
-
-### Building from Source
+Install JAI dependencies to your local Maven repository:
 
 ```bash
-find SignalShow -name "*.java" > /tmp/sigshow-srcs.txt
-javac -d . @/tmp/sigshow-srcs.txt
-java -cp "SignalShow:SignalShow/jai_core.jar:SignalShow/jai_codec.jar" SignalShow
-```
+mvn install:install-file -Dfile=legacy-build/jai_core.jar \
+  -DgroupId=javax.media.jai -DartifactId=jai-core \
+  -Dversion=1.1.3 -Dpackaging=jar
 
-Or one-liner:
-
-```bash
-find SignalShow -name "*.java" -print0 | xargs -0 javac -d . && \
-java -cp "SignalShow:SignalShow/jai_core.jar:SignalShow/jai_codec.jar" SignalShow
+mvn install:install-file -Dfile=legacy-build/jai_codec.jar \
+  -DgroupId=javax.media.jai -DartifactId=jai-codec \
+  -Dversion=1.1.3 -Dpackaging=jar
 ```
 
 ---
 
 ## Troubleshooting
 
-| Symptom | Likely Cause | Resolution |
-|---------|--------------|------------|
-| `NoClassDefFoundError: javax/media/jai/PlanarImage` | JAI jars not on classpath | Ensure classpath includes JAI jars. Remove any extracted `SignalShow/javax` directory. |
-| `SecurityException: sealing violation` | Duplicate package definition | Delete stray `javax/` directory. |
-| `UnsatisfiedLinkError` for JAI native libs | Platform mismatch (x86 vs arm64) | Run under Rosetta with x86 JDK, or obtain arm64 native builds. |
+| Symptom                                             | Likely Cause                     | Resolution                                                                             |
+| --------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------- |
+| `NoClassDefFoundError: javax/media/jai/PlanarImage` | JAI jars not on classpath        | Ensure classpath includes JAI jars. Remove any extracted `SignalShow/javax` directory. |
+| `SecurityException: sealing violation`              | Duplicate package definition     | Delete stray `javax/` directory.                                                       |
+| `UnsatisfiedLinkError` for JAI native libs          | Platform mismatch (x86 vs arm64) | Run under Rosetta with x86 JDK, or obtain arm64 native builds.                         |
 
 ### Diagnostics
 
