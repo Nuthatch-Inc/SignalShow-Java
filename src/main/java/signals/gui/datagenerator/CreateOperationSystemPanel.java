@@ -132,20 +132,21 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		systemPreviewPanel = new OperationPreviewPanel(is2D);
 		
 		// Wrap contentPanel to constrain its width
+		// Width needs to accommodate: selector (~560px: doc panel 450 + type list 110) + parameter editor (~300px)
 		JPanel contentPanelWrapper = new JPanel(new BorderLayout()) {
 			@Override
 			public Dimension getPreferredSize() {
-				return new Dimension(600, super.getPreferredSize().height);
+				return new Dimension(900, super.getPreferredSize().height);
 			}
 			
 			@Override
 			public Dimension getMaximumSize() {
-				return new Dimension(600, Integer.MAX_VALUE);
+				return new Dimension(900, Integer.MAX_VALUE);
 			}
 			
 			@Override
 			public Dimension getMinimumSize() {
-				return new Dimension(600, 200);
+				return new Dimension(700, 200);
 			}
 		};
 		contentPanelWrapper.add(contentPanel, BorderLayout.CENTER);
