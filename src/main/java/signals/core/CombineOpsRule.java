@@ -217,21 +217,24 @@ public class CombineOpsRule {
 
 					// binary operation: get the next operation and the two operands.
 					// Perform the operation and push the result on the stack
+					// Note: Stack is LIFO, so we pop in reverse order:
+					// - operand2 was pushed second (is on top) → pop first
+					// - operand1 was pushed first → pop second
+					// Then call create(operand1, operand2) to maintain left-to-right order
 
 					if (!stack.empty())
-						operand1 = stack.pop();
+						operand2 = stack.pop();
 					if (stack.empty()) {
 
 						return null;
 
 					} else {
 
-					BinaryOperation operator = (BinaryOperation) opsIter.next();
-					operand2 = stack.pop();
-					operand1 = operator.create(operand1, operand2);
-					stack.push(operand1);
+						BinaryOperation operator = (BinaryOperation) opsIter.next();
+						operand1 = stack.pop();
+						operand1 = operator.create(operand1, operand2);
+						stack.push(operand1);
 					}
-
 					break;
 
 				case UNARY_OP_TIER_1:

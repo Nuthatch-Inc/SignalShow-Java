@@ -33,118 +33,118 @@ public abstract class ConvolveDemoSetup extends DialogTemplate {
 	protected JLabel function2Label;
 	protected ConvolveOp convolveOp;
 	protected CorrelateOp correlateOp;
-	protected JCheckBox wrapAround, normalizeFilter; 
+	protected JCheckBox wrapAround, normalizeFilter;
 	protected JPanel typePanel;
-	
-	public ConvolveDemoSetup( String title ) {
-		
-		super(Core.getGUI().getFrame(), title );
-		
+
+	public ConvolveDemoSetup(String title) {
+
+		super(Core.getGUI().getFrame(), title);
+
 		function1Selector = getVariableList();
 		function2Selector = getVariableList();
-		
-		correlationButton = new JRadioButton( "Correlation" ); 
-		convolutionButton = new JRadioButton( "Convolution" ); 
-		
-		wrapAround = new JCheckBox("Wrap Around"); 
-		wrapAround.setSelected(true); 
-		
-		normalizeFilter = new JCheckBox("Normalize Filter/Reference"); 
-		normalizeFilter.setSelected(true); 
-		
-		ButtonGroup bg = new ButtonGroup(); 
-		bg.add( correlationButton ); 
-		bg.add( convolutionButton ); 
-		convolutionButton.setSelected(true); 
-		
-		typePanel = new JPanel(); 
-		typePanel.add( correlationButton ); 
-		typePanel.add( convolutionButton ); 
-		typePanel.add( wrapAround ); 
-		typePanel.add( normalizeFilter ); 
-		
-		convolveOp = new ConvolveOp( null ); 
-		correlateOp = new CorrelateOp( null ); 
-		
+
+		correlationButton = new JRadioButton("Correlation");
+		convolutionButton = new JRadioButton("Convolution");
+
+		wrapAround = new JCheckBox("Wrap Around");
+		wrapAround.setSelected(true);
+
+		normalizeFilter = new JCheckBox("Normalize Filter/Reference");
+		normalizeFilter.setSelected(true);
+
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(correlationButton);
+		bg.add(convolutionButton);
+		convolutionButton.setSelected(true);
+
+		typePanel = new JPanel();
+		typePanel.add(correlationButton);
+		typePanel.add(convolutionButton);
+		typePanel.add(wrapAround);
+		typePanel.add(normalizeFilter);
+
+		convolveOp = new ConvolveOp(null);
+		correlateOp = new CorrelateOp(null);
+
 		ActionListener typeListener = new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				
-				if( correlationButton.isSelected() ) {
-					
-					operationLabel.setIcon( correlateOp.getOpIcon() );
+
+				if (correlationButton.isSelected()) {
+
+					operationLabel.setIcon(correlateOp.getOpIcon());
 					function2Label.setText("Reference:");
-					
+
 				} else {
-					
-					operationLabel.setIcon( convolveOp.getOpIcon() );
+
+					operationLabel.setIcon(convolveOp.getOpIcon());
 					function2Label.setText("Filter:");
 				}
-				
+
 			}
-		}; 
-		
+		};
+
 		convolutionButton.addActionListener(typeListener);
-		correlationButton.addActionListener(typeListener); 
-		
-		Dimension selectorSize = new Dimension( GUIDimensions.LIST_WIDTH + 25, 300 ); 
-		
-		JPanel operationSelectorPanel = new JPanel(); 
-		operationLabel = new JLabel( convolveOp.getOpIcon()  ); 
-		operationSelectorPanel.add( operationLabel ); 
-		
-		JPanel operationPanel = new JPanel(); 
-		
-		//first selector
-		JScrollPane sp1 = new JScrollPane( function1Selector ); 
-		sp1.setPreferredSize(selectorSize); 
-		JPanel selectorPanel1 = new JPanel( new BorderLayout() ); 
-		selectorPanel1.add( sp1, BorderLayout.CENTER ); 
-		selectorPanel1.add( new JLabel("Input:"), BorderLayout.NORTH); 
-		operationPanel.add( selectorPanel1 );
-		
-		//operation
-		operationPanel.add( operationSelectorPanel ); 
-		
-		//second selector
-		JScrollPane sp2 = new JScrollPane( function2Selector ); 
-		sp2.setPreferredSize(selectorSize); 
-		JPanel selectorPanel2 = new JPanel( new BorderLayout() ); 
-		selectorPanel2.add( sp2, BorderLayout.CENTER ); 
+		correlationButton.addActionListener(typeListener);
+
+		Dimension selectorSize = new Dimension(GUIDimensions.LIST_WIDTH + 25, 300);
+
+		JPanel operationSelectorPanel = new JPanel();
+		operationLabel = new JLabel(convolveOp.getOpIcon());
+		operationSelectorPanel.add(operationLabel);
+
+		JPanel operationPanel = new JPanel();
+
+		// first selector
+		JScrollPane sp1 = new JScrollPane(function1Selector);
+		sp1.setPreferredSize(selectorSize);
+		JPanel selectorPanel1 = new JPanel(new BorderLayout());
+		selectorPanel1.add(sp1, BorderLayout.CENTER);
+		selectorPanel1.add(new JLabel("Input:"), BorderLayout.NORTH);
+		operationPanel.add(selectorPanel1);
+
+		// operation
+		operationPanel.add(operationSelectorPanel);
+
+		// second selector
+		JScrollPane sp2 = new JScrollPane(function2Selector);
+		sp2.setPreferredSize(selectorSize);
+		JPanel selectorPanel2 = new JPanel(new BorderLayout());
+		selectorPanel2.add(sp2, BorderLayout.CENTER);
 		function2Label = new JLabel("Filter:");
-		selectorPanel2.add( function2Label, BorderLayout.NORTH); 
-		operationPanel.add( selectorPanel2 );
-		
-		addContentPanel(operationPanel, BorderLayout.CENTER); 
-		addContentPanel( typePanel, BorderLayout.NORTH ); 
+		selectorPanel2.add(function2Label, BorderLayout.NORTH);
+		operationPanel.add(selectorPanel2);
+
+		addContentPanel(operationPanel, BorderLayout.CENTER);
+		addContentPanel(typePanel, BorderLayout.NORTH);
 	}
-	
-	public abstract VerticalThumbnailList getVariableList(); 
-	public abstract void getDemo( Function input1, Function input2, 
-			boolean reversedKernel, BinaryOperation op, boolean wrapAround, boolean normalize );
-	
+
+	public abstract VerticalThumbnailList getVariableList();
+
+	public abstract void getDemo(Function input1, Function input2,
+			boolean reversedKernel, BinaryOperation op, boolean wrapAround, boolean normalize);
 
 	@Override
 	public boolean commitSettings() {
-		
-		//get the first two functions 
-		Function input1 = ((FunctionProducer)function1Selector.getSelectedItem()).getFunction(); 
-		Function input2 = ((FunctionProducer)function2Selector.getSelectedItem()).getFunction(); 
-		
-		if( convolutionButton.isSelected() ) {
-		
-			getDemo( input1, input2, true, convolveOp, wrapAround.isSelected(), normalizeFilter.isSelected() );
 
-			
+		// get the first two functions
+		Function input1 = ((FunctionProducer) function1Selector.getSelectedItem()).getFunction();
+		Function input2 = ((FunctionProducer) function2Selector.getSelectedItem()).getFunction();
+
+		if (convolutionButton.isSelected()) {
+
+			getDemo(input1, input2, true, convolveOp, wrapAround.isSelected(), normalizeFilter.isSelected());
+
 		} else {
-			
-			// Correlation uses same input order as convolution
-			// CorrelateOp internally swaps operands to match Roger Easton's textbook notation
-			getDemo( input1, input2, false, correlateOp, wrapAround.isSelected(), normalizeFilter.isSelected() );
 
-		} 
-		
-		return true; 
+			// Correlation: input1 is the input signal, input2 is the reference (which gets
+			// conjugated)
+			// Roger Easton's definition: f ⋆ m = IFFT(FFT(f) · conj(FFT(m)))
+			getDemo(input1, input2, false, correlateOp, wrapAround.isSelected(), normalizeFilter.isSelected());
+
+		}
+
+		return true;
 	}
 
 }
