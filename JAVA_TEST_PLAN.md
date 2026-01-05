@@ -23,6 +23,7 @@ This document outlines a comprehensive test plan for the SignalShow Java impleme
 ### ✅ Completed (172 tests total - ALL PASSING)
 
 - **Operations2DTest.java** (26 tests) - 2D convolution, correlation, autocorrelation
+
   - Delta identity properties
   - Commutativity (convolution) vs non-commutativity (correlation)
   - Conjugation properties
@@ -30,18 +31,21 @@ This document outlines a comprehensive test plan for the SignalShow Java impleme
   - Energy conservation
 
 - **Operations1DTest.java** (~35 tests) - 1D convolution, correlation, autocorrelation, FFT
+
   - Delta identity, commutativity, shift property
   - Time-domain matching for convolution/correlation
   - FFT round-trip identity, linearity, even/odd symmetry
   - Autocorrelation Hermitian property, energy at origin
 
 - **Generators1DTest.java** (~38 tests) - All 1D function generators
+
   - Sine, cosine, rectangle, triangle, delta, step
   - Gaussian, sinc, Lorentz, chirp, comb
   - Bessel J0, window functions (Hamming, Hanning, Welch)
   - Generator property tests
 
 - **UnaryOperations1DTest.java** (~38 tests) - Unary signal operations
+
   - Magnitude (non-negative, Pythagorean theorem)
   - Phase (range [-π, π], special angles)
   - Conjugate (involution, complex)
@@ -50,6 +54,7 @@ This document outlines a comprehensive test plan for the SignalShow Java impleme
   - FFT property tests
 
 - **BinaryOperations1DTest.java** (~29 tests) - Binary signal operations
+
   - Addition (commutative, associative, identity)
   - Subtraction (non-commutative, negation)
   - Multiplication (commutative, associative, distributive)
@@ -64,6 +69,7 @@ This document outlines a comprehensive test plan for the SignalShow Java impleme
 ### ℹ️ Not Needed (Phase 5)
 
 Signal1DTest and Signal2DTest are not needed because:
+
 - Function1D/Function2D classes require Core initialization (GUI)
 - Current test architecture uses raw arrays + Transforms directly (no GUI dependencies)
 - All mathematical behavior is well tested through existing tests
