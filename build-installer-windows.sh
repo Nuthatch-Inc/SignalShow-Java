@@ -19,6 +19,12 @@ fi
 echo "✓ Java $JAVA_VERSION detected"
 echo ""
 
+# Extract version from pom.xml
+VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+JAR_NAME="signalshow-${VERSION}.jar"
+echo "✓ Version: $VERSION"
+echo ""
+
 # Check for WiX Toolset (required for MSI/EXE on Windows)
 if ! command -v candle.exe &> /dev/null; then
     echo "⚠️  Warning: WiX Toolset not found in PATH"
@@ -36,8 +42,8 @@ echo ""
 echo "📦 Building JAR with Maven..."
 mvn clean package -q
 
-if [ ! -f "target/signalshow-1.2.2.jar" ]; then
-    echo "❌ Error: JAR file not found after build"
+if [ ! -f "target/${JAR_NAME}" ]; then
+    echo "❌ Error: JAR file not found after build (expected target/${JAR_NAME})"
     exit 1
 fi
 
@@ -63,9 +69,9 @@ echo "🪟 Creating Windows installer ($TYPE)..."
 jpackage \
   --type "$TYPE" \
   --name SignalShow \
-  --app-version 1.2.2 \
+  --app-version "$VERSION" \
   --input target \
-  --main-jar signalshow-1.2.2.jar \
+  --main-jar "$JAR_NAME" \
   --main-class SignalShow \
   --dest target/dist \
   --vendor "SignalShow" \
