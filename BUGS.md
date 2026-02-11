@@ -86,7 +86,7 @@ ID format: BUG-### (e.g. BUG-001)
 - Actual behavior: (1) Initially showed default alpha = 32; (2) After first fix, polar coordinates showed alpha = 11.314 = sqrt(128)
 - Logs / stacktrace: N/A
 - Temporary workaround: Manually set alpha to sqrt(number of pixels)
-- Notes / PR: 
+- Notes / PR:
   - Part 1 fixed 2025-10-26: Changed default alpha from 32 to 16 in ChirpFunctionTerm1D.java and SineChirpFunctionTerm1D.java. Modified both param_defaults array and widthSpinnerModel.
   - Part 2 fixed 2025-11-05: For polar coordinate functions f(r)f(theta), radial indices only go from 0 to dimension/2 (128 for 256x256), but width calculation should still be based on full dimension (256). Added setDefaultWidthDimension() method to EditAnalyticFunctionTermPanel, EditAnalyticFunctionTerm1DPanel, and CreateAnalyticSubTerm1DPanel. Modified CreateFunctionTerm2DPolarPanel.setIndices() to call setDefaultWidthDimension(dimension) after setIndices(radialIndices). Added hasExplicitWidthDimension flag to EditAnalyticFunctionTerm1DPanel to prevent setDefaultWidth(true) from overriding the explicit dimension with indices.length. This ensures all polar coordinate functions (not just chirps) get correct default width parameter.
   - Date resolved: 2025-11-05
@@ -109,3 +109,23 @@ ID format: BUG-### (e.g. BUG-001)
 - Logs / stacktrace: N/A
 - Temporary workaround: Manually normalize after export
 - Notes / PR: Fixed by adding shared normalization support. Modified ImageWriter.java to add overloaded writeImage() method that accepts explicit min/max values, and added calculateSharedMinMax() method. Modified SaveFunction2DDialog.java to detect when both real and imaginary parts are being exported and use shared min/max for normalization. Date resolved: 2025-10-26
+
+---
+
+- ID: BUG-006
+- Title: Calculator strip thumbnail shows stale image after editing different term
+- Status: open
+- Reported by: julietfiss
+- Date: 2025-01-16
+- Environment: macOS, Java 11, main branch
+- Description: In the 2D Function Calculator, when editing multiple terms in a combined expression, the calculator strip thumbnail for unselected terms shows stale cached images instead of refreshing to show the correct term's visualization.
+- Steps to reproduce:
+  1. Create a 2D function with two terms (term1 + term2)
+  2. Select term2 and edit its parameters (e.g., change function type or parameters)
+  3. Click on term1 in the calculator strip to select it
+  4. Observe the thumbnail for term1
+- Expected behavior: After clicking term1, its thumbnail should show term1's visualization (the function for term1)
+- Actual behavior: The thumbnail for term1 shows term2's visualization (the previously edited term's cached image)
+- Logs / stacktrace: N/A
+- Temporary workaround: Unknown - may need to close and reopen the function editor
+- Notes / PR: Root cause appears to be in the thumbnail caching mechanism. The cache invalidation doesn't properly track which term was edited vs which term is selected. When switching selection, the thumbnail renderer may be using a stale cached image from the previously active term. Related classes: `HorizontalThumbnailList`, `FunctionCalculator2D`, `CalculatorListItem`. This is relevant for the JavaScript port - need to ensure proper cache invalidation when implementing calculator strip in nuthatch-desktop.

@@ -400,7 +400,8 @@ public class CrossValidation1DTest {
         assertEquals(expected[i], value, TOLERANCE, "Gaussian at position " + positions[i]);
       }
 
-      // Verify actual values: exp(-0) = 1, exp(-1/8) ≈ 0.882, exp(-1/2) ≈ 0.606, exp(-2) ≈
+      // Verify actual values: exp(-0) = 1, exp(-1/8) ≈ 0.882, exp(-1/2) ≈ 0.606,
+      // exp(-2) ≈
       // 0.135
       assertEquals(1.0, expected[0], TOLERANCE);
       assertEquals(Math.exp(-0.125), expected[1], TOLERANCE);
