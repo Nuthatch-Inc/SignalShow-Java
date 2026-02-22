@@ -1,11 +1,13 @@
 ---
-applyTo: '**'
+applyTo: "**"
 ---
+
 # Java Release Workflow
 
 ## When This Applies
 
 Any time the user asks to release, publish, build, or deploy SignalShow-Java. Common phrasings:
+
 - "build the java and publish a new release"
 - "release a new version"
 - "push and release"
@@ -20,6 +22,7 @@ SignalShow-Java uses GitHub Actions to automatically build native Mac (.dmg) and
 ### 1. Bump the version in pom.xml
 
 The version lives in `pom.xml` under `<version>`. Bump it appropriately:
+
 - Bug fixes: patch bump (e.g., 1.2.3 → 1.2.4)
 - New features: minor bump (e.g., 1.2.3 → 1.3.0)
 
@@ -59,6 +62,7 @@ Always provide these exact instructions and links:
 > **https://github.com/Nuthatch-Inc/SignalShow-Java/actions**
 >
 > Look for the "Build Native Installers" workflow run triggered by the `v<VERSION>` tag. It has three jobs:
+>
 > 1. **Build macOS Installer** — builds the .dmg file
 > 2. **Build Windows Installer** — builds the .exe/.msi file
 > 3. **Create GitHub Release** — creates a draft release with both installers attached
