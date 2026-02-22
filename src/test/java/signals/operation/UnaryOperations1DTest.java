@@ -645,5 +645,73 @@ public class UnaryOperations1DTest {
       assertEquals(Math.PI, Math.abs(phase[2]), TOLERANCE);
       assertEquals(-Math.PI / 2, phase[3], TOLERANCE);
     }
+
+    @Test
+    @DisplayName("ArrayMath.subtractMean subtracts mean at every index")
+    void arrayMathSubtractMeanAllIndices() {
+      double[] input = new double[] { 2, 4, 6, 8 };
+
+      double[] output = ArrayMath.subtractMean(input);
+
+      assertEquals(-3.0, output[0], TOLERANCE);
+      assertEquals(-1.0, output[1], TOLERANCE);
+      assertEquals(1.0, output[2], TOLERANCE);
+      assertEquals(3.0, output[3], TOLERANCE);
+
+      double sum = 0.0;
+      for (double value : output) {
+        sum += value;
+      }
+      assertEquals(0.0, sum, TOLERANCE, "Subtract-mean output should sum to zero");
+    }
+
+    @Test
+    @DisplayName("Histogram.PDF includes first bin probability")
+    void histogramPdfIncludesFirstBin() {
+      double[] input = new double[] { 0.0, 0.0, 1.0, 1.0 };
+
+      double[] pdf = Histogram.PDF(input, 2, 0.0, 2.0);
+
+      assertEquals(0.5, pdf[0], TOLERANCE, "PDF bin 0 should include first-bin mass");
+      assertEquals(0.5, pdf[1], TOLERANCE, "PDF bin 1 should include second-bin mass");
+    }
+
+    @Test
+    @DisplayName("ArrayMath.reverse2D x-direction preserves first column")
+    void arrayMathReverse2DXPreservesFirstColumn() {
+      double[] input = new double[] {
+          10.0, 1.0, 2.0,
+          20.0, 3.0, 4.0
+      };
+
+      double[] reversed = ArrayMath.reverse2D(input, 3, 2, true);
+
+      double[] expected = new double[] {
+          10.0, 2.0, 1.0,
+          20.0, 4.0, 3.0
+      };
+
+      assertSignalsEqual(expected, reversed, "reverse2D x should preserve col 0 and reverse remaining cols");
+    }
+
+    @Test
+    @DisplayName("ArrayMath.reverse2D y-direction preserves first row")
+    void arrayMathReverse2DYPreservesFirstRow() {
+      double[] input = new double[] {
+          1.0, 2.0, 3.0,
+          4.0, 5.0, 6.0,
+          7.0, 8.0, 9.0
+      };
+
+      double[] reversed = ArrayMath.reverse2D(input, 3, 3, false);
+
+      double[] expected = new double[] {
+          1.0, 2.0, 3.0,
+          7.0, 8.0, 9.0,
+          4.0, 5.0, 6.0
+      };
+
+      assertSignalsEqual(expected, reversed, "reverse2D y should preserve row 0 and reverse remaining rows");
+    }
   }
 }

@@ -129,3 +129,60 @@ ID format: BUG-### (e.g. BUG-001)
 - Logs / stacktrace: N/A
 - Temporary workaround: Unknown - may need to close and reopen the function editor
 - Notes / PR: Root cause appears to be in the thumbnail caching mechanism. The cache invalidation doesn't properly track which term was edited vs which term is selected. When switching selection, the thumbnail renderer may be using a stale cached image from the previously active term. Related classes: `HorizontalThumbnailList`, `FunctionCalculator2D`, `CalculatorListItem`. This is relevant for the JavaScript port - need to ensure proper cache invalidation when implementing calculator strip in nuthatch-desktop.
+
+---
+
+- ID: BUG-007
+- Title: ArrayMath.subtractMean() skips index 0 (off-by-one bug)
+- Status: resolved
+- Reported by: copilot (discovered during nuthatch-desktop port)
+- Date: 2026-02-12
+- Environment: All platforms, all Java versions
+- Description: `ArrayMath.subtractMean()` has a loop that starts at `i = 1` instead of `i = 0`, so `subtracted[0]` is always 0.0 instead of `array[0] - mean`. The mean is computed correctly from all elements (including index 0), but the subtraction is not applied to the first element. This means SubtractMeanOp produces incorrect output at index 0 and the result does not truly have zero mean.
+- Steps to reproduce:
+  1. Create any signal (e.g., a ramp [2, 4, 6, 8])
+  2. Apply SubtractMean operation
+  3. Inspect output[0]
+- Expected behavior: output[0] = array[0] - mean = 2 - 5 = -3, and the output sum should be 0
+- Actual behavior: output[0] = 0.0 (Java zero-initialized array default), output sum = mean (nonzero)
+- Logs / stacktrace: N/A — silent data corruption, no error thrown
+- Temporary workaround: None
+- Notes / PR: Found in `signals/ArrayMath.java`, method `subtractMean(double[])`. Fixed by changing `for (int i = 1; ...)` to `for (int i = 0; ...)` in `src/main/java/signals/operation/ArrayMath.java`. Added regression test `arrayMathSubtractMeanAllIndices()` in `src/test/java/signals/operation/UnaryOperations1DTest.java` to verify index 0 behavior and zero-sum output. The nuthatch-desktop (JavaScript) port already has the correct implementation starting at index 0. This bug affects both 1D and 2D signals since `SubtractMeanOp.create()` calls `ArrayMath.subtractMean()` independently on both the real and imaginary arrays. Date resolved: 2026-02-22.
+
+---
+
+- ID: BUG-008
+- Title: Histogram.PDF() skips bin 0 (off-by-one bug)
+- Status: resolved
+- Reported by: copilot
+- Date: 2026-02-22
+- Environment: All platforms, all Java versions
+- Description: `Histogram.PDF()` computes histogram counts correctly but fills `pdf[]` starting at `i = 1`, leaving `pdf[0]` at its default `0.0` even when bin 0 has data.
+- Steps to reproduce:
+  1. Use input values that populate bin 0 (e.g., `[0, 0, 1, 1]` with `numBins=2`, `min=0`, `max=2`)
+  2. Call `Histogram.PDF(...)`
+  3. Inspect `pdf[0]`
+- Expected behavior: `pdf[0]` should equal `histogram[0] / input.length`.
+- Actual behavior: `pdf[0]` is always `0.0` unless bin 0 truly has no samples.
+- Logs / stacktrace: N/A — silent numerical error
+- Temporary workaround: None
+- Notes / PR: Fixed in `src/main/java/signals/operation/Histogram.java` by changing loop start from `i = 1` to `i = 0`. Added regression test `histogramPdfIncludesFirstBin()` in `src/test/java/signals/operation/UnaryOperations1DTest.java`. Date resolved: 2026-02-22.
+
+---
+
+- ID: BUG-009
+- Title: ArrayMath.reverse2D() leaves first row/column zeroed
+- Status: resolved
+- Reported by: copilot
+- Date: 2026-02-22
+- Environment: All platforms, all Java versions
+- Description: `ArrayMath.reverse2D()` starts reversal loops at index `1` in both direction branches, but unlike 1D reverse it does not explicitly preserve the first coordinate. This leaves the first column (x-direction reverse) or first row (y-direction reverse) at default zeros instead of copying original values.
+- Steps to reproduce:
+  1. Create a small nonzero 2D array with nonzero first row/column values
+  2. Call `ArrayMath.reverse2D(input, xDim, yDim, true)` and `ArrayMath.reverse2D(input, xDim, yDim, false)`
+  3. Inspect output first column / first row
+- Expected behavior: First column (x reverse) and first row (y reverse) should be preserved, matching 1D reverse semantics for index 0.
+- Actual behavior: First column / first row values become 0.0.
+- Logs / stacktrace: N/A — silent data corruption
+- Temporary workaround: None
+- Notes / PR: Fixed in `src/main/java/signals/operation/ArrayMath.java` by explicitly copying preserved edge values (`output[j][0]` for x-reverse, `output[0][i]` for y-reverse). Added regression tests `arrayMathReverse2DXPreservesFirstColumn()` and `arrayMathReverse2DYPreservesFirstRow()` in `src/test/java/signals/operation/UnaryOperations1DTest.java`. Date resolved: 2026-02-22.
