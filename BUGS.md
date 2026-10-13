@@ -453,3 +453,37 @@ ID format: BUG-### (e.g. BUG-001)
 - Verification: Twenty-four before-failing calculation cases plus two display checks; full 529-test package. Native constant playback now stays at 2; a saved complex sine/rectangle correlation matches all 256 independent sample sums after editing/reopening.
 - Scope: Frequency filtering/location demos and complex normalization semantics remain separate; no Windows claim.
 - Evidence: [Demonstration calculations](docs/audit/evidence/2026-10-13-demo-calculations.md).
+
+
+---
+
+- ID: BUG-033
+- Title: Uncentered frequency demos filter the wrong frequency bins
+- Status: resolved within tested low/high-pass scope
+- Date: 2026-10-13
+- Reproduction: Create a real uncentered 32×16 Cosine with period 16; Gaussian low-pass width 3 introduces an imaginary oscillation ±0.123760. 1D filtering can also return a wrongly centered result.
+- Correction: Sample the filter using signed FFT-bin coordinates and preserve the source origin in both demonstration dimensions.
+- Verification: Independent harmonic-gain tests for Ideal/Gaussian low/high-pass, both origins and two widths; native cosine gains and imaginary display; full 539-test package.
+- Evidence: [Frequency demonstration audit](docs/audit/evidence/2026-10-13-frequency.md).
+
+---
+
+- ID: BUG-034
+- Title: DC-only selection produces a blank frequency reconstruction
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: In Frequency Locations, select DC Component and deselect Low/Mid/High. A Constant amplitude 2 disappears.
+- Correction: Keep DC and non-DC low-frequency contributions independent; retain the source origin in spatial previews.
+- Verification: Both-origin band/DC component checks and native centered/uncentered Constant reconstructions; full 539-test package.
+- Evidence: [Frequency demonstration audit](docs/audit/evidence/2026-10-13-frequency.md).
+
+---
+
+- ID: BUG-035
+- Title: Uncentered RGB image previews use an invalid scale
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: The uncentered Fourier/filter preview displays a largely white image with color bounds −1/−1.
+- Correction: Enable RGB autoscaling independently of the origin, as for grayscale images.
+- Verification: Three before-failing display-bound checks, native 0–1 frequency preview and uncentered DC color reconstruction; full 539-test package.
+- Evidence: [Frequency demonstration audit](docs/audit/evidence/2026-10-13-frequency.md).

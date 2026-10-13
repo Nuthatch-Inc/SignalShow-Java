@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 
 import signals.core.Function;
 import signals.core.Function1D;
-import signals.core.FunctionFactory;
 import signals.gui.plot.Function1DTabPanel;
 import signals.gui.plot.Indices;
 import signals.operation.Transforms;
@@ -54,7 +53,7 @@ public class FilteringDemo1D extends FilteringDemo {
 	@Override
 	public void calculate() {
 
-		filter = FunctionFactory.createFunction1D(filterTerm, dimension, zeroCentered, "Filter"); 
+		filter = FrequencyDemoFilter.create(transform, filterTerm);
 		Function filtered = timesOp.create(filter, transform); 
 		reconstructed = Transforms.fft1D(filtered, true, Transforms.NORMALIZE_ROOT_N); 
 		

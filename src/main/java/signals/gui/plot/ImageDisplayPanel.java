@@ -143,7 +143,7 @@ public class ImageDisplayPanel extends JPanel implements ParameterUser, Deconstr
 		Interpolation interpolation  = (x_dimension > displayDimension.width ) ? 
 				new InterpolationBilinear() : new InterpolationNearest(); 
 		image = imageMath.getScaledImage( band1, band2, band3,
-						x_dimension, y_dimension, displayDimension, zeroCentered, interpolation, zeroCentered);
+						x_dimension, y_dimension, displayDimension, zeroCentered, interpolation, true);
 		display(); 
 
 	}

@@ -80,8 +80,8 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		dimensionX = function2D.getDimensionX(); 
 		dimensionY = function2D.getDimensionY();
 		
-		realOriginal.setIndices(dimensionX, dimensionY, true); 
-		imagOriginal.setIndices(dimensionX, dimensionY, true); 
+		realOriginal.setIndices(dimensionX, dimensionY, function.isZeroCentered());
+		imagOriginal.setIndices(dimensionX, dimensionY, function.isZeroCentered());
 		realOriginal.display(real); 
 		imagOriginal.display(imag); 
 		
@@ -100,7 +100,7 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		double[] logMagnitude = ArrayMath.log10(ArrayMath.magnitude(fdreal, fdimag));
 		
 		frequencyDisplayPanel.setIndices(dimensionX, dimensionY, true);
-		spatialDisplayPanel.setIndices(dimensionX, dimensionY, true); 
+		spatialDisplayPanel.setIndices(dimensionX, dimensionY, function.isZeroCentered());
 		
 		frequencyDisplayPanel.display(logMagnitude);
 		
@@ -194,7 +194,7 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 
 	}
 	
-	public void calculate() { //todo: subtract dc component checkbox
+	public void calculate() {
 		
 		double[] lpfilter = getlpfilter(false); 
 		double[] midfilter = getmidfilter(); 
@@ -203,7 +203,10 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		double[] bandfilter = ArrayMath.subtract(midfilter, lpfilter); 
 		double[] hpfilter = ArrayMath.subtract(highfilter, midfilter); 
 		
-		lpfilter = getlpfilter(!dcCheckBox.isSelected()); 
+		// DC and non-DC low frequencies are independent controls. The bands
+		// above still use the complete low-pass mask to partition frequency space.
+		lpfilter = lfCheckBox.isSelected() ? getlpfilter(true) : zero.clone();
+		if (dcCheckBox.isSelected()) lpfilter[(dimensionY / 2 - 1) * dimensionX + dimensionX / 2] = 1;
 
 		double[] lpfilteredfd_real = ArrayMath.modulate(lpfilter, fdreal); 
 		double[] bandfilteredfd_real = ArrayMath.modulate(bandfilter, fdreal); 
@@ -229,7 +232,7 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		int idx = realButton.isSelected() ? 0 : 1; 
 		double[] hfdisplay = hfCheckBox.isSelected() ? hpfiltered[idx] : zero; 
 		double[] mfdisplay = mfCheckBox.isSelected() ? bandfiltered[idx] : zero; 
-		double[] lfdisplay = lfCheckBox.isSelected() ? lpfiltered[idx] : zero; 
+		double[] lfdisplay = (lfCheckBox.isSelected() || dcCheckBox.isSelected()) ? lpfiltered[idx] : zero;
 		
 		if( absvalCheckBox.isSelected() ) {
 			

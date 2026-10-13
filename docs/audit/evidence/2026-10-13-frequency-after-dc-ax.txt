@@ -1,0 +1,83 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Description: Frequency cosine[x, y] = cos[2π(x/16)]1[y] + i(0[x]0[y]), Value: 0
+					6 JavaAxIgnore (selectable) Frequency cosine[x, y] = cos[2π(x/16)]1[y] + i(0[x]0[y])
+				7 row (selectable) Description: Filtering Demo, Value: 0
+					8 JavaAxIgnore (selectable) Filtering Demo
+				9 row (selectable) Description: DC constant[x, y] = 2 × 1[x]1[y] + i(0[x]0[y]), Value: 0
+					10 JavaAxIgnore (selectable) DC constant[x, y] = 2 × 1[x]1[y] + i(0[x]0[y])
+				11 row (selected) Description: Frequency Locations Demo, Value: 0
+					12 JavaAxIgnore (selectable) Frequency Locations Demo
+			13 scroll bar (selectable)
+			14 scroll bar (selectable)
+		15 button (selectable) Duplicate
+		16 button (selectable) Delete
+		17 stepper (selectable) Value: 3.010299956639812, Secondary Actions: Increment, Decrement
+			18 text field (selectable) 3.01
+		19 stepper (selectable) Value: -28.88052346949321, Secondary Actions: Increment, Decrement
+			20 text field (selectable) -28.881
+		21 text (selectable) Low-Frequency Cutoff:
+		22 stepper (selectable) Value: 8, Secondary Actions: Increment, Decrement
+			23 text field (selectable) 8
+		24 text (selectable) Mid-Frequency Cutoff:
+		25 stepper (selectable) Value: 24, Secondary Actions: Increment, Decrement
+			26 text field (selectable) 24
+		27 checkbox (selectable) DC Component
+		28 checkbox (selectable) Low Frequencies (Not Including DC Component)
+		29 checkbox (selectable) Mid Frequencies (Band Pass)
+		30 checkbox (selectable) High Frequencies
+		31 stepper (selectable) Value: 2, Secondary Actions: Increment, Decrement
+			32 text field (selectable) 2
+		33 stepper (selectable) Value: 0, Secondary Actions: Increment, Decrement
+			34 text field (selectable) 0
+		35 checkbox (selectable) display absolute value
+		36 radio button (selectable) Show Real
+		37 radio button (selectable) Show Imaginary
+	38 close button
+	39 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	40 minimize button
+	41 text SignalShow
+42 menu bar
+	43 SignalShowRogerAudit
+	44 File
+	45 1D
+	46 2D
+	47 Help
+
+Selected:
+	48 row (selectable) Description: Frequency Locations Demo, Value: 0
+		49 JavaAxIgnore (selectable) Frequency Locations Demo
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

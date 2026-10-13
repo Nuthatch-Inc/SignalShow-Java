@@ -1,0 +1,94 @@
+{
+  "fixtures": [
+    {
+      "name": "frequency-cosine-before",
+      "shape": [
+        32,
+        16
+      ],
+      "centered": false,
+      "max_error": 1.1102230246251565e-16,
+      "sha256": "68066b2f1d76bc8fbb125273e321a9aef01f227627a0bacf9546947419ee075a"
+    },
+    {
+      "name": "frequency-cosine-after",
+      "shape": [
+        32,
+        16
+      ],
+      "centered": false,
+      "max_error": 1.1102230246251565e-16,
+      "sha256": "68066b2f1d76bc8fbb125273e321a9aef01f227627a0bacf9546947419ee075a"
+    },
+    {
+      "name": "frequency-dc-before",
+      "shape": [
+        32,
+        16
+      ],
+      "centered": true,
+      "max_error": 0.0,
+      "sha256": "12621d169588a7b48c54556ac0cd1e48915430bd04d7a9fc744409dc2cb2cb61"
+    },
+    {
+      "name": "frequency-dc-after",
+      "shape": [
+        32,
+        16
+      ],
+      "centered": true,
+      "max_error": 0.0,
+      "sha256": "12621d169588a7b48c54556ac0cd1e48915430bd04d7a9fc744409dc2cb2cb61"
+    },
+    {
+      "name": "frequency-dc-uncentered",
+      "shape": [
+        32,
+        16
+      ],
+      "centered": false,
+      "max_error": 0.0,
+      "sha256": "af2e9fac4bd05aebd7e309cbf4a5c3fe73293ef5f30f94a8840416d93a1cf8da"
+    }
+  ],
+  "expected_low_gain": 0.2475201214239156,
+  "native_display_extrema": {
+    "before_imaginary": [
+      0.1237600607119583,
+      -0.1237600607119575
+    ],
+    "after_imaginary_scale": [
+      0.01000000000000145,
+      -0.01000000000000025
+    ],
+    "after_low_real": [
+      0.2475201214239156,
+      -0.2475201214239156
+    ],
+    "after_high_real": [
+      0.7524798785760844,
+      -0.7524798785760842
+    ],
+    "before_color_scale": [
+      -1.0,
+      -1.0
+    ],
+    "after_color_scale": [
+      1.0,
+      0.0
+    ],
+    "before_dc_scale": [
+      0.01,
+      -0.01
+    ],
+    "after_dc_scale": [
+      2.0,
+      0.0
+    ],
+    "uncentered_dc_scale": [
+      2.0,
+      0.0
+    ]
+  },
+  "scope": "Native source samples and displayed extrema; independent component checks verify every reconstructed sample."
+}

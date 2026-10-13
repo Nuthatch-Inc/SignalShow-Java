@@ -7,17 +7,18 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 83% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 82% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-demo-numerics"
+      "memory-lifecycle"
     ],
     "nextIds": [
-      "memory-lifecycle",
-      "gui-demo-settings"
+      "gui-demo-settings",
+      "gui-sampling",
+      "gui-frequency-bandpass"
     ]
   },
   "math": [
@@ -3421,19 +3422,21 @@
     {
       "id": "gui-demo-numerics",
       "area": "usage",
-      "title": "Verify frequency-demo displayed results",
+      "title": "Low/high-pass filtering and frequency-band/DC reconstruction",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
-        "Compare ordinary frequency filtering and frequency-band reconstructions with independent results."
+        "Create ordinary harmonic images/signals and select Ideal/Gaussian low/high-pass.",
+        "Edit widths and compare the reconstructed result for both origins.",
+        "Select independent DC/low/mid/high components and inspect the spatial preview."
       ],
       "expected": "Displayed intermediate and final values follow the selected demonstration settings.",
-      "scope": "Separate frequency-demo callers; existing operation math and GUI smoke checks do not certify them.",
-      "summary": "Convolution/correlation has its own checked row. Frequency-filtering and frequency-location calculations still need independent verification.",
+      "scope": "Native 32×16 uncentered Gaussian cosine and centered/uncentered DC-only Constant; component checks include 1D, Ideal, both origins and three frequency bands. Filtering Band Pass/Band Reject remain separate.",
+      "summary": "Fixed wrong uncentered frequency bins, suppressed DC-only output and invalid RGB scales. Native cosine gain, imaginary result and DC-only Constant reconstructions agree with independent expectations.",
       "evidence": [
-        "demos-2026-10-13"
+        "frequency-2026-10-13"
       ],
-      "environment": "Target environment to be recorded",
+      "environment": "macOS arm64/JDK 25; final 539-test package",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -3454,6 +3457,39 @@
         "memory-usage-2026-10-13"
       ],
       "environment": "macOS arm64/JDK 25; 503-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-frequency-bandpass",
+      "area": "usage",
+      "title": "Filtering-demo band-pass and band-reject choices",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Create ordinary inputs, choose Band Pass/Band Reject, edit center/separation/width and switch Ideal/Gaussian."
+      ],
+      "expected": "Controls and displayed samples agree with the selected pass/reject band.",
+      "scope": "Different filter generators from the low/high-pass cases and Frequency Locations bands.",
+      "summary": "Bounded scenario planned; not certified by the current harmonic low/high-pass checks.",
+      "evidence": [],
+      "environment": "Target environment to be recorded",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-sampling",
+      "area": "usage",
+      "title": "Ordinary sampling and reconstruction after parameter edits",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Open Sampling/Aliasing on a normal signal.",
+        "Change sampling period and reconstruction width, then enable reconstruction."
+      ],
+      "expected": "Sampled and reconstructed signals follow their controls and retain the source origin.",
+      "scope": "Source finding: old term-based function factory ignores supplied origin; sampling reconstruction caller still requires direct verification.",
+      "summary": "Investigate both origins and normal period/width edits before changing this separate demo.",
+      "evidence": [],
+      "environment": "Target environment to be recorded",
       "reviewedOn": "2026-10-13"
     }
   ],
@@ -4133,6 +4169,48 @@
         "docs/audit/evidence/2026-10-13-demo-input.txt",
         "docs/audit/evidence/2026-10-13-demo-after-input.txt",
         "docs/audit/evidence/2026-10-13-demo-calculations-native.log"
+      ]
+    },
+    "frequency-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25; final 539-test package; native CUA and Swing component tests",
+      "summary": "Corrected signed-frequency masks, independent DC selection and RGB preview scales; native ordinary cosine/Constant checks and ten harmonic component cases pass.",
+      "limits": "Native 1D and filtering Band Pass/Band Reject unverified; no Windows or endurance claim.",
+      "sources": [
+        "src/main/java/signals/demo/FrequencyDemoFilter.java",
+        "src/main/java/signals/demo/FilteringDemo1D.java",
+        "src/main/java/signals/demo/FilteringDemo2D.java",
+        "src/main/java/signals/demo/FrequencyLocation2D.java",
+        "src/main/java/signals/gui/plot/ImageDisplayPanel.java",
+        "src/test/java/signals/core/FrequencyDemoWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-frequency-after-color-scale-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-after-color-scale.png",
+        "docs/audit/evidence/2026-10-13-frequency-after-dc-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-after-dc-uncentered-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-after-dc-uncentered.png",
+        "docs/audit/evidence/2026-10-13-frequency-after-dc.png",
+        "docs/audit/evidence/2026-10-13-frequency-after-focused.log",
+        "docs/audit/evidence/2026-10-13-frequency-after-high-real-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-after-imaginary-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-after-imaginary.png",
+        "docs/audit/evidence/2026-10-13-frequency-after-low-real-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-before-color-scale.png",
+        "docs/audit/evidence/2026-10-13-frequency-before-dc-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-before-dc.png",
+        "docs/audit/evidence/2026-10-13-frequency-before-imaginary-ax.txt",
+        "docs/audit/evidence/2026-10-13-frequency-before-imaginary.png",
+        "docs/audit/evidence/2026-10-13-frequency-before.log",
+        "docs/audit/evidence/2026-10-13-frequency-color-before.log",
+        "docs/audit/evidence/2026-10-13-frequency-cosine-after.txt",
+        "docs/audit/evidence/2026-10-13-frequency-cosine-before.txt",
+        "docs/audit/evidence/2026-10-13-frequency-dc-after.txt",
+        "docs/audit/evidence/2026-10-13-frequency-dc-before.txt",
+        "docs/audit/evidence/2026-10-13-frequency-dc-uncentered.txt",
+        "docs/audit/evidence/2026-10-13-frequency-native.log",
+        "docs/audit/evidence/2026-10-13-frequency-package.log",
+        "docs/audit/evidence/2026-10-13-frequency-values.json",
+        "docs/audit/evidence/2026-10-13-frequency-verifier.py",
+        "docs/audit/evidence/2026-10-13-frequency.md"
       ]
     }
   },

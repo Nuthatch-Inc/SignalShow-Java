@@ -14,7 +14,6 @@ import javax.swing.JRadioButton;
 
 import signals.core.Function;
 import signals.core.Function2D;
-import signals.core.FunctionFactory;
 import signals.gui.plot.ImageDisplayPanel;
 import signals.operation.ArrayMath;
 import signals.operation.Transforms;
@@ -107,7 +106,7 @@ public class FilteringDemo2D extends FilteringDemo {
 	@Override
 	public void calculate() {
 
-		filter = FunctionFactory.createRadialFunction2D(filterTerm, dimensionX, dimensionY, zeroCentered, "filter");
+		filter = FrequencyDemoFilter.create(transform, filterTerm);
 		Function filtered = timesOp.create(filter, transform); 
 		reconstructed = Transforms.fft2D(filtered, true, Transforms.NORMALIZE_ROOT_N); 
 	}
