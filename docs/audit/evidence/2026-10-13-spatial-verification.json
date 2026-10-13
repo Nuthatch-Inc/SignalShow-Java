@@ -1,0 +1,236 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "spatial-rectangle.txt",
+      "descriptor": "spatial rectangle",
+      "complexSamples": 8192,
+      "sha256": "8d1a1923dc7fd6443777db4936acbec074f545ce4c5dba931a1ed4e0c1f7a9e2",
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ],
+      "peakRealCoordinate": [
+        7,
+        -4
+      ]
+    },
+    {
+      "file": "spatial-gaussian.txt",
+      "descriptor": "spatial Gaussian",
+      "complexSamples": 8192,
+      "sha256": "2ddc68fa3bc145a0161ad984e6b8b22f37d5d7267bdc51b7b2eed69838cf8928",
+      "maxComplexError": 1.1102230246251565e-16,
+      "realRange": [
+        8.940913894083792e-72,
+        1.5
+      ],
+      "imaginaryRange": [
+        0.25,
+        0.25
+      ],
+      "peakRealCoordinate": [
+        -6,
+        3
+      ]
+    },
+    {
+      "file": "spatial-convolve.txt",
+      "descriptor": "spatial Gaussian * spatial rectangle",
+      "complexSamples": 8192,
+      "sha256": "e323c0409a715ca46a88a03f39b5ec601e13f3f256508561e4480ee345941094",
+      "maxComplexError": 5.275271403567838e-13,
+      "realRange": [
+        -4.0083673554219463e-13,
+        39.89623764884959
+      ],
+      "imaginaryRange": [
+        7.999999999999975,
+        8.000000000000473
+      ],
+      "peakRealCoordinate": [
+        4,
+        -2
+      ]
+    },
+    {
+      "file": "spatial-correlate.txt",
+      "descriptor": "spatial Gaussian * spatial rectangle",
+      "complexSamples": 8192,
+      "sha256": "b902a0277fe02129401eab92ffb73fa05889ed87d541cd981346efd48af1b040",
+      "maxComplexError": 5.689065310356191e-13,
+      "realRange": [
+        -2.341580937387355e-13,
+        39.896237648849755
+      ],
+      "imaginaryRange": [
+        7.999999999999436,
+        8.000000000000277
+      ],
+      "peakRealCoordinate": [
+        -16,
+        8
+      ]
+    },
+    {
+      "file": "spatial-forward.txt",
+      "descriptor": "FFT{ spatial Gaussian * spatial rectangle }",
+      "complexSamples": 8192,
+      "sha256": "8b8fe7401deaf32d44ee948af760b24ceb1d30d55d7aa41bfccef0e44c2253f3",
+      "maxComplexError": 1.030851326235649e-11,
+      "realRange": [
+        -35.43151491141947,
+        50.911688245421125
+      ],
+      "imaginaryRange": [
+        -46.50321352484756,
+        724.0773439350249
+      ],
+      "peakRealCoordinate": [
+        0,
+        0
+      ]
+    },
+    {
+      "file": "spatial-inverse.txt",
+      "descriptor": "FFT{ FFT{ spatial Gaussian * spatial rectangle } }",
+      "complexSamples": 8192,
+      "sha256": "cca2f638a2175915d4c3dd417f2a4aab60d5b6bd222063e04a266ba67e899c20",
+      "maxComplexError": 1.0818262917358858e-12,
+      "realRange": [
+        -6.885300802856036e-13,
+        39.89623764884974
+      ],
+      "imaginaryRange": [
+        7.999999999998943,
+        8.00000000000102
+      ],
+      "peakRealCoordinate": [
+        -16,
+        8
+      ]
+    },
+    {
+      "file": "spatial-gaussian-edited.txt",
+      "descriptor": "spatial Gaussian",
+      "complexSamples": 8192,
+      "sha256": "ec1cc20bc8a6ed94c017760cacd2ce2e3769edb244b18b15236f69b34e80aa74",
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        1.1921218525445057e-71,
+        2.0
+      ],
+      "imaginaryRange": [
+        0.25,
+        0.25
+      ],
+      "peakRealCoordinate": [
+        -6,
+        3
+      ]
+    },
+    {
+      "file": "spatial-convolve-edited.txt",
+      "descriptor": "spatial Gaussian * spatial rectangle",
+      "complexSamples": 8192,
+      "sha256": "4773fc67a2ca04169b1328f1d1e98c85552e6445313e1238442bdd03845b06a9",
+      "maxComplexError": 6.736398577924086e-13,
+      "realRange": [
+        -4.002286175645884e-13,
+        53.19498353179952
+      ],
+      "imaginaryRange": [
+        7.9999999999999725,
+        8.000000000000636
+      ],
+      "peakRealCoordinate": [
+        4,
+        -2
+      ]
+    },
+    {
+      "file": "spatial-correlate-edited.txt",
+      "descriptor": "spatial Gaussian * spatial rectangle",
+      "complexSamples": 8192,
+      "sha256": "4c3911161991fccd155dd28582b7c0bdd6b0c05e4c3cce86c52a8e734d9140d0",
+      "maxComplexError": 7.526477592184095e-13,
+      "realRange": [
+        -2.3295884459046093e-13,
+        53.19498353179969
+      ],
+      "imaginaryRange": [
+        7.999999999999253,
+        8.000000000000375
+      ],
+      "peakRealCoordinate": [
+        -16,
+        8
+      ]
+    },
+    {
+      "file": "spatial-forward-edited.txt",
+      "descriptor": "FFT{ spatial Gaussian * spatial rectangle }",
+      "complexSamples": 8192,
+      "sha256": "25a85bae4e21817a50ba1f4539c940e06315f27e4fefa5bf2bcc6080ca11378c",
+      "maxComplexError": 1.0325425536078425e-11,
+      "realRange": [
+        -47.242019881892624,
+        67.88225099389825
+      ],
+      "imaginaryRange": [
+        -62.00428469979675,
+        724.0773439350253
+      ],
+      "peakRealCoordinate": [
+        0,
+        0
+      ]
+    },
+    {
+      "file": "spatial-inverse-edited.txt",
+      "descriptor": "FFT{ FFT{ spatial Gaussian * spatial rectangle } }",
+      "complexSamples": 8192,
+      "sha256": "a5f1726dda5d9273c2ea2106969456c4c9615ed6f416dc41628e6cef65e2e1fb",
+      "maxComplexError": 1.4095287983393902e-12,
+      "realRange": [
+        -7.169104431586477e-13,
+        53.194983531799664
+      ],
+      "imaginaryRange": [
+        7.999999999998591,
+        8.000000000001357
+      ],
+      "peakRealCoordinate": [
+        -16,
+        8
+      ]
+    },
+    {
+      "file": "spatial-inverse-convolve-edited.txt",
+      "descriptor": "FFT{ FFT{ spatial Gaussian * spatial rectangle } }",
+      "complexSamples": 8192,
+      "sha256": "2a70f1e948e38c3ddb1fdbd585b2ed07bb6792b85486a30c1837e45117ef2441",
+      "maxComplexError": 1.153489045876228e-12,
+      "realRange": [
+        -8.539116059887035e-13,
+        53.194983531799465
+      ],
+      "imaginaryRange": [
+        7.9999999999995035,
+        8.000000000001052
+      ],
+      "peakRealCoordinate": [
+        4,
+        -2
+      ]
+    }
+  ],
+  "passed": 12,
+  "totalComplexSamples": 98304,
+  "maxComplexError": 1.0325425536078425e-11
+}

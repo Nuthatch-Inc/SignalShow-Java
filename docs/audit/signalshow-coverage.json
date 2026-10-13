@@ -7,13 +7,13 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 79% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly78% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-spatial-convolution"
+      "gui-2d-rectangular-rotation-chain"
     ],
     "nextIds": []
   },
@@ -551,10 +551,11 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample.",
-      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native spatially varying filtering, larger workloads and Windows are separate gaps.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
+      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
-        "filtering-2026-10-13"
+        "filtering-2026-10-13",
+        "spatial-filtering-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1111,10 +1112,11 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample.",
-      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native spatially varying filtering, larger workloads and Windows are separate gaps.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
+      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
-        "filtering-2026-10-13"
+        "filtering-2026-10-13",
+        "spatial-filtering-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1131,10 +1133,11 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample.",
-      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native spatially varying filtering, larger workloads and Windows are separate gaps.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
+      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
-        "filtering-2026-10-13"
+        "filtering-2026-10-13",
+        "spatial-filtering-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -3504,15 +3507,35 @@
       "area": "usage",
       "title": "Convolve and correlate spatially varying images through editable chains",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create a rectangular Gaussian image and translated rectangle aperture using normal parameters.",
         "Convolve/correlate, edit a source and save results; compare every complex sample independently.",
         "Exercise forward/inverse FFT on the nonconstant image chain."
       ],
       "expected": "Nonconstant spatial results, source edits and transforms remain correct and usable.",
-      "scope": "Extends native constant-only operation coverage to spatially varying images; bounded normal sizes.",
-      "summary": "Next ordinary2D workflow; existing model checks are not native evidence for these fixtures.",
+      "scope": "Centered128×64 complex Gaussian/translated rectangle, two amplitudes, circular Convolve/Correlate and square-root-N forward/inverse FFT.",
+      "summary": "All98,304 complex samples from12 native exports match independent references; live source and operator edits propagate. Native controls remained usable; six separate JDK accessibility exceptions recorded.",
+      "evidence": [
+        "spatial-filtering-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK25;567-test native package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-rectangular-rotation-chain",
+      "area": "usage",
+      "title": "Rotate a rectangular image within magnitude and threshold chains",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a128×64 image with off-center structure and two channels.",
+        "Use Magnitude, Threshold and Rotate with ordinary angles90/180/30; inspect and save results.",
+        "Edit a source and angle, revisit and verify linked results remain usable."
+      ],
+      "expected": "Normal-angle rotations retain a usable image canvas and compose with subsequent operations; visible controls and saved samples agree.",
+      "scope": "Native rectangular images and independent geometric checks; extends earlier square-image rotation coverage.",
+      "summary": "Next ordinary workflow; model and native results pending.",
       "evidence": [],
       "environment": "macOS native verification planned",
       "reviewedOn": "2026-10-13"
@@ -4410,6 +4433,36 @@
         "docs/audit/evidence/2026-10-13-sampling.md",
         "src/test/java/signals/core/SamplingDemoWorkflowTest.java"
       ]
+    },
+    "spatial-filtering-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK25 native CUA;567-test package;independent NumPy2.4.1 references",
+      "summary": "12 native 128×64 complex exports match direct spatial sums and DFT matrices, including source edits and operation replacement through the FFT chain.",
+      "limits": "Centered normal-size fixtures only. Six nonblocking JDK help-image accessibility exceptions; no observed app crash. Windows and other settings remain gaps.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-spatial-convolve-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-convolve.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-correlate-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-correlate.png",
+        "docs/audit/evidence/2026-10-13-spatial-correlate.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-edited-chain-ax.txt",
+        "docs/audit/evidence/2026-10-13-spatial-filtering.md",
+        "docs/audit/evidence/2026-10-13-spatial-final-ax.txt",
+        "docs/audit/evidence/2026-10-13-spatial-final.png",
+        "docs/audit/evidence/2026-10-13-spatial-forward-ax.txt",
+        "docs/audit/evidence/2026-10-13-spatial-forward-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-forward.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-gaussian-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-gaussian.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-inverse-convolve-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-inverse-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-inverse.png",
+        "docs/audit/evidence/2026-10-13-spatial-inverse.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-native.log",
+        "docs/audit/evidence/2026-10-13-spatial-rectangle.txt.gz",
+        "docs/audit/evidence/2026-10-13-spatial-verification.json",
+        "docs/audit/evidence/2026-10-13-spatial-verifier.py"
+      ]
     }
   },
   "limitations": [
@@ -4480,6 +4533,17 @@
       "next": "Consider replacement safeguards with the persistence design after ordinary workflow stabilization.",
       "evidence": [
         "dialogs-2026-10-13"
+      ]
+    },
+    {
+      "id": "native-help-image-accessibility",
+      "title": "macOS Java help-image accessibility can log nonblocking exceptions",
+      "basis": "measurement",
+      "impact": "Six JDK AccessibleHTML null-view exceptions occurred during native controls/help inspection. No observed crash, frozen input or wrong calculation in this batch.",
+      "scope": "One JDK25/macOS native spatial-filtering run. Exact trigger not isolated; all12 result exports verified.",
+      "next": "Retain logs and revisit if this affects ordinary interaction; prioritize crashes and major wrong results.",
+      "evidence": [
+        "spatial-filtering-2026-10-13"
       ]
     }
   ],

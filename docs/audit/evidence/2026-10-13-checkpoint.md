@@ -6,14 +6,14 @@ Local commits authorized, no push/release. No agents. Prioritize ordinary 2D
 creation, edits and operation chains; hundreds of distinct scenarios incrementally.
 Defer numerical trivia, unlikely edge cases and capacity extremes.
 
-`check_usage: true`; latest weekly 79% remaining, no other applicable window.
+`check_usage: true`; latest weekly 78% remaining, no other applicable window.
 Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 No pause, resets or automations requested.
 
 Repo /Users/julietfiss/src/SignalShow-Java, branch codex/signalshow-usage-stabilization,
 baseline 28a4ffc. Commits 0174857/8021b9f fix document/preview buffer ownership;
 b9642d7 records completed native memory checks; c814e0b adds normal band-filter
-coverage. cd07a78 fixes frequency settings. Sampling fixes and evidence are ready for local commit.
+coverage. cd07a78 fixes frequency settings. 8334dd9 fixes sampling; spatial filtering evidence is ready for local commit.
 Full package: 567 passed, zero failures/errors/skips. No further code changes
 since that build and its native verification.
 
@@ -36,14 +36,17 @@ focused28/full567 pass; native both-origin complex plot/control checks pass.
 See [sampling evidence](2026-10-13-sampling.md). Native reconstruction not exported;
 strict arrays through actual Swing plots. No factory-overload refactor.
 
-Next active batch: ordinary spatially varying 2D Convolve/Correlate chains and
-forward/inverse FFT. Earlier native operation checks used constants; existing
-model tests cover more. Create128×64 Cartesian Gaussian and translated rectangle,
-use normal parameters, save outputs and independently compare every sample.
-No new code/scenario verification yet. Source/normalization semantics must be
-read from actual controls; do not infer passing native math from model results.
+Completed native spatial filtering:12 exports/98,304 complex samples verified by
+independent spatial sums and direct DFT matrices; source edits and operator
+replacement propagate. See2026-10-13-spatial-filtering.md. Six nonblocking JDK
+AccessibleHTML null-view exceptions recorded; no observed crash or wrong result.
+No product code changed after the567-test package.
 
-Matrix:130 math entries,61 scenarios:55 checked,1 scope,3 pending,2 deferred.
+Next active batch: ordinary128×64 Magnitude/Threshold/Rotate chains, including
+90/180/30 degrees. Earlier native rotations used square images; model rectangle
+coverage used30 degrees. Independent geometry and native interaction pending.
+
+Matrix:130 math entries,62 scenarios:56 checked,1 scope,3 pending,2 deferred.
 No app remains open; CUA Close followed by process check. No build/sampler running.
 At most one instance. Bundle /private/tmp/signalshow-roger-app/SignalShowRogerAudit.app
 contains the verified567-test JAR. Copy/sign only while closed; launch using CUA.
