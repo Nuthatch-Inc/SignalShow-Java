@@ -1,0 +1,116 @@
+{
+  "gaussian": {
+    "source_descriptor": "Replacement source",
+    "source_complex_samples": 65536,
+    "source_max_error": 5.551115123125783e-17,
+    "source_sha256": "02915743ac057bb1cb1d462462764485909e83f972a69f53788ea7415fc92fba",
+    "source_imaginary_part": "all .25",
+    "squared": {
+      "descriptor": "||Replacement source||\u00b2",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "cd0122f9223df7bfd303777e5b12fa544528e7fc4292a14336d985f3e482eadb"
+    },
+    "mask": {
+      "descriptor": "threshold(||Replacement source||\u00b2)",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "2a0f3590d164c3267f7479cf64b53631148826ee7a8b576fa18f1b453bff3d4d"
+    }
+  },
+  "rectangle": {
+    "source_descriptor": "Replacement source",
+    "source_complex_samples": 65536,
+    "source_max_error": 0.0,
+    "source_sha256": "99cfbee395b32b22b616921b729536306f21d8f384f8f872ae3e1fffa35f0c7d",
+    "source_imaginary_part": "all .25",
+    "squared": {
+      "descriptor": "||Replacement source||\u00b2",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "d813932bb861de049c7c63bac10ef03a7067531c57ceccc5e5655f8be51245ac"
+    },
+    "mask": {
+      "descriptor": "threshold(||Replacement source||\u00b2)",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "1233ad38390763cdbc0b6f778facc96efbbfa88158a399412cc0f3fde0c8269d"
+    }
+  },
+  "gradient": {
+    "source_descriptor": "Replacement source",
+    "source_complex_samples": 65536,
+    "source_max_error": 2.220446049250313e-16,
+    "source_sha256": "5d370f881b7dc65833caa242709b21505b7ba7438cfa31ba692045af39d8b97b",
+    "source_imaginary_part": "all .25",
+    "squared": {
+      "descriptor": "||Replacement source||\u00b2",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "6387741686c31ae1a292214c2433397fc6d6bf6d637e8eaf9d814c63064b8636"
+    },
+    "mask": {
+      "descriptor": "threshold(||Replacement source||\u00b2)",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "39fc8f0baa58ab326cb52c63cba8ba0b7c97384c2113c6a5b02a00574550461f"
+    }
+  },
+  "cylinder": {
+    "source_descriptor": "Replacement source",
+    "source_complex_samples": 65536,
+    "source_max_error": 0.0,
+    "source_sha256": "d788d3f871520f6ca7301402ad5f79d198c6b87e9dc31ce3113fa59514386907",
+    "source_imaginary_part": "all .25",
+    "squared": {
+      "descriptor": "||Replacement source||\u00b2",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "8e4b0c5b7258ecc9006498b557ec7b3973f1f53737f2bf2e5c781e93d06c1213"
+    },
+    "mask": {
+      "descriptor": "threshold(||Replacement source||\u00b2)",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "54afbf7f5a249e92903f7776a436692790577bd555ee01e2d8aa7cbf52d158f7"
+    }
+  },
+  "noise": {
+    "source_descriptor": "Replacement source",
+    "source_complex_samples": 65536,
+    "source_max_error": null,
+    "source_sha256": "a0686a56a2176bc3a28d0479f14f9a11901f4d8073570ff47d855857ef79e7a6",
+    "source_imaginary_part": "all .25",
+    "squared": {
+      "descriptor": "||Replacement source||\u00b2",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "355bcff6d6fa2b3b7150a9c3c1c9d021c4563ef8e5e1d216364de1cf11d6f2a9"
+    },
+    "mask": {
+      "descriptor": "threshold(||Replacement source||\u00b2)",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "cb324302efabdd8a540513635519ad3358b470b9c2a7684cc0243b7f8c79bafb"
+    }
+  },
+  "polar": {
+    "source_descriptor": "Replacement source",
+    "source_complex_samples": 65536,
+    "source_max_error": 1.1102230246251565e-16,
+    "source_sha256": "e50e23b06e04e37f3aff5c70a982a65ad0e13c360d91af918b9e9aa4c6b01f21",
+    "source_imaginary_part": "all .25",
+    "squared": {
+      "descriptor": "||Replacement source||\u00b2",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "b6e2cae343879501d18ae715d8bf41e4d43be9c3929da2898aef9863d5368ffa"
+    },
+    "mask": {
+      "descriptor": "threshold(||Replacement source||\u00b2)",
+      "complex_samples": 65536,
+      "max_complex_error": 0.0,
+      "sha256": "a8aa1cac7b4bb6f7d682e97fd37d3b73a62f44fdbd507aec13ed04eb3cd27dac"
+    }
+  }
+}

@@ -13,9 +13,11 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-demos"
+      "files-export-2d"
     ],
-    "nextIds": []
+    "nextIds": [
+      "gui-demos"
+    ]
   },
   "math": [
     {
@@ -2446,22 +2448,23 @@
     {
       "id": "gui-2d-edit",
       "area": "usage",
-      "title": "Edit 2D parameters and replace generator families",
+      "title": "Ordinary 2D parameter edits and generator-family replacement",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
-        "Change amplitude, centers and widths/radii one at a time.",
-        "Replace the selected term with a different family and edit again.",
-        "Exercise valid negative values, zero boundaries and temporary incomplete numeric input."
+        "Change amplitude, center and width/radius through native controls.",
+        "Replace a picker function, then delete/recreate the real term across Cartesian, image, aperture, noise and polar families.",
+        "Keep the imaginary channel and two downstream operations intact; compare saved samples after each change."
       ],
       "expected": "Edits reach the intended term; invalid drafts do not break the editor or leave stale output.",
-      "scope": "Native controls; ordinary-sized signals. Record each affected family and input.",
+      "scope": "Native 256×256 controls and saved outputs; representative families. Dragging, invalid drafts and every generator are separate gaps.",
       "evidence": [
         "two-term-2026-10-12",
-        "import-edit-2026-10-13"
+        "import-edit-2026-10-13",
+        "replacement-2026-10-13"
       ],
-      "summary": "Scoped analytic channel edits and imported-image amplitude/position/size/crop pass. Full generator-family replacement coverage remains pending.",
-      "environment": "Target environment to be recorded with results",
+      "summary": "Representative parameter edits and family replacement pass, including negative values, unchanged imaginary samples and live Squared Magnitude → Threshold results. Eighteen exports match the scoped checks.",
+      "environment": "macOS arm64/JDK25; 484-test executable",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -3853,6 +3856,18 @@
         "docs/audit/evidence/2026-10-13-filtering-inverse.png",
         "docs/audit/evidence/2026-10-13-input-recovery.json",
         "docs/audit/evidence/2026-10-13-filtering.md"
+      ]
+    },
+    "replacement-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK25; 484-test executable",
+      "summary": "A complex source survives ordinary picker replacement and real-term deletion/recreation across five generator families while Squared Magnitude → Threshold stays linked. Eighteen exports verified.",
+      "limits": "Representative native cases only; noise distribution, remaining generators, drag/invalid drafts, Windows and capacity remain open.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-replacement.md",
+        "docs/audit/evidence/2026-10-13-replacement-verification.json",
+        "docs/audit/evidence/2026-10-13-replacement-native.log",
+        "docs/audit/evidence/2026-10-13-replacement-threshold-controls.png"
       ]
     }
   },

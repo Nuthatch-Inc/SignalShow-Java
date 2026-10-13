@@ -9,9 +9,9 @@ defer rare edges and tiny numerical errors.
 
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
 `codex/signalshow-usage-stabilization`, original baseline 28a4ffc. Local commits
-through a1f173a include startup/editing/layout fixes, modern image import and
+through 4f0fc50 include startup/editing/layout fixes, modern image import and
 imported-image edits, arithmetic, creation, size recovery and special complex
-creation. Nothing pushed. The current filtering batch adds twelve tests and
+creation. Nothing pushed. The committed filtering batch adds twelve tests and
 native evidence; **484 tests pass**, zero failures/errors/skips, package built.
 Production code unchanged from efebd69. See [filtering evidence](2026-10-13-filtering.md).
 
@@ -22,8 +22,10 @@ independent exported-sample comparisons. Twelve production tests cover varying
 complex rectangular images against direct spatial sums/DFT. A new unary system
 inserted the last available result rather than the previously clicked source:
 inspect actual input/descriptor before choosing an oracle. No math bug found.
-Next bounded gap: native 2D demonstration controls (convolution, filtering,
-frequency locations), with production-owner inspection first.
+Next bounded gap: File exports of ordinary 2D source and operation results.
+Latest native replacement batch passes eighteen exports across Gaussian, Rectangle,
+Gradient, Cylinder, Uniform Noise and polar Gaussian, preserving imaginary0.25
+and live Squared Magnitude → Threshold links. See replacement evidence.
 
 Juliet asked whether typing works again: verified Constant amplitude 2.5, committed
 expression, typed save filename and all 65,536 exported values exactly 2.5 + 0i.
@@ -31,7 +33,9 @@ Fresh-app input works; intermittent focus/routing is not proven resolved. Click
 field, select existing text, type, read back before Return; stop any failed edit.
 Swing dropdown values can be provisional: inspect then Return, verify model/sample.
 
-No SignalShow process remains (verified). Bundle
+One SignalShow app remains open for active File export testing: Replacement
+source is a polar Gaussian ring +0.25i, Sys0 Squared Magnitude, Sys1 Threshold0.5.
+No second instance. Close and verify exit after this batch. Bundle
 `/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` holds the 484-test JAR;
 source JAR `target/signalshow-1.2.4.jar`. Copy/sign only while closed. Launch by
 full path with CUA; at most one. Do not inspect AX after close (it relaunches).
