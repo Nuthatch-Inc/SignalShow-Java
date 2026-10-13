@@ -1,0 +1,47 @@
+{
+  "complex chirp real edits": {
+    "complex_samples": 65536,
+    "max_complex_error": 4.289830510009564e-14,
+    "max_magnitude_error": 2.220446049250313e-16,
+    "sha256": "9119bf0c96e9c8c2cd86e4f279a5cb1832931477a808356206668caa2985e529"
+  },
+  "complex chirp imaginary edit": {
+    "complex_samples": 65536,
+    "max_complex_error": 4.2810291964137734e-14,
+    "max_magnitude_error": 2.220446049250313e-16,
+    "sha256": "e0a78e27cf955e593f9d07bef12a6a3b985599226f16594a92283124713e9296"
+  },
+  "complex radial exponential": {
+    "complex_samples": 65536,
+    "max_complex_error": 1.5700924586837752e-16,
+    "max_magnitude_error": 1.1102230246251565e-16,
+    "sha256": "e240a82076cac44bc9791adff9f07634a8b55f6bdcf2bd0c6474317d9c13ca5d"
+  },
+  "complex chirp real operation": {
+    "complex_samples": 65536,
+    "max_complex_error": 0.0,
+    "sha256": "e82b7b8dd4bf19c9a0aa2ab2decd9186ae83324b093b6f5093e2d284d026ffee"
+  },
+  "complex radial conjugate": {
+    "complex_samples": 65536,
+    "max_complex_error": 0.0,
+    "sha256": "b184daefdc02801b2f0d8872a0d6134c41e0f2f34edb5c68bb08f32fdbf5d695"
+  },
+  "complex Fourier x edits": {
+    "complex_samples": 65536,
+    "max_complex_error": 1.1022563465713405e-14,
+    "max_magnitude_error": 6.661338147750939e-16,
+    "sha256": "dc5ee737fdaa9933522e0260ef731d6c1dcc884aaca220f254f7227715db7298"
+  },
+  "complex Fourier xy edits": {
+    "complex_samples": 65536,
+    "max_complex_error": 5.687116766346677e-15,
+    "max_magnitude_error": 6.661338147750939e-16,
+    "sha256": "ca984ce6590832b8f7fcf45700239d2798703fb486b77e8eb63fc6c68a316374"
+  },
+  "complex Fourier squared magnitude": {
+    "complex_samples": 65536,
+    "max_complex_error": 1.7763568394002505e-15,
+    "sha256": "11570f3abff8d5a539188cf425cf37167ebcce830437ebcb0d511b6c8c9b712b"
+  }
+}

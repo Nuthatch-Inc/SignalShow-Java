@@ -10,8 +10,8 @@ incrementally; defer rare edges and tiny numerical errors.
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
 `codex/signalshow-usage-stabilization`. Original baseline 28a4ffc. Local commits:
 7fb376a (earlier stabilization), 5a7a83f (image decoding/padding), efebd69
-(imported-image edits), 5084e89 (arithmetic), eff0ed1 (creation chains). Nothing
-pushed. The current evidence-only batch records size recovery and rectangular views.
+(imported-image edits), 5084e89 (arithmetic), eff0ed1 (creation), a27a3c7 (sizes).
+Nothing pushed. The current evidence batch records partial complex creation.
 The full 472-test package passes on macOS arm64/JDK 25, no failures/errors/skips;
 source diff clean (raw evidence logs excluded). Current executable JAR is
 `target/signalshow-1.2.4.jar`.
@@ -22,17 +22,18 @@ threshold samples match independent oracles after amplitude, translation,
 resize and crop edits; crop survives Plot/Edit when actually committed.
 Nine new regressions pass. Earlier scoped Roger, grouping, operator-symbol,
 channel, linked-source, file, profile and deletion evidence is in the matrix.
-Latest: [native dimension recovery](2026-10-13-size.md) verifies matching sizes
-restored through dropdowns at128×64, then centered64×32 and corner32×64 source,
-product and threshold samples. Profiles/FFT views open without exceptions;
-transform numerical correctness is not certified by those screenshots.
-Previous creation and arithmetic batches cover ordinary aperture/noise, polar,
-Cartesian and image chains plus native search. Next: special complex-creation
-menus and representation workflows, then ordinary demo/edit gaps. Keep the
-hundreds-of-scenarios plan incremental.
+Latest: [special complex creation](2026-10-13-complex.md): eight native exports
+from edited chirp, radial exponential and Fourier basis, plus Real/Conjugate/
+Squared Magnitude, match independent formulas. Native representation equivalence
+remains pending: text routing stopped on a new Constant field, caught before
+Return. Explicit focus attempts did not restore it; direct spinner Increment
+still works and the log is clean. Native app closed. Continue production-path
+Convolve/Correlate and FFT chains; native interaction remains separately scoped.
+Previous size recovery, ordinary creation and arithmetic batches passed.
 
 Juliet explicitly reauthorized keystrokes. `selectText` on the existing value,
-then typing and readback before Return works for native text/parameter fields.
+then typing and readback before Return worked through prior batches, but now
+text routing is unreliable again; do not repeat ineffective typing.
 Swing dropdown AX values may be provisional: focus the control, select with
 arrows, inspect, press Return, then verify rendered value and samples. Earlier
 crop attempts that lacked Return are not evidence of a product defect. The

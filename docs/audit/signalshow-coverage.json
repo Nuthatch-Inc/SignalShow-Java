@@ -13,11 +13,11 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-representation"
+      "model-filtering-chains"
     ],
     "nextIds": [
-      "gui-demos",
-      "gui-2d-edit"
+      "gui-2d-representation",
+      "gui-demos"
     ]
   },
   "math": [
@@ -2555,10 +2555,12 @@
       ],
       "expected": "Representation meaning and dimensions survive edits and handoffs without exceptions.",
       "scope": "Actual special menu callers beyond the registered generator inventory.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "evidence": [
+        "complex-native-2026-10-13"
+      ],
+      "summary": "Native chirp, radial exponential and Fourier-basis edits plus Real/Conjugate/Squared Magnitude pass against every exported sample. Equivalent real/imaginary versus magnitude/phase creation remains pending after native text routing stopped; spinner actions still respond.",
+      "environment": "macOS arm64, JDK25; 472-test executable",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-2d-live-input",
@@ -3309,6 +3311,24 @@
       "summary": "Amplitude, translation, size and crop now affect imported samples and linked threshold results. Nine regressions and all native TIFF export pixels pass; preview refresh and committed crop across Plot/Edit are verified.",
       "environment": "macOS arm64, JDK 25",
       "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "model-filtering-chains",
+      "area": "usage",
+      "title": "Convolve/correlate and FFT round trips through editable image chains",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create ordinary complex images and a small smoothing kernel through the production factories.",
+        "Apply Convolve/Correlate→Real→Threshold and forward/inverse FFT through operation systems.",
+        "Edit a source and replace a kernel, then compare current outputs with independent references."
+      ],
+      "expected": "Correct dimensions/current samples survive composition and edits without crashes or stale caches.",
+      "scope": "Production models and operation chains on ordinary rectangular images; native interaction is separate.",
+      "summary": "Starting a bounded production-path batch while native text routing is unreliable.",
+      "environment": "macOS arm64, JDK25",
+      "reviewedOn": null,
+      "evidence": []
     }
   ],
   "evidence": {
@@ -3770,6 +3790,20 @@
         "docs/audit/evidence/2026-10-13-size-tall-product-fft.png",
         "docs/audit/evidence/2026-10-13-size-tall-threshold.png",
         "docs/audit/evidence/2026-10-13-size.md"
+      ]
+    },
+    "complex-native-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25; efebd69 executable",
+      "summary": "Eight native exports from edited complex chirp, radial exponential and Fourier-basis signals match independent formulas and operation expectations.",
+      "limits": "Native representation equivalence unfinished due text-routing failure. No app exception; direct spinner action works. Windows and broader variants remain open.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-complex-verification.json",
+        "docs/audit/evidence/2026-10-13-complex-native.log",
+        "docs/audit/evidence/2026-10-13-complex-chirp.png",
+        "docs/audit/evidence/2026-10-13-complex-Fourier.png",
+        "docs/audit/evidence/2026-10-13-complex-input-routing.png",
+        "docs/audit/evidence/2026-10-13-complex.md"
       ]
     }
   },
