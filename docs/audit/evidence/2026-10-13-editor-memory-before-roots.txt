@@ -1,0 +1,11 @@
+{
+  "objects": 181389,
+  "documents": 3,
+  "strongDocuments": 3
+}
+signals/core/RealImagFunction2D 0x680a88d38 strong True root 0x2
+javax/swing/JList$AccessibleJList$AccessibleJListChild.cellRenderer -> com/apple/laf/AquaComboBoxRenderer.fComboBox -> javax/swing/JComboBox.listenerList -> javax/swing/event/EventListenerList.listenerList -> [Ljava/lang/Object;.[5] -> signals/gui/datagenerator/Function2DToolBar$2.this$0 -> signals/gui/datagenerator/ReImFunction2DToolBar.function
+signals/core/OperatorSystem2D 0x6858017b8 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.system
+signals/core/RealImagFunction2D 0x681103b98 strong True root 0x2
+sun/lwawt/macosx/CAccessible.accessible -> com/apple/laf/AquaComboBoxPopup.comboBox -> javax/swing/JComboBox.listenerList -> javax/swing/event/EventListenerList.listenerList -> [Ljava/lang/Object;.[5] -> signals/gui/datagenerator/Function2DToolBar$2.this$0 -> signals/gui/datagenerator/ReImFunction2DToolBar.function

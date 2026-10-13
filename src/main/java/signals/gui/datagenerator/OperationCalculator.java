@@ -13,6 +13,7 @@ import signals.core.CombineOpsRule;
 import signals.core.FunctionProducer;
 import signals.core.Operation;
 import signals.core.Core;
+import signals.core.Deconstructable;
 import signals.core.OperatorSystem;
 import signals.gui.VerticalThumbnailList;
 import signals.gui.CalculatorListItem;
@@ -22,9 +23,17 @@ import signals.operation.FourierTransformOp;
 import signals.operation.PlusOp;
 
 @SuppressWarnings("serial")
-public abstract class OperationCalculator extends DataGeneratorCalculator {
+public abstract class OperationCalculator extends DataGeneratorCalculator implements Deconstructable {
 
 	protected OperatorSystem system;
+
+	@Override
+	public void deconstruct() {
+		system = null;
+		list.getColumnModel().getSelectionModel().removeListSelectionListener(this);
+		list.removeAllItems();
+	}
+
 
 	public void setSystem(OperatorSystem system) {
 		this.system = system;

@@ -16,12 +16,13 @@ import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
 import signals.core.Core;
+import signals.core.Deconstructable;
 import signals.core.Function;
 import signals.gui.plot.HistogramCursorPanel;
 import signals.io.ResourceLoader;
 
 @SuppressWarnings("serial")
-public abstract class DataGeneratorToolBar extends JToolBar {
+public abstract class DataGeneratorToolBar extends JToolBar implements Deconstructable {
 
 	protected ButtonGroup buttonGroup;
 	JToggleButton plotButton;
@@ -43,6 +44,13 @@ public abstract class DataGeneratorToolBar extends JToolBar {
 		finalizeButtons(); 
 		setBorder( BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(0, 0, 0, 8),
 				BorderFactory.createMatteBorder(0, 0, 1, 0, Color.DARK_GRAY)));
+	}
+
+	@Override
+	public void deconstruct() {
+		// Native accessibility may outlive this toolbar. Release its view and actions.
+		content = null;
+		for (JToggleButton button : buttons) button.setAction(null);
 	}
 
 	public void setContent( Component c, String tab ) {

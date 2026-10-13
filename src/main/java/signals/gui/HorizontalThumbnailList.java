@@ -83,8 +83,14 @@ public class HorizontalThumbnailList extends JTable {
 	 */
 	public void removeAllItems() {
 		
-		model = new MyDefaultTableModel();
-		setModel( model );
+		clearSelection();
+		ThumbnailListRenderer renderer = (ThumbnailListRenderer) getDefaultRenderer(Object.class);
+		for (int column = 0; column < model.getColumnCount(); column++)
+			renderer.releaseThumbnail(model.getValueAt(0, column));
+		// Clear the existing model too: native table accessibility can retain it.
+		model.setColumnCount(0);
+		while (getColumnModel().getColumnCount() > 0)
+			removeColumn(getColumnModel().getColumn(0));
 	}
 	
 	

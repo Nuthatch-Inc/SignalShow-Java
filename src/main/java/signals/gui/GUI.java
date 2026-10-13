@@ -138,6 +138,8 @@ public class GUI {
 				((Deconstructable) content).deconstruct();
 		}
 		content = null;
+		if (toolBar instanceof Deconstructable)
+			((Deconstructable) toolBar).deconstruct();
 		toolBar = null;
 		System.runFinalization();
 		System.gc();
@@ -154,6 +156,8 @@ public class GUI {
 
 	public void setContent(Component c) {
 
+		// Some callers install the same view twice. It is still live in that case.
+		if (content == c) return;
 		saveContent();
 		if (content != null) {
 
@@ -170,8 +174,12 @@ public class GUI {
 
 	public void setToolBar(Component c) {
 
-		if (toolBar != null)
+		if (toolBar == c) return;
+		if (toolBar != null) {
 			mainPane.remove(toolBar);
+			if (toolBar instanceof Deconstructable)
+				((Deconstructable) toolBar).deconstruct();
+		}
 		mainPane.add(c, BorderLayout.NORTH);
 		refreshContent();
 		toolBar = c;

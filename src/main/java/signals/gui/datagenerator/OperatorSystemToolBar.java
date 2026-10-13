@@ -25,6 +25,12 @@ public abstract class OperatorSystemToolBar extends DataGeneratorToolBar {
 	
 
 	@Override
+	public void deconstruct() {
+		system = null;
+		super.deconstruct();
+	}
+
+	@Override
 	public void setShowableState(String state) {
 		
 		system.setShowState(state); 

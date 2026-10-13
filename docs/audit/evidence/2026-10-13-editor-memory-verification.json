@@ -1,0 +1,26 @@
+[
+  {
+    "file": "2026-10-13-editor-memory-before-product.txt.gz",
+    "complex_samples": 262144,
+    "max_error": 0.0,
+    "sha256": "40c33de8c74ec87fd682559980df38b4b9ce40ea32964de49a886556b32091b2"
+  },
+  {
+    "file": "2026-10-13-editor-memory-before-edited-product.txt.gz",
+    "complex_samples": 262144,
+    "max_error": 0.0,
+    "sha256": "3f424d43213bc29357ec35da1ac14397cb08abfa29fb51a3ff7f23b1d28f40ae"
+  },
+  {
+    "file": "2026-10-13-editor-memory-after-product.txt.gz",
+    "complex_samples": 262144,
+    "max_error": 0.0,
+    "sha256": "40c33de8c74ec87fd682559980df38b4b9ce40ea32964de49a886556b32091b2"
+  },
+  {
+    "file": "2026-10-13-editor-memory-after-edited-product.txt.gz",
+    "complex_samples": 262144,
+    "max_error": 0.0,
+    "sha256": "3f424d43213bc29357ec35da1ac14397cb08abfa29fb51a3ff7f23b1d28f40ae"
+  }
+]

@@ -26,6 +26,12 @@ public abstract class FunctionToolBar extends DataGeneratorToolBar implements GU
 	}
 	
 	@Override
+	public void deconstruct() {
+		function = null;
+		super.deconstruct();
+	}
+
+	@Override
 	public Function getFunction() {
 		return function;
 	}

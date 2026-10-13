@@ -1,0 +1,3 @@
+93657:
+garbage-first heap   total reserved 6291456K, committed 573440K, used 145980K [0x0000000680000000, 0x0000000800000000)
+ region size 4096K, 0 young (0K), 0 survivors (0K)

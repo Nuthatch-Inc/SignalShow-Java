@@ -8,32 +8,27 @@ subagents. Ordinary creation, edits and operation chains first. Build hundreds
 of usage scenarios incrementally; defer rare edges and tiny numerical errors.
 
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
-`codex/signalshow-usage-stabilization`, original baseline 28a4ffc. Earlier local
-checkpoints through d946d47 cover creation/operations/imports, layout, native
-inputs, saves, Constant resizing and two data-retention paths. Current verified
-batch fixes frequency demonstrations; use git log for its commit.
+`codex/signalshow-usage-stabilization`, original baseline 28a4ffc. Prior local
+checkpoints through 347dad7 cover ordinary workflows and corrected demos. Current
+batch releases retired document/editor ownership; use git log for its commit.
 Nothing pushed.
 
-Full offline package: **539 tests, zero failures/errors/skips**. Current verified
-batch fixes uncentered frequency filters (BUG-033), suppressed DC-only selection
-(BUG-034) and RGB previews at invalid −1/−1 scales (BUG-035). Native 32×16 cosine
-low/high-pass gains and zero imaginary result agree with independent expectations;
-centered/uncentered Constant DC-only views stay at amplitude 2. Ten component
-cases verify known Fourier-mode gains, parameter edits, bands/DC and display bounds.
-See [frequency evidence](2026-10-13-frequency.md). Prior convolution work and
-all 256 saved correlation samples are in [demonstration evidence](2026-10-13-demo-calculations.md).
-Matrix: 130 registered math entries; 60 scenarios (51 checked, 1 scope, 4 pending,
-2 issues,2 deferred). Active next: **memory-lifecycle** (BUG-031), then retained
-demo settings and bounded sampling/band-filter usage. Do not replay completed
-native checks or pursue tiny residuals/rare edge cases.
+Full offline package: **545 tests, zero failures/errors/skips**. Six before-failing
+1D/2D lifecycle cases now pass. Native Constant×Cylinder at 512 square, amplitude
+edit 3→2.5, view switching and reopening preserve every saved pixel. After deleting
+all three documents, no function/system model remains in the collected snapshot
+(previously three); total heap 142.6→79.5 MiB. Native CUA/macOS/JDK25 scope only.
+See [editor memory evidence](2026-10-13-editor-memory.md). Old previews still retain
+pixel arrays; BUG-031 is open. Continue **memory-lifecycle**, targeting those
+specific arrays before demo settings, sampling and band filtering. Do not replay
+completed frequency/convolution checks or pursue tiny errors/rare edge cases.
 
-Memory measurements through 1024 square are in
-[memory evidence](2026-10-13-memory.md). Correcting Constant extent and two
-ownership paths reduced collected post-deletion heap 618.2→484.8 MiB; six models
-remain strongly reachable through native JNI accessibility roots (BUG-031).
-This is macOS/JDK 25/CUA evidence, not a proved general/manual/Windows leak.
-Binary dumps remain only in /private/tmp: signalshow-deleted-88988.hprof and
-signalshow-deleted-90566.hprof. All samplers and their app processes exited.
+Matrix: 130 registered math entries; 60 scenarios (51 checked, 1 scope, 4 pending,
+2 issues, 2 deferred). Earlier 1024 memory evidence remains a different workload.
+Local current dumps: /private/tmp/signalshow-editor-memory-before.hprof and
+/private/tmp/signalshow-editor-memory-after.hprof. Read-only array-root diagnostic
+and compact paths are in the current evidence. Older dumps remain in /private/tmp.
+All test apps and samplers exited.
 
 Juliet asked whether automated typing works again: verified Constant amplitude
 2.5 and all 65,536 exported values. Subsequent native size, phase, amplitude,
@@ -42,7 +37,7 @@ eliminated. Click the actual field, select text, type, read back before Return;
 stop any failed edit. Native dropdown selection requires Return and verification.
 
 No SignalShow process remains (verified). Bundle
-`/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` holds the final 539-test
+`/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` holds the final 545-test
 JAR; source JAR `target/signalshow-1.2.4.jar`. Copy/sign only while closed. Launch
 by full path using CUA; at most one app. Do not inspect AX after close (it relaunches).
 Refresh CUA documentation after compaction. Isolated home

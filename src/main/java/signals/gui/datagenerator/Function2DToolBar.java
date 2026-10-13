@@ -38,6 +38,16 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 	public static final String PROFILE = "PROFILE";
 	JToggleButton profileButton; 
 
+	@Override
+	public void deconstruct() {
+		editor = null;
+		widthSelector = null;
+		heightSelector = null;
+		zeroCenteredCheckBox = null;
+		nameTextField = null;
+		super.deconstruct();
+	}
+
 	public Function2DToolBar( Function function ) {
 
 		super( function ); 

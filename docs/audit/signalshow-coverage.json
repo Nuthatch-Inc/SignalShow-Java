@@ -2917,10 +2917,11 @@
       "scope": "Measured native CUA/macOS retention and actual root paths. General manual-use/Windows behavior remains unverified.",
       "evidence": [
         "demos-2026-10-13",
-        "memory-usage-2026-10-13"
+        "memory-usage-2026-10-13",
+        "editor-memory-2026-10-13"
       ],
-      "summary": "Renderer and closed-save ownership fixed, with before/after heap paths. Six models remain strongly reachable through native accessibility roots; collected heap is 484.8 MiB after all five documents are deleted.",
-      "environment": "macOS arm64/JDK 25; 503-test package",
+      "summary": "Retired toolbar/calculator/picker ownership fixed. A matched 512-square native workload now retains zero document models after deletion (previously three); collected heap 142.6→79.5 MiB. Obsolete image editors still retain large pixel arrays, with explicit root paths for the next correction.",
+      "environment": "macOS arm64/JDK 25 under CUA; 545-test package",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -4212,6 +4213,41 @@
         "docs/audit/evidence/2026-10-13-frequency-verifier.py",
         "docs/audit/evidence/2026-10-13-frequency.md"
       ]
+    },
+    "editor-memory-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25; native before/after and Swing EDT regressions; 545-test package",
+      "summary": "Release retired document toolbars, operation calculator cells/renderers and input pickers. Six before-failing regressions pass; native create/multiply/edit/reopen outputs match every expected pixel and deleted document models fall from three to zero.",
+      "limits": "Pixel arrays remain through obsolete image previews and JAI tile caches. This bounded 512-square comparison does not re-certify the earlier 1024 workload or establish Windows/manual accessibility behavior.",
+      "sources": [
+        "src/test/java/signals/core/EditorLifecycleWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-array-roots.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-deleted-heap.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-deleted-histogram.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-edited-product.txt.gz",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-empty.ax.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-live-heap.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-live-histogram.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-product.png",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-product.txt.gz",
+        "docs/audit/evidence/2026-10-13-editor-memory-after-roots.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-array-roots.py",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-deleted-heap.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-deleted-histogram.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-edited-product.txt.gz",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-empty.ax.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-live-heap.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-live-histogram.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-product.txt.gz",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-roots.txt",
+        "docs/audit/evidence/2026-10-13-editor-memory-before-tests.log",
+        "docs/audit/evidence/2026-10-13-editor-memory-focused.log",
+        "docs/audit/evidence/2026-10-13-editor-memory-native.log",
+        "docs/audit/evidence/2026-10-13-editor-memory-package.log",
+        "docs/audit/evidence/2026-10-13-editor-memory-verifier.py",
+        "docs/audit/evidence/2026-10-13-editor-memory.md",
+        "docs/audit/evidence/2026-10-13-editor-memory-verification.json"
+      ]
     }
   },
   "limitations": [
@@ -4285,13 +4321,14 @@
     },
     {
       "id": "native-accessibility-retention",
-      "title": "Native accessibility can retain obsolete editor models during the audit",
+      "title": "Native accessibility can retain obsolete image-editor resources during the audit",
       "basis": "measurement",
-      "impact": "After five test documents are deleted, JNI-local accessibility roots still reach six models and collected heap remains 484.8 MiB. Closed-save and main-thumbnail ownership have been removed.",
+      "impact": "Retired document model paths are corrected: matched 512-square native run has zero remaining document models and 79.5 MiB collected heap, down from 142.6 MiB. Old image editors still retain pixel arrays; JAI caches also account for part of the heap.",
       "scope": "macOS/JDK 25 under CUA accessibility interaction; ordinary manual-use and Windows applicability unverified.",
-      "next": "Isolate native root lifetime and explicit editor cleanup. Do not infer a cross-platform leak solely from this automated run.",
+      "next": "Release obsolete image preview/thumbnail arrays, verify ordinary editing/reopening and compare a bounded native run. Keep manual/Windows applicability separate.",
       "evidence": [
-        "memory-usage-2026-10-13"
+        "memory-usage-2026-10-13",
+        "editor-memory-2026-10-13"
       ]
     }
   ],

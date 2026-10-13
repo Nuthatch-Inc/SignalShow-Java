@@ -13,12 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.ListModel;
 
 import signals.core.Core;
+import signals.core.Deconstructable;
 import signals.core.Function;
 import signals.core.FunctionProducer;
 import signals.core.OperatorSystem;
 
 @SuppressWarnings("serial")
-public abstract class FunctionSelectorPanel extends JPanel {
+public abstract class FunctionSelectorPanel extends JPanel implements Deconstructable {
 
 	OperationCalculator calculator; 
 
@@ -55,6 +56,20 @@ public abstract class FunctionSelectorPanel extends JPanel {
 		setCurrentFunction( (FunctionProducer)model.getElementAt(0)); 
 		selectedButton = buttons.get(0); 
 
+	}
+
+	@Override
+	public void deconstruct() {
+		for (FunctionButton button : buttons) {
+			button.removeMouseListener(button);
+			button.function = null;
+		}
+		buttons.clear();
+		selectedFunction = null;
+		selectedButton = null;
+		excludeSystem = null;
+		calculator = null;
+		removeAll();
 	}
 
 	public void setCalculator( OperationCalculator calculator ) {
@@ -133,7 +148,8 @@ public abstract class FunctionSelectorPanel extends JPanel {
 			super.paintComponent(g);
 			
 			// Use paintSmallGraphic() like the horizontal calculator does
-			function.getFunction().paintSmallGraphic((Graphics2D)g);
+			if (function != null && function.getFunction() != null)
+				function.getFunction().paintSmallGraphic((Graphics2D)g);
 		}
 
 

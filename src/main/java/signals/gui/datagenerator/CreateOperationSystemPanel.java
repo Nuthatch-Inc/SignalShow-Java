@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import signals.core.BinaryOperation;
 import signals.core.CombineOpsRule;
 import signals.core.Core;
+import signals.core.Deconstructable;
 import signals.core.Function;
 import signals.core.FunctionProducer;
 import signals.core.Operation;
@@ -24,7 +25,7 @@ import signals.core.UnaryOperation;
 import signals.gui.ResizablePane;
 
 @SuppressWarnings("serial")
-public abstract class CreateOperationSystemPanel extends JPanel implements GUIEventListener, Savable, ResizablePane {
+public abstract class CreateOperationSystemPanel extends JPanel implements GUIEventListener, Savable, ResizablePane, Deconstructable {
 
 	// broadcasts events for this part of the interface
 	GUIEventBroadcaster broadcaster;
@@ -166,6 +167,15 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		// selection now, including the input picker and the result preview.
 		calculator.updateDependents();
 
+	}
+
+	@Override
+	public void deconstruct() {
+		initialized = false;
+		system = null;
+		calculator.deconstruct();
+		functionSelectorPanel.deconstruct();
+		systemPreviewPanel.clearPreview();
 	}
 
 	public void setSystem(OperatorSystem system) {

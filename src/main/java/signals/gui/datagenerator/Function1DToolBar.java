@@ -38,6 +38,15 @@ public abstract class Function1DToolBar extends FunctionToolBar {
 	public static final String ARGAND = "ARGAND";
 	JToggleButton argandButton; 
 
+	@Override
+	public void deconstruct() {
+		editor = null;
+		dimensionSelector = null;
+		zeroCenteredCheckBox = null;
+		nameTextField = null;
+		super.deconstruct();
+	}
+
 	public Function1DToolBar( Function function ) {
 
 		super( function ); 
