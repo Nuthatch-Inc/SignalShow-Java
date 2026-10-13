@@ -70,6 +70,13 @@ public abstract class Function implements ThumbnailProducer, Showable, FunctionP
 	}
 
 	public abstract Function clone(); 
+
+	protected <T extends Function> T initializeCopy(T copy) {
+		copy.type = type;
+		copy.newState = false;
+		return copy;
+	}
+
 	
 	public Function getFunction() {
 		

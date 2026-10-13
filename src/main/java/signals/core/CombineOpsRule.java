@@ -207,7 +207,9 @@ public class CombineOpsRule {
 
 				case FUNCTION: // function (operand): get the function from the list and push it on the stack
 
-					stack.push(termsIter.next().getFunction());
+					Function input = termsIter.next().getFunction();
+					if (input == null) return null;
+					stack.push(input);
 
 					break;
 
@@ -232,6 +234,7 @@ public class CombineOpsRule {
 
 						BinaryOperation operator = (BinaryOperation) opsIter.next();
 						operand1 = stack.pop();
+						if (!operator.acceptsDimensions(operand1, operand2)) return null;
 						operand1 = operator.create(operand1, operand2);
 						stack.push(operand1);
 					}

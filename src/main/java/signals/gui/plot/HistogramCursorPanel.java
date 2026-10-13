@@ -40,6 +40,7 @@ public class HistogramCursorPanel extends PlotCursorPanel implements ParameterUs
 		super(plotSize);
 		numBins = 30; 
 		graphic.setDefaultPlotStyle( Constants.PlotStyle.HISTOGRAM );
+		graphic.indexedXAxis = false; // Bins contain sample values, not array indices.
 	}
 
 	public void setPlot( Function function ) {
@@ -49,7 +50,13 @@ public class HistogramCursorPanel extends PlotCursorPanel implements ParameterUs
 		descriptor = function.getCompactDescriptor();
 
 		double[] rawExtremaI = PlottingMath.extrema(rawDataI); 
-		hasImaginary = rawExtremaI[0] != 0 && rawExtremaI[1] != 0; //only use imaginary part if nonzero extrema 
+		hasImaginary = false;
+		for (double value : rawDataI) {
+			if (value != 0) {
+				hasImaginary = true;
+				break;
+			}
+		}
 		if( hasImaginary ) rawExtrema = PlottingMath.extrema(rawDataR, rawExtremaI);
 		else rawExtrema = PlottingMath.extrema(rawDataR);
 

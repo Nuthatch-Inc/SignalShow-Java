@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 import signals.core.CombineOpsRule;
 import signals.core.FunctionProducer;
 import signals.core.Operation;
+import signals.core.Core;
+import signals.core.OperatorSystem;
+import signals.gui.VerticalThumbnailList;
 import signals.gui.CalculatorListItem;
 import signals.gui.IconCache;
 import signals.gui.IconThumbnailGraphic;
@@ -20,6 +23,16 @@ import signals.operation.PlusOp;
 
 @SuppressWarnings("serial")
 public abstract class OperationCalculator extends DataGeneratorCalculator {
+
+	protected OperatorSystem system;
+
+	public void setSystem(OperatorSystem system) {
+		this.system = system;
+	}
+
+	protected VerticalThumbnailList getLibrary() {
+		return Core.getFunctionList();
+	}
 
 	boolean adjusting; 
 

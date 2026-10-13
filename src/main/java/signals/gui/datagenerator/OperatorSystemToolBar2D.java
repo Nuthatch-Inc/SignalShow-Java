@@ -15,7 +15,9 @@ public class OperatorSystemToolBar2D extends OperatorSystemToolBar {
 
 	@Override
 	public void plot() {
-		Function2DOverviewPanel plot = new Function2DOverviewPanel(getFunction());
+		Function result = getResultForView();
+		if (result == null) return;
+		Function2DOverviewPanel plot = new Function2DOverviewPanel(result);
 		Core.getGUI().setContent(plot); 
 		setContent( plot, PLOT ); 
 	}
@@ -23,7 +25,9 @@ public class OperatorSystemToolBar2D extends OperatorSystemToolBar {
 	@Override
 	public void plotFFT() {
 		
-		Function transform = Transforms.fft2D(getFunction(),	false, Transforms.NORMALIZE_ROOT_N );
+		Function result = getResultForView();
+		if (result == null) return;
+		Function transform = Transforms.fft2D(result,	false, Transforms.NORMALIZE_ROOT_N );
 		Function2DOverviewPanel plot = new Function2DOverviewPanel(transform);
 		Core.getGUI().setContent(plot); 
 		setContent( plot, FFT );

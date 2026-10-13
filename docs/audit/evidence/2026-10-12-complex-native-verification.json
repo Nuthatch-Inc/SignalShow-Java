@@ -1,0 +1,26 @@
+{
+  "source": {
+    "width": 256,
+    "height": 256,
+    "zeroCentered": "true",
+    "name": "complex chirp"
+  },
+  "result": {
+    "width": 256,
+    "height": 256,
+    "zeroCentered": "true",
+    "name": "threshold(complex chirp) x Re{complex chirp}"
+  },
+  "reopened": {
+    "width": 256,
+    "height": 256,
+    "zeroCentered": "true",
+    "name": "threshold(complex chirp) x Re{complex chirp}"
+  },
+  "samplesPerChannel": 65536,
+  "realMaxAbsoluteError": 0.0,
+  "imaginaryMaxAbsoluteError": 0.0,
+  "reopenResaveMatches": true,
+  "finite": true,
+  "nativeLog": "Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties\nSaved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties\n"
+}

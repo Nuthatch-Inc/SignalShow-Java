@@ -294,6 +294,25 @@ public class PlotGraphic extends JPanel {
 		xExtrema = PlottingMath.contrastAdjustExtrema( xExtrema, 1 );
 		yExtrema = PlottingMath.contrastAdjustExtrema( yExtrema, 1 );
 
+		// Histogram bars start at zero and extend one bin beyond their last x value.
+		boolean hasHistogram = false;
+		for (DataSequence sequence : dataSequences) {
+			if (sequence.getPlotStyle() == PlotStyle.HISTOGRAM) {
+				hasHistogram = true;
+				double[] bins = sequence.getXData();
+				if (bins.length > 1) {
+					xExtrema[1] = Math.max(xExtrema[1], bins[bins.length - 1] + bins[1] - bins[0]);
+				}
+			}
+		}
+		if (hasHistogram) {
+			yExtrema[0] = Math.min(0, yExtrema[0]);
+			yExtrema[1] = Math.max(0, yExtrema[1]);
+			double padding = Math.max(1, yExtrema[1] - yExtrema[0]) * 0.05;
+			yExtrema[0] -= padding;
+			yExtrema[1] += padding;
+		}
+
 		plottingMath.setWindow( xExtrema, yExtrema );
 		origin = plottingMath.getOrigin();
 		setDirty(); 

@@ -4,6 +4,10 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.Set;
 
 import signals.gui.GUIDimensions;
 import signals.gui.IconCache;
@@ -52,14 +56,22 @@ public abstract class OperatorSystem implements ThumbnailProducer, FunctionProdu
 		inputID = new ArrayList<Long>(); 
 		for( FunctionProducer function: inputList ) {
 			
-			inputID.add(function.getFunction().getID()); 
+			Function input = function.getFunction();
+			inputID.add(input == null ? null : input.getID());
 		}
 		graphic = new IconThumbnailGraphic( IconCache.getIcon("/guiIcons/operator.png"), 
 				getSmallThumbnailSize(), getLargeThumbailSize() );
 		showState = OperatorSystemToolBar.EDIT; 
 	}
 	
-	public abstract OperatorSystem clone(); 
+	public abstract OperatorSystem clone();
+
+	protected ArrayList<Operation> copyOperations() {
+		ArrayList<Operation> copies = new ArrayList<>();
+		for (Operation operation : opList) copies.add(operation.clone());
+		return copies;
+	}
+
 	
 	public void setDirty() {
 		
@@ -132,8 +144,8 @@ public abstract class OperatorSystem implements ThumbnailProducer, FunctionProdu
 		if( output == null ) return; 
 		for( int i = 0; i < inputList.size(); i++ ) {
 			
-			if( (inputList.get(i).getFunction() == null) || 
-					(inputList.get(i).getFunction().getID() != inputID.get(i))) {
+			Function input = inputList.get(i).getFunction();
+			if (input == null || inputID.get(i) == null || input.getID() != inputID.get(i)) {
 				output = null;
 				return; 
 			}
@@ -147,7 +159,14 @@ public abstract class OperatorSystem implements ThumbnailProducer, FunctionProdu
 		Function out = null; 
 		if( output == null || output.get() == null ) {
 			
-			out = combineOpsRule.combine(inputList); 
+			out = combineOpsRule.combine(inputList);
+			if (out != null) {
+				// Remember the versions used by this result, including edited linked systems.
+				inputID.clear();
+				for (FunctionProducer input : inputList) {
+					inputID.add(input.getFunction().getID());
+				}
+			}
 			output = new SoftReference( out ); 
 			
 		} else out = (Function) output.get(); 
@@ -163,6 +182,21 @@ public abstract class OperatorSystem implements ThumbnailProducer, FunctionProdu
 
 	}
 	
+	/** Check links without evaluating them, so editors can exclude circular inputs. */
+	public boolean dependsOn(FunctionProducer producer) {
+		Set<FunctionProducer> visited = Collections.newSetFromMap(new IdentityHashMap<>());
+		ArrayDeque<FunctionProducer> pending = new ArrayDeque<>();
+		pending.add(this);
+		while (!pending.isEmpty()) {
+			FunctionProducer current = pending.removeFirst();
+			if (current == producer) return true;
+			if (visited.add(current) && current instanceof OperatorSystem) {
+				pending.addAll(((OperatorSystem) current).getInputList());
+			}
+		}
+		return false;
+	}
+
 	public ArrayList<FunctionProducer> getInputList() {
 		return inputList;
 	}
@@ -172,7 +206,8 @@ public abstract class OperatorSystem implements ThumbnailProducer, FunctionProdu
 		inputID = new ArrayList<Long>(); 
 		for( FunctionProducer function: inputList ) {
 			
-			inputID.add(function.getFunction().getID()); 
+			Function input = function.getFunction();
+			inputID.add(input == null ? null : input.getID());
 		}
 		output = null;
 	

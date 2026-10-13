@@ -131,8 +131,11 @@ public class CombineTermsRule {
 			case ADD: 
 				equation.append(" + "); 
 				break; 
+			case SUBTRACT:
+				equation.append(" \u2212 ");
+				break;
 			case MULTIPLY: 
-				equation.append( " \u00D71 " ); 
+				equation.append( " \u00D7 " );
 				break; 
 			case LEFT_PAREN: 
 				equation.append("("); 

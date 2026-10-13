@@ -20,8 +20,9 @@ public class RealImagFunction1D extends Function1D {
 
 	public RealImagFunction1D clone() {
 
-		return new RealImagFunction1D( partA, partB, 
-				Core.getFunctionCreationOptions().getNextFunctionName(), dimension, zeroCentered );
+		FunctionCopy definition = new FunctionCopy();
+		return initializeCopy(new RealImagFunction1D( definition.copy(partA), definition.copy(partB),
+				Core.getFunctionCreationOptions().getNextFunctionName(), dimension, zeroCentered ));
 
 	}
 

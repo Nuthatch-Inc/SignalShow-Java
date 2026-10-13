@@ -173,6 +173,7 @@ public class FunctionCalculator2D extends DataGeneratorCalculator {
 	public void setFunctionTerm2D( FunctionTerm2D updatedTerm ) {
 
 		CalculatorListItem selectedItem = (CalculatorListItem) list.getSelectedItem();
+		if (selectedItem == null || selectedItem.getCode() != CombineTermsRule.FUNCTION_TERM) return;
 		selectedItem.setGraphic( new FunctionTerm2DThumbnailGraphic( updatedTerm, xDimension, yDimension, zeroCentered ) );
 		selectedItem.setValue( updatedTerm );
 		list.repaint();

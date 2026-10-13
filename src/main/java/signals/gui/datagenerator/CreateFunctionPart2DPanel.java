@@ -35,7 +35,11 @@ import signals.gui.IconCache;
 public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListener {
 
 	//broadcasts events for this part of the interface	
-	GUIEventBroadcaster broadcaster; 
+	GUIEventBroadcaster broadcaster;
+	private GUIEventBroadcaster termBroadcaster;
+	// Broadcasters keep weak references, so retain the active forwarding listener.
+	private GUIEventListener termListener;
+	private boolean bindingTerm;
 
 	CreateDataGeneratorInterface termPanel; 
 	FunctionCalculator2D calculator; 
@@ -106,6 +110,8 @@ public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListene
 
 	public void setButtonPanel() {
 
+		disconnectTermEditor();
+
 		//button panel 
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout( new GridLayout( 2, 2, 10, 10 ));
@@ -145,13 +151,15 @@ public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListene
 		values.add( yDimension ); 
 		values.add( zeroCentered ); 
 
+		if (termBroadcaster != null) {
+			termBroadcaster.broadcast(this, GUIEvent.Descriptor.INDICES_MODIFIED_2D, values);
+		}
 		broadcaster.broadcast(this, GUIEvent.Descriptor.INDICES_MODIFIED_2D, values); 
 
 	}
 
 	public void setFunctionTerm2D( FunctionTerm2D term2D ) { 
 
-		setupCorrectTermPanel( term2D ); 
 		calculator.insertNewFunction( term2D );
 	}
 
@@ -224,7 +232,7 @@ public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListene
 	 */
 	public FunctionPart2D getFunctionPart2D() {
 
-		if( termPanel == null ) {
+		if( calculator.getFunctionTerm2DList().isEmpty() ) {
 
 			ArrayList<FunctionTerm2D> termsList = new ArrayList<FunctionTerm2D>();
 
@@ -247,55 +255,71 @@ public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListene
 		return part;
 	}
 
+	private void disconnectTermEditor() {
+		termBroadcaster = null;
+		termListener = null;
+	}
+
 	public void setupCorrectTermPanel( DataGenerator function ) {
 
+		// Removed editors must not publish into another term or a selected operator.
+		disconnectTermEditor();
+		GUIEventBroadcaster events = new GUIEventBroadcaster();
 		if( function instanceof XYFunctionTerm2D ) {
-
-			termPanel = new CreateFunctionTerm2DXYPanel(broadcaster, editable);
-
-
+			termPanel = new CreateFunctionTerm2DXYPanel(events, editable);
 		} else if ( function instanceof PolarFunctionTerm2D ) {
-
-			termPanel = new CreateFunctionTerm2DPolarPanel(broadcaster, editable); 
-
-		} else if ( function instanceof NoiseFunctionTerm2D ) { 
-
-			termPanel = new CreateFunctionTerm2DNoisePanel(broadcaster, editable);
-
+			termPanel = new CreateFunctionTerm2DPolarPanel(events, editable);
+		} else if ( function instanceof NoiseFunctionTerm2D ) {
+			termPanel = new CreateFunctionTerm2DNoisePanel(events, editable);
 		} else if ( function instanceof ImageFunctionTerm2D ) {
-
-
-			termPanel = new CreateFunctionTerm2DImagePanel(broadcaster, editable); 
-
+			termPanel = new CreateFunctionTerm2DImagePanel(events, editable);
 		} else if( function instanceof AnalyticFunctionTerm2D ) {
-
-			termPanel = new CreateFunctionTerm2DAnalyticPanel(broadcaster, editable);
+			termPanel = new CreateFunctionTerm2DAnalyticPanel(events, editable);
+		} else {
+			throw new IllegalArgumentException("Unsupported 2D term: " + function.getClass());
 		}
 
-		broadcastIndices(); 
-		
-		if( hasDocPath ) termPanel.setDocPath(docPath); 
+		termBroadcaster = events;
+		termListener = event -> {
+			if (termBroadcaster == events && !bindingTerm
+					&& event.getDescriptor() == GUIEvent.Descriptor.MODIFIED) {
+				broadcaster.broadcast(this, GUIEvent.Descriptor.MODIFIED, event.getValue(0));
+			}
+		};
+		events.addGUIEventListener(termListener);
 
-		contentPanel.removeAll(); 
-		contentPanel.add( (Component) termPanel, BorderLayout.CENTER); 
-		contentPanel.revalidate(); 
-		contentPanel.repaint(); 
+		ArrayList<Object> indices = new ArrayList<Object>();
+		indices.add(xDimension);
+		indices.add(yDimension);
+		indices.add(zeroCentered);
+		events.broadcast(this, GUIEvent.Descriptor.INDICES_MODIFIED_2D, indices);
+		if( hasDocPath ) termPanel.setDocPath(docPath);
 
+		contentPanel.removeAll();
+		contentPanel.add( (Component) termPanel, BorderLayout.CENTER);
+		contentPanel.revalidate();
+		contentPanel.repaint();
+	}
+
+	private void bindTerm(DataGenerator function, boolean newTerm) {
+		bindingTerm = true;
+		try {
+			setupCorrectTermPanel(function);
+			if (newTerm) termPanel.setListNew(function);
+			else termPanel.setListExisting(function);
+		} finally {
+			bindingTerm = false;
+		}
+		// Publish only after both separable subterms and their defaults are ready.
+		calculator.setFunctionTerm2D((FunctionTerm2D) termPanel.getDataGenerator());
 	}
 
 	public void setListNew( DataGenerator function ) {
-
-		setupCorrectTermPanel( function ); 
-		//broadcastIndices(); 
-		termPanel.setListNew( function ); 
+		bindTerm(function, true);
 	}
 
 	public void setListExisting( DataGenerator function ) {
-
-		setupCorrectTermPanel( function ); 
-		//broadcastIndices(); 
-		termPanel.setListExisting( function );
-
+		bindTerm(function, false);
 	}
 
 	public class XYTermAction extends AbstractAction {
@@ -377,6 +401,8 @@ public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListene
 			break; 
 
 		case NON_SELECTED: //comes from calculator
+
+			disconnectTermEditor();
 
 			if( e.getValue(0) != null && (Integer)(e.getValue(0)) == INITIALIZE ) {
 

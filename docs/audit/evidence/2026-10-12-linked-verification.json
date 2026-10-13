@@ -1,0 +1,51 @@
+{
+  "before": {
+    "product": [
+      "2D 256 256",
+      "true",
+      "linked source A x linked source B"
+    ],
+    "downstream": [
+      "2D 256 256",
+      "true",
+      "Re{linked source A x linked source B}"
+    ],
+    "samples": 65536,
+    "product_max_errors": [
+      0.0,
+      0.0
+    ],
+    "downstream_real_exact": true,
+    "downstream_imaginary_zero": true
+  },
+  "after": {
+    "product": [
+      "2D 256 256",
+      "true",
+      "linked source A x linked source B"
+    ],
+    "downstream": [
+      "2D 256 256",
+      "true",
+      "Re{linked source A x linked source B}"
+    ],
+    "samples": 65536,
+    "product_max_errors": [
+      0.0,
+      0.0
+    ],
+    "downstream_real_exact": true,
+    "downstream_imaginary_zero": true
+  },
+  "source_amplitude_edit_error": 0.0,
+  "changed_real_output_samples": 65536,
+  "operand_replacement": {
+    "header": [
+      "2D 256 256",
+      "true",
+      "Re{linked source A x linked source A}"
+    ],
+    "real_error": 0.0,
+    "imaginary_zero": true
+  }
+}

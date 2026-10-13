@@ -295,13 +295,14 @@ public class DataGeneratorCollections {
 		
 		binary2DList = new ArrayList<Class<? extends DataGenerator>>();
 		
-		binary2DMap = createMap( binary2DList ); 
 		binary2DList.add( PlusOp.class ); 
 		binary2DList.add( MinusOp.class );
 		binary2DList.add( TimesOp.class );
 		binary2DList.add( DivideOp.class ); 
 		binary2DList.add( ConvolveOp.class ); 
 		binary2DList.add( CorrelateOp.class ); 
+
+		binary2DMap = createMap( binary2DList );
 	}
 	
 	public void loadNoise2DList() {

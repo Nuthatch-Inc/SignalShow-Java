@@ -65,7 +65,6 @@ jpackage \
   --description "Educational signal and image processing application" \
   --mac-package-identifier org.signalshow \
   --mac-package-name SignalShow \
-  --java-options -Xmx2g \
   --java-options "-Dapple.awt.application.name=SignalShow" \
   $ICON_ARG
 

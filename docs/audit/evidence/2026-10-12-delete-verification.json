@@ -1,0 +1,6 @@
+{
+  "samples_per_channel": 65536,
+  "deleted_source_result_unchanged": true,
+  "after_surviving_source_amplitude_edit_error": 4.440892098500626e-16,
+  "before_result_independent_chirp_times_exponential_error": 2.8492833092919057e-14
+}

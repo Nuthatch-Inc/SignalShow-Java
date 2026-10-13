@@ -1,0 +1,29 @@
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Exception in thread "AWT-EventQueue-0" java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Unknown Source)
+	at java.base/java.util.Scanner.next(Unknown Source)
+	at java.base/java.util.Scanner.nextDouble(Unknown Source)
+	at signals.io.ComplexIO.read2D(ComplexIO.java:75)
+	at signals.io.ComplexIO.read(ComplexIO.java:45)
+	at signals.action.LoadComplexAction.actionPerformed(LoadComplexAction.java:38)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton.doClick(Unknown Source)
+	at java.desktop/com.apple.laf.ScreenMenuItem.actionPerformed(Unknown Source)
+	at java.desktop/java.awt.MenuItem.processActionEvent(Unknown Source)
+	at java.desktop/java.awt.MenuItem.processEvent(Unknown Source)
+	at java.desktop/java.awt.MenuComponent.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.MenuComponent.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties

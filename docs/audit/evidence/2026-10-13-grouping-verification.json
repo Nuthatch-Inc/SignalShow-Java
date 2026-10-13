@@ -1,0 +1,32 @@
+{
+  "grouping ungrouped": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "expectedReal": 3,
+    "maxRealError": 0.0,
+    "maxImaginary": 0.0
+  },
+  "grouping parenthesized": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "expectedReal": 4,
+    "maxRealError": 0.0,
+    "maxImaginary": 0.0
+  },
+  "grouping after removal": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "expectedReal": 2,
+    "maxRealError": 0,
+    "maxImaginary": 0
+  }
+}

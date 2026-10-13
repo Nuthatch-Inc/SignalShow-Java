@@ -48,6 +48,7 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 
 	// Preview panel for showing operation output
 	OperationPreviewPanel systemPreviewPanel;
+	JButton saveButton;
 
 	public CreateOperationSystemPanel(OperatorSystem system) {
 		this(system, false); // Default to 1D mode
@@ -95,12 +96,13 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		contentPanel.add((JComponent) binaryOperationPanel, BINARY_PANEL);
 		contentPanel.add(functionPanelWrapper, FUNCTION_PANEL);
 
-		JButton saveButton = new JButton("Export Result as Data");
+		saveButton = new JButton("Export Result as Data");
 		saveButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
-				Core.getFunctionList().addItem(getFunction());
+				Function result = getFunction();
+				if (result != null) Core.getFunctionList().addItem(result);
 			}
 
 		});
@@ -139,7 +141,15 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		// Right column: parameter editor on top, preview plots below
 		JPanel rightColumn = new JPanel(new BorderLayout());
 		rightColumn.add(sharedEditorHolder, BorderLayout.NORTH);
-		rightColumn.add(systemPreviewPanel, BorderLayout.CENTER);
+		if (is2D) {
+			// Keep the parameter editor visible while allowing access to both full
+			// image previews when the window is too short to show them together.
+			JScrollPane previewScrollPane = new JScrollPane(systemPreviewPanel);
+			previewScrollPane.setBorder(null);
+			rightColumn.add(previewScrollPane, BorderLayout.CENTER);
+		} else {
+			rightColumn.add(systemPreviewPanel, BorderLayout.CENTER);
+		}
 
 		// Center area: selector content on left, right column on right
 		JPanel centerArea = new JPanel(new BorderLayout());
@@ -152,14 +162,16 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		setSystem(system);
 		initialized = true;
 
-		// Initialize preview with current system output
-		updateSystemPreview();
+		// Loading the expression suppresses selection events. Present its current
+		// selection now, including the input picker and the result preview.
+		calculator.updateDependents();
 
 	}
 
 	public void setSystem(OperatorSystem system) {
 
 		this.system = system;
+		calculator.setSystem(system);
 		ArrayList<FunctionProducer> functionList = system.getInputList();
 		ArrayList<Operation> operationList = system.getOpList();
 		CombineOpsRule rule = system.getCombineOpsRule();
@@ -236,9 +248,11 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 			try {
 				Function output = getFunction();
 				systemPreviewPanel.updatePreview(output);
+				saveButton.setEnabled(output != null);
 			} catch (Exception e) {
 				// If we can't generate output, clear the preview
 				systemPreviewPanel.clearPreview();
+				saveButton.setEnabled(false);
 			}
 		}
 	}

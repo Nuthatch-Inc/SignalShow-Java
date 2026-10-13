@@ -113,22 +113,18 @@ ID format: BUG-### (e.g. BUG-001)
 ---
 
 - ID: BUG-006
-- Title: Calculator strip thumbnail shows stale image after editing different term
-- Status: open
+- Title: Two-term editing corrupts arithmetic symbols, thumbnails and parameters
+- Status: resolved
 - Reported by: julietfiss
-- Date: 2025-01-16
-- Environment: macOS, Java 11, main branch
-- Description: In the 2D Function Calculator, when editing multiple terms in a combined expression, the calculator strip thumbnail for unselected terms shows stale cached images instead of refreshing to show the correct term's visualization.
-- Steps to reproduce:
-  1. Create a 2D function with two terms (term1 + term2)
-  2. Select term2 and edit its parameters (e.g., change function type or parameters)
-  3. Click on term1 in the calculator strip to select it
-  4. Observe the thumbnail for term1
-- Expected behavior: After clicking term1, its thumbnail should show term1's visualization (the function for term1)
-- Actual behavior: The thumbnail for term1 shows term2's visualization (the previously edited term's cached image)
-- Logs / stacktrace: N/A
-- Temporary workaround: Unknown - may need to close and reopen the function editor
-- Notes / PR: Root cause appears to be in the thumbnail caching mechanism. The cache invalidation doesn't properly track which term was edited vs which term is selected. When switching selection, the thumbnail renderer may be using a stale cached image from the previously active term. Related classes: `HorizontalThumbnailList`, `FunctionCalculator2D`, `CalculatorListItem`. This is relevant for the JavaScript port - need to ensure proper cache invalidation when implementing calculator strip in nuthatch-desktop.
+- Date: 2025-01-16; reproduced and resolved 2026-10-12
+- Environment: reproduced on macOS arm64, JDK 25, 421-test audit build
+- Description: Removed 2D term editors kept receiving shared events. Initializing a new editor could replace the selected arithmetic symbol with an image and overwrite another term's parameters. The historical cache explanation was unconfirmed and is superseded by this reproduction.
+- Steps to reproduce: Polar Rectangle (full width 64) → Add → Cartesian Gaussian; select and edit the earlier term.
+- Expected behavior: The symbol, each term's parameters/thumbnails and combined samples remain consistent.
+- Actual behavior before fix: The plus slot became an image; rectangle width reset; selecting the rectangle showed the Gaussian thumbnail; the equation could contain two rectangles.
+- Fix: Scope events to the active term editor, publish only after initialization, and guard calculator updates by slot type. Preserve entered polar width on image dimension changes.
+- Verification: Five Swing workflows pass (four failed before); full 426-test package passes. Native replay including independent edits and Plot/Edit preserves the expression; all 65,536 saved real samples match an independent oracle within 2.23e-16, imaginary samples remain zero. Windows untested.
+- Evidence: [two-term audit](docs/audit/evidence/2026-10-12-two-term.md).
 
 ---
 
@@ -186,3 +182,156 @@ ID format: BUG-### (e.g. BUG-001)
 - Logs / stacktrace: N/A — silent data corruption
 - Temporary workaround: None
 - Notes / PR: Fixed in `src/main/java/signals/operation/ArrayMath.java` by explicitly copying preserved edge values (`output[j][0]` for x-reverse, `output[0][i]` for y-reverse). Added regression tests `arrayMathReverse2DXPreservesFirstColumn()` and `arrayMathReverse2DYPreservesFirstRow()` in `src/test/java/signals/operation/UnaryOperations1DTest.java`. Date resolved: 2026-02-22.
+
+
+---
+
+- ID: BUG-010
+- Title: Rotated images break subsequent arithmetic and export
+- Status: resolved
+- Date: 2026-10-12
+- Environment: Native macOS/JDK 25; production regression covers square and rectangular 2D images.
+- Steps: Create a 256×256 image, Rotate it, then multiply by another 256×256 image.
+- Actual behavior: AWT array-bounds exception, stale thumbnail, export dialog fails to open.
+- Correction: `ImageDisplayMath.image2Data` now returns exactly the raster samples, removing the spurious extra element. Four regressions fail before and pass after; full 402-test package and native Roger export pass.
+- Evidence: [Roger workflow](docs/audit/evidence/2026-10-12-roger-rotation.md).
+
+---
+
+- ID: BUG-011
+- Title: Duplicated operation systems share editable parameters
+- Status: resolved
+- Date: 2026-10-12
+- Steps: Duplicate a Threshold chain, change one copy's cutoff from 0.5 to 0.75, select the other copy.
+- Expected: Each copy retains its own operation settings while linked source functions stay linked.
+- Actual behavior: Both copies show 0.75. Both 1D and 2D clone methods share the operation list and rule.
+- Evidence: [Native reproduction](docs/audit/evidence/2026-10-12-roger-rotation.md).
+- Correction: Operation settings and ParameterBlock are copied; each clone owns its operation list, matching rule and input list, retaining linked producers. Four before/after regressions and native independent edits pass.
+- Verification: [408-test package and native checks](docs/audit/evidence/2026-10-12-copy-layout.md).
+
+---
+
+- ID: BUG-012
+- Title: Wide operation parameter row hides documentation in a smaller window
+- Status: resolved
+- Date: 2026-10-12
+- Steps: Select Threshold in a 2D chain and resize to about 1153×742 logical points.
+- Actual behavior: The long parameter row consumes the right-column width; operation documentation disappears. Previews and Threshold fields are visible after the earlier collapse fix.
+- Expected: Keep parameters, previews, selector and operation documentation usable at normal desktop sizes.
+- Evidence: [Native reproduction](docs/audit/evidence/2026-10-12-roger-rotation.md).
+- Correction: Existing parameter descriptions and groups now stack above the scrollable previews. Two before/after Swing checks and native Threshold/Rotate controls/help at the smaller size pass.
+- Verification: [408-test package and native checks](docs/audit/evidence/2026-10-12-copy-layout.md).
+
+---
+
+- ID: BUG-013
+- Title: Normal complex-data files fail to reopen or lose their name
+- Status: resolved
+- Date: 2026-10-12
+- Environment: Native macOS/JDK 25; production 1D/2D regressions.
+- Reproduction: Save the built-in complex chirp and load its native .txt file: InputMismatchException; multiword names are parsed as numeric samples. Operation outputs also write an empty descriptor.
+- Correction: Read the complete name line, preserve display names and restore loaded descriptors. Five before/after regressions and native save/load/resave pass.
+- Evidence: [Persistence and insertion batch](docs/audit/evidence/2026-10-12-complex-insertion.md).
+
+---
+
+- ID: BUG-014
+- Title: Adding an operation can make a chain its own input
+- Status: resolved
+- Date: 2026-10-12
+- Environment: Native macOS/JDK 25; production 1D/2D regressions.
+- Reproduction: Create Threshold(image), select its closing parenthesis and add a unary operation. The default source becomes the current chain; updates/export cause StackOverflowError.
+- Correction: Pass the current owner to both calculators and filter owner/downstream dependencies from the shared input library. Eight before/after regressions and native insertion/operation/save pass.
+- Evidence: [Persistence and insertion batch](docs/audit/evidence/2026-10-12-complex-insertion.md).
+
+---
+
+- ID: BUG-015
+- Title: Profiles fails to open for ordinary rectangular images
+- Status: resolved
+- Reported by: Continuous Audit, native reproduction
+- Date: 2026-10-12
+- Environment: macOS arm64, JDK 25; 128×64 complex chirp
+- Steps to reproduce: New 2D Complex Chirp → Width 128 → Height 64 → Profiles.
+- Actual behavior before fix: ArrayIndexOutOfBoundsException; previous view remains displayed.
+- Cause: ImageProfile.getYProfile interchanged x/y dimensions when locating the centered origin.
+- Fix: Use each dimension for its own axis and preserve mathematical intercepts in profile labels.
+- Verification: Four of eight focused fixtures failed before; all pass after. Full 434-test package passes. Native horizontal/diagonal complex profiles export and match the source exactly; all four channels work.
+- Evidence: [Profiles audit](docs/audit/evidence/2026-10-12-profiles.md).
+
+---
+
+- ID: BUG-016
+- Title: Histogram clips its baseline/last bar and can hide a nonzero imaginary channel
+- Status: resolved
+- Date: 2026-10-12
+- Reproduction: Open Histogram for the ordinary rectangular complex chirp; horizontal labels and the last bar are clipped. A separate nonnegative imaginary channel containing zero is omitted.
+- Correction: Fit complete bins and the zero baseline with label space; display sample-value ticks; identify channel presence from any nonzero sample.
+- Verification: Two failures reproduced before; three focused checks and full 437-test package pass. Native 30/40-bin layouts are readable and update through the real input field.
+- Evidence: [Histogram audit](docs/audit/evidence/2026-10-12-histogram.md).
+
+---
+
+- ID: BUG-017
+- Title: Edited linked operations continuously regenerate unchanged outputs
+- Status: resolved
+- Date: 2026-10-12
+- Reproduction: Edit a source feeding Plus → Threshold → Real, then read the result three times. Both 1D and 2D run 27 additions and 9 threshold passes instead of one each.
+- Cause: Cached input IDs were never refreshed after recomputing an edited source; dirty checks also read each producer twice.
+- Correction: Remember current input IDs after computing a result and evaluate each input once per dirty check.
+- Verification: Two before/after production regressions, 14 focused ownership/insertion checks and 439-test package pass. Native linked multiplication/Real updates and operand replacement match every saved sample exactly.
+- Evidence: [Linked-source audit](docs/audit/evidence/2026-10-12-linked-sources.md).
+
+---
+
+- ID: BUG-018
+- Title: Reopened operation shows a selected input but an empty input picker
+- Status: resolved
+- Date: 2026-10-12
+- Reproduction: Create A × B, switch to another document, return to Edit System and click its already-selected final input. No input choices appear until selecting a different term first.
+- Correction: Present the loaded selection after initialization using the existing event path. Two before/after component checks and full 441-test package pass; native picker appears immediately and operand replacement/Plot/save succeed.
+- Evidence: [Native reproduction](docs/audit/evidence/2026-10-12-linked-sources.md).
+
+- Verification: [Reopen audit](docs/audit/evidence/2026-10-12-operation-reopen.md).
+
+---
+
+- ID: BUG-019
+- Title: Duplicated images open empty editors and share editable parameters with the original
+- Status: resolved
+- Date: 2026-10-12
+- Native reproduction: Duplicate a complex chirp; the copy initially has an empty editor. Plot → Edit Real Part, then increment its amplitude to 1.1. The original also changes to 1.1, while the copy loses linked real/imaginary complex editing.
+- Source findings: Function clone methods share both parts and reset FunctionType/new-editor state.
+- Evidence: [Image duplication investigation](docs/audit/evidence/2026-10-12-duplicate-images.md).
+
+- Correction: Deep-copy editable definitions and preserve complex type/existing editor state. Eight before/after regressions and full 449-test package pass; native copy/original edits and all saved complex samples verify independence.
+
+---
+
+- ID: BUG-020
+- Title: Resizing one operation input crashes thumbnail drawing or silently truncates data
+- Status: resolved
+- Date: 2026-10-12
+- Reproduction: Multiply two images, enlarge the first while the second remains 128×64; TimesOp indexes beyond the second buffer during thumbnail painting.
+- Correction: Validate binary operand grids, propagate unavailable results and keep editor/result consumers safe until compatible inputs return. Six focused checks, full 455-test package and native mismatch/replacement recovery pass. Direct native dropdown restoration remains unverified because typing did not commit.
+- Evidence: [Linked-source resize audit](docs/audit/evidence/2026-10-12-resize-linked.md).
+
+---
+
+- ID: BUG-021
+- Title: Rectangle text equation formats half-width as full-width denominator
+- Status: open — deferred behind ordinary usage
+- Date:2026-10-12
+- Evidence: Native full width16 produces the correct width16 samples but displays RECT[x/8]. [Cartesian composition](docs/audit/evidence/2026-10-12-cartesian-composition.md).
+- Scope: Equation text only; no numeric or UI correction attempted in this ordinary-usage batch.
+
+---
+
+- ID: BUG-022
+- Title: Function equation text omits subtraction and appends a digit to multiplication
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: Compose ordinary image terms with Subtract/Multiply; plotted equation prints AB ×1 C for A−B×C.
+- Correction: Restore the subtraction symbol and remove the stray1 from multiplication in the shared formatter.
+- Verification: Independent equation/arithmetic probe, full457-test package and native plotted expression pass.
+- Evidence: [Equation symbols](docs/audit/evidence/2026-10-13-equation.md).

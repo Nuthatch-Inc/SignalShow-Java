@@ -1,0 +1,13 @@
+{
+  "file": "/private/tmp/signalshow-roger-home/two term after.txt",
+  "dimensions": [
+    256,
+    256
+  ],
+  "zeroCentered": true,
+  "name": "f0",
+  "expression": "RECT[r/40] + exp(-pi*(x/24)^2)",
+  "samplesPerChannel": 65536,
+  "maxAbsoluteRealDifference": 2.220446049250313e-16,
+  "maxAbsoluteImaginary": 0.0
+}

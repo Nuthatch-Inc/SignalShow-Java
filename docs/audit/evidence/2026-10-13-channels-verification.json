@@ -1,0 +1,56 @@
+{
+  "channels source": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "maxRealError": 5.551115123125783e-17,
+    "maxImaginaryError": 1.1102230246251565e-16,
+    "nonzeroReal": 65536
+  },
+  "channels real": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "maxRealError": 5.551115123125783e-17,
+    "maxImaginaryError": 0,
+    "nonzeroReal": 65536
+  },
+  "channels threshold": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "maxRealError": 0,
+    "maxImaginaryError": 0,
+    "nonzeroReal": 3840
+  },
+  "channels source edited": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "maxRealError": 1.1102230246251565e-16,
+    "maxImaginaryError": 1.1102230246251565e-16,
+    "nonzeroReal": 65536
+  },
+  "channels threshold edited": {
+    "shape": [
+      256,
+      256
+    ],
+    "samples": 65536,
+    "maxRealError": 0,
+    "maxImaginaryError": 0,
+    "nonzeroReal": 4864
+  },
+  "invariants": {
+    "imaginaryChannelUnchanged": true,
+    "thresholdPixelsChangedAfterRealEdit": 1024
+  }
+}

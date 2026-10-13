@@ -81,7 +81,6 @@ jpackage \
   --win-menu \
   --win-shortcut \
   --win-menu-group SignalShow \
-  --java-options -Xmx2g \
   $ICON_ARG
 
 echo ""

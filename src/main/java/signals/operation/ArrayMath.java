@@ -651,7 +651,7 @@ public class ArrayMath {
 
 		for (int i = 0; i < dimension; i++) {
 
-			output[i] = input[i] >= threshold ? outputLow : outputHigh;
+			output[i] = input[i] >= threshold ? outputHigh : outputLow;
 
 		}
 

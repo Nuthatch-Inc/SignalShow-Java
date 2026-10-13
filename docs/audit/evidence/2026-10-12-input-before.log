@@ -1,0 +1,7 @@
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+INPUT WINDOW_OPENED,opposite=null,oldState=0,newState=0 source=signals.gui.SignalShowFrame focus=null
+INPUT MOUSE_PRESSED,(175,122),absolute(568,903),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1 source=javax.swing.JButton focus=null
+INPUT MOUSE_PRESSED,(348,14),absolute(568,903),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1 source=javax.swing.JTextField focus=null
+INPUT MOUSE_PRESSED,(348,14),absolute(624,461),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1 source=javax.swing.JTextField focus=null
+INPUT WINDOW_CLOSING,opposite=null,oldState=0,newState=0 source=signals.gui.SignalShowFrame focus=null
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties

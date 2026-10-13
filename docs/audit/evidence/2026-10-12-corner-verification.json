@@ -1,0 +1,25 @@
+{
+  "source_header": [
+    "2D 128 64",
+    "false",
+    "corner origin chirp"
+  ],
+  "result_header": [
+    "2D 128 64",
+    "false",
+    "threshold(corner origin chirp) x corner origin chirp"
+  ],
+  "samples_per_channel": 8192,
+  "round_trip_exact": true,
+  "threshold_cutoff": 0.5,
+  "multiply_max_error_real": 0.0,
+  "multiply_max_error_imaginary": 0.0,
+  "limits": "Cutoff 0.25 and result filename typing did not commit; default cutoff 0.5 and .txt output verified. Output copied to a descriptive fixture path after native save.",
+  "fresh_session_edited_cutoff": {
+    "cutoff": 0.25,
+    "threshold_exact": true,
+    "multiply_max_error_real": 0.0,
+    "multiply_max_error_imaginary": 0.0,
+    "filename_readback_verified": true
+  }
+}

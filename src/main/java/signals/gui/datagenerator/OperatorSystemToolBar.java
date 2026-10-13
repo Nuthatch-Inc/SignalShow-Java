@@ -80,6 +80,21 @@ public abstract class OperatorSystemToolBar extends DataGeneratorToolBar {
 		return "Plot of Result";
 	}
 	
+	/** Keep unavailable/incomplete results in their editable expression. */
+	protected Function getResultForView() {
+		Function result = getFunction();
+		if (result == null) {
+			editButton.setSelected(true);
+			edit();
+		}
+		return result;
+	}
+
+	@Override
+	public void plotHistogram() {
+		if (getResultForView() != null) super.plotHistogram();
+	}
+
 	public abstract void edit(); 
 
 	public void GUIEventOccurred(GUIEvent e) {

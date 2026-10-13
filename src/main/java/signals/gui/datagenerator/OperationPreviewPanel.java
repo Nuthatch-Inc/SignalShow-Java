@@ -20,7 +20,7 @@ import signals.gui.plot.PlotCursorPanel;
 
 /**
  * A panel that shows a small preview of an operation's output,
- * displaying the real and imaginary parts in stacked plots (1D) or side-by-side images (2D).
+ * displaying the real and imaginary parts in stacked plots (1D) or images (2D).
  * @author Juliet
  */
 @SuppressWarnings("serial")
@@ -72,28 +72,11 @@ public class OperationPreviewPanel extends JPanel implements ResizablePane {
 		plotsContainer1D.add(imagPlot);
 		
 		// Create 2D images container (vertical stacking)
-		plotsContainer2D = new JPanel() {
-			@Override
-			public Dimension getPreferredSize() {
-				// Calculate square size based on available width, maintaining aspect ratio
-				Dimension parentSize = getParent() != null ? getParent().getSize() : new Dimension(400, 600);
-				int availableWidth = Math.max(100, parentSize.width - 20); // Account for padding
-				int imageSize = Math.max(100, availableWidth - 20); // Leave some margin
-				return new Dimension(availableWidth, imageSize * 2 + 80); // Two images plus spacing and borders
-			}
-		};
+		plotsContainer2D = new JPanel();
 		plotsContainer2D.setLayout(new BoxLayout(plotsContainer2D, BoxLayout.Y_AXIS));
 		
 		// Create real part image panel with border
-		JPanel realImageContainer = new JPanel(new BorderLayout()) {
-			@Override
-			public Dimension getPreferredSize() {
-				Dimension parentSize = getParent() != null ? getParent().getSize() : new Dimension(400, 300);
-				int availableWidth = Math.max(100, parentSize.width - 20);
-				int imageSize = Math.max(100, availableWidth - 20);
-				return new Dimension(availableWidth, imageSize + 30); // Image plus border
-			}
-		};
+		JPanel realImageContainer = new JPanel(new BorderLayout());
 		realImageContainer.setBorder(BorderFactory.createTitledBorder("Real Part of Result"));
 		realImagePanel = new ImageDisplayPanel(new Dimension(200, 200));
 		realImageContainer.add(realImagePanel, BorderLayout.CENTER);
@@ -102,15 +85,7 @@ public class OperationPreviewPanel extends JPanel implements ResizablePane {
 		plotsContainer2D.add(Box.createVerticalStrut(10));
 		
 		// Create imaginary part image panel with border
-		JPanel imagImageContainer = new JPanel(new BorderLayout()) {
-			@Override
-			public Dimension getPreferredSize() {
-				Dimension parentSize = getParent() != null ? getParent().getSize() : new Dimension(400, 300);
-				int availableWidth = Math.max(100, parentSize.width - 20);
-				int imageSize = Math.max(100, availableWidth - 20);
-				return new Dimension(availableWidth, imageSize + 30); // Image plus border
-			}
-		};
+		JPanel imagImageContainer = new JPanel(new BorderLayout());
 		imagImageContainer.setBorder(BorderFactory.createTitledBorder("Imaginary Part of Result"));
 		imagImagePanel = new ImageDisplayPanel(new Dimension(200, 200));
 		imagImageContainer.add(imagImagePanel, BorderLayout.CENTER);
@@ -142,8 +117,8 @@ public class OperationPreviewPanel extends JPanel implements ResizablePane {
 			imagPlot.revalidate();
 			imagPlot.repaint();
 		}
-		// ImageDisplayPanel doesn't have sizeChanged(), but the container's getPreferredSize()
-		// override will handle dynamic resizing for 2D images
+		// Image panels retain their natural size; the surrounding viewport handles
+		// windows that have less room than both complete previews need.
 		if (realImagePanel != null) {
 			realImagePanel.revalidate();
 			realImagePanel.repaint();
@@ -196,6 +171,8 @@ public class OperationPreviewPanel extends JPanel implements ResizablePane {
 			return;
 		}
 		
+		plotsContainer1D.setVisible(true);
+		plotsContainer2D.setVisible(true);
 		if (function instanceof Function1D) {
 			// Switch to 1D display if needed
 			if (getComponentCount() > 0 && getComponent(0) != plotsContainer1D) {
@@ -270,6 +247,9 @@ public class OperationPreviewPanel extends JPanel implements ResizablePane {
 	 * Clears all plots from the preview
 	 */
 	public void clearPreview() {
+		// An unavailable result must not keep displaying the previous image.
+		plotsContainer1D.setVisible(false);
+		plotsContainer2D.setVisible(false);
 		if (realPlot != null) {
 			realPlot.removeAll();
 			realPlot.revalidate();

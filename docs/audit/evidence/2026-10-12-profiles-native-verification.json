@@ -1,0 +1,36 @@
+{
+  "source": [
+    "2D 128 64",
+    "true",
+    "complex chirp"
+  ],
+  "sourceSamples": 8192,
+  "sourceMaxAbsoluteDifference": 1.419697692739419e-14,
+  "diagonal profile": {
+    "metadata": [
+      "1D 64",
+      "true",
+      "complex chirp [x = 1y+3]"
+    ],
+    "samples": 64,
+    "maxAbsoluteDifferenceFromSourceCut": 0.0
+  },
+  "horizontal profile": {
+    "metadata": [
+      "1D 128",
+      "true",
+      "complex chirp [y = 0x+0]"
+    ],
+    "samples": 128,
+    "maxAbsoluteDifferenceFromSourceCut": 0.0
+  },
+  "sourceAfterViewEdits": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "phaseDegrees": 60,
+    "maxAbsoluteDifference": 9.842127113302013e-14,
+    "samplesPerChannel": 65536
+  }
+}

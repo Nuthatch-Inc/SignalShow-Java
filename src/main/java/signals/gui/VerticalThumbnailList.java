@@ -17,6 +17,7 @@ import signals.core.Core;
 import signals.core.Function1D;
 import signals.core.Function2D;
 import signals.core.FunctionProducer;
+import signals.core.OperatorSystem;
 import signals.core.OperatorSystem1D;
 import signals.core.OperatorSystem2D;
 import signals.core.Showable;
@@ -159,6 +160,12 @@ public class VerticalThumbnailList extends JList {
 		return newList; 
 	}
 
+	private boolean isEligibleInput(Object item, FunctionProducer exclude) {
+		if (item == exclude) return false;
+		return exclude == null || !(item instanceof OperatorSystem)
+				|| !((OperatorSystem) item).dependsOn(exclude);
+	}
+
 	public VerticalThumbnailList getFunction1DList() {
 
 		return getFunction1DList( null );
@@ -174,7 +181,7 @@ public class VerticalThumbnailList extends JList {
 
 			Object item = model.get(i); 
 
-			if( !item.equals(exclude) ) {
+			if (isEligibleInput(item, exclude)) {
 
 				if( item instanceof Function1D) {
 
@@ -209,7 +216,7 @@ public class VerticalThumbnailList extends JList {
 
 			Object item = model.get(i); 
 
-			if( !item.equals(exclude) ) {
+			if (isEligibleInput(item, exclude)) {
 
 				if( item instanceof Function2D) {
 

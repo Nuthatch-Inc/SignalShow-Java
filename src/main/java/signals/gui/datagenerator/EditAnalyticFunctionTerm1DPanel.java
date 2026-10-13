@@ -17,7 +17,7 @@ public class EditAnalyticFunctionTerm1DPanel extends EditAnalyticFunctionTermPan
 	double[] indices;
 	ModeSelector modeSelector; 
 	protected AnalyticFunctionTerm1DEditor editor;
-	private boolean hasExplicitWidthDimension = false;
+	private Integer explicitWidthDimension;
 
 	public EditAnalyticFunctionTerm1DPanel( GUIEventBroadcaster broadcaster, GUIEvent.Descriptor modifiedDescriptor ) {
 
@@ -48,8 +48,8 @@ public class EditAnalyticFunctionTerm1DPanel extends EditAnalyticFunctionTermPan
 	 */
 	public void setDefaultWidthDimension( int dimension ) {
 		
-		hasExplicitWidthDimension = true;
-		setDefaultWidthOn( dimension );
+		// This supplies defaults for a newly chosen generator, not a resize command.
+		explicitWidthDimension = dimension;
 	}
 
 	public void addSelectors() {
@@ -98,20 +98,14 @@ public class EditAnalyticFunctionTerm1DPanel extends EditAnalyticFunctionTermPan
 	}
 
 	public void setDefaultWidth( boolean on ) {
-		
-		if( on ) {
-			
-			// Don't override if dimension was explicitly set (e.g., for polar coordinates)
-			if( !hasExplicitWidthDimension && indices != null ) {
-				setDefaultWidthOn(indices.length);
-			}
-			
+		if (on) {
+			if (explicitWidthDimension != null) setDefaultWidthOn(explicitWidthDimension);
+			else if (indices != null) setDefaultWidthOn(indices.length);
 		} else {
-			hasExplicitWidthDimension = false;
-			setDefaultWidthOff(); 
+			setDefaultWidthOff();
 		}
 	}
-	
+
 	public void GUIEventOccurred(GUIEvent e) {
 
 		if( e.getSource().equals(this) ) return; 

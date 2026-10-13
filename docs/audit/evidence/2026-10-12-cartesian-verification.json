@@ -1,0 +1,13 @@
+{
+  "dimensions": [
+    256,
+    256
+  ],
+  "samples_per_channel": 65536,
+  "independent_source_max_abs_error": 2.220446049250313e-16,
+  "threshold_cutoff": 0.5,
+  "threshold_sample_mismatches": 0,
+  "imaginary_channels_zero": true,
+  "typed_filename_pass": false,
+  "formula": "rect(x; half-width 8) * exp(-pi*y^2/16^2) + exp(-pi*x^2/17^2)"
+}

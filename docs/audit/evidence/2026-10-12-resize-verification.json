@@ -1,0 +1,12 @@
+{
+  "dimensions": [
+    128,
+    64
+  ],
+  "samples_per_channel": 8192,
+  "shared_source_resize_product_max_abs_error": 0.0,
+  "post_fix_replacement_recovery_max_abs_error": 0.0,
+  "post_fix_restore_via_dimension_controls": "not committed; remains unverified natively",
+  "post_fix_recovery_method": "replace both operands with the loaded rectangular source",
+  "post_fix_typed_filename_pass": false
+}

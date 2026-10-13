@@ -15,14 +15,18 @@ public class OperatorSystemToolBar1D extends OperatorSystemToolBar {
 
 	@Override
 	public void plot() {
-		Function1DOverviewPanel plot = new Function1DOverviewPanel(getFunction());
+		Function result = getResultForView();
+		if (result == null) return;
+		Function1DOverviewPanel plot = new Function1DOverviewPanel(result);
 		setContent( plot, PLOT ); 
 	}
 
 	@Override
 	public void plotFFT() {
 		
-		Function transform = Transforms.fft1D(getFunction(), false, Transforms.NORMALIZE_ROOT_N );
+		Function result = getResultForView();
+		if (result == null) return;
+		Function transform = Transforms.fft1D(result, false, Transforms.NORMALIZE_ROOT_N );
 		Function1DOverviewPanel plot = new Function1DOverviewPanel(transform);
 		setContent( plot, FFT );
 	}

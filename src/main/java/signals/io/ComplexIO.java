@@ -32,9 +32,7 @@ public class ComplexIO {
 	
 	public static Function read( File file ) {
 		
-		try {
-			
-			Scanner scan = new Scanner( file );
+		try (Scanner scan = new Scanner(file)) {
 			
 			if( scan.next().equals("1D")) { 
 				
@@ -61,8 +59,9 @@ public class ComplexIO {
 		//read zerocentered
 		boolean zeroCentered = scan.nextBoolean(); 
 		
-		//read name
-		String name = scan.next(); 
+		// The writer stores the complete name on its own line.
+		scan.nextLine(); // finish the zero-centered line
+		String name = scan.nextLine();
 		
 		double[] real = new double[dimensionX*dimensionY]; 
 		double[] imag = new double[dimensionX*dimensionY]; 
@@ -87,7 +86,9 @@ public class ComplexIO {
 		}
 		
 		
-		return FunctionFactory.createFunction2D(real, imag, zeroCentered, name, dimensionX, dimensionY); 
+		Function function = FunctionFactory.createFunction2D(real, imag, zeroCentered, name, dimensionX, dimensionY);
+		function.setDescriptor(name);
+		return function;
 	}
 	
 	private static Function read1D( Scanner scan ) {
@@ -98,8 +99,9 @@ public class ComplexIO {
 		//read zerocentered
 		boolean zeroCentered = scan.nextBoolean(); 
 		
-		//read name
-		String name = scan.next(); 
+		// The writer stores the complete name on its own line.
+		scan.nextLine(); // finish the zero-centered line
+		String name = scan.nextLine();
 		
 		double[] real = new double[dimension]; 
 		double[] imag = new double[dimension]; 
@@ -114,7 +116,9 @@ public class ComplexIO {
 			imag[i] = scan.nextDouble(); 
 		}
 		
-		return FunctionFactory.createFunction1D(real, imag, zeroCentered, name); 
+		Function function = FunctionFactory.createFunction1D(real, imag, zeroCentered, name);
+		function.setDescriptor(name);
+		return function;
 	}
 
 	public static boolean write1D( File file, Function1D function ) {
@@ -131,8 +135,8 @@ public class ComplexIO {
 			//write zerocentered
 			writer.write( ""+function.isZeroCentered() + "\n" ); 
 			
-			//write descriptor 
-			writer.write( function.getDescriptor() + "\n" ); 
+			// Operation results use a custom equation as their display name.
+			writer.write( function.getCompactDescriptor() + "\n" );
 
 			writePart1D( writer, function, Part.REAL_PART); 
 			writer.write( "\n\n" ); 			
@@ -167,8 +171,8 @@ public class ComplexIO {
 			//write zerocentered
 			writer.write( ""+function.isZeroCentered() + "\n" ); 
 			
-			//write descriptor 
-			writer.write( function.getDescriptor() + "\n" ); 
+			// Operation results use a custom equation as their display name.
+			writer.write( function.getCompactDescriptor() + "\n" );
 
 			writePart2D( writer, function, Part.REAL_PART); 
 			writer.write( "\n\n" ); 			

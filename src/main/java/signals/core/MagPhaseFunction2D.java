@@ -15,8 +15,9 @@ public class MagPhaseFunction2D extends Function2D {
 
 	public MagPhaseFunction2D clone() {
 		
-		return new MagPhaseFunction2D( partA, partB, 
-				Core.getFunctionCreationOptions().getNextFunctionName(), dimensionX, dimensionY, zeroCentered );
+		FunctionCopy definition = new FunctionCopy();
+		return initializeCopy(new MagPhaseFunction2D( definition.copy(partA), definition.copy(partB),
+				Core.getFunctionCreationOptions().getNextFunctionName(), dimensionX, dimensionY, zeroCentered ));
 	}
 
 	public void show() {

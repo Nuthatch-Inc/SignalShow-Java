@@ -6,10 +6,11 @@ public class ImageProfile {
 					int dimensionX, int dimensionY, double[] dataA, 
 					double[] dataB, String descriptor ) {
 
+		int intercept = y0;
 		int xStart = 0;  
 		if( zeroCentered ) {
-			y0 += dimensionX/2;
-			xStart = dimensionY/2; 
+			y0 += dimensionY/2;
+			xStart = dimensionX/2;
 		} 
 
 		double[] realProfile = new double[dimensionX]; 
@@ -172,7 +173,7 @@ public class ImageProfile {
 		}
 
 		return FunctionFactory.createFunction1D(realProfile, imagProfile, zeroCentered,
-				descriptor+" [y = "+rise+"x+"+y0+"]");
+				descriptor+" [y = "+rise+"x+"+intercept+"]");
 
 	}
 
@@ -180,6 +181,7 @@ public class ImageProfile {
 			int dimensionX, int dimensionY, double[] dataA, double[] dataB, 
 			String descriptor) {
 
+		int intercept = x0;
 		int yStart = 0;  
 		if( zeroCentered ) {
 			x0 += dimensionX/2;
@@ -347,7 +349,7 @@ public class ImageProfile {
 		}
 
 		return FunctionFactory.createFunction1D(realProfile, imagProfile, zeroCentered,
-				descriptor+" [x = "+run+"y+"+x0+"]");
+				descriptor+" [x = "+run+"y+"+intercept+"]");
 	}
 	
 }

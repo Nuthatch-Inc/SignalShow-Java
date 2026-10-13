@@ -1,0 +1,17 @@
+{
+  "dimensions": [
+    256,
+    256
+  ],
+  "samples_per_channel": 65536,
+  "coordinate_convention": "x = column - 128; y = 127 - row",
+  "original_amplitude": 1,
+  "copy_amplitude": 1.1,
+  "copy_versus_scaled_original_max_abs_error": 0.0,
+  "original_versus_independent_chirp_max_abs_error": 2.836619827917275e-14,
+  "files": [
+    "duplicate original unchanged.txt",
+    "duplicate complex edited.txt"
+  ],
+  "native_filename_typing_readback": true
+}

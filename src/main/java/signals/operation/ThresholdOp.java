@@ -96,15 +96,15 @@ public class ThresholdOp extends UnaryOperation implements ParametricOperation {
 
 	public double getValue(int index) {
 			
-		if( index == 0 ) return minVal; 
-		else if( index == 1 ) return maxVal; 
+		if( index == 0 ) return maxVal;
+		else if( index == 1 ) return minVal;
 		return threshold; 
 	}
 
 	public void setValue(int index, double value) {
 		
-		if( index == 0 ) minVal = value; 
-		else if( index == 1 ) maxVal = value;
+		if( index == 0 ) maxVal = value;
+		else if( index == 1 ) minVal = value;
 		else threshold = value; 
 		
 	}

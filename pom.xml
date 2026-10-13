@@ -124,7 +124,6 @@
                             <mainJar>signalshow-${project.version}.jar</mainJar>
                             <mainClass>SignalShow</mainClass>
                             <javaOptions>
-                                <option>-Xmx2g</option>
                                 <option>-Dapple.awt.application.name=SignalShow</option>
                             </javaOptions>
                             <input>target</input>

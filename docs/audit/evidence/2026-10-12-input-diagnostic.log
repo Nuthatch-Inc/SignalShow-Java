@@ -1,0 +1,89 @@
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+FOCUS-BRIDGE addNotify desktop=true
+FOCUS-BRIDGE supported=true
+INPUT WINDOW_OPENED,opposite=null,oldState=0,newState=0 source=signals.gui.SignalShowFrame focus=null
+INPUT WINDOW_ACTIVATED,opposite=null,oldState=0,newState=0 source=signals.gui.SignalShowFrame focus=null
+INPUT WINDOW_GAINED_FOCUS,opposite=null,oldState=0,newState=0 source=signals.gui.SignalShowFrame focus=null
+INPUT FOCUS_GAINED,permanent,opposite=null,cause=ACTIVATION source=signals.gui.VerticalThumbnailList focus=signals.gui.VerticalThumbnailList
+INPUT MOUSE_PRESSED,(175,122),absolute(419,559),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1 source=javax.swing.JButton focus=signals.gui.VerticalThumbnailList
+FOCUS-BRIDGE mouse window=true focused=true
+INPUT FOCUS_LOST,permanent,opposite=javax.swing.JButton[,125,50,347x250,alignmentX=0.0,alignmentY=0.5,border=com.apple.laf.AquaButtonBorder$Toggle@3dc6be4d,flags=288,maximumSize=,minimumSize=,preferredSize=,defaultIcon=jar:file:/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app/Contents/app/signalshow-1.2.4.jar!/guiIcons/createf2DXY.png,disabledIcon=,disabledSelectedIcon=,margin=javax.swing.plaf.InsetsUIResource[top=0,left=2,bottom=0,right=2],paintBorder=true,paintFocus=true,pressedIcon=,rolloverEnabled=false,rolloverIcon=,rolloverSelectedIcon=,selectedIcon=,text=,defaultCapable=true],cause=MOUSE_EVENT source=signals.gui.VerticalThumbnailList focus=null
+INPUT FOCUS_GAINED,permanent,opposite=signals.gui.VerticalThumbnailList[,0,0,155x4010,alignmentX=0.0,alignmentY=0.0,border=,flags=33554728,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=128,height=4010],fixedCellHeight=-1,fixedCellWidth=-1,horizontalScrollIncrement=-1,selectionBackground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=8,g=74,b=217],selectionForeground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=255,g=255,b=255],visibleRowCount=8,layoutOrientation=0],cause=MOUSE_EVENT source=javax.swing.JButton focus=javax.swing.JButton
+INPUT FOCUS_LOST,permanent,opposite=signals.gui.VerticalThumbnailList[,0,0,155x4010,alignmentX=0.0,alignmentY=0.0,border=,flags=33554728,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=128,height=4010],fixedCellHeight=-1,fixedCellWidth=-1,horizontalScrollIncrement=-1,selectionBackground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=8,g=74,b=217],selectionForeground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=255,g=255,b=255],visibleRowCount=8,layoutOrientation=0],cause=TRAVERSAL_FORWARD source=javax.swing.JButton focus=null
+INPUT FOCUS_GAINED,permanent,opposite=javax.swing.JButton[,125,50,347x250,invalid,alignmentX=0.0,alignmentY=0.5,border=com.apple.laf.AquaButtonBorder$Toggle@3dc6be4d,flags=288,maximumSize=,minimumSize=,preferredSize=,defaultIcon=jar:file:/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app/Contents/app/signalshow-1.2.4.jar!/guiIcons/createf2DXY.png,disabledIcon=,disabledSelectedIcon=,margin=javax.swing.plaf.InsetsUIResource[top=0,left=2,bottom=0,right=2],paintBorder=true,paintFocus=true,pressedIcon=,rolloverEnabled=false,rolloverIcon=,rolloverSelectedIcon=,selectedIcon=,text=,defaultCapable=true],cause=TRAVERSAL_FORWARD source=signals.gui.VerticalThumbnailList focus=signals.gui.VerticalThumbnailList
+INPUT MOUSE_PRESSED,(348,14),absolute(419,559),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1 source=javax.swing.JTextField focus=signals.gui.VerticalThumbnailList
+FOCUS-BRIDGE mouse window=true focused=true
+INPUT FOCUS_LOST,permanent,opposite=javax.swing.JTextField[,122,10,697x27,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=com.apple.laf.AquaTextFieldBorder@627452ef,flags=288,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=0,g=0,b=0],disabledTextColor=javax.swing.plaf.ColorUIResource[r=128,g=128,b=128],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=com.apple.laf.AquaImageFactory$SystemColorProxy[r=0,g=0,b=0],selectionColor=com.apple.laf.AquaImageFactory$SystemColorProxy[r=165,g=205,b=255],columns=0,columnWidth=0,command=,horizontalAlignment=LEADING],cause=MOUSE_EVENT source=signals.gui.VerticalThumbnailList focus=null
+INPUT FOCUS_GAINED,permanent,opposite=signals.gui.VerticalThumbnailList[,0,0,155x4010,alignmentX=0.0,alignmentY=0.0,border=,flags=33554728,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=128,height=4010],fixedCellHeight=-1,fixedCellWidth=-1,horizontalScrollIncrement=-1,selectionBackground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=8,g=74,b=217],selectionForeground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=255,g=255,b=255],visibleRowCount=8,layoutOrientation=0],cause=MOUSE_EVENT source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JTextField focus=javax.swing.JTextField
+INPUT FOCUS_LOST,permanent,opposite=signals.gui.VerticalThumbnailList[,0,0,155x4010,alignmentX=0.0,alignmentY=0.0,border=,flags=33554728,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=128,height=4010],fixedCellHeight=-1,fixedCellWidth=-1,horizontalScrollIncrement=-1,selectionBackground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=8,g=74,b=217],selectionForeground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=255,g=255,b=255],visibleRowCount=8,layoutOrientation=0],cause=TRAVERSAL_FORWARD source=javax.swing.JTextField focus=null
+INPUT FOCUS_GAINED,permanent,opposite=javax.swing.JTextField[,122,10,697x27,invalid,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=com.apple.laf.AquaTextFieldBorder@627452ef,flags=288,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=0,g=0,b=0],disabledTextColor=javax.swing.plaf.ColorUIResource[r=128,g=128,b=128],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=com.apple.laf.AquaImageFactory$SystemColorProxy[r=0,g=0,b=0],selectionColor=com.apple.laf.AquaImageFactory$SystemColorProxy[r=165,g=205,b=255],columns=0,columnWidth=0,command=,horizontalAlignment=LEADING],cause=TRAVERSAL_FORWARD source=signals.gui.VerticalThumbnailList focus=signals.gui.VerticalThumbnailList
+INPUT MOUSE_PRESSED,(172,122),absolute(419,559),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1 source=javax.swing.JButton focus=signals.gui.VerticalThumbnailList
+FOCUS-BRIDGE mouse window=true focused=true
+INPUT FOCUS_LOST,permanent,opposite=javax.swing.JButton[,482,50,347x250,alignmentX=0.0,alignmentY=0.5,border=com.apple.laf.AquaButtonBorder$Toggle@3dc6be4d,flags=288,maximumSize=,minimumSize=,preferredSize=,defaultIcon=jar:file:/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app/Contents/app/signalshow-1.2.4.jar!/guiIcons/createf2DPolar.png,disabledIcon=,disabledSelectedIcon=,margin=javax.swing.plaf.InsetsUIResource[top=0,left=2,bottom=0,right=2],paintBorder=true,paintFocus=true,pressedIcon=,rolloverEnabled=false,rolloverIcon=,rolloverSelectedIcon=,selectedIcon=,text=,defaultCapable=true],cause=MOUSE_EVENT source=signals.gui.VerticalThumbnailList focus=null
+INPUT FOCUS_GAINED,permanent,opposite=signals.gui.VerticalThumbnailList[,0,0,155x4010,alignmentX=0.0,alignmentY=0.0,border=,flags=33554728,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=128,height=4010],fixedCellHeight=-1,fixedCellWidth=-1,horizontalScrollIncrement=-1,selectionBackground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=8,g=74,b=217],selectionForeground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=255,g=255,b=255],visibleRowCount=8,layoutOrientation=0],cause=MOUSE_EVENT source=javax.swing.JButton focus=javax.swing.JButton
+INPUT FOCUS_LOST,permanent,opposite=signals.gui.VerticalThumbnailList[,0,0,155x4010,alignmentX=0.0,alignmentY=0.0,border=,flags=33554728,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=128,height=4010],fixedCellHeight=-1,fixedCellWidth=-1,horizontalScrollIncrement=-1,selectionBackground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=8,g=74,b=217],selectionForeground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=255,g=255,b=255],visibleRowCount=8,layoutOrientation=0],cause=TRAVERSAL_FORWARD source=javax.swing.JButton focus=null
+INPUT FOCUS_GAINED,permanent,opposite=javax.swing.JButton[,482,50,347x250,invalid,alignmentX=0.0,alignmentY=0.5,border=com.apple.laf.AquaButtonBorder$Toggle@3dc6be4d,flags=288,maximumSize=,minimumSize=,preferredSize=,defaultIcon=jar:file:/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app/Contents/app/signalshow-1.2.4.jar!/guiIcons/createf2DPolar.png,disabledIcon=,disabledSelectedIcon=,margin=javax.swing.plaf.InsetsUIResource[top=0,left=2,bottom=0,right=2],paintBorder=true,paintFocus=true,pressedIcon=,rolloverEnabled=false,rolloverIcon=,rolloverSelectedIcon=,selectedIcon=,text=,defaultCapable=true],cause=TRAVERSAL_FORWARD source=signals.gui.VerticalThumbnailList focus=signals.gui.VerticalThumbnailList
+INPUT MOUSE_PRESSED,(44,13),absolute(419,559),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1 source=javax.swing.JFormattedTextField focus=signals.gui.VerticalThumbnailList
+FOCUS-BRIDGE mouse window=true focused=true
+INPUT FOCUS_LOST,permanent,opposite=javax.swing.JFormattedTextField[Spinner.formattedTextField,0,0,89x26,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=com.apple.laf.AquaTextFieldBorder@627452ef,flags=8388896,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=0,g=0,b=0],disabledTextColor=javax.swing.plaf.ColorUIResource[r=128,g=128,b=128],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=com.apple.laf.AquaImageFactory$SystemColorProxy[r=0,g=0,b=0],selectionColor=com.apple.laf.AquaImageFactory$SystemColorProxy[r=165,g=205,b=255],columns=3,columnWidth=12,command=,horizontalAlignment=RIGHT],cause=MOUSE_EVENT source=signals.gui.VerticalThumbnailList focus=null
+INPUT FOCUS_GAINED,permanent,opposite=signals.gui.VerticalThumbnailList[,0,0,155x4010,alignmentX=0.0,alignmentY=0.0,border=,flags=33554728,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=128,height=4010],fixedCellHeight=-1,fixedCellWidth=-1,horizontalScrollIncrement=-1,selectionBackground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=8,g=74,b=217],selectionForeground=com.apple.laf.AquaImageFactory$SystemColorProxy[r=255,g=255,b=255],visibleRowCount=8,layoutOrientation=0],cause=MOUSE_EVENT source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=401 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=400 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT KEY_EVENT id=402 source=javax.swing.JFormattedTextField focus=javax.swing.JFormattedTextField
+INPUT WINDOW_CLOSING,opposite=null,oldState=0,newState=0 source=signals.gui.SignalShowFrame focus=javax.swing.JFormattedTextField
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties

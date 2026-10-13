@@ -155,7 +155,7 @@ public class SineChirpFunctionTerm1D extends AnalyticFunctionTerm1D {
 	@Override
 	public String getEquation(String[] variables) {
 
-		return amplitudeMultiplierString() + "cos[\u03C0(" + formattedParamString(variables[0]) + ")^" + getOrder()
+		return amplitudeMultiplierString() + "sin[\u03C0(" + formattedParamString(variables[0]) + ")^" + getOrder()
 				+ StringConversions.PhaseString(getInitialPhase()) + "]";
 	}
 }

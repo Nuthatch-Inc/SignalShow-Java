@@ -1,5 +1,7 @@
 package signals.gui;
 
+import java.awt.Desktop;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -111,6 +113,14 @@ public class GUI {
 		frame.addComponentListener(new ResizeListener());
 		frame.pack();
 		frame.setVisible(true);
+		// Ask the desktop to activate a newly launched app so its text fields can
+		// receive keyboard input, including when a launcher opens it in the background.
+		if (Desktop.isDesktopSupported()) {
+			Desktop desktop = Desktop.getDesktop();
+			if (desktop.isSupported(Desktop.Action.APP_REQUEST_FOREGROUND)) {
+				desktop.requestForeground(false);
+			}
+		}
 	}
 
 	public Dimension getContentDimension() {

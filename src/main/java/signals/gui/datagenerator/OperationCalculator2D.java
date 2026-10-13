@@ -7,7 +7,6 @@ import java.util.Iterator;
 import javax.swing.ImageIcon;
 
 import signals.core.CombineOpsRule;
-import signals.core.Core;
 import signals.core.Function2D;
 import signals.core.FunctionProducer;
 import signals.core.Operation;
@@ -100,7 +99,7 @@ public class OperationCalculator2D extends OperationCalculator {
 	@Override
 	public void createNewFunction() { 
 		
-		FunctionProducer selected = (FunctionProducer) Core.getGUI().getFunction2DList().getSelectedItem(); 
+		FunctionProducer selected = (FunctionProducer) getLibrary().getFunction2DList(system).getSelectedItem();
 		Function2DThumbnailGraphic graphic = 
 			new Function2DThumbnailGraphic( (Function2D) selected.getFunction() );
 		

@@ -33,7 +33,8 @@ public class SaveComplexAction extends AbstractAction {
 
 			} else if ( function instanceof OperatorSystem ) {
 
-				(new SaveComplexDialog( ((OperatorSystem)function).getFunction() )).display(); 
+				Function result = ((OperatorSystem) function).getFunction();
+				if (result != null) (new SaveComplexDialog(result)).display();
 
 			} 
 

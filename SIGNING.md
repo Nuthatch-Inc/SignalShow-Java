@@ -145,7 +145,6 @@ Add these steps to your macOS build job in `.github/workflows/build-installers.y
       --mac-package-name SignalShow \
       --mac-sign \
       --mac-signing-key-user-name "$CERT_IDENTITY" \
-      --java-options -Xmx2g \
       --icon assets/icons/SignalShow.icns
 
 - name: Notarize macOS App

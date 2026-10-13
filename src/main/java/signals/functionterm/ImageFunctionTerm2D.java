@@ -106,13 +106,15 @@ public abstract class ImageFunctionTerm2D extends AnalyticFunctionTerm2D {
 		
 		int w = right-left;
 		int h = bottom-top;
+		double[] pixels = new double[x_dimension*y_dimension];
+		// Empty sizes and images outside the canvas have no visible pixels.
+		// JAI rejects zero scale factors, so do not attempt to resize them.
+		if( w <= 0 || h <= 0 ) return pixels;
 		
 		PlanarImage scaledImage = getScaledResizedImage( w, h );
 		Raster outputRaster = scaledImage.getData();
 		double[] content_pixels = new double[w*h];
 		outputRaster.getPixels(0,0,w,h,content_pixels);
-		
-		double[] pixels = new double[x_dimension*y_dimension];
 		
 		//set the correct pixels
 		int c_idx = 0; 

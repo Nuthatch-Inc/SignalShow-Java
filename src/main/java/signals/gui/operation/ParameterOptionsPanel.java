@@ -1,5 +1,9 @@
 package signals.gui.operation;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
@@ -22,7 +26,21 @@ public class ParameterOptionsPanel extends OperationOptionsPanel implements Para
 		
 		paramOp = (ParametricOperation)dependent; 
 		
-		add( new JLabel( paramOp.getParamDescriptor() )); 
+		setLayout(new GridBagLayout());
+		GridBagConstraints placement = new GridBagConstraints();
+		placement.gridx = 0;
+		placement.gridy = 0;
+		placement.gridwidth = GridBagConstraints.REMAINDER;
+		placement.anchor = GridBagConstraints.WEST;
+		placement.insets = new Insets(5, 5, 5, 5);
+		// Preserve the existing descriptor's line breaks above its fields.
+		String descriptor = paramOp.getParamDescriptor().replace("&", "&amp;")
+				.replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>");
+		add(new JLabel("<html>" + descriptor + "</html>"), placement);
+		placement.gridy = 1;
+		placement.gridwidth = 1;
+		placement.weightx = 1;
+		placement.fill = GridBagConstraints.HORIZONTAL;
 		
 		for( int i = 0; i < paramOp.getNumParams(); ++i ) {
 			
@@ -31,7 +49,8 @@ public class ParameterOptionsPanel extends OperationOptionsPanel implements Para
 			JPanel editorPanel = new JPanel(); 
 			editorPanel.add( editor );
 			editorPanel.setBorder( new TitledBorder( paramOp.getParamName( i )));
-			add( editorPanel );
+			placement.gridx = i;
+			add(editorPanel, placement);
 			
 		}
 	

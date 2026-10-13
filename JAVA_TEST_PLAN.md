@@ -1,494 +1,141 @@
-# Java Test Suite Plan
+# SignalShow Java audit
 
-## Overview
+## Active scope
 
-This document outlines a comprehensive test plan for the SignalShow Java implementation, designed to:
+Juliet authorized Continuous Audit on October 12, 2026. Prioritize ordinary
+2D creation, editing and operations that crash or produce wrong/stale results.
+Reproduce the failure, inspect its actual owner and callers, fix it, verify the
+affected workflows, record the evidence and continue with the next useful gap.
+Roger's platform is believed to be Windows and still needs confirmation.
 
-1. Mirror the JavaScript test coverage in `nuthatch-desktop`
-2. Verify Java implementations match JavaScript implementations
-3. Reference Chapter 8 textbook definitions when discrepancies are found
+The first milestone is reliable existing workflows. Chirplet provides a model
+for coverage and a comparison implementation; agreement with it alone is not a
+mathematical oracle. Feature parity and architectural changes follow stabilization.
+Record genuine memory/capability limits now; do not use historical limits to
+excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap cap.
 
-## Reference: JavaScript Test Files
+`check_usage: true` for this new SignalShow run. Follow
+[Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
+The Chirplet-specific `false` override does not apply to this run. Last reading:
+October 13, weekly window 91% remaining; no other applicable window reported.
+On October13 Juliet authorized local commits at verified checkpoints. Do not push,
+distribute installers or deploy. Juliet reauthorized native keystrokes after finishing with her terminal;
+verify the target field and readback before submitting.
 
-| JavaScript Test File      | Lines | Coverage                                                                   |
-| ------------------------- | ----- | -------------------------------------------------------------------------- |
-| `correlation-ops.test.js` | 485   | Correlation, convolution, autocorrelation, FFT vs time-domain verification |
-| `operations.test.js`      | 881   | All unary and binary signal operations                                     |
-| `generators.test.js`      | 2100+ | All function generators (sine, cosine, gaussian, etc.)                     |
-| `Signal1D.test.js`        | ~200  | Signal1D class functionality                                               |
-| `Signal2D.test.js`        | ~200  | Signal2D class functionality                                               |
+## Standing testing priority and suite plan
 
-## Current Java Test Status
+Juliet clarified on October 12: **ordinary usage comes first**. People must be
+able to create images with normal parameter values and combine them in operation
+chains without crashes, frozen controls, stale results or broken layouts.
 
-### ✅ Completed (172 tests total - ALL PASSING)
+Build toward hundreds of distinct scenarios covering how functions and operations
+work together. Organize them by creation family (Cartesian, polar, image, noise,
+aperture), representation (real/imaginary and magnitude/phase), normal parameter
+edits, operation chains (arithmetic, threshold, real-part extraction, transforms,
+rotation and filtering), source/operand replacement, duplication, view changes,
+and save/reopen/export. Include short multi-step tasks and longer compositions.
+Choose meaningful combinations rather than inflating counts with repeated checks.
 
-- **Operations2DTest.java** (26 tests) - 2D convolution, correlation, autocorrelation
+Each scenario should state its starting data, normal parameter values, user
+steps, expected visible behavior, production-path checks and saved-result checks.
+Record actual desktop evidence separately from model and component tests.
+Mathematical accuracy has its own matrix; do not let tiny numerical discrepancies
+or rare edge cases displace ordinary usage fixes. Zero-sized images, unusual
+inputs and capacity extremes are low priority while these workflows are unstable.
 
-  - Delta identity properties
-  - Commutativity (convolution) vs non-commutativity (correlation)
-  - Conjugation properties
-  - Hermitian symmetry
-  - Energy conservation
+**Current scope:** Roger's circular-resolution target and requested layout are
+verified in scoped rows. Continue the authorized audit with one ordinary workflow
+at a time; the matrix owns the active check and next queue. The larger suite is
+implemented incrementally, not all at once.
 
-- **Operations1DTest.java** (~35 tests) - 1D convolution, correlation, autocorrelation, FFT
+## Authoritative matrix
 
-  - Delta identity, commutativity, shift property
-  - Time-domain matching for convolution/correlation
-  - FFT round-trip identity, linearity, even/odd symmetry
-  - Autocorrelation Hermitian property, energy at origin
+- [Read-only report](docs/audit/index.html)
+- [Coverage data](docs/audit/signalshow-coverage.json)
+- [Current evidence and handoff](docs/audit/evidence/2026-10-13-checkpoint.md)
 
-- **Generators1DTest.java** (~38 tests) - All 1D function generators
+The JSON owns statuses, evidence, limitations and the ordered queue. The report
+is generated from it. Its 130 initial mathematical entries come from the actual
+registered 1D/2D generator and operation lists. Special creation menus, editing,
+views and demonstrations also need workflow coverage; the registry is not an
+exhaustive inventory of every application behavior.
 
-  - Sine, cosine, rectangle, triangle, delta, step
-  - Gaussian, sinc, Lorentz, chirp, comb
-  - Bessel J0, window functions (Hamming, Hanning, Welch)
-  - Generator property tests
+Mathematical checks track Definition, Equations, Numerics, Parameters and
+Handbook independently. A numerical pass applies to its written fixture and
+caller, not every parameter, view or platform. Reconcile each affected dimension
+and consumer when correcting a shared implementation.
 
-- **UnaryOperations1DTest.java** (~38 tests) - Unary signal operations
+Workflow scenarios cover usage, files, platforms and memory. Use bounded rows:
+Checked, Needs check, Known bug, Needs scoping or Deferred with a reason. Split a
+completed model/component check from a pending native interaction check. Preserve
+reported defects until reproduced or resolved, and distinguish historical reports
+from current observed failures. Counts are not whole-application certification.
 
-  - Magnitude (non-negative, Pythagorean theorem)
-  - Phase (range [-π, π], special angles)
-  - Conjugate (involution, complex)
-  - Negate, scale, reverse, normalize
-  - Real/imaginary extraction, absolute value, squared magnitude
-  - FFT property tests
+## Verification and maintenance
 
-- **BinaryOperations1DTest.java** (~29 tests) - Binary signal operations
+```sh
+# Focused real-model and Swing-control checks
+mvn -B -ntp -Djava.awt.headless=true -Dtest=BasicWorkflowTest test
 
-  - Addition (commutative, associative, identity)
-  - Subtraction (non-commutative, negation)
-  - Multiplication (commutative, associative, distributive)
-  - Division (inverse of multiplication)
-  - Complex arithmetic for all operations
+# Full regression suite and executable JAR
+mvn -B -ntp -Djava.awt.headless=true package
 
-- **SignalTestUtils.java** - Shared test utilities
-  - Signal creation: delta, rect, sine, cosine, gaussian, triangle
-  - FFT operations, origin indexing, complex arithmetic helpers
-  - Assertion helpers for signal comparison
-
-### ℹ️ Not Needed (Phase 5)
-
-Signal1DTest and Signal2DTest are not needed because:
-
-- Function1D/Function2D classes require Core initialization (GUI)
-- Current test architecture uses raw arrays + Transforms directly (no GUI dependencies)
-- All mathematical behavior is well tested through existing tests
-
----
-
-## Phase 1: Core 1D Operations Tests
-
-### File: `Operations1DTest.java`
-
-Port from `correlation-ops.test.js` (485 lines):
-
-#### 1.1 Convolution Tests (`ConvolveOp`)
-
-```java
-// Convolution definition: f * g = IFFT(FFT(f) · FFT(g))
-- testConvolutionWithDelta()           // δ * f = f (identity)
-- testConvolutionIsCommutative()       // f * g = g * f
-- testConvolutionWithShiftedDelta()    // δ(x-a) * f(x) = f(x-a)
-- testConvolutionVsTimeDomain()        // FFT method matches direct sum
-- testConvolutionPreservesEnergy()     // Parseval's theorem
-- testConvolutionOfTwoRects()          // rect * rect = triangle (approximate)
-- testConvolutionOfGaussians()         // Gaussian * Gaussian = wider Gaussian
+# After editing audit JSON
+python3 scripts/signalshow_audit.py
+python3 scripts/signalshow_audit.py --check
 ```
 
-#### 1.2 Correlation Tests (`CorrelateOp`)
-
-```java
-// Correlation definition: f ⋆ m = IFFT(FFT(f) · conj(FFT(m)))
-- testCorrelationWithDelta()           // f ⋆ δ = f
-- testCorrelationIsNotCommutative()    // f ⋆ g ≠ g ⋆ f (in general)
-- testCorrelationConjugatesReference() // Verify reference is conjugated
-- testCorrelationPeakAtShift()         // Shifted signal correlates with peak at shift
-- testCorrelationVsTimeDomain()        // FFT method matches direct sum
-- testCorrelationVsJavaReference()     // Match Java reference values from JS tests
-```
-
-#### 1.3 Autocorrelation Tests (`AutoCorrelateOp`)
-
-```java
-// Autocorrelation definition: IFFT(|FFT(f)|²)
-- testAutocorrelationEqualsCorrelationWithSelf() // f ⋆ f via autocorrelate = f ⋆ f via correlate
-- testAutocorrelationIsEven()                    // r(-τ) = r(τ)
-- testAutocorrelationPeakAtZero()                // Maximum at τ=0
-- testAutocorrelationOfDelta()                   // δ ⋆ δ = δ
-- testAutocorrelationOfSine()                    // Produces cosine envelope
-- testAutocorrelationOfRectangle()               // Triangle shape
-```
-
-#### 1.4 FFT Round-Trip Tests
-
-```java
-- testFFTFollowedByIFFT()              // IFFT(FFT(f)) = f
-- testIFFTFollowedByFFT()              // FFT(IFFT(f)) = f
-- testFFTParsevalsTheorem()            // Energy in time = energy in frequency
-- testFFTLinearity()                   // FFT(af + bg) = a·FFT(f) + b·FFT(g)
-- testFFTShiftTheorem()                // Time shift → phase shift
-```
-
----
-
-## Phase 2: Unary Operations Tests
-
-### File: `UnaryOperations1DTest.java`
-
-Port from `operations.test.js` unary operations:
-
-#### 2.1 Real/Imaginary Operations
-
-```java
-- testRealOfRealSignal()               // Real(f) = f when f is real
-- testRealOfComplexSignal()            // Real(a + bi) = a
-- testImagOfRealSignal()               // Imag(f) = 0 when f is real
-- testImagOfComplexSignal()            // Imag(a + bi) = b
-```
-
-#### 2.2 Magnitude and Phase
-
-```java
-// MagnitudeOp
-- testMagnitudeOfRealSignal()          // |f| = |f| (absolute value)
-- testMagnitudeOfComplexSignal()       // |a + bi| = sqrt(a² + b²)
-- testMagnitudeIsNonNegative()         // |f| ≥ 0
-
-// PhaseOp
-- testPhaseOfRealPositive()            // phase(+x) = 0
-- testPhaseOfRealNegative()            // phase(-x) = π
-- testPhaseOfPureImaginary()           // phase(i) = π/2, phase(-i) = -π/2
-- testPhaseRange()                     // -π < phase ≤ π
-
-// SquaredMagnitudeOp
-- testSquaredMagnitude()               // |f|² = real² + imag²
-```
-
-#### 2.3 Conjugate and Negate
-
-```java
-// ConjugateOp
-- testConjugateOfRealSignal()          // conj(f) = f when f is real
-- testConjugateOfComplexSignal()       // conj(a + bi) = a - bi
-- testDoubleConjugate()                // conj(conj(f)) = f
-
-// NegateOp
-- testNegateSignal()                   // -f
-- testDoubleNegate()                   // -(-f) = f
-```
-
-#### 2.4 Other Unary Operations
-
-```java
-// AbsoluteValueOp
-- testAbsoluteValue()                  // |x| per sample
-
-// ScaleOp
-- testScaleSignal()                    // k * f
-- testScaleByZero()                    // 0 * f = 0
-- testScaleByOne()                     // 1 * f = f
-
-// NormalizeOp
-- testNormalizeSignal()                // Peak = 1
-
-// ReverseOp1D
-- testReverseSignal()                  // f(-x)
-- testDoubleReverse()                  // reverse(reverse(f)) = f
-
-// TranslateOp1D (Shift)
-- testShiftSignal()                    // f(x - a)
-- testShiftByZero()                    // No change
-- testShiftWrapsAround()               // Circular shift
-
-// ClipOp
-- testClipSignal()                     // Clamp to range
-- testClipWithMinMax()                 // min/max bounds
-
-// ThresholdOp
-- testThresholdSignal()                // Binary threshold
-```
-
----
-
-## Phase 3: Binary Operations Tests
-
-### File: `BinaryOperations1DTest.java`
-
-Port from `operations.test.js` binary operations:
-
-```java
-// PlusOp
-- testAddSignals()                     // f + g
-- testAddCommutative()                 // f + g = g + f
-- testAddWithZero()                    // f + 0 = f
-
-// MinusOp
-- testSubtractSignals()                // f - g
-- testSubtractNotCommutative()         // f - g ≠ g - f
-- testSubtractSelf()                   // f - f = 0
-
-// TimesOp
-- testMultiplySignals()                // f · g (element-wise)
-- testMultiplyCommutative()            // f · g = g · f
-- testMultiplyWithZero()               // f · 0 = 0
-- testMultiplyWithOne()                // f · 1 = f
-
-// DivideOp
-- testDivideSignals()                  // f / g (element-wise)
-- testDivideByOne()                    // f / 1 = f
-- testDivideBySelf()                   // f / f = 1 (where f ≠ 0)
-```
-
----
-
-## Phase 4: Function Generator Tests
-
-### File: `Generators1DTest.java`
-
-Port from `generators.test.js` (2100+ lines):
-
-#### 4.1 Basic Waveforms
-
-```java
-// SineFunctionTerm1D
-- testSineAtOrigin()                   // sin(0) = 0
-- testSineAmplitude()                  // Peak = amplitude
-- testSineFrequency()                  // Period = 1/frequency
-- testSinePhase()                      // Phase offset works
-- testSineSymmetry()                   // sin(-x) = -sin(x) (odd)
-
-// CosineFunctionTerm1D
-- testCosineAtOrigin()                 // cos(0) = amplitude
-- testCosineAmplitude()
-- testCosineFrequency()
-- testCosinePhase()
-- testCosineSymmetry()                 // cos(-x) = cos(x) (even)
-```
-
-#### 4.2 Pulse Functions
-
-```java
-// RectangleFunctionTerm1D
-- testRectAtOrigin()                   // rect(0) = 1
-- testRectWidth()                      // Correct width
-- testRectEdges()                      // Sharp transitions
-- testRectFourierPair()                // FFT(rect) ~ sinc
-
-// TriangleFunctionTerm1D
-- testTriangleAtOrigin()               // tri(0) = 1
-- testTriangleWidth()
-- testTriangleSymmetry()               // Even function
-- testTriangleFourierPair()            // FFT(tri) ~ sinc²
-
-// DeltaFunctionTerm1D
-- testDeltaAtOrigin()                  // δ(0) = 1
-- testDeltaOffOrigin()                 // δ(x≠0) = 0
-- testDeltaShifted()                   // δ(x-a) at position a
-- testDeltaFourierPair()               // FFT(δ) = 1 (uniform)
-
-// StepFunctionTerm1D
-- testStepAtOrigin()                   // u(0) = 0.5 or 1 (check convention)
-- testStepNegative()                   // u(x<0) = 0
-- testStepPositive()                   // u(x>0) = 1
-```
-
-#### 4.3 Special Functions
-
-```java
-// GaussianFunctionTerm1D
-- testGaussianAtOrigin()               // Peak at center
-- testGaussianWidth()                  // σ parameter
-- testGaussianSymmetry()               // Even function
-- testGaussianFourierPair()            // FFT(gaussian) = gaussian
-
-// SincFunctionTerm1D
-- testSincAtOrigin()                   // sinc(0) = 1
-- testSincZeroCrossings()              // Zeros at integers
-- testSincFourierPair()                // FFT(sinc) ~ rect
-
-// BesselFunctionTerm1D
-- testBesselJ0AtOrigin()               // J0(0) = 1
-- testBesselZeroCrossings()
-
-// LorentzianFunctionTerm1D
-- testLorentzianAtOrigin()             // Peak at center
-- testLorentzianWidth()                // Half-width parameter
-
-// ChirpFunctionTerm1D
-- testChirpStartFrequency()            // Initial frequency
-- testChirpEndFrequency()              // Final frequency
-- testChirpSweep()                     // Frequency increases/decreases
-```
-
-#### 4.4 Window Functions
-
-```java
-// HammingWindowFunctionTerm1D
-- testHammingAtCenter()                // Peak value
-- testHammingAtEdges()                 // Edge values (~0.08)
-- testHammingSymmetry()                // Even function
-
-// HanningWindowFunctionTerm1D
-- testHanningAtCenter()
-- testHanningAtEdges()                 // Goes to 0 at edges
-- testHanningSymmetry()
-
-// WelchWindowFunctionTerm1D, ParzenWindowFunctionTerm1D, etc.
-```
-
-#### 4.5 Noise Functions
-
-```java
-// GaussianNoiseFunctionTerm1D
-- testGaussianNoiseMean()              // Mean ≈ 0
-- testGaussianNoiseStdDev()            // σ matches parameter
-
-// UniformNoiseFunctionTerm1D
-- testUniformNoiseRange()              // Values in [min, max]
-- testUniformNoiseMean()               // Mean ≈ (min+max)/2
-
-// PoissonNoiseFunctionTerm1D
-- testPoissonNoiseMean()               // Mean ≈ λ
-```
-
----
-
-## Phase 5: Signal Class Tests
-
-### File: `Signal1DTest.java`
-
-```java
-- testSignalCreation()                 // Create with size
-- testSignalFromArray()                // Create from double[]
-- testSignalGetSet()                   // Get/set values
-- testSignalSize()                     // Correct size
-- testSignalIndexing()                 // Zero-centered indexing
-- testSignalCopy()                     // Deep copy
-```
-
-### File: `Signal2DTest.java`
-
-```java
-- testSignal2DCreation()
-- testSignal2DFromArray()
-- testSignal2DDimensions()
-- testSignal2DIndexing()               // Row-major order, zero-centered
-```
-
----
-
-## Phase 6: Cross-Validation Tests
-
-### File: `JavaScriptMatchTest.java`
-
-Generate reference values from JavaScript tests, verify Java produces identical results:
-
-```java
-// Use specific input signals and compare output arrays
-- testConvolutionMatchesJavaScript()
-- testCorrelationMatchesJavaScript()
-- testFFTMatchesJavaScript()
-- testGeneratorsMatchJavaScript()
-```
-
-### Tolerance Guidelines
-
-- Floating point comparisons: `assertEquals(expected, actual, 1e-10)`
-- FFT phase: may need larger tolerance due to floating point accumulation
-- Noise functions: verify statistical properties, not exact values
-
----
-
-## Implementation Order
-
-1. **Phase 1**: Core 1D Operations (highest priority - validates math)
-2. **Phase 2**: Unary Operations (builds on Phase 1)
-3. **Phase 3**: Binary Operations (straightforward)
-4. **Phase 4**: Generators (many tests, but important)
-5. **Phase 5**: Signal Classes (infrastructure)
-6. **Phase 6**: Cross-Validation (final verification)
-
----
-
-## Test Infrastructure Needed
-
-### Helper Methods
-
-```java
-public class SignalTestUtils {
-    // Create delta function at specified position
-    public static Signal1D createDelta(int size, int position);
-
-    // Create signal from array
-    public static Signal1D fromArray(double[] real);
-    public static Signal1D fromArray(double[] real, double[] imag);
-
-    // Compare signals with tolerance
-    public static void assertSignalsEqual(Signal1D expected, Signal1D actual, double tolerance);
-
-    // Check signal properties
-    public static double maxAbsValue(Signal1D signal);
-    public static double sumSquared(Signal1D signal);
-    public static int findPeakIndex(Signal1D signal);
-}
-```
-
-### Test Base Class
-
-```java
-public class SignalTestBase {
-    protected static final double TOLERANCE = 1e-10;
-    protected static final int DEFAULT_SIZE = 64;
-
-    // Common setup/teardown
-}
-```
-
----
-
-## Notes
-
-### Mathematical Definitions (from Chapter 8)
-
-| Operation       | Equation | Formula                               |
-| --------------- | -------- | ------------------------------------- |
-| Convolution     | Eq 8.82  | `f * h = IFFT(FFT(f) · FFT(h))`       |
-| Correlation     | Eq 8.86  | `f ⋆ m = IFFT(FFT(f) · conj(FFT(m)))` |
-| Autocorrelation | Eq 8.87  | `IFFT(\|FFT(f)\|²)`                   |
-
-### Key Differences: Java vs JavaScript
-
-| Aspect          | Java                      | JavaScript                |
-| --------------- | ------------------------- | ------------------------- |
-| Indexing        | Zero-centered default     | Zero-centered option      |
-| FFT             | Custom implementation     | Custom implementation     |
-| Complex numbers | Separate real/imag arrays | Separate real/imag arrays |
-
-### Discrepancy Resolution Process
-
-1. Run Java test with specific input
-2. Run JavaScript test with same input
-3. Compare outputs
-4. If different:
-   - Check mathematical definition in Chapter 8
-   - Determine which implementation is correct
-   - Fix the incorrect implementation
-   - Document in this file
-
----
-
-## Test Count Estimate
-
-| Phase                       | Tests          |
-| --------------------------- | -------------- |
-| Phase 1: Core 1D Operations | ~35            |
-| Phase 2: Unary Operations   | ~30            |
-| Phase 3: Binary Operations  | ~15            |
-| Phase 4: Generators         | ~60            |
-| Phase 5: Signal Classes     | ~15            |
-| Phase 6: Cross-Validation   | ~10            |
-| **Total**                   | **~165 tests** |
-
-Plus existing 2D tests: **26 tests**
-
-**Grand Total: ~191 tests**
+Use `-o` when Maven dependencies are already cached and an offline run is useful.
+The audit validator checks registry completeness, IDs, status values, evidence
+references, source paths, active/next queues and generated-report freshness. It
+does not execute or certify the application.
+
+At each batch boundary:
+
+1. Save precise actions/inputs, environment, observed failures and expected
+   behavior before changing code. Keep complete logs in `docs/audit/evidence/`.
+2. Reproduce through production classes and actual native callers. Use independent
+   expected values; do not substitute test-only math for application behavior.
+3. Verify the correction and structural equivalents. For visible behavior,
+   inspect a short native workflow and captured stderr; a headless pass alone
+   is insufficient. Keep Windows and macOS evidence distinct.
+4. Update affected matrix rows and known limitations. Empty `activeIds` when no
+   check is running and maintain a short ordered `nextIds` queue.
+5. Regenerate/check the report, update the compact handoff and continue within
+   the authorized scope. Check usage at batch boundaries under the active flag.
+
+Reuse valid results rather than rerunning passing suites for tracking-only edits.
+Normal creation, editing, computation and save/reopen precede deliberately
+exhausted memory, corrupted files or long endurance tests. Long soak tests remain
+manual unless specifically requested. Memory measurements must identify heap
+settings, dimensions, channels, operations, retained documents and hardware.
+
+## Current verified baseline
+
+The original 195 tests passed on macOS/JDK 25. Thirty new checks of actual
+FunctionFactory/operation classes and Swing parameter editors exposed six failing
+cases caused by reversed threshold outputs and parameter bindings. After the
+threshold correction, all 225 tests passed. Subsequent search, generator and
+image-editing and operation-layout batches now pass 457 tests and build the executable JAR. The
+authoritative matrix records the scope and before/after evidence for each batch.
+
+The new fixtures cover 1D eight-sample signals and 4×2 complex images, both origin
+modes, arithmetic with nonzero denominators, threshold boundaries, source
+preservation and cache regeneration. They do not certify the full native editor,
+rendered plots, files, larger workloads or Windows. The old assertion that signal
+class tests were unnecessary because of GUI initialization has been superseded:
+the tests initialize non-window Core services and exercise real production models.
+
+All maintained launcher settings now omit `-Xmx2g`. JVM default sizing still
+imposes a runtime-specific heap budget; this Mac reports an estimated 6 GiB.
+The built-in size picker still stops at 4096, and dense source/channel/result
+arrays can require substantial memory. Actual safe operating sizes remain
+unmeasured; no memory optimization or large-image capacity claim is made.
+
+## Current priority from Juliet
+
+Reproduce the nine-step circular-resolution target in the supplied
+`/Users/julietfiss/Documents/SignalShow Tests/Step by Step.pdf`, compare with
+the two supplied TIFFs and fix the operation-preview layout while retaining
+visible Threshold inputs. Track the native walkthrough separately from model
+and component regressions. The historical TIFF is not a mathematical oracle.

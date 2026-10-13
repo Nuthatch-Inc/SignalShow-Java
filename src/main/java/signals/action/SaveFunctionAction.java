@@ -40,11 +40,13 @@ public class SaveFunctionAction extends AbstractAction {
 				
 			} else if ( function instanceof OperatorSystem2D ) {
 				
-				(new SaveFunction2DDialog( (Function2D)((OperatorSystem2D)function).getFunction() )).display(); 
+				Function2D result = (Function2D) ((OperatorSystem2D) function).getFunction();
+				if (result != null) (new SaveFunction2DDialog(result)).display();
 				
 			} else if ( function instanceof OperatorSystem1D ) {
 				
-				(new SaveFunction1DDialog( (Function1D)((OperatorSystem1D)function).getFunction() )).display(); 
+				Function1D result = (Function1D) ((OperatorSystem1D) function).getFunction();
+				if (result != null) (new SaveFunction1DDialog(result)).display();
 				
 			} 
 			

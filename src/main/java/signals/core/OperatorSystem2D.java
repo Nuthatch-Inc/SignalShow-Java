@@ -23,7 +23,9 @@ public class OperatorSystem2D extends OperatorSystem {
 	
 	public OperatorSystem2D clone() {
 		
-		return new OperatorSystem2D( combineOpsRule, inputList, opList ); 
+		ArrayList<Operation> copiedOperations = copyOperations();
+		CombineOpsRule copiedRule = new CombineOpsRule(combineOpsRule.getInfix().clone(), copiedOperations);
+		return new OperatorSystem2D(copiedRule, new ArrayList<>(inputList), copiedOperations);
 	}
 
 

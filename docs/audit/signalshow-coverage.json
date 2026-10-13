@@ -1,0 +1,3695 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-13",
+  "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
+  "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
+  "activity": {
+    "state": "active",
+    "check_usage": true,
+    "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
+    "lastUsageReading": "2026-10-13: weekly 91% remaining; no other applicable window reported",
+    "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
+  },
+  "scenarioPlan": {
+    "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger\u2019s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
+    "activeIds": [
+      "files-image-import"
+    ],
+    "nextIds": [
+      "gui-2d-create",
+      "gui-2d-operations"
+    ]
+  },
+  "math": [
+    {
+      "id": "unary1DList:FourierTransformOp",
+      "class": "FourierTransformOp",
+      "title": "FFT",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/FourierTransformOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:SignumOp",
+      "class": "SignumOp",
+      "title": "Signum",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/SignumOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:AutoCorrelateOp",
+      "class": "AutoCorrelateOp",
+      "title": "AutoCorrelate",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/AutoCorrelateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:ScaleOp",
+      "class": "ScaleOp",
+      "title": "Scale",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/ScaleOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:OffsetOp",
+      "class": "OffsetOp",
+      "title": "Offset",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/OffsetOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:ExponentOp",
+      "class": "ExponentOp",
+      "title": "exponent",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/ExponentOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:SubtractMeanOp",
+      "class": "SubtractMeanOp",
+      "title": "Subtract Mean",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/SubtractMeanOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:AbsoluteValueOp",
+      "class": "AbsoluteValueOp",
+      "title": "Absolute Value",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/AbsoluteValueOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:NegateOp",
+      "class": "NegateOp",
+      "title": "Negate",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/NegateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:ConjugateOp",
+      "class": "ConjugateOp",
+      "title": "Conjugate",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/ConjugateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:DerivativeOp1D",
+      "class": "DerivativeOp1D",
+      "title": "Derivative",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/DerivativeOp1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:IntegralOp1D",
+      "class": "IntegralOp1D",
+      "title": "Integral",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/IntegralOp1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:ReverseOp1D",
+      "class": "ReverseOp1D",
+      "title": "Reverse",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/ReverseOp1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:ClipOp",
+      "class": "ClipOp",
+      "title": "Clip",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/ClipOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:SquareRootOp",
+      "class": "SquareRootOp",
+      "title": "Square Root",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/SquareRootOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:ThresholdOp",
+      "class": "ThresholdOp",
+      "title": "Threshold",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/ThresholdOp.java",
+      "checks": {
+        "definition": "verified",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "verified",
+        "handbook": "unreviewed"
+      },
+      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation.",
+      "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ]
+    },
+    {
+      "id": "unary1DList:MagnitudeOp",
+      "class": "MagnitudeOp",
+      "title": "Magnitude",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/MagnitudeOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:SquaredMagnitudeOp",
+      "class": "SquaredMagnitudeOp",
+      "title": "Squared Magnitude",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/SquaredMagnitudeOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:PhaseOp",
+      "class": "PhaseOp",
+      "title": "Phase",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/PhaseOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:TranslateOp1D",
+      "class": "TranslateOp1D",
+      "title": "Translate",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/TranslateOp1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:InvertOp",
+      "class": "InvertOp",
+      "title": "Invert",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/InvertOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:CepstrumOp",
+      "class": "CepstrumOp",
+      "title": "Cepstrum",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/CepstrumOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:ComplementFilterOp",
+      "class": "ComplementFilterOp",
+      "title": "Complement Filter",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/ComplementFilterOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary1DList:RealOp",
+      "class": "RealOp",
+      "title": "Phase",
+      "area": "1D unary operations",
+      "source": "src/main/java/signals/operation/RealOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "binary1DList:PlusOp",
+      "class": "PlusOp",
+      "title": "Sum +",
+      "area": "1D binary operations",
+      "source": "src/main/java/signals/operation/PlusOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary1DList:MinusOp",
+      "class": "MinusOp",
+      "title": "Difference -",
+      "area": "1D binary operations",
+      "source": "src/main/java/signals/operation/MinusOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary1DList:TimesOp",
+      "class": "TimesOp",
+      "title": "Multiply x",
+      "area": "1D binary operations",
+      "source": "src/main/java/signals/operation/TimesOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary1DList:DivideOp",
+      "class": "DivideOp",
+      "title": "Divide /",
+      "area": "1D binary operations",
+      "source": "src/main/java/signals/operation/DivideOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "remaining": "Generated equations, handbook review and visible desktop operation workflow. Division by zero and unequal-size inputs are outside this fixture.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary1DList:ConvolveOp",
+      "class": "ConvolveOp",
+      "title": "Convolve",
+      "area": "1D binary operations",
+      "source": "src/main/java/signals/operation/ConvolveOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "binary1DList:CorrelateOp",
+      "class": "CorrelateOp",
+      "title": "Correlate",
+      "area": "1D binary operations",
+      "source": "src/main/java/signals/operation/CorrelateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:FourierTransformOp",
+      "class": "FourierTransformOp",
+      "title": "FFT",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/FourierTransformOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:SignumOp",
+      "class": "SignumOp",
+      "title": "Signum",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/SignumOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:AutoCorrelateOp",
+      "class": "AutoCorrelateOp",
+      "title": "AutoCorrelate",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/AutoCorrelateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:RotateOp2D",
+      "class": "RotateOp2D",
+      "title": "Rotate",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/RotateOp2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
+        "handbook": "unreviewed"
+      },
+      "scope": "Actual JAI rotations at ordinary square/rectangular sizes preserve sample counts and compose with Times/Plus. Native 180\u00b0 and 45\u00b0 parameter typing, composition and TIFF export checked.",
+      "remaining": "Independent geometric/interpolation convention review, other interpolation modes, equations and handbook remain open; duplicate parameter ownership is a separate known issue.",
+      "evidence": [
+        "roger-rotation-2026-10-12"
+      ]
+    },
+    {
+      "id": "unary2DList:ScaleOp",
+      "class": "ScaleOp",
+      "title": "Scale",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/ScaleOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:OffsetOp",
+      "class": "OffsetOp",
+      "title": "Offset",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/OffsetOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:ExponentOp",
+      "class": "ExponentOp",
+      "title": "exponent",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/ExponentOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:SubtractMeanOp",
+      "class": "SubtractMeanOp",
+      "title": "Subtract Mean",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/SubtractMeanOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:AbsoluteValueOp",
+      "class": "AbsoluteValueOp",
+      "title": "Absolute Value",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/AbsoluteValueOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:NegateOp",
+      "class": "NegateOp",
+      "title": "Negate",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/NegateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:ConjugateOp",
+      "class": "ConjugateOp",
+      "title": "Conjugate",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/ConjugateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:DerivativeOp2D",
+      "class": "DerivativeOp2D",
+      "title": "Derivative",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/DerivativeOp2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:IntegralOp2D",
+      "class": "IntegralOp2D",
+      "title": "Integral",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/IntegralOp2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:ReverseOp2D",
+      "class": "ReverseOp2D",
+      "title": "Reverse",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/ReverseOp2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:ClipOp",
+      "class": "ClipOp",
+      "title": "Clip",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/ClipOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:SquareRootOp",
+      "class": "SquareRootOp",
+      "title": "Square Root",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/SquareRootOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:ThresholdOp",
+      "class": "ThresholdOp",
+      "title": "Threshold",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/ThresholdOp.java",
+      "checks": {
+        "definition": "verified",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "verified",
+        "handbook": "unreviewed"
+      },
+      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256\u00d7256 composition and TIFF export also exercised.",
+      "remaining": "Broader variants, generated equations and handbook review remain open. Native Roger composition is checked; duplicate parameter ownership and smaller-window layout are tracked separately.",
+      "evidence": [
+        "workflow-regressions-2026-10-12",
+        "roger-rotation-2026-10-12",
+        "channels-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "unary2DList:MagnitudeOp",
+      "class": "MagnitudeOp",
+      "title": "Magnitude",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/MagnitudeOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:SquaredMagnitudeOp",
+      "class": "SquaredMagnitudeOp",
+      "title": "Squared Magnitude",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/SquaredMagnitudeOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:PhaseOp",
+      "class": "PhaseOp",
+      "title": "Phase",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/PhaseOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:TranslateOp2D",
+      "class": "TranslateOp2D",
+      "title": "Translate",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/TranslateOp2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:InvertOp",
+      "class": "InvertOp",
+      "title": "Invert",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/InvertOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:CepstrumOp",
+      "class": "CepstrumOp",
+      "title": "Cepstrum",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/CepstrumOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:PhaseDetourHologramOp",
+      "class": "PhaseDetourHologramOp",
+      "title": "Phase Detour Hologram",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/PhaseDetourHologramOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:HologramEncoderOp",
+      "class": "HologramEncoderOp",
+      "title": "Hologram Encoder",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/HologramEncoderOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:ComplementFilterOp",
+      "class": "ComplementFilterOp",
+      "title": "Complement Filter",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/ComplementFilterOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "unary2DList:RealOp",
+      "class": "RealOp",
+      "title": "Phase",
+      "area": "2D unary operations",
+      "source": "src/main/java/signals/operation/RealOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "partial",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Native complex spatial image through Real\u2192Threshold, saved every-sample check and subsequent live source edit.",
+      "remaining": "Broader input/parameter variants,1D caller, definition/equation/handbook review remain open.",
+      "evidence": [
+        "roger-rotation-2026-10-12",
+        "channels-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "binary2DList:PlusOp",
+      "class": "PlusOp",
+      "title": "Sum +",
+      "area": "2D binary operations",
+      "source": "src/main/java/signals/operation/PlusOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256\u00d7256 composition and TIFF export also exercised.",
+      "remaining": "Broader variants, generated equations and handbook review remain open. Native Roger composition is checked; duplicate parameter ownership and smaller-window layout are tracked separately.",
+      "evidence": [
+        "workflow-regressions-2026-10-12",
+        "roger-rotation-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary2DList:MinusOp",
+      "class": "MinusOp",
+      "title": "Difference -",
+      "area": "2D binary operations",
+      "source": "src/main/java/signals/operation/MinusOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary2DList:TimesOp",
+      "class": "TimesOp",
+      "title": "Multiply x",
+      "area": "2D binary operations",
+      "source": "src/main/java/signals/operation/TimesOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256\u00d7256 composition and TIFF export also exercised.",
+      "remaining": "Broader variants, generated equations and handbook review remain open. Native Roger composition is checked; duplicate parameter ownership and smaller-window layout are tracked separately.",
+      "evidence": [
+        "workflow-regressions-2026-10-12",
+        "roger-rotation-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary2DList:DivideOp",
+      "class": "DivideOp",
+      "title": "Divide /",
+      "area": "2D binary operations",
+      "source": "src/main/java/signals/operation/DivideOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "verified",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "remaining": "Generated equations, handbook review and visible desktop operation workflow. Division by zero and unequal-size inputs are outside this fixture.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary2DList:ConvolveOp",
+      "class": "ConvolveOp",
+      "title": "Convolve",
+      "area": "2D binary operations",
+      "source": "src/main/java/signals/operation/ConvolveOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "binary2DList:CorrelateOp",
+      "class": "CorrelateOp",
+      "title": "Correlate",
+      "area": "2D binary operations",
+      "source": "src/main/java/signals/operation/CorrelateOp.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:GaussianNoiseFunctionTerm2D",
+      "class": "GaussianNoiseFunctionTerm2D",
+      "title": "GaussianNoiseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/GaussianNoiseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:ExponentialNoiseFunctionTerm2D",
+      "class": "ExponentialNoiseFunctionTerm2D",
+      "title": "ExponentialNoiseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/ExponentialNoiseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:LorentzNoiseFunctionTerm2D",
+      "class": "LorentzNoiseFunctionTerm2D",
+      "title": "LorentzNoiseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/LorentzNoiseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:PoissonNoiseFunctionTerm2D",
+      "class": "PoissonNoiseFunctionTerm2D",
+      "title": "PoissonNoiseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/PoissonNoiseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:RandomPhaseFunctionTerm2D",
+      "class": "RandomPhaseFunctionTerm2D",
+      "title": "RandomPhaseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/RandomPhaseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:RayleighNoiseFunctionTerm2D",
+      "class": "RayleighNoiseFunctionTerm2D",
+      "title": "RayleighNoiseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/RayleighNoiseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:SaltAndPepperNoiseFunctionTerm2D",
+      "class": "SaltAndPepperNoiseFunctionTerm2D",
+      "title": "SaltAndPepperNoiseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/SaltAndPepperNoiseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "noise2DList:UniformNoiseFunctionTerm2D",
+      "class": "UniformNoiseFunctionTerm2D",
+      "title": "UniformNoiseFunctionTerm2D",
+      "area": "2D noise",
+      "source": "src/main/java/signals/functionterm/UniformNoiseFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:ZeroFunctionTerm2D",
+      "class": "ZeroFunctionTerm2D",
+      "title": "Zero",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/ZeroFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:AFunctionTerm2D",
+      "class": "AFunctionTerm2D",
+      "title": "A",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/AFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:BoatFunctionTerm2D",
+      "class": "BoatFunctionTerm2D",
+      "title": "Boat",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/BoatFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:BarChartFunctionTerm2D",
+      "class": "BarChartFunctionTerm2D",
+      "title": "Bar Chart",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/BarChartFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:ConstantFunctionTerm2D",
+      "class": "ConstantFunctionTerm2D",
+      "title": "Constant",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/ConstantFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:EFunctionTerm2D",
+      "class": "EFunctionTerm2D",
+      "title": "E",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/EFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:GradientFunctionTerm2D",
+      "class": "GradientFunctionTerm2D",
+      "title": "Gradient",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/GradientFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:LenaFunctionTerm2D",
+      "class": "LenaFunctionTerm2D",
+      "title": "Lena",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/LenaFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:MRIPhase1FunctionTerm2D",
+      "class": "MRIPhase1FunctionTerm2D",
+      "title": "MRI Phase",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/MRIPhase1FunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:SARPhase1FunctionTerm2D",
+      "class": "SARPhase1FunctionTerm2D",
+      "title": "SAR Phase",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/SARPhase1FunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:StepWedgeFunctionTerm2D",
+      "class": "StepWedgeFunctionTerm2D",
+      "title": "Step Wedge",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/StepWedgeFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "image2DList:DataFunctionTerm2D",
+      "class": "DataFunctionTerm2D",
+      "title": "Data",
+      "area": "2D images",
+      "source": "src/main/java/signals/functionterm/DataFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "analytic2DList:CassegrainFunctionTerm2D",
+      "class": "CassegrainFunctionTerm2D",
+      "title": "Cassegrain",
+      "area": "2D apertures",
+      "source": "src/main/java/signals/functionterm/CassegrainFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "analytic2DList:CylinderFunctionTerm2D",
+      "class": "CylinderFunctionTerm2D",
+      "title": "Cylinder",
+      "area": "2D apertures",
+      "source": "src/main/java/signals/functionterm/CylinderFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "analytic2DList:CassegrainMultiArmFunctionTerm2D",
+      "class": "CassegrainMultiArmFunctionTerm2D",
+      "title": "Cassegrain Multiarm",
+      "area": "2D apertures",
+      "source": "src/main/java/signals/functionterm/CassegrainMultiArmFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "analytic2DList:EApertureFunctionTerm2D",
+      "class": "EApertureFunctionTerm2D",
+      "title": "E",
+      "area": "2D apertures",
+      "source": "src/main/java/signals/functionterm/EApertureFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "analytic2DList:MultiArmFunctionTerm2D",
+      "class": "MultiArmFunctionTerm2D",
+      "title": "Filled Multiarm",
+      "area": "2D apertures",
+      "source": "src/main/java/signals/functionterm/MultiArmFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "analytic2DList:RectApertureFunctionTerm2D",
+      "class": "RectApertureFunctionTerm2D",
+      "title": "Rectangular Aperture",
+      "area": "2D apertures",
+      "source": "src/main/java/signals/functionterm/RectApertureFunctionTerm2D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:ZeroFunctionTerm1D",
+      "class": "ZeroFunctionTerm1D",
+      "title": "Zero",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/ZeroFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:BesincFunctionTerm1D",
+      "class": "BesincFunctionTerm1D",
+      "title": "Besinc Sombrero",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/BesincFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:BesselFunctionTerm1D",
+      "class": "BesselFunctionTerm1D",
+      "title": "Bessel",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/BesselFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:BinomialNoiseFunctionTerm1D",
+      "class": "BinomialNoiseFunctionTerm1D",
+      "title": "Binomial Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/BinomialNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:ChirpFunctionTerm1D",
+      "class": "ChirpFunctionTerm1D",
+      "title": "Chirp",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/ChirpFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:CombFunctionTerm1D",
+      "class": "CombFunctionTerm1D",
+      "title": "Comb",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/CombFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:ConstantFunctionTerm1D",
+      "class": "ConstantFunctionTerm1D",
+      "title": "Constant",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/ConstantFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
+        "handbook": "unreviewed"
+      },
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude2.",
+      "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
+      "evidence": [
+        "grouping-2026-10-13",
+        "channels-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "functionTerm1DList:CosineFunctionTerm1D",
+      "class": "CosineFunctionTerm1D",
+      "title": "Cosine",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/CosineFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:DeltaFunctionTerm1D",
+      "class": "DeltaFunctionTerm1D",
+      "title": "Delta",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/DeltaFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:DeltaPairEvenFunctionTerm1D",
+      "class": "DeltaPairEvenFunctionTerm1D",
+      "title": "Even Delta Pair",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/DeltaPairEvenFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:DeltaPairOddFunctionTerm1D",
+      "class": "DeltaPairOddFunctionTerm1D",
+      "title": "Odd Delta Pair",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/DeltaPairOddFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:DoubleSlitFunctionTerm1D",
+      "class": "DoubleSlitFunctionTerm1D",
+      "title": "Double Slit",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/DoubleSlitFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:ExponentialNoiseFunctionTerm1D",
+      "class": "ExponentialNoiseFunctionTerm1D",
+      "title": "Exponential Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/ExponentialNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:GaussianFunctionTerm1D",
+      "class": "GaussianFunctionTerm1D",
+      "title": "Gaussian",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/GaussianFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
+        "handbook": "unreviewed"
+      },
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude2.",
+      "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
+      "evidence": [
+        "channels-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "functionTerm1DList:GaussianNoiseFunctionTerm1D",
+      "class": "GaussianNoiseFunctionTerm1D",
+      "title": "Gaussian Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/GaussianNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:HammingWindowFunctionTerm1D",
+      "class": "HammingWindowFunctionTerm1D",
+      "title": "Hamming Window",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/HammingWindowFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:HanningWindowFunctionTerm1D",
+      "class": "HanningWindowFunctionTerm1D",
+      "title": "Hanning Window",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/HanningWindowFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:LineFunctionTerm1D",
+      "class": "LineFunctionTerm1D",
+      "title": "Line",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/LineFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:LorentzianFunctionTerm1D",
+      "class": "LorentzianFunctionTerm1D",
+      "title": "Lorentzian",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/LorentzianFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:LorentzNoiseFunctionTerm1D",
+      "class": "LorentzNoiseFunctionTerm1D",
+      "title": "Cauchy Lorentz Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/LorentzNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:MonomialFunctionTerm1D",
+      "class": "MonomialFunctionTerm1D",
+      "title": "Monomial",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/MonomialFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:AbsMonomialFunctionTerm1D",
+      "class": "AbsMonomialFunctionTerm1D",
+      "title": "Abs Val Monomial",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/AbsMonomialFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:ParzenWindowFunctionTerm1D",
+      "class": "ParzenWindowFunctionTerm1D",
+      "title": "Parzen Window",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/ParzenWindowFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:PoissonNoiseFunctionTerm1D",
+      "class": "PoissonNoiseFunctionTerm1D",
+      "title": "Poisson Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/PoissonNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:PoissonProcessFunctionTerm1D",
+      "class": "PoissonProcessFunctionTerm1D",
+      "title": "Poisson Process",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/PoissonProcessFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:RandomPhaseFunctionTerm1D",
+      "class": "RandomPhaseFunctionTerm1D",
+      "title": "Random Phase",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/RandomPhaseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:RayleighNoiseFunctionTerm1D",
+      "class": "RayleighNoiseFunctionTerm1D",
+      "title": "Rayleigh Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/RayleighNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:RectangleFunctionTerm1D",
+      "class": "RectangleFunctionTerm1D",
+      "title": "Rectangle",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/RectangleFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "issue",
+        "numerics": "partial",
+        "parameters": "partial",
+        "handbook": "unreviewed"
+      },
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude2.",
+      "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
+      "evidence": [
+        "cartesian-composition-2026-10-12",
+        "channels-2026-10-13"
+      ],
+      "summary": " Native rectangle text uses stored half-width as the RECT denominator; width control/samples use the full-width convention. Defer this notation correction behind ordinary usage.",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "functionTerm1DList:SaltAndPepperNoiseFunctionTerm1D",
+      "class": "SaltAndPepperNoiseFunctionTerm1D",
+      "title": "Salt And Pepper Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/SaltAndPepperNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:SignumFunctionTerm1D",
+      "class": "SignumFunctionTerm1D",
+      "title": "Signum",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/SignumFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:SineFunctionTerm1D",
+      "class": "SineFunctionTerm1D",
+      "title": "SineFunctionTerm1D",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/SineFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:SincFunctionTerm1D",
+      "class": "SincFunctionTerm1D",
+      "title": "Sinc",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/SincFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:SincSquaredFunctionTerm1D",
+      "class": "SincSquaredFunctionTerm1D",
+      "title": "Sinc Squared",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/SincSquaredFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:SquareWaveFunctionTerm1D",
+      "class": "SquareWaveFunctionTerm1D",
+      "title": "Square Wave",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/SquareWaveFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:StairstepFunctionTerm1D",
+      "class": "StairstepFunctionTerm1D",
+      "title": "Stairstep",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/StairstepFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:StepFunctionTerm1D",
+      "class": "StepFunctionTerm1D",
+      "title": "Step",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/StepFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:StepExponentialFunctionTerm1D",
+      "class": "StepExponentialFunctionTerm1D",
+      "title": "Step Exponential",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/StepExponentialFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:TriangleFunctionTerm1D",
+      "class": "TriangleFunctionTerm1D",
+      "title": "Triangle",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/TriangleFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:UniformNoiseFunctionTerm1D",
+      "class": "UniformNoiseFunctionTerm1D",
+      "title": "Uniform Noise",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/UniformNoiseFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:WelchWindowFunctionTerm1D",
+      "class": "WelchWindowFunctionTerm1D",
+      "title": "Welch Window",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/WelchWindowFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    },
+    {
+      "id": "functionTerm1DList:DataFunctionTerm1D",
+      "class": "DataFunctionTerm1D",
+      "title": "Data",
+      "area": "1D generators",
+      "source": "src/main/java/signals/functionterm/DataFunctionTerm1D.java",
+      "checks": {
+        "definition": "unreviewed",
+        "equations": "unreviewed",
+        "numerics": "unreviewed",
+        "parameters": "unreviewed",
+        "handbook": "unreviewed"
+      },
+      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "evidence": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "sampled-1d",
+      "area": "usage",
+      "title": "1D signal: sample ownership and cache regeneration",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create unequal real/imaginary samples through FunctionFactory in both origin modes.",
+        "Read values, clear the cached channels, read again."
+      ],
+      "expected": "All original samples and dimensions survive cache regeneration.",
+      "scope": "Programmatic; eight samples or 4\u00d72, no native editor.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ],
+      "summary": "Production factories retain both channels and geometry in the tested cases.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "arithmetic-1d",
+      "area": "usage",
+      "title": "1D signal: arithmetic through production operations",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create two asymmetric complex operands.",
+        "Apply PlusOp, MinusOp, TimesOp and DivideOp; compare every sample with independent expected values.",
+        "Regenerate result caches and confirm operands remain unchanged."
+      ],
+      "expected": "Sum, difference, product and quotient retain sample order, complex values and geometry.",
+      "scope": "Programmatic; eight samples or 4\u00d72; both origins; nonzero denominators.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ],
+      "summary": "All four production operations pass within this fixture; visible calculator use remains pending.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "sampled-2d",
+      "area": "usage",
+      "title": "2D rectangular image: sample ownership and cache regeneration",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create unequal real/imaginary samples through FunctionFactory in both origin modes.",
+        "Read values, clear the cached channels, read again."
+      ],
+      "expected": "All original samples and dimensions survive cache regeneration.",
+      "scope": "Programmatic; eight samples or 4\u00d72, no native editor.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ],
+      "summary": "Production factories retain both channels and geometry in the tested cases.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "arithmetic-2d",
+      "area": "usage",
+      "title": "2D rectangular image: arithmetic through production operations",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create two asymmetric complex operands.",
+        "Apply PlusOp, MinusOp, TimesOp and DivideOp; compare every sample with independent expected values.",
+        "Regenerate result caches and confirm operands remain unchanged."
+      ],
+      "expected": "Sum, difference, product and quotient retain sample order, complex values and geometry.",
+      "scope": "Programmatic; eight samples or 4\u00d72; both origins; nonzero denominators.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ],
+      "summary": "All four production operations pass within this fixture; visible calculator use remains pending.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "threshold-controls",
+      "area": "usage",
+      "title": "Threshold defaults and existing parameter controls",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create the default Threshold operation.",
+        "Use its existing Swing Maximum, Minimum and Threshold editors.",
+        "Apply to real and complex 1D/2D functions, including exact boundary values."
+      ],
+      "expected": "Below threshold maps to Minimum; at/above maps to Maximum. Default real inputs keep a zero imaginary output.",
+      "scope": "Headless Swing control edits plus production operations, both dimensions/origins.",
+      "evidence": [
+        "workflow-regressions-2026-10-12"
+      ],
+      "summary": "The reversed threshold outputs and Maximum/Minimum bindings are fixed and verified.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-create",
+      "area": "usage",
+      "title": "Create 2D aperture, image, noise, Cartesian and polar signals",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Use the native 2D menu to create a real/imaginary function.",
+        "Add one term from each creation family at default dimensions.",
+        "Change a parameter, inspect the thumbnail, open Plot and return to Edit."
+      ],
+      "expected": "Each family produces an editable function and current image; no exception, frozen editor or process exit.",
+      "scope": "Native desktop, initially 256\u00d7256; capture launch log, precise actions and visible state.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "gui-2d-operations",
+      "area": "usage",
+      "title": "Choose and apply 2D threshold and arithmetic",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create two distinguishable 2D images.",
+        "Create a 2D Mathematical System; select each arithmetic operation and threshold.",
+        "Change inputs and threshold bounds; inspect result and both channels."
+      ],
+      "expected": "All advertised operations are selectable; correct current outputs appear without crashes.",
+      "scope": "Native operation chooser, expression editor and plots. Production-operation tests do not cover this path.",
+      "evidence": [
+        "complex-insertion-2026-10-12"
+      ],
+      "summary": "Native Threshold, Real and Times compose and persist successfully; earlier Roger evidence also covers Plus and Rotate. Other arithmetic choices/input changes in this broad row remain pending.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-edit",
+      "area": "usage",
+      "title": "Edit 2D parameters and replace generator families",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Change amplitude, centers and widths/radii one at a time.",
+        "Replace the selected term with a different family and edit again.",
+        "Exercise valid negative values, zero boundaries and temporary incomplete numeric input."
+      ],
+      "expected": "Edits reach the intended term; invalid drafts do not break the editor or leave stale output.",
+      "scope": "Native controls; ordinary-sized signals. Record each affected family and input.",
+      "evidence": [
+        "two-term-2026-10-12"
+      ],
+      "summary": "Circle/Gaussian two-term native editing and Plot/Edit now pass; component Add/Subtract/Multiply and polar resize pass. Other generator families, grouping and removal remain pending.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-composition",
+      "area": "usage",
+      "title": "Compose, group and remove 2D terms",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Build A+B*C and (A+B)*C from constants 2, 3 and 4.",
+        "Edit one term, switch selection, remove a term, and rebuild the expression.",
+        "Repeat with a spatially varying and imaginary component."
+      ],
+      "expected": "Precedence produces 14 versus 20; selection, formula, output and subsequent edits agree.",
+      "scope": "Actual 2D calculator buttons and expression state.",
+      "evidence": [
+        "two-term-2026-10-12",
+        "cartesian-composition-2026-10-12",
+        "grouping-2026-10-13",
+        "channels-2026-10-13",
+        "equation-symbols-2026-10-13"
+      ],
+      "summary": "Scoped native spatial two-term and imaginary grouping, plus component/native constant arithmetic, editing, removal and reopening pass. Other function combinations remain incremental future scenarios.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-thumbnails",
+      "area": "usage",
+      "title": "Preserve two-term images and arithmetic symbols while editing",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create a polar Rectangle (full width 64), Add, then Cartesian Gaussian (width 24).",
+        "Select Rectangle, edit full width to 80, reselect Gaussian, then Plot \u2192 Edit and save.",
+        "Check symbol, individual thumbnails, equation, parameters and saved samples."
+      ],
+      "expected": "Each term and arithmetic symbol retain their role; saved samples agree with the authored expression.",
+      "scope": "BUG-006 ordinary native 256\u00d7256 circle/Gaussian editing; component Add/Subtract/Multiply, Cartesian terms and polar resize.",
+      "evidence": [
+        "two-term-2026-10-12"
+      ],
+      "summary": "Reproduced and fixed shared events overwriting symbols and other terms. Five focused workflows and full 426-test package pass; native replay and independent all-sample verification pass.",
+      "environment": "macOS arm64, JDK 25; Swing and native app",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-views",
+      "area": "usage",
+      "title": "Switch the complex chirp through Plot, FFT, Histogram and Profiles",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create a 128\u00d764 complex chirp with nonzero phase and visit each view.",
+        "Create a 256\u00d7256 complex chirp, edit phase through both channel editors and revisit the views.",
+        "Inspect the four Profile channels and change Histogram bins from 30 to 40."
+      ],
+      "expected": "Views display the current data with correct geometry and remain responsive; no crash or stale result.",
+      "scope": "Native lifecycle on the named chirp fixtures; retained source edits, four profile channels and histogram layout. Not every display option or mathematical transform.",
+      "evidence": [
+        "profiles-2026-10-12",
+        "histogram-2026-10-12"
+      ],
+      "summary": "All view transitions complete after source edits; saved data agrees with the edited chirp. Rectangular Profiles and Histogram display defects are fixed, with native screenshots and focused regressions.",
+      "environment": "macOS arm64, JDK 25; native 128\u00d764 and 256\u00d7256 chirps",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-geometry",
+      "area": "usage",
+      "title": "Wide/tall images and origin changes",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Use an asymmetric image at 64\u00d732 and 32\u00d764.",
+        "Toggle zero-centering, apply threshold/arithmetic and inspect profiles/FFT."
+      ],
+      "expected": "Dimensions, channel placement and coordinates remain consistent; no array-bound exception.",
+      "scope": "Native rectangular workflows, independent samples where exported.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "gui-2d-representation",
+      "area": "usage",
+      "title": "Real/imaginary, magnitude/phase and predefined complex creation",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create the same simple complex field using both representations.",
+        "Create the predefined chirp, radial exponential and Fourier basis signals.",
+        "Change parameters, view results and use each as an operation input."
+      ],
+      "expected": "Representation meaning and dimensions survive edits and handoffs without exceptions.",
+      "scope": "Actual special menu callers beyond the registered generator inventory.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "gui-2d-live-input",
+      "area": "usage",
+      "title": "Edit and replace sources used by linked 2D operations",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create two distinct complex chirps and multiply them.",
+        "Use that operation system as the input of Real.",
+        "Edit the source amplitude, then replace an operand; compare saved downstream results."
+      ],
+      "expected": "Dependent results update correctly after source edits and same-size operand replacement; no stale result or crash.",
+      "scope": "Native source edits and same-size operand replacement; production 1D/2D result reuse and eviction. Native resizing and reopened picker presentation tracked separately.",
+      "evidence": [
+        "linked-sources-2026-10-12"
+      ],
+      "summary": "All native complex samples agree before/after a source edit and operand replacement. Corrected permanent dirty-state allocations; model checks also cover later edits and cache eviction.",
+      "environment": "macOS arm64, JDK 25; native 256\u00d7256 and production 128\u00d764/1D",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-duplicate-delete",
+      "area": "usage",
+      "title": "Duplicate and independently edit images",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create a complex chirp image and duplicate it.",
+        "Edit the copy and inspect both of its linked channels.",
+        "Return to the original and save both results."
+      ],
+      "expected": "The copy opens its existing definition; its edits leave the original unchanged.",
+      "scope": "Native 256\u00d7256 predefined complex chirp; production checks cover 1D/2D real/imaginary and magnitude/phase, nested terms, arrays, image modes and seeded noise.",
+      "evidence": [
+        "duplicate-images-2026-10-12"
+      ],
+      "summary": "BUG-019 fixed: independent editable definitions retain complex behavior and existing controls. Eight before/after checks; native edits and 65,536 complex samples verify independence.",
+      "environment": "macOS arm64, Oracle JDK 25; full package 449 tests",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-1d-basic",
+      "area": "usage",
+      "title": "Basic 1D creation and operation regression",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Create a sine and rectangle; edit their parameters.",
+        "Apply threshold/arithmetic, inspect plots, return to editing."
+      ],
+      "expected": "Shared fixes preserve ordinary 1D workflows.",
+      "scope": "Native 1D smoke test.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "gui-demos",
+      "area": "usage",
+      "title": "2D convolution, filtering and frequency-location demonstrations",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Use small compatible inputs to open each available 2D demo.",
+        "Change one supported parameter and stop/reopen the view."
+      ],
+      "expected": "Demonstration controls and images remain consistent without exceptions.",
+      "scope": "Short native checks; no endurance sessions.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "files-complex-2d",
+      "area": "files",
+      "title": "Save/reopen rectangular complex data and use it in operations",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Save a native 128\u00d764 complex image using Save Complex Data.",
+        "Reload and compare dimensions, origin, both channels and a name with spaces.",
+        "Use the reloaded non-centered image in Threshold followed by Times; save and compare results."
+      ],
+      "expected": "Supported sample content survives save/reopen and subsequent operations without crashes.",
+      "scope": "Native centered and non-centered 128\u00d764 persistence; subsequent Threshold/Times on the non-centered fixture. Production 32\u00d716 both-origin checks remain separate evidence.",
+      "evidence": [
+        "complex-insertion-2026-10-12",
+        "profiles-2026-10-12",
+        "corner-persistence-2026-10-12"
+      ],
+      "summary": "Dimensions, origins, names and complex samples survive exactly. Reopened non-centered source produces independently verified Threshold/Times outputs, including typed cutoff 0.25. An earlier automation focus failure is recorded separately.",
+      "environment": "macOS arm64, Oracle JDK 25+37; native app and production paths",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "files-complex-1d",
+      "area": "files",
+      "title": "Save/reopen complex 1D samples",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Save/load a complex signal in both origin modes.",
+        "Compare both channels, dimensions and name; apply another operation."
+      ],
+      "expected": "Sample content and subsequent use are preserved.",
+      "scope": "Actual ComplexIO and file dialogs.",
+      "evidence": [
+        "complex-insertion-2026-10-12"
+      ],
+      "summary": "64-sample complex data with a multiword name passes production save/load in both origin modes. Native dialogs and subsequent operations remain pending.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "files-image-import",
+      "area": "files",
+      "title": "Import ordinary images into 2D functions",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Load a small nonsquare PNG or TIFF with an asymmetric pattern.",
+        "Inspect orientation and numeric range; resize, threshold and export it."
+      ],
+      "expected": "Import creates a usable correctly oriented image and later operations remain consistent.",
+      "scope": "Supported formats must be confirmed from the actual chooser and loader.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "files-export-2d",
+      "area": "files",
+      "title": "Export 2D images and numeric data",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Export real/imaginary data and images after threshold/arithmetic.",
+        "Re-read values or pixels independently, including shared normalization of complex channels."
+      ],
+      "expected": "Files represent the selected current result and preserve documented range/orientation conventions.",
+      "scope": "Native export and artifact inspection; exported pictures do not establish raw numerical accuracy.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "files-dialogs",
+      "area": "files",
+      "title": "Cancel, overwrite and failed file writes",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Cancel open/save dialogs; continue editing.",
+        "Overwrite a test file and verify its content.",
+        "Attempt one controlled unwritable destination and recover."
+      ],
+      "expected": "Cancellation preserves current work; success/error reporting matches the actual file.",
+      "scope": "Test files only; normal cancellation/overwrite precede deliberately interrupted storage.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "files-editable-definitions",
+      "area": "files",
+      "title": "Establish persistence capabilities",
+      "priority": "P1",
+      "status": "scope",
+      "steps": [
+        "Inspect existing save/load formats and operation actions.",
+        "Identify whether authored formulas, operations and parameters are persisted or only sampled data."
+      ],
+      "expected": "Document supported persistence and feature gaps without treating unimplemented Chirplet features as regressions.",
+      "scope": "Capability scoping before any file-format redesign.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "build-java",
+      "area": "platform",
+      "title": "Compile, run tests and package the executable JAR",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Run mvn -o -B -ntp -Djava.awt.headless=true package."
+      ],
+      "expected": "Compilation, all tests and JAR packaging succeed.",
+      "scope": "Local macOS JDK 25; baseline plus threshold correction.",
+      "evidence": [
+        "baseline-2026-10-12",
+        "workflow-regressions-2026-10-12"
+      ],
+      "summary": "225 tests pass and the executable JAR builds.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "launch-native-mac",
+      "area": "platform",
+      "title": "Launch the native Mac test app and capture failures",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Assemble a jpackage app image with isolated test preferences.",
+        "Launch it with stderr/stdout and fatal-JVM-error logging.",
+        "Create and edit a 2D signal; distinguish caught/uncaught exceptions, hangs and process exits."
+      ],
+      "expected": "The current application launches and failures leave actionable diagnostics.",
+      "scope": "Development app image; no installer or installed user app replacement.",
+      "evidence": [
+        "native-baseline-2026-10-12"
+      ],
+      "summary": "Isolated app image launched with captured diagnostics; bounded cylinder and arithmetic workflow remained responsive.",
+      "environment": "macOS arm64, bundled JDK 25, jpackage app image",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "launch-native-windows",
+      "area": "platform",
+      "title": "Verify Roger\u2019s Windows build and launch path",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Confirm Roger\u2019s OS, Java/bundled runtime and app version.",
+        "Build/launch the intended Windows package; run the small 2D creation/operation script."
+      ],
+      "expected": "The actual Windows application launches and supports the tested workflows.",
+      "scope": "Requires a Windows environment; current Mac evidence does not satisfy this row.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "windows-files-display",
+      "area": "platform",
+      "title": "Windows paths, display scaling and native dialogs",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Use a writable path containing spaces and non-ASCII characters.",
+        "Check the primary 2D controls and file dialogs at Roger\u2019s display scaling."
+      ],
+      "expected": "Ordinary path names, keyboard input and visible controls work correctly.",
+      "scope": "Windows-specific acceptance.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "heap-policy",
+      "area": "memory",
+      "title": "Remove the obsolete fixed 2 GiB launcher cap",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Remove Xmx2g from every maintained native packaging path and example.",
+        "Check shell syntax, Maven XML and the assembled test launcher configuration.",
+        "Read the installed JVM\u2019s default heap estimate."
+      ],
+      "expected": "New packages use JVM default heap sizing; no hidden fixed 2 GiB override remains.",
+      "scope": "Source checks and a macOS test app image. Windows packaging remains unexecuted.",
+      "evidence": [
+        "heap-policy-2026-10-12"
+      ],
+      "summary": "All five maintained cap settings removed; this Mac\u2019s JVM estimates a 6 GiB default budget.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "memory-payload",
+      "area": "memory",
+      "title": "Document image payload sizes and retained owners",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Trace source arrays, cached channels, operation results and view caches.",
+        "Calculate double-array payload for common image dimensions."
+      ],
+      "expected": "Memory estimates identify included arrays and clearly exclude unmeasured overhead and peaks.",
+      "scope": "Source-derived byte estimates; no runtime capacity claim.",
+      "evidence": [
+        "memory-source-2026-10-12"
+      ],
+      "summary": "One 4096\u00d74096 double channel is 128 MiB; four such channels are 512 MiB, excluding other owners and temporaries.",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "memory-bounded-2d",
+      "area": "memory",
+      "title": "Measure ordinary 2D creation and operations",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Record JVM heap limit, heap usage, process memory and elapsed time.",
+        "Create/edit/apply threshold and arithmetic at 256\u00d7256, 512\u00d7512 and, if healthy, 1024\u00d71024.",
+        "Record steady and peak observations per workload; stop on unresponsiveness."
+      ],
+      "expected": "A bounded measured envelope distinguishes ordinary defects from capacity limits.",
+      "scope": "Short isolated process measurements, no deliberate machine-wide memory exhaustion.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "memory-lifecycle",
+      "area": "memory",
+      "title": "Memory after replacing views and closing test documents",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Create three modest images and one operation chain.",
+        "Switch views briefly, delete the test documents, and sample retained owners/heap."
+      ],
+      "expected": "Document retained references and a measured trend; do not infer a leak solely from delayed collection.",
+      "scope": "Bounded lifetime check; long soak testing remains manual unless specifically requested.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null
+    },
+    {
+      "id": "memory-large-images",
+      "area": "memory",
+      "title": "Measure larger images and operation-specific limits",
+      "priority": "P2",
+      "status": "deferred",
+      "steps": [
+        "After ordinary workflows are stable, choose one bounded larger workload based on the measured baseline.",
+        "Capture peak memory, duration and result correctness; record supported scope and failures."
+      ],
+      "expected": "Capacity statements are tied to dimensions, operations, runtime, hardware and measured evidence.",
+      "scope": "Future capacity work; menu maximum is not a proven safe operating size.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null,
+      "reason": "Juliet prioritizes ordinary 2D crash fixes before larger-workload optimization."
+    },
+    {
+      "id": "memory-exhaustion",
+      "area": "memory",
+      "title": "Controlled low-memory failure and recovery",
+      "priority": "P2",
+      "status": "deferred",
+      "steps": [
+        "Use a separate deliberately capped JVM and disposable input.",
+        "Trigger a bounded allocation failure and inspect recovery, error handling and saved-data integrity."
+      ],
+      "expected": "Distinguish recoverable Java exceptions from native crashes; preserve user work where supported.",
+      "scope": "Deliberate failure testing after normal workflows.",
+      "evidence": [],
+      "summary": "Not yet verified in the stated scope.",
+      "environment": "Target environment to be recorded with results",
+      "reviewedOn": null,
+      "reason": "Ordinary crash reproduction and working baseline come first; no destructive stress run yet."
+    },
+    {
+      "id": "component-2d-search",
+      "area": "usage",
+      "title": "Search all six 2D binary operations through the real editor",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Type each operation name and an uppercase prefix into the actual search document.",
+        "Clear an unmatched query and select a different operation."
+      ],
+      "expected": "Matching operation appears and reaches the owning editor; unmatched search recovers.",
+      "scope": "Eight headless Swing component cases; native follow-up remains pending.",
+      "summary": "Fixed the empty search map; eight failures before, eight passes after.",
+      "evidence": [
+        "search-2026-10-12"
+      ],
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "component-2d-generators",
+      "area": "usage",
+      "title": "Render every registered 2D image, noise and aperture generator",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Use default production generators and fit-to-document image settings.",
+        "Compute real, imaginary, magnitude and phase; evaluate the production thumbnail raster."
+      ],
+      "expected": "Finite channels of the correct size and a thumbnail preserving aspect ratio.",
+      "scope": "26 generators, three square/rectangular sizes, both origins; 156 cases.",
+      "summary": "All 156 bounded cases pass.",
+      "evidence": [
+        "generators-2026-10-12"
+      ],
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "component-2d-empty-image",
+      "area": "usage",
+      "title": "Edit zero-size and off-canvas images and recover",
+      "priority": "P2",
+      "status": "checked",
+      "steps": [
+        "Use the actual image editor to set zero width/height or move fully outside the canvas.",
+        "Render the empty result and restore dimensions/center."
+      ],
+      "expected": "An empty image renders without a scaler exception; subsequent normal edits recover.",
+      "scope": "Eight headless component/rendering cases at 128\u00d764, both origins.",
+      "summary": "Fixed the shared zero-scale failure; all eight cases pass.",
+      "evidence": [
+        "empty-image-2026-10-12"
+      ],
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-search-fixed",
+      "area": "usage",
+      "title": "Verify corrected operation search in the native app",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Type plus, minus and an unmatched query in the native 2D binary search.",
+        "Clear the query and select an operation."
+      ],
+      "expected": "Native list and operation selection track the query and recover.",
+      "scope": "Requires working native text input; component checks are recorded separately.",
+      "summary": "Original bug reproduced natively and component fix verified. Juliet reauthorized automated keystrokes after finishing with her terminal; post-fix native search remains unverified. Require field readback.",
+      "evidence": [
+        "search-2026-10-12"
+      ],
+      "environment": "macOS native verification pending",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "roger-resolution-target",
+      "area": "usage",
+      "title": "Reproduce Roger\u2019s circular-resolution target walkthrough",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Follow the supplied nine-step magnitude/phase, Real/Threshold, mask, chirp and rotation workflow.",
+        "Duplicate and edit the operation system, inspect intermediate results, export TIFF and compare with the supplied files."
+      ],
+      "expected": "Stable editable workflow, real nonnegative final output and independently checked composition.",
+      "scope": "256\u00d7256 zero-centered images; supplied PDF/TIFF references, actual model and native UI paths.",
+      "summary": "All nine supplied steps recreated in the corrected native app; final rotated-mask multiplication and TIFF export succeed with no logged exception. Exact historical pixel parity is not asserted. Duplicate parameter independence is a separate known bug.",
+      "evidence": [
+        "roger-walkthrough-2026-10-12",
+        "roger-rotation-2026-10-12"
+      ],
+      "environment": "macOS/JDK 25 native 256\u00d7256 workflow and TIFF readback; Windows untested",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-operation-layout",
+      "area": "usage",
+      "title": "Keep result previews readable and operation parameters visible",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Select a 2D operation, then Threshold and Rotate.",
+        "Inspect both result previews and parameter fields at normal and smaller window sizes."
+      ],
+      "expected": "Previews are not squeezed into a narrow corner; inputs remain visible and usable.",
+      "scope": "Native macOS 2D Threshold/Rotate at large and about 1153\u00d7742 logical points, plus real Swing sizing regressions. Other operation layouts and Windows remain separate checks.",
+      "summary": "Threshold and Rotate parameters, help and readable result previews are accessible at large and smaller desktop sizes. Threshold fields remain visible and editable while scrolling to the imaginary result.",
+      "evidence": [
+        "roger-walkthrough-2026-10-12",
+        "native-baseline-2026-10-12",
+        "roger-rotation-2026-10-12",
+        "copy-layout-2026-10-12"
+      ],
+      "environment": "macOS/JDK 25; large and 2306\u00d71484-pixel smaller windows inspected",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-operation-duplicate-parameters",
+      "area": "usage",
+      "title": "Edit a duplicated operation chain independently",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Duplicate a configured Threshold/Real/Times chain and replace its operands.",
+        "Change the original Threshold from 0.5 to 0.75; inspect both parameter values and outputs."
+      ],
+      "expected": "The duplicate preserves the copied settings and later parameter edits affect only the edited chain; linked source images remain linked.",
+      "scope": "Normal 1D/2D operation-system ownership; actual native failure reproduced in Roger\u2019s 2D chain.",
+      "summary": "Configured operation copies retain their settings and subsequent edits stay independent. Linked source producers remain linked; replacing one copy\u2019s operand does not replace the other\u2019s. Native 2D cutoff edits and 1D/2D production outputs verified.",
+      "evidence": [
+        "roger-rotation-2026-10-12",
+        "copy-layout-2026-10-12"
+      ],
+      "environment": "macOS/JDK 25 native 2D; production 1D/2D regressions",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "priority": "P0",
+      "status": "checked",
+      "evidence": [
+        "complex-insertion-2026-10-12"
+      ],
+      "environment": "macOS/JDK 25; native 2D and scoped production 1D/2D checks",
+      "reviewedOn": "2026-10-12",
+      "id": "files-complex-names",
+      "area": "files",
+      "title": "Save/reopen generated images and operation results with full names",
+      "steps": [
+        "Save and reopen the built-in complex chirp.",
+        "Apply Threshold/Real/Times; save, reopen and resave the result.",
+        "Compare stored dimensions, origin, names and both channels."
+      ],
+      "expected": "Native generated and operation-result files reopen and retain their current samples and names.",
+      "scope": "Native 256\u00d7256 zero-centered; production rectangular and 1D checks separately documented.",
+      "summary": "Native save/load/resave succeeds. Every saved channel sample matches independent Threshold/Real/Times expectations exactly; names and geometry survive."
+    },
+    {
+      "priority": "P0",
+      "status": "checked",
+      "evidence": [
+        "complex-insertion-2026-10-12"
+      ],
+      "environment": "macOS/JDK 25; native 2D and scoped production 1D/2D checks",
+      "reviewedOn": "2026-10-12",
+      "id": "gui-operation-insertion",
+      "area": "usage",
+      "title": "Add terms and operations without creating circular inputs",
+      "steps": [
+        "Open an existing Threshold chain and add a term, unary or binary operation.",
+        "Complete the expression and inspect its result.",
+        "Return to an earlier chain after creating downstream results and inspect eligible inputs."
+      ],
+      "expected": "Default and selectable inputs exclude the edited chain and its consumers; ordinary insertion stays evaluable once the expression is complete.",
+      "scope": "Actual Swing buttons and input-library filtering in both dimensions; native 2D unary/binary composition and save.",
+      "summary": "Six calculator-button paths and two downstream-filter cases pass. Native insertion, completion with Times, and export/reopen succeed without the previous stack overflow."
+    },
+    {
+      "id": "gui-rectangular-profiles",
+      "area": "usage",
+      "title": "Open rectangular Profiles, change channels and export cuts",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Open a 128\u00d764 centered complex image in Profiles.",
+        "Switch Real/Imaginary/Magnitude/Phase and horizontal/vertical directions.",
+        "Export x = y + 3 and y = 0 as 1D signals; save and compare their samples."
+      ],
+      "expected": "Profiles opens without errors and exported samples/name match the selected line.",
+      "scope": "Native centered 128\u00d764 image; component/model wide/tall and both-origin checks.",
+      "summary": "BUG-015 repaired. All eight fixtures pass; native two exported cuts match both source channels exactly; full package passes 434 tests.",
+      "environment": "macOS arm64, JDK 25; Swing and native app",
+      "reviewedOn": "2026-10-12",
+      "evidence": [
+        "profiles-2026-10-12"
+      ]
+    },
+    {
+      "id": "gui-operation-reopen",
+      "area": "usage",
+      "title": "Reopen an operation and replace its selected input",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create a two-input operation and visit another document.",
+        "Return to Edit System and choose a replacement for its selected input."
+      ],
+      "expected": "The selected term has a visible, usable picker immediately.",
+      "scope": "Initial selection presentation after reopening 1D/2D operation editors.",
+      "evidence": [
+        "linked-sources-2026-10-12",
+        "operation-reopen-2026-10-12"
+      ],
+      "summary": "Input picker appears immediately and matches the highlighted term; native replacement/Plot/save work. BUG-018 fixed with 1D/2D component regressions.",
+      "environment": "Native macOS/JDK 25",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-live-resize",
+      "area": "usage",
+      "title": "Resize linked sources and recover from incompatible operands",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Resize a source used twice in a multiplication to 128\u00d764.",
+        "Resize one independent input and inspect the unavailable result.",
+        "Replace operands with compatible rectangular data and save the recovered result."
+      ],
+      "expected": "Resized results update; incompatible operands do not crash or leave a stale result; compatible replacement restores computation.",
+      "scope": "Native shared-source resize, mismatch and operand-replacement recovery; automated grow/shrink/dimension-restoration and downstream propagation. Native dropdown restoration remains a separate pending check.",
+      "evidence": [
+        "resize-linked-2026-10-12"
+      ],
+      "summary": "BUG-020 fixed: incompatible dimensions no longer crash thumbnails or produce truncated data. Native mismatch handling and compatible operand replacement pass; 8,192 complex samples match independently. Direct dropdown restoration remains pending.",
+      "environment": "macOS arm64, JDK 25; 455-test build",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-delete-linked",
+      "area": "usage",
+      "title": "Delete a source or result and continue using remaining images",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create images and a dependent operation.",
+        "Delete a source or result using existing controls.",
+        "Continue editing and plotting the remaining documents."
+      ],
+      "expected": "Remaining documents and linked results remain usable; removal does not crash or silently corrupt data.",
+      "scope": "Native document lifetime using disposable audit fixtures; split from completed duplication.",
+      "evidence": [
+        "delete-linked-2026-10-12"
+      ],
+      "summary": "Native source deletion preserves the existing result; surviving-source edits propagate, deleting the result keeps the source editable, and deleting the last image permits fresh creation. All saved complex samples independently checked.",
+      "environment": "macOS arm64, JDK 25; unchanged 449-test build",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-resize-dropdown-recovery",
+      "area": "usage",
+      "title": "Restore matching input sizes through native size dropdowns",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create two images and multiply them.",
+        "Resize one source to 128\u00d764.",
+        "Resize the other to128\u00d764 and return to the result."
+      ],
+      "expected": "The result returns with the selected dimensions and current samples.",
+      "scope": "Exact native dropdown interaction; production recovery and native operand-replacement recovery already pass.",
+      "evidence": [
+        "resize-linked-2026-10-12"
+      ],
+      "summary": "Automated key changes stopped committing. Leave this interaction pending rather than repeat ineffective typing or claim a resize pass.",
+      "environment": "macOS arm64; Windows pending",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-cartesian-threshold",
+      "area": "usage",
+      "title": "Compose Cartesian x/y factors, edit one term and threshold the result",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create Rectangle(x) times Gaussian(y), then add Gaussian(x).",
+        "Edit only the second Gaussian and revisit both terms and Plot/Edit.",
+        "Apply Threshold0.5 and save both source and result."
+      ],
+      "expected": "Operator symbol and independent term parameters remain correct; saved samples agree with the authored controls.",
+      "scope": "Native256\u00d7256 real image with x/y factors and one two-term sum; formula wording reviewed separately.",
+      "evidence": [
+        "cartesian-composition-2026-10-12"
+      ],
+      "summary": "Plus icon, separate Gaussian widths, Plot/Edit and thresholded samples pass. No new source changes needed.",
+      "environment": "macOS arm64, JDK25;455-test build",
+      "reviewedOn": "2026-10-12"
+    },
+    {
+      "id": "gui-2d-constant-grouping",
+      "area": "usage",
+      "title": "Group, edit and remove constant image terms",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Author A+B*C and (A+B)*C using ordinary constant images.",
+        "Edit, remove, rebuild and reopen the calculator.",
+        "Insert grouping into an existing native expression and save before/after results."
+      ],
+      "expected": "Precedence, icons, saved samples and subsequent edits agree.",
+      "scope": "Actual Swing components and native 256\u00d7256 constants; distinct spatial/imaginary scenarios remain pending.",
+      "summary": "Seven component tests and native 3/4/2 all-pixel outputs pass; no production correction needed.",
+      "evidence": [
+        "grouping-2026-10-13"
+      ],
+      "environment": "macOS arm64, JDK25",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-imaginary-composition",
+      "area": "usage",
+      "title": "Keep separate spatial real and imaginary expressions through edits and operations",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create different spatial expressions in the real and imaginary channels.",
+        "Switch channels and views, edit one term and preserve the other channel.",
+        "Extract a component, threshold it and compare saved samples."
+      ],
+      "expected": "Channel controls, expression tokens, source and operation outputs remain independent and current.",
+      "scope": "Ordinary 2D authoring and chained component operations.",
+      "summary": "Native grouped imaginary expression, independent real edit, Real\u2192Threshold and subsequent linked update pass; all exported pixels independently checked.",
+      "evidence": [
+        "channels-2026-10-13"
+      ],
+      "environment": "macOS arm64, JDK25",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-function-equation-symbols",
+      "area": "usage",
+      "title": "Render subtraction and multiplication in function equations",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Create an image expression with subtraction and multiplication.",
+        "Open Plot and compare the equation with calculator tokens and simple expected output."
+      ],
+      "expected": "Arithmetic symbols preserve the entered expression.",
+      "scope": "Shared formatter probe and one native2D Plot.",
+      "summary": "Missing subtraction and stray multiplication digit corrected;457 tests and native formula check pass.",
+      "evidence": [
+        "equation-symbols-2026-10-13"
+      ],
+      "environment": "macOS arm64, JDK25",
+      "reviewedOn": "2026-10-13"
+    }
+  ],
+  "evidence": {
+    "baseline-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "summary": "Unmodified baseline: 195 tests pass. Existing generator tests exercise selected production generators; many operation tests use raw arrays and test helpers. A green baseline does not cover the desktop workflows.",
+      "limits": "No Windows or full desktop acceptance. Historical JavaScript cross-validation test names do not establish current Chirplet parity.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-baseline.log",
+        "src/test/java/signals/operation/Operations1DTest.java",
+        "src/test/java/signals/operation/Operations2DTest.java",
+        "src/test/java/signals/functionterm/Generators1DTest.java"
+      ]
+    },
+    "workflow-regressions-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
+      "summary": "30 new production-workflow checks: six failures reproduced before correction, all 30 pass afterward. Threshold outputs and parameter bindings corrected. Full Maven package passes 225 tests and produces the executable JAR.",
+      "limits": "Headless component and production-model evidence only. Images are 4\u00d72 and signals have eight samples. No native rendering, operation-expression editor, persistence, large workloads or Windows certification.",
+      "sources": [
+        "src/test/java/signals/core/BasicWorkflowTest.java",
+        "src/main/java/signals/operation/ThresholdOp.java",
+        "src/main/java/signals/operation/ArrayMath.java",
+        "src/main/resources/operationdoc/threshold.html",
+        "docs/audit/evidence/2026-10-12-workflows-before.log",
+        "docs/audit/evidence/2026-10-12-package.log"
+      ]
+    },
+    "memory-source-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "Source inspection; byte-count estimates, not runtime peak measurements",
+      "summary": "Functions retain real/imaginary/magnitude/phase arrays through soft caches. Data terms retain source arrays; operation results and transformations allocate more arrays. Menu dimensions range from 2 through 4096. GUI refresh/view changes explicitly request finalization and garbage collection.",
+      "limits": "These facts do not establish a memory leak, safe maximum image size, peak heap, responsiveness or cause of reported crashes. No deliberate memory exhaustion or endurance test has been run.",
+      "sources": [
+        "src/main/java/signals/core/Function.java",
+        "src/main/java/signals/core/FunctionFactory.java",
+        "src/main/java/signals/core/OperatorSystem.java",
+        "src/main/java/signals/core/FunctionCreationOptions.java",
+        "src/main/java/signals/gui/GUI.java",
+        "src/main/java/signals/functionterm/DataFunctionTerm2D.java"
+      ]
+    },
+    "heap-policy-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64; installed JDK 25; native app image assembled with jpackage",
+      "summary": "At Juliet\u2019s request, removed the fixed -Xmx2g setting from macOS and both Windows packaging scripts, Maven native-installer configuration and the signing example. Java now selects its default heap budget. This machine reports an estimated 6.00G default max heap; the test app image has no Xmx option.",
+      "limits": "The 6 GiB observation is specific to this Mac/runtime. No Windows installer was built or installed. The Windows batch script has older version/JAR naming that needs a separate packaging check.",
+      "sources": [
+        "build-installer-mac.sh",
+        "build-installer-windows.sh",
+        "build-installer-windows.bat",
+        "pom.xml",
+        "SIGNING.md",
+        "docs/audit/evidence/2026-10-12-checkpoint.md"
+      ]
+    },
+    "user-reports-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "Juliet\u2019s report; Roger\u2019s platform believed to be Windows, not yet confirmed",
+      "summary": "Juliet reports intermittent crashes during ordinary 2D creation and operations. She prioritizes stabilizing Roger\u2019s workflows before feature parity, authorizes Continuous Audit and asks for memory limitations to be documented before later refactoring.",
+      "limits": "No exact crash steps, exception, exit code or failing build supplied. BUG-006 is an older open stale-thumbnail report; its current status needs reproduction.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-checkpoint.md",
+        "BUGS.md"
+      ]
+    },
+    "search-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "summary": "Native reproduction: searching for plus cleared the entire 2D binary list. Its search map was created before adding the six operations. Eight actual selector/editor regressions failed before correction; all pass afterward. Full package: 233 tests.",
+      "limits": "Native post-fix typing was not verified: text input in the relaunched test instance did not take effect. Do not count attempted text entry or size selection as a pass.",
+      "sources": [
+        "src/test/java/signals/core/DataGeneratorSelectionTest.java",
+        "src/main/java/signals/core/DataGeneratorCollections.java",
+        "docs/audit/evidence/2026-10-12-search-before.log",
+        "docs/audit/evidence/2026-10-12-search-package.log"
+      ]
+    },
+    "generators-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "summary": "All 26 registered image, noise and aperture generators pass 156 bounded cases: four finite channels and a rasterized production thumbnail at 256\u00d7256, 64\u00d732 and 32\u00d764, both origins. Image parameters match the editor\u2019s initial fit-to-document settings.",
+      "limits": "Creation/rendering smoke coverage, not full numerical certification. Cartesian/polar composition, parameter ranges, interactions and native behavior remain separate. The initial audit assertion was corrected to preserve thumbnail aspect ratio; this was a test expectation error, not an app bug.",
+      "sources": [
+        "src/test/java/signals/core/Generator2DWorkflowTest.java",
+        "docs/audit/evidence/2026-10-12-generators.log"
+      ]
+    },
+    "empty-image-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "summary": "Eight actual image-editor cases reproduced IllegalArgumentException: Scale operation requires both scale factors be greater than 0. Zero width/height or fully off-canvas placement caused the shared image scaler to receive an empty target. The renderer now returns an empty canvas. All eight pass, including thumbnail rendering and recovery. Full package: 397 tests.",
+      "limits": "Headless controls and production rendering at 128\u00d764, both origins. No process crash claimed; native drag/type reproduction and partially clipped image mathematics remain pending.",
+      "sources": [
+        "src/test/java/signals/core/ImageEditingWorkflowTest.java",
+        "src/main/java/signals/functionterm/ImageFunctionTerm2D.java",
+        "docs/audit/evidence/2026-10-12-image-edit-before.log",
+        "docs/audit/evidence/2026-10-12-image-edit-package.log"
+      ]
+    },
+    "native-baseline-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "summary": "Launched an isolated jpackage app with stdout/stderr and JVM fatal-error capture. Created a 256\u00d7256 cylinder, edited radius in the first instance, created an operation system with the cylinder twice, observed addition range 0..2 and subtraction zero. Plot/FFT view switching remained responsive. No native process crash or UI exception captured in this bounded pass.",
+      "limits": "Post-relaunch text entry/size changes did not take effect through automation. Rectangular native behavior and the fixed search therefore remain unverified. The test app currently contains the 233-test build, predating the empty-image fix. One sandboxed launch exited 134 with no output; relaunch outside the sandbox succeeded, so that exit is not attributed to an application workflow.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-checkpoint.md"
+      ]
+    },
+    "roger-walkthrough-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
+      "summary": "Juliet supplied a seven-page walkthrough, operation screenshot, two 256\u00d7256 TIFF outputs and a circular-resolution target. The walkthrough composes magnitude/phase radial monomial, a step mask, Real/Threshold/Times, a radial chirp, 180\u00b0 rotation, duplication, addition, a radial rectangle and final 45\u00b0 rotation. The screenshots also show the cramped operation-result previews.",
+      "limits": "User-provided historical evidence; not proof of current correctness. The two TIFFs differ and the threshold settings are not shown. Compare against independent mathematics as well as visual references.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-checkpoint.md"
+      ]
+    },
+    "roger-rotation-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64; Oracle JDK 25+37; native CUA walkthrough and actual production/JAI/Swing classes",
+      "summary": "Reproduced an AWT array-bounds failure when multiplying a rotated 256\u00d7256 image by its mask. Corrected rotation raster length; four before/after regressions and all 402 tests pass. Recreated all nine native steps and exported a readable TIFF with a clean log. Foreground startup activation enables native typing into existing fields.",
+      "limits": "Windows untested. Historical TIFFs differ in black/white regions and do not specify Threshold settings. Direct AX value writes remain unsupported; typing requires keyboard focus. Smaller-window documentation crowding and duplicate sharing were discovered here and subsequently resolved in copy-layout-2026-10-12.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-roger-rotation.md",
+        "docs/audit/evidence/2026-10-12-roger-before.log",
+        "docs/audit/evidence/2026-10-12-focus-package.log",
+        "docs/audit/evidence/2026-10-12-roger-native-before.log",
+        "docs/audit/evidence/2026-10-12-roger-native-after.log",
+        "docs/audit/evidence/2026-10-12-roger-native-result.png",
+        "docs/audit/evidence/2026-10-12-roger-native-result.tiff",
+        "src/test/java/signals/core/RogerWorkflowTest.java",
+        "src/main/java/signals/gui/plot/ImageDisplayMath.java",
+        "src/main/java/signals/gui/GUI.java"
+      ]
+    },
+    "copy-layout-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; native CUA and production/JAI/Swing regressions",
+      "summary": "Fixed shared operation settings in duplicates and compacted existing parameter groups. Four ownership and two layout checks fail before and pass after; all 408 tests and package pass. Native duplicate edits remain independent and Threshold/Rotate controls, help and scrollable previews work at about 1153\u00d7742 logical points.",
+      "limits": "Windows and other operator layouts remain unverified. Native duplication checked in 2D; production ownership checked in 1D and 2D. Preview can scroll horizontally at this size.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-copy-layout.md",
+        "docs/audit/evidence/2026-10-12-duplication-before.log",
+        "docs/audit/evidence/2026-10-12-compact-layout-before.log",
+        "docs/audit/evidence/2026-10-12-copy-layout-after.log",
+        "docs/audit/evidence/2026-10-12-copy-layout-package.log",
+        "docs/audit/evidence/2026-10-12-copy-layout-native.log",
+        "src/test/java/signals/core/OperationDuplicationTest.java",
+        "src/test/java/signals/core/OperationPreviewLayoutTest.java"
+      ]
+    },
+    "complex-insertion-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; actual Swing calculator buttons, production ComplexIO and native CUA",
+      "summary": "Fixed default multiword-name save/load failures and self-references introduced by normal operation insertion. Thirteen before/after regressions and the full 421-test package pass. Native complex-image load, Threshold/Real/Times insertion, save/reopen/resave complete with a clean log; all saved samples match independent expectations exactly.",
+      "limits": "Native fixture is 256\u00d7256 zero-centered; rectangular/both-origin and 1D paths tested in production code, with native variants pending. Saved complex data preserves samples, not editable formulas or chains. Result filenames still need an explicit basename.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-complex-insertion.md",
+        "docs/audit/evidence/2026-10-12-complex-before.log",
+        "docs/audit/evidence/2026-10-12-complex-after.log",
+        "docs/audit/evidence/2026-10-12-complex-native-before.log",
+        "docs/audit/evidence/2026-10-12-insertion-before.log",
+        "docs/audit/evidence/2026-10-12-insertion-after.log",
+        "docs/audit/evidence/2026-10-12-insertion-package.log",
+        "docs/audit/evidence/2026-10-12-operation-insertion-native-before.log",
+        "docs/audit/evidence/2026-10-12-complex-insertion-native-after.log",
+        "docs/audit/evidence/2026-10-12-complex-native-verification.json",
+        "src/test/java/signals/core/ComplexDataWorkflowTest.java",
+        "src/test/java/signals/core/OperationInsertionWorkflowTest.java",
+        "src/main/java/signals/io/ComplexIO.java",
+        "src/main/java/signals/gui/VerticalThumbnailList.java"
+      ]
+    },
+    "two-term-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; real Swing controls and native CUA",
+      "summary": "Fixed BUG-006 event ownership corrupting arithmetic symbols and term parameters. Five Swing workflows pass, four failed before; full package passes 426 tests. Native circle-plus-Gaussian editing and Plot/Edit retain symbols and widths; all saved samples agree with an independent oracle.",
+      "limits": "Named 256\u00d7256 native workflow, Add/Subtract/Multiply component checks and ordinary polar resize. Remaining families, views and Windows are not certified.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-two-term.md",
+        "docs/audit/evidence/2026-10-12-two-term-before.log",
+        "docs/audit/evidence/2026-10-12-two-term-after.log",
+        "docs/audit/evidence/2026-10-12-two-term-package.log",
+        "docs/audit/evidence/2026-10-12-two-term-after.png",
+        "docs/audit/evidence/2026-10-12-two-term-native-after.log",
+        "docs/audit/evidence/2026-10-12-two-term-native-verification.json",
+        "src/test/java/signals/core/TwoTermImageWorkflowTest.java",
+        "src/main/java/signals/gui/datagenerator/CreateFunctionPart2DPanel.java",
+        "src/main/java/signals/gui/datagenerator/FunctionCalculator2D.java",
+        "src/main/java/signals/gui/datagenerator/EditAnalyticFunctionTerm1DPanel.java"
+      ]
+    },
+    "profiles-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; real Swing ProfilePlot, production sampling and native CUA",
+      "summary": "Fixed rectangular Profiles crash and mathematical intercept labels. Eight focused fixtures pass, four failed before; full 434-test package passes. Native four-channel profiles and horizontal/diagonal exports agree with source samples exactly. Source phase edits survive four-view revisits and saved samples match analytic expectations.",
+      "limits": "Native 128\u00d764 centered profiles and 256\u00d7256 chirp view lifecycle only; wide/tall and both origins also have component/model evidence. Histogram horizontal-axis clipping remains open; transform/histogram numerical certification and Windows not claimed.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-profiles.md",
+        "docs/audit/evidence/2026-10-12-profiles-before.log",
+        "docs/audit/evidence/2026-10-12-profiles-after.log",
+        "docs/audit/evidence/2026-10-12-profiles-package.log",
+        "docs/audit/evidence/2026-10-12-profiles-native-before.log",
+        "docs/audit/evidence/2026-10-12-profiles-native-after.log",
+        "docs/audit/evidence/2026-10-12-profiles-native-after.png",
+        "docs/audit/evidence/2026-10-12-profiles-native-verification.json",
+        "docs/audit/evidence/2026-10-12-histogram-axis-before.png",
+        "src/test/java/signals/core/ImageProfileWorkflowTest.java",
+        "src/main/java/signals/core/ImageProfile.java",
+        "src/main/java/signals/functionterm/SineChirpFunctionTerm1D.java"
+      ]
+    },
+    "histogram-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; native app and actual Swing components",
+      "summary": "Histogram baseline/decimal labels/full last bin now fit; nonnegative imaginary channels remain visible. Three focused checks pass (two failed before); full 437-test package passes. Native 128\u00d764 chirp shows readable 30/40-bin layouts and commits typed bin changes.",
+      "limits": "Bounded display and channel checks; no all-mode histogram/FFT numerical certification or Windows validation.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-histogram.md",
+        "docs/audit/evidence/2026-10-12-histogram-before.log",
+        "docs/audit/evidence/2026-10-12-histogram-after.log",
+        "docs/audit/evidence/2026-10-12-histogram-package.log",
+        "docs/audit/evidence/2026-10-12-histogram-axis-before.png",
+        "docs/audit/evidence/2026-10-12-histogram-native-after.png",
+        "docs/audit/evidence/2026-10-12-histogram-40-bins.png",
+        "docs/audit/evidence/2026-10-12-histogram-native-after.log",
+        "src/test/java/signals/core/HistogramViewWorkflowTest.java"
+      ]
+    },
+    "corner-persistence-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25+37; native 437-test build",
+      "summary": "Non-centered 128\u00d764 complex image preserves dimensions, origin, multiword name and all complex samples exactly through save/load/resave. Reloaded source works in Threshold/Times; cutoff 0.25 typed and confirmed in a fresh session, saved outputs match independent calculations exactly.",
+      "limits": "An earlier session lost automated keyboard focus; only displayed/committed values count. No speculative focus fix. Native Windows and editable-definition persistence remain outside this check.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-corner-persistence.md",
+        "docs/audit/evidence/2026-10-12-corner-verification.json",
+        "docs/audit/evidence/2026-10-12-corner-chain.png",
+        "docs/audit/evidence/2026-10-12-corner-native.log"
+      ]
+    },
+    "linked-sources-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, JDK 25; native 439-test build and production 1D/2D models",
+      "summary": "Fixed perpetual dirty state after source edits: three result reads formerly ran 27 additions and 9 thresholds, now one each. Two before/after regressions and 439-test package pass. Native A\u00d7B \u2192 Real updates and operand replacement match all 65,536 saved complex samples.",
+      "limits": "Keyboard focus remains intermittent; later native edits use spinner controls and default filenames copied to evidence names. Native resize, Windows and peak memory remain unchecked. Reopened input-picker defect recorded separately.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-linked-sources.md",
+        "docs/audit/evidence/2026-10-12-linked-before.log",
+        "docs/audit/evidence/2026-10-12-linked-after.log",
+        "docs/audit/evidence/2026-10-12-linked-package.log",
+        "docs/audit/evidence/2026-10-12-linked-verification.json",
+        "docs/audit/evidence/2026-10-12-linked-native-after.png",
+        "docs/audit/evidence/2026-10-12-linked-native.log",
+        "docs/audit/evidence/2026-10-12-operation-reopen-before.png",
+        "src/test/java/signals/core/LinkedSourceWorkflowTest.java"
+      ]
+    },
+    "operation-reopen-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, Oracle JDK 25; native app and actual Swing editors",
+      "summary": "Reopened operations now show the selected input picker immediately. Two component regressions failed before/pass after; full 441-test package passes. Native replacement, Plot and save succeed without selecting another term first.",
+      "limits": "Scoped opening/selection/replacement check. No Windows validation or all expression-editing transitions.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-operation-reopen.md",
+        "docs/audit/evidence/2026-10-12-operation-reopen-before.png",
+        "docs/audit/evidence/2026-10-12-operation-reopen-after.png",
+        "docs/audit/evidence/2026-10-12-reopen-before.log",
+        "docs/audit/evidence/2026-10-12-reopen-after.log",
+        "docs/audit/evidence/2026-10-12-reopen-package.log",
+        "docs/audit/evidence/2026-10-12-reopen-native.log",
+        "src/test/java/signals/core/OperationReopenWorkflowTest.java"
+      ]
+    },
+    "duplicate-images-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, JDK 25; full 449-test package",
+      "summary": "BUG-019 fixed: eight before/after copy ownership regressions and native complex-chirp duplicate/edit/save verify independent originals, linked copied channels and immediately usable controls.",
+      "limits": "Native 256\u00d7256 chirp; deletion is a separate pending scenario. Full test count is not a count of usage scenarios.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-duplicate-images.md",
+        "docs/audit/evidence/2026-10-12-duplicate-image-before.png",
+        "docs/audit/evidence/2026-10-12-duplicate-image-shared-before.png",
+        "docs/audit/evidence/2026-10-12-duplicate-image-after.png",
+        "docs/audit/evidence/2026-10-12-duplicate-image-independent-after.png",
+        "docs/audit/evidence/2026-10-12-duplicate-verification.json",
+        "docs/audit/evidence/2026-10-12-duplicate-before.log",
+        "docs/audit/evidence/2026-10-12-duplicate-after.log",
+        "docs/audit/evidence/2026-10-12-duplicate-package.log",
+        "src/test/java/signals/core/FunctionDuplicationWorkflowTest.java"
+      ]
+    },
+    "delete-linked-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, JDK 25; unchanged 449-test build",
+      "summary": "Native source deletion preserves the existing result; surviving-source edits propagate, deleting the result keeps the source editable, and deleting the last image permits fresh creation. All saved complex samples independently checked.",
+      "limits": "Single-selection disposable fixtures; no memory-capacity or Windows claim. No code change needed.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-delete-linked.md",
+        "docs/audit/evidence/2026-10-12-delete-source-before.png",
+        "docs/audit/evidence/2026-10-12-delete-result-survivor.png",
+        "docs/audit/evidence/2026-10-12-delete-verification.json"
+      ]
+    },
+    "resize-linked-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, JDK 25; 455-test build",
+      "summary": "BUG-020 fixed: incompatible dimensions no longer crash thumbnails or produce truncated data. Native mismatch handling and compatible operand replacement pass; 8,192 complex samples match independently. Direct dropdown restoration remains pending.",
+      "limits": "Native size restoration did not commit; separate pending row. Existing empty-result UI retained; no automatic resampling.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-resize-linked.md",
+        "docs/audit/evidence/2026-10-12-resize-native-before.log",
+        "docs/audit/evidence/2026-10-12-resize-before.log",
+        "docs/audit/evidence/2026-10-12-resize-after.log",
+        "docs/audit/evidence/2026-10-12-resize-package.log",
+        "docs/audit/evidence/2026-10-12-resize-native-after.log",
+        "docs/audit/evidence/2026-10-12-resize-verification.json",
+        "docs/audit/evidence/2026-10-12-resize-linked.png",
+        "docs/audit/evidence/2026-10-12-resize-mismatch-before.png",
+        "docs/audit/evidence/2026-10-12-resize-mismatch-after.png",
+        "docs/audit/evidence/2026-10-12-resize-replacement-recovery.png",
+        "src/test/java/signals/core/OperationResizeWorkflowTest.java"
+      ]
+    },
+    "cartesian-composition-2026-10-12": {
+      "date": "2026-10-12",
+      "environment": "macOS arm64, JDK25; unchanged455-test build",
+      "summary": "Native Rectangle(x) \u00d7 Gaussian(y) + Gaussian(x), independent term edit, Plot/Edit and Threshold0.5 all complete. Operator icon stays correct; every saved source and threshold sample independently checked.",
+      "limits": "Default filenames used; rectangle text equation has a separately recorded half-width notation issue. Grouping/removal pending.",
+      "sources": [
+        "docs/audit/evidence/2026-10-12-cartesian-composition.md",
+        "docs/audit/evidence/2026-10-12-cartesian-composition.png",
+        "docs/audit/evidence/2026-10-12-cartesian-threshold.png",
+        "docs/audit/evidence/2026-10-12-cartesian-verification.json"
+      ]
+    },
+    "grouping-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25; 457-test package, native same production code as 455-test JAR",
+      "summary": "Actual Swing controls verify precedence, grouped arithmetic, edits, removal, rebuilding and reopening. Native insertion of parentheses into an existing expression, Plot/Edit and removal save exact 3/4/2 outputs.",
+      "limits": "Native constants only; separate spatial/imaginary composition and Windows remain pending. No new production changes.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-grouping.md",
+        "docs/audit/evidence/2026-10-13-grouping-ungrouped.png",
+        "docs/audit/evidence/2026-10-13-grouping-parentheses.png",
+        "docs/audit/evidence/2026-10-13-grouping-verification.json",
+        "docs/audit/evidence/2026-10-13-grouping-focused.log",
+        "docs/audit/evidence/2026-10-13-grouping-package.log"
+      ]
+    },
+    "channels-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25; native unchanged455-test production code",
+      "summary": "Different spatial real/imaginary expressions retain grouping and independent parameters across channel/Plot switches. Real\u2192Threshold and live source edits match every exported sample.",
+      "limits": "One Cartesian fixture,256\u00d7256; no Windows or editable-definition persistence assurance.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-channels.md",
+        "docs/audit/evidence/2026-10-13-channels-plot.png",
+        "docs/audit/evidence/2026-10-13-channels-imaginary.png",
+        "docs/audit/evidence/2026-10-13-channels-threshold-edited.png",
+        "docs/audit/evidence/2026-10-13-channels-verification.json"
+      ]
+    },
+    "equation-symbols-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25;457-test package",
+      "summary": "Corrected missing subtraction and malformed multiplication in shared function equation text; independent probe and native rendered formula pass.",
+      "limits": "Arithmetic tokens only; individual generator formulas remain separately reviewed.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-equation.md",
+        "docs/audit/evidence/2026-10-13-equation-native.png",
+        "docs/audit/evidence/2026-10-13-equation-probe.log",
+        "docs/audit/evidence/2026-10-13-equation-package.log"
+      ]
+    }
+  },
+  "limitations": [
+    {
+      "id": "dense-memory",
+      "title": "Dense arrays and intermediate results require substantial memory",
+      "basis": "source",
+      "impact": "Memory scales with pixel count and the number of retained source/result/channel arrays. Doubling both image dimensions multiplies one array\u2019s payload by four. FFTs and other operations may allocate additional buffers.",
+      "scope": "Architecture observed in source; peak memory, practical limits and crash causes remain unmeasured.",
+      "next": "Measure ordinary workloads and retained owners before choosing refactors. The removed 2 GiB launcher cap is not retained as a product requirement.",
+      "evidence": [
+        "memory-source-2026-10-12",
+        "heap-policy-2026-10-12"
+      ]
+    },
+    {
+      "id": "dimension-picker",
+      "title": "Built-in size choices stop at 4096 per dimension",
+      "basis": "source",
+      "impact": "The creation options advertise powers of two from 2 through 4096. This list is a UI range, not evidence that every operation safely supports the largest selection.",
+      "scope": "FunctionCreationOptions source only; imported-size behavior and operation-specific restrictions require separate checks.",
+      "next": "Document actual safe scopes and required algorithms before extending the size range.",
+      "evidence": [
+        "memory-source-2026-10-12"
+      ]
+    },
+    {
+      "id": "sample-only-persistence",
+      "title": "Complex-data files preserve samples, not editable definitions",
+      "basis": "source",
+      "impact": "Saving and reopening retains dimensions, origin, name and complex samples. Generator parameters, operation settings and linked source graphs are not reconstructed.",
+      "scope": "ComplexIO format inspected and native/production round trips verified.",
+      "next": "Plan editable project persistence separately after ordinary creation and operations are stable.",
+      "evidence": [
+        "complex-insertion-2026-10-12"
+      ]
+    },
+    {
+      "id": "binary-matching-dimensions",
+      "title": "Binary operations require matching signal/image dimensions",
+      "basis": "source",
+      "impact": "Different image grids produce no result until compatible inputs are supplied. Automatic resampling/alignment and explanatory mismatch feedback are not implemented.",
+      "scope": "Native resize failure reproduced and handled; production 1D/2D dimension checks and recovery verified.",
+      "next": "Keep explicit dimension checks; plan alignment behavior and any explanatory UI with Juliet after ordinary operation stabilization.",
+      "evidence": [
+        "resize-linked-2026-10-12"
+      ]
+    }
+  ],
+  "humanTesting": [
+    {
+      "tester": "Juliet on macOS",
+      "status": "Formal pass not started",
+      "scope": "Existing report of intermittent ordinary 2D crashes is recorded; it is not a completed acceptance matrix."
+    },
+    {
+      "tester": "Roger, believed to use Windows",
+      "status": "Formal pass not started",
+      "scope": "Confirm version, OS and representative teaching workflows; prepare a short reproducible script after automated/native fixes."
+    }
+  ]
+}

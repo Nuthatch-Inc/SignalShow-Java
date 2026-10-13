@@ -15,8 +15,9 @@ public class RealImagFunction2D extends Function2D {
 
 	public RealImagFunction2D clone() {
 		
-		return new RealImagFunction2D( partA, partB, 
-				Core.getFunctionCreationOptions().getNextFunctionName(), dimensionX, dimensionY, zeroCentered );
+		FunctionCopy definition = new FunctionCopy();
+		return initializeCopy(new RealImagFunction2D( definition.copy(partA), definition.copy(partB),
+				Core.getFunctionCreationOptions().getNextFunctionName(), dimensionX, dimensionY, zeroCentered ));
 	}
 
 	public void show() {

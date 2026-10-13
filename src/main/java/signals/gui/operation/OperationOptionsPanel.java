@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import javax.swing.BoxLayout;
 
 import signals.core.Operation;
 import signals.gui.datagenerator.GUIEvent;
@@ -21,6 +22,7 @@ public class OperationOptionsPanel extends JPanel {
 	 */
 	public OperationOptionsPanel(Operation dependent) {
 		super();
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.dependent = dependent;
 	} 
 	

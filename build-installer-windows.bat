@@ -47,8 +47,7 @@ jpackage ^
   --win-dir-chooser ^
   --win-menu ^
   --win-shortcut ^
-  --win-menu-group SignalShow ^
-  --java-options -Xmx2g
+  --win-menu-group SignalShow
 
 echo.
 echo Build complete!

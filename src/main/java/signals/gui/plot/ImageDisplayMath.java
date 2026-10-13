@@ -222,9 +222,9 @@ public class ImageDisplayMath {
 		int width = image.getWidth(); 
 		int height = image.getHeight();
 		Raster inputRaster = image.getData();  
-		double[] pixels = new double[width*height+1];  
-		inputRaster.getPixels(0,0,width,height,pixels);
-		return pixels; 
+		// Read exactly the image samples; an extra array element breaks subsequent
+		// arithmetic with another image of the same dimensions.
+		return inputRaster.getPixels(image.getMinX(), image.getMinY(), width, height, (double[]) null);
 	}
 
 	/**

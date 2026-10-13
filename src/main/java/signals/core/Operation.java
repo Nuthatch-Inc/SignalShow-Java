@@ -12,7 +12,7 @@ import signals.gui.operation.OperationOptionsPanel;
  * @author Juliet
  *
  */
-public abstract class Operation extends DataGenerator {
+public abstract class Operation extends DataGenerator implements Cloneable {
 	
 	//priority for combine ops rule
 	int priority; 
@@ -47,5 +47,19 @@ public abstract class Operation extends DataGenerator {
 		return new OperationOptionsPanel( this ); 
 	}
 	
+	/** Copy the configured operation, retaining its shared type metadata. */
+	@Override
+	public Operation clone() {
+		try {
+			Operation copy = (Operation) super.clone();
+			// Operations store their settings in primitive fields and this block.
+			// The block's parameter/source vectors belong to the new instance.
+			copy.paramBlock = paramBlock == null ? null : (ParameterBlock) paramBlock.clone();
+			return copy;
+		} catch (CloneNotSupportedException e) {
+			throw new AssertionError(e);
+		}
+	}
+
 	public abstract String getOpIconPath(); 
 }
