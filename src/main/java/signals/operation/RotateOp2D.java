@@ -1,5 +1,7 @@
 package signals.operation;
 
+import java.awt.Rectangle;
+import java.awt.image.Raster;
 import java.awt.image.renderable.ParameterBlock;
 
 import javax.media.jai.Interpolation;
@@ -93,25 +95,29 @@ public class RotateOp2D extends UnaryOperation implements InterpolationUser, Par
 				f2D.getDimensionX(), f2D.getDimensionY()), 0); 
 		PlanarImage rotatedImageImag = JAI.create("rotate", pb);
 		
-		// Create a ParameterBlock with information for the cropping.
-	    ParameterBlock pbC = new ParameterBlock();
-	    pbC.addSource(rotatedImageReal);
-	    pbC.add(0.0f);
-	    pbC.add(0.0f);
-	    pbC.add((float)f2D.getDimensionX());
-	    pbC.add((float)f2D.getDimensionY());
-	    // Create the output image by cropping the input image.
-	    rotatedImageReal = JAI.create("crop",pbC,null);
-	    
-	    pbC.setSource(rotatedImageImag, 0); 
-	    rotatedImageImag = JAI.create("crop",pbC,null);
-		
-		double[] realData = ImageDisplayMath.image2Data(rotatedImageReal);
-		double[] imagData = ImageDisplayMath.image2Data(rotatedImageImag);
+		double[] realData = copyToCanvas(rotatedImageReal, f2D.getDimensionX(), f2D.getDimensionY());
+		double[] imagData = copyToCanvas(rotatedImageImag, f2D.getDimensionX(), f2D.getDimensionY());
 		
 		return FunctionFactory.createFunction2D(realData, imagData, input.isZeroCentered(), 
 				"Rot{"+input.getCompactDescriptor()+"}", f2D.getDimensionX(), f2D.getDimensionY()); 
 		
+	}
+
+	/** Keep the input canvas, leaving uncovered pixels zero after rotation. */
+	private static double[] copyToCanvas(PlanarImage image, int width, int height) {
+		double[] result = new double[width * height];
+		// A quarter turn makes a rectangular image narrower in one direction.
+		// JAI Crop rejects a canvas extending beyond the rotated image bounds.
+		Rectangle overlap = new Rectangle(0, 0, width, height).intersection(image.getBounds());
+		if (!overlap.isEmpty()) {
+			Raster raster = image.getData(overlap);
+			double[] row = new double[overlap.width];
+			for (int y = overlap.y; y < overlap.y + overlap.height; y++) {
+				raster.getSamples(overlap.x, y, overlap.width, 1, 0, row);
+				System.arraycopy(row, 0, result, y * width + overlap.x, overlap.width);
+			}
+		}
+		return result;
 	}
 
 	/* (non-Javadoc)

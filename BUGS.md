@@ -533,3 +533,15 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Retain compact model settings, copy them independently on duplication and recompute fresh views from current input.
 - Verification: Eight EDT cases, seven before-failing; focused28/full567 pass. Native default/edited complex reconstruction, origin/source edits and duplication verified.
 - Evidence: [Sampling audit](docs/audit/evidence/2026-10-13-sampling.md).
+
+
+---
+
+- ID: BUG-040
+- Title: Default rotation fails on rectangular images
+- Status: resolved within the tested rectangular-image workflows
+- Date: 2026-10-13
+- Reproduction: Create a128×64 Gaussian and apply Rotate at its default90°. JAI throws a Crop exception, the result disappears and result export is disabled.
+- Correction: Copy the rotated overlap into the original canvas and zero-fill uncovered pixels for both complex channels.
+- Verification: Three before-failing ordinary cases, independent geometry and editable-chain regressions; focused22/full578 pass. Native90°/180° and30° nearest-neighbor chains, source edits and12 after-fix exports all pass.
+- Evidence: [Rectangular rotation audit](docs/audit/evidence/2026-10-13-rotation.md).

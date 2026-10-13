@@ -7,13 +7,13 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly78% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly77% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-rectangular-rotation-chain"
+      "gui-2d-shift-scale-chain"
     ],
     "nextIds": []
   },
@@ -606,11 +606,14 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Actual JAI rotations at ordinary square/rectangular sizes preserve sample counts and compose with Times/Plus. Native 180° and 45° parameter typing, composition and TIFF export checked.",
-      "remaining": "Independent geometric/interpolation convention review, other interpolation modes, equations and handbook remain open; duplicate parameter ownership is a separate known issue.",
+      "scope": "Actual JAI rotations at ordinary square/rectangular sizes preserve sample counts and compose with Times/Plus. Native 180° and 45° parameter typing, composition and TIFF export checked. Rectangular quarter-turn failure corrected. Independent both-channel geometry, both origins, all four interpolation choices at90/−90/180; native128×64 edited chains and30° nearest neighbor verified.",
+      "remaining": "Arbitrary-angle bilinear/bicubic geometric/interpolation review, equations, handbook and Windows remain gaps. Duplicate parameter ownership was separately corrected and checked.",
       "evidence": [
-        "roger-rotation-2026-10-12"
-      ]
+        "roger-rotation-2026-10-12",
+        "copy-layout-2026-10-12",
+        "rectangular-rotation-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:ScaleOp",
@@ -829,13 +832,14 @@
         "parameters": "verified",
         "handbook": "unreviewed"
       },
-      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 magnitude/rotation chain with threshold0.75, source amplitude edits and visible parameters verified.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
         "roger-rotation-2026-10-12",
         "channels-2026-10-13",
-        "arithmetic-2026-10-13"
+        "arithmetic-2026-10-13",
+        "rectangular-rotation-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -848,13 +852,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports.",
+      "remaining": "Definition, equations, handbook, broader source families and Windows remain unreviewed.",
+      "evidence": [
+        "rectangular-rotation-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:SquaredMagnitudeOp",
@@ -3527,15 +3534,35 @@
       "area": "usage",
       "title": "Rotate a rectangular image within magnitude and threshold chains",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create a128×64 image with off-center structure and two channels.",
         "Use Magnitude, Threshold and Rotate with ordinary angles90/180/30; inspect and save results.",
         "Edit a source and angle, revisit and verify linked results remain usable."
       ],
       "expected": "Normal-angle rotations retain a usable image canvas and compose with subsequent operations; visible controls and saved samples agree.",
-      "scope": "Native rectangular images and independent geometric checks; extends earlier square-image rotation coverage.",
-      "summary": "Next ordinary workflow; model and native results pending.",
+      "scope": "Native centered128×64 Gaussian+imaginary Constant;90°/180° bilinear,30° nearest neighbor, Magnitude/Threshold/Rotate, source and angle edits.",
+      "summary": "BUG-040 corrected.12 after-fix exports plus before-source match independent geometry; full578 pass. Native retest log clean; controls usable.",
+      "evidence": [
+        "rectangular-rotation-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK25 native and production-model checks",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-shift-scale-chain",
+      "area": "usage",
+      "title": "Translate and complex-scale a rectangular signal through arithmetic chains",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a normal rectangular complex image with spatial variation.",
+        "Translate both axes with wrap disabled/enabled, then apply a complex Scale and combine with the original.",
+        "Edit source and shift/scale parameters; revisit and compare saved samples independently."
+      ],
+      "expected": "Both complex channels, shift directions, fill/wrap behavior and downstream arithmetic remain correct and usable.",
+      "scope": "Normal128×64 native controls and saved results; avoid capacity extremes.",
+      "summary": "Next ordinary usage scenario.",
       "evidence": [],
       "environment": "macOS native verification planned",
       "reviewedOn": "2026-10-13"
@@ -4462,6 +4489,49 @@
         "docs/audit/evidence/2026-10-13-spatial-rectangle.txt.gz",
         "docs/audit/evidence/2026-10-13-spatial-verification.json",
         "docs/audit/evidence/2026-10-13-spatial-verifier.py"
+      ]
+    },
+    "rectangular-rotation-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK25; production-model geometry checks and native CUA;578-test package",
+      "summary": "Fixed ordinary90° rectangular-image crop failure. Both-channel geometry, magnitude/threshold chains, source edits and13 native exports independently verified.",
+      "limits": "Native centered128×64; models both origins and wide/tall images.30° native geometry covers nearest neighbor; other arbitrary-angle interpolation and Windows remain gaps.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-rotation-after-90-ax.txt",
+        "docs/audit/evidence/2026-10-13-rotation-after-90.png",
+        "docs/audit/evidence/2026-10-13-rotation-after-native.log",
+        "docs/audit/evidence/2026-10-13-rotation-before-ax.txt",
+        "docs/audit/evidence/2026-10-13-rotation-before-native.log",
+        "docs/audit/evidence/2026-10-13-rotation-before-tests.log",
+        "docs/audit/evidence/2026-10-13-rotation-before.png",
+        "docs/audit/evidence/2026-10-13-rotation-chain-180.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-chain-30-nearest-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-chain-30-nearest.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-chain-90-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-chain-90.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-chain-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-rotation-direct-90.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-final-ax.txt",
+        "docs/audit/evidence/2026-10-13-rotation-final.png",
+        "docs/audit/evidence/2026-10-13-rotation-focused.log",
+        "docs/audit/evidence/2026-10-13-rotation-magnitude-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-magnitude.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-package.log",
+        "docs/audit/evidence/2026-10-13-rotation-source-before.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-source.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-threshold-controls-ax.txt",
+        "docs/audit/evidence/2026-10-13-rotation-threshold-controls.png",
+        "docs/audit/evidence/2026-10-13-rotation-threshold-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-rotation-threshold-edited.png",
+        "docs/audit/evidence/2026-10-13-rotation-threshold-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-threshold.txt.gz",
+        "docs/audit/evidence/2026-10-13-rotation-verification.json",
+        "docs/audit/evidence/2026-10-13-rotation-verifier.py",
+        "docs/audit/evidence/2026-10-13-rotation.md",
+        "src/test/java/signals/core/RectangularRotationWorkflowTest.java",
+        "src/test/java/signals/core/RogerWorkflowTest.java",
+        "src/main/java/signals/operation/RotateOp2D.java"
       ]
     }
   },

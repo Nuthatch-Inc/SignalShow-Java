@@ -1,0 +1,203 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "rotation-source-before.txt",
+      "descriptor": "rotation Gaussian",
+      "sha256": "8b2ef4e9760fbd9bc8970d15653d0f8139e938d36ec2f104b510eab86b48c6cd",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        6.140560876052862e-80,
+        2.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-source.txt",
+      "descriptor": "rotation Gaussian",
+      "sha256": "0119bf5637e563ca7b1280ce2ea5ac13748cbeb437ab6cbe13d1eef5abf00bac",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        6.140560876052862e-80,
+        2.0
+      ],
+      "imaginaryRange": [
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "file": "rotation-magnitude.txt",
+      "descriptor": "||rotation Gaussian||",
+      "sha256": "3a694c66cef90a7f070ea67a6b715812a353c92437c9a801eae4fcd6150e452e",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16,
+      "realRange": [
+        0.25,
+        2.0155644370746373
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-threshold.txt",
+      "descriptor": "threshold(||rotation Gaussian||)",
+      "sha256": "0aff30331ce4c73ae5148eedd1a7424ac108d5f1a7dd2675ba5c5cc8900e9043",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-chain-90.txt",
+      "descriptor": "Rot{threshold(||rotation Gaussian||)}",
+      "sha256": "a21c011598f973dc2395830fe03bcd3aaef9e0ecbab1b4ded99ea1b574961195",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-chain-30-nearest.txt",
+      "descriptor": "Rot{threshold(||rotation Gaussian||)}",
+      "sha256": "5738d0b73fdbbd38daf0cac83f2509fc2af7085e4774bf2c1ee424c3654820e8",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-direct-90.txt",
+      "descriptor": "Rot{rotation Gaussian}",
+      "sha256": "69999770bb46b51d13f0ad8f1d896b5f5c54e6e1271f5e8d8a037ab7d50280d7",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.0,
+        2.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.25
+      ]
+    },
+    {
+      "file": "rotation-chain-180.txt",
+      "descriptor": "Rot{threshold(||rotation Gaussian||)}",
+      "sha256": "0c2aea1e4b5d57b32391d741f55588a9cc64fffd6ff57386caff69d46d58d38f",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-source-edited.txt",
+      "descriptor": "rotation Gaussian",
+      "sha256": "9c5060dfa273cea0186505221bdce1212e37f1a9701c26b03083c68493aeb262",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1102230246251565e-16,
+      "realRange": [
+        3.070280438026431e-80,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "file": "rotation-magnitude-edited.txt",
+      "descriptor": "||rotation Gaussian||",
+      "sha256": "a538c5272723b83a3f77e37013954214d030ea815b1bffd2a891e3a8f5eb4160",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.25,
+        1.0307764064044151
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-threshold-edited.txt",
+      "descriptor": "threshold(||rotation Gaussian||)",
+      "sha256": "6a889f760064231e04217fffd8e8096294d46d0d67acfff21db9bb77d9f3d845",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-chain-90-edited.txt",
+      "descriptor": "Rot{threshold(||rotation Gaussian||)}",
+      "sha256": "222ca724fee8cb5ac760cc65c811aa8697bafa8d45e3b65f01b046f8c1262984",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "rotation-chain-30-nearest-edited.txt",
+      "descriptor": "Rot{threshold(||rotation Gaussian||)}",
+      "sha256": "ddf8c05ffc5a687b6ce6dd17a69618f07620e4321949edf7515dae02a7f79655",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        1.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "passed": 13,
+  "totalComplexSamples": 106496,
+  "maxComplexError": 4.440892098500626e-16
+}

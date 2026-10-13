@@ -1,0 +1,193 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Description: rotation Gaussian[x, y] = GAUS[(x - 10) / 12]GAUS[(y + 5) / 8] + i(0.25 × 1[x]1[y]), Value: 0
+					6 JavaAxIgnore (selectable) rotation Gaussian[x, y] = GAUS[(x - 10) / 12]GAUS[(y + 5) / 8] + i(0.25 × 1[x]1[y])
+				7 row (selectable) Description: Operator System, Value: 0
+					8 JavaAxIgnore (selectable) Operator System
+				9 row (selectable) Description: Operator System, Value: 0
+					10 JavaAxIgnore (selectable) Operator System
+				11 row (selected) Description: Operator System, Value: 0
+					12 JavaAxIgnore (selectable) Operator System
+			13 scroll bar (selectable)
+			14 scroll bar (selectable)
+		15 button (selectable) Duplicate
+		16 button (selectable) Delete
+		17 toolbar (selectable) 0
+			18 checkbox (selectable) Edit System
+			19 checkbox (selectable) Plot of Result
+			20 checkbox (selectable) FFT of Result
+			21 checkbox (selectable) Histogram of Result
+		22 button (selectable) Open Parenthesis
+		23 button (selectable) Closed Parenthesis
+		24 button (selectable) Delete
+		25 button (selectable) New Term
+		26 button (selectable) New Unary Operation
+		27 button (selectable) New Binary Operation
+		28 scroll area (selectable) 0
+			29 table (selectable) Description: table, Value: 0
+				30 row (selectable, disabled) 0
+			31 scroll bar (selectable)
+			32 scroll bar (selectable)
+		33 button (selectable) Export Result as Data
+		34 button (selectable) Clear
+		35 scroll area (selectable) 0
+			36 list (selectable) Description: list, Value: 0
+				37 row (selectable) Description: Fourier Transform, Value: 0
+					38 text (selectable) Fourier Transform
+				39 row (selectable) Description: Signum, Value: 0
+					40 text (selectable) Signum
+				41 row (selectable) Description: Auto Correlate, Value: 0
+					42 text (selectable) Auto Correlate
+				43 row (selected) Description: Rotate, Value: 0
+					44 text (selectable) Rotate
+				45 row (selectable) Description: Scale, Value: 0
+					46 text (selectable) Scale
+				47 row (selectable) Description: Offset, Value: 0
+					48 text (selectable) Offset
+				49 row (selectable) Description: Exponent, Value: 0
+					50 text (selectable) Exponent
+				51 row (selectable) Description: Subtract Mean, Value: 0
+					52 text (selectable) Subtract Mean
+				53 row (selectable) Description: Absolute Value, Value: 0
+					54 text (selectable) Absolute Value
+				55 row (selectable) Description: Negate, Value: 0
+					56 text (selectable) Negate
+				57 row (selectable) Description: Conjugate, Value: 0
+					58 text (selectable) Conjugate
+				59 row (selectable) Description: Derivative, Value: 0
+					60 text (selectable) Derivative
+				61 row (selectable) Description: Integral, Value: 0
+					62 text (selectable) Integral
+				63 row (selectable) Description: Reverse, Value: 0
+					64 text (selectable) Reverse
+				65 row (selectable) Description: Clip, Value: 0
+					66 text (selectable) Clip
+				67 row (selectable) Description: Square Root, Value: 0
+					68 text (selectable) Square Root
+				69 row (selectable) Description: Threshold, Value: 0
+					70 text (selectable) Threshold
+				71 row (selectable) Description: Magnitude, Value: 0
+					72 text (selectable) Magnitude
+				73 row (selectable) Description: Squared Magnitude, Value: 0
+					74 text (selectable) Squared Magnitude
+				75 row (selectable) Description: Phase, Value: 0
+					76 text (selectable) Phase
+				77 row (selectable) Description: Translate, Value: 0
+					78 text (selectable) Translate
+				79 row (selectable) Description: Invert, Value: 0
+					80 text (selectable) Invert
+				81 row (selectable) Description: Cepstrum, Value: 0
+					82 text (selectable) Cepstrum
+				83 row (selectable) Description: Phase Detour Hologram, Value: 0
+					84 text (selectable) Phase Detour Hologram
+				85 row (selectable) Description: Hologram Encoder, Value: 0
+					86 text (selectable) Hologram Encoder
+				87 row (selectable) Description: Complement Filter, Value: 0
+					88 text (selectable) Complement Filter
+				89 row (selectable) Description: Real, Value: 0
+					90 text (selectable) Real
+			91 scroll bar (selectable)
+			92 scroll bar (selectable)
+		93 text field (selectable)
+		94 image (selectable)
+		95 scroll area (selectable) 0
+			96 text field (selectable) Description: text/html, Value: 
+Rotate
+Rotates a 2D function about its center, through specified input angle. The selected interpolation method is used.
+				97 text field (selectable) text/html
+				98 text field (selectable) text/html
+				99 text field (selectable) text/html
+				100 text field (selectable) text/html
+				101 text field (selectable) text/html
+			102 scroll bar (selectable)
+			103 scroll bar (selectable)
+		104 scroll area (selectable) 0
+			105 list (selectable) Description: list, Value: 0
+				106 row (selectable) Description: Plus, Value: 0
+					107 text (selectable) Plus
+				108 row (selectable) Description: Minus, Value: 0
+					109 text (selectable) Minus
+				110 row (selectable) Description: Times, Value: 0
+					111 text (selectable) Times
+				112 row (selectable) Description: Divide, Value: 0
+					113 text (selectable) Divide
+				114 row (selectable) Description: Convolve, Value: 0
+					115 text (selectable) Convolve
+				116 row (selected) Description: Correlate, Value: 0
+					117 text (selectable) Correlate
+			118 scroll bar (selectable)
+			119 scroll bar (selectable)
+		120 text field (selectable)
+		121 image (selectable)
+		122 scroll area (selectable) 0
+			123 text field (selectable) text/plain
+			124 scroll bar (selectable)
+			125 scroll bar (selectable)
+		126 scroll area (selectable) 0
+			127 scroll bar (selectable)
+			128 scroll bar (selectable)
+		129 radio button (selectable) Nearest Neighbor
+		130 radio button (selectable) Bilinear
+		131 radio button (selectable) Bicubic (image independent)
+		132 radio button (selectable) Bicubic (sharper, image dependent)
+		133 text (selectable) Angle of Rotation (deg)
+		134 stepper (selectable) Value: 30, Secondary Actions: Increment, Decrement
+			135 text field (selectable) 30
+		136 scroll area (selectable) 0
+			137 stepper (selectable) Value: 1, Secondary Actions: Increment, Decrement
+				138 text field (selectable) 1
+			139 stepper (selectable) Value: 0, Secondary Actions: Increment, Decrement
+				140 text field (selectable) 0
+			141 stepper (selectable) Value: 0.01, Secondary Actions: Increment, Decrement
+				142 text field (selectable) 0.01
+			143 stepper (selectable) Value: -0.01, Secondary Actions: Increment, Decrement
+				144 text field (selectable) -0.01
+			145 scroll bar (selectable)
+			146 scroll bar (selectable)
+	147 close button
+	148 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	149 minimize button
+	150 text SignalShow
+151 menu bar
+	152 SignalShowRogerAudit
+	153 File
+	154 1D
+	155 2D
+	156 Help
+
+Selected:
+	30 row (selectable, disabled) 0
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

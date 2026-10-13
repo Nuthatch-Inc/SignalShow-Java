@@ -2,68 +2,58 @@
 
 Continuous Audit active. Juliet resumed after Zoom and requested restart when
 manual/automated typing failed. Restart restored typing; cause remains unknown.
-Local commits authorized, no push/release. No agents. Prioritize ordinary 2D
+Local commits authorized, no push/release. No agents. Prioritize ordinary2D
 creation, edits and operation chains; hundreds of distinct scenarios incrementally.
 Defer numerical trivia, unlikely edge cases and capacity extremes.
 
-`check_usage: true`; latest weekly 78% remaining, no other applicable window.
+`check_usage: true`; latest weekly77% remaining, no other applicable window.
 Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 No pause, resets or automations requested.
 
 Repo /Users/julietfiss/src/SignalShow-Java, branch codex/signalshow-usage-stabilization,
-baseline 28a4ffc. Commits 0174857/8021b9f fix document/preview buffer ownership;
-b9642d7 records completed native memory checks; c814e0b adds normal band-filter
-coverage. cd07a78 fixes frequency settings. 8334dd9 fixes sampling; spatial filtering evidence is ready for local commit.
-Full package: 567 passed, zero failures/errors/skips. No further code changes
-since that build and its native verification.
+baseline28a4ffc.8334dd9 fixes sampling;6677b3c records native spatial convolution,
+correlation and FFT chains. Current rectangular rotation fix/evidence ready for
+local commit. Full package578 passed, zero failures/errors/skips; native retest
+uses that exact JAR and no subsequent product code changes.
 
-Completed settings batch: Filtering 1D/2D and Frequency Locations 2D retain compact
-model-owned controls across document changes and source edits; duplicates copy
-settings independently. Six before-failing cases pass, nine native 2D stages pass.
-See [settings evidence](2026-10-13-demo-settings.md). Other demo settings and native
-1D revisit remain unverified. Existing filtering math unchanged.
+Completed rotation: BUG-040 normal128×64 default90° throws JAI Crop exception,
+missing result/export. Copy rotated overlap into the original zero-filled canvas.
+Three before-failing ordinary cases; independent wide/tall, both-origin/channel,
+all-interpolation quarter-turn geometry and linked Magnitude/Threshold checks.
+Focused22/full578 pass. Native90/180 bilinear and30 nearest, source amplitude edit,
+revisit/angle change,13 exports/106,496 complex samples independently pass. Retest
+log clean; typing reliable; native app closed and process exit verified.
+See2026-10-13-rotation.md and verifier/JSON/screenshots/logs.
 
-Memory follow-up: matched 512-square Constant×Cylinder creation, source edit,
-Plot/Edit/reopen, two saves and deletion. Every saved complex sample matches;
-zero documents/strong large double arrays after deletion; collected heap20.1MiB
-(previous142.6→79.5→20.1 through fixes). Scoped BUG-031 closed; other families,
-imports, manual use and Windows remain gaps. See [evidence](2026-10-13-preview-memory-resumed.md).
+Next active scenario: gui-2d-shift-scale-chain. Create normal rectangular complex
+image; Translate both axes with fill/wrap, complex Scale, combine with original,
+edit and save. No investigation or verification yet beyond reading ScaleOp.
+Use actual controls and independent spatial/reference math; native evidence is
+separate from model tests. Current matrix130 math entries/63 scenarios:
+57 checked,1 scope,3 pending,2 deferred. Broadly green rows retain scoped limits.
 
-Completed sampling: signed frequency mask prevents half-amplitude/false imaginary
-results, initialized gain fixes default zero reconstruction, compact settings
-survive revisit/duplication/source edits. Eight EDT cases(7 before-failing),
-focused28/full567 pass; native both-origin complex plot/control checks pass.
-See [sampling evidence](2026-10-13-sampling.md). Native reconstruction not exported;
-strict arrays through actual Swing plots. No factory-overload refactor.
+No app, build or sampler running. At most one instance. Bundle
+/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app contains578-test JAR;
+SHA256 c92a82fbaa49f34640451e83568997a6b2c156c7f6cc82806f5b5d7b69bb6d88.
+Copy/sign only while closed; launch through CUA. Never query AX after closing,
+which relaunches it. Refresh CUA docs after compaction. Helpers ssClick,ssNew2D,
+ssRenameCurrent,ssImageParam,ssDocumentSize,ssSaveVerified,ssDemoRow,
+ssOperationParam(index,value),ssFileMenu,ssFs. Verify field readback before Return.
+ssSaveVerified takes a base name without .txt. On operation revisit, select its
+operator tile before editing parameters. Stale CUA target once refreshed cleanly.
+Do not reuse previous evidence-record helpers for new batches.
 
-Completed native spatial filtering:12 exports/98,304 complex samples verified by
-independent spatial sums and direct DFT matrices; source edits and operator
-replacement propagate. See2026-10-13-spatial-filtering.md. Six nonblocking JDK
-AccessibleHTML null-view exceptions recorded; no observed crash or wrong result.
-No product code changed after the567-test package.
+Isolated home/private/tmp/signalshow-roger-home; append-only native log
+/private/tmp/signalshow-roger-native.log. Save bounded launch slices from the last
+Loaded configuration. Rotation artifacts copied into docs/audit/evidence;
+raw exports remain in isolated home. Full log/private/tmp/signalshow-rotation-package.log.
+Audit server previously session19418; reuse http://127.0.0.1:8092/docs/audit/.
+Heap dump/private/tmp/signalshow-preview-memory-resumed-deleted.hprof is diagnostic,
+never commit. Earlier memory/settings/sampling evidence remains linked in matrix.
 
-Next active batch: ordinary128×64 Magnitude/Threshold/Rotate chains, including
-90/180/30 degrees. Earlier native rotations used square images; model rectangle
-coverage used30 degrees. Independent geometry and native interaction pending.
-
-Matrix:130 math entries,62 scenarios:56 checked,1 scope,3 pending,2 deferred.
-No app remains open; CUA Close followed by process check. No build/sampler running.
-At most one instance. Bundle /private/tmp/signalshow-roger-app/SignalShowRogerAudit.app
-contains the verified567-test JAR. Copy/sign only while closed; launch using CUA.
-Never query AX after closing, which relaunches it. Refresh CUA docs after compaction.
-Persistent helpers: ssClick,ssNew2D,ssRenameCurrent,ssImageParam,ssDocumentSize,
-ssFileMenu,ssSaveVerified,ssDemoRow,ssDemoCutoff,ssSamplingParam,ssMenu1D,ssFs. Use fresh AX and field readback
-before Return; stop failed input. Do not reuse prior batch evidence-record helpers.
-
-Isolated home /private/tmp/signalshow-roger-home; append-only native log
-/private/tmp/signalshow-roger-native.log (save bounded launch slices). Current
-settings/sampling evidence copied into docs/audit/evidence/2026-10-13-{demo-settings,sampling}-*.
-Heap dump /private/tmp/signalshow-preview-memory-resumed-deleted.hprof is read-only
-diagnostic evidence; never commit binary dumps. Audit server previously session19418;
-reuse http://127.0.0.1:8092/docs/audit/.
-
-Limits: Windows untested; files preserve samples, not editable graphs; dense arrays
-need memory; picker4096 is not capacity certification; binary dimensions must match;
-phase entry3decimals; direct save replacement is not atomic/confirmed. Obsolete2GiB
-launcher cap removed. Deferred Rectangle notation BUG-021. No new control/wording
-changes authorized.
+Limits: Windows untested; files preserve samples, not editable graphs; dense
+arrays need memory; picker4096 is not capacity certification; binary dimensions
+must match; phase entry3decimals; save replacement not atomic/confirmed. Obsolete
+2GiB launcher cap removed. Deferred Rectangle notation BUG-021. Six nonblocking
+JDK AccessibleHTML null-view exceptions occurred in the spatial-filtering run;
+none in this rotation retest. No new control/wording changes authorized.

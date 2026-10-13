@@ -49,7 +49,7 @@ class RogerWorkflowTest {
   }
 
   @ParameterizedTest
-  @CsvSource({"256,256,45", "256,256,180", "128,64,30"})
+  @CsvSource({"256,256,45", "256,256,180", "128,64,30", "128,64,90", "64,128,90", "128,64,-90"})
   void rotatedImagesCanBeMultipliedAndAddedToSameSizedImages(int width, int height, double angle) {
     double[] real = new double[width * height];
     double[] imaginary = new double[real.length];
