@@ -4,7 +4,7 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "active",
+    "state": "Mac checkpoint complete; Windows verification pending",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly77% remaining; no other applicable window reported",
@@ -12,10 +12,11 @@
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
-    "activeIds": [
-      "files-editable-definitions"
-    ],
-    "nextIds": []
+    "activeIds": [],
+    "nextIds": [
+      "launch-native-windows",
+      "windows-files-display"
+    ]
   },
   "math": [
     {
@@ -2772,17 +2773,23 @@
       "area": "files",
       "title": "Establish persistence capabilities",
       "priority": "P1",
-      "status": "scope",
+      "status": "checked",
       "steps": [
         "Inspect existing save/load formats and operation actions.",
         "Identify whether authored formulas, operations and parameters are persisted or only sampled data."
       ],
       "expected": "Document supported persistence and feature gaps without treating unimplemented Chirplet features as regressions.",
-      "scope": "Capability scoping before any file-format redesign.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "scope": "Existing File-menu actions, ComplexIO format/readers, sampled FunctionFactory constructors, exports and configuration; capability inventory only.",
+      "evidence": [
+        "persistence-capabilities-2026-10-13",
+        "complex-insertion-2026-10-12",
+        "usage1d-2026-10-13",
+        "corner-persistence-2026-10-12",
+        "exports-2026-10-13"
+      ],
+      "summary": "Samples/geometry/origin/names persist; analytic parameters and linked operation graphs do not. Existing round-trip evidence reused; editable-project design remains future work.",
+      "environment": "Current source and existing production/native round trips",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "build-java",
@@ -4572,6 +4579,26 @@
         "docs/audit/evidence/2026-10-13-shift-verifier.py",
         "docs/audit/evidence/2026-10-13-shift-wrap.txt.gz"
       ]
+    },
+    "persistence-capabilities-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "Read-only source review at1e74162; existing578-test production/native round-trip evidence reused",
+      "summary": "Existing file formats and callers preserve sampled complex data or component exports; editable definitions and linked graphs are not serialized.",
+      "limits": "Capability inventory only; no new format or fresh native replay. Windows and interrupted/atomic writes remain separate gaps.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-persistence-capabilities.md",
+        "src/main/java/signals/io/ComplexIO.java",
+        "src/main/java/signals/core/FunctionFactory.java",
+        "src/main/java/signals/core/Config.java",
+        "src/main/java/signals/gui/GUI.java",
+        "src/main/java/signals/action/SaveComplexAction.java",
+        "src/main/java/signals/action/LoadComplexAction.java",
+        "src/main/java/signals/action/SaveFunctionAction.java",
+        "src/main/java/signals/gui/SaveComplexDialog.java",
+        "src/main/java/signals/gui/SaveFunction1DDialog.java",
+        "src/main/java/signals/gui/SaveFunction2DDialog.java",
+        "src/test/java/signals/core/ComplexDataWorkflowTest.java"
+      ]
     }
   },
   "limitations": [
@@ -4605,10 +4632,11 @@
       "title": "Complex-data files preserve samples, not editable definitions",
       "basis": "source",
       "impact": "Saving and reopening retains dimensions, origin, name and complex samples. Generator parameters, operation settings and linked source graphs are not reconstructed.",
-      "scope": "ComplexIO format inspected and native/production round trips verified.",
+      "scope": "File-menu callers,1D/2D ComplexIO writers/readers, sampled-data reconstruction, component exports and configuration reviewed; prior production/native round trips verified.",
       "next": "Plan editable project persistence separately after ordinary creation and operations are stable.",
       "evidence": [
-        "complex-insertion-2026-10-12"
+        "complex-insertion-2026-10-12",
+        "persistence-capabilities-2026-10-13"
       ]
     },
     {

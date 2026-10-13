@@ -48,6 +48,12 @@ verified in scoped rows. Continue the authorized audit with one ordinary workflo
 at a time; the matrix owns the active check and next queue. The larger suite is
 implemented incrementally, not all at once.
 
+October13 checkpoint: the63 currently scoped scenarios contain59 checked rows,
+2 pending Windows checks and2 deferred memory stress checks. No native test app
+is left open. The checked rows are bounded evidence, not certification of every
+function combination. Further ordinary usage scenarios remain part of the
+incremental suite plan; the next queued platform checks require Windows.
+
 ## Authoritative matrix
 
 - [Read-only report](docs/audit/index.html)
