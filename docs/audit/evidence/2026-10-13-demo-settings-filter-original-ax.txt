@@ -1,0 +1,87 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Description: settings cosine[x, y] = cos[2π(x/16)]1[y] + i(0[x]0[y]), Value: 0
+					6 JavaAxIgnore (selectable) settings cosine[x, y] = cos[2π(x/16)]1[y] + i(0[x]0[y])
+				7 row (selected) Description: Filtering Demo, Value: 0
+					8 JavaAxIgnore (selectable) Filtering Demo
+			9 scroll bar (selectable)
+			10 scroll bar (selectable)
+		11 button (selectable) Duplicate
+		12 button (selectable) Delete
+		13 radio button (selectable) Low Pass
+		14 radio button (selectable) High Pass
+		15 radio button (selectable) Band Pass
+		16 radio button (selectable) Band Reject
+		17 radio button (selectable) Ideal
+		18 radio button (selectable) Gaussian
+		19 text (selectable) Amplitude:
+		20 stepper (selectable) Description: Amplitude: , Value: 0.7, Secondary Actions: Increment, Decrement
+			21 text field (selectable) 0.7
+		22 text (selectable) Center:
+		23 stepper (selectable) Description: Center: , Value: 4, Secondary Actions: Increment, Decrement
+			24 text field (selectable) 4
+		25 text (selectable) Width:
+		26 stepper (selectable) Description: Width: , Value: 12, Secondary Actions: Increment, Decrement
+			27 text field (selectable) 12
+		28 text (selectable) Slit Width:
+		29 stepper (selectable) Description: Slit Width: , Value: 8, Secondary Actions: Increment, Decrement
+			30 text field (selectable) 8
+		31 text (selectable) Exponent:
+		32 stepper (selectable) Description: Exponent: , Value: 2, Secondary Actions: Increment, Decrement
+			33 text field (selectable) 2
+		34 radio button (selectable) Real
+		35 radio button (selectable) Imaginary
+		36 radio button (selectable) Magnitude
+		37 radio button (selectable) Phase
+		38 stepper (selectable) Value: 1, Secondary Actions: Increment, Decrement
+			39 text field (selectable) 1
+		40 stepper (selectable) Value: 0, Secondary Actions: Increment, Decrement
+			41 text field (selectable) 0
+		42 stepper (selectable) Value: 0.700000000000368, Secondary Actions: Increment, Decrement
+			43 text field (selectable) 0.7
+		44 stepper (selectable) Value: -0.700000000000368, Secondary Actions: Increment, Decrement
+			45 text field (selectable) -0.7
+	46 close button
+	47 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	48 minimize button
+	49 text SignalShow
+50 menu bar
+	51 SignalShowRogerAudit
+	52 File
+	53 1D
+	54 2D
+	55 Help
+
+The focused UI element is 21 text field (selectable) 0.7

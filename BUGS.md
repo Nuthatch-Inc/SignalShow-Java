@@ -434,11 +434,12 @@ ID format: BUG-### (e.g. BUG-001)
 
 - ID: BUG-031
 - Title: Native accessibility keeps obsolete Swing editor models reachable during the audit
-- Status: investigating
+- Status: resolved within the matched Constant/Cylinder native workflow
 - Date: 2026-10-13
 - Reproduction: After the bounded image workflow and deletion of all five documents, six model objects remain strongly reachable through JNI-local accessibility roots (operation buttons and dimension combo boxes). Collected heap remains 484.8 MiB after BUG-030 cleanup.
 - Scope: macOS/JDK 25 with CUA accessibility interaction. Manual-use and Windows behavior unverified; do not generalize to all environments.
-- Next: Isolate native root lifetime and explicit editor cleanup, then compare on Windows or without accessibility interaction.
+- Resolution: Retired editor ownership and preview/calculator cleanup verified in the matched native create/edit/save/delete workflow: zero remaining documents, zero strongly reachable large double arrays and 20.1 MiB collected heap. Other families, manual use and Windows remain unverified.
+- Follow-up evidence: [Completed native memory check](docs/audit/evidence/2026-10-13-preview-memory-resumed.md).
 - Evidence: [Memory ownership audit](docs/audit/evidence/2026-10-13-memory.md).
 
 
@@ -487,3 +488,15 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Enable RGB autoscaling independently of the origin, as for grayscale images.
 - Verification: Three before-failing display-bound checks, native 0–1 frequency preview and uncentered DC color reconstruction; full 539-test package.
 - Evidence: [Frequency demonstration audit](docs/audit/evidence/2026-10-13-frequency.md).
+
+---
+
+- ID: BUG-036
+- Title: Frequency demonstration settings reset when switching documents
+- Status: resolved within filtering and frequency-location scope
+- Date: 2026-10-13
+- Reproduction: Set Gaussian Band Pass amplitude .7, center 4, separation 12 and width 8. Visit the source and return: it becomes Ideal Low Pass and the output changes. Frequency Locations also resets cutoff choices.
+- Correction: Store compact settings on the document, restore them into fresh views using current source data, and independently copy settings during duplication.
+- Verification: Six before-failing both-origin 1D/2D EDT cases, nine native 2D stages including source edits/duplication; full 559-test package passes.
+- Scope: Other demonstration types, native 1D revisit and Windows require separate checks.
+- Evidence: [Frequency settings audit](docs/audit/evidence/2026-10-13-demo-settings.md).

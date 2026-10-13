@@ -22,7 +22,11 @@ public class FilteringDemo1D extends FilteringDemo {
 	Function1DTabPanel spatialPanel, frequencyPanel; 
 	
 	public FilteringDemo1D(Function input) {
-		super(input);
+		this(input, new FilteringSettings());
+	}
+
+	FilteringDemo1D(Function input, FilteringSettings settings) {
+		super(input, settings);
 		
 		editorPanel.setLayout(new GridLayout(3, 1)); 
 		add( editorPanel, BorderLayout.EAST ); 
@@ -37,15 +41,19 @@ public class FilteringDemo1D extends FilteringDemo {
 		spatialPanel = new Function1DTabPanel( size );
 		spatialPanel.lockScale(input);
 		frequencyPanel = new Function1DTabPanel( size );
-		frequencyPanel.lockScale(transform); 
+		frequencyPanel.lockScale(transform);
+		spatialPanel.setSelectedIndex(settings.spatialTab);
+		frequencyPanel.setSelectedIndex(settings.frequencyTab);
 		
 		JPanel contentPanel = new JPanel(); 
 		contentPanel.add( frequencyPanel );
 		contentPanel.add( spatialPanel ); 
 		add( contentPanel, BorderLayout.CENTER ); 
-		createFilterTerm();
+		initializeFilter();
 		calculate(); 
 		display();
+		spatialPanel.addChangeListener(e -> saveStateToModel());
+		frequencyPanel.addChangeListener(e -> saveStateToModel());
 		
 	}
 
@@ -69,8 +77,14 @@ public class FilteringDemo1D extends FilteringDemo {
 		
 		//inverse transform
 		spatialPanel.removePlots(); 
-		spatialPanel.addFunction((Function1D)reconstructed, "Filtering Result (Spatial Domain)"); 
+		spatialPanel.addFunction((Function1D)reconstructed, "Filtering Result (Spatial Domain)");
+		saveStateToModel();
 		
 	}
 
+    @Override
+    protected void saveDisplayState() {
+        settings.spatialTab = spatialPanel.getSelectedIndex();
+        settings.frequencyTab = frequencyPanel.getSelectedIndex();
+    }
 }

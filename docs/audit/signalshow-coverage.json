@@ -7,17 +7,15 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 80% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 79% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-demo-settings"
-    ],
-    "nextIds": [
       "gui-sampling"
-    ]
+    ],
+    "nextIds": []
   },
   "math": [
     {
@@ -3385,19 +3383,21 @@
     {
       "id": "gui-demo-settings",
       "area": "usage",
-      "title": "Keep demonstration settings when switching documents",
+      "title": "Keep filtering and frequency-location settings when switching documents",
       "priority": "P1",
-      "status": "issue",
+      "status": "checked",
       "steps": [
-        "Change frequency cutoffs from8/24 to4/12.",
-        "Select the source document and return to the demonstration."
+        "Edit filter shape, band parameters and displayed component; duplicate before leaving the view.",
+        "Visit the source and return; edit the source and verify fresh output with retained settings.",
+        "Edit frequency-location cutoffs, selected bands and channel, then repeat source edits and revisits."
       ],
       "expected": "A returning demonstration retains the settings being explored.",
-      "scope": "Confirmed native frequency-location and filtering-demo resets. Model show methods create fresh views without retained parameter state; other demos require scoped follow-up.",
-      "summary": "Frequency-location cutoffs and 2D filtering choices reset after switching documents. Filtering reset changes native output from ±0.7 to ±1; active correction must preserve settings while rebuilding from current source data.",
+      "scope": "Filtering 1D/2D and Frequency Locations 2D: six both-origin EDT workflows. Native uncentered 2D revisit, source edit and filter duplication. Other demos, native 1D revisit and Windows unverified.",
+      "summary": "BUG-036 corrected: compact document settings survive new views and copy independently. Fresh computations reflect source edits. Six before-failing cases pass; full package 559 tests; nine native stages retain controls and correct visible scales.",
       "evidence": [
         "demos-2026-10-13",
-        "band-filter-2026-10-13"
+        "band-filter-2026-10-13",
+        "demo-settings-2026-10-13"
       ],
       "environment": "macOS arm64/JDK25",
       "reviewedOn": "2026-10-13"
@@ -4330,6 +4330,32 @@
         "docs/audit/evidence/2026-10-13-band-filter-ideal-edited-pass-ax.txt",
         "docs/audit/evidence/2026-10-13-band-filter-source.txt.gz",
         "docs/audit/evidence/2026-10-13-band-filter.md"
+      ]
+    },
+    "demo-settings-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25; Swing EDT and native CUA; 559-test package",
+      "summary": "Frequency settings retained across view replacement, linked source edits and independent duplicates. Six before-failing cases and nine native stages pass.",
+      "limits": "Filtering 1D/2D and Frequency Locations 2D only; native 1D revisit, other demo settings and Windows remain unverified. Native values checked by visible scales, arrays through actual Swing calculations.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-demo-settings-before.log",
+        "docs/audit/evidence/2026-10-13-demo-settings-filter-duplicate-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-filter-duplicate-source-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-filter-original-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-filter-original-independent-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-filter-reopened-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-filter-source-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-filter-source-edited.png",
+        "docs/audit/evidence/2026-10-13-demo-settings-focused.log",
+        "docs/audit/evidence/2026-10-13-demo-settings-location-original-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-location-reopened-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-location-source-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-settings-location-source-edited.png",
+        "docs/audit/evidence/2026-10-13-demo-settings-native-observations.json",
+        "docs/audit/evidence/2026-10-13-demo-settings-native.log",
+        "docs/audit/evidence/2026-10-13-demo-settings-package.log",
+        "docs/audit/evidence/2026-10-13-demo-settings.md",
+        "src/test/java/signals/core/FrequencyDemoReopenWorkflowTest.java"
       ]
     }
   },

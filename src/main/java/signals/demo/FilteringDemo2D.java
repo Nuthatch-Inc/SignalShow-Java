@@ -34,7 +34,11 @@ public class FilteringDemo2D extends FilteringDemo {
 	JPanel partPanel; 
 	
 	public FilteringDemo2D(Function input) {
-		super(input);
+		this(input, new FilteringSettings());
+	}
+
+	FilteringDemo2D(Function input, FilteringSettings settings) {
+		super(input, settings);
 		
 		transform = Transforms.fft2D(input, false, Transforms.NORMALIZE_ROOT_N); 
 		
@@ -74,7 +78,8 @@ public class FilteringDemo2D extends FilteringDemo {
 		partGroup.add( imagButton ); 
 		partGroup.add( magButton ); 
 		partGroup.add( phaseButton ); 
-		realButton.setSelected( true ); 
+		JRadioButton[] channels = {realButton, imagButton, magButton, phaseButton};
+		channels[settings.spatialTab].setSelected(true);
 		
 		realButton.addActionListener(listener); 
 		imagButton.addActionListener(listener); 
@@ -97,7 +102,7 @@ public class FilteringDemo2D extends FilteringDemo {
 		contentPanel.add( frequencyPanel );
 		contentPanel.add( spatialPanel ); 
 		add( contentPanel, BorderLayout.CENTER ); 
-		createFilterTerm();
+		initializeFilter();
 		calculate(); 
 		display();
 		
@@ -135,8 +140,13 @@ public class FilteringDemo2D extends FilteringDemo {
 			
 			spatialPanel.display(reconstructed.getPhase()); 
 		}
+		saveStateToModel();
 		
 		
 	}
 
+    @Override
+    protected void saveDisplayState() {
+        settings.spatialTab = imagButton.isSelected() ? 1 : magButton.isSelected() ? 2 : phaseButton.isSelected() ? 3 : 0;
+    }
 }

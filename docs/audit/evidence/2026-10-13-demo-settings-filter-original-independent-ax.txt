@@ -1,0 +1,93 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Description: settings cosine[x, y] = cos[2π(x/16)]1[y] + i(0[x]0[y]), Value: 0
+					6 JavaAxIgnore (selectable) settings cosine[x, y] = cos[2π(x/16)]1[y] + i(0[x]0[y])
+				7 row (selected) Description: Filtering Demo, Value: 0
+					8 JavaAxIgnore (selectable) Filtering Demo
+				9 row (selectable) Description: Filtering Demo, Value: 0
+					10 JavaAxIgnore (selectable) Filtering Demo
+			11 scroll bar (selectable)
+			12 scroll bar (selectable)
+		13 button (selectable) Duplicate
+		14 button (selectable) Delete
+		15 radio button (selectable) Low Pass
+		16 radio button (selectable) High Pass
+		17 radio button (selectable) Band Pass
+		18 radio button (selectable) Band Reject
+		19 radio button (selectable) Ideal
+		20 radio button (selectable) Gaussian
+		21 text (selectable) Amplitude:
+		22 stepper (selectable) Description: Amplitude: , Value: 0.7, Secondary Actions: Increment, Decrement
+			23 text field (selectable) 0.7
+		24 text (selectable) Center:
+		25 stepper (selectable) Description: Center: , Value: 4, Secondary Actions: Increment, Decrement
+			26 text field (selectable) 4
+		27 text (selectable) Width:
+		28 stepper (selectable) Description: Width: , Value: 12, Secondary Actions: Increment, Decrement
+			29 text field (selectable) 12
+		30 text (selectable) Slit Width:
+		31 stepper (selectable) Description: Slit Width: , Value: 8, Secondary Actions: Increment, Decrement
+			32 text field (selectable) 8
+		33 text (selectable) Exponent:
+		34 stepper (selectable) Description: Exponent: , Value: 2, Secondary Actions: Increment, Decrement
+			35 text field (selectable) 2
+		36 radio button (selectable) Real
+		37 radio button (selectable) Imaginary
+		38 radio button (selectable) Magnitude
+		39 radio button (selectable) Phase
+		40 stepper (selectable) Value: 1, Secondary Actions: Increment, Decrement
+			41 text field (selectable) 1
+		42 stepper (selectable) Value: 0, Secondary Actions: Increment, Decrement
+			43 text field (selectable) 0
+		44 stepper (selectable) Value: 0.700000000000368, Secondary Actions: Increment, Decrement
+			45 text field (selectable) 0.7
+		46 stepper (selectable) Value: -0.700000000000368, Secondary Actions: Increment, Decrement
+			47 text field (selectable) -0.7
+	48 close button
+	49 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	50 minimize button
+	51 text SignalShow
+52 menu bar
+	53 SignalShowRogerAudit
+	54 File
+	55 1D
+	56 2D
+	57 Help
+
+Selected:
+	58 row (selectable) Description: Filtering Demo, Value: 0
+		59 JavaAxIgnore (selectable) Filtering Demo
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

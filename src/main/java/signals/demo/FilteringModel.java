@@ -7,7 +7,8 @@ import signals.core.Function;
 
 public abstract class FilteringModel extends DemoModel {
 	
-	Function input; 
+	Function input;
+	FilteringSettings settings = new FilteringSettings();
 	boolean displayed; 
 	
 	public FilteringModel(Function input, ImageIcon icon) { 

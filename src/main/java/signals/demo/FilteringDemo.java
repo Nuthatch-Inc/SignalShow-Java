@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import signals.core.Function;
+import signals.core.Savable;
 import signals.functionterm.AnalyticFunctionTerm1D;
 import signals.functionterm.DoubleSlitFunctionTerm1D;
 import signals.functionterm.GaussianDoubleSlitFunctionTerm1D;
@@ -25,8 +26,9 @@ import signals.operation.TimesOp;
  * type ideal or gaussian
  */
 @SuppressWarnings("serial")
-public abstract class FilteringDemo extends JPanel {
+public abstract class FilteringDemo extends JPanel implements Savable {
 
+	final FilteringSettings settings;
 	Function filter; 
 	Function input, transform, reconstructed; 
 	
@@ -41,7 +43,11 @@ public abstract class FilteringDemo extends JPanel {
 	JPanel filterTypePanel, filterShapePanel, editorPanel; 
 	
 	public FilteringDemo( Function input ) {
-		
+		this(input, new FilteringSettings());
+	}
+
+	FilteringDemo(Function input, FilteringSettings settings) {
+		this.settings = settings;
 		this.input = input; 
 		
 		setLayout( new BorderLayout() ); 
@@ -80,7 +86,9 @@ public abstract class FilteringDemo extends JPanel {
 		filterShapePanel.add( idealFilterButton ); 
 		filterShapePanel.add( gaussianFilterButton ); 
 		filterShapePanel.setLayout( new BoxLayout( filterShapePanel, BoxLayout.PAGE_AXIS )); 
-		idealFilterButton.setSelected(true); 
+		(settings.gaussian ? gaussianFilterButton : idealFilterButton).setSelected(true);
+		JRadioButton[] types = {lpFilterButton, hpFilterButton, bpFilterButton, brFilterButton};
+		types[settings.type.ordinal()].setSelected(true);
 		
 		ActionListener listener = new ActionListener() {
 
@@ -131,7 +139,15 @@ public abstract class FilteringDemo extends JPanel {
 		
 	}
 	
-	public void createFilterTerm() {
+	protected void initializeFilter() {
+        createFilterTerm(settings.parameters);
+    }
+
+    public void createFilterTerm() {
+        createFilterTerm(null);
+    }
+
+    private void createFilterTerm(Object[] parameters) {
 		
 		
 		if( hpFilterButton.isSelected() || lpFilterButton.isSelected() ) {
@@ -164,9 +180,25 @@ public abstract class FilteringDemo extends JPanel {
 			
 		}
 		
+		if (parameters != null) {
+			for (int i = 0; i < parameters.length; i++) filterTerm.setParameter(parameters[i], i);
+		}
 		filterParamPanel.setFunction(filterTerm); 
 
 	}
 	                                
+
+    @Override
+    public void saveStateToModel() {
+        if (filterTerm == null) return;
+        settings.gaussian = gaussianFilterButton.isSelected();
+        settings.type = hpFilterButton.isSelected() ? FilteringSettings.Type.HIGH_PASS
+            : bpFilterButton.isSelected() ? FilteringSettings.Type.BAND_PASS
+            : brFilterButton.isSelected() ? FilteringSettings.Type.BAND_REJECT : FilteringSettings.Type.LOW_PASS;
+        settings.parameters = filterTerm.getParameters().toArray();
+        saveDisplayState();
+    }
+
+    protected abstract void saveDisplayState();
 
 }

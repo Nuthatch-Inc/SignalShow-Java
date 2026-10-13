@@ -7,7 +7,8 @@ import signals.gui.IconCache;
 
 public class FrequencyLocation2DModel extends DemoModel {
 	
-	Function input; 
+	Function input;
+	FrequencyLocationSettings settings = new FrequencyLocationSettings();
 	
 	public FrequencyLocation2DModel(Function input) { 
 		super(IconCache.getIcon("/guiIcons/FrequencyLocationDemo.png"));
@@ -16,13 +17,15 @@ public class FrequencyLocation2DModel extends DemoModel {
 	
 	public FrequencyLocation2DModel clone() {
 		
-		return new FrequencyLocation2DModel( input ); 
+		FrequencyLocation2DModel copy = new FrequencyLocation2DModel(input);
+		copy.settings = settings.copy();
+		return copy;
 	}
 
 	public void show() {
 		
-		FrequencyLocation2D demo = new FrequencyLocation2D( input ); 
-		Core.getGUI().removeContent(); 
+		Core.getGUI().removeContent();
+		FrequencyLocation2D demo = createView();
 		Core.getGUI().setContent(demo); 
 		
 	}
@@ -35,6 +38,10 @@ public class FrequencyLocation2DModel extends DemoModel {
 		return "Frequency Locations Demo"; 
 	}
 	
+	protected FrequencyLocation2D createView() {
+		return new FrequencyLocation2D(input, settings);
+	}
+
 	public void showNew() {
 		show(); 
 	}

@@ -12,18 +12,24 @@ public class FilteringModel2D extends FilteringModel {
 	
 	public FilteringModel2D clone() {
 		
-		return new FilteringModel2D( input ); 
+		FilteringModel2D copy = new FilteringModel2D(input);
+		copy.settings = settings.copy();
+		return copy;
 	}
 
 	@Override
 	public void show() {
 		
-		FilteringDemo2D demo = new FilteringDemo2D( input ); 
-		Core.getGUI().removeContent(); 
+		Core.getGUI().removeContent();
+		FilteringDemo2D demo = createView();
 		Core.getGUI().setContent(demo); 
 		
 	}
 	
+	protected FilteringDemo2D createView() {
+		return new FilteringDemo2D(input, settings);
+	}
+
 	public void showNew() {
 		show(); 
 	}

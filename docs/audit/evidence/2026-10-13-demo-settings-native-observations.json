@@ -1,0 +1,83 @@
+[
+  {
+    "label": "filter-original",
+    "amplitude": 0.7,
+    "bounds": [
+      0.7,
+      -0.7
+    ]
+  },
+  {
+    "label": "filter-reopened",
+    "amplitude": 0.7,
+    "bounds": [
+      0.7,
+      -0.7
+    ]
+  },
+  {
+    "label": "filter-duplicate",
+    "amplitude": 0.7,
+    "bounds": [
+      0.7,
+      -0.7
+    ]
+  },
+  {
+    "label": "filter-original-independent",
+    "amplitude": 0.7,
+    "bounds": [
+      0.7,
+      -0.7
+    ]
+  },
+  {
+    "label": "filter-source-edited",
+    "amplitude": 0.7,
+    "bounds": [
+      1.4,
+      -1.4
+    ]
+  },
+  {
+    "label": "filter-duplicate-source-edited",
+    "amplitude": 0.9,
+    "bounds": [
+      1.8,
+      -1.8
+    ]
+  },
+  {
+    "label": "location-original",
+    "cutoffs": [
+      4,
+      12
+    ],
+    "bounds": [
+      0.5,
+      0
+    ]
+  },
+  {
+    "label": "location-reopened",
+    "cutoffs": [
+      4,
+      12
+    ],
+    "bounds": [
+      0.5,
+      0
+    ]
+  },
+  {
+    "label": "location-source-edited",
+    "cutoffs": [
+      4,
+      12
+    ],
+    "bounds": [
+      0.25,
+      0
+    ]
+  }
+]

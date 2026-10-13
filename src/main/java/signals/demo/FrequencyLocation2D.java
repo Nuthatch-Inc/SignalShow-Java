@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SpinnerNumberModel;
 
 import signals.core.Function;
+import signals.core.Savable;
 import signals.core.Function2D;
 import signals.functionterm.Apertures;
 import signals.gui.ParameterEditor;
@@ -25,8 +26,9 @@ import signals.operation.ArrayUtilities;
 import signals.operation.Transforms;
 
 @SuppressWarnings("serial")
-public class FrequencyLocation2D extends JPanel implements ParameterUser {
+public class FrequencyLocation2D extends JPanel implements ParameterUser, Savable {
 	
+	final FrequencyLocationSettings settings;
 	ImageRadiusDisplayPanel frequencyDisplayPanel; 
 	ImageDisplayPanel spatialDisplayPanel; 
 	double innerRadius, outerRadius; 
@@ -44,6 +46,11 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 	public static final int OUTER = 1; 
 	
 	public FrequencyLocation2D( Function function ) {
+        this(function, new FrequencyLocationSettings());
+    }
+
+    FrequencyLocation2D(Function function, FrequencyLocationSettings settings) {
+        this.settings = settings;
 		
 		JPanel originalPanel = new JPanel(); 
 		ImageDisplayPanel realOriginal = new ImageDisplayPanel(new Dimension( 128, 128 )); 
@@ -70,7 +77,7 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		
 		absvalCheckBox = new JCheckBox( "display absolute value" ); 
 		spatialPanel.add(absvalCheckBox); 
-		absvalCheckBox.setSelected(true); 
+		absvalCheckBox.setSelected(settings.absolute);
 		
 		double[] real = function.getReal(); 
 		double[] imag = function.getImaginary();
@@ -85,8 +92,8 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		realOriginal.display(real); 
 		imagOriginal.display(imag); 
 		
-		innerRadius = 8; 
-		outerRadius = 24; 
+		innerRadius = settings.innerRadius;
+		outerRadius = settings.outerRadius;
 		
 		zero = new double[dimensionX*dimensionY];
 		
@@ -131,16 +138,18 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 				BorderFactory.createTitledBorder( "Frequencies to Display in Reconstruction"));
 	
 	
-		lfCheckBox.setSelected(true); 
-		mfCheckBox.setSelected(true); 
-		hfCheckBox.setSelected(true); 
+		dcCheckBox.setSelected(settings.dc);
+		lfCheckBox.setSelected(settings.low);
+		mfCheckBox.setSelected(settings.mid);
+		hfCheckBox.setSelected(settings.high);
 		
 		realButton = new JRadioButton("Show Real"); 
 		imagButton = new JRadioButton("Show Imaginary"); 
 		ButtonGroup partGroup = new ButtonGroup(); 
 		partGroup.add(realButton); 
 		partGroup.add(imagButton); 
-		realButton.setSelected(true); 
+		realButton.setSelected(!settings.imaginary);
+		imagButton.setSelected(settings.imaginary);
 		JPanel partPanel = new JPanel(); 
 		partPanel.add( realButton ); 
 		partPanel.add( imagButton ); 
@@ -243,6 +252,7 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		}
 		
 		spatialDisplayPanel.display( hfdisplay, mfdisplay, lfdisplay);
+		saveStateToModel();
 	}
 	
 	public double[] getlpfilter( boolean subtractDC ) {
@@ -296,5 +306,13 @@ public class FrequencyLocation2D extends JPanel implements ParameterUser {
 		}
 
 	}
+
+    @Override
+    public void saveStateToModel() {
+        settings.innerRadius = innerRadius; settings.outerRadius = outerRadius;
+        settings.dc = dcCheckBox.isSelected(); settings.low = lfCheckBox.isSelected();
+        settings.mid = mfCheckBox.isSelected(); settings.high = hfCheckBox.isSelected();
+        settings.absolute = absvalCheckBox.isSelected(); settings.imaginary = imagButton.isSelected();
+    }
 
 }
