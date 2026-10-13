@@ -10,8 +10,8 @@ incrementally; defer rare edges and tiny numerical errors.
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
 `codex/signalshow-usage-stabilization`. Original baseline 28a4ffc. Local commits:
 7fb376a (earlier stabilization), 5a7a83f (image decoding/padding), efebd69
-(imported-image edits), 5084e89 (native arithmetic evidence). Nothing pushed.
-The current evidence-only batch records ordinary creation and operation chains.
+(imported-image edits), 5084e89 (arithmetic), eff0ed1 (creation chains). Nothing
+pushed. The current evidence-only batch records size recovery and rectangular views.
 The full 472-test package passes on macOS arm64/JDK 25, no failures/errors/skips;
 source diff clean (raw evidence logs excluded). Current executable JAR is
 `target/signalshow-1.2.4.jar`.
@@ -22,21 +22,21 @@ threshold samples match independent oracles after amplitude, translation,
 resize and crop edits; crop survives Plot/Edit when actually committed.
 Nine new regressions pass. Earlier scoped Roger, grouping, operator-symbol,
 channel, linked-source, file, profile and deletion evidence is in the matrix.
-Latest: [native creation chains](2026-10-13-creation.md) verify Cylinder × seeded
-Uniform Noise → Threshold, and polar Gaussian × Cosine → Absolute Value →
-Threshold, including source edits through both levels. Fifteen exports inspected
-with explicit oracle scopes, no native errors. All five creation families now
-have representative scoped evidence. Native operation search is verified,
-including Minus and unmatched recovery. Previous arithmetic has thirteen matched
-exports. Next: native matching-size recovery, then rectangular/origin workflows.
-Keep hundreds-of-scenarios plan incremental.
+Latest: [native dimension recovery](2026-10-13-size.md) verifies matching sizes
+restored through dropdowns at128×64, then centered64×32 and corner32×64 source,
+product and threshold samples. Profiles/FFT views open without exceptions;
+transform numerical correctness is not certified by those screenshots.
+Previous creation and arithmetic batches cover ordinary aperture/noise, polar,
+Cartesian and image chains plus native search. Next: special complex-creation
+menus and representation workflows, then ordinary demo/edit gaps. Keep the
+hundreds-of-scenarios plan incremental.
 
 Juliet explicitly reauthorized keystrokes. `selectText` on the existing value,
 then typing and readback before Return works for native text/parameter fields.
 Swing dropdown AX values may be provisional: focus the control, select with
 arrows, inspect, press Return, then verify rendered value and samples. Earlier
 crop attempts that lacked Return are not evidence of a product defect. The
-previous size-dropdown recovery is now the active check.
+previous size-dropdown recovery now passes with committed selections.
 
 No SignalShow process remains (verified). Bundle
 `/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` contains the current

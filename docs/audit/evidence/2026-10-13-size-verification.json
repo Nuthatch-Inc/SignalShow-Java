@@ -1,0 +1,142 @@
+{
+  "smaller": {
+    "dimensions": [
+      128,
+      64
+    ],
+    "zero_centered": true,
+    "complex_samples": 8192,
+    "max_product_error": 0.0,
+    "max_gradient_error": 1.1102230246251565e-16,
+    "gain_exactly_two": true
+  },
+  "wide": {
+    "dimensions": [
+      64,
+      32
+    ],
+    "zero_centered": true,
+    "complex_samples": 2048,
+    "max_product_error": 0.0,
+    "max_gradient_error": 1.1102230246251565e-16,
+    "gain_exactly_two": true
+  },
+  "tall corner": {
+    "dimensions": [
+      32,
+      64
+    ],
+    "zero_centered": false,
+    "complex_samples": 2048,
+    "max_product_error": 0.0,
+    "max_gradient_error": 1.1102230246251565e-16,
+    "gain_exactly_two": true
+  },
+  "tall threshold": {
+    "dimensions": [
+      32,
+      64
+    ],
+    "complex_samples": 2048,
+    "max_error": 0.0
+  },
+  "size gain smaller": {
+    "dimensions": [
+      128,
+      64
+    ],
+    "complex_samples": 8192,
+    "zero_centered": true,
+    "sha256": "f8c87350e1cd4f1abd9b6224235481673bb043788867baa754b141012a749418"
+  },
+  "size gain tall corner": {
+    "dimensions": [
+      32,
+      64
+    ],
+    "complex_samples": 2048,
+    "zero_centered": false,
+    "sha256": "801c17885105ca9b6c8c6fe4a1a5cc81569e66c2a4148abc6deff44c46cc335a"
+  },
+  "size gain wide": {
+    "dimensions": [
+      64,
+      32
+    ],
+    "complex_samples": 2048,
+    "zero_centered": true,
+    "sha256": "6bf82d5942ee33f2acc0b7e4b3c921666a0922745a76b656a8a2a0263e131aff"
+  },
+  "size product initial": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "zero_centered": true,
+    "sha256": "a53fea06bf2fe2faf879f5199da6d5144eddc78620ad6e4605f277dc9b7685e3"
+  },
+  "size product recovered": {
+    "dimensions": [
+      128,
+      64
+    ],
+    "complex_samples": 8192,
+    "zero_centered": true,
+    "sha256": "a363622e0ae9df9d2158de29662e25fd978a2b021196210907487bf4b39338a2"
+  },
+  "size product tall corner": {
+    "dimensions": [
+      32,
+      64
+    ],
+    "complex_samples": 2048,
+    "zero_centered": false,
+    "sha256": "10aee39f82dcbd3589774d0db81de40a4ccb26772c08619d864a2e40a79935e3"
+  },
+  "size product tall threshold": {
+    "dimensions": [
+      32,
+      64
+    ],
+    "complex_samples": 2048,
+    "zero_centered": false,
+    "sha256": "fdc126e6077e380af7bf166c906c42bf8b95fd67d65c000704bb0aa75afd9973"
+  },
+  "size product wide": {
+    "dimensions": [
+      64,
+      32
+    ],
+    "complex_samples": 2048,
+    "zero_centered": true,
+    "sha256": "c4df2eaf61445b8bbcd73e5fe76f5a6e9a53b359d56b3a828ef3d5e0857248ad"
+  },
+  "size ramp smaller": {
+    "dimensions": [
+      128,
+      64
+    ],
+    "complex_samples": 8192,
+    "zero_centered": true,
+    "sha256": "315f6fd039f04896e0b7ce09ff1768e981e9c0b95c723ec5b288222de1616a3a"
+  },
+  "size ramp tall corner": {
+    "dimensions": [
+      32,
+      64
+    ],
+    "complex_samples": 2048,
+    "zero_centered": false,
+    "sha256": "f8dfa1c13ce1283eed90e069688b6e8ed4228818c8bfa1b35e35d194844354a7"
+  },
+  "size ramp wide": {
+    "dimensions": [
+      64,
+      32
+    ],
+    "complex_samples": 2048,
+    "zero_centered": true,
+    "sha256": "8cb18aff8e24e25dd052d548b0c639fefebb9fa0325d2af4312c1f079e15ed97"
+  }
+}

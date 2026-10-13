@@ -13,11 +13,11 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-resize-dropdown-recovery"
+      "gui-2d-representation"
     ],
     "nextIds": [
-      "gui-2d-geometry",
-      "gui-2d-representation"
+      "gui-demos",
+      "gui-2d-edit"
     ]
   },
   "math": [
@@ -2528,17 +2528,19 @@
       "area": "usage",
       "title": "Wide/tall images and origin changes",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Use an asymmetric image at 64×32 and 32×64.",
         "Toggle zero-centering, apply threshold/arithmetic and inspect profiles/FFT."
       ],
       "expected": "Dimensions, channel placement and coordinates remain consistent; no array-bound exception.",
-      "scope": "Native rectangular workflows, independent samples where exported.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "scope": "Centered64×32 and corner-origin32×64 Gradient/Constant fixtures, input/product/threshold exports, native source Profiles/FFT and result FFT. Transform numerics and broader image families remain separate.",
+      "evidence": [
+        "size-native-2026-10-13"
+      ],
+      "summary": "Ordinary wide/tall size and origin edits preserve selected dimensions and current samples. Source oracles and linked products/threshold pass; views open without exception.",
+      "environment": "macOS arm64, JDK25; 472-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-2d-representation",
@@ -3159,13 +3161,14 @@
         "Replace operands with compatible rectangular data and save the recovered result."
       ],
       "expected": "Resized results update; incompatible operands do not crash or leave a stale result; compatible replacement restores computation.",
-      "scope": "Native shared-source resize, mismatch and operand-replacement recovery; automated grow/shrink/dimension-restoration and downstream propagation. Native dropdown restoration remains a separate pending check.",
+      "scope": "Native shared-source resize, mismatch and operand-replacement recovery; automated grow/shrink/dimension-restoration and downstream propagation. Native dropdown restoration now passes in its separate row.",
       "evidence": [
-        "resize-linked-2026-10-12"
+        "resize-linked-2026-10-12",
+        "size-native-2026-10-13"
       ],
-      "summary": "BUG-020 fixed: incompatible dimensions no longer crash thumbnails or produce truncated data. Native mismatch handling and compatible operand replacement pass; 8,192 complex samples match independently. Direct dropdown restoration remains pending.",
+      "summary": "BUG-020 fixed. Native mismatch handling, compatible operand replacement and direct dropdown restoration now pass in separate scoped evidence.",
       "environment": "macOS arm64, JDK 25; 455-test build",
-      "reviewedOn": "2026-10-12"
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-2d-delete-linked",
@@ -3192,20 +3195,21 @@
       "area": "usage",
       "title": "Restore matching input sizes through native size dropdowns",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create two images and multiply them.",
         "Resize one source to 128×64.",
         "Resize the other to128×64 and return to the result."
       ],
       "expected": "The result returns with the selected dimensions and current samples.",
-      "scope": "Exact native dropdown interaction; production recovery and native operand-replacement recovery already pass.",
+      "scope": "Actual native width/height dropdowns, mismatched128×64 input then restored matching dimensions; all8,192 complex result samples verified.",
       "evidence": [
-        "resize-linked-2026-10-12"
+        "resize-linked-2026-10-12",
+        "size-native-2026-10-13"
       ],
-      "summary": "Now verifying with working native text/selection routing: commit dropdown choices with Return and confirm the rendered value plus saved dimensions.",
-      "environment": "macOS arm64; Windows pending",
-      "reviewedOn": "2026-10-12"
+      "summary": "Dropdown selections committed with Return; mismatched result clears and matching inputs restore a correct current result. No native exception.",
+      "environment": "macOS arm64, JDK25; 472-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-2d-cartesian-threshold",
@@ -3746,6 +3750,26 @@
         "docs/audit/evidence/2026-10-13-creation-polar-threshold.png",
         "docs/audit/evidence/2026-10-13-creation-search-empty.png",
         "docs/audit/evidence/2026-10-13-creation.md"
+      ]
+    },
+    "size-native-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25; efebd69 executable",
+      "summary": "Native size-dropdown recovery, wide/tall origin edits and linked operation outputs verified; Profiles/FFT views exercised without exceptions.",
+      "limits": "Real-valued Image Gradient/Constant fixtures. FFT numerical correctness, other generators, Windows and memory remain open.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-size-verification.json",
+        "docs/audit/evidence/2026-10-13-size-native.log",
+        "docs/audit/evidence/2026-10-13-size-mismatch.png",
+        "docs/audit/evidence/2026-10-13-size-recovered.png",
+        "docs/audit/evidence/2026-10-13-size-wide-profiles.png",
+        "docs/audit/evidence/2026-10-13-size-wide-fft.png",
+        "docs/audit/evidence/2026-10-13-size-wide-product-fft.png",
+        "docs/audit/evidence/2026-10-13-size-tall-profiles.png",
+        "docs/audit/evidence/2026-10-13-size-tall-fft.png",
+        "docs/audit/evidence/2026-10-13-size-tall-product-fft.png",
+        "docs/audit/evidence/2026-10-13-size-tall-threshold.png",
+        "docs/audit/evidence/2026-10-13-size.md"
       ]
     }
   },
