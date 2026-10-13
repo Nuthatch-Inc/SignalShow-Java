@@ -1,74 +1,65 @@
 # SignalShow current checkpoint — October 13, 2026
 
-Continuous Audit remains authorized. Juliet unlocked the Mac, but native
-verification is **blocked by automated text input**: clicks respond, while typing
-and paste leave fields unchanged, including after a refreshed CUA connection.
-A manual typing comparison is pending. See [input evidence](2026-10-13-input-after-unlock.md).
-This is not a usage pause. `check_usage: true`; last reading October 13:
-weekly 81% remaining, no other applicable window, no usage pause. Follow the
-[usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
-Local commits at verified checkpoints authorized; do not push/release. No
-subagents. Ordinary creation, edits and operation chains first. Build hundreds
-of usage scenarios incrementally; defer rare edges and tiny numerical errors.
+Continuous Audit is active. Juliet explicitly resumed after Zoom and requested a
+restart when native typing remained unresponsive. Local commits at verified
+checkpoints authorized; no push/release. No agents. Ordinary 2D creation, edits,
+operations, views and persistence first; hundreds of scenarios incrementally.
+Defer unlikely edge cases, numerical trivia and capacity extremes.
 
-Repository `/Users/julietfiss/src/SignalShow-Java`, branch
-`codex/signalshow-usage-stabilization`, original baseline 28a4ffc. Local commit
-0174857 releases retired document ownership; 8021b9f releases image preview
-buffers. Nothing pushed.
+`check_usage: true`. Latest reading October 13: weekly 80% remaining; no other
+applicable window. Follow the [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
+No usage pause, resets or automations authorized.
 
-Full offline package: **549 tests, zero failures/errors/skips**. Retired 1D/2D
-model ownership and Constant/Cylinder editor replacement/reopening regressions
-pass. Prior matched native run: deleted document models three→zero, collected
-heap 142.6→79.5 MiB. Latest code also clears retired 2D preview pixel arrays and
-calculator thumbnails. The repeated native 512-square create/multiply/edit/reopen
-sequence preserves every saved sample; collected live heap 134.2 MiB.
-**Latest post-deletion heap result is unverified:** macOS locked during the next
-CUA action batch, before an empty-list snapshot was produced. Do not conflate the
-latest live measurement with post-deletion memory. BUG-031 remains open. See
-[preview memory evidence](2026-10-13-preview-memory.md) and
-[prior matched ownership evidence](2026-10-13-editor-memory.md).
+Repo /Users/julietfiss/src/SignalShow-Java, branch
+codex/signalshow-usage-stabilization. Baseline 28a4ffc. Product fixes: 0174857
+retired document ownership, 8021b9f preview/calculator buffers. 0c4fceb recorded the
+previous blocked input check. Current edits reconcile pause/resume and completed
+native evidence; product code unchanged. Full package remains 549 tests passed,
+zero failures/errors/skips; no redundant suite rerun for evidence-only changes.
 
-Next action: resolve the text-input check, then repeat the short
-Constant×Cylinder workflow in the linked evidence, including deletion and
-collected histogram/heap/root paths. Only then assess remaining image-array
-retention. Do not replay other completed workflows. Existing next queue remains
-demo settings, sampling and band filtering, with normal usage first.
+Completed the pending matched 512-square Constant×Cylinder native workflow,
+source amplitude 3→2.5, Plot/Edit/reopen, two complex saves, then deletion of all
+three documents. Every exported complex sample matches and both files are byte
+identical to prior checked exports. Deleted heap: 20.1 MiB; zero document models;
+zero strongly reachable double arrays ≥65,536 elements (two soft zero caches).
+Prior matched deleted heap 142.6→79.5→20.1 MiB through ownership/preview fixes.
+Observed BUG-031 paths closed. See [completed evidence](2026-10-13-preview-memory-resumed.md).
+Other image families/imported-data lifetime, Windows/manual use and long sessions
+are coverage gaps; do not infer whole-app reclamation or capacity certification.
 
-Matrix: 130 registered math entries; 60 scenarios (51 checked, 1 scope, 4 pending,
-2 issues, 2 deferred). Earlier 1024 memory evidence remains a different workload.
-Local current dumps: /private/tmp/signalshow-editor-memory-before.hprof and
-/private/tmp/signalshow-editor-memory-after.hprof. Read-only array-root diagnostic
-and compact paths are in the current evidence. Older dumps remain in /private/tmp.
-One audit app (PID 98337) is open for Juliet's manual typing comparison; no sampler runs.
+Input recovery: the old PID 98337 stopped accepting automated and, per Juliet,
+manual typing. AWT event thread was waiting for events, not a Java deadlock.
+Native Close exited it. Fresh PID 5092 accepted names, numeric fields and save
+paths through CUA with readback before Return. Restart recovers input; original
+cause remains undetermined. Do not claim focus alone fixes it. Stop failed input;
+never send Return blindly. Dropdown values need Return and result verification.
 
-Earlier automated typing checks passed, but the latest post-unlock attempt does
-not: `f0` stays unchanged and Amplitude stays `1` after typing/paste requests.
-Do not send Return without readback. The current disposable document is a default
-256-square Constant in the Image editor, with amplitude 1. Juliet has been asked
-to type 3 manually. Keep at most one app and close it when no longer needed.
+Next batch: ordinary 2D Band Pass/Band Reject filtering, Ideal/Gaussian shape and
+center/separation/width edits; source inspected but no new tests/patch yet. Extend
+FrequencyDemoWorkflowTest with independent known-mode gains, actual Swing controls
+and displayed results; then short native check. Subsequent queue: demo setting
+retention, Sampling/Aliasing. FunctionFactory.createFunction1D(term,dimension,
+centered,name) ignores origin/name; sampling caller needs direct reproduction
+before a fix. Do not replay completed low/high-pass or earlier workflow batches.
 
-Bundle `/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` holds the final
-549-test JAR; source JAR `target/signalshow-1.2.4.jar`. Copy/sign only while closed.
-Launch by full path using CUA. Do not inspect AX after close (it relaunches).
-CUA was reset during diagnosis: only signalshowApp, ssFs and ssState are bound.
-Prior native helper definitions were saved at /private/tmp/signalshow-cua-helpers.js.
-Refresh CUA documentation after compaction. Isolated home
-`/private/tmp/signalshow-roger-home` contains native exports; demonstration evidence
-includes small source/result files and a standalone verifier. Native append-only
-log `/private/tmp/signalshow-roger-native.log` contains historical errors: use
-bounded launch slices. No build running. Reuse audit server session 19418 and tab
-http://127.0.0.1:8092/docs/audit/ .
+Matrix: 130 registered math entries, 60 scenarios: 52 checked, 1 scope, 4 pending,
+1 issue, 2 deferred. Native memory row now checked only for its stated workflow.
+No SignalShow app remains: PID 5092 closed through CUA, exit verified. No build or
+sampler runs. Keep at most one instance. Bundle
+/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app holds final 549-test JAR;
+copy/sign only while closed. Launch by full path with CUA. Never inspect AX after
+closing, which relaunches it. Refresh CUA docs after compaction. Current helpers:
+ssClick, ssNew2D, ssRenameCurrent, ssImageParam, ssDocumentSize, ssFileMenu,
+ssSaveVerified, ssFs. Old helper source /private/tmp/signalshow-cua-helpers.js.
 
-Limits: Windows untested; sample-only persistence; bounded memory measured, not
-capacity certified; dimension picker 4096; binary input dimensions must match;
-phase entry 3 decimals; direct replacement has no confirmation/atomicity guarantee.
-Deferred Rectangle notation BUG-021. No new controls or product wording. Complex
-normalization semantics unchanged; filtering Band Pass/Band Reject and Sampling/Aliasing still unverified.
+Isolated home /private/tmp/signalshow-roger-home; append-only native log
+/private/tmp/signalshow-roger-native.log (use bounded launch slices). Latest dump
+/private/tmp/signalshow-preview-memory-resumed-deleted.hprof. Prior ownership dumps
+/private/tmp/signalshow-editor-memory-{before,after}.hprof. Read-only root parsers
+and compact paths live in docs/audit/evidence. Never check in binary heap dumps.
+Audit HTTP server previously session 19418; reuse tab http://127.0.0.1:8092/docs/audit/.
 
-Source note for future sampling work: FunctionFactory.createFunction1D(term,
-dimension,centered,name) ignores the supplied origin/name; Sampling1D still uses
-that overload and an ordinary-coordinate filter. Verify the normal reconstruction
-workflow before changing it. FrequencyDemoFilter now handles the filtering demos
-separately with signed frequency coordinates. No build/sampler is running. One audit app remains for the manual input check.
-The existing audit HTTP server remains available;
-no automation or background native test will resume on its own.
+Limits: Windows untested; files store samples, not editable graphs; dense arrays
+require memory; size picker 4096 is not capacity certification; binary dimensions
+must match; phase entry 3 decimals; direct replacement is not atomic/confirmed.
+Deferred Rectangle notation BUG-021. No new controls or wording authorized.

@@ -40,3 +40,8 @@ Other image families and imported-data lifetime are not certified by these
 Constant/Cylinder cases. Existing functional import regressions establish editing
 behavior, not memory reclamation. JAI tile/soft caches, manual use, Windows, other
 JVMs, larger images and long sessions remain separate limits. No push or release.
+
+The subsequent [completed native comparison](2026-10-13-preview-memory-resumed.md)
+resolves the pending deletion check above: zero document models and zero strongly
+reachable large pixel arrays remain after deleting the test documents; collected
+heap is 20.1 MiB. The original interrupted-run evidence remains historical.

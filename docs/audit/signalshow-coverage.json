@@ -4,22 +4,20 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "blocked",
+    "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 81% remaining; no other applicable window reported",
-    "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized.",
-    "blocker": "Mac unlocked; automated clicks respond but name/amplitude typing and paste leave fields unchanged, including after a fresh CUA connection. Awaiting manual typing comparison. One audit window is open for that check; final native memory comparison remains pending."
+    "lastUsageReading": "2026-10-13: weekly 80% remaining; no other applicable window reported",
+    "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "memory-lifecycle"
+      "gui-frequency-bandpass"
     ],
     "nextIds": [
       "gui-demo-settings",
-      "gui-sampling",
-      "gui-frequency-bandpass"
+      "gui-sampling"
     ]
   },
   "math": [
@@ -2907,24 +2905,25 @@
     {
       "id": "memory-lifecycle",
       "area": "memory",
-      "title": "Memory after replacing views and closing test documents",
+      "title": "Constant/Cylinder edits, operation use and document cleanup",
       "priority": "P1",
-      "status": "issue",
+      "status": "checked",
       "steps": [
-        "Create three modest images and one operation chain.",
-        "Switch views briefly, delete the test documents, and sample retained owners/heap."
+        "Create centered 512-square Constant and Cylinder images; multiply, save and reopen the result.",
+        "Edit source amplitude and verify the linked output; delete all three test documents and inspect collected heap roots."
       ],
       "expected": "Document retained references and a measured trend; do not infer a leak solely from delayed collection.",
-      "scope": "Measured native CUA/macOS retention and actual root paths. General manual-use/Windows behavior remains unverified.",
+      "scope": "Matched native Constant/Cylinder operation workflow on macOS/JDK 25 under CUA. Other image families, imported-data lifetime, Windows/manual use and long sessions remain unverified.",
       "evidence": [
         "demos-2026-10-13",
         "memory-usage-2026-10-13",
         "editor-memory-2026-10-13",
         "preview-memory-2026-10-13",
-        "input-after-unlock-2026-10-13"
+        "input-after-unlock-2026-10-13",
+        "preview-memory-resumed-2026-10-13"
       ],
-      "summary": "Retired document ownership verified (three models→zero, 142.6→79.5 MiB in the matched 512-square run). Preview cleanup passes regressions and native create/edit/reopen outputs; final deletion/heap check remains pending because automated text input fails after unlock.",
-      "environment": "macOS arm64/JDK 25 under CUA; 549-test package; resumed native check blocked by text input",
+      "summary": "Native create/edit/reopen exports agree at every sample. After deletion, no document models or strongly reachable large pixel arrays remain; collected heap 20.1 MiB versus 79.5 before preview cleanup.",
+      "environment": "macOS arm64/JDK 25, native CUA; unchanged 549-test package at 8021b9f",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -4256,7 +4255,7 @@
       "date": "2026-10-13",
       "environment": "macOS arm64/JDK 25, Swing EDT and native CUA; 549-test package",
       "summary": "Release pixels from replaced/retired 2D term previews, function calculator thumbnails and cleared operation result previews. Four new and one extended before-failing lifecycle cases pass. Native 512-square multiplication and source edit preserve every exported sample.",
-      "limits": "Mac locked before the final deletion/heap measurement; do not claim native pixel reclamation verified. Collected live heap 134.2 MiB is measured, not a post-deletion result. Other image families/imported-data ownership, manual/Windows behavior and long sessions remain unverified.",
+      "limits": "Original run locked before deletion. The later preview-memory-resumed evidence completes that check; other image families/imported-data lifetime, manual/Windows use and long sessions remain unverified.",
       "sources": [
         "src/test/java/signals/core/EditorLifecycleWorkflowTest.java",
         "src/main/java/signals/gui/datagenerator/FunctionEditorPanel.java",
@@ -4277,11 +4276,33 @@
     "input-after-unlock-2026-10-13": {
       "date": "2026-10-13",
       "environment": "macOS arm64/JDK 25, CUA; unchanged 549-test package at 8021b9f",
-      "summary": "After manual unlock, pointer/menu actions work but automated typing and paste do not change the name or amplitude. Refreshed CUA connection gives the same result; manual comparison requested.",
-      "limits": "Cause undetermined. No final post-deletion heap check or new product behavior certification.",
+      "summary": "Typing remained unresponsive after unlock; Juliet later reported manual input failure too and requested restart. Restart restored verified names, parameters and save-path entry, and the pending native workflow completed.",
+      "limits": "Restart is a verified recovery. Original focus/input failure cause remains undetermined.",
       "sources": [
         "docs/audit/evidence/2026-10-13-input-after-unlock.md",
-        "docs/audit/evidence/2026-10-13-input-after-unlock-ax.txt.gz"
+        "docs/audit/evidence/2026-10-13-input-after-unlock-ax.txt.gz",
+        "docs/audit/evidence/2026-10-13-input-stalled-event-thread.txt"
+      ]
+    },
+    "preview-memory-resumed-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25, native CUA; unchanged 549-test package at 8021b9f",
+      "summary": "Completed matched native create/edit/reopen/delete comparison: exact saved samples, zero remaining document models, zero strongly reachable large double arrays, 20.1 MiB collected deleted heap.",
+      "limits": "Scoped Constant/Cylinder workflow. Other image families/import ownership, manual/Windows use and long sessions remain unverified. Heap totals are not exact retained-size attribution.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-live-histogram.txt",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-live-heap.txt",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-deleted-histogram.txt",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-deleted-heap.txt",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-document-roots.txt",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-array-roots.txt",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-empty-ax.txt",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-verification.json",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-native.log",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-product.txt.gz",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-edited-product.txt.gz",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed-verifier.py",
+        "docs/audit/evidence/2026-10-13-preview-memory-resumed.md"
       ]
     }
   },
@@ -4292,11 +4313,12 @@
       "basis": "measurement",
       "impact": "Memory scales with pixel count and the number of retained source/result/channel arrays. Doubling both image dimensions multiplies one array’s payload by four. FFTs and other operations may allocate additional buffers.",
       "scope": "Short native three-source/two-operation workload measured through 1024 square. After-fix heap checkpoints 71.4/184.2/493.0 MiB; overall sampled RSS peak 1411.6 MiB. Not general capacity certification.",
-      "next": "Separate live array costs from native accessibility retention; verify Windows and additional ordinary algorithms before setting broader limits. The obsolete 2 GiB launcher cap remains removed.",
+      "next": "Observed retired-editor retention is corrected in the matched Constant/Cylinder native run. Verify additional ordinary image families, imported-data lifetimes and Windows before broader capacity claims. The obsolete 2 GiB launcher cap remains removed.",
       "evidence": [
         "memory-source-2026-10-12",
         "heap-policy-2026-10-12",
-        "memory-usage-2026-10-13"
+        "memory-usage-2026-10-13",
+        "preview-memory-resumed-2026-10-13"
       ]
     },
     {
@@ -4352,19 +4374,6 @@
       "next": "Consider replacement safeguards with the persistence design after ordinary workflow stabilization.",
       "evidence": [
         "dialogs-2026-10-13"
-      ]
-    },
-    {
-      "id": "native-accessibility-retention",
-      "title": "Native accessibility can retain obsolete image-editor resources during the audit",
-      "basis": "measurement",
-      "impact": "Retired document model paths are corrected: matched 512-square native run has zero remaining document models and 79.5 MiB collected heap, down from 142.6 MiB. Old image editors still retain pixel arrays; JAI caches also account for part of the heap.",
-      "scope": "macOS/JDK 25 under CUA accessibility interaction; ordinary manual-use and Windows applicability unverified.",
-      "next": "After manual Mac unlock, repeat the bounded native deletion/heap comparison using the 549-test preview-cleanup build. Further families/imported-data ownership and manual/Windows applicability remain separate coverage gaps.",
-      "evidence": [
-        "memory-usage-2026-10-13",
-        "editor-memory-2026-10-13",
-        "preview-memory-2026-10-13"
       ]
     }
   ],

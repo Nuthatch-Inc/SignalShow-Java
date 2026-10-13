@@ -24,3 +24,18 @@ being used. The final native preview deletion/heap comparison remains incomplete
 no new memory or saved-result claim is made by this attempted run. All prior
 passing checks remain as recorded; the 549-test suite was not rerun for this
 input-only check. No product code changed and nothing was pushed.
+
+Follow-up from Juliet: manual entry in Amplitude works; she suspects the application
+was not in focus. This supports investigating activation/focus, but it does not
+verify that automated input is restored. Testing remains paused at her request
+while she uses Zoom. Once she explicitly resumes, activate SignalShow, focus the
+field and verify one automated edit before continuing the pending native workflow.
+
+On resumption, Raise and title-bar actions still did not restore automated typing.
+Juliet then reported that she too could no longer type and requested a restart.
+Before closing PID 98337, a read-only thread snapshot showed AWT-EventQueue waiting
+for its next event, with no reported Java deadlock. Native Close exited the process.
+The fresh PID 5092 accepted a typed name, multiple numeric parameters and both
+filenames; all entries were read back before Return. The full pending native
+workflow then completed. Restart is a verified recovery; the original focus/input
+failure's cause is still undetermined. The focus hypothesis is not a proven fix.

@@ -1,0 +1,9 @@
+{
+  "objects": 167732,
+  "largeDoubleArrays": 2,
+  "strongLargeDoubleArrays": 0
+}
+double[] length 65536 0x380c00000 strong False root 0x1
+jdk/internal/loader/ClassLoaders$AppClassLoader.classes -> java/util/ArrayList.elementData -> [Ljava/lang/Object;.[278] -> class signals/core/Zeros$SingletonHolder.INSTANCE -> signals/core/Zeros.zeros -> java/util/HashMap.table -> [Ljava/util/HashMap$Node;.[1] -> java/util/HashMap$Node.value -> java/lang/ref/SoftReference.referent
+double[] length 262144 0x383c00000 strong False root 0x1
+jdk/internal/loader/ClassLoaders$AppClassLoader.classes -> java/util/ArrayList.elementData -> [Ljava/lang/Object;.[278] -> class signals/core/Zeros$SingletonHolder.INSTANCE -> signals/core/Zeros.zeros -> java/util/HashMap.table -> [Ljava/util/HashMap$Node;.[4] -> java/util/HashMap$Node.value -> java/lang/ref/SoftReference.referent

@@ -1,0 +1,18 @@
+[
+  {
+    "file": "preview-memory-resumed-product.txt",
+    "complexSamples": 262144,
+    "amplitude": 3,
+    "mismatches": 0,
+    "imaginaryZero": true,
+    "byteIdenticalToEarlierExport": true
+  },
+  {
+    "file": "preview-memory-resumed-edited-product.txt",
+    "complexSamples": 262144,
+    "amplitude": 2.5,
+    "mismatches": 0,
+    "imaginaryZero": true,
+    "byteIdenticalToEarlierExport": true
+  }
+]

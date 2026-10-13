@@ -68,3 +68,8 @@ are excluded from the strong traversal. The next correction targets those
 obsolete previews, with editing/reopening and native measurements repeated.
 BUG-031 and the memory-lifecycle row remain open. Native root lifetimes outside
 CUA, manual use, Windows, other JVMs and larger/longer workloads are unverified.
+
+The later [preview cleanup verification](2026-10-13-preview-memory-resumed.md)
+closed the observed BUG-031 paths in this matched workload: the final deleted
+snapshot has zero strongly reachable large pixel arrays and 20.1 MiB collected
+heap. The remaining-work description above records this earlier checkpoint.
