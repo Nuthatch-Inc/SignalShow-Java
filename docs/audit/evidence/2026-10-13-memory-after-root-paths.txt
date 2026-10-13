@@ -1,0 +1,19 @@
+{
+  "objects": 287720,
+  "documents": 7,
+  "strongDocuments": 6
+}
+signals/core/RealImagFunction2D 0xa63127a38 strong True root 0x2
+javax/swing/JList$AccessibleJList$AccessibleJListChild.cellRenderer -> com/apple/laf/AquaComboBoxRenderer.fComboBox -> javax/swing/JComboBox.listenerList -> javax/swing/event/EventListenerList.listenerList -> [Ljava/lang/Object;.[5] -> signals/gui/datagenerator/Function2DToolBar$2.this$0 -> signals/gui/datagenerator/ReImFunction2DToolBar.function
+signals/core/OperatorSystem2D 0xa63d0b550 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewUnaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.system
+signals/core/RealImagFunction2D 0xa63de0130 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.list -> signals/gui/HorizontalThumbnailList.model -> signals/gui/HorizontalThumbnailList$MyDefaultTableModel.dataVector -> java/util/Vector.elementData -> [Ljava/lang/Object;.[0] -> java/util/Vector.elementData -> [Ljava/lang/Object;.[1] -> signals/gui/CalculatorListItem.graphic -> signals/gui/Function2DThumbnailGraphic.function
+signals/core/RealImagFunction2D 0xa62c90968 strong True root 0x2
+sun/lwawt/macosx/CAccessible.accessible -> com/apple/laf/AquaComboBoxPopup.comboBox -> javax/swing/JComboBox.listenerList -> javax/swing/event/EventListenerList.listenerList -> [Ljava/lang/Object;.[5] -> signals/gui/datagenerator/Function2DToolBar$2.this$0 -> signals/gui/datagenerator/ReImFunction2DToolBar.function
+signals/core/OperatorSystem2D 0xa63a22588 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.system
+signals/core/RealImagFunction2D 0xa636ff220 strong True root 0x2
+sun/lwawt/macosx/CAccessible.accessible -> com/apple/laf/AquaComboBoxPopup.comboBox -> javax/swing/JComboBox.listenerList -> javax/swing/event/EventListenerList.listenerList -> [Ljava/lang/Object;.[5] -> signals/gui/datagenerator/Function2DToolBar$2.this$0 -> signals/gui/datagenerator/ReImFunction2DToolBar.function
+signals/core/RealImagFunction2D 0xa644fd768 strong False root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.system -> signals/core/OperatorSystem2D.output -> java/lang/ref/SoftReference.referent

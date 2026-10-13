@@ -1,0 +1,31 @@
+{
+  "objects": 290460,
+  "documents": 13,
+  "strongDocuments": 12
+}
+signals/core/RealImagFunction2D 0x6808148b0 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/RealImagFunction2D 0x680a7b7d8 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/OperatorSystem2D 0x6814fd0c8 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewUnaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.system
+signals/core/RealImagFunction2D 0x6816e64d0 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/RealImagFunction2D 0x6821ee4b0 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/RealImagFunction2D 0x680784720 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/RealImagFunction2D 0x681914d10 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.list -> signals/gui/HorizontalThumbnailList.model -> signals/gui/HorizontalThumbnailList$MyDefaultTableModel.dataVector -> java/util/Vector.elementData -> [Ljava/lang/Object;.[0] -> java/util/Vector.elementData -> [Ljava/lang/Object;.[1] -> signals/gui/CalculatorListItem.graphic -> signals/gui/Function2DThumbnailGraphic.function
+signals/core/OperatorSystem2D 0x681915988 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.system
+signals/core/RealImagFunction2D 0x681343760 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/RealImagFunction2D 0x680d6a7f0 strong True root 0x5
+class java/awt/KeyboardFocusManager.focusOwner -> signals/gui/VerticalThumbnailList.cellRenderer -> signals/gui/ThumbnailListRenderer.thumbnailProducer
+signals/core/RealImagFunction2D 0x681d84bf8 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/RealImagFunction2D 0x68345b108 strong True root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/DialogTemplate$OKAction.this$0 -> signals/gui/SaveComplexDialog.function
+signals/core/RealImagFunction2D 0x6834b44a0 strong False root 0x2
+javax/swing/JButton$AccessibleJButton.this$0 -> javax/swing/JButton.action -> signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction.this$0 -> signals/gui/datagenerator/OperationCalculator2D.system -> signals/core/OperatorSystem2D.output -> java/lang/ref/SoftReference.referent

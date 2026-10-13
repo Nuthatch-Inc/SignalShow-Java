@@ -1,0 +1,101 @@
+[
+  {
+    "source": "Memory constant",
+    "size": 512,
+    "previousDimensions": [
+      256,
+      256
+    ],
+    "interactionMilliseconds": 2437
+  },
+  {
+    "source": "Memory cylinder",
+    "size": 512,
+    "previousDimensions": [
+      256,
+      256
+    ],
+    "interactionMilliseconds": 2299
+  },
+  {
+    "source": "Memory noise",
+    "size": 1024,
+    "previousDimensions": [
+      512,
+      512
+    ],
+    "interactionMilliseconds": 2326
+  },
+  {
+    "source": "Memory constant",
+    "size": 1024,
+    "previousDimensions": [
+      512,
+      512
+    ],
+    "interactionMilliseconds": 2594
+  },
+  {
+    "source": "Memory cylinder",
+    "size": 1024,
+    "previousDimensions": [
+      512,
+      512
+    ],
+    "interactionMilliseconds": 2472
+  },
+  {
+    "source": "Memory noise",
+    "size": 512,
+    "previousDimensions": [
+      256,
+      256
+    ],
+    "interactionMilliseconds": 2174
+  },
+  {
+    "source": "Memory constant",
+    "size": 512,
+    "previousDimensions": [
+      256,
+      256
+    ],
+    "interactionMilliseconds": 2215
+  },
+  {
+    "source": "Memory cylinder",
+    "size": 512,
+    "previousDimensions": [
+      256,
+      256
+    ],
+    "interactionMilliseconds": 2186
+  },
+  {
+    "source": "Memory noise",
+    "size": 1024,
+    "previousDimensions": [
+      512,
+      512
+    ],
+    "interactionMilliseconds": 2363
+  },
+  {
+    "source": "Memory constant",
+    "size": 1024,
+    "previousDimensions": [
+      512,
+      512
+    ],
+    "interactionMilliseconds": 2426
+  },
+  {
+    "source": "Memory cylinder",
+    "size": 1024,
+    "previousDimensions": [
+      512,
+      512
+    ],
+    "interactionMilliseconds": 2548
+  }
+]

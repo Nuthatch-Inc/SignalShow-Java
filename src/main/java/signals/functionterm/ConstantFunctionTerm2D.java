@@ -1,6 +1,7 @@
 package signals.functionterm;
 
 import java.awt.image.renderable.ParameterBlock;
+import java.util.Arrays;
 
 import javax.media.jai.Interpolation;
 import javax.media.jai.InterpolationNearest;
@@ -33,6 +34,15 @@ public class ConstantFunctionTerm2D extends ImageFunctionTerm2D {
 		model.setName("Constant");
 		
 		model.setDocPath("/functiondoc/constant.html");
+	}
+
+	@Override
+	public double[] create(int width, int height, boolean zeroCentered) {
+		// A constant has infinite support; the previous image-editor extent
+		// must not crop it when the document size or origin changes.
+		double[] data = new double[width * height];
+		Arrays.fill(data, getAmplitude());
+		return data;
 	}
 
 	@Override

@@ -348,7 +348,9 @@ public class VerticalThumbnailList extends JList {
 	  */
 	 public void removeItem( Object toRemove ) {
 
-		 model.removeElement( toRemove ); 
+		 model.removeElement( toRemove );
+		 if (getCellRenderer() instanceof ThumbnailListRenderer)
+			 ((ThumbnailListRenderer) getCellRenderer()).releaseThumbnail(toRemove);
 
 	 } 
 

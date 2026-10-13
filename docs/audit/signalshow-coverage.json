@@ -7,17 +7,17 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 85% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 84% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "memory-bounded-2d"
+      "gui-demo-numerics"
     ],
     "nextIds": [
       "memory-lifecycle",
-      "gui-demo-numerics"
+      "gui-demo-settings"
     ]
   },
   "math": [
@@ -1355,15 +1355,17 @@
       "area": "2D images",
       "source": "src/main/java/signals/functionterm/ConstantFunctionTerm2D.java",
       "checks": {
-        "definition": "unreviewed",
-        "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "definition": "verified",
+        "equations": "partial",
+        "numerics": "verified",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Existing infinite-support constant definition; actual Cartesian/magnitude-phase image grids, both origins, ordinary resize/edit chains. Native samples verified through 1024 square.",
+      "remaining": "Full handbook cross-reference and presentation of irrelevant general image geometry controls remain outside this usage batch.",
+      "evidence": [
+        "memory-usage-2026-10-13"
+      ]
     },
     {
       "id": "image2DList:EFunctionTerm2D",
@@ -2885,37 +2887,40 @@
       "area": "memory",
       "title": "Measure ordinary 2D creation and operations",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Record JVM heap limit, heap usage, process memory and elapsed time.",
         "Create/edit/apply threshold and arithmetic at 256×256, 512×512 and, if healthy, 1024×1024.",
         "Record steady and peak observations per workload; stop on unresponsiveness."
       ],
       "expected": "A bounded measured envelope distinguishes ordinary defects from capacity limits.",
-      "scope": "Short isolated process measurements, no deliberate machine-wide memory exhaustion.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "scope": "One native macOS process per run, 6 GiB JVM limit, 256/512/1024 images, short view/export sequence. Not an exhaustion test or general capacity guarantee.",
+      "evidence": [
+        "memory-usage-2026-10-13"
+      ],
+      "summary": "Three images and threshold/multiplication stay responsive through 1024 square. Fixed a major Constant resize error; all exported chain samples now match. Heap/RSS measured; remaining retention is tracked separately.",
+      "environment": "macOS arm64/JDK 25; 503-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "memory-lifecycle",
       "area": "memory",
       "title": "Memory after replacing views and closing test documents",
       "priority": "P1",
-      "status": "pending",
+      "status": "issue",
       "steps": [
         "Create three modest images and one operation chain.",
         "Switch views briefly, delete the test documents, and sample retained owners/heap."
       ],
       "expected": "Document retained references and a measured trend; do not infer a leak solely from delayed collection.",
-      "scope": "Bounded lifetime check; long soak testing remains manual unless specifically requested.",
+      "scope": "Measured native CUA/macOS retention and actual root paths. General manual-use/Windows behavior remains unverified.",
       "evidence": [
-        "demos-2026-10-13"
+        "demos-2026-10-13",
+        "memory-usage-2026-10-13"
       ],
-      "summary": "Animation timer survival fixed and native queue removal verified. Complete panel reclamation and ordinary document/view memory remain unmeasured; one Convolve2D object persists in the bounded heap snapshot.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "summary": "Renderer and closed-save ownership fixed, with before/after heap paths. Six models remain strongly reachable through native accessibility roots; collected heap is 484.8 MiB after all five documents are deleted.",
+      "environment": "macOS arm64/JDK 25; 503-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "memory-large-images",
@@ -3409,6 +3414,26 @@
         "demos-2026-10-13"
       ],
       "environment": "Target environment to be recorded",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-constant-grid",
+      "area": "usage",
+      "title": "Keep Constant images and linked results correct when resizing",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create a Constant image and use it in threshold/arithmetic chains.",
+        "Enlarge sources from 256 to 512 and 1024; edit amplitudes and verify every output sample.",
+        "Check an uncentered rectangular constant and recover from a failed save."
+      ],
+      "expected": "The constant covers the entire requested grid and linked operations follow edits.",
+      "scope": "Native centered chains and an uncentered 512×256 constant; production Cartesian/magnitude-phase, both origins, resizing and amplitude edits.",
+      "summary": "Fixed old finite image extent cropping a mathematically constant function. Native exports and four formerly failing regressions pass.",
+      "evidence": [
+        "memory-usage-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK 25; 503-test package",
       "reviewedOn": "2026-10-13"
     }
   ],
@@ -3997,19 +4022,79 @@
         "docs/audit/evidence/2026-10-13-1d-chain-before.png",
         "docs/audit/evidence/2026-10-13-1d-reopened.png"
       ]
+    },
+    "memory-usage-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25; final 503-test package; native CUA, one app, sampled RSS and collected heap paths",
+      "summary": "Measured ordinary three-source/two-operation workloads at 256, 512 and 1024 square. Fixed Constant extent loss and two retained-data ownership paths; native sample oracles pass after correction.",
+      "limits": "Native accessibility retention remains after cleanup. One-second observed peaks, not capacity certification; Windows, FFT memory and long chains untested.",
+      "sources": [
+        "src/main/java/signals/functionterm/ConstantFunctionTerm2D.java",
+        "src/main/java/signals/gui/SaveComplexDialog.java",
+        "src/main/java/signals/gui/ThumbnailListRenderer.java",
+        "src/main/java/signals/gui/VerticalThumbnailList.java",
+        "src/test/java/signals/core/OperationResizeWorkflowTest.java",
+        "src/test/java/signals/core/ThumbnailLifecycleWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-memory.md",
+        "docs/audit/evidence/2026-10-13-memory-vmflags.txt",
+        "docs/audit/evidence/2026-10-13-memory-samples.csv",
+        "docs/audit/evidence/2026-10-13-memory-after-samples.csv",
+        "docs/audit/evidence/2026-10-13-memory-comparison.json",
+        "docs/audit/evidence/2026-10-13-memory-before-values.json",
+        "docs/audit/evidence/2026-10-13-memory-after-values.json",
+        "docs/audit/evidence/2026-10-13-memory-before-root-paths.json",
+        "docs/audit/evidence/2026-10-13-memory-after-root-paths.json",
+        "docs/audit/evidence/2026-10-13-memory-before-root-paths.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-root-paths.txt",
+        "docs/audit/evidence/2026-10-13-memory-before-native.log",
+        "docs/audit/evidence/2026-10-13-memory-after-native.log",
+        "docs/audit/evidence/2026-10-13-memory-before-interactions.json",
+        "docs/audit/evidence/2026-10-13-memory-after-interactions.json",
+        "docs/audit/evidence/2026-10-13-memory-constant-before.png",
+        "docs/audit/evidence/2026-10-13-memory-constant-after.png",
+        "docs/audit/evidence/2026-10-13-memory-after-1024.png",
+        "docs/audit/evidence/2026-10-13-memory-after-empty-ax.txt",
+        "docs/audit/evidence/2026-10-13-memory-corner-recovery-ax.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-package.log",
+        "docs/audit/evidence/2026-10-13-memory-empty-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-256-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-512-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-1024-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-live-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-deleted-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-empty-histogram.txt",
+        "docs/audit/evidence/2026-10-13-memory-live-histogram.txt",
+        "docs/audit/evidence/2026-10-13-memory-deleted-histogram.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-empty-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-256-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-512-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-1024-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-live-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-deleted-heap.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-empty-histogram.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-live-histogram.txt",
+        "docs/audit/evidence/2026-10-13-memory-after-deleted-histogram.txt",
+        "docs/audit/evidence/2026-10-13-memory-constant-before-tests.log",
+        "docs/audit/evidence/2026-10-13-memory-constant-focused.log",
+        "docs/audit/evidence/2026-10-13-memory-retention-before-tests.log",
+        "docs/audit/evidence/2026-10-13-memory-retention-focused.log",
+        "docs/audit/evidence/2026-10-13-memory-hprof-roots.py",
+        "docs/audit/evidence/2026-10-13-memory-verifier.py"
+      ]
     }
   },
   "limitations": [
     {
       "id": "dense-memory",
       "title": "Dense arrays and intermediate results require substantial memory",
-      "basis": "source",
+      "basis": "measurement",
       "impact": "Memory scales with pixel count and the number of retained source/result/channel arrays. Doubling both image dimensions multiplies one array’s payload by four. FFTs and other operations may allocate additional buffers.",
-      "scope": "Architecture observed in source; peak memory, practical limits and crash causes remain unmeasured.",
-      "next": "Measure ordinary workloads and retained owners before choosing refactors. The removed 2 GiB launcher cap is not retained as a product requirement.",
+      "scope": "Short native three-source/two-operation workload measured through 1024 square. After-fix heap checkpoints 71.4/184.2/493.0 MiB; overall sampled RSS peak 1411.6 MiB. Not general capacity certification.",
+      "next": "Separate live array costs from native accessibility retention; verify Windows and additional ordinary algorithms before setting broader limits. The obsolete 2 GiB launcher cap remains removed.",
       "evidence": [
         "memory-source-2026-10-12",
-        "heap-policy-2026-10-12"
+        "heap-policy-2026-10-12",
+        "memory-usage-2026-10-13"
       ]
     },
     {
@@ -4065,6 +4150,17 @@
       "next": "Consider replacement safeguards with the persistence design after ordinary workflow stabilization.",
       "evidence": [
         "dialogs-2026-10-13"
+      ]
+    },
+    {
+      "id": "native-accessibility-retention",
+      "title": "Native accessibility can retain obsolete editor models during the audit",
+      "basis": "measurement",
+      "impact": "After five test documents are deleted, JNI-local accessibility roots still reach six models and collected heap remains 484.8 MiB. Closed-save and main-thumbnail ownership have been removed.",
+      "scope": "macOS/JDK 25 under CUA accessibility interaction; ordinary manual-use and Windows applicability unverified.",
+      "next": "Isolate native root lifetime and explicit editor cleanup. Do not infer a cross-platform leak solely from this automated run.",
+      "evidence": [
+        "memory-usage-2026-10-13"
       ]
     }
   ],

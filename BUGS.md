@@ -406,3 +406,37 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Propagate write errors to SaveComplexDialog, parent its error message to that dialog, retain it on failure, and close file resources on all exits.
 - Verification: Native retry, cancellation, subsequent save/export/open and replacement checks pass; two 1D/2D failure/retry regressions and the full 497-test package pass. Windows remains untested.
 - Evidence: [File dialog audit](docs/audit/evidence/2026-10-13-dialogs.md).
+
+
+---
+
+- ID: BUG-029
+- Title: Enlarged Constant images become a finite patch of the original size
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: Create an Image Constant at 256×256, use it in multiplication, then enlarge source images to 512 or 1024. The Constant fills only its original 256-square extent; linked products contain large incorrect zero regions.
+- Correction: Generate the amplitude at every requested sample, independent of the old image-editor extent and origin, as required by the existing constant definition.
+- Verification: Four before-failing Cartesian/magnitude-phase/origin resize regressions; full 503-test package; native 256/512/1024 chains and uncentered 512×256 constant verified sample by sample.
+- Evidence: [Memory and ordinary-size audit](docs/audit/evidence/2026-10-13-memory.md).
+
+---
+
+- ID: BUG-030
+- Title: Deleted thumbnails and closed complex-save dialogs retain document data
+- Status: resolved within the identified paths
+- Date: 2026-10-13
+- Reproduction: Delete all native test documents after creation, edits and saves; a renderer and disposed save-dialog controls still lead to document/result data in a collected heap.
+- Correction: Release removed thumbnail references and clear each disposed complex-save dialog's function reference.
+- Verification: Before-failing renderer deletion regression, surviving-row check, native ownership paths gone, and full 503-test package. Batch retained heap decreased from 618.2 to 484.8 MiB; remaining native accessibility ownership is BUG-031.
+- Evidence: [Memory ownership audit](docs/audit/evidence/2026-10-13-memory.md).
+
+---
+
+- ID: BUG-031
+- Title: Native accessibility keeps obsolete Swing editor models reachable during the audit
+- Status: investigating
+- Date: 2026-10-13
+- Reproduction: After the bounded image workflow and deletion of all five documents, six model objects remain strongly reachable through JNI-local accessibility roots (operation buttons and dimension combo boxes). Collected heap remains 484.8 MiB after BUG-030 cleanup.
+- Scope: macOS/JDK 25 with CUA accessibility interaction. Manual-use and Windows behavior unverified; do not generalize to all environments.
+- Next: Isolate native root lifetime and explicit editor cleanup, then compare on Windows or without accessibility interaction.
+- Evidence: [Memory ownership audit](docs/audit/evidence/2026-10-13-memory.md).

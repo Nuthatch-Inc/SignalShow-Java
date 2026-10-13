@@ -1,0 +1,3 @@
+90566:
+garbage-first heap   total reserved 6291456K, committed 1748992K, used 496407K [0x0000000a62800000, 0x0000000be2800000)
+ region size 4096K, 0 young (0K), 0 survivors (0K)

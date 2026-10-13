@@ -51,10 +51,18 @@ public class ThumbnailListRenderer extends JPanel implements ListCellRenderer, T
 	//	thumbnailProducer.paintSmallGraphic((Graphics2D)g);
 		Dimension d = getPreferredSize(); 
 	
-		thumbnailProducer.paintGraphic((Graphics2D)g, d.width, d.height );
+		if (thumbnailProducer != null)
+			thumbnailProducer.paintGraphic((Graphics2D)g, d.width, d.height );
 
 	} 
 	
+	void releaseThumbnail(Object removed) {
+		if (thumbnailProducer == removed) {
+			thumbnailProducer = null;
+			setToolTipText(null);
+		}
+	}
+
 	public Component getTableCellRendererComponent(JTable table, 
 			Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 

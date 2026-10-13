@@ -1,0 +1,3 @@
+88988:
+garbage-first heap   total reserved 6291456K, committed 139264K, used 74254K [0x0000000680000000, 0x0000000800000000)
+ region size 4096K, 9 young (36864K), 0 survivors (0K)

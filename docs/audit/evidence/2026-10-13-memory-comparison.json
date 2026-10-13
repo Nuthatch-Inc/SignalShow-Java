@@ -1,0 +1,245 @@
+{
+  "before": {
+    "samples": 523,
+    "elapsedSeconds": 528.931,
+    "sampledOverallPeakRssMiB": 1580.46875,
+    "stages": {
+      "empty": {
+        "rssPeakMiB": 176.078125,
+        "lastRssMiB": 172.84375,
+        "firstElapsedSeconds": 0.003,
+        "lastElapsedSeconds": 17.218
+      },
+      "256-creation": {
+        "rssPeakMiB": 461.859375,
+        "lastRssMiB": 377.515625,
+        "firstElapsedSeconds": 18.232,
+        "lastElapsedSeconds": 126.672
+      },
+      "256-ready": {
+        "rssPeakMiB": 377.5625,
+        "lastRssMiB": 348.140625,
+        "firstElapsedSeconds": 127.686,
+        "lastElapsedSeconds": 173.283
+      },
+      "256-export": {
+        "rssPeakMiB": 431.84375,
+        "lastRssMiB": 431.84375,
+        "firstElapsedSeconds": 174.296,
+        "lastElapsedSeconds": 183.407
+      },
+      "512-resize": {
+        "rssPeakMiB": 812.359375,
+        "lastRssMiB": 624.21875,
+        "firstElapsedSeconds": 184.422,
+        "lastElapsedSeconds": 233.077
+      },
+      "512-ready": {
+        "rssPeakMiB": 629.21875,
+        "lastRssMiB": 626.390625,
+        "firstElapsedSeconds": 234.09,
+        "lastElapsedSeconds": 254.356
+      },
+      "512-export": {
+        "rssPeakMiB": 748.53125,
+        "lastRssMiB": 740.375,
+        "firstElapsedSeconds": 255.368,
+        "lastElapsedSeconds": 264.469
+      },
+      "1024-resize": {
+        "rssPeakMiB": 1412.796875,
+        "lastRssMiB": 1295.8125,
+        "firstElapsedSeconds": 265.48,
+        "lastElapsedSeconds": 279.652
+      },
+      "1024-ready": {
+        "rssPeakMiB": 1247.359375,
+        "lastRssMiB": 1031.234375,
+        "firstElapsedSeconds": 280.663,
+        "lastElapsedSeconds": 306.005
+      },
+      "1024-export": {
+        "rssPeakMiB": 1438.109375,
+        "lastRssMiB": 1438.109375,
+        "firstElapsedSeconds": 307.026,
+        "lastElapsedSeconds": 321.204
+      },
+      "1024-live-collection": {
+        "rssPeakMiB": 1430.125,
+        "lastRssMiB": 227.359375,
+        "firstElapsedSeconds": 322.218,
+        "lastElapsedSeconds": 485.364
+      },
+      "resize-bug-evidence": {
+        "rssPeakMiB": 1580.46875,
+        "lastRssMiB": 1541.71875,
+        "firstElapsedSeconds": 486.373,
+        "lastElapsedSeconds": 510.694
+      },
+      "delete-documents": {
+        "rssPeakMiB": 1541.71875,
+        "lastRssMiB": 1536.96875,
+        "firstElapsedSeconds": 511.71,
+        "lastElapsedSeconds": 514.742
+      },
+      "deleted-before-collection": {
+        "rssPeakMiB": 1536.953125,
+        "lastRssMiB": 1534.796875,
+        "firstElapsedSeconds": 515.755,
+        "lastElapsedSeconds": 528.931
+      }
+    },
+    "heap": {
+      "empty": {
+        "usedMiB": 4.658203125,
+        "committedMiB": 16.0
+      },
+      "256": {
+        "usedMiB": 72.513671875,
+        "committedMiB": 136.0
+      },
+      "512": {
+        "usedMiB": 193.66015625,
+        "committedMiB": 640.0
+      },
+      "1024": {
+        "usedMiB": 529.8994140625,
+        "committedMiB": 1776.0
+      },
+      "live": {
+        "usedMiB": 646.8193359375,
+        "committedMiB": 1548.0
+      },
+      "deleted": {
+        "usedMiB": 618.25,
+        "committedMiB": 2040.0
+      }
+    }
+  },
+  "after": {
+    "samples": 276,
+    "elapsedSeconds": 278.522,
+    "sampledOverallPeakRssMiB": 1411.625,
+    "stages": {
+      "empty": {
+        "rssPeakMiB": 175.5,
+        "lastRssMiB": 173.78125,
+        "firstElapsedSeconds": 0.003,
+        "lastElapsedSeconds": 13.162
+      },
+      "256-creation": {
+        "rssPeakMiB": 425.9375,
+        "lastRssMiB": 362.5,
+        "firstElapsedSeconds": 14.166,
+        "lastElapsedSeconds": 54.68
+      },
+      "256-ready": {
+        "rssPeakMiB": 361.203125,
+        "lastRssMiB": 338.265625,
+        "firstElapsedSeconds": 55.698,
+        "lastElapsedSeconds": 87.113
+      },
+      "256-export": {
+        "rssPeakMiB": 392.046875,
+        "lastRssMiB": 392.046875,
+        "firstElapsedSeconds": 88.123,
+        "lastElapsedSeconds": 97.242
+      },
+      "512-resize": {
+        "rssPeakMiB": 551.96875,
+        "lastRssMiB": 551.96875,
+        "firstElapsedSeconds": 98.256,
+        "lastElapsedSeconds": 110.4
+      },
+      "512-ready": {
+        "rssPeakMiB": 554.703125,
+        "lastRssMiB": 548.875,
+        "firstElapsedSeconds": 111.413,
+        "lastElapsedSeconds": 136.738
+      },
+      "512-export": {
+        "rssPeakMiB": 641.46875,
+        "lastRssMiB": 641.46875,
+        "firstElapsedSeconds": 137.754,
+        "lastElapsedSeconds": 146.859
+      },
+      "1024-resize": {
+        "rssPeakMiB": 1267.234375,
+        "lastRssMiB": 1178.671875,
+        "firstElapsedSeconds": 147.873,
+        "lastElapsedSeconds": 161.045
+      },
+      "1024-ready": {
+        "rssPeakMiB": 1199.96875,
+        "lastRssMiB": 1091.9375,
+        "firstElapsedSeconds": 162.053,
+        "lastElapsedSeconds": 184.345
+      },
+      "1024-export": {
+        "rssPeakMiB": 1363.734375,
+        "lastRssMiB": 1146.828125,
+        "firstElapsedSeconds": 185.358,
+        "lastElapsedSeconds": 199.519
+      },
+      "1024-live-collection": {
+        "rssPeakMiB": 1161.125,
+        "lastRssMiB": 906.140625,
+        "firstElapsedSeconds": 200.525,
+        "lastElapsedSeconds": 250.184
+      },
+      "resize-fix-evidence": {
+        "rssPeakMiB": 1411.625,
+        "lastRssMiB": 1411.625,
+        "firstElapsedSeconds": 251.199,
+        "lastElapsedSeconds": 259.295
+      },
+      "delete-documents": {
+        "rssPeakMiB": 1325.703125,
+        "lastRssMiB": 1273.890625,
+        "firstElapsedSeconds": 260.306,
+        "lastElapsedSeconds": 263.346
+      },
+      "deleted-before-collection": {
+        "rssPeakMiB": 1297.46875,
+        "lastRssMiB": 1297.46875,
+        "firstElapsedSeconds": 264.361,
+        "lastElapsedSeconds": 278.522
+      }
+    },
+    "heap": {
+      "empty": {
+        "usedMiB": 4.52734375,
+        "committedMiB": 16.0
+      },
+      "256": {
+        "usedMiB": 71.41015625,
+        "committedMiB": 120.0
+      },
+      "512": {
+        "usedMiB": 184.2138671875,
+        "committedMiB": 656.0
+      },
+      "1024": {
+        "usedMiB": 493.0029296875,
+        "committedMiB": 1096.0
+      },
+      "live": {
+        "usedMiB": 514.8720703125,
+        "committedMiB": 1160.0
+      },
+      "deleted": {
+        "usedMiB": 484.7724609375,
+        "committedMiB": 1708.0
+      }
+    }
+  },
+  "cornerRecovery": {
+    "size": [
+      512,
+      256
+    ],
+    "real": -2.5,
+    "imaginary": 0,
+    "sha256": "7086f86d974818973a205a95a29c962eb15880a4164e6ef81f85b026c7453b77"
+  }
+}

@@ -1,0 +1,48 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+			5 scroll bar (selectable)
+			6 scroll bar (selectable)
+	7 close button
+	8 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	9 minimize button
+	10 text SignalShow
+11 menu bar
+	12 SignalShowRogerAudit
+	13 File
+	14 1D
+	15 2D
+	16 Help
+
+The focused UI element is 4 list (selectable) Description: list, Value: 0

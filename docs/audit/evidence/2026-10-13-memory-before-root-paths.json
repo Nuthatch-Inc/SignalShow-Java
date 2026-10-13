@@ -1,0 +1,479 @@
+{
+  "file": "signalshow-deleted-88988.hprof",
+  "objects": 290460,
+  "classes": 5640,
+  "roots": 6089,
+  "stronglyReachableObjects": 274724,
+  "documents": [
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x6808148b0",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x6829ea1e8",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x683802b28",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x683802520",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x683801448",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x680a7b7d8",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x681b720b0",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x6807f4940",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x6807f4338",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x6807f3260",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/OperatorSystem2D",
+      "id": "0x6814fd0c8",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x681522320",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x68082da08",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewUnaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewUnaryOperationAction",
+          "id": "0x68082cde0",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0x6808279a0",
+          "field": "system",
+          "target": "signals/core/OperatorSystem2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x6816e64d0",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x680f1e750",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x6816e7430",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x6816e7790",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x6816e6990",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x6821ee4b0",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x6821ee778",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x6821ee528",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x6821ee508",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x6821ee7e8",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x680784720",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x683c15100",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x680b903e0",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x680b8fdd8",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x680b8eca0",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x681914d10",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x681889730",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x6809565f0",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction",
+          "id": "0x680956010",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0x680951a58",
+          "field": "list",
+          "target": "signals/gui/HorizontalThumbnailList"
+        },
+        {
+          "owner": "signals/gui/HorizontalThumbnailList",
+          "id": "0x680951c40",
+          "field": "model",
+          "target": "signals/gui/HorizontalThumbnailList$MyDefaultTableModel"
+        },
+        {
+          "owner": "signals/gui/HorizontalThumbnailList$MyDefaultTableModel",
+          "id": "0x680952f60",
+          "field": "dataVector",
+          "target": "java/util/Vector"
+        },
+        {
+          "owner": "java/util/Vector",
+          "id": "0x680952fb0",
+          "field": "elementData",
+          "target": "[Ljava/lang/Object;"
+        },
+        {
+          "owner": "[Ljava/lang/Object;",
+          "id": "0x680953390",
+          "field": "[0]",
+          "target": "java/util/Vector"
+        },
+        {
+          "owner": "java/util/Vector",
+          "id": "0x6809533a8",
+          "field": "elementData",
+          "target": "[Ljava/lang/Object;"
+        },
+        {
+          "owner": "[Ljava/lang/Object;",
+          "id": "0x6809533c8",
+          "field": "[1]",
+          "target": "signals/gui/CalculatorListItem"
+        },
+        {
+          "owner": "signals/gui/CalculatorListItem",
+          "id": "0x6818829e0",
+          "field": "graphic",
+          "target": "signals/gui/Function2DThumbnailGraphic"
+        },
+        {
+          "owner": "signals/gui/Function2DThumbnailGraphic",
+          "id": "0x681882a00",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/OperatorSystem2D",
+      "id": "0x681915988",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x681889730",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x6809565f0",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction",
+          "id": "0x680956010",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0x680951a58",
+          "field": "system",
+          "target": "signals/core/OperatorSystem2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x681343760",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x681344098",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x681343998",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x681343978",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x6813437b8",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x680d6a7f0",
+      "stronglyReachable": true,
+      "root": "0x5",
+      "path": [
+        {
+          "owner": "class java/awt/KeyboardFocusManager",
+          "id": "0x6802df258",
+          "field": "focusOwner",
+          "target": "signals/gui/VerticalThumbnailList"
+        },
+        {
+          "owner": "signals/gui/VerticalThumbnailList",
+          "id": "0x6801bc2a8",
+          "field": "cellRenderer",
+          "target": "signals/gui/ThumbnailListRenderer"
+        },
+        {
+          "owner": "signals/gui/ThumbnailListRenderer",
+          "id": "0x6801c50f8",
+          "field": "thumbnailProducer",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x681d84bf8",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x681e14fc0",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x681d8ce80",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x681d8d1e0",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x681d8a298",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x68345b108",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x680ad8cf8",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x6817f5b38",
+          "field": "action",
+          "target": "signals/gui/DialogTemplate$OKAction"
+        },
+        {
+          "owner": "signals/gui/DialogTemplate$OKAction",
+          "id": "0x6817f5530",
+          "field": "this$0",
+          "target": "signals/gui/SaveComplexDialog"
+        },
+        {
+          "owner": "signals/gui/SaveComplexDialog",
+          "id": "0x6817f4458",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0x6834b44a0",
+      "stronglyReachable": false,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0x681889730",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0x6809565f0",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction",
+          "id": "0x680956010",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0x680951a58",
+          "field": "system",
+          "target": "signals/core/OperatorSystem2D"
+        },
+        {
+          "owner": "signals/core/OperatorSystem2D",
+          "id": "0x681915988",
+          "field": "output",
+          "target": "java/lang/ref/SoftReference"
+        },
+        {
+          "owner": "java/lang/ref/SoftReference",
+          "id": "0x6834b4578",
+          "field": "referent",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    }
+  ]
+}

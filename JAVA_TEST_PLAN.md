@@ -116,7 +116,7 @@ The original 195 tests passed on macOS/JDK 25. Thirty new checks of actual
 FunctionFactory/operation classes and Swing parameter editors exposed six failing
 cases caused by reversed threshold outputs and parameter bindings. After the
 threshold correction, all 225 tests passed. Subsequent search, generator and
-image-editing and operation-layout batches now pass 497 tests and build the executable JAR. The
+image-editing and operation-layout batches now pass 503 tests and build the executable JAR. The
 authoritative matrix records the scope and before/after evidence for each batch.
 
 The new fixtures cover 1D eight-sample signals and 4×2 complex images, both origin

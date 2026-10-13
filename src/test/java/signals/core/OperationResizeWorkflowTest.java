@@ -13,7 +13,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import signals.functionterm.ConstantFunctionTerm1D;
+import signals.functionterm.ConstantFunctionTerm2D;
 import signals.functionterm.XYFunctionTerm2D;
 import signals.gui.Borders;
 import signals.gui.Colors;
@@ -64,6 +66,43 @@ class OperationResizeWorkflowTest {
       assertConstant(result,13,0,image ? width*64 : width);
       assertSame(result,real.getFunction());
     }
+  }
+
+  @ParameterizedTest @CsvSource({"false,true", "false,false", "true,true", "true,false"})
+  void constantImageChannelsCoverTheWholeGridAfterResize(boolean polar, boolean centered) {
+    FunctionPart2D first = imageConstant(polar ? 5 : 2);
+    FunctionPart2D second = imageConstant(polar ? 0.5 : 3);
+    Function2D input = polar
+        ? new MagPhaseFunction2D(first, second, "constant polar", 128, 64, centered)
+        : new RealImagFunction2D(first, second, "constant Cartesian", 128, 64, centered);
+    Function2D multiplier = new RealImagFunction2D(imageConstant(2), imageConstant(0),
+        "multiplier", 128, 64, centered);
+    OperatorSystem product = system(true, new FunctionProducer[]{input,multiplier},
+        new TimesOp(new ParameterBlock()), FUNCTION, BINARY_OP_TIER_2, FUNCTION);
+    double real = polar ? 5 * Math.cos(0.5) : 2;
+    double imaginary = polar ? 5 * Math.sin(0.5) : 3;
+    assertConstant(product.getFunction(), 2*real, 2*imaginary, 128*64);
+    for (int[] size : new int[][]{{256,128},{64,32}}) {
+      resize(input,size[0],size[1]);
+      assertNull(product.getFunction());
+      resize(multiplier,size[0],size[1]);
+      assertConstant(input,real,imaginary,size[0]*size[1]);
+      assertConstant(product.getFunction(),2*real,2*imaginary,size[0]*size[1]);
+    }
+    ConstantFunctionTerm2D term = (ConstantFunctionTerm2D) first.getTermsList().get(0);
+    term.setAmplitude(polar ? 3 : -1);
+    input.setPartA(first);
+    real = polar ? 3*Math.cos(0.5) : -1;
+    imaginary = polar ? 3*Math.sin(0.5) : 3;
+    assertConstant(product.getFunction(),2*real,2*imaginary,64*32);
+  }
+
+  private static FunctionPart2D imageConstant(double value) {
+    ConstantFunctionTerm2D term = (ConstantFunctionTerm2D) new ConstantFunctionTerm2D().getDefaultInstance();
+    term.setAmplitude(value);
+    term.setWidth(128); term.setHeight(64); // Initial image-editor extent, retained on resize.
+    return new FunctionPart2D(new ArrayList<>(Arrays.asList(term)),
+        new CombineTermsRule(new int[]{CombineTermsRule.FUNCTION_TERM}));
   }
 
   @Test void equalSampleCountDoesNotMakeDifferentImageShapesCompatible() {

@@ -34,6 +34,13 @@ public class SaveComplexDialog extends SaveFunctionDialog {
 
 
 	@Override
+	public void dispose() {
+		super.dispose();
+		// Native accessibility can outlive a closed dialog; release its sample data.
+		function = null;
+	}
+
+	@Override
 	public ImageType getDefaultType() {
 
 		return ImageType.TEXT;

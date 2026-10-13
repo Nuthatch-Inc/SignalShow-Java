@@ -1,0 +1,347 @@
+{
+  "file": "signalshow-deleted-90566.hprof",
+  "objects": 287720,
+  "classes": 5637,
+  "roots": 6188,
+  "stronglyReachableObjects": 272037,
+  "documents": [
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0xa63127a38",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JList$AccessibleJList$AccessibleJListChild",
+          "id": "0xa639245b0",
+          "field": "cellRenderer",
+          "target": "com/apple/laf/AquaComboBoxRenderer"
+        },
+        {
+          "owner": "com/apple/laf/AquaComboBoxRenderer",
+          "id": "0xa63123298",
+          "field": "fComboBox",
+          "target": "javax/swing/JComboBox"
+        },
+        {
+          "owner": "javax/swing/JComboBox",
+          "id": "0xa63121690",
+          "field": "listenerList",
+          "target": "javax/swing/event/EventListenerList"
+        },
+        {
+          "owner": "javax/swing/event/EventListenerList",
+          "id": "0xa63121838",
+          "field": "listenerList",
+          "target": "[Ljava/lang/Object;"
+        },
+        {
+          "owner": "[Ljava/lang/Object;",
+          "id": "0xa6393e950",
+          "field": "[5]",
+          "target": "signals/gui/datagenerator/Function2DToolBar$2"
+        },
+        {
+          "owner": "signals/gui/datagenerator/Function2DToolBar$2",
+          "id": "0xa63125658",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/ReImFunction2DToolBar"
+        },
+        {
+          "owner": "signals/gui/datagenerator/ReImFunction2DToolBar",
+          "id": "0xa63127ae0",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/OperatorSystem2D",
+      "id": "0xa63d0b550",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0xa639fdc98",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0xa639e36c0",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewUnaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewUnaryOperationAction",
+          "id": "0xa639e2a98",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0xa639dd718",
+          "field": "system",
+          "target": "signals/core/OperatorSystem2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0xa63de0130",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0xa63ddf1c8",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0xa63df1158",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction",
+          "id": "0xa63df14e8",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0xa63de98e8",
+          "field": "list",
+          "target": "signals/gui/HorizontalThumbnailList"
+        },
+        {
+          "owner": "signals/gui/HorizontalThumbnailList",
+          "id": "0xa63deca10",
+          "field": "model",
+          "target": "signals/gui/HorizontalThumbnailList$MyDefaultTableModel"
+        },
+        {
+          "owner": "signals/gui/HorizontalThumbnailList$MyDefaultTableModel",
+          "id": "0xa63ded138",
+          "field": "dataVector",
+          "target": "java/util/Vector"
+        },
+        {
+          "owner": "java/util/Vector",
+          "id": "0xa63ded168",
+          "field": "elementData",
+          "target": "[Ljava/lang/Object;"
+        },
+        {
+          "owner": "[Ljava/lang/Object;",
+          "id": "0xa63ded188",
+          "field": "[0]",
+          "target": "java/util/Vector"
+        },
+        {
+          "owner": "java/util/Vector",
+          "id": "0xa63ded1a0",
+          "field": "elementData",
+          "target": "[Ljava/lang/Object;"
+        },
+        {
+          "owner": "[Ljava/lang/Object;",
+          "id": "0xa63ded1c0",
+          "field": "[1]",
+          "target": "signals/gui/CalculatorListItem"
+        },
+        {
+          "owner": "signals/gui/CalculatorListItem",
+          "id": "0xa62edb200",
+          "field": "graphic",
+          "target": "signals/gui/Function2DThumbnailGraphic"
+        },
+        {
+          "owner": "signals/gui/Function2DThumbnailGraphic",
+          "id": "0xa62edb220",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0xa62c90968",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "sun/lwawt/macosx/CAccessible",
+          "id": "0xa62dc3b78",
+          "field": "accessible",
+          "target": "com/apple/laf/AquaComboBoxPopup"
+        },
+        {
+          "owner": "com/apple/laf/AquaComboBoxPopup",
+          "id": "0xa62da6178",
+          "field": "comboBox",
+          "target": "javax/swing/JComboBox"
+        },
+        {
+          "owner": "javax/swing/JComboBox",
+          "id": "0xa62da5ab8",
+          "field": "listenerList",
+          "target": "javax/swing/event/EventListenerList"
+        },
+        {
+          "owner": "javax/swing/event/EventListenerList",
+          "id": "0xa62da5c60",
+          "field": "listenerList",
+          "target": "[Ljava/lang/Object;"
+        },
+        {
+          "owner": "[Ljava/lang/Object;",
+          "id": "0xa62dc59d8",
+          "field": "[5]",
+          "target": "signals/gui/datagenerator/Function2DToolBar$2"
+        },
+        {
+          "owner": "signals/gui/datagenerator/Function2DToolBar$2",
+          "id": "0xa62da9a80",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/ReImFunction2DToolBar"
+        },
+        {
+          "owner": "signals/gui/datagenerator/ReImFunction2DToolBar",
+          "id": "0xa62c90a10",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/OperatorSystem2D",
+      "id": "0xa63a22588",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0xa63ddf1c8",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0xa63df1158",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction",
+          "id": "0xa63df14e8",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0xa63de98e8",
+          "field": "system",
+          "target": "signals/core/OperatorSystem2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0xa636ff220",
+      "stronglyReachable": true,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "sun/lwawt/macosx/CAccessible",
+          "id": "0xa634f92c0",
+          "field": "accessible",
+          "target": "com/apple/laf/AquaComboBoxPopup"
+        },
+        {
+          "owner": "com/apple/laf/AquaComboBoxPopup",
+          "id": "0xa636b20f0",
+          "field": "comboBox",
+          "target": "javax/swing/JComboBox"
+        },
+        {
+          "owner": "javax/swing/JComboBox",
+          "id": "0xa636b18f0",
+          "field": "listenerList",
+          "target": "javax/swing/event/EventListenerList"
+        },
+        {
+          "owner": "javax/swing/event/EventListenerList",
+          "id": "0xa636c3840",
+          "field": "listenerList",
+          "target": "[Ljava/lang/Object;"
+        },
+        {
+          "owner": "[Ljava/lang/Object;",
+          "id": "0xa638cd490",
+          "field": "[5]",
+          "target": "signals/gui/datagenerator/Function2DToolBar$2"
+        },
+        {
+          "owner": "signals/gui/datagenerator/Function2DToolBar$2",
+          "id": "0xa636c3850",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/ReImFunction2DToolBar"
+        },
+        {
+          "owner": "signals/gui/datagenerator/ReImFunction2DToolBar",
+          "id": "0xa636c3860",
+          "field": "function",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    },
+    {
+      "object": "signals/core/RealImagFunction2D",
+      "id": "0xa644fd768",
+      "stronglyReachable": false,
+      "root": "0x2",
+      "path": [
+        {
+          "owner": "javax/swing/JButton$AccessibleJButton",
+          "id": "0xa63ddf1c8",
+          "field": "this$0",
+          "target": "javax/swing/JButton"
+        },
+        {
+          "owner": "javax/swing/JButton",
+          "id": "0xa63df1158",
+          "field": "action",
+          "target": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator$NewBinaryOperationAction",
+          "id": "0xa63df14e8",
+          "field": "this$0",
+          "target": "signals/gui/datagenerator/OperationCalculator2D"
+        },
+        {
+          "owner": "signals/gui/datagenerator/OperationCalculator2D",
+          "id": "0xa63de98e8",
+          "field": "system",
+          "target": "signals/core/OperatorSystem2D"
+        },
+        {
+          "owner": "signals/core/OperatorSystem2D",
+          "id": "0xa63a22588",
+          "field": "output",
+          "target": "java/lang/ref/SoftReference"
+        },
+        {
+          "owner": "java/lang/ref/SoftReference",
+          "id": "0xa644fd840",
+          "field": "referent",
+          "target": "signals/core/RealImagFunction2D"
+        }
+      ]
+    }
+  ]
+}

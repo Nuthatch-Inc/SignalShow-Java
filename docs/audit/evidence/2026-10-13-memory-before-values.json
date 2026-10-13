@@ -1,0 +1,41 @@
+[
+  {
+    "size": 256,
+    "samples": 65536,
+    "thresholdMatchesEverySourceSample": true,
+    "productMatchesWholeGrid": true,
+    "mismatchedProductPixels": 0,
+    "productMatchesOriginal256SquareExtent": true,
+    "sha256": {
+      "source": "bd3d712e96beb9bf50788256cec1c4b94cb06fa3bb82998bb7e485b1350860f2",
+      "threshold": "f79631ef4c225181948a3533d5aa6c0b305747a85efd1f4f3b2d8a2bf0922aca",
+      "product": "9feec93ecc1d88b9768d5ffa7ca75bbf70f2047019a2ac7c04b5f66e43346191"
+    }
+  },
+  {
+    "size": 512,
+    "samples": 262144,
+    "thresholdMatchesEverySourceSample": true,
+    "productMatchesWholeGrid": false,
+    "mismatchedProductPixels": 98217,
+    "productMatchesOriginal256SquareExtent": true,
+    "sha256": {
+      "source": "3f420bdfaa4e3b9fe80300aad0493b538129437a488c03de1f8ea49eb51d5f65",
+      "threshold": "1c584713dcb6bc5684b59006dd5f2c3b81badcdb3935b840162cdfd75c8e4730",
+      "product": "92b50f2c7e54c48aac70ab6d2611a40a74014a1eeb83a250c84a2dfa286ebc74"
+    }
+  },
+  {
+    "size": 1024,
+    "samples": 1048576,
+    "thresholdMatchesEverySourceSample": true,
+    "productMatchesWholeGrid": false,
+    "mismatchedProductPixels": 491995,
+    "productMatchesOriginal256SquareExtent": true,
+    "sha256": {
+      "source": "f287beef7906a0ede64e224faf4059ea80794974d37c43a9625cb0baf571ff43",
+      "threshold": "f401ce60781ccf4b2a7194cab31535bd2e806acd0e9ddab9bb11d474afe769ce",
+      "product": "c969899a30703c6aa93d04846cf140e5a8a0afd86b893a980a14d6568ad97f3e"
+    }
+  }
+]
