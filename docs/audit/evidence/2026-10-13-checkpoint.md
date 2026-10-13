@@ -1,7 +1,7 @@
 # SignalShow current checkpoint — October 13, 2026
 
 Continuous Audit remains authorized. `check_usage: true`; last reading October 13:
-weekly 86% remaining, no other applicable window, no usage pause. Follow the
+weekly 85% remaining, no other applicable window, no usage pause. Follow the
 [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 Local commits at verified checkpoints authorized; do not push/release. No
 subagents. Ordinary 2D workflows first; build hundreds of scenarios incrementally;
@@ -9,17 +9,17 @@ defer rare edges and tiny numerical errors.
 
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
 `codex/signalshow-usage-stabilization`, original baseline 28a4ffc. Local commits
-through 83c71e9 cover stabilization/imports, arithmetic/creation/size, complex
+through 5ce15c6 cover stabilization/imports, arithmetic/creation/size, complex
 representation/filtering, and generator replacement. Nothing pushed.
 
-Current batch fixes BUG-028: a failed complex save closed its dialog and a later
-successful save disabled native menus. Two clean-launch/native reproductions;
-retaining the save dialog with its own error message fixes retry and cancellation.
-Complex writers now propagate IO failures and always close resources. Full package
-**497 tests**, zero failures/errors/skips; native open/save/export cancellation,
-retry and explicit overwrite pass. See [file evidence](2026-10-13-dialogs.md).
-Prior BUG-027 animation cleanup is committed; full view reclamation remains open.
-Next: ordinary 1D creation/chain/save regression, then bounded 2D memory.
+Current batch verifies ordinary native 1D sine/rectangle creation and edits,
+multiply→threshold→Real, result plots and source propagation. Fourteen exports
+pass independent formulas (256 complex samples each). Save/reopen in both origins
+preserves names/channels and supports new Squared Magnitude operations. No code
+changed; the **497-test** package remains current. See [1D evidence](2026-10-13-1d.md).
+BUG-028 save retry/menu correction is committed. Native chooser AX/Open actions
+sometimes lag; visual row/Open clicks worked. Next: bounded ordinary 2D memory,
+then document/view lifetime. No full-suite rerun needed for evidence-only changes.
 
 Juliet asked whether typing works again: verified Constant amplitude 2.5, committed
 expression, typed save filename and all 65,536 exported values exactly 2.5 + 0i.

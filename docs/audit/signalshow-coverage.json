@@ -7,17 +7,17 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 86% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 85% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-1d-basic"
+      "memory-bounded-2d"
     ],
     "nextIds": [
-      "memory-bounded-2d",
-      "memory-lifecycle"
+      "memory-lifecycle",
+      "gui-demo-numerics"
     ]
   },
   "math": [
@@ -2618,17 +2618,19 @@
       "area": "usage",
       "title": "Basic 1D creation and operation regression",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create a sine and rectangle; edit their parameters.",
         "Apply threshold/arithmetic, inspect plots, return to editing."
       ],
       "expected": "Shared fixes preserve ordinary 1D workflows.",
       "scope": "Native 1D smoke test.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "evidence": [
+        "usage1d-2026-10-13"
+      ],
+      "summary": "Native sine and rectangle parameters, multiplication/threshold/Real chain, result plots and source edits pass; all samples verified.",
+      "environment": "macOS arm64/JDK 25; 497-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-demos",
@@ -2676,7 +2678,7 @@
       "area": "files",
       "title": "Save/reopen complex 1D samples",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Save/load a complex signal in both origin modes.",
         "Compare both channels, dimensions and name; apply another operation."
@@ -2684,11 +2686,12 @@
       "expected": "Sample content and subsequent use are preserved.",
       "scope": "Actual ComplexIO and file dialogs.",
       "evidence": [
-        "complex-insertion-2026-10-12"
+        "complex-insertion-2026-10-12",
+        "usage1d-2026-10-13"
       ],
-      "summary": "64-sample complex data with a multiword name passes production save/load in both origin modes. Native dialogs and subsequent operations remain pending.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": "2026-10-12"
+      "summary": "Native save/reopen preserves name, dimensions, origin and both complex channels in centered/uncentered modes; subsequent squared magnitude passes.",
+      "environment": "macOS arm64/JDK 25; 497-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "files-image-import",
@@ -3979,6 +3982,20 @@
         "docs/audit/evidence/2026-10-13-dialog-before-native.log",
         "docs/audit/evidence/2026-10-13-dialog-after-native.log",
         "docs/audit/evidence/2026-10-13-dialog-package.log"
+      ]
+    },
+    "usage1d-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25; unchanged 497-test package",
+      "summary": "Native complex sine and rectangle → multiply → threshold → Real, source edits, plots, save/reopen in both origins and squared magnitude. Fourteen exports independently verified.",
+      "limits": "Bounded ordinary 1D regression; Windows and broader 1D scenarios remain untested. Aqua chooser required visual clicks.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-1d.md",
+        "docs/audit/evidence/2026-10-13-1d-verifier.py",
+        "docs/audit/evidence/2026-10-13-1d-verification.json",
+        "docs/audit/evidence/2026-10-13-1d-native.log",
+        "docs/audit/evidence/2026-10-13-1d-chain-before.png",
+        "docs/audit/evidence/2026-10-13-1d-reopened.png"
       ]
     }
   },

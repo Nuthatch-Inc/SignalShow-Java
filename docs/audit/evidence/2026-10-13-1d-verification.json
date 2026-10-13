@@ -1,0 +1,114 @@
+[
+  {
+    "file": "usage1d-rectangle.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 0.0,
+    "descriptor": "Rectangle source",
+    "sha256": "0b8237f610a2bb57a13617929f23fde3b7806a95c9d2ca6e44942419ea6bfe5b"
+  },
+  {
+    "file": "usage1d-sine-before.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 2.220446049250313e-16,
+    "descriptor": "Sine source",
+    "sha256": "9ce6f9fda5b2ba98eb4d1b6033dcc01d87e3e80de67ed57536a7d41af57791bc"
+  },
+  {
+    "file": "usage1d-product-before.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 4.440892098500626e-16,
+    "descriptor": "Sine source x Rectangle source",
+    "sha256": "9a2b8193a501db60a3c6e00e7a0dbdb5fceda404cd905fb6a73ee3fee7d87381"
+  },
+  {
+    "file": "usage1d-threshold-before.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 0.0,
+    "descriptor": "threshold(Sine source x Rectangle source)",
+    "sha256": "a5e6db16aea552e2044950fad2b8a637eb7e5aefaadaf0199546709392ea7536"
+  },
+  {
+    "file": "usage1d-real-before.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 0.0,
+    "descriptor": "Re{threshold(Sine source x Rectangle source)}",
+    "sha256": "0bd053f9eac2cfd38f5c41c86ec36233c2790f403c6d7b79fd9141c7fb372dac"
+  },
+  {
+    "file": "usage1d-sine-after.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 4.440892098500626e-16,
+    "descriptor": "Sine source",
+    "sha256": "9dde389fa134dabf8920797a549e99b92b6c96dcd3848be412bdaddc96bba222"
+  },
+  {
+    "file": "usage1d-product-after.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 8.881784197001252e-16,
+    "descriptor": "Sine source x Rectangle source",
+    "sha256": "af8474a2a58951e6a9338274f9e9b4c223812046aac75855a3dbc677a101f155"
+  },
+  {
+    "file": "usage1d-threshold-after.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 0.0,
+    "descriptor": "threshold(Sine source x Rectangle source)",
+    "sha256": "4f72173749b638f2ba6284bd19f2eb1e3d9d0980e50452d4df3991697ac339a2"
+  },
+  {
+    "file": "usage1d-real-after.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 0.0,
+    "descriptor": "Re{threshold(Sine source x Rectangle source)}",
+    "sha256": "a3fe1046c264e96dc534ea718837722e30b47b5648210f2ed3582572f7935626"
+  },
+  {
+    "file": "usage1d-centered-reopened.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 4.440892098500626e-16,
+    "descriptor": "Sine source",
+    "sha256": "9dde389fa134dabf8920797a549e99b92b6c96dcd3848be412bdaddc96bba222"
+  },
+  {
+    "file": "usage1d-centered-reopened-magnitude.txt",
+    "samples": 256,
+    "zeroCentered": true,
+    "maxAbsoluteError": 3.552713678800501e-15,
+    "descriptor": "||Sine source||\u00b2",
+    "sha256": "0ae539c914b227b799245cdba2d6ca669b9a402cda0ed82bc6531212f67bc414"
+  },
+  {
+    "file": "usage1d-corner-source.txt",
+    "samples": 256,
+    "zeroCentered": false,
+    "maxAbsoluteError": 4.440892098500626e-16,
+    "descriptor": "Sine source",
+    "sha256": "8484405e31634d50e0340fb0180c4106e6ad309615f014b543a1cde94d7f0ccf"
+  },
+  {
+    "file": "usage1d-corner-reopened.txt",
+    "samples": 256,
+    "zeroCentered": false,
+    "maxAbsoluteError": 4.440892098500626e-16,
+    "descriptor": "Sine source",
+    "sha256": "8484405e31634d50e0340fb0180c4106e6ad309615f014b543a1cde94d7f0ccf"
+  },
+  {
+    "file": "usage1d-corner-reopened-magnitude.txt",
+    "samples": 256,
+    "zeroCentered": false,
+    "maxAbsoluteError": 3.552713678800501e-15,
+    "descriptor": "||Sine source||\u00b2",
+    "sha256": "51ce7e70a85711014d0832ac0d4b460ffe97821b9cf5a50aff105715adcc5126"
+  }
+]
