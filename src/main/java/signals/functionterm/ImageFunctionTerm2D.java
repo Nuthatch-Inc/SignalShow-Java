@@ -3,6 +3,7 @@
  */
 package signals.functionterm;
 
+import java.awt.Rectangle;
 import java.awt.image.Raster;
 import java.awt.image.renderable.ParameterBlock;
 import java.lang.ref.SoftReference;
@@ -85,119 +86,57 @@ public abstract class ImageFunctionTerm2D extends AnalyticFunctionTerm2D {
 	}
 	
 	public double[] createScaledPadded( int x_dimension, int y_dimension, boolean zeroCentered ) {
-		
-		int centerX = (int)getCenterX(); 
-		int centerY = (int)getCenterY(); 
-		int width = (int)getWidth(); 
-		int height = (int)getHeight(); 
-		
-		if( zeroCentered ) {
-			
-			centerX += x_dimension/2; 
-			centerY += y_dimension/2; 
+		int centerX = (int)getCenterX() + (zeroCentered ? x_dimension / 2 : 0);
+		int centerY = (int)getCenterY() + (zeroCentered ? y_dimension / 2 : 0);
+		int width = (int)getWidth();
+		int height = (int)getHeight();
+		int imageLeft = centerX - width / 2;
+		int imageTop = y_dimension - centerY - height / 2;
+		int left = Math.max(0, imageLeft);
+		int top = Math.max(0, imageTop);
+		int right = Math.min(x_dimension, imageLeft + width);
+		int bottom = Math.min(y_dimension, imageTop + height);
+		double[] pixels = new double[x_dimension * y_dimension];
+		if( right <= left || bottom <= top ) return pixels;
+
+		// Scale to the requested size, then clip to the canvas. Scaling to the
+		// clipped bounds would squeeze the entire image whenever it is moved.
+		PlanarImage scaledImage = getScaledResizedImage(width, height);
+		int sourceX = left - imageLeft;
+		int sourceY = top - imageTop;
+		int visibleWidth = right - left;
+		int visibleHeight = bottom - top;
+		Raster raster = scaledImage.getData(new Rectangle(sourceX, sourceY, visibleWidth, visibleHeight));
+		double[] content = raster.getPixels(sourceX, sourceY, visibleWidth, visibleHeight, (double[])null);
+		for( int row = 0; row < visibleHeight; row++ ) {
+			System.arraycopy(content, row * visibleWidth, pixels, (top + row) * x_dimension + left, visibleWidth);
 		}
-		
-		centerY = y_dimension - 1 - centerY; 
-		
-		int left = boundValue( centerX - width/2, 0, x_dimension-1 ); 
-		int right = boundValue( centerX + width/2, 0, x_dimension-1 );
-		int top = boundValue( centerY - height/2, 0, y_dimension-1 ); 
-		int bottom = boundValue( centerY + height/2, 0, y_dimension-1 ); 
-		
-		int w = right-left;
-		int h = bottom-top;
-		double[] pixels = new double[x_dimension*y_dimension];
-		// Empty sizes and images outside the canvas have no visible pixels.
-		// JAI rejects zero scale factors, so do not attempt to resize them.
-		if( w <= 0 || h <= 0 ) return pixels;
-		
-		PlanarImage scaledImage = getScaledResizedImage( w, h );
-		Raster outputRaster = scaledImage.getData();
-		double[] content_pixels = new double[w*h];
-		outputRaster.getPixels(0,0,w,h,content_pixels);
-		
-		//set the correct pixels
-		int c_idx = 0; 
-		int idx = 0;
-		for( int j = top; j < bottom; ++j ) {
-			
-			idx = j*x_dimension+left;
-			for( int i=left; i < right; ++i ) {
-			
-				pixels[idx++] = content_pixels[c_idx++];
-				
-			}
-		}
-		
 		return pixels;
 	}
-	
-	
+
 	public double[] createCropped( int x_dimension, int y_dimension, boolean zeroCentered ) {
-		
-		int centerX = (int)getCenterX(); 
-		int centerY = (int)getCenterY(); 
-		int width = (int)getWidth(); 
-		int height = (int)getHeight(); 
-		
-		if( zeroCentered ) {
-			
-			centerX += x_dimension/2; 
-			centerY += y_dimension/2; 
+		int centerX = (int)getCenterX() + (zeroCentered ? x_dimension / 2 : 0);
+		int centerY = (int)getCenterY() + (zeroCentered ? y_dimension / 2 : 0);
+		int width = (int)getWidth();
+		int height = (int)getHeight();
+		int cropLeft = centerX - width / 2;
+		int cropTop = y_dimension - centerY - height / 2;
+		int left = Math.max(0, cropLeft);
+		int top = Math.max(0, cropTop);
+		int right = Math.min(x_dimension, cropLeft + width);
+		int bottom = Math.min(y_dimension, cropTop + height);
+		double[] pixels = new double[x_dimension * y_dimension];
+		if( right <= left || bottom <= top ) return pixels;
+
+		Raster raster = getScaledResizedImage(x_dimension, y_dimension).getData();
+		int visibleWidth = right - left;
+		double[] content = raster.getPixels(left, top, visibleWidth, bottom - top, (double[])null);
+		for( int row = 0; row < bottom - top; row++ ) {
+			System.arraycopy(content, row * visibleWidth, pixels, (top + row) * x_dimension + left, visibleWidth);
 		}
-		
-		centerY = y_dimension - 1 - centerY; 
-		
-		int left = boundValue( centerX - width/2, 0, x_dimension-1 ); 
-		int right = boundValue( centerX + width/2, 0, x_dimension-1 );
-		int top = boundValue( centerY - height/2, 0, y_dimension-1 ); 
-		int bottom = boundValue( centerY + height/2, 0, y_dimension-1 ); 
-		
-		PlanarImage scaledImage = getScaledResizedImage( x_dimension, y_dimension );
-		Raster outputRaster = scaledImage.getData();
-		double[] pixels = new double[x_dimension*y_dimension];
-		outputRaster.getPixels(0,0,x_dimension,y_dimension,pixels);
-		
-		//set the top pixels to 0 
-		int idx = 0;
-		for( int j = 0; j < top; ++j ) {
-			
-			for( int i=0; i < x_dimension; ++i ) {
-				
-				pixels[idx++] = 0; 
-			}
-		}
-		
-		//set the left and right pixels to 0 
-		for( int j = top; j <= bottom; ++j ) {
-			
-			idx = j*x_dimension; 
-			for( int i=0; i < left; ++i ) {
-				
-				pixels[idx++] = 0; 
-			}
-			
-			idx = j*x_dimension + right+1; 
-			for( int i=right+1; i < x_dimension; ++i ) {
-				
-				pixels[idx++] = 0; 
-			}
-		}
-		
-		//set the bottom pixels to 0 
-		idx = (bottom+1)*x_dimension;
-		for( int j = bottom+1; j < y_dimension; ++j ) {
-			
-			for( int i=0; i < x_dimension; ++i ) {
-				
-				pixels[idx++] = 0; 
-			}
-		}
-		
-		
 		return pixels;
 	}
-	
+
 	@Override
 	public double[] create(int x_dimension, int y_dimension, boolean zeroCentered) {
 		

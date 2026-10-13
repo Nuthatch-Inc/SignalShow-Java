@@ -57,7 +57,9 @@ public class DataFunctionTerm2DEditor extends JPanel implements AnalyticFunction
 		if( term instanceof DataFunctionTerm2D && ((DataFunctionTerm2D)term).hasData() ) {
 
 			display.setFunctionTerm(term);
-			showPlot();  
+			showPlot();
+		} else {
+			layout.show(this, "file");
 		}
 
 	}

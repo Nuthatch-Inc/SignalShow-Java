@@ -13,11 +13,11 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-imported-image-editing"
+      "gui-2d-operations"
     ],
     "nextIds": [
       "gui-2d-create",
-      "gui-2d-operations"
+      "gui-2d-search-fixed"
     ]
   },
   "math": [
@@ -1456,13 +1456,14 @@
         "definition": "unreviewed",
         "equations": "unreviewed",
         "numerics": "partial",
-        "parameters": "unreviewed",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Ordinary JPEG/PNG/TIFF/BMP decoding, centered padding and threshold consumption checked; native TIFF pixels exact.",
-      "remaining": "Check amplitude, translation, resizing and preview/model agreement; definition, equations and handbook remain unreviewed.",
+      "scope": "Ordinary file decoding and padding plus imported-image amplitude, translation, half-size scaling, cropping, native previews and linked threshold outputs checked.",
+      "remaining": "Other image variants, drag controls, dimensions and origins require native checks; definition, equations and handbook remain unreviewed.",
       "evidence": [
-        "image-import-2026-10-13"
+        "image-import-2026-10-13",
+        "import-edit-2026-10-13"
       ]
     },
     {
@@ -2428,11 +2429,12 @@
       "expected": "Edits reach the intended term; invalid drafts do not break the editor or leave stale output.",
       "scope": "Native controls; ordinary-sized signals. Record each affected family and input.",
       "evidence": [
-        "two-term-2026-10-12"
+        "two-term-2026-10-12",
+        "import-edit-2026-10-13"
       ],
-      "summary": "Circle/Gaussian two-term native editing and Plot/Edit now pass; component Add/Subtract/Multiply and polar resize pass. Other generator families, grouping and removal remain pending.",
+      "summary": "Scoped analytic channel edits and imported-image amplitude/position/size/crop pass. Full generator-family replacement coverage remains pending.",
       "environment": "Target environment to be recorded with results",
-      "reviewedOn": "2026-10-12"
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-2d-composition",
@@ -3265,17 +3267,18 @@
       "area": "usage",
       "title": "Edit imported-image amplitude, position and size through a linked operation",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Load an asymmetric ordinary image and compare displayed controls with generated samples.",
         "Change amplitude, center and size; inspect preview and Plot, save source and linked operation results."
       ],
       "expected": "Displayed parameters, previews, saved samples and linked results describe the same edited image.",
-      "scope": "Native image term and production generation, initially 256×256; investigate preview/control mismatch seen during import.",
+      "scope": "128×64 production/Swing cases in both origin modes; native centered 256×256 TIFF with amplitude 2, shift (+16,+8), size 128×128, crop and Threshold(200). Other formats/dragging and Windows remain separate.",
       "evidence": [
-        "image-import-2026-10-13"
+        "image-import-2026-10-13",
+        "import-edit-2026-10-13"
       ],
-      "summary": "Import succeeds; normal transformations remain unverified.",
+      "summary": "Amplitude, translation, size and crop now affect imported samples and linked threshold results. Nine regressions and all native TIFF export pixels pass; preview refresh and committed crop across Plot/Edit are verified.",
       "environment": "macOS arm64, JDK 25",
       "reviewedOn": "2026-10-13"
     }
@@ -3672,6 +3675,23 @@
         "docs/audit/evidence/2026-10-13-image-import-threshold.png",
         "docs/audit/evidence/2026-10-13-image-import-verification.json",
         "src/test/java/signals/core/ImageImportWorkflowTest.java"
+      ]
+    },
+    "import-edit-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK 25; 472-test package",
+      "summary": "Fixed ignored imported-image transforms, clipping distortion and stale image previews. Nine regression cases and native source/threshold exports pass.",
+      "limits": "Native TIFF with centered origin; both origins are programmatic. AX dropdown choices require Return before claiming a committed edit. Other variants, dragging and Windows are not certified.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-import-edit.md",
+        "docs/audit/evidence/2026-10-13-import-edit-before.log",
+        "docs/audit/evidence/2026-10-13-import-edit-focused.log",
+        "docs/audit/evidence/2026-10-13-import-edit-package.log",
+        "docs/audit/evidence/2026-10-13-import-edit-native.log",
+        "docs/audit/evidence/2026-10-13-import-edit-resized.png",
+        "docs/audit/evidence/2026-10-13-import-edit-cropped.png",
+        "docs/audit/evidence/2026-10-13-import-edit-verification.json",
+        "src/test/java/signals/core/ImportedImageEditingWorkflowTest.java"
       ]
     }
   },

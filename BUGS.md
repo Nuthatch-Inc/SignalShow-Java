@@ -347,3 +347,15 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Use JDK ImageIO at the native Load Image boundary, preserve raw grayscale/red-channel values, and round padding up to the next power of two.
 - Verification: Six focused import/operation cases, full 463-test package, native JPEG/TIFF loading and every TIFF/threshold pixel pass.
 - Evidence: [Image import audit](docs/audit/evidence/2026-10-13-image-import.md).
+
+
+---
+
+- ID: BUG-024
+- Title: Imported-image edits are ignored and image previews can show old parameters
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: Load a same-sized image, edit amplitude/position/size/crop; output and linked threshold retain original pixels. Image replacement can leave the prior preview, and translation rescales clipped images.
+- Correction: Restrict raw-data reuse to identity transforms, initialize image origin/size consistently, scale before clipping and refresh the selected image preview.
+- Verification: Nine before-failing regressions, full 472-test package and native exported amplitude/translation/resize/crop and threshold pixels pass.
+- Evidence: [Imported-image editing audit](docs/audit/evidence/2026-10-13-import-edit.md).

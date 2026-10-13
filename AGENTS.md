@@ -41,3 +41,8 @@ explicitly authorized keystrokes again after finishing with the terminal. Prefer
 targeted accessibility actions where practical. Before typing, inspect the target
 field; read back the value before Return or submitting a dialog. If input does not
 reach the field, stop that attempt rather than sending more keys blindly.
+
+For native Swing dropdowns, the AX value may be a provisional choice. Commit
+with Return after inspecting it, then confirm the rendered control and resulting
+samples before treating the change as applied. An AX row click alone is not
+proof that the application accepted the selection.

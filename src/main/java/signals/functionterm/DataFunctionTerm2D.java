@@ -40,7 +40,13 @@ public class DataFunctionTerm2D extends ImageFunctionTerm2D {
 			boolean zeroCentered) {
 		if (!hasData()) return new double[x_dimension*y_dimension];
 		
-		if( x_dimension == getXDimension() && y_dimension == getYDimension() ) {
+		// Reuse raw samples only for an untransformed image on its original grid.
+		double centerX = zeroCentered ? 0 : x_dimension / 2.0;
+		double centerY = zeroCentered ? 0 : y_dimension / 2.0;
+		if( x_dimension == getXDimension() && y_dimension == getYDimension()
+				&& getWidth() == x_dimension && getHeight() == y_dimension
+				&& getCenterX() == centerX && getCenterY() == centerY
+				&& getAmplitude() == 1 ) {
 			
 			return getOriginalData(); 
 		}

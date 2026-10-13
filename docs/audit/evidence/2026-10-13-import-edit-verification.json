@@ -1,0 +1,65 @@
+{
+  "import edit amplitude.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0.0,
+    "nonzeroPixels": 32140
+  },
+  "import edit threshold amplitude.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0.0,
+    "nonzeroPixels": 28629
+  },
+  "import edit translated.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0.0,
+    "nonzeroPixels": 32120
+  },
+  "import edit threshold translated.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0.0,
+    "nonzeroPixels": 28629
+  },
+  "import edit resized.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0.0,
+    "nonzeroPixels": 9139
+  },
+  "import edit threshold resized.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0.0,
+    "nonzeroPixels": 7334
+  },
+  "import edit cropped committed.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0,
+    "nonzeroPixels": 12653
+  },
+  "import edit threshold cropped committed.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0,
+    "nonzeroPixels": 11235
+  },
+  "import edit cropped committed reopened.txt": {
+    "pixelsCompared": 65536,
+    "maxError": 0.0,
+    "mismatches": 0,
+    "imaginaryMax": 0,
+    "nonzeroPixels": 12653
+  }
+}

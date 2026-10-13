@@ -33,6 +33,9 @@ public final class ImageImport {
         block.addSource(data);
         block.addSource(side);
         block.addSource(side);
-        return new DataFunctionTerm2D(block);
+        DataFunctionTerm2D term = new DataFunctionTerm2D(block);
+        term.setWidth(side);
+        term.setHeight(side);
+        return term;
     }
 }

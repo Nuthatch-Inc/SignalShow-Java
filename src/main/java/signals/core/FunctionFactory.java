@@ -205,6 +205,12 @@ public class FunctionFactory {
 		DataFunctionTerm2D imagTerm = new DataFunctionTerm2D( pbi );
 		imagTerm.setWidth(x_dimension);
 		imagTerm.setHeight(y_dimension);
+		if( !zeroCentered ) {
+			realTerm.setCenterX(x_dimension / 2.0);
+			realTerm.setCenterY(y_dimension / 2.0);
+			imagTerm.setCenterX(x_dimension / 2.0);
+			imagTerm.setCenterY(y_dimension / 2.0);
+		}
 
 		ArrayList<FunctionTerm2D> realList = new ArrayList<FunctionTerm2D>(); 
 		ArrayList<FunctionTerm2D> imagList = new ArrayList<FunctionTerm2D>();
@@ -243,6 +249,12 @@ public class FunctionFactory {
 		DataFunctionTerm2D imagTerm = new DataFunctionTerm2D( pbi );
 		imagTerm.setWidth(x_dimension);
 		imagTerm.setHeight(y_dimension);
+		if( !zeroCentered ) {
+			realTerm.setCenterX(x_dimension / 2.0);
+			realTerm.setCenterY(y_dimension / 2.0);
+			imagTerm.setCenterX(x_dimension / 2.0);
+			imagTerm.setCenterY(y_dimension / 2.0);
+		}
 
 		ArrayList<FunctionTerm2D> realList = new ArrayList<FunctionTerm2D>(); 
 		ArrayList<FunctionTerm2D> imagList = new ArrayList<FunctionTerm2D>();

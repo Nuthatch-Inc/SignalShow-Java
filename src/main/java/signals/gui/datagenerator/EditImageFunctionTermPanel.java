@@ -111,7 +111,7 @@ public class EditImageFunctionTermPanel extends EditAnalyticFunctionTermPanel im
 	public void setFunctionTerm(DataGenerator newTerm) {
 		
 		if( !(newTerm instanceof ImageFunctionTerm2D) ) return; 
-		boolean needsetup = ( currentFunction != null && currentFunction.getClass() != newTerm.getClass() ); 
+		boolean needsetup = ( currentFunction == null || currentFunction.getClass() != newTerm.getClass() );
 
 		currentFunction = (ImageFunctionTerm2D)newTerm;
 		paramPanel.removeAll();
@@ -165,6 +165,7 @@ public class EditImageFunctionTermPanel extends EditAnalyticFunctionTermPanel im
 		paramPanel.repaint();
 
 		if( needsetup ) setupEditor();
+		else editor.setFunctionTerm(currentFunction);
 	}
 
 	public void setupEditor() {
