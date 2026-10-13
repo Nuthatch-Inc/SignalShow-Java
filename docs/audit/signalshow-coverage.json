@@ -7,17 +7,17 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 90% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 89% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-operations"
+      "gui-2d-create"
     ],
     "nextIds": [
-      "gui-2d-create",
-      "gui-2d-search-fixed"
+      "gui-2d-search-fixed",
+      "gui-2d-resize-dropdown-recovery"
     ]
   },
   "math": [
@@ -828,12 +828,13 @@
         "parameters": "verified",
         "handbook": "unreviewed"
       },
-      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256×256 composition and TIFF export also exercised.",
-      "remaining": "Broader variants, generated equations and handbook review remain open. Native Roger composition is checked; duplicate parameter ownership and smaller-window layout are tracked separately.",
+      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
         "roger-rotation-2026-10-12",
-        "channels-2026-10-13"
+        "channels-2026-10-13",
+        "arithmetic-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1024,12 +1025,14 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised.",
-      "remaining": "Broader variants, generated equations and handbook review remain open. Native Roger composition is checked; duplicate parameter ownership and smaller-window layout are tracked separately.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
-        "roger-rotation-2026-10-12"
-      ]
+        "roger-rotation-2026-10-12",
+        "arithmetic-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "binary2DList:MinusOp",
@@ -1044,11 +1047,13 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
-      "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
-        "workflow-regressions-2026-10-12"
-      ]
+        "workflow-regressions-2026-10-12",
+        "arithmetic-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "binary2DList:TimesOp",
@@ -1063,12 +1068,14 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised.",
-      "remaining": "Broader variants, generated equations and handbook review remain open. Native Roger composition is checked; duplicate parameter ownership and smaller-window layout are tracked separately.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
-        "roger-rotation-2026-10-12"
-      ]
+        "roger-rotation-2026-10-12",
+        "arithmetic-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "binary2DList:DivideOp",
@@ -1083,11 +1090,13 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
-      "remaining": "Generated equations, handbook review and visible desktop operation workflow. Division by zero and unequal-size inputs are outside this fixture.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
-        "workflow-regressions-2026-10-12"
-      ]
+        "workflow-regressions-2026-10-12",
+        "arithmetic-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "binary2DList:ConvolveOp",
@@ -1683,7 +1692,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude2.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2.",
       "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
       "evidence": [
         "grouping-2026-10-13",
@@ -1806,7 +1815,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude2.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2.",
       "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
       "evidence": [
         "channels-2026-10-13"
@@ -2047,7 +2056,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude2.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2.",
       "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
       "evidence": [
         "cartesian-composition-2026-10-12",
@@ -2400,20 +2409,21 @@
       "area": "usage",
       "title": "Choose and apply 2D threshold and arithmetic",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create two distinguishable 2D images.",
         "Create a 2D Mathematical System; select each arithmetic operation and threshold.",
         "Change inputs and threshold bounds; inspect result and both channels."
       ],
-      "expected": "All advertised operations are selectable; correct current outputs appear without crashes.",
-      "scope": "Native operation chooser, expression editor and plots. Production-operation tests do not cover this path.",
+      "expected": "The four basic arithmetic operations and Threshold are selectable and produce current complex outputs without crashes.",
+      "scope": "Native centered 256×256 Gradient + imaginary Constant and complex Constant; Plus/Minus/Times/Divide, Threshold 0.2, source amplitude edit, operand reversal, plots and 13 exported arrays.",
       "evidence": [
-        "complex-insertion-2026-10-12"
+        "complex-insertion-2026-10-12",
+        "arithmetic-2026-10-13"
       ],
-      "summary": "Native Threshold, Real and Times compose and persist successfully; earlier Roger evidence also covers Plus and Rotate. Other arithmetic choices/input changes in this broad row remain pending.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": "2026-10-12"
+      "summary": "All 13 native exports match independent per-pixel arithmetic/threshold oracles. Both linked systems refresh after source and operand changes; bounded log clean. Convolution/correlation and other variants remain separate.",
+      "environment": "macOS arm64, JDK25; package efebd69",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-2d-edit",
@@ -2974,12 +2984,13 @@
       ],
       "expected": "Native list and operation selection track the query and recover.",
       "scope": "Requires working native text input; component checks are recorded separately.",
-      "summary": "Original bug reproduced natively and component fix verified. Juliet reauthorized automated keystrokes after finishing with her terminal; post-fix native search remains unverified. Require field readback.",
+      "summary": "Native div→plu replacement, selection and clearing now pass with readback; six choices recover and saved Plus result is correct. Native Minus and unmatched-query steps remain pending.",
       "evidence": [
-        "search-2026-10-12"
+        "search-2026-10-12",
+        "arithmetic-2026-10-13"
       ],
-      "environment": "macOS native verification pending",
-      "reviewedOn": "2026-10-12"
+      "environment": "macOS arm64, JDK25",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "roger-resolution-target",
@@ -3195,7 +3206,7 @@
         "Apply Threshold0.5 and save both source and result."
       ],
       "expected": "Operator symbol and independent term parameters remain correct; saved samples agree with the authored controls.",
-      "scope": "Native256×256 real image with x/y factors and one two-term sum; formula wording reviewed separately.",
+      "scope": "Native 256×256 real image with x/y factors and one two-term sum; formula wording reviewed separately.",
       "evidence": [
         "cartesian-composition-2026-10-12"
       ],
@@ -3692,6 +3703,20 @@
         "docs/audit/evidence/2026-10-13-import-edit-cropped.png",
         "docs/audit/evidence/2026-10-13-import-edit-verification.json",
         "src/test/java/signals/core/ImportedImageEditingWorkflowTest.java"
+      ]
+    },
+    "arithmetic-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25; efebd69 package with 472 passing tests",
+      "summary": "Native complex Plus/Minus/Times/Divide, linked Threshold, input edits and reversal agree with independent per-pixel oracles; no crash or log exception. Search div/plu and clear pass.",
+      "limits": "Centered256×256 only; other operation families and platforms remain open. Native unmatched/Minus search is pending.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-arithmetic.md",
+        "docs/audit/evidence/2026-10-13-arithmetic-verification.json",
+        "docs/audit/evidence/2026-10-13-arithmetic-native.log",
+        "docs/audit/evidence/2026-10-13-arithmetic-quotient.png",
+        "docs/audit/evidence/2026-10-13-arithmetic-search-divide.png",
+        "docs/audit/evidence/2026-10-13-arithmetic-search-cleared.png"
       ]
     }
   },

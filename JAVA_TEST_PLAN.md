@@ -17,7 +17,7 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 13, weekly window 91% remaining; no other applicable window reported.
+October 13, weekly window 89% remaining; no other applicable window reported.
 On October13 Juliet authorized local commits at verified checkpoints. Do not push,
 distribute installers or deploy. Juliet reauthorized native keystrokes after finishing with her terminal;
 verify the target field and readback before submitting.

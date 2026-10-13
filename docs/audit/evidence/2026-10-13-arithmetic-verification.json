@@ -1,0 +1,117 @@
+{
+  "arithmetic sum": {
+    "complexPixelsCompared": 65536,
+    "maxError": 0.0,
+    "sha256": "94a0afc6d0d5b31f882ee312851ae2a16091461cad0a89c9e0b5346a42b0d7e1"
+  },
+  "arithmetic difference": {
+    "complexPixelsCompared": 65536,
+    "maxError": 0.0,
+    "sha256": "315699d33a9ab8bb10a8321af3e3af62fb321332cbaa7edc65d9fb99cf4134c5"
+  },
+  "arithmetic product": {
+    "complexPixelsCompared": 65536,
+    "maxError": 0.0,
+    "sha256": "ad72434da8adde81a48ca688fd1da8848af44e18eb83a157350facd97e6d7b56"
+  },
+  "arithmetic quotient": {
+    "complexPixelsCompared": 65536,
+    "maxError": 0.0,
+    "sha256": "27f87ec95dabe810f840e0f96a576b62645837f47523cb076235d4aded712c0b"
+  },
+  "arithmetic quotient threshold": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 0.0,
+    "nonzero_real": 40960,
+    "nonzero_imaginary": 0,
+    "sha256": "f3323eb75a278987bd8cd66c28c004054ec2f09161a547c1bdd9d2a531ac508c"
+  },
+  "arithmetic source B edited": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 0.0,
+    "nonzero_real": 65536,
+    "nonzero_imaginary": 65536,
+    "sha256": "a819753264ad4c915698ba8df32812ac86226cda644c3d1124d9dfbb99faa055"
+  },
+  "arithmetic quotient edited": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 5.589101634117221e-17,
+    "nonzero_real": 65536,
+    "nonzero_imaginary": 65280,
+    "sha256": "32bf2a1ff02593565c1a192f3fc42c8365465418372216316f6df63909263e14"
+  },
+  "arithmetic quotient threshold edited": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 0.0,
+    "nonzero_real": 14080,
+    "nonzero_imaginary": 0,
+    "sha256": "9ad86a6ca1d953ab6e889a18481afa647de3218d5e2950fcc1befde3d42af02d"
+  },
+  "arithmetic quotient reversed": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 3.972054645195637e-15,
+    "nonzero_real": 65536,
+    "nonzero_imaginary": 65280,
+    "sha256": "0a0cfa9b4dd3981d5ca92ea46431c89adb4c32890ad76f370c45d999e4d462df"
+  },
+  "arithmetic quotient reversed threshold": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 0.0,
+    "nonzero_real": 65536,
+    "nonzero_imaginary": 0,
+    "sha256": "510fc5dffa535b645cdbf854c3c196bc1852810c9501cb7e01231b3bab65f545"
+  },
+  "arithmetic sum after search": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 8.881784197001252e-16,
+    "nonzero_real": 65536,
+    "nonzero_imaginary": 65536,
+    "sha256": "90184ec4a0dcf14b6bd3e396d0b6718ea39b06c90430939d83a9875a43be3861"
+  },
+  "arithmetic source A": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 1.1102230246251565e-16,
+    "sha256": "20fcf873b04a25626dba1611e84cfac1f4e9f418113d319be64ce939dcad18f9"
+  },
+  "arithmetic source B": {
+    "dimensions": [
+      256,
+      256
+    ],
+    "complex_samples": 65536,
+    "max_complex_error": 0.0,
+    "sha256": "66ffef34a91d8ddf34b3854a51ec7b1c73e50be62469e82b71bf3b83b6f68977"
+  }
+}
