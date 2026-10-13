@@ -1,0 +1,188 @@
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties
+Loaded configuration from: /private/tmp/signalshow-roger-home/.signalshow.properties
+Error: One factory fails for the operation "jpeg"
+Occurs in: javax.media.jai.ThreadSafeOperationRegistry
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at com.sun.media.jai.opimage.StreamRIF.create(StreamRIF.java:102)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at com.sun.media.jai.opimage.FileLoadRIF.create(FileLoadRIF.java:144)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at javax.media.jai.RenderedOp.createInstance(RenderedOp.java:819)
+	at javax.media.jai.RenderedOp.createRendering(RenderedOp.java:867)
+	at javax.media.jai.RenderedOp.getWidth(RenderedOp.java:2179)
+	at signals.gui.datagenerator.DataFunctionTerm2DEditor$LoadImageAction.actionPerformed(DataFunctionTerm2DEditor.java:99)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton.doClick(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton.doClick(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$AccessibleAbstractButton.doAccessibleAction(Unknown Source)
+	at java.desktop/sun.lwawt.macosx.CAccessibility$2.run(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: java.lang.NoClassDefFoundError: com/sun/image/codec/jpeg/ImageFormatException
+	at com.sun.media.jai.codecimpl.JPEGImageDecoder.decodeAsRenderedImage(JPEGImageDecoder.java:46)
+	at com.sun.media.jai.opimage.CodecRIFUtil.create(CodecRIFUtil.java:88)
+	at com.sun.media.jai.opimage.JPEGRIF.create(JPEGRIF.java:43)
+	... 41 more
+Caused by: java.lang.ClassNotFoundException: com.sun.image.codec.jpeg.ImageFormatException
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	... 44 more
+Error: One factory fails for the operation "stream"
+Occurs in: javax.media.jai.ThreadSafeOperationRegistry
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at com.sun.media.jai.opimage.FileLoadRIF.create(FileLoadRIF.java:144)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at javax.media.jai.RenderedOp.createInstance(RenderedOp.java:819)
+	at javax.media.jai.RenderedOp.createRendering(RenderedOp.java:867)
+	at javax.media.jai.RenderedOp.getWidth(RenderedOp.java:2179)
+	at signals.gui.datagenerator.DataFunctionTerm2DEditor$LoadImageAction.actionPerformed(DataFunctionTerm2DEditor.java:99)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton.doClick(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton.doClick(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$AccessibleAbstractButton.doAccessibleAction(Unknown Source)
+	at java.desktop/sun.lwawt.macosx.CAccessibility$2.run(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: javax.media.jai.util.ImagingException: All factories fail for the operation "jpeg"
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1687)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at com.sun.media.jai.opimage.StreamRIF.create(StreamRIF.java:102)
+	... 34 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	... 37 more
+Caused by: java.lang.NoClassDefFoundError: com/sun/image/codec/jpeg/ImageFormatException
+	at com.sun.media.jai.codecimpl.JPEGImageDecoder.decodeAsRenderedImage(JPEGImageDecoder.java:46)
+	at com.sun.media.jai.opimage.CodecRIFUtil.create(CodecRIFUtil.java:88)
+	at com.sun.media.jai.opimage.JPEGRIF.create(JPEGRIF.java:43)
+	... 41 more
+Caused by: java.lang.ClassNotFoundException: com.sun.image.codec.jpeg.ImageFormatException
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	... 44 more
+Error: One factory fails for the operation "fileload"
+Occurs in: javax.media.jai.ThreadSafeOperationRegistry
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at javax.media.jai.RenderedOp.createInstance(RenderedOp.java:819)
+	at javax.media.jai.RenderedOp.createRendering(RenderedOp.java:867)
+	at javax.media.jai.RenderedOp.getWidth(RenderedOp.java:2179)
+	at signals.gui.datagenerator.DataFunctionTerm2DEditor$LoadImageAction.actionPerformed(DataFunctionTerm2DEditor.java:99)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton.doClick(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton.doClick(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$AccessibleAbstractButton.doAccessibleAction(Unknown Source)
+	at java.desktop/sun.lwawt.macosx.CAccessibility$2.run(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: javax.media.jai.util.ImagingException: All factories fail for the operation "stream"
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1687)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at com.sun.media.jai.opimage.FileLoadRIF.create(FileLoadRIF.java:144)
+	... 27 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	... 30 more
+Caused by: javax.media.jai.util.ImagingException: All factories fail for the operation "jpeg"
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1687)
+	at javax.media.jai.ThreadSafeOperationRegistry.invokeFactory(ThreadSafeOperationRegistry.java:473)
+	at javax.media.jai.registry.RIFRegistry.create(RIFRegistry.java:332)
+	at com.sun.media.jai.opimage.StreamRIF.create(StreamRIF.java:102)
+	... 34 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at javax.media.jai.FactoryCache.invoke(FactoryCache.java:122)
+	at javax.media.jai.OperationRegistry.invokeFactory(OperationRegistry.java:1674)
+	... 37 more
+Caused by: java.lang.NoClassDefFoundError: com/sun/image/codec/jpeg/ImageFormatException
+	at com.sun.media.jai.codecimpl.JPEGImageDecoder.decodeAsRenderedImage(JPEGImageDecoder.java:46)
+	at com.sun.media.jai.opimage.CodecRIFUtil.create(CodecRIFUtil.java:88)
+	at com.sun.media.jai.opimage.JPEGRIF.create(JPEGRIF.java:43)
+	... 41 more
+Caused by: java.lang.ClassNotFoundException: com.sun.image.codec.jpeg.ImageFormatException
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	... 44 more
+Saved configuration to: /private/tmp/signalshow-roger-home/.signalshow.properties

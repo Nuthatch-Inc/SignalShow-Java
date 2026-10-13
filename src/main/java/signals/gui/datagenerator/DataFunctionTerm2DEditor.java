@@ -2,15 +2,12 @@ package signals.gui.datagenerator;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
-import java.awt.image.SampleModel;
 import java.awt.image.renderable.ParameterBlock;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.media.jai.JAI;
-import javax.media.jai.PlanarImage;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -21,6 +18,7 @@ import signals.core.Core;
 import signals.functionterm.AnalyticFunctionTerm2D;
 import signals.functionterm.DataFunctionTerm2D;
 import signals.operation.ArrayUtilities;
+import signals.io.ImageImport;
 
 @SuppressWarnings("serial")
 public class DataFunctionTerm2DEditor extends JPanel implements AnalyticFunctionTerm2DEditor {
@@ -92,41 +90,7 @@ public class DataFunctionTerm2DEditor extends JPanel implements AnalyticFunction
 					File file = fc.getSelectedFile();
 					cd = file.getParentFile(); 
 					if( cd != null ) Core.getIOOptions().setCurrentDirectory( cd );
-					String name = file.getAbsolutePath();
-
-					PlanarImage pi = JAI.create("fileload", name); 
-
-					int width = pi.getWidth(); 
-					int height = pi.getHeight(); 
-
-					SampleModel sm = pi.getSampleModel();  
-					int nbands = sm.getNumBands();  
-					// We assume that we can get the pixels values in a integer array.
-					java.awt.image.Raster inputRaster = pi.getData();  
-					int[] values = new int[nbands*width*height];  
-					inputRaster.getPixels(0,0,width,height,values); 
-					int[] redChannel = new int[width*height];
-					int r = 0; 
-					for(int h=0;h<height;h++)  { //for now, only get the red channel
-						for(int w=0;w<width;w++)  
-						{  
-							// Dump the values.
-							int offset = h*width*nbands+w*nbands;  
-
-							redChannel[r++] = values[offset]; 
-
-						}  
-					}  
-
-					double[] data = ArrayUtilities.centerAndPad2D(width, height, redChannel);
-
-					DataFunctionTerm2D dataTerm = new DataFunctionTerm2D( null ); 
-					ParameterBlock pb = dataTerm.getDefaultParamBlock(); 
-					pb.addSource( data ); 
-					int squareDimension = ArrayUtilities.getSquareDimension(width, height);
-					pb.addSource( new Integer( squareDimension ) ); 
-					pb.addSource( new Integer( squareDimension ) ); 
-					DataFunctionTerm2D term = new DataFunctionTerm2D( pb ); 
+					DataFunctionTerm2D term = ImageImport.read(file);
 
 					editor.setFunctionTerm(term);
 					editor.updateDependents();

@@ -335,3 +335,15 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Restore the subtraction symbol and remove the stray1 from multiplication in the shared formatter.
 - Verification: Independent equation/arithmetic probe, full457-test package and native plotted expression pass.
 - Evidence: [Equation symbols](docs/audit/evidence/2026-10-13-equation.md).
+
+
+---
+
+- ID: BUG-023
+- Title: Ordinary JPEG loading fails and rectangular image imports can throw or clip data
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: Load Roger's JPEG on JDK 25; obsolete JAI decoder fails. Load 192×128 PNG/text or 160×96 BMP; undersized square padding throws or loses pixels.
+- Correction: Use JDK ImageIO at the native Load Image boundary, preserve raw grayscale/red-channel values, and round padding up to the next power of two.
+- Verification: Six focused import/operation cases, full 463-test package, native JPEG/TIFF loading and every TIFF/threshold pixel pass.
+- Evidence: [Image import audit](docs/audit/evidence/2026-10-13-image-import.md).

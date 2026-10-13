@@ -1,0 +1,38 @@
+{
+  "tiff": {
+    "source": [
+      256,
+      256
+    ],
+    "nativeExport": [
+      256,
+      256
+    ],
+    "pixelsCompared": 65536,
+    "maxError": 0,
+    "imaginaryMax": 0
+  },
+  "threshold": {
+    "cutoff": 127.5,
+    "pixelsCompared": 65536,
+    "mismatches": 0,
+    "imaginaryMax": 0,
+    "nonzeroPixels": 27831
+  },
+  "jpeg": {
+    "inputSize": [
+      1920,
+      1620
+    ],
+    "nativeOutput": [
+      256,
+      256
+    ],
+    "range": [
+      0.0,
+      251.5
+    ],
+    "nonzeroPixels": 47497,
+    "scope": "Decoded and saved after existing resampling; exact resampled pixel oracle pending."
+  }
+}

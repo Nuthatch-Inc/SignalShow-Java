@@ -201,7 +201,8 @@ public class ArrayUtilities {
 
 	public static int getSquareDimension( int width, int height ) {
 
-		return 1 << (int)(Math.log(Math.max(width, height))/Math.log(2)); 
+		int size = Math.max(width, height);
+		return size <= 1 ? 1 : Integer.highestOneBit(size - 1) << 1;
 	}
 
 	public static double[] centerAndPad2D( int width, int height, int[] values ) {
