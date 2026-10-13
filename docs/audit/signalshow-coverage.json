@@ -9,7 +9,7 @@
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly 81% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized.",
-    "blocker": "macOS locked during the final native deletion/memory check. Manual unlock required by CUA; native app closed after preserving exports. Resume the bounded memory check after Juliet unlocks; no usage pause."
+    "blocker": "Mac unlocked; automated clicks respond but name/amplitude typing and paste leave fields unchanged, including after a fresh CUA connection. Awaiting manual typing comparison. One audit window is open for that check; final native memory comparison remains pending."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
@@ -2920,10 +2920,11 @@
         "demos-2026-10-13",
         "memory-usage-2026-10-13",
         "editor-memory-2026-10-13",
-        "preview-memory-2026-10-13"
+        "preview-memory-2026-10-13",
+        "input-after-unlock-2026-10-13"
       ],
-      "summary": "Retired document ownership verified (three models→zero, 142.6→79.5 MiB in the matched 512-square run). Remaining preview-buffer cleanup passes focused regressions and native create/edit/reopen outputs; its final deletion/heap check awaits manual Mac unlock.",
-      "environment": "macOS arm64/JDK 25 under CUA; 549-test package; final native deletion measurement blocked by lock screen",
+      "summary": "Retired document ownership verified (three models→zero, 142.6→79.5 MiB in the matched 512-square run). Preview cleanup passes regressions and native create/edit/reopen outputs; final deletion/heap check remains pending because automated text input fails after unlock.",
+      "environment": "macOS arm64/JDK 25 under CUA; 549-test package; resumed native check blocked by text input",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -4271,6 +4272,16 @@
         "docs/audit/evidence/2026-10-13-preview-memory-product.txt.gz",
         "docs/audit/evidence/2026-10-13-preview-memory-verification.json",
         "docs/audit/evidence/2026-10-13-preview-memory.md"
+      ]
+    },
+    "input-after-unlock-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25, CUA; unchanged 549-test package at 8021b9f",
+      "summary": "After manual unlock, pointer/menu actions work but automated typing and paste do not change the name or amplitude. Refreshed CUA connection gives the same result; manual comparison requested.",
+      "limits": "Cause undetermined. No final post-deletion heap check or new product behavior certification.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-input-after-unlock.md",
+        "docs/audit/evidence/2026-10-13-input-after-unlock-ax.txt.gz"
       ]
     }
   },
