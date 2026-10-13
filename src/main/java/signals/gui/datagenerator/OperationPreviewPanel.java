@@ -261,10 +261,12 @@ public class OperationPreviewPanel extends JPanel implements ResizablePane {
 			imagPlot.repaint();
 		}
 		if (realImagePanel != null) {
+			realImagePanel.deconstruct();
 			realImagePanel.revalidate();
 			realImagePanel.repaint();
 		}
 		if (imagImagePanel != null) {
+			imagImagePanel.deconstruct();
 			imagImagePanel.revalidate();
 			imagImagePanel.repaint();
 		}

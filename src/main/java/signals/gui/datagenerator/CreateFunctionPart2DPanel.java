@@ -2,6 +2,7 @@ package signals.gui.datagenerator;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.image.renderable.ParameterBlock;
@@ -16,6 +17,8 @@ import javax.swing.JPanel;
 
 import signals.core.CombineTermsRule;
 import signals.core.DataGenerator;
+import signals.core.Deconstructable;
+import signals.gui.plot.ImageDisplayPanel;
 import signals.core.FunctionPart2D;
 import signals.core.FunctionTerm1D;
 import signals.core.FunctionTerm2D;
@@ -32,7 +35,7 @@ import signals.functionterm.ZeroFunctionTerm2D;
 import signals.gui.IconCache;
 
 @SuppressWarnings("serial")
-public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListener {
+public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListener, Deconstructable {
 
 	//broadcasts events for this part of the interface	
 	GUIEventBroadcaster broadcaster;
@@ -255,9 +258,27 @@ public class CreateFunctionPart2DPanel extends JPanel implements GUIEventListene
 		return part;
 	}
 
+	@Override
+	public void deconstruct() {
+		disconnectTermEditor();
+		calculator.deconstruct();
+	}
+
 	private void disconnectTermEditor() {
 		termBroadcaster = null;
 		termListener = null;
+		if (termPanel instanceof Component) releaseImagePreviews((Component) termPanel);
+	}
+
+	// The term editors have different nested layouts (including tabs). Release only
+	// view-owned image buffers; the definition may still belong to a live document.
+	private static void releaseImagePreviews(Component component) {
+		if (component instanceof ImageDisplayPanel) {
+			((ImageDisplayPanel) component).deconstruct();
+		} else if (component instanceof Container) {
+			for (Component child : ((Container) component).getComponents())
+				releaseImagePreviews(child);
+		}
 	}
 
 	public void setupCorrectTermPanel( DataGenerator function ) {

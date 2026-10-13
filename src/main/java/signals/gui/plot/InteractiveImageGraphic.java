@@ -19,6 +19,12 @@ public class InteractiveImageGraphic extends ImageDisplayPanel {
 		lineStroke = new BasicStroke( 4 ); 
 	}
 
+	@Override
+	public void deconstruct() {
+		data = null;
+		super.deconstruct();
+	}
+
 	public double mathToPlotX(double mathX) {
 		
 		return mathX / (double)dimension * displayDimension.width;

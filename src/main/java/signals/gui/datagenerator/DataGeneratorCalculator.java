@@ -19,6 +19,7 @@ import javax.swing.event.ListSelectionListener;
 
 import signals.core.CombineTermsRule;
 import signals.core.DataGenerator;
+import signals.core.Deconstructable;
 import signals.gui.CalculatorListItem;
 import signals.gui.GUI;
 import signals.gui.GUIDimensions;
@@ -29,7 +30,7 @@ import signals.gui.StringThumbnailGraphic;
 import signals.gui.ThumbnailGraphic;
 
 @SuppressWarnings("serial")
-public abstract class DataGeneratorCalculator extends JPanel implements ListSelectionListener, GUIEventListener {
+public abstract class DataGeneratorCalculator extends JPanel implements ListSelectionListener, GUIEventListener, Deconstructable {
 
 	protected HorizontalThumbnailList list;
 	
@@ -77,6 +78,12 @@ public abstract class DataGeneratorCalculator extends JPanel implements ListSele
 		
 	}
 	
+	@Override
+	public void deconstruct() {
+		list.getColumnModel().getSelectionModel().removeListSelectionListener(this);
+		list.removeAllItems();
+	}
+
 	public void scrollToLeft() {
 		
 		list.scrollToLeft(); 

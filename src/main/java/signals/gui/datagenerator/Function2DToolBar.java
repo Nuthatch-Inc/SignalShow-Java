@@ -1,6 +1,5 @@
 package signals.gui.datagenerator;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -208,9 +207,7 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 		widthSelector.addActionListener( listener );
 		heightSelector.addActionListener( listener );
 
-		JPanel main = new JPanel( new BorderLayout() ); 
-		main.add( editor, BorderLayout.CENTER ); 
-		main.add( globalOptionsPanel, BorderLayout.NORTH ); 
+		JPanel main = new FunctionEditorPanel(editor, globalOptionsPanel);
 		Core.getGUI().setContent(main); 
 		content = main; 
 	}

@@ -30,8 +30,7 @@ public abstract class OperationCalculator extends DataGeneratorCalculator implem
 	@Override
 	public void deconstruct() {
 		system = null;
-		list.getColumnModel().getSelectionModel().removeListSelectionListener(this);
-		list.removeAllItems();
+		super.deconstruct();
 	}
 
 

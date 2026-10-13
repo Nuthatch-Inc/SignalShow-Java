@@ -1,0 +1,3 @@
+94866:
+garbage-first heap   total reserved 6291456K, committed 532480K, used 137391K [0x0000000300800000, 0x0000000480800000)
+ region size 4096K, 1 young (4096K), 0 survivors (0K)

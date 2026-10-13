@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.image.RenderedImage;
+import java.awt.image.BufferedImage;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
@@ -105,9 +106,9 @@ public class ImageDisplayPanel extends JPanel implements ParameterUser, Deconstr
 	}
 	
 	public void deconstruct() {
-		
-//		maxEditor.deconstruct(); 
-//		minEditor.deconstruct(); 
+		image = null;
+		imageMath.resizedImage = null;
+		imagePanel.set(new BufferedImage(1, 1, BufferedImage.TYPE_BYTE_GRAY));
 	}
 	
 	public void setAdjustExtrema(boolean adjustExtrema) {

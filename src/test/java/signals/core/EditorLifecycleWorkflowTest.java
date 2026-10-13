@@ -12,6 +12,12 @@ import java.util.Arrays;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import javax.swing.SwingUtilities;
+import com.sun.media.jai.widget.DisplayJAI;
+import org.junit.jupiter.params.provider.CsvSource;
+import signals.functionterm.ConstantFunctionTerm2D;
+import signals.functionterm.CylinderFunctionTerm2D;
+import signals.gui.plot.ImageDisplayPanel;
+import signals.gui.plot.InteractiveImageGraphic;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -78,6 +84,10 @@ class EditorLifecycleWorkflowTest {
             OperatorSystem system = system(image);
             CreateOperationSystemPanel panel = editor(system, image);
             assertProduct(panel.getFunction());
+            OperationPreviewPanel preview = find(panel, OperationPreviewPanel.class);
+            preview.updatePreview(panel.getFunction());
+            ImageDisplayPanel realImage = (ImageDisplayPanel) field(preview, "realImagePanel");
+            if (image) assertNotNull(field(realImage, "image"));
             OperationCalculator calculator = find(panel, OperationCalculator.class);
             HorizontalThumbnailList list = find(calculator, HorizontalThumbnailList.class);
             ThumbnailListRenderer renderer = (ThumbnailListRenderer) list.getDefaultRenderer(Object.class);
@@ -86,6 +96,7 @@ class EditorLifecycleWorkflowTest {
             FunctionSelectorPanel picker = find(panel, FunctionSelectorPanel.class);
             retire(panel);
             assertNull(field(panel, "system"));
+            if (image) assertNull(field(realImage, "image"), "A retired operation preview must release its rendered image");
             assertNull(field(calculator, "system"));
             assertEquals(0, list.getListSize(), "Retired expression cells must release their input/thumbnail models");
             assertEquals(0, list.getColumnCount());
@@ -96,8 +107,50 @@ class EditorLifecycleWorkflowTest {
             assertProduct(system.getFunction());
             CreateOperationSystemPanel reopened = editor(system, image);
             assertProduct(reopened.getFunction());
+            preview.updatePreview(reopened.getFunction());
+            if (image) assertNotNull(field(realImage, "image"), "A cleared preview can display a new result");
+            preview.clearPreview();
             assertSame(library.get(1), find(reopened, FunctionSelectorPanel.class).getFunction());
             retire(reopened);
+        });
+    }
+
+    @ParameterizedTest @CsvSource({"true,true", "true,false", "false,true", "false,false"})
+    void replacingOrRetiringAnImageEditorReleasesItsPixelBuffers(boolean cylinder, boolean replace) throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            FunctionTerm2D term = (FunctionTerm2D) (cylinder ? new CylinderFunctionTerm2D()
+                : new ConstantFunctionTerm2D()).getDefaultInstance();
+            FunctionPart2D definition = new FunctionPart2D(new ArrayList<>(Arrays.asList(term)),
+                CombineTermsRule.getDefaultRule());
+            double[] original = definition.create(256, 128, true).clone();
+            CreateFunctionPart2DPanel panel = new CreateFunctionPart2DPanel(new GUIEventBroadcaster(), false);
+            panel.setIndices(256, 128, true);
+            panel.setFunctionPart2D(definition);
+            ImageDisplayPanel preview = find(panel, InteractiveImageGraphic.class);
+            assertNotNull(preview);
+            assertNotNull(field(preview, "image"), "The initial preview must actually own rendered pixels");
+            if (replace) {
+                FunctionTerm2D other = (FunctionTerm2D) (cylinder ? new ConstantFunctionTerm2D()
+                    : new CylinderFunctionTerm2D()).getDefaultInstance();
+                panel.setListExisting(other);
+                assertNotSame(preview, find(panel, InteractiveImageGraphic.class));
+                assertNotNull(field(find(panel, InteractiveImageGraphic.class), "image"));
+            } else {
+                retire(panel);
+                assertEquals(0, find(panel, HorizontalThumbnailList.class).getListSize());
+            }
+            assertTrue(field(preview, "data") == null, "An obsolete interactive preview must release its samples");
+            assertNull(field(preview, "image"), "An obsolete preview must release its rendered image graph");
+            assertNull(field(field(preview, "imageMath"), "resizedImage"));
+            DisplayJAI display = (DisplayJAI) field(preview, "imagePanel");
+            assertEquals(1, display.getSource().getWidth(), "Only a one-pixel blank display may remain");
+            assertArrayEquals(original, definition.create(256, 128, true), "View cleanup must preserve the signal definition");
+            CreateFunctionPart2DPanel reopened = new CreateFunctionPart2DPanel(new GUIEventBroadcaster(), false);
+            reopened.setIndices(256, 128, true);
+            reopened.setFunctionPart2D(definition);
+            assertNotNull(field(find(reopened, InteractiveImageGraphic.class), "image"));
+            assertArrayEquals(original, reopened.getFunctionPart2D().create(256, 128, true));
+            retire(panel); retire(reopened);
         });
     }
 

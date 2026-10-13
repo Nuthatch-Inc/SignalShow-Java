@@ -1,0 +1,14 @@
+[
+  {
+    "stage": "product",
+    "complexSamples": 262144,
+    "identicalToIndependentOracleFixture": true,
+    "sha256": "40c33de8c74ec87fd682559980df38b4b9ce40ea32964de49a886556b32091b2"
+  },
+  {
+    "stage": "edited-product",
+    "complexSamples": 262144,
+    "identicalToIndependentOracleFixture": true,
+    "sha256": "3f424d43213bc29357ec35da1ac14397cb08abfa29fb51a3ff7f23b1d28f40ae"
+  }
+]
