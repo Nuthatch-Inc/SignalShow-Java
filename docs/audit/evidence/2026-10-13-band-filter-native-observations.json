@@ -1,0 +1,101 @@
+[
+  {
+    "label": "ideal-pass",
+    "expectedBounds": [
+      1,
+      -1
+    ],
+    "displayedBounds": [
+      1,
+      -1
+    ]
+  },
+  {
+    "label": "ideal-reject-zero",
+    "expectedBounds": [
+      0.01,
+      -0.01
+    ],
+    "displayedBounds": [
+      0.01,
+      -0.01
+    ]
+  },
+  {
+    "label": "ideal-outside-zero",
+    "expectedBounds": [
+      0.01,
+      -0.01
+    ],
+    "displayedBounds": [
+      0.01,
+      -0.01
+    ]
+  },
+  {
+    "label": "ideal-edited-pass",
+    "expectedBounds": [
+      1,
+      -1
+    ],
+    "displayedBounds": [
+      1,
+      -1
+    ]
+  },
+  {
+    "label": "gaussian-pass",
+    "expectedBounds": [
+      0.45593812776599624,
+      -0.45593812776599624
+    ],
+    "displayedBounds": [
+      0.456,
+      -0.456
+    ]
+  },
+  {
+    "label": "gaussian-reject",
+    "expectedBounds": [
+      0.5440618722340038,
+      -0.5440618722340038
+    ],
+    "displayedBounds": [
+      0.544,
+      -0.544
+    ]
+  },
+  {
+    "label": "gaussian-centered-amplitude",
+    "expectedBounds": [
+      0.7,
+      -0.7
+    ],
+    "displayedBounds": [
+      0.7,
+      -0.7
+    ]
+  },
+  {
+    "label": "gaussian-imaginary-zero",
+    "expectedBounds": [
+      0.01,
+      -0.01
+    ],
+    "displayedBounds": [
+      0.01,
+      -0.01
+    ]
+  },
+  {
+    "label": "gaussian-real-return",
+    "expectedBounds": [
+      0.7,
+      -0.7
+    ],
+    "displayedBounds": [
+      0.7,
+      -0.7
+    ]
+  }
+]

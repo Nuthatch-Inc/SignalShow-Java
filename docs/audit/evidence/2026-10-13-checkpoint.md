@@ -13,9 +13,9 @@ No usage pause, resets or automations authorized.
 Repo /Users/julietfiss/src/SignalShow-Java, branch
 codex/signalshow-usage-stabilization. Baseline 28a4ffc. Product fixes: 0174857
 retired document ownership, 8021b9f preview/calculator buffers. 0c4fceb recorded the
-previous blocked input check. Current edits reconcile pause/resume and completed
-native evidence; product code unchanged. Full package remains 549 tests passed,
-zero failures/errors/skips; no redundant suite rerun for evidence-only changes.
+previous blocked input check. The completed memory follow-up is committed as b9642d7. Current band-filter tests
+and evidence are ready for local commit; product code unchanged. Full package
+now passes 553 tests, zero failures/errors/skips.
 
 Completed the pending matched 512-square Constant×Cylinder native workflow,
 source amplitude 3→2.5, Plot/Edit/reopen, two complex saves, then deletion of all
@@ -34,17 +34,26 @@ paths through CUA with readback before Return. Restart recovers input; original
 cause remains undetermined. Do not claim focus alone fixes it. Stop failed input;
 never send Return blindly. Dropdown values need Return and result verification.
 
-Next batch: ordinary 2D Band Pass/Band Reject filtering, Ideal/Gaussian shape and
-center/separation/width edits; source inspected but no new tests/patch yet. Extend
-FrequencyDemoWorkflowTest with independent known-mode gains, actual Swing controls
-and displayed results; then short native check. Subsequent queue: demo setting
-retention, Sampling/Aliasing. FunctionFactory.createFunction1D(term,dimension,
-centered,name) ignores origin/name; sampling caller needs direct reproduction
-before a fix. Do not replay completed low/high-pass or earlier workflow batches.
+Completed the 2D band-filter batch: four new EDT cases, nine native stages, source
+export independently checked. Full package 553 passes, zero failures/errors/skips.
+No production change needed. See [band evidence](2026-10-13-band-filter.md).
+Memory evidence committed as b9642d7; band tests/evidence ready for local commit.
 
-Matrix: 130 registered math entries, 60 scenarios: 52 checked, 1 scope, 4 pending,
+Next batch: preserve frequency demo settings when switching documents. Native
+Filtering Demo resets Gaussian Band Pass (.7 amplitude, center4, separation12,
+slit width8) to Ideal Low Pass (amplitude1, center0, width32), changing output.
+Before/after AX: 2026-10-13-filter-reopen-*. Existing issue also covers Frequency
+Locations cutoffs4/12 reverting8/24. FilteringModel1D/2D.show each creates a new
+view without state. Preserve compact model settings, rebuild from current source;
+do not keep obsolete view/image buffers alive merely to preserve settings.
+Inspect actual model lifecycle and structural equivalents; use before-failing
+regressions and short native revisit checks. No production settings patch yet.
+Subsequent queue: Sampling/Aliasing; the term factory ignores its supplied origin
+and name, which needs normal reconstruction reproduction before a fix.
+
+Matrix: 130 registered math entries, 60 scenarios: 53 checked, 1 scope, 3 pending,
 1 issue, 2 deferred. Native memory row now checked only for its stated workflow.
-No SignalShow app remains: PID 5092 closed through CUA, exit verified. No build or
+No SignalShow app remains: the memory and band-filter instances closed through CUA, exit verified. No build or
 sampler runs. Keep at most one instance. Bundle
 /private/tmp/signalshow-roger-app/SignalShowRogerAudit.app holds final 549-test JAR;
 copy/sign only while closed. Launch by full path with CUA. Never inspect AX after

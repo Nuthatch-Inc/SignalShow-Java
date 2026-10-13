@@ -3,6 +3,7 @@ package signals.core;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.function.DoubleUnaryOperator;
 import java.util.stream.Stream;
 import javax.swing.AbstractButton;
@@ -87,6 +88,80 @@ class FrequencyDemoWorkflowTest {
             }
             assertArrayEquals(samples[0], input.getReal());
             assertArrayEquals(samples[1], input.getImaginary());
+        });
+    }
+
+    static Stream<Arguments> bandFilters() {
+        return Stream.of(false, true).flatMap(centered ->
+            Stream.of(false, true).map(gaussian -> Arguments.of(centered, gaussian)));
+    }
+
+    @ParameterizedTest(name = "2D bands centered={0}, Gaussian={1}")
+    @MethodSource("bandFilters")
+    void bandPassAndRejectFollowNormalParameterEdits(boolean centered, boolean gaussian) throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            int width = 32, height = 16;
+            double[][] samples = modes(width, height, centered, frequency -> 1);
+            Function input = FunctionFactory.createFunction2D(samples[0], samples[1], centered,
+                "Band filtering", width, height);
+            FilteringDemo2D demo = new FilteringDemo2D(input);
+            click(demo, gaussian ? "gaussianFilterButton" : "idealFilterButton");
+            // Amplitude, center, separation and slit width; all ordinary values.
+            for (double[] parameters : new double[][] {{1, 0, 4, 3}, {1, 1.25, 5, 2.5}, {0.7, 1.25, 5, 4}}) {
+                double amplitude = parameters[0], center = parameters[1];
+                double separation = parameters[2], slitWidth = parameters[3];
+                double[][] passed = null;
+                for (boolean reject : new boolean[] {false, true}) {
+                    click(demo, reject ? "brFilterButton" : "bpFilterButton");
+                    JPanel panel = (JPanel) field(demo, "filterParamPanel");
+                    for (int parameter = 0; parameter < parameters.length; parameter++) {
+                        ((ParameterEditor) panel.getComponent(2 * parameter + 1))
+                            .setText(Double.toString(parameters[parameter]));
+                    }
+                    AnalyticFunctionTerm1D term = (AnalyticFunctionTerm1D) field(demo, "filterTerm");
+                    for (int parameter = 0; parameter < parameters.length; parameter++) {
+                        assertEquals(parameters[parameter], ((Number) term.getParameter(parameter)).doubleValue(),
+                            "Control edit reaches the active filter");
+                    }
+                    DoubleUnaryOperator gain = frequency -> {
+                        double leftDistance = frequency - (center - separation);
+                        double rightDistance = frequency - (center + separation);
+                        double pass = gaussian
+                            ? amplitude * (Math.exp(-Math.PI * Math.pow(leftDistance / slitWidth, 2))
+                                + Math.exp(-Math.PI * Math.pow(rightDistance / slitWidth, 2)))
+                            : (Math.min(Math.abs(leftDistance), Math.abs(rightDistance)) <= slitWidth / 2 ? amplitude : 0);
+                        return reject ? amplitude - pass : pass;
+                    };
+                    double[][] expected = modes(width, height, centered, gain);
+                    Function result = (Function) field(demo, "reconstructed");
+                    assertArrayEquals(expected[0], result.getReal(), 1e-9, "Band-filtered real image");
+                    assertArrayEquals(expected[1], result.getImaginary(), 1e-9, "Band-filtered imaginary image");
+                    assertEquals(centered, result.isZeroCentered());
+                    assertEquals(width, ((Function2D) result).getDimensionX());
+                    assertEquals(height, ((Function2D) result).getDimensionY());
+                    if (!reject) {
+                        passed = new double[][] {result.getReal().clone(), result.getImaginary().clone()};
+                    } else {
+                        for (int i = 0; i < width * height; i++) {
+                            assertEquals(amplitude * samples[0][i], passed[0][i] + result.getReal()[i], 1e-9,
+                                "Pass and reject reconstruct the scaled real input");
+                            assertEquals(amplitude * samples[1][i], passed[1][i] + result.getImaginary()[i], 1e-9,
+                                "Pass and reject reconstruct the scaled imaginary input");
+                        }
+                    }
+                    // Existing scale controls display three decimals; sample checks above stay strict.
+                    for (int channel = 0; channel < 2; channel++) {
+                        click(demo, channel == 0 ? "realButton" : "imagButton");
+                        ImageDisplayMath image = (ImageDisplayMath) field(field(demo, "spatialPanel"), "imageMath");
+                        assertEquals(Arrays.stream(expected[channel]).min().orElseThrow(), image.getMinValue(), 0.0005,
+                            "Displayed channel minimum follows the reconstruction");
+                        assertEquals(Arrays.stream(expected[channel]).max().orElseThrow(), image.getMaxValue(), 0.0005,
+                            "Displayed channel maximum follows the reconstruction");
+                    }
+                }
+            }
+            assertArrayEquals(samples[0], input.getReal(), "Source real samples remain unchanged");
+            assertArrayEquals(samples[1], input.getImaginary(), "Source imaginary samples remain unchanged");
         });
     }
 

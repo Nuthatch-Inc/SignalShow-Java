@@ -13,10 +13,9 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-frequency-bandpass"
+      "gui-demo-settings"
     ],
     "nextIds": [
-      "gui-demo-settings",
       "gui-sampling"
     ]
   },
@@ -3394,10 +3393,11 @@
         "Select the source document and return to the demonstration."
       ],
       "expected": "A returning demonstration retains the settings being explored.",
-      "scope": "Confirmed native frequency-location reset; demo model show methods construct fresh views. Lower priority than ordinary crashes and major wrong results.",
-      "summary": "Cutoffs reset to8/24; demo state is not retained between views. Recorded for a later scoped correction.",
+      "scope": "Confirmed native frequency-location and filtering-demo resets. Model show methods create fresh views without retained parameter state; other demos require scoped follow-up.",
+      "summary": "Frequency-location cutoffs and 2D filtering choices reset after switching documents. Filtering reset changes native output from ±0.7 to ±1; active correction must preserve settings while rebuilding from current source data.",
       "evidence": [
-        "demos-2026-10-13"
+        "demos-2026-10-13",
+        "band-filter-2026-10-13"
       ],
       "environment": "macOS arm64/JDK25",
       "reviewedOn": "2026-10-13"
@@ -3465,17 +3465,19 @@
     {
       "id": "gui-frequency-bandpass",
       "area": "usage",
-      "title": "Filtering-demo band-pass and band-reject choices",
+      "title": "2D filtering-demo band-pass and band-reject edits",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create ordinary inputs, choose Band Pass/Band Reject, edit center/separation/width and switch Ideal/Gaussian."
       ],
       "expected": "Controls and displayed samples agree with the selected pass/reject band.",
-      "scope": "Different filter generators from the low/high-pass cases and Frequency Locations bands.",
-      "summary": "Bounded scenario planned; not certified by the current harmonic low/high-pass checks.",
-      "evidence": [],
-      "environment": "Target environment to be recorded",
+      "scope": "Centered/uncentered 32×16 complex images in Swing; uncentered 256×256 native cosine. 1D, Windows and reopening are separate scope.",
+      "summary": "Four EDT workflows verify known-mode results and controls; native 256-square cosine exercises nine filter/channel states with expected output scales and patterns.",
+      "evidence": [
+        "band-filter-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK 25, native CUA and Swing EDT; 553-test package",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -4303,6 +4305,31 @@
         "docs/audit/evidence/2026-10-13-preview-memory-resumed-edited-product.txt.gz",
         "docs/audit/evidence/2026-10-13-preview-memory-resumed-verifier.py",
         "docs/audit/evidence/2026-10-13-preview-memory-resumed.md"
+      ]
+    },
+    "band-filter-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25, Swing EDT and native CUA; 553-test package",
+      "summary": "Normal 2D Ideal/Gaussian pass/reject edits preserve correct known-mode reconstruction, source samples and channel displays. Nine native stages confirm controls, patterns and expected scales.",
+      "limits": "1D bands and Windows unverified. Native result samples not exported; full-array checks use the actual Swing demo path. Reopening resets settings and is tracked separately.",
+      "sources": [
+        "src/test/java/signals/core/FrequencyDemoWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-band-filter-focused.log",
+        "docs/audit/evidence/2026-10-13-band-filter-package.log",
+        "docs/audit/evidence/2026-10-13-band-filter-native.log",
+        "docs/audit/evidence/2026-10-13-band-filter-native-observations.json",
+        "docs/audit/evidence/2026-10-13-band-filter-gaussian-pass.png",
+        "docs/audit/evidence/2026-10-13-band-filter-gaussian-reject-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-ideal-pass-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-ideal-reject-zero-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-gaussian-real-return-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-gaussian-imaginary-zero-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-gaussian-centered-amplitude-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-ideal-outside-zero-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-gaussian-pass-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-ideal-edited-pass-ax.txt",
+        "docs/audit/evidence/2026-10-13-band-filter-source.txt.gz",
+        "docs/audit/evidence/2026-10-13-band-filter.md"
       ]
     }
   },
