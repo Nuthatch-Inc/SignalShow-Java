@@ -12,8 +12,7 @@ No pause, resets or automations requested.
 
 Repo /Users/julietfiss/src/SignalShow-Java, branch codex/signalshow-usage-stabilization,
 baseline28a4ffc.8334dd9 fixes sampling;6677b3c records native spatial convolution,
-correlation and FFT chains. Current rectangular rotation fix/evidence ready for
-local commit. Full package578 passed, zero failures/errors/skips; native retest
+correlation and FFT chains. 1a4b7df fixes rectangular rotation. Translation/scale evidence is ready for local commit. Full package578 passed, zero failures/errors/skips; native retest
 uses that exact JAR and no subsequent product code changes.
 
 Completed rotation: BUG-040 normal128×64 default90° throws JAI Crop exception,
@@ -25,12 +24,15 @@ revisit/angle change,13 exports/106,496 complex samples independently pass. Rete
 log clean; typing reliable; native app closed and process exit verified.
 See2026-10-13-rotation.md and verifier/JSON/screenshots/logs.
 
-Next active scenario: gui-2d-shift-scale-chain. Create normal rectangular complex
-image; Translate both axes with fill/wrap, complex Scale, combine with original,
-edit and save. No investigation or verification yet beyond reading ScaleOp.
-Use actual controls and independent spatial/reference math; native evidence is
-separate from model tests. Current matrix130 math entries/63 scenarios:
-57 checked,1 scope,3 pending,2 deferred. Broadly green rows retain scoped limits.
+Completed translation/scale: centered128×64 Fourier basis, fill/wrap shifts,
+complex scaling and addition; edit source period via imaginary controls. All12
+exports/98,304 complex samples pass independent references, log clean, app closed.
+See2026-10-13-shift-scale.md. No product changes after the578-test build.
+
+Next active scenario: files-editable-definitions. Reconcile the existing save/load
+format and callers with previously verified round trips; document the sample-only
+capability and close its stale Needs scoping row. No persistence redesign.
+Matrix130 math entries/63 scenarios:58 checked,1 scope,2 pending,2 deferred.
 
 No app, build or sampler running. At most one instance. Bundle
 /private/tmp/signalshow-roger-app/SignalShowRogerAudit.app contains578-test JAR;
@@ -38,7 +40,8 @@ SHA256 c92a82fbaa49f34640451e83568997a6b2c156c7f6cc82806f5b5d7b69bb6d88.
 Copy/sign only while closed; launch through CUA. Never query AX after closing,
 which relaunches it. Refresh CUA docs after compaction. Helpers ssClick,ssNew2D,
 ssRenameCurrent,ssImageParam,ssDocumentSize,ssSaveVerified,ssDemoRow,
-ssOperationParam(index,value),ssFileMenu,ssFs. Verify field readback before Return.
+ssOperationParam(index,value),ssFileMenu,ssFs. ssDemoRow now tolerates both AX
+Description/Value field orderings; it locates exact main-list labels. Verify field readback before Return.
 ssSaveVerified takes a base name without .txt. On operation revisit, select its
 operator tile before editing parameters. Stale CUA target once refreshed cleanly.
 Do not reuse previous evidence-record helpers for new batches.

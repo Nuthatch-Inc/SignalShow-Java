@@ -1,0 +1,98 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Value: 0, Description: shift wave[x, y] = 1.5 × cos[2π((x - 3) / 32)]cos[2π((y + 2) / 32)] − 1.5 × sin[2π((x - 3) / 32)]sin[2π((y + 2) / 32)] + i(1.5 × sin[2π((x - 3) / 32)]cos[2π((y + 2) / 32)] + 1.5 × cos[2π((x - 3) / 32)]sin[2π((y + 2) / 32)])
+					6 JavaAxIgnore (selectable) shift wave[x, y] = 1.5 × cos[2π((x - 3) / 32)]cos[2π((y + 2) / 32)] − 1.5 × sin[2π((x - 3) / 32)]sin[2π((y + 2) / 32)] + i(1.5 × sin[2π((x - 3) / 32)]cos[2π((y + 2) / 32)] + 1.5 × cos[2π((x - 3) / 32)]sin[2π((y + 2) / 32)])
+				7 row (selectable) Description: Operator System, Value: 0
+					8 JavaAxIgnore (selectable) Operator System
+				9 row (selectable) Description: Operator System, Value: 0
+					10 JavaAxIgnore (selectable) Operator System
+				11 row (selected) Description: Operator System, Value: 0
+					12 JavaAxIgnore (selectable) Operator System
+			13 scroll bar (selectable)
+			14 scroll bar (selectable)
+		15 button (selectable) Duplicate
+		16 button (selectable) Delete
+		17 toolbar (selectable) 0
+			18 checkbox (selectable) Edit System
+			19 checkbox (selectable) Plot of Result
+			20 checkbox (selectable) FFT of Result
+			21 checkbox (selectable) Histogram of Result
+		22 text field (selectable) (-0.25+ i0.75)* translate(shift wave) + shift wave
+		23 stepper (selectable) Value: 1.5, Secondary Actions: Increment, Decrement
+			24 text field (selectable) 1.5
+		25 stepper (selectable) Value: -1.5, Secondary Actions: Increment, Decrement
+			26 text field (selectable) -1.5
+		27 text (selectable) Real Part
+		28 stepper (selectable) Value: 1.5, Secondary Actions: Increment, Decrement
+			29 text field (selectable) 1.5
+		30 stepper (selectable) Value: -1.5, Secondary Actions: Increment, Decrement
+			31 text field (selectable) -1.5
+		32 text (selectable) Imaginary Part
+		33 stepper (selectable) Value: 1.5, Secondary Actions: Increment, Decrement
+			34 text field (selectable) 1.5
+		35 stepper (selectable) Value: 0.6886722621541636, Secondary Actions: Increment, Decrement
+			36 text field (selectable) 0.689
+		37 text (selectable) Magnitude
+		38 checkbox (selectable) Logarithm
+		39 checkbox (selectable) Squared
+		40 stepper (selectable) Value: 3.038805462494656, Secondary Actions: Increment, Decrement
+			41 text field (selectable) 3.039
+		42 stepper (selectable) Value: -3.141592653589793, Secondary Actions: Increment, Decrement
+			43 text field (selectable) -3.142
+		44 text (selectable) Phase
+		45 checkbox (selectable) Unwrap
+		46 stepper (selectable) Value: 1, Secondary Actions: Increment, Decrement
+			47 text field (selectable) 1
+		48 stepper (selectable) Value: 0, Secondary Actions: Increment, Decrement
+			49 text field (selectable) 0
+		50 text (selectable)
+		51 button (selectable)
+		52 button (selectable)
+	53 close button
+	54 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	55 minimize button
+	56 text SignalShow
+57 menu bar
+	58 SignalShowRogerAudit
+	59 File
+	60 1D
+	61 2D
+	62 Help
+
+Selected:
+	63 row (selectable) Description: Operator System, Value: 0
+		64 JavaAxIgnore (selectable) Operator System
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

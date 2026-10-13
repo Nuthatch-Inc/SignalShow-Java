@@ -13,7 +13,7 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-shift-scale-chain"
+      "files-editable-definitions"
     ],
     "nextIds": []
   },
@@ -624,13 +624,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Native centered128×64 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample.",
+      "remaining": "Other normal fixtures/origins, definition/equations/handbook review and Windows remain open.",
+      "evidence": [
+        "shift-scale-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:OffsetOp",
@@ -906,13 +909,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Native centered128×64 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample.",
+      "remaining": "Other normal fixtures/origins, definition/equations/handbook review and Windows remain open. Translate help does not yet explain its unchecked zero-fill option.",
+      "evidence": [
+        "shift-scale-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:InvertOp",
@@ -1033,12 +1039,13 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 edited Translate/complex Scale chain plus original Fourier source verified.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
         "roger-rotation-2026-10-12",
-        "arithmetic-2026-10-13"
+        "arithmetic-2026-10-13",
+        "shift-scale-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -3554,17 +3561,19 @@
       "area": "usage",
       "title": "Translate and complex-scale a rectangular signal through arithmetic chains",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create a normal rectangular complex image with spatial variation.",
         "Translate both axes with wrap disabled/enabled, then apply a complex Scale and combine with the original.",
         "Edit source and shift/scale parameters; revisit and compare saved samples independently."
       ],
       "expected": "Both complex channels, shift directions, fill/wrap behavior and downstream arithmetic remain correct and usable.",
-      "scope": "Normal128×64 native controls and saved results; avoid capacity extremes.",
-      "summary": "Next ordinary usage scenario.",
-      "evidence": [],
-      "environment": "macOS native verification planned",
+      "scope": "Native centered128×64 Fourier basis, shifts(13,−7)/(−9,5), fill/wrap, scales0.5+0.25i/−0.25+0.75i, Plus and source period edit.",
+      "summary": "All12 exports/98,304 complex samples match independent references. Imaginary-editor source edit updates both channels and downstream stages; log clean.",
+      "evidence": [
+        "shift-scale-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK25 native578-test package",
       "reviewedOn": "2026-10-13"
     }
   ],
@@ -4532,6 +4541,36 @@
         "src/test/java/signals/core/RectangularRotationWorkflowTest.java",
         "src/test/java/signals/core/RogerWorkflowTest.java",
         "src/main/java/signals/operation/RotateOp2D.java"
+      ]
+    },
+    "shift-scale-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK25 native CUA;578-test package; independent NumPy2.4.1",
+      "summary": "Fourier source edits, two-axis fill/wrap translation, complex Scale and Plus remain correct through native edits/revisits;12 exports independently pass.",
+      "limits": "Centered128×64 and stated parameters only; no product changes. Uncentered native variants, other families and Windows remain gaps.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-shift-fill-controls-ax.txt",
+        "docs/audit/evidence/2026-10-13-shift-fill-controls.png",
+        "docs/audit/evidence/2026-10-13-shift-fill-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-fill-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-fill.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-final-ax.txt",
+        "docs/audit/evidence/2026-10-13-shift-final.png",
+        "docs/audit/evidence/2026-10-13-shift-native.log",
+        "docs/audit/evidence/2026-10-13-shift-scale-source-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-shift-scale.md",
+        "docs/audit/evidence/2026-10-13-shift-scaled-parameters-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-scaled-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-scaled.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-source-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-shift-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-source.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-sum-parameters-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-sum-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-sum.txt.gz",
+        "docs/audit/evidence/2026-10-13-shift-verification.json",
+        "docs/audit/evidence/2026-10-13-shift-verifier.py",
+        "docs/audit/evidence/2026-10-13-shift-wrap.txt.gz"
       ]
     }
   },

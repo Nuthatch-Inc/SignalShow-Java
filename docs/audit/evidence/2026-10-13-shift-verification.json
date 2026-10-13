@@ -1,0 +1,188 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "shift-source.txt",
+      "sha256": "9f4d48f40fc0051282e8218e44e4fb004720342587476a31a5a5726bce7ed6ac",
+      "descriptor": "shift wave",
+      "complexSamples": 8192,
+      "maxComplexError": 5.245262913657239e-15,
+      "realRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ],
+      "imaginaryRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ]
+    },
+    {
+      "file": "shift-fill.txt",
+      "sha256": "1964de298c517cb17ceb2eeeda03312fa42cfa3c452402dc527f2b6364e8623b",
+      "descriptor": "translate(shift wave)",
+      "complexSamples": 8192,
+      "maxComplexError": 5.245262913657239e-15,
+      "realRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ],
+      "imaginaryRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ]
+    },
+    {
+      "file": "shift-wrap.txt",
+      "sha256": "a7177e7ef6bb7de96be485b1d6bf166a7fa67c9c783cc0de59be01e6bf3ccc55",
+      "descriptor": "translate(shift wave)",
+      "complexSamples": 8192,
+      "maxComplexError": 5.245262913657239e-15,
+      "realRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ],
+      "imaginaryRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ]
+    },
+    {
+      "file": "shift-scaled.txt",
+      "sha256": "205b1e4dcaed8dd2c9aea9f59bea9ea6c6d28e67aeba961f86eefdc4e50a38a0",
+      "descriptor": "(0.5+ i0.25)* translate(shift wave)",
+      "complexSamples": 8192,
+      "maxComplexError": 2.880702508829352e-15,
+      "realRange": [
+        -0.8364159365203738,
+        0.8364159365203738
+      ],
+      "imaginaryRange": [
+        -0.8364159365203739,
+        0.8364159365203738
+      ]
+    },
+    {
+      "file": "shift-sum.txt",
+      "sha256": "2787897f019e6ca751496f3a797c373d60d19a22ce858df84217e25e1c575458",
+      "descriptor": "(0.5+ i0.25)* translate(shift wave) + shift wave",
+      "complexSamples": 8192,
+      "maxComplexError": 5.679525988368479e-15,
+      "realRange": [
+        -2.2211779206048465,
+        2.2211779206048465
+      ],
+      "imaginaryRange": [
+        -2.2211779206048465,
+        2.2211779206048465
+      ]
+    },
+    {
+      "file": "shift-fill-edited.txt",
+      "sha256": "90c53989f8a29c1351a67cd1a909baa589acf80dec751d713f4be72e4431f7b4",
+      "descriptor": "translate(shift wave)",
+      "complexSamples": 8192,
+      "maxComplexError": 5.245262913657239e-15,
+      "realRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ],
+      "imaginaryRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ]
+    },
+    {
+      "file": "shift-scaled-parameters-edited.txt",
+      "sha256": "121e94ab6e8d88f310505d52ab89f3eaa7d912f4ca39895243384aa7b8aa76fa",
+      "descriptor": "(-0.25+ i0.75)* translate(shift wave)",
+      "complexSamples": 8192,
+      "maxComplexError": 4.160374694206877e-15,
+      "realRange": [
+        -1.1828707612121065,
+        1.1828707612121065
+      ],
+      "imaginaryRange": [
+        -1.1828707612121065,
+        1.1828707612121065
+      ]
+    },
+    {
+      "file": "shift-sum-parameters-edited.txt",
+      "sha256": "dce49c7e472e202bf8ed8b4cdde6c680f816e8b5364ecb85511c67dadcd1fa6c",
+      "descriptor": "(-0.25+ i0.75)* translate(shift wave) + shift wave",
+      "complexSamples": 8192,
+      "maxComplexError": 6.109253766072344e-15,
+      "realRange": [
+        -1.7877246482378353,
+        1.7877246482378353
+      ],
+      "imaginaryRange": [
+        -1.7877246482378353,
+        1.7877246482378353
+      ]
+    },
+    {
+      "file": "shift-fill-source-edited.txt",
+      "sha256": "9d3cea83a34f5a284bf45254fc9be133f7e005ffb0f4554f44d18c8301d91910",
+      "descriptor": "translate(shift wave)",
+      "complexSamples": 8192,
+      "maxComplexError": 4.0943002132167226e-15,
+      "realRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ],
+      "imaginaryRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ]
+    },
+    {
+      "file": "shift-scaled-source-edited.txt",
+      "sha256": "38709181e6c2f84a964aa5411124c1a0cb31b6ba5fd5a840e71c2f5f374208e7",
+      "descriptor": "(-0.25+ i0.75)* translate(shift wave)",
+      "complexSamples": 8192,
+      "maxComplexError": 3.084742237080508e-15,
+      "realRange": [
+        -1.1828707612121065,
+        1.1828707612121065
+      ],
+      "imaginaryRange": [
+        -1.1828707612121065,
+        1.1828707612121065
+      ]
+    },
+    {
+      "file": "shift-sum-source-edited.txt",
+      "sha256": "4076b744c1aaa09717fc744ec9556e25cae91eab71d665514c055539f1bcc11a",
+      "descriptor": "(-0.25+ i0.75)* translate(shift wave) + shift wave",
+      "complexSamples": 8192,
+      "maxComplexError": 5.841081590836474e-15,
+      "realRange": [
+        -1.5000000000000002,
+        1.5
+      ],
+      "imaginaryRange": [
+        -1.5,
+        1.5000000000000002
+      ]
+    },
+    {
+      "file": "shift-source-edited.txt",
+      "sha256": "7c8463e46033e13c1bf9f3d703da90e2941e405e37921f8878b955311194f6d4",
+      "descriptor": "shift wave",
+      "complexSamples": 8192,
+      "maxComplexError": 4.0943002132167226e-15,
+      "realRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ],
+      "imaginaryRange": [
+        -1.5000000000000002,
+        1.5000000000000002
+      ]
+    }
+  ],
+  "passed": 12,
+  "totalComplexSamples": 98304,
+  "maxComplexError": 6.109253766072344e-15
+}
