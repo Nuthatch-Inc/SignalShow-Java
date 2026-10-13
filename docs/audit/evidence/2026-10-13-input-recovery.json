@@ -1,0 +1,6 @@
+{
+  "action": "Native Constant amplitude typed as 2.5; text read back before Return, committed spinner and expression confirmed. Save filename typed and read back before OK.",
+  "result": "All 65536 exported complex samples exactly 2.5 + 0i",
+  "sha256": "71ecb398c57ddeb4c807d5885957a69a4c55b37268fdfd3d1992a23357958234",
+  "cleanup": "Native close action followed by process inventory: no SignalShow test process remains."
+}

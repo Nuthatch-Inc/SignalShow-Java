@@ -1,0 +1,74 @@
+{
+  "convolution": {
+    "complex_samples": 65536,
+    "expected_real": -1638399.9275270728,
+    "expected_imaginary": 487.31846049043816,
+    "max_complex_error": 1.0803341865539551e-07,
+    "relative_complex_error": 6.59383658785373e-14,
+    "sha256": "91d17302f9933c71a32811b8f69fa9ef2d0d8d0ee65009892f11965465b5f527"
+  },
+  "correlation": {
+    "complex_samples": 65536,
+    "expected_real": 459219.8054296513,
+    "expected_imaginary": -1572727.4812570526,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "89a450f7c6bd199c93c1f52f9efd06dfe21ef8bf783cd40c199f439528ace37e"
+  },
+  "inverse FFT": {
+    "complex_samples": 65536,
+    "expected_real": 459219.8054296513,
+    "expected_imaginary": -1572727.4812570526,
+    "max_complex_error": 4.0344898786339816e-07,
+    "relative_complex_error": 2.4624572013146865e-13,
+    "sha256": "aa88095f51acdf98a8c701d8ca60614e51646cb8b26a3cf3f59db19929dc3816"
+  },
+  "source edited": {
+    "complex_samples": 65536,
+    "expected_real": 6.0,
+    "expected_imaginary": 4.0,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "181c578108a4cf1597d91ae812a5a08854a48ced648e4a3ad8e0d5cae1a54b1c"
+  },
+  "inverse FFT edited": {
+    "complex_samples": 65536,
+    "expected_real": -130370.25561905955,
+    "expected_imaginary": -2359334.8811158244,
+    "max_complex_error": 5.824142851509764e-07,
+    "relative_complex_error": 2.464792772351251e-13,
+    "sha256": "67df3c5232fc8e31d842c3cd3185f44d0ed34fd2f2f87cd5787aea976566a33f"
+  },
+  "correlation edited": {
+    "complex_samples": 65536,
+    "expected_real": -130370.25561905955,
+    "expected_imaginary": -2359334.8811158244,
+    "max_complex_error": 2.3283064365386963e-10,
+    "relative_complex_error": 9.853454873813467e-17,
+    "sha256": "7ffee2fafafa7b8e746d76c03c57fe89939d4f398b1f091659358ba13b4ed500"
+  },
+  "forward FFT": {
+    "complex_samples": 65536,
+    "DC_index": [
+      128,
+      127
+    ],
+    "DC_real": 117560270.18999073,
+    "DC_imaginary": -402618235.2018055,
+    "max_complex_error": 1.3828406045580125e-05,
+    "relative_complex_error": 3.2969489206266706e-14,
+    "sha256": "aedf488883f2987117754215176c0367fed3977cdd57303b0a0490ec83bd60d4"
+  },
+  "forward FFT edited": {
+    "complex_samples": 65536,
+    "DC_index": [
+      128,
+      127
+    ],
+    "DC_real": -33374785.438479245,
+    "DC_imaginary": -603989729.565651,
+    "max_complex_error": 1.9996358964454444e-05,
+    "relative_complex_error": 3.3056689028063414e-14,
+    "sha256": "1f1cd81944d75c89eba540daedf8eeadc6f8c10e20d2f1ce54c997313c31ea1b"
+  }
+}

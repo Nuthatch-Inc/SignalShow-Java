@@ -7,18 +7,15 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 88% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 87% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "model-filtering-chains"
-    ],
-    "nextIds": [
-      "gui-2d-representation",
       "gui-demos"
-    ]
+    ],
+    "nextIds": []
   },
   "math": [
     {
@@ -550,13 +547,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "verified",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample.",
+      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native spatially varying filtering, larger workloads and Windows are separate gaps.",
+      "evidence": [
+        "filtering-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:SignumOp",
@@ -1107,13 +1107,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "verified",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample.",
+      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native spatially varying filtering, larger workloads and Windows are separate gaps.",
+      "evidence": [
+        "filtering-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "binary2DList:CorrelateOp",
@@ -1124,13 +1127,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "verified",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample.",
+      "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native spatially varying filtering, larger workloads and Windows are separate gaps.",
+      "evidence": [
+        "filtering-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "noise2DList:GaussianNoiseFunctionTerm2D",
@@ -2547,19 +2553,20 @@
       "area": "usage",
       "title": "Real/imaginary, magnitude/phase and predefined complex creation",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
-        "Create the same simple complex field using both representations.",
+        "Create a simple complex field in real/imaginary form and its magnitude/phase approximation at accepted editor precision.",
         "Create the predefined chirp, radial exponential and Fourier basis signals.",
         "Change parameters, view results and use each as an operation input."
       ],
       "expected": "Representation meaning and dimensions survive edits and handoffs without exceptions.",
-      "scope": "Actual special menu callers beyond the registered generator inventory.",
+      "scope": "Native special-menu and ordinary representation edits at 256×256; exact equivalence beyond three-decimal entry precision is deferred.",
       "evidence": [
-        "complex-native-2026-10-13"
+        "complex-native-2026-10-13",
+        "filtering-2026-10-13"
       ],
-      "summary": "Native chirp, radial exponential and Fourier-basis edits plus Real/Conjugate/Squared Magnitude pass against every exported sample. Equivalent real/imaginary versus magnitude/phase creation remains pending after native text routing stopped; spinner actions still respond.",
-      "environment": "macOS arm64, JDK25; 472-test executable",
+      "summary": "Chirp, radial exponential and Fourier-basis operations match independent formulas. Magnitude/phase → Real → Threshold follows a phase edit with every saved sample verified against the accepted phase; fresh-app typing works again.",
+      "environment": "macOS arm64, JDK25; 484-test executable",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -3317,7 +3324,7 @@
       "area": "usage",
       "title": "Convolve/correlate and FFT round trips through editable image chains",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create ordinary complex images and a small smoothing kernel through the production factories.",
         "Apply Convolve/Correlate→Real→Threshold and forward/inverse FFT through operation systems.",
@@ -3325,10 +3332,32 @@
       ],
       "expected": "Correct dimensions/current samples survive composition and edits without crashes or stale caches.",
       "scope": "Production models and operation chains on ordinary rectangular images; native interaction is separate.",
-      "summary": "Starting a bounded production-path batch while native text routing is unreliable.",
-      "environment": "macOS arm64, JDK25",
-      "reviewedOn": null,
-      "evidence": []
+      "summary": "Twelve production workflows pass direct circular sums and a direct DFT, including rectangular shapes, both origins, source edits, kernel replacement, threshold results and cache/source preservation.",
+      "environment": "macOS arm64, JDK25; 484-test package",
+      "reviewedOn": "2026-10-13",
+      "evidence": [
+        "filtering-2026-10-13"
+      ]
+    },
+    {
+      "id": "gui-2d-filtering-chains",
+      "area": "usage",
+      "title": "Native complex convolution/correlation and linked forward/inverse FFT",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create two complex 256×256 Constant images and apply Convolve, then Correlate.",
+        "Create forward and inverse FFT systems from the correlation result, using √N normalization.",
+        "Edit the source real amplitude and save the source and each linked result."
+      ],
+      "expected": "Current complex values and centered DC output agree with independent references without exceptions.",
+      "scope": "Native controls, displayed inputs, source edit and saved-result verification; constant fields only.",
+      "evidence": [
+        "filtering-2026-10-13"
+      ],
+      "summary": "Eight exports match circular sums and centered DC expectations, including three-level source propagation. The inserted operand was verified from the actual expression, not inferred from the previously selected source.",
+      "environment": "macOS arm64, JDK25; 484-test executable",
+      "reviewedOn": "2026-10-13"
     }
   ],
   "evidence": {
@@ -3805,6 +3834,26 @@
         "docs/audit/evidence/2026-10-13-complex-input-routing.png",
         "docs/audit/evidence/2026-10-13-complex.md"
       ]
+    },
+    "filtering-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25, JAI1.1.3; efebd69 production code, 484-test package",
+      "summary": "Twelve production filtering/FFT chain regressions and fifteen native representation/filtering exports pass independent references. Fresh-app automated parameter/filename typing and exported samples verified.",
+      "limits": "Native phases committed to three decimals; exact Cartesian/polar equivalence is not certified. Native filtering uses constant fields; rectangular spatially varying inputs are production-model evidence. Windows, other normalizations and capacity remain open.",
+      "sources": [
+        "src/test/java/signals/core/FilteringChainWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-filtering-package.log",
+        "docs/audit/evidence/2026-10-13-filtering-focused.log",
+        "docs/audit/evidence/2026-10-13-filtering-native.log",
+        "docs/audit/evidence/2026-10-13-filtering-native-verification.json",
+        "docs/audit/evidence/2026-10-13-representation-verification.json",
+        "docs/audit/evidence/2026-10-13-filtering-verify.py",
+        "docs/audit/evidence/2026-10-13-representation-threshold.png",
+        "docs/audit/evidence/2026-10-13-filtering-correlation.png",
+        "docs/audit/evidence/2026-10-13-filtering-inverse.png",
+        "docs/audit/evidence/2026-10-13-input-recovery.json",
+        "docs/audit/evidence/2026-10-13-filtering.md"
+      ]
     }
   },
   "limitations": [
@@ -3851,6 +3900,17 @@
       "next": "Keep explicit dimension checks; plan alignment behavior and any explanatory UI with Juliet after ordinary operation stabilization.",
       "evidence": [
         "resize-linked-2026-10-12"
+      ]
+    },
+    {
+      "id": "numeric-entry-precision",
+      "title": "Numeric parameter entry commits three decimal places",
+      "basis": "measurement",
+      "impact": "Requested magnitude/phase angles are rounded on commit; exact representation equivalence may be limited by editor precision.",
+      "scope": "Observed phase entries0.927295218→0.927 and2.214297436→2.214 in the native Constant image editor.",
+      "next": "Deferred precision improvement; prioritize ordinary crashes and major wrong results.",
+      "evidence": [
+        "filtering-2026-10-13"
       ]
     }
   ],

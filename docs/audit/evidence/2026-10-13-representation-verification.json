@@ -1,0 +1,66 @@
+{
+  "Cartesian": {
+    "complex_samples": 65536,
+    "expected_real": 3.0,
+    "expected_imaginary": 4.0,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "fa4fced5296517376830f40142c00c6175459fc6281451c457d2c67dbbe2cf5e"
+  },
+  "magnitude phase": {
+    "complex_samples": 65536,
+    "expected_real": 3.0011807412587945,
+    "expected_imaginary": 3.9991141717006924,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "485de0d1fa340b8369bdd75548f6aef8abcb9fbc0bf85449a977b7394db76bd4"
+  },
+  "real": {
+    "complex_samples": 65536,
+    "expected_real": 3.0011807412587945,
+    "expected_imaginary": 0.0,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "8e044246ae756f720686535ee5cb69597446522ae7633529228009de64605e90"
+  },
+  "threshold": {
+    "complex_samples": 65536,
+    "expected_real": 1.0,
+    "expected_imaginary": 0.0,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "696396cdf30943ae5c8be57bc7c8cc8af9bcd51e9802dac832107f872e45d207"
+  },
+  "phase edited": {
+    "complex_samples": 65536,
+    "expected_real": -2.9988101249629255,
+    "expected_imaginary": 4.000892129815529,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "5849c2e98892d511e923a03009aeb48425f11e6369705b861e0a89fc7d5c1f48"
+  },
+  "real edited": {
+    "complex_samples": 65536,
+    "expected_real": -2.9988101249629255,
+    "expected_imaginary": 0.0,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "c7f4185a9babb1fbc4b95311db5ba9f539246dee4436f33d15b146ce00ef3f64"
+  },
+  "threshold edited": {
+    "complex_samples": 65536,
+    "expected_real": 0.0,
+    "expected_imaginary": 0.0,
+    "max_complex_error": 0.0,
+    "relative_complex_error": 0.0,
+    "sha256": "b8e87aa95510b460f5598079153525d82d6b1924d22af1bbda6271cf58bb11a4"
+  },
+  "precision_limit": {
+    "requested_initial_phase": 0.9272952180016122,
+    "accepted_initial_phase": 0.927,
+    "requested_edited_phase": 2.214297435588181,
+    "accepted_edited_phase": 2.214,
+    "Cartesian_equivalence_max_error": 0.0014760900027010206,
+    "scope": "The numeric editor rounds committed entries to three decimals. Not an exact representation-equivalence pass; defer this small precision issue."
+  }
+}
