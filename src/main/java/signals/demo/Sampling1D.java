@@ -15,7 +15,7 @@ import javax.swing.SpinnerNumberModel;
 import signals.core.Constants;
 import signals.core.Function;
 import signals.core.Function1D;
-import signals.core.FunctionFactory;
+import signals.core.Savable;
 import signals.functionterm.RectangleFunctionTerm1D;
 import signals.gui.ParameterEditor;
 import signals.gui.ParameterUser;
@@ -27,7 +27,9 @@ import signals.operation.ScaleOp;
 import signals.operation.TimesOp;
 
 @SuppressWarnings("serial")
-public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
+public class Sampling1D extends JPanel implements ResizablePane, ParameterUser, Savable {
+
+	private final SamplingSettings settings;
 
 	Function1D input; 
 
@@ -46,8 +48,12 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 
 	JCheckBox reconstructCB; 
 
-	public Sampling1D( Function1D input ) {
-		
+	public Sampling1D(Function1D input) {
+		this(input, new SamplingSettings(input.getDimension()));
+	}
+
+	Sampling1D(Function1D input, SamplingSettings settings) {
+		this.settings = settings;
 		this.input = input; 
 
 		//toolbar
@@ -56,9 +62,11 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 		Dimension size = new Dimension( 800, 170 ); 
 		spatialPanel = new Function1DTabPanel( size );
 		frequencyPanel = new Function1DTabPanel( size );
+		spatialPanel.setSelectedIndex(settings.spatialTab);
+		frequencyPanel.setSelectedIndex(settings.frequencyTab);
 
 		reconstructCB = new JCheckBox( "Reconstruct Signal" ); 
-		reconstructCB.setSelected(false); 
+		reconstructCB.setSelected(settings.reconstruct);
 		reconstructCB.addActionListener( new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -70,21 +78,20 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 		}); 
 
 		rect = (RectangleFunctionTerm1D) new RectangleFunctionTerm1D().getDefaultInstance(); 
-		filter = (Function1D) FunctionFactory.createFunction1D(rect, input.getDimension(), input.isZeroCentered(), "filter"); 
 
-		SpinnerNumberModel model = new SpinnerNumberModel( 1, 1, 1000, 1); 
+		SpinnerNumberModel model = new SpinnerNumberModel( settings.period, 1, 1000, 1);
 		ParameterEditor spinner = new ParameterEditor( 3, model, 0, this ); 
 		
-		rect.setWidth(input.getDimension()/2); 
-		SpinnerNumberModel filtermodel = new SpinnerNumberModel( input.getDimension(), 1, 100000, 1); 
+		rect.setWidth(settings.filterWidth / 2);
+		SpinnerNumberModel filtermodel = new SpinnerNumberModel( settings.filterWidth, 1, 100000, 1);
 		filterspinner = new ParameterEditor( 3, filtermodel, 1, this ); 
-		filterspinner.setEnabled(false); 
+		filterspinner.setEnabled(settings.reconstruct);
 
 		JLabel spinnerLabel = new JLabel( "sampling period (pixels):" );  
 		spinnerLabel.setLabelFor(spinner); 
 		
 		JLabel filterWidthLabel = new JLabel( "filter width: " );  
-		spinnerLabel.setLabelFor(spinner); 
+		filterWidthLabel.setLabelFor(filterspinner);
 		
 		toolbar.add( Box.createHorizontalGlue() ); 
 		toolbar.add( spinnerLabel ); 
@@ -100,7 +107,9 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 		inverseTransformOp = new FourierTransformOp(); 
 		inverseTransformOp.setInverse(true); 
 		timesOp = new TimesOp();  
-		scaleOp = new ScaleOp(); 
+		scaleOp = new ScaleOp();
+		samplingOp.setSamplingPeriod(settings.period);
+		scaleOp.setValue(0, settings.period);
 
 		//panels
 		JPanel contentPanel = new JPanel(); 
@@ -110,7 +119,9 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 		add( contentPanel, BorderLayout.CENTER ); 
 		add( toolbar, BorderLayout.NORTH ); 
 
-		sample(); 
+		sample();
+		spatialPanel.addChangeListener(e -> saveStateToModel());
+		frequencyPanel.addChangeListener(e -> saveStateToModel());
 	}
 
 	public void parameterChanged(int index, String newVal) {
@@ -137,7 +148,6 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 		
 			double newWidth = Double.parseDouble(newVal);
 			if( newWidth >= 0 ) {
-				filter.freeMemory();
 				rect.setWidth(newWidth/2); //halfwidth defined
 				sample(); 
 			}
@@ -167,7 +177,8 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 
 		if( reconstructCB.isSelected() ) {
 
-			//filter the signal
+			// Use signed FFT bins so the low-pass mask includes wrapped negative frequencies.
+			filter = (Function1D) FrequencyDemoFilter.create(transformSampled, rect);
 			Function filteredFD = timesOp.create(filter, transformSampled);
 			Function reconstruction = inverseTransformOp.create(filteredFD); 
 			reconstruction = scaleOp.create(reconstruction); 
@@ -179,7 +190,16 @@ public class Sampling1D extends JPanel implements ResizablePane, ParameterUser {
 			spatialPanel.addFunction( (Function1D)reconstruction, "IFFT(filtered)"); 
 			spatialPanel.setPlotStyle(2, Constants.PlotStyle.SMOOTH);
 		}
+		saveStateToModel();
+	}
 
+	@Override
+	public void saveStateToModel() {
+		settings.period = samplingOp.getSamplingPeriod();
+		settings.filterWidth = rect.getWidth() * 2;
+		settings.reconstruct = reconstructCB.isSelected();
+		settings.spatialTab = spatialPanel.getSelectedIndex();
+		settings.frequencyTab = frequencyPanel.getSelectedIndex();
 	}
 
 	public void sizeChanged() {

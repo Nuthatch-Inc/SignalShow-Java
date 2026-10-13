@@ -1,0 +1,467 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/opt/homebrew/Cellar/maven/3.9.11/libexec/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.signalshow:signalshow >----------------------
+[INFO] Building SignalShow 1.2.4
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ signalshow ---
+[INFO] Copying 339 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ signalshow ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ signalshow ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ signalshow ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 36 source files with javac [debug release 25] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ signalshow ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running signals.core.SamplingDemoWorkflowTest
+[ERROR] Tests run: 8, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 1.374 s <<< FAILURE! -- in signals.core.SamplingDemoWorkflowTest
+[ERROR] signals.core.SamplingDemoWorkflowTest.samplingAndWidthEditsFollowBothComplexChannels(boolean, boolean)[1] -- Time elapsed: 0.370 s <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Reconstruction follows the input and selected passband (2 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <0.8499999999999909>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.12710594602902087> but was: <-0.11953383067790153>
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2961)
+	at signals.core.SamplingDemoWorkflowTest.assertOutput(SamplingDemoWorkflowTest.java:134)
+	at signals.core.SamplingDemoWorkflowTest.lambda$samplingAndWidthEditsFollowBothComplexChannels$0(SamplingDemoWorkflowTest.java:82)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+	Suppressed: org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <0.8499999999999909>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$0(SamplingDemoWorkflowTest.java:135)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.12710594602902087> but was: <-0.11953383067790153>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$1(SamplingDemoWorkflowTest.java:136)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+
+[ERROR] signals.core.SamplingDemoWorkflowTest.samplingAndWidthEditsFollowBothComplexChannels(boolean, boolean)[2] -- Time elapsed: 0.083 s <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <-0.19999999999999982>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.12710594602902087> but was: <-0.2728940539709785>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <false> but was: <true>
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2961)
+	at signals.core.SamplingDemoWorkflowTest.assertOutput(SamplingDemoWorkflowTest.java:134)
+	at signals.core.SamplingDemoWorkflowTest.lambda$samplingAndWidthEditsFollowBothComplexChannels$0(SamplingDemoWorkflowTest.java:82)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+	Suppressed: org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <-0.19999999999999982>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$0(SamplingDemoWorkflowTest.java:135)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.12710594602902087> but was: <-0.2728940539709785>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$1(SamplingDemoWorkflowTest.java:136)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Origin retained ==> expected: <false> but was: <true>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$2(SamplingDemoWorkflowTest.java:137)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+
+[ERROR] signals.core.SamplingDemoWorkflowTest.samplingAndWidthEditsFollowBothComplexChannels(boolean, boolean)[3] -- Time elapsed: 0.082 s <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <-0.19999999999999996> but was: <0.8499999999999909>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.2728940539709791> but was: <-0.11953383067790148>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2961)
+	at signals.core.SamplingDemoWorkflowTest.assertOutput(SamplingDemoWorkflowTest.java:134)
+	at signals.core.SamplingDemoWorkflowTest.lambda$samplingAndWidthEditsFollowBothComplexChannels$0(SamplingDemoWorkflowTest.java:82)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+	Suppressed: org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <-0.19999999999999996> but was: <0.8499999999999909>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$0(SamplingDemoWorkflowTest.java:135)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.2728940539709791> but was: <-0.11953383067790148>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$1(SamplingDemoWorkflowTest.java:136)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Origin retained ==> expected: <true> but was: <false>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$2(SamplingDemoWorkflowTest.java:137)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+
+[ERROR] signals.core.SamplingDemoWorkflowTest.defaultReconstructionPreservesTheSource(boolean)[1] -- Time elapsed: 0.084 s <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <0.0>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [0], expected: <-0.2> but was: <-0.0>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <false> but was: <true>
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2961)
+	at signals.core.SamplingDemoWorkflowTest.assertOutput(SamplingDemoWorkflowTest.java:134)
+	at signals.core.SamplingDemoWorkflowTest.lambda$defaultReconstructionPreservesTheSource$0(SamplingDemoWorkflowTest.java:55)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+	Suppressed: org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <0.0>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$0(SamplingDemoWorkflowTest.java:135)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [0], expected: <-0.2> but was: <-0.0>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$1(SamplingDemoWorkflowTest.java:136)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Origin retained ==> expected: <false> but was: <true>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$2(SamplingDemoWorkflowTest.java:137)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+
+[ERROR] signals.core.SamplingDemoWorkflowTest.defaultReconstructionPreservesTheSource(boolean)[2] -- Time elapsed: 0.077 s <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <-0.19999999999999996> but was: <0.0>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [0], expected: <-0.2000000000000002> but was: <0.0>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2961)
+	at signals.core.SamplingDemoWorkflowTest.assertOutput(SamplingDemoWorkflowTest.java:134)
+	at signals.core.SamplingDemoWorkflowTest.lambda$defaultReconstructionPreservesTheSource$0(SamplingDemoWorkflowTest.java:55)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+	Suppressed: org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <-0.19999999999999996> but was: <0.0>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$0(SamplingDemoWorkflowTest.java:135)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [0], expected: <-0.2000000000000002> but was: <0.0>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+		at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+		at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$1(SamplingDemoWorkflowTest.java:136)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+	Suppressed: org.opentest4j.AssertionFailedError: Origin retained ==> expected: <true> but was: <false>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+		at signals.core.SamplingDemoWorkflowTest.lambda$assertOutput$2(SamplingDemoWorkflowTest.java:137)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 13 more
+
+[ERROR] signals.core.SamplingDemoWorkflowTest.settingsSurviveReopenSourceEditsAndIndependentDuplication(boolean)[1] -- Time elapsed: 0.086 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Retain period ==> expected: <4> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:563)
+	at signals.core.SamplingDemoWorkflowTest.assertSettings(SamplingDemoWorkflowTest.java:141)
+	at signals.core.SamplingDemoWorkflowTest.lambda$settingsSurviveReopenSourceEditsAndIndependentDuplication$0(SamplingDemoWorkflowTest.java:109)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+[ERROR] signals.core.SamplingDemoWorkflowTest.settingsSurviveReopenSourceEditsAndIndependentDuplication(boolean)[2] -- Time elapsed: 0.080 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Retain period ==> expected: <4> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:563)
+	at signals.core.SamplingDemoWorkflowTest.assertSettings(SamplingDemoWorkflowTest.java:141)
+	at signals.core.SamplingDemoWorkflowTest.lambda$settingsSurviveReopenSourceEditsAndIndependentDuplication$0(SamplingDemoWorkflowTest.java:109)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   SamplingDemoWorkflowTest.lambda$defaultReconstructionPreservesTheSource$0:55->assertOutput:134 Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <0.0>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [0], expected: <-0.2> but was: <-0.0>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <false> but was: <true>
+[ERROR]   SamplingDemoWorkflowTest.lambda$defaultReconstructionPreservesTheSource$0:55->assertOutput:134 Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <-0.19999999999999996> but was: <0.0>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [0], expected: <-0.2000000000000002> but was: <0.0>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <true> but was: <false>
+[ERROR]   SamplingDemoWorkflowTest.lambda$samplingAndWidthEditsFollowBothComplexChannels$0:82->assertOutput:134 Reconstruction follows the input and selected passband (2 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <0.8499999999999909>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.12710594602902087> but was: <-0.11953383067790153>
+[ERROR]   SamplingDemoWorkflowTest.lambda$samplingAndWidthEditsFollowBothComplexChannels$0:82->assertOutput:134 Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <1.0> but was: <-0.19999999999999982>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.12710594602902087> but was: <-0.2728940539709785>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <false> but was: <true>
+[ERROR]   SamplingDemoWorkflowTest.lambda$samplingAndWidthEditsFollowBothComplexChannels$0:82->assertOutput:134 Reconstruction follows the input and selected passband (3 failures)
+	org.opentest4j.AssertionFailedError: Real reconstruction ==> array contents differ at index [0], expected: <-0.19999999999999996> but was: <0.8499999999999909>
+	org.opentest4j.AssertionFailedError: Imaginary reconstruction ==> array contents differ at index [1], expected: <-0.2728940539709791> but was: <-0.11953383067790148>
+	org.opentest4j.AssertionFailedError: Origin retained ==> expected: <true> but was: <false>
+[ERROR]   SamplingDemoWorkflowTest.lambda$settingsSurviveReopenSourceEditsAndIndependentDuplication$0:109->assertSettings:141 Retain period ==> expected: <4> but was: <1>
+[ERROR]   SamplingDemoWorkflowTest.lambda$settingsSurviveReopenSourceEditsAndIndependentDuplication$0:109->assertSettings:141 Retain period ==> expected: <4> but was: <1>
+[INFO] 
+[ERROR] Tests run: 8, Failures: 7, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.069 s
+[INFO] Finished at: 2026-10-13T15:37:28-07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project signalshow: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /Users/julietfiss/src/SignalShow-Java/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

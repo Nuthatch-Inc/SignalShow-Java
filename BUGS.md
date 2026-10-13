@@ -500,3 +500,36 @@ ID format: BUG-### (e.g. BUG-001)
 - Verification: Six before-failing both-origin 1D/2D EDT cases, nine native 2D stages including source edits/duplication; full 559-test package passes.
 - Scope: Other demonstration types, native 1D revisit and Windows require separate checks.
 - Evidence: [Frequency settings audit](docs/audit/evidence/2026-10-13-demo-settings.md).
+
+---
+
+- ID: BUG-037
+- Title: Sampling reconstruction omits negative frequencies and uses the wrong origin
+- Status: resolved within the tested sampling workflows
+- Date: 2026-10-13
+- Reproduction: Uncentered cosine period16 sampled every4 pixels reconstructs with half its real amplitude and a false imaginary wave. A different global creation origin can also shift the result.
+- Correction: Build the mask using signed FFT bins and the actual spectrum origin.
+- Verification: Eight EDT cases, seven before-failing; focused28/full567 pass. Native default/edited complex reconstruction, origin/source edits and duplication verified.
+- Evidence: [Sampling audit](docs/audit/evidence/2026-10-13-sampling.md).
+
+---
+
+- ID: BUG-038
+- Title: Default sampling reconstruction returns zero
+- Status: resolved within the tested sampling workflows
+- Date: 2026-10-13
+- Reproduction: Enable reconstruction at the initial sampling period1 before changing any fields; its gain is zero.
+- Correction: Initialize reconstruction gain from the current sampling period.
+- Verification: Eight EDT cases, seven before-failing; focused28/full567 pass. Native default/edited complex reconstruction, origin/source edits and duplication verified.
+- Evidence: [Sampling audit](docs/audit/evidence/2026-10-13-sampling.md).
+
+---
+
+- ID: BUG-039
+- Title: Sampling demonstration resets settings on document changes
+- Status: resolved within the tested sampling workflows
+- Date: 2026-10-13
+- Reproduction: Change period, reconstruction width and channel; visit the source and return. The controls reset to defaults.
+- Correction: Retain compact model settings, copy them independently on duplication and recompute fresh views from current input.
+- Verification: Eight EDT cases, seven before-failing; focused28/full567 pass. Native default/edited complex reconstruction, origin/source edits and duplication verified.
+- Evidence: [Sampling audit](docs/audit/evidence/2026-10-13-sampling.md).

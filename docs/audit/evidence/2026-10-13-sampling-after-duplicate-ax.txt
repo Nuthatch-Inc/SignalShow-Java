@@ -1,0 +1,74 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Description: sampling cosine[x] = 2 × cos[2π(x/16)] + i(0.5 × sin[2π(x/32)]), Value: 0
+					6 JavaAxIgnore (selectable) sampling cosine[x] = 2 × cos[2π(x/16)] + i(0.5 × sin[2π(x/32)])
+				7 row (selectable) Description: Sampling Demo, Value: 0
+					8 JavaAxIgnore (selectable) Sampling Demo
+				9 row (selected) Description: Sampling Demo, Value: 0
+					10 JavaAxIgnore (selectable) Sampling Demo
+			11 scroll bar (selectable)
+			12 scroll bar (selectable)
+		13 button (selectable) Duplicate
+		14 button (selectable) Delete
+		15 tab group (selectable, settable, unknown)
+			16 text (selectable) sampled
+			17 text (selectable) input
+			18 text (selectable) IFFT(filtered)
+		19 tab group (selectable, settable, unknown)
+			20 text (selectable) FFT(sampled)
+			21 text (selectable) filter
+		22 text (selectable) sampling period (pixels):
+		23 stepper (selectable) Description: sampling period (pixels):, Value: 4, Secondary Actions: Increment, Decrement
+			24 text field (selectable) 4
+		25 text (selectable) filter width:
+		26 stepper (selectable) Description: filter width: , Value: 24, Secondary Actions: Increment, Decrement
+			27 text field (selectable) 24
+		28 checkbox (selectable) Reconstruct Signal
+	29 close button
+	30 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	31 minimize button
+	32 text SignalShow
+33 menu bar
+	34 SignalShowRogerAudit
+	35 File
+	36 1D
+	37 2D
+	38 Help
+
+Selected:
+	39 row (selectable) Description: Sampling Demo, Value: 0
+		40 JavaAxIgnore (selectable) Sampling Demo
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

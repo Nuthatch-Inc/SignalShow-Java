@@ -7,24 +7,33 @@ import signals.gui.IconCache;
 
 public class SamplingModel1D extends SamplingModel {
 
+	private SamplingSettings settings;
+
 	public SamplingModel1D(Function input) {
 		super(input, IconCache.getIcon("/guiIcons/SamplingDemo.png"));
+		settings = new SamplingSettings(((Function1D) input).getDimension());
 	}
 	
 	public SamplingModel1D clone() {
 		
-		return new SamplingModel1D( input ); 
+		SamplingModel1D copy = new SamplingModel1D(input);
+		copy.settings = settings.copy();
+		return copy;
 	}
 
 	@Override
 	public void show() {
 		
-		Sampling1D demo = new Sampling1D( (Function1D)input ); 
-		Core.getGUI().removeContent(); 
+		Core.getGUI().removeContent();
+		Sampling1D demo = createView();
 		Core.getGUI().setContent(demo); 
 		
 	}
 	
+	protected Sampling1D createView() {
+		return new Sampling1D((Function1D) input, settings);
+	}
+
 	public void showNew() {
 		show(); 
 	}

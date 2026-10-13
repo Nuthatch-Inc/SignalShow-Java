@@ -13,7 +13,7 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-sampling"
+      "gui-2d-spatial-convolution"
     ],
     "nextIds": []
   },
@@ -3485,16 +3485,36 @@
       "area": "usage",
       "title": "Ordinary sampling and reconstruction after parameter edits",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
-        "Open Sampling/Aliasing on a normal signal.",
-        "Change sampling period and reconstruction width, then enable reconstruction."
+        "Create normal real/complex cosine/sine signals; open Sampling/Aliasing and enable default reconstruction.",
+        "Edit period and width, switch channels, then revisit after source edits and duplicate the demo."
       ],
       "expected": "Sampled and reconstructed signals follow their controls and retain the source origin.",
-      "scope": "Source finding: old term-based function factory ignores supplied origin; sampling reconstruction caller still requires direct verification.",
-      "summary": "Investigate both origins and normal period/width edits before changing this separate demo.",
+      "scope": "Eight EDT workflows on128 samples, both source/global origin settings; native256-sample cosine and complex cosine/sine with an origin edit. Windows and intentional aliasing remain separate.",
+      "summary": "BUG-037/038/039 corrected: signed frequency masks, initialized default gain and retained independent settings. Seven before-failing cases now pass; full567-test package and native plots/controls verified.",
+      "evidence": [
+        "sampling-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK25; Swing EDT and native packaged app",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-spatial-convolution",
+      "area": "usage",
+      "title": "Convolve and correlate spatially varying images through editable chains",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a rectangular Gaussian image and translated rectangle aperture using normal parameters.",
+        "Convolve/correlate, edit a source and save results; compare every complex sample independently.",
+        "Exercise forward/inverse FFT on the nonconstant image chain."
+      ],
+      "expected": "Nonconstant spatial results, source edits and transforms remain correct and usable.",
+      "scope": "Extends native constant-only operation coverage to spatially varying images; bounded normal sizes.",
+      "summary": "Next ordinary2D workflow; existing model checks are not native evidence for these fixtures.",
       "evidence": [],
-      "environment": "Target environment to be recorded",
+      "environment": "macOS native verification planned",
       "reviewedOn": "2026-10-13"
     }
   ],
@@ -4356,6 +4376,39 @@
         "docs/audit/evidence/2026-10-13-demo-settings-package.log",
         "docs/audit/evidence/2026-10-13-demo-settings.md",
         "src/test/java/signals/core/FrequencyDemoReopenWorkflowTest.java"
+      ]
+    },
+    "sampling-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK25; Swing EDT and native CUA;567-test package",
+      "summary": "Ordinary reconstruction restores both complex channels, uses the actual origin and retains independent settings through revisits and source edits.",
+      "limits": "Periodic band-limited fixtures and stated control choices; native plot evidence, strict arrays through actual Swing path. Windows and intentional aliasing unverified.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-sampling-after-default-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-after-default.png",
+        "docs/audit/evidence/2026-10-13-sampling-after-duplicate-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-after-duplicate-edited-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-after-imaginary.png",
+        "docs/audit/evidence/2026-10-13-sampling-after-narrow-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-after-narrow-imaginary.png",
+        "docs/audit/evidence/2026-10-13-sampling-after-narrow-real.png",
+        "docs/audit/evidence/2026-10-13-sampling-after-native.log",
+        "docs/audit/evidence/2026-10-13-sampling-after-original-independent-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-after-period4-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-after-period4.png",
+        "docs/audit/evidence/2026-10-13-sampling-after-real-source-edit.png",
+        "docs/audit/evidence/2026-10-13-sampling-after-reopened-complex-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-after-reopened-complex.png",
+        "docs/audit/evidence/2026-10-13-sampling-before-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-before-imaginary.png",
+        "docs/audit/evidence/2026-10-13-sampling-before-native.log",
+        "docs/audit/evidence/2026-10-13-sampling-before-reopened-ax.txt",
+        "docs/audit/evidence/2026-10-13-sampling-before-tests.log",
+        "docs/audit/evidence/2026-10-13-sampling-before.png",
+        "docs/audit/evidence/2026-10-13-sampling-focused.log",
+        "docs/audit/evidence/2026-10-13-sampling-package.log",
+        "docs/audit/evidence/2026-10-13-sampling.md",
+        "src/test/java/signals/core/SamplingDemoWorkflowTest.java"
       ]
     }
   },

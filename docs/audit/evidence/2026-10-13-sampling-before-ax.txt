@@ -1,0 +1,68 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Description: sampling cosine[x] = cos[2π(x/16)] + i(0[x]), Value: 0
+					6 JavaAxIgnore (selectable) sampling cosine[x] = cos[2π(x/16)] + i(0[x])
+				7 row (selected) Description: Sampling Demo, Value: 0
+					8 JavaAxIgnore (selectable) Sampling Demo
+			9 scroll bar (selectable)
+			10 scroll bar (selectable)
+		11 button (selectable) Duplicate
+		12 button (selectable) Delete
+		13 tab group (selectable, settable, unknown)
+			14 text (selectable) sampled
+			15 text (selectable) input
+			16 text (selectable) IFFT(filtered)
+		17 tab group (selectable, settable, unknown)
+			18 text (selectable) FFT(sampled)
+			19 text (selectable) filter
+		20 text (selectable) sampling period (pixels):
+		21 stepper (selectable) Description: sampling period (pixels):, Value: 4, Secondary Actions: Increment, Decrement
+			22 text field (selectable) 4
+		23 text (selectable) filter width:
+		24 stepper (selectable) Value: 256, Secondary Actions: Increment, Decrement
+			25 text field (selectable) 64
+		26 checkbox (selectable) Reconstruct Signal
+	27 close button
+	28 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	29 minimize button
+	30 text SignalShow
+31 menu bar
+	32 SignalShowRogerAudit
+	33 File
+	34 1D
+	35 2D
+	36 Help
+
+The focused UI element is 22 text field (selectable) 4
