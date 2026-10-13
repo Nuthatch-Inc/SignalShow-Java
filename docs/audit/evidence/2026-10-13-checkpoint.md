@@ -9,16 +9,18 @@ defer rare edges and tiny numerical errors.
 
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
 `codex/signalshow-usage-stabilization`, original baseline 28a4ffc. Local commits
-through 79bd164 cover stabilization/imports, arithmetic/creation/size, complex
+through ab1d790 cover stabilization/imports, arithmetic/creation/size, complex
 representation/filtering, and generator replacement. Nothing pushed.
 
-Current batch fixes BUG-025 duplicated CSV/text suffixes and BUG-026 incorrect
-shared scaling for negative complex exports. Seven production regressions:
-five fail before, all pass after. Full package **491 tests**, zero failures,
-errors or skips. Native eight-file retest passes exact pixels/data and filenames;
-TIFF/PNG/BMP/JPEG and complex numeric export coverage is recorded separately.
-See [export evidence](2026-10-13-exports.md). Next: bounded 2D demonstration
-controls, then ordinary cancellation/overwrite dialogs.
+Current batch fixes BUG-027 shared animation timer cleanup after leaving or
+finishing a demonstration. Four before-failing 1D/2D cases pass; full package
+**495 tests**, zero failures/errors/skips. Native play→source switch removes the
+queued animation timer (one before, zero after); replay works. One Convolve2D
+view remains in both heap snapshots, so full reclamation is still open.
+Three 2D demonstration control checks pass, with settings resets and separate
+numerical verification explicitly open. See [demo evidence](2026-10-13-demos.md).
+Prior export fixes BUG-025/026 are committed and verified. Next: ordinary file
+cancellation/overwrite; then basic 1D regression and bounded memory measurement.
 
 Juliet asked whether typing works again: verified Constant amplitude 2.5, committed
 expression, typed save filename and all 65,536 exported values exactly 2.5 + 0i.
@@ -27,7 +29,7 @@ field, select existing text, type, read back before Return; stop any failed edit
 Swing dropdown values can be provisional: inspect then Return, verify model/sample.
 
 No SignalShow process remains (verified). Bundle
-`/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` holds the 491-test JAR;
+`/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` holds the 495-test JAR;
 source JAR `target/signalshow-1.2.4.jar`. Copy/sign only while closed. Launch by
 full path with CUA; at most one. Do not inspect AX after close (it relaunches).
 Refresh CUA documentation after compaction. Isolated home

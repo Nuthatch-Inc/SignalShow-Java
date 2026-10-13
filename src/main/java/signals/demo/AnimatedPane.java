@@ -10,6 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import signals.core.Deconstructable;
 import signals.gui.IconCache;
 import signals.gui.ResizablePane;
 
@@ -20,7 +21,7 @@ import signals.gui.ResizablePane;
  *
  */
 @SuppressWarnings("serial")
-public abstract class AnimatedPane extends JPanel implements ResizablePane {
+public abstract class AnimatedPane extends JPanel implements ResizablePane, Deconstructable {
 	
 	public static int TIMER_INCREMENT = 50; //faster/slower by this number of milliseconds
 	
@@ -41,6 +42,7 @@ public abstract class AnimatedPane extends JPanel implements ResizablePane {
 			public void actionPerformed( ActionEvent e ) {
 				
 				if( lastStep() ) {
+					timer.stop();
 					
 					//similar to calling stop 
 					setEnabled( false ); 
@@ -79,6 +81,12 @@ public abstract class AnimatedPane extends JPanel implements ResizablePane {
 		
 	} 
 	
+	@Override
+	public void deconstruct() {
+		// GUI view replacement must release the timer that retains this pane.
+		stop();
+	}
+
 	/**
 	 * Demos should call this function to add a toolbar with buttons 
 	 */

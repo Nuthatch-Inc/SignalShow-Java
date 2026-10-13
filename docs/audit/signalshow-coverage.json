@@ -13,10 +13,11 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-demos"
+      "files-dialogs"
     ],
     "nextIds": [
-      "files-dialogs"
+      "gui-1d-basic",
+      "memory-bounded-2d"
     ]
   },
   "math": [
@@ -2632,19 +2633,21 @@
     {
       "id": "gui-demos",
       "area": "usage",
-      "title": "2D convolution, filtering and frequency-location demonstrations",
+      "title": "Open and interact with ordinary 2D demonstrations",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Use small compatible inputs to open each available 2D demo.",
         "Change one supported parameter and stop/reopen the view."
       ],
       "expected": "Demonstration controls and images remain consistent without exceptions.",
-      "scope": "Short native checks; no endurance sessions.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "scope": "Native controls and switching/reopening only; settings reset and numerical coverage are explicit separate gaps.",
+      "evidence": [
+        "demos-2026-10-13"
+      ],
+      "summary": "Convolution, frequency filtering and frequency-location views open and respond to bounded controls at 64×32. Shared animation timer cleanup fixed and verified separately from numerical accuracy.",
+      "environment": "macOS arm64/JDK25; 495-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "files-complex-2d",
@@ -2902,8 +2905,10 @@
       ],
       "expected": "Document retained references and a measured trend; do not infer a leak solely from delayed collection.",
       "scope": "Bounded lifetime check; long soak testing remains manual unless specifically requested.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
+      "evidence": [
+        "demos-2026-10-13"
+      ],
+      "summary": "Animation timer survival fixed and native queue removal verified. Complete panel reclamation and ordinary document/view memory remain unmeasured; one Convolve2D object persists in the bounded heap snapshot.",
       "environment": "Target environment to be recorded with results",
       "reviewedOn": null
     },
@@ -3362,6 +3367,43 @@
       ],
       "summary": "Eight exports match circular sums and centered DC expectations, including three-level source propagation. The inserted operand was verified from the actual expression, not inferred from the previously selected source.",
       "environment": "macOS arm64, JDK25; 484-test executable",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-demo-settings",
+      "area": "usage",
+      "title": "Keep demonstration settings when switching documents",
+      "priority": "P1",
+      "status": "issue",
+      "steps": [
+        "Change frequency cutoffs from8/24 to4/12.",
+        "Select the source document and return to the demonstration."
+      ],
+      "expected": "A returning demonstration retains the settings being explored.",
+      "scope": "Confirmed native frequency-location reset; demo model show methods construct fresh views. Lower priority than ordinary crashes and major wrong results.",
+      "summary": "Cutoffs reset to8/24; demo state is not retained between views. Recorded for a later scoped correction.",
+      "evidence": [
+        "demos-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK25",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-demo-numerics",
+      "area": "usage",
+      "title": "Verify demonstration-specific displayed results",
+      "priority": "P1",
+      "status": "pending",
+      "steps": [
+        "Compare ordinary convolution steps and filtering/frequency-band reconstructions with independent results."
+      ],
+      "expected": "Displayed intermediate and final values follow the selected demonstration settings.",
+      "scope": "Separate demo callers; existing operation math and GUI smoke checks do not certify them.",
+      "summary": "Native interaction checks complete; numerical display/origin conventions still need independent verification.",
+      "evidence": [
+        "demos-2026-10-13"
+      ],
+      "environment": "Target environment to be recorded",
       "reviewedOn": "2026-10-13"
     }
   ],
@@ -3890,6 +3932,27 @@
         "docs/audit/evidence/2026-10-13-export-after-verification.json",
         "docs/audit/evidence/2026-10-13-export-negative-before.png",
         "docs/audit/evidence/2026-10-13-export-negative-after.png"
+      ]
+    },
+    "demos-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK25; 491-test native controls, 495-test lifecycle correction",
+      "summary": "Three native 2D demonstration views respond to bounded controls. Fixed shared 1D/2D animation timers surviving view removal/completion; native queue comparison and four regressions pass.",
+      "limits": "Demonstration numerical outputs are not independently certified. Reopening resets settings. A view object remains in the post-GC snapshot; broader memory reclamation and Windows remain open.",
+      "sources": [
+        "src/main/java/signals/demo/AnimatedPane.java",
+        "src/test/java/signals/core/DemoLifecycleWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-demos.md",
+        "docs/audit/evidence/2026-10-13-demo-native.log",
+        "docs/audit/evidence/2026-10-13-demo-before-tests.log",
+        "docs/audit/evidence/2026-10-13-demo-focused.log",
+        "docs/audit/evidence/2026-10-13-demo-package.log",
+        "docs/audit/evidence/2026-10-13-demo-after-native.log",
+        "docs/audit/evidence/2026-10-13-demo-retention-before.txt",
+        "docs/audit/evidence/2026-10-13-demo-retention-after.txt",
+        "docs/audit/evidence/2026-10-13-demo-convolution.png",
+        "docs/audit/evidence/2026-10-13-demo-filtering.png",
+        "docs/audit/evidence/2026-10-13-demo-frequency.png"
       ]
     }
   },

@@ -382,3 +382,15 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Initialize shared extrema correctly for signed values.
 - Verification: Negative/positive PNG/TIFF production exports, full 491-test package, native pixel and numeric-file verification pass.
 - Evidence: [Native exports](docs/audit/evidence/2026-10-13-exports.md).
+
+
+---
+
+- ID: BUG-027
+- Title: Convolution demonstrations keep animation timers after leaving or completion
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: Play a convolution demo and select another document; the old timer remains queued. Reaching the final frame also leaves the repeating timer running.
+- Correction: Connect AnimatedPane to the existing view-cleanup contract and stop its timer at completion.
+- Verification: Four before-failing 1D/2D lifecycle tests, full 495-test package, native timer-queue before/after and replay checks pass. Full panel reclamation remains unverified.
+- Evidence: [Demonstration audit](docs/audit/evidence/2026-10-13-demos.md).
