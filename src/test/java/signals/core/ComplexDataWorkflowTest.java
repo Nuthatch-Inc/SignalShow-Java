@@ -3,6 +3,8 @@ package signals.core;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.image.renderable.ParameterBlock;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 
@@ -61,7 +63,7 @@ class ComplexDataWorkflowTest {
         real, imaginary, zeroCentered, "Roger target 45 degrees", width, height);
     source.setDescriptor("Roger target 45 degrees");
     Path file = directory.resolve("Roger complex image.txt");
-    assertTrue(ComplexIO.write2D(file.toFile(), source));
+    assertDoesNotThrow(() -> ComplexIO.write2D(file.toFile(), source));
     Function2D reopened = assertInstanceOf(Function2D.class,
         assertDoesNotThrow(() -> ComplexIO.read(file.toFile())));
     assertEquals(width, reopened.getDimensionX());
@@ -82,10 +84,10 @@ class ComplexDataWorkflowTest {
     assertSameSamples(source, reopened);
     // Operation results carry their display name in a custom equation, not a descriptor.
     Path resultFile = directory.resolve("operated result.txt");
-    ComplexIO.write(resultFile.toFile(), product);
+    assertDoesNotThrow(() -> ComplexIO.write(resultFile.toFile(), product));
     Function loadedResult = assertDoesNotThrow(() -> ComplexIO.read(resultFile.toFile()));
     assertSameSamples(product, loadedResult);
-    ComplexIO.write(resultFile.toFile(), loadedResult);
+    assertDoesNotThrow(() -> ComplexIO.write(resultFile.toFile(), loadedResult));
     assertSameSamples(product, ComplexIO.read(resultFile.toFile()));
   }
 
@@ -102,7 +104,7 @@ class ComplexDataWorkflowTest {
         real, imaginary, zeroCentered, "complex exponential");
     source.setDescriptor("complex exponential");
     Path file = directory.resolve("complex signal.txt");
-    assertTrue(ComplexIO.write1D(file.toFile(), source));
+    assertDoesNotThrow(() -> ComplexIO.write1D(file.toFile(), source));
     Function1D reopened = assertInstanceOf(Function1D.class,
         assertDoesNotThrow(() -> ComplexIO.read(file.toFile())));
     assertEquals(64, reopened.getDimension());
@@ -115,8 +117,34 @@ class ComplexDataWorkflowTest {
         new double[] {1, 2, 3, 4}, new double[] {4, 3, 2, 1}, true, "f0");
     source.setDescriptor("f0");
     Path file = directory.resolve("old-format.txt");
-    assertTrue(ComplexIO.write1D(file.toFile(), source));
+    assertDoesNotThrow(() -> ComplexIO.write1D(file.toFile(), source));
     assertSameSamples(source, ComplexIO.read(file.toFile()));
+  }
+
+  @ParameterizedTest
+  @ValueSource(booleans = {true, false})
+  void failedSaveCanBeRetriedWithoutChangingTheSource(boolean image, @TempDir Path directory) {
+    double[] real = new double[64];
+    double[] imaginary = new double[64];
+    for (int i = 0; i < real.length; i++) {
+      real[i] = i / 8.0 - 2;
+      imaginary[i] = 3 - i / 16.0;
+    }
+    Function source = image
+        ? FunctionFactory.createFunction2D(real, imaginary, true, "retry image", 8, 8)
+        : FunctionFactory.createFunction1D(real, imaginary, true, "retry signal");
+    source.setDescriptor(image ? "retry image" : "retry signal");
+    double[] expectedReal = source.getReal().clone();
+    double[] expectedImaginary = source.getImaginary().clone();
+    Path missingDirectory = directory.resolve("missing folder");
+    assertThrows(IOException.class,
+        () -> ComplexIO.write(missingDirectory.resolve("result.txt").toFile(), source));
+    assertFalse(Files.exists(missingDirectory));
+    assertArrayEquals(expectedReal, source.getReal(), 0);
+    assertArrayEquals(expectedImaginary, source.getImaginary(), 0);
+    Path retry = directory.resolve("corrected result.txt");
+    assertDoesNotThrow(() -> ComplexIO.write(retry.toFile(), source));
+    assertSameSamples(source, ComplexIO.read(retry.toFile()));
   }
 
   private static void assertSameSamples(Function source, Function reopened) {

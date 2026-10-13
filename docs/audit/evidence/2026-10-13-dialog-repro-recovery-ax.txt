@@ -1,0 +1,143 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selected) Description: f0[x, y] = 0[x]0[y] + i(0[x]0[y]), Value: 0
+					6 JavaAxIgnore (selectable) f0[x, y] = 0[x]0[y] + i(0[x]0[y])
+			7 scroll bar (selectable)
+			8 scroll bar (selectable)
+		9 button (selectable) Duplicate
+		10 button (selectable) Delete
+		11 toolbar (selectable) 0
+			12 checkbox (selectable) Edit Real Part
+			13 checkbox (selectable) Edit Imaginary Part
+			14 checkbox (selectable) Plot
+			15 checkbox (selectable) FFT
+			16 checkbox (selectable) Histogram
+			17 checkbox (selectable) Profiles
+		18 button (selectable) Open Parenthesis
+		19 button (selectable) Closed Parenthesis
+		20 button (selectable) Delete
+		21 button (selectable) New Term
+		22 button (selectable) Add
+		23 button (selectable) Subtract
+		24 button (selectable) Multiply
+		25 scroll area (selectable) 0
+			26 table (selectable) Description: table, Value: 0
+				27 row (selected, disabled) 0
+			28 scroll bar (selectable)
+			29 scroll bar (selectable)
+		30 button (selectable)
+		31 button (selectable)
+		32 button (selectable)
+		33 button (selectable)
+		34 button (selectable)
+		35 text (selectable) Function Name:
+		36 text field (selectable) f0
+		37 text (selectable) Width:
+		38 combo box (selectable) 256
+			39 pop up button (selectable)
+				40 list (selectable) Description: list, Value: 0
+					41 row (selectable) Description: 2, Value: 0
+						42 text (selectable) 2
+					43 row (selectable) Description: 4, Value: 0
+						44 text (selectable) 4
+					45 row (selectable) Description: 8, Value: 0
+						46 text (selectable) 8
+					47 row (selectable) Description: 16, Value: 0
+						48 text (selectable) 16
+					49 row (selectable) Description: 32, Value: 0
+						50 text (selectable) 32
+					51 row (selectable) Description: 64, Value: 0
+						52 text (selectable) 64
+					53 row (selectable) Description: 128, Value: 0
+						54 text (selectable) 128
+					55 row (selected) Description: 256, Value: 0
+						56 text (selectable) 256
+					57 row (selectable) Description: 512, Value: 0
+						58 text (selectable) 512
+					59 row (selectable) Description: 1024, Value: 0
+						60 text (selectable) 1024
+					61 row (selectable) Description: 2048, Value: 0
+						62 text (selectable) 2048
+					63 row (selectable) Description: 4096, Value: 0
+						64 text (selectable) 4096
+				65 scroll bar (selectable) 126
+			66 button (selectable) 256
+		67 text (selectable) Height:
+		68 combo box (selectable) 256
+			69 pop up button (selectable)
+				70 list (selectable) Description: list, Value: 0
+					71 row (selectable) Description: 2, Value: 0
+						72 text (selectable) 2
+					73 row (selectable) Description: 4, Value: 0
+						74 text (selectable) 4
+					75 row (selectable) Description: 8, Value: 0
+						76 text (selectable) 8
+					77 row (selectable) Description: 16, Value: 0
+						78 text (selectable) 16
+					79 row (selectable) Description: 32, Value: 0
+						80 text (selectable) 32
+					81 row (selectable) Description: 64, Value: 0
+						82 text (selectable) 64
+					83 row (selectable) Description: 128, Value: 0
+						84 text (selectable) 128
+					85 row (selected) Description: 256, Value: 0
+						86 text (selectable) 256
+					87 row (selectable) Description: 512, Value: 0
+						88 text (selectable) 512
+					89 row (selectable) Description: 1024, Value: 0
+						90 text (selectable) 1024
+					91 row (selectable) Description: 2048, Value: 0
+						92 text (selectable) 2048
+					93 row (selectable) Description: 4096, Value: 0
+						94 text (selectable) 4096
+				95 scroll bar (selectable) 126
+			96 button (selectable) 256
+		97 checkbox (selectable) Zero-Centered
+	98 close button
+	99 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	100 minimize button
+	101 text SignalShow
+102 menu bar
+	103 SignalShowRogerAudit
+	104 (disabled) File
+	105 (disabled) 1D
+	106 (disabled) 2D
+	107 (disabled) Help
+
+Selected:
+	108 row (selected) Description: f0[x, y] = 0[x]0[y] + i(0[x]0[y]), Value: 0
+		109 JavaAxIgnore (selectable) f0[x, y] = 0[x]0[y] + i(0[x]0[y])
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

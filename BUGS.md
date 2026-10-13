@@ -394,3 +394,15 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Connect AnimatedPane to the existing view-cleanup contract and stop its timer at completion.
 - Verification: Four before-failing 1D/2D lifecycle tests, full 495-test package, native timer-queue before/after and replay checks pass. Full panel reclamation remains unverified.
 - Evidence: [Demonstration audit](docs/audit/evidence/2026-10-13-demos.md).
+
+
+---
+
+- ID: BUG-028
+- Title: Failed complex-data saves close the dialog and can disable native menus
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: On macOS/JDK 25, save to a missing folder, dismiss the error, and save to a valid path. All menus become disabled while the editor remains usable. Reproduced after a clean launch.
+- Correction: Propagate write errors to SaveComplexDialog, parent its error message to that dialog, retain it on failure, and close file resources on all exits.
+- Verification: Native retry, cancellation, subsequent save/export/open and replacement checks pass; two 1D/2D failure/retry regressions and the full 497-test package pass. Windows remains untested.
+- Evidence: [File dialog audit](docs/audit/evidence/2026-10-13-dialogs.md).

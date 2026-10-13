@@ -1,0 +1,60 @@
+{
+  "dialog overwrite fixture.txt": {
+    "size": [
+      256,
+      256
+    ],
+    "real": 3,
+    "imaginary": 0,
+    "sha256": "68a323955305e8883e744b175383fe5e387e881de683fa441439ef7694fbf54f"
+  },
+  "dialog recovery.txt": {
+    "size": [
+      256,
+      256
+    ],
+    "real": 4,
+    "imaginary": 0,
+    "sha256": "6f11fa7c621652ef0eb4d204babd2a49377625c93bb0281f209faf52cb32c02f"
+  },
+  "dialog-after-recovery.txt": {
+    "size": [
+      256,
+      256
+    ],
+    "real": 4,
+    "imaginary": 0,
+    "sha256": "6f11fa7c621652ef0eb4d204babd2a49377625c93bb0281f209faf52cb32c02f"
+  },
+  "dialog-after-second-save.txt": {
+    "size": [
+      256,
+      256
+    ],
+    "real": 4,
+    "imaginary": 0,
+    "sha256": "6f11fa7c621652ef0eb4d204babd2a49377625c93bb0281f209faf52cb32c02f"
+  },
+  "dialog-after-csv.txt": {
+    "size": [
+      256,
+      256
+    ],
+    "real": 4,
+    "imaginary": 0,
+    "sha256": "6f11fa7c621652ef0eb4d204babd2a49377625c93bb0281f209faf52cb32c02f"
+  },
+  "dialog-csv-recovery_REAL_PART.csv": {
+    "samples": 65536,
+    "real": 4,
+    "sha256": "847ea9562aa290cf395a34a1afa920f349b4f0e0add9b90b5c60a56f8578a169"
+  },
+  "cancelledTargetsAbsent": true,
+  "finalOverwrite": {
+    "file": "dialog-after-recovery.txt",
+    "real": 6,
+    "imaginary": 0,
+    "samples": 65536,
+    "sha256": "9288ff62521bd7a2d9feb67d893629ace79f3141b6c3518eef94dbbccd2753f7"
+  }
+}

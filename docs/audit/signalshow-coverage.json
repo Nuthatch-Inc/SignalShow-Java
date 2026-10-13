@@ -7,17 +7,17 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 87% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 86% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "files-dialogs"
+      "gui-1d-basic"
     ],
     "nextIds": [
-      "gui-1d-basic",
-      "memory-bounded-2d"
+      "memory-bounded-2d",
+      "memory-lifecycle"
     ]
   },
   "math": [
@@ -2733,18 +2733,20 @@
       "area": "files",
       "title": "Cancel, overwrite and failed file writes",
       "priority": "P1",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Cancel open/save dialogs; continue editing.",
         "Overwrite a test file and verify its content.",
         "Attempt one controlled unwritable destination and recover."
       ],
       "expected": "Cancellation preserves current work; success/error reporting matches the actual file.",
-      "scope": "Test files only; normal cancellation/overwrite precede deliberately interrupted storage.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "scope": "Temporary 256×256 constant images on macOS; missing-folder save failure. Windows, interrupted writes and atomic replacement remain outside this evidence.",
+      "evidence": [
+        "dialogs-2026-10-13"
+      ],
+      "summary": "Native cancellation preserves current/source data; explicit overwrite verified. Complex save failure now retains its dialog and recovers without disabling menus. CSV retry also passes.",
+      "environment": "macOS arm64/JDK 25; 497-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "files-editable-definitions",
@@ -3954,6 +3956,30 @@
         "docs/audit/evidence/2026-10-13-demo-filtering.png",
         "docs/audit/evidence/2026-10-13-demo-frequency.png"
       ]
+    },
+    "dialogs-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25; 497-test package",
+      "summary": "Native open/save/export cancellation, explicit replacement and recoverable write errors. Fixed BUG-028 complex-save error disposal and native menu lockout.",
+      "limits": "Windows, interrupted storage and atomic replacement untested. Existing overwrite behavior has no confirmation.",
+      "sources": [
+        "src/main/java/signals/gui/SaveComplexDialog.java",
+        "src/main/java/signals/io/ComplexIO.java",
+        "src/test/java/signals/core/ComplexDataWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-dialogs.md",
+        "docs/audit/evidence/2026-10-13-dialog-focused.log",
+        "docs/audit/evidence/2026-10-13-dialog-error.png",
+        "docs/audit/evidence/2026-10-13-dialog-repro-disabled.png",
+        "docs/audit/evidence/2026-10-13-dialog-repro-recovery-ax.txt",
+        "docs/audit/evidence/2026-10-13-dialog-after-retained.png",
+        "docs/audit/evidence/2026-10-13-dialog-after-ax.txt",
+        "docs/audit/evidence/2026-10-13-dialog-csv-recovery-ax.txt",
+        "docs/audit/evidence/2026-10-13-dialog-final-ax.txt",
+        "docs/audit/evidence/2026-10-13-dialog-verification.json",
+        "docs/audit/evidence/2026-10-13-dialog-before-native.log",
+        "docs/audit/evidence/2026-10-13-dialog-after-native.log",
+        "docs/audit/evidence/2026-10-13-dialog-package.log"
+      ]
     }
   },
   "limitations": [
@@ -4011,6 +4037,17 @@
       "next": "Deferred precision improvement; prioritize ordinary crashes and major wrong results.",
       "evidence": [
         "filtering-2026-10-13"
+      ]
+    },
+    {
+      "id": "direct-file-replacement",
+      "title": "Saves replace existing files directly",
+      "basis": "source",
+      "impact": "An explicit save to an existing path overwrites it without a confirmation or atomic replacement protocol.",
+      "scope": "Native complex-data replacement verified; cancellation preserves the file. Interrupted storage not exercised.",
+      "next": "Consider replacement safeguards with the persistence design after ordinary workflow stabilization.",
+      "evidence": [
+        "dialogs-2026-10-13"
       ]
     }
   ],

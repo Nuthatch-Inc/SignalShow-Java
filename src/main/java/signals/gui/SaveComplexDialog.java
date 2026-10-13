@@ -1,5 +1,9 @@
 package signals.gui;
 
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
+
 import signals.core.Function;
 import signals.io.ComplexIO;
 import signals.io.ImageWriter.ImageType;
@@ -17,8 +21,15 @@ public class SaveComplexDialog extends SaveFunctionDialog {
 	@Override
 	public boolean commitSettings() {
 
-		ComplexIO.write(getSelectedFile("", ".txt"), function);
-		return true; 
+		try {
+			ComplexIO.write(getSelectedFile("", ".txt"), function);
+			return true;
+		} catch (IOException e) {
+			// Keep this dialog open so the filename can be corrected or cancelled.
+			JOptionPane.showMessageDialog(this, "Data was not saved.",
+					"File I/O Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
 	}
 
 

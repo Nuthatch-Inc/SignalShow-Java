@@ -6,9 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
-import signals.core.Core;
 import signals.core.Function;
 import signals.core.Function1D;
 import signals.core.Function2D;
@@ -17,7 +14,7 @@ import signals.core.Constants.Part;
 
 public class ComplexIO {
 
-	public static void write( File file, Function function ) {
+	public static void write( File file, Function function ) throws IOException {
 
 		if( function instanceof Function1D ) {
 			
@@ -121,13 +118,10 @@ public class ComplexIO {
 		return function;
 	}
 
-	public static boolean write1D( File file, Function1D function ) {
+	public static void write1D( File file, Function1D function ) throws IOException {
 
-		//open the file
-		FileWriter writer = null; 
-		try {
-
-			writer = new FileWriter(file);
+		// Close the writer on both success and failure. The dialog owns error recovery.
+		try (FileWriter writer = new FileWriter(file)) {
 
 			//write the dimension to the file
 			writer.write( "1D "+function.getDimension() + "\n" ); 
@@ -142,28 +136,13 @@ public class ComplexIO {
 			writer.write( "\n\n" ); 			
 			writePart1D( writer, function, Part.IMAGINARY_PART); 
 
-			//close the file
-			writer.close();
-
-
-		} catch (IOException e) {
-			JOptionPane.showMessageDialog(Core.getFrame(),
-					"Data was not saved.",
-					"File I/O Error",
-					JOptionPane.ERROR_MESSAGE);
-			return false; 
-		} 
-
-		return true; 
+		}
 	}
 	
-	public static boolean write2D( File file, Function2D function ) {
+	public static void write2D( File file, Function2D function ) throws IOException {
 
-		//open the file
-		FileWriter writer = null; 
-		try {
-
-			writer = new FileWriter(file);
+		// Close the writer on both success and failure. The dialog owns error recovery.
+		try (FileWriter writer = new FileWriter(file)) {
 
 			//write the dimension to the file
 			writer.write( "2D "+function.getDimensionX() + " " + function.getDimensionY() + "\n" ); 
@@ -178,19 +157,7 @@ public class ComplexIO {
 			writer.write( "\n\n" ); 			
 			writePart2D( writer, function, Part.IMAGINARY_PART); 
 
-			//close the file
-			writer.close();
-
-
-		} catch (IOException e) {
-			JOptionPane.showMessageDialog(Core.getFrame(),
-					"Data was not saved.",
-					"File I/O Error",
-					JOptionPane.ERROR_MESSAGE);
-			return false; 
-		} 
-
-		return true; 
+		}
 	}
 
 	private static void writePart2D( FileWriter writer, Function2D function, Part part ) throws IOException {
