@@ -13,10 +13,10 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "files-export-2d"
+      "gui-demos"
     ],
     "nextIds": [
-      "gui-demos"
+      "files-dialogs"
     ]
   },
   "math": [
@@ -2711,17 +2711,19 @@
       "area": "files",
       "title": "Export 2D images and numeric data",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Export real/imaginary data and images after threshold/arithmetic.",
         "Re-read values or pixels independently, including shared normalization of complex channels."
       ],
       "expected": "Files represent the selected current result and preserve documented range/orientation conventions.",
-      "scope": "Native export and artifact inspection; exported pictures do not establish raw numerical accuracy.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "scope": "Native ordinary 256×256 sources and operation results; format-specific exact/lossy verification. Other options and Windows remain open.",
+      "evidence": [
+        "exports-2026-10-13"
+      ],
+      "summary": "Native ring-mask TIFF/PNG/BMP pixels match exactly; JPEG decodes with expected lossy edges. Complex CSV/text samples pass; duplicate suffix and negative shared-scale defects fixed and verified in the rebuilt app.",
+      "environment": "macOS arm64/JDK25; 491-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "files-dialogs",
@@ -3868,6 +3870,26 @@
         "docs/audit/evidence/2026-10-13-replacement-verification.json",
         "docs/audit/evidence/2026-10-13-replacement-native.log",
         "docs/audit/evidence/2026-10-13-replacement-threshold-controls.png"
+      ]
+    },
+    "exports-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25, JAI1.1.3; 491-test package",
+      "summary": "Fixed duplicated numeric-file extensions and incorrect shared scaling for negative complex channels. Seven regressions pass; native TIFF/PNG/BMP/JPEG/CSV/text paths verified within their format scopes.",
+      "limits": "JPEG is lossy; observed tiny phase differences are deferred. Windows, other export choices and cancellation/overwrite remain separate coverage gaps.",
+      "sources": [
+        "src/main/java/signals/io/ImageWriter.java",
+        "src/test/java/signals/core/ImageExportWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-exports.md",
+        "docs/audit/evidence/2026-10-13-export-before-tests.log",
+        "docs/audit/evidence/2026-10-13-export-focused.log",
+        "docs/audit/evidence/2026-10-13-export-package.log",
+        "docs/audit/evidence/2026-10-13-export-before-native.log",
+        "docs/audit/evidence/2026-10-13-export-after-native.log",
+        "docs/audit/evidence/2026-10-13-export-before-verification.json",
+        "docs/audit/evidence/2026-10-13-export-after-verification.json",
+        "docs/audit/evidence/2026-10-13-export-negative-before.png",
+        "docs/audit/evidence/2026-10-13-export-negative-after.png"
       ]
     }
   },

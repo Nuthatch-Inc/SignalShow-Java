@@ -1,0 +1,54 @@
+{
+  "negative channels after_REAL_PART.png": {
+    "uniform_byte": 0,
+    "size": [
+      256,
+      256
+    ],
+    "sha256": "c343995fb13a6ffdc349074515ef2cc577554a72a237387cbbd2798d4e508f79"
+  },
+  "negative channels after_REAL_PART.tiff": {
+    "uniform_byte": 0,
+    "size": [
+      256,
+      256
+    ],
+    "sha256": "184bcb91dafb9a8a6b90744416d6fab19aaf76502729e192bde2c57eb6943762"
+  },
+  "negative channels after_REAL_PART.csv": {
+    "sample_count": 65536,
+    "uniform_value": -2,
+    "sha256": "a2acae1d30be72c26b17600b7ac539e0acd856c72e03824ccd153ccd9608d4e7"
+  },
+  "negative channels after_REAL_PART.txt": {
+    "sample_count": 65536,
+    "uniform_value": -2,
+    "sha256": "b12171fe193968f07d8e390b42e5f109b8f2dd75f0f4ed077d5fd477093781af"
+  },
+  "negative channels after_IMAGINARY_PART.png": {
+    "uniform_byte": 255,
+    "size": [
+      256,
+      256
+    ],
+    "sha256": "c2a87df4731ab3ff10fe76340707f478ba95b25b46e4c37aa35bce71d180492b"
+  },
+  "negative channels after_IMAGINARY_PART.tiff": {
+    "uniform_byte": 255,
+    "size": [
+      256,
+      256
+    ],
+    "sha256": "414592720cc453f99a8b1244ebc7db5a02e7949a7bbc25f307299b29070d6c1e"
+  },
+  "negative channels after_IMAGINARY_PART.csv": {
+    "sample_count": 65536,
+    "uniform_value": -1,
+    "sha256": "f39d23542dbc30a3c80091e3173ac9dec276f23fd657437a623a9c5db7771550"
+  },
+  "negative channels after_IMAGINARY_PART.txt": {
+    "sample_count": 65536,
+    "uniform_value": -1,
+    "sha256": "2ff79aef717034d907e859b3ec783ba8c2e0360b2cffd286f7f26c482ba6fc4b"
+  }
+}

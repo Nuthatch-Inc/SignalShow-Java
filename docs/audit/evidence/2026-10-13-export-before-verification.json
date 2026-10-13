@@ -1,0 +1,100 @@
+{
+  "export ring mask_REAL_PART.tiff": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "L",
+    "max_pixel_error": 0,
+    "mean_pixel_error": 0.0,
+    "sha256": "950ca6cc542b2c028f35d66a2ba8dda8e1ee63e8db9006ba357e86b0b0044753"
+  },
+  "export ring mask_REAL_PART.png": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "L",
+    "max_pixel_error": 0,
+    "mean_pixel_error": 0.0,
+    "sha256": "cedb4b6a6a3b5f7beedfac2fa7e6c90861d7b0c5c4d71f47ac2286f854dc4421"
+  },
+  "export ring mask_REAL_PART.bmp": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "L",
+    "max_pixel_error": 0,
+    "mean_pixel_error": 0.0,
+    "sha256": "8beda3d5f6cb890e21d81e079ad7477b01261d2571514e4570830e8db529a2be"
+  },
+  "export ring mask_REAL_PART.jpg": {
+    "size": [
+      256,
+      256
+    ],
+    "mode": "L",
+    "max_pixel_error": 39,
+    "mean_pixel_error": 0.296875,
+    "sha256": "b27a9f9e244ea517fff9de99374e56b8908645ca2ef26871ba205fb9dd7a330c"
+  },
+  "export complex source_IMAGINARY_PART.csv.csv": {
+    "samples": 65536,
+    "max_absolute_error": 0.0,
+    "filename_issue": "duplicated extension",
+    "sha256": "8449341f02e2b42f6856f50c4f451c33991fbe3fbd026bb6581ec422525d12cf"
+  },
+  "export complex source_MAGNITUDE.csv.csv": {
+    "samples": 65536,
+    "max_absolute_error": 5.551115123125783e-17,
+    "filename_issue": "duplicated extension",
+    "sha256": "ef2a9c2f0510d92c142e4f044968c08dffd04c091160ef572dbcd6390685660e"
+  },
+  "export complex source_MAGNITUDE.txt.txt": {
+    "samples": 65536,
+    "max_absolute_error": 5.551115123125783e-17,
+    "filename_issue": "duplicated extension",
+    "sha256": "78887cde36b834da558f2baa9b8cdc788e8911e4991bc289d344ab9c4c78ef98"
+  },
+  "export complex source_PHASE.csv.csv": {
+    "samples": 65536,
+    "max_absolute_error": 3.9621550484980617e-10,
+    "filename_issue": "duplicated extension",
+    "sha256": "69243011bf041c086d347083e097b37f7601a94476649374f355a813a6d23c72"
+  },
+  "export complex source_PHASE.txt.txt": {
+    "samples": 65536,
+    "max_absolute_error": 3.9621550484980617e-10,
+    "filename_issue": "duplicated extension",
+    "sha256": "f75d159894260dd3897e994a6f7e98741116a99f179c31d54590bb198dbd2ea2"
+  },
+  "export complex source_REAL_PART.csv.csv": {
+    "samples": 65536,
+    "max_absolute_error": 0.0,
+    "filename_issue": "duplicated extension",
+    "sha256": "a37506db067b7b93209a00039dec7da69fa09ff3a3089dcfec55d32fd2dfc824"
+  },
+  "export complex source_REAL_PART.txt.txt": {
+    "samples": 65536,
+    "max_absolute_error": 0.0,
+    "filename_issue": "duplicated extension",
+    "sha256": "32d3c3d0d02e844f39207a53addb58ae5f27a2875ec6628aadab811f0c4455cf"
+  },
+  "negative channels before_REAL_PART.png": {
+    "expected_uniform_byte": 0,
+    "observed_bytes": [
+      0
+    ],
+    "correct": true,
+    "sha256": "c343995fb13a6ffdc349074515ef2cc577554a72a237387cbbd2798d4e508f79"
+  },
+  "negative channels before_IMAGINARY_PART.png": {
+    "expected_uniform_byte": 255,
+    "observed_bytes": [
+      127
+    ],
+    "correct": false,
+    "sha256": "46808a8e9fd3b6f70abfbef8bea521c0c041eecf89999ab2c020e5c3005721f8"
+  }
+}

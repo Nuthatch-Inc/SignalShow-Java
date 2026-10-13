@@ -359,3 +359,26 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Restrict raw-data reuse to identity transforms, initialize image origin/size consistently, scale before clipping and refresh the selected image preview.
 - Verification: Nine before-failing regressions, full 472-test package and native exported amplitude/translation/resize/crop and threshold pixels pass.
 - Evidence: [Imported-image editing audit](docs/audit/evidence/2026-10-13-import-edit.md).
+
+
+---
+
+- ID: BUG-025
+- Title: CSV and text image exports duplicate the filename extension
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: File → Export Function as Data or Image produces `.csv.csv` and `.txt.txt` names for ordinary complex images.
+- Correction: Shared format detection accepts dotted chooser values and bare suffixes returned by Utils.
+- Verification: Before-failing filename regressions, full 491-test package and native CSV/text exports pass.
+- Evidence: [Native exports](docs/audit/evidence/2026-10-13-exports.md).
+
+---
+
+- ID: BUG-026
+- Title: Joint export of negative real and imaginary channels uses an incorrect scale
+- Status: resolved
+- Date: 2026-10-13
+- Reproduction: Export real −2 and imaginary −1 together; imaginary PNG is gray127 instead of white255.
+- Correction: Initialize shared extrema correctly for signed values.
+- Verification: Negative/positive PNG/TIFF production exports, full 491-test package, native pixel and numeric-file verification pass.
+- Evidence: [Native exports](docs/audit/evidence/2026-10-13-exports.md).

@@ -5,6 +5,7 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.media.jai.JAI;
@@ -78,8 +79,8 @@ public class ImageWriter {
 	 * @return double array [minValue, maxValue]
 	 */
 	public static double[] calculateSharedMinMax(Function2D function, Part[] parts) {
-		double min = Double.MAX_VALUE;
-		double max = Double.MIN_VALUE;
+		double min = Double.POSITIVE_INFINITY;
+		double max = Double.NEGATIVE_INFINITY;
 
 		for (Part part : parts) {
 			double[] data = ((Function) function).getPart(part);
@@ -145,7 +146,9 @@ public class ImageWriter {
 
 	public static ImageType extensionToType(String extension) {
 
-		String ext = extension.toLowerCase();
+		// Choosers include the dot; Utils.getExtension returns the bare suffix.
+		String ext = extension.toLowerCase(Locale.ROOT);
+		if (!ext.startsWith(".")) ext = "." + ext;
 
 		if (ext.equals(".tiff") || ext.equals(".tif")) {
 
