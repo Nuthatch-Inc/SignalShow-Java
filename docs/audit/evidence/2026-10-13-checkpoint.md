@@ -1,7 +1,7 @@
 # SignalShow current checkpoint — October 13, 2026
 
 Continuous Audit remains authorized. `check_usage: true`; last reading October13:
-weekly 89% remaining, no other applicable window, no usage pause. Follow the
+weekly 88% remaining, no other applicable window, no usage pause. Follow the
 [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 Local commits at verified checkpoints authorized October13. Do not push or
 release. No subagents. Ordinary 2D workflows first; build hundreds of scenarios
@@ -10,8 +10,8 @@ incrementally; defer rare edges and tiny numerical errors.
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
 `codex/signalshow-usage-stabilization`. Original baseline 28a4ffc. Local commits:
 7fb376a (earlier stabilization), 5a7a83f (image decoding/padding), efebd69
-(imported-image edits). Nothing pushed. The current evidence-only batch records
-native arithmetic and linked threshold verification.
+(imported-image edits), 5084e89 (native arithmetic evidence). Nothing pushed.
+The current evidence-only batch records ordinary creation and operation chains.
 The full 472-test package passes on macOS arm64/JDK 25, no failures/errors/skips;
 source diff clean (raw evidence logs excluded). Current executable JAR is
 `target/signalshow-1.2.4.jar`.
@@ -22,18 +22,21 @@ threshold samples match independent oracles after amplitude, translation,
 resize and crop edits; crop survives Plot/Edit when actually committed.
 Nine new regressions pass. Earlier scoped Roger, grouping, operator-symbol,
 channel, linked-source, file, profile and deletion evidence is in the matrix.
-Latest native arithmetic: all 13 exports match independent oracles through
-Plus/Minus/Times/Divide, source edits, operand reversal and linked Threshold 0.2.
-Search div→plu→clear passes; Minus/unmatched remains pending. See
-[arithmetic evidence](2026-10-13-arithmetic.md). Next: remaining ordinary creation
-families and their operation chains. Keep hundreds-of-scenarios plan incremental.
+Latest: [native creation chains](2026-10-13-creation.md) verify Cylinder × seeded
+Uniform Noise → Threshold, and polar Gaussian × Cosine → Absolute Value →
+Threshold, including source edits through both levels. Fifteen exports inspected
+with explicit oracle scopes, no native errors. All five creation families now
+have representative scoped evidence. Native operation search is verified,
+including Minus and unmatched recovery. Previous arithmetic has thirteen matched
+exports. Next: native matching-size recovery, then rectangular/origin workflows.
+Keep hundreds-of-scenarios plan incremental.
 
 Juliet explicitly reauthorized keystrokes. `selectText` on the existing value,
 then typing and readback before Return works for native text/parameter fields.
 Swing dropdown AX values may be provisional: focus the control, select with
 arrows, inspect, press Return, then verify rendered value and samples. Earlier
 crop attempts that lacked Return are not evidence of a product defect. The
-previous size-dropdown recovery and remaining operation-search steps are pending.
+previous size-dropdown recovery is now the active check.
 
 No SignalShow process remains (verified). Bundle
 `/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app` contains the current

@@ -7,17 +7,17 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 89% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 88% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-create"
+      "gui-2d-resize-dropdown-recovery"
     ],
     "nextIds": [
-      "gui-2d-search-fixed",
-      "gui-2d-resize-dropdown-recovery"
+      "gui-2d-geometry",
+      "gui-2d-representation"
     ]
   },
   "math": [
@@ -1261,12 +1261,15 @@
         "definition": "unreviewed",
         "equations": "unreviewed",
         "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Registered production implementation. No audit assurance recorded yet. Native256×256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "creation-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "image2DList:ZeroFunctionTerm2D",
@@ -1501,13 +1504,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Registered production implementation. No audit assurance recorded yet. Native256×256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "creation-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "analytic2DList:CassegrainMultiArmFunctionTerm2D",
@@ -2391,18 +2397,24 @@
       "area": "usage",
       "title": "Create 2D aperture, image, noise, Cartesian and polar signals",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Use the native 2D menu to create a real/imaginary function.",
         "Add one term from each creation family at default dimensions.",
         "Change a parameter, inspect the thumbnail, open Plot and return to Edit."
       ],
       "expected": "Each family produces an editable function and current image; no exception, frozen editor or process exit.",
-      "scope": "Native desktop, initially 256×256; capture launch log, precise actions and visible state.",
-      "evidence": [],
-      "summary": "Not yet verified in the stated scope.",
-      "environment": "Target environment to be recorded with results",
-      "reviewedOn": null
+      "scope": "Representative centered256×256 native workflows: Cylinder/Uniform Noise and polar Gaussian×Cosine in this batch; Image Gradient/Constant/import edits and Cartesian combinations in earlier evidence. More generators and combinations remain separate.",
+      "evidence": [
+        "creation-2026-10-13",
+        "cartesian-composition-2026-10-12",
+        "channels-2026-10-13",
+        "arithmetic-2026-10-13",
+        "import-edit-2026-10-13"
+      ],
+      "summary": "All five creation families have representative native parameter, Plot/Edit and linked-operation evidence. New aperture/noise and polar chains save correct current outputs without exceptions.",
+      "environment": "macOS arm64, JDK25; 472-test package",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "gui-2d-operations",
@@ -2977,19 +2989,20 @@
       "area": "usage",
       "title": "Verify corrected operation search in the native app",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Type plus, minus and an unmatched query in the native 2D binary search.",
         "Clear the query and select an operation."
       ],
       "expected": "Native list and operation selection track the query and recover.",
-      "scope": "Requires working native text input; component checks are recorded separately.",
-      "summary": "Native div→plu replacement, selection and clearing now pass with readback; six choices recover and saved Plus result is correct. Native Minus and unmatched-query steps remain pending.",
+      "scope": "Native query editing and binary chooser, plus saved output verification. Component coverage remains separately recorded.",
+      "summary": "Native div/plu/minus and unmatched queries, operation selection, clearing and recovery pass. Saved Plus and Minus results match independent oracles; exact query text was verified.",
       "evidence": [
         "search-2026-10-12",
-        "arithmetic-2026-10-13"
+        "arithmetic-2026-10-13",
+        "creation-2026-10-13"
       ],
-      "environment": "macOS arm64, JDK25",
+      "environment": "macOS arm64, JDK25; 472-test package",
       "reviewedOn": "2026-10-13"
     },
     {
@@ -3190,7 +3203,7 @@
       "evidence": [
         "resize-linked-2026-10-12"
       ],
-      "summary": "Automated key changes stopped committing. Leave this interaction pending rather than repeat ineffective typing or claim a resize pass.",
+      "summary": "Now verifying with working native text/selection routing: commit dropdown choices with Return and confirm the rendered value plus saved dimensions.",
       "environment": "macOS arm64; Windows pending",
       "reviewedOn": "2026-10-12"
     },
@@ -3717,6 +3730,22 @@
         "docs/audit/evidence/2026-10-13-arithmetic-quotient.png",
         "docs/audit/evidence/2026-10-13-arithmetic-search-divide.png",
         "docs/audit/evidence/2026-10-13-arithmetic-search-cleared.png"
+      ]
+    },
+    "creation-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64, JDK25; efebd69 package,472 regression tests",
+      "summary": "Ordinary aperture/noise and polar creation edits compose through arithmetic, Absolute Value and Threshold. Source edits propagate; all checked downstream arrays match independent oracles. Native search recovery complete.",
+      "limits": "Representative centered256×256 fixtures. Noise distribution and exact polar sampling are not certified. Windows and other creation variants remain open.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-creation-verification.json",
+        "docs/audit/evidence/2026-10-13-creation-native.log",
+        "docs/audit/evidence/2026-10-13-creation-cylinder.png",
+        "docs/audit/evidence/2026-10-13-creation-masked-noise.png",
+        "docs/audit/evidence/2026-10-13-creation-polar.png",
+        "docs/audit/evidence/2026-10-13-creation-polar-threshold.png",
+        "docs/audit/evidence/2026-10-13-creation-search-empty.png",
+        "docs/audit/evidence/2026-10-13-creation.md"
       ]
     }
   },

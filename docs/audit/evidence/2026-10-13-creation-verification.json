@@ -1,0 +1,114 @@
+{
+  "aperture times noise": {
+    "max_real_error": 0.0,
+    "samples": 65536,
+    "imaginary_zero": true,
+    "nonzero_real": 5025,
+    "sha256": "683f0aaa7b08ae1e7563f6cc3ce5c72206199fee367c5af5381b71cdfe3ccb3a"
+  },
+  "aperture minus noise": {
+    "max_real_error": 0.0,
+    "samples": 65536,
+    "imaginary_zero": true,
+    "nonzero_real": 65536,
+    "sha256": "d4c5b0b6b1a90486f906093008504ce8a2d330a74db4b1a4a79f474db282279a"
+  },
+  "masked noise threshold": {
+    "max_real_error": 0.0,
+    "samples": 65536,
+    "imaginary_zero": true,
+    "nonzero_real": 2540,
+    "sha256": "4d332b7aa178ae2a10def9a6b4a859466d6bdd17c7d78ea7db4dfd3fc864d888"
+  },
+  "aperture times noise edited": {
+    "max_real_error": 0.0,
+    "samples": 65536,
+    "imaginary_zero": true,
+    "nonzero_real": 3209,
+    "sha256": "29a9791f857171632aa10da03182b08bab42110db745347311d8e4c9645e472e"
+  },
+  "masked noise threshold edited": {
+    "max_real_error": 0.0,
+    "samples": 65536,
+    "imaginary_zero": true,
+    "nonzero_real": 1616,
+    "sha256": "0f486961b334c67634bbad77da143933cbba08d08177225318251baed40bb7dd"
+  },
+  "cylinder": {
+    "max_real_error": 0.0,
+    "samples": 65536,
+    "imaginary_zero": true,
+    "oracle": "Disk radius at x=24,y=-16 on centered raster, y increasing upward",
+    "sha256": "4b0f2a3cad8c3562e430747dcaa79a43e888d3294e8ed62b4414dda2661905ee"
+  },
+  "cylinder edited": {
+    "max_real_error": 0.0,
+    "samples": 65536,
+    "imaginary_zero": true,
+    "oracle": "Disk radius at x=24,y=-16 on centered raster, y increasing upward",
+    "sha256": "24d0937be50efeca87f2d8330408f013f8bedbe0e9c52e997578a5950f139a3b"
+  },
+  "polar absolute": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "max_real_error": 0.0,
+    "nonzero_real": 65536,
+    "sha256": "5fcf057f40267ffb1950373f65f74c6255e08b0f97542baf165f238651abeeec"
+  },
+  "polar absolute threshold": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "max_real_error": 0.0,
+    "nonzero_real": 3060,
+    "sha256": "620db63681ac11118be04a63a40592fb9e86ecb48cb1275bf58070081fdcb2fc"
+  },
+  "polar ring": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "finite": true,
+    "minimum": -0.9992936786596853,
+    "maximum": 0.9994235282142042,
+    "scope": "Composition and linked operations checked; no new exact polar-generator oracle.",
+    "sha256": "3f604ae2f32a1b1a8af1e42ec352ac99c4881672aa7da060392cea34d99858f8"
+  },
+  "polar absolute edited": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "max_real_error": 0.0,
+    "nonzero_real": 65536,
+    "sha256": "3318e403d7126122dd34fffec761c264c8eef31c5a831be7e8cbe1a4797394d4"
+  },
+  "polar absolute threshold edited": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "max_real_error": 0.0,
+    "nonzero_real": 3816,
+    "sha256": "aa1942f6b81a97b28e73414943fe337e7b712ef128d514db1a10dc2e59bf15ad"
+  },
+  "polar ring edited": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "finite": true,
+    "minimum": -0.9996762331074351,
+    "maximum": 0.9995122559261144,
+    "scope": "Composition and linked operations checked; no new exact polar-generator oracle.",
+    "sha256": "fdfc8f09373bd6aca0a1ea81295977c63ea12088bd4ce876172b45b4b4d7cb78"
+  },
+  "uniform noise": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "minimum": 1.086563134422569e-05,
+    "maximum": 0.9999986952470916,
+    "mean": 0.5013012847960355,
+    "population_variance": 0.08335673328481329,
+    "identical_after_plot_edit": true,
+    "scope": "Observed range, finiteness and seeded repeatability; not a distribution certification.",
+    "sha256": "7e4d6fb3ec9a852891b9113382a5a50dd254cca180f670009f5167f1743c9db9"
+  },
+  "uniform noise reopened": {
+    "samples": 65536,
+    "imaginary_zero": true,
+    "identical_to": "uniform noise",
+    "sha256": "7e4d6fb3ec9a852891b9113382a5a50dd254cca180f670009f5167f1743c9db9"
+  }
+}
