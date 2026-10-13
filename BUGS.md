@@ -440,3 +440,16 @@ ID format: BUG-### (e.g. BUG-001)
 - Scope: macOS/JDK 25 with CUA accessibility interaction. Manual-use and Windows behavior unverified; do not generalize to all environments.
 - Next: Isolate native root lifetime and explicit editor cleanup, then compare on Windows or without accessibility interaction.
 - Evidence: [Memory ownership audit](docs/audit/evidence/2026-10-13-memory.md).
+
+
+---
+
+- ID: BUG-032
+- Title: Convolution demonstrations show wrong values and stop before completing the output
+- Status: resolved within the tested scope
+- Date: 2026-10-13
+- Reproduction: In 2D, convolve a 32×16 Constant amplitude 2 with itself using the default normalization. Playback ends at amplitude 2048 with one black output pixel. Ordinary complex Gaussian/reference animations also disagree with spatial sums in both 1D and 2D.
+- Correction: Sample the moving filter/reference at the correct coordinates, conjugate correlation references, apply the existing normalization, complete every sample, and honor wrapping in the final calculation. Correct the imaginary overlay and source-origin display.
+- Verification: Twenty-four before-failing calculation cases plus two display checks; full 529-test package. Native constant playback now stays at 2; a saved complex sine/rectangle correlation matches all 256 independent sample sums after editing/reopening.
+- Scope: Frequency filtering/location demos and complex normalization semantics remain separate; no Windows claim.
+- Evidence: [Demonstration calculations](docs/audit/evidence/2026-10-13-demo-calculations.md).

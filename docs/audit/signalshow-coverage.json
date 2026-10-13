@@ -7,7 +7,7 @@
     "state": "active",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly 84% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly 83% remaining; no other applicable window reported",
     "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
   },
   "scenarioPlan": {
@@ -3399,17 +3399,37 @@
       "reviewedOn": "2026-10-13"
     },
     {
+      "id": "gui-convolution-numerics",
+      "area": "usage",
+      "title": "Convolution/correlation playback, edits and saved results",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Create ordinary real/complex inputs; choose convolution or correlation and wrapping/normalization.",
+        "Step, restart, play to completion; edit the reference and reopen.",
+        "Save the 1D result as data and compare exported samples."
+      ],
+      "expected": "Displayed and saved samples match the selected operation and settings, including the last sample.",
+      "scope": "Native centered 32×16 normalized Constant and 256-sample complex sine/rectangle correlation; independent component cases cover both origins and no-wrap. Frequency demos remain separate.",
+      "summary": "Fixed BUG-032: ignored 2D normalization, shifted/missing samples, absent reference conjugation and wrong imaginary overlay. Native amplitude 2 remains2; all 256 complex correlation samples match independent sums after editing/reopening.",
+      "evidence": [
+        "demo-calculations-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK 25; final 529-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
       "id": "gui-demo-numerics",
       "area": "usage",
-      "title": "Verify demonstration-specific displayed results",
+      "title": "Verify frequency-demo displayed results",
       "priority": "P1",
       "status": "pending",
       "steps": [
-        "Compare ordinary convolution steps and filtering/frequency-band reconstructions with independent results."
+        "Compare ordinary frequency filtering and frequency-band reconstructions with independent results."
       ],
       "expected": "Displayed intermediate and final values follow the selected demonstration settings.",
-      "scope": "Separate demo callers; existing operation math and GUI smoke checks do not certify them.",
-      "summary": "Native interaction checks complete; numerical display/origin conventions still need independent verification.",
+      "scope": "Separate frequency-demo callers; existing operation math and GUI smoke checks do not certify them.",
+      "summary": "Convolution/correlation has its own checked row. Frequency-filtering and frequency-location calculations still need independent verification.",
       "evidence": [
         "demos-2026-10-13"
       ],
@@ -4080,6 +4100,39 @@
         "docs/audit/evidence/2026-10-13-memory-retention-focused.log",
         "docs/audit/evidence/2026-10-13-memory-hprof-roots.py",
         "docs/audit/evidence/2026-10-13-memory-verifier.py"
+      ]
+    },
+    "demo-calculations-2026-10-13": {
+      "date": "2026-10-13",
+      "environment": "macOS arm64/JDK 25; native CUA; final 529-test package",
+      "summary": "Twenty-four failing animation cases corrected, two display checks, native constant playback and saved complex correlation verified.",
+      "limits": "Frequency demos and Windows unverified; native no-wrap and uncentered cases not exercised; complex normalization unchanged.",
+      "sources": [
+        "src/main/java/signals/demo/Convolve1D.java",
+        "src/main/java/signals/demo/Convolve2D.java",
+        "src/main/java/signals/demo/ConvolutionDemoKernel.java",
+        "src/test/java/signals/core/DemoCalculationWorkflowTest.java",
+        "docs/audit/evidence/2026-10-13-demo-calculations.md",
+        "docs/audit/evidence/2026-10-13-demo-calculations-before-tests.log",
+        "docs/audit/evidence/2026-10-13-demo-calculations-package.log",
+        "docs/audit/evidence/2026-10-13-demo-native-values.json",
+        "docs/audit/evidence/2026-10-13-demo-native-verifier.py",
+        "docs/audit/evidence/2026-10-13-demo-before-setup.png",
+        "docs/audit/evidence/2026-10-13-demo-before-final.png",
+        "docs/audit/evidence/2026-10-13-demo-before-imaginary.png",
+        "docs/audit/evidence/2026-10-13-demo-after-final.png",
+        "docs/audit/evidence/2026-10-13-demo-after-imaginary.png",
+        "docs/audit/evidence/2026-10-13-demo-correlation-setup.png",
+        "docs/audit/evidence/2026-10-13-demo-correlation-final.png",
+        "docs/audit/evidence/2026-10-13-demo-correlation-saved.png",
+        "docs/audit/evidence/2026-10-13-demo-after-final-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-after-imaginary-ax.txt",
+        "docs/audit/evidence/2026-10-13-demo-sine.txt",
+        "docs/audit/evidence/2026-10-13-demo-reference.txt",
+        "docs/audit/evidence/2026-10-13-demo-correlation-result.txt",
+        "docs/audit/evidence/2026-10-13-demo-input.txt",
+        "docs/audit/evidence/2026-10-13-demo-after-input.txt",
+        "docs/audit/evidence/2026-10-13-demo-calculations-native.log"
       ]
     }
   },

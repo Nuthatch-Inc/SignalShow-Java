@@ -20,8 +20,6 @@ import signals.core.Function2D;
 import signals.gui.plot.ImageDisplayPanel;
 import signals.operation.ArrayMath;
 import signals.operation.CalculusOperations;
-import signals.operation.ReverseOp2D;
-import signals.operation.TranslateOp2D;
 
 @SuppressWarnings("serial")
 public class Convolve2D extends AnimatedPane {
@@ -41,9 +39,6 @@ public class Convolve2D extends AnimatedPane {
 	//reversed and shifted kernel 
 	Function reversedShiftedKernel; 
 
-	//product of function and reversed shifted kernel
-	Function product; 
-
 	//temporary display
 	ImageDisplayPanel display, outputDisplay; 
 
@@ -52,9 +47,7 @@ public class Convolve2D extends AnimatedPane {
 	//dimension of signals
 	int dimensionX, dimensionY; 
 
-	//operators that perform the math 
-	TranslateOp2D rotateOp;  
-	ReverseOp2D reverseOp; 
+	ConvolutionDemoKernel movingKernel;
 
 	double[] outputReal, outputImag;
 
@@ -85,7 +78,7 @@ public class Convolve2D extends AnimatedPane {
 		// For both convolution and correlation:
 		// - First function = Input (stationary)
 		// - Second function = Filter (convolution) or Reference (correlation) - this one slides
-		// Note: CorrelateOp swaps operands internally to match Roger Easton's notation
+		// Correlation conjugates the second input, matching CorrelateOp.
 		if (isConvolution) {
 			panelTitle = "Input and Filter";
 		} else {
@@ -103,8 +96,8 @@ public class Convolve2D extends AnimatedPane {
 		display = new ImageDisplayPanel(displayDimension);  
 		outputDisplay = new ImageDisplayPanel(displayDimension); 
 
-		display.setIndices(dimensionX, dimensionY, true);
-		outputDisplay.setIndices(dimensionX, dimensionY, true);
+		display.setIndices(dimensionX, dimensionY, zeroCentered);
+		outputDisplay.setIndices(dimensionX, dimensionY, zeroCentered);
 
 		inputPanel = new JPanel(); 
 		inputPanel.setBorder(BorderFactory.createTitledBorder(panelTitle)); 
@@ -113,10 +106,6 @@ public class Convolve2D extends AnimatedPane {
 
 		inputPanel.add(display); 
 		outputPanel.add( outputDisplay ); 
-
-		rotateOp = new TranslateOp2D(null);
-		rotateOp.setWrapAround(wrapAround); 
-		reverseOp = new ReverseOp2D(null); 
 
 		realButton = new JRadioButton("Show Real"); 
 		imagButton = new JRadioButton("Show Imaginary"); 
@@ -141,19 +130,9 @@ public class Convolve2D extends AnimatedPane {
 		realButton.addActionListener( partListener ); 
 		imagButton.addActionListener( partListener ); 
 
-		//reverse if convolution, not correlation
-		if( reverseKernel ) {
-
-			//reverse in both x and y directions
-			reverseOp.setXDirection(true); 
-			reversedKernel = reverseOp.create(kernel); 
-			reverseOp.setXDirection(false); 
-			reversedKernel = reverseOp.create(reversedKernel); 
-
-		} else {
-
-			reversedKernel = kernel; 
-		}
+		movingKernel = new ConvolutionDemoKernel(function, kernel, reverseKernel, wrapAround, normalize);
+		this.kernel = movingKernel.kernel;
+		reversedKernel = movingKernel.at(0, 0);
 
 		inputReal = function.getPart( Constants.Part.REAL_PART ); 
 		inputImag = function.getPart( Constants.Part.IMAGINARY_PART ); 
@@ -162,7 +141,6 @@ public class Convolve2D extends AnimatedPane {
 		contentPanel.add( inputPanel ); 
 		contentPanel.add( outputPanel ); 
 		contentPanel.add( partPanel ); 
-
 
 		setLayout( new BorderLayout() ); 
 		add( contentPanel, BorderLayout.CENTER ); 
@@ -190,7 +168,7 @@ public class Convolve2D extends AnimatedPane {
 			//display input
 			//display.display(kernelImag, kernelReal, inputImag);
 			
-			double[] sum = ArrayMath.add(kernelReal, inputImag); 
+			double[] sum = ArrayMath.add(kernelImag, inputImag);
 			display.display(sum); 
 
 			//display output 
@@ -200,37 +178,21 @@ public class Convolve2D extends AnimatedPane {
 
 	}
 
-
 	public void sizeChanged() {
 
 	}
 
-	/**
-	 * Calculates the reversed input, shifts it back by dimension/2
-	 */
 	private void reset() {
-
 		stepNumber = 0; 
-		rotateOp.setShiftAmountX( 0 );
-		rotateOp.setShiftAmountY(dimensionY-1);
-
 	}
 
-	public boolean lastStep() { //TODO
-
-		if( zeroCentered ) {
-
-			return ( ( rotateOp.getShiftAmountY() == -dimensionY/2+1 ) && //TODO - done
-					( rotateOp.getShiftAmountX() == (dimensionX/2-1) ) ); 
-		}
-
-		return ( ( rotateOp.getShiftAmountY() == 1 ) &&  //TODO - done
-				( rotateOp.getShiftAmountX() == (dimensionX-1) ) ); 
-
-
+	public boolean lastStep() {
+		return stepNumber >= dimensionX * dimensionY + 3;
 	}
 
 	public void step() {
+
+		if (lastStep()) return;
 
 		switch( stepNumber ) {
 
@@ -242,74 +204,48 @@ public class Convolve2D extends AnimatedPane {
 			outputReal = new double[dimensionX*dimensionY]; 
 			outputImag = new double[dimensionX*dimensionY]; 
 
-			display(); 
-
 			break; 
 
 		case 1: 
 
-			//display the rotated kernel
+			// Display the reversed filter, or conjugated correlation reference.
 			kernelReal = reversedKernel.getPart( Constants.Part.REAL_PART ); 
 			kernelImag = reversedKernel.getPart( Constants.Part.IMAGINARY_PART ); 
-
-			display(); 
 
 			break; 
 
 		case 2: 
 
 			//display the input signal and the rotated kernel that has been shifted back
-			rotateOp.setShiftAmountX( zeroCentered ? -dimensionX/2 : 0 );
-			rotateOp.setShiftAmountY( zeroCentered ? dimensionY/2 : dimensionY-1 ); //TODO - done
-			reversedShiftedKernel = rotateOp.create(reversedKernel);
+			reversedShiftedKernel = movingKernel.atOutput(0);
 
 			kernelReal = reversedShiftedKernel.getPart( Constants.Part.REAL_PART ); 
 			kernelImag = reversedShiftedKernel.getPart( Constants.Part.IMAGINARY_PART ); 
-
-			display(); 
 
 			break; 
 		default: 
 
 			//display the input signal, the rotated kernel that has been shifted back then forward, 
 			//the product of the input signal and the shifted, rotated kernel, and the output. 
-			reversedShiftedKernel = rotateOp.create(reversedKernel);
+			reversedShiftedKernel = movingKernel.atOutput(stepNumber - 3);
 
-		kernelReal = reversedShiftedKernel.getPart( Constants.Part.REAL_PART ); 
-		kernelImag = reversedShiftedKernel.getPart( Constants.Part.IMAGINARY_PART ); 
+			kernelReal = reversedShiftedKernel.getPart( Constants.Part.REAL_PART );
+			kernelImag = reversedShiftedKernel.getPart( Constants.Part.IMAGINARY_PART );
 
-		//find the product of the input signals
-		double[][] productArray = ArrayMath.multiply( function.getReal(), function.getImaginary(),
-				reversedShiftedKernel.getReal(), reversedShiftedKernel.getImaginary() );
+			//find the product of the input signals
+			double[][] productArray = ArrayMath.multiply( function.getReal(), function.getImaginary(),
+					reversedShiftedKernel.getReal(), reversedShiftedKernel.getImaginary() );
 
-		double[] productR = productArray[0];
-		double[] productI = productArray[1]; 
+			double[] productR = productArray[0];
+			double[] productI = productArray[1];
 
-		double outR = CalculusOperations.area( productR );
-		double outI = CalculusOperations.area( productI );
+			double outR = CalculusOperations.area( productR );
+			double outI = CalculusOperations.area( productI );
 
-		int outputIndex = stepNumber - 3; 
-		outputReal[outputIndex] = outR; 
-		outputImag[outputIndex] = outI; 
+			int outputIndex = stepNumber - 3;
+			outputReal[outputIndex] = outR;
+			outputImag[outputIndex] = outI;
 
-		//increment shift amount
-		rotateOp.incrementShiftAmountX(); 
-		if( zeroCentered ) {
-			if( rotateOp.getShiftAmountX() == dimensionX/2 ) {
-
-				rotateOp.setShiftAmountX( -dimensionX/2 );
-				rotateOp.decrementShiftAmountY();  //TODO done
-
-			} 
-		} else {
-			if( rotateOp.getShiftAmountX() == dimensionX ) {
-
-				rotateOp.setShiftAmountX( 0 );
-				rotateOp.decrementShiftAmountY(); //TODO done
-
-			} 
-
-		}
 
 		}
 
@@ -321,8 +257,9 @@ public class Convolve2D extends AnimatedPane {
 
 	@Override
 	public void stepBack() {
-		stepNumber -= 2; 
-		step(); 
+		int target = Math.max(0, stepNumber - 2);
+		toBegin();
+		for (int i = 0; i < target && !lastStep(); i++) step();
 	}
 
 	@Override
@@ -349,7 +286,8 @@ public class Convolve2D extends AnimatedPane {
 	@Override
 	public void toEnd() {
 
-		output = op.create(function, kernel);
+		output = movingKernel.complete(function, op);
+		stepNumber = dimensionX * dimensionY + 3;
 		outputReal = output.getPart( Constants.Part.REAL_PART );
 		outputImag = output.getPart( Constants.Part.IMAGINARY_PART );
 
@@ -366,7 +304,7 @@ public class Convolve2D extends AnimatedPane {
 
 	@Override
 	public boolean firstStep() { 
-		return stepNumber==0;
+		return stepNumber <= 1;
 	}
 
 }

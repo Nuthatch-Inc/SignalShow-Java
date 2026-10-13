@@ -1,0 +1,64 @@
+{
+  "native_correlation": {
+    "files": [
+      {
+        "name": "demo-sine",
+        "shape": [
+          256
+        ],
+        "centered": "true",
+        "sha256": "13e257a6ddcd807e7dfb70a06c1d6bfc49efd6b0f7cbc737352deda962d20b8a"
+      },
+      {
+        "name": "demo-reference",
+        "shape": [
+          256
+        ],
+        "centered": "true",
+        "sha256": "eaf55ec0ddf89c4a5c657288b2ccd1f3930e8d76e6809e5cd58c34c1b6e58b20"
+      },
+      {
+        "name": "demo-correlation-result",
+        "shape": [
+          256
+        ],
+        "centered": "true",
+        "sha256": "33fc56a16e71da85ff339f19e5564da60892cab649091039e08d3328d9556d90"
+      }
+    ],
+    "samples": 256,
+    "max_complex_error": 2.3364326363345898e-14,
+    "last_actual": [
+      59.3183052823498,
+      11.999999999999993
+    ],
+    "last_expected": [
+      59.3183052823498,
+      11.999999999999991
+    ],
+    "real_range": [
+      1.6057049886876342,
+      62.394295011312366
+    ]
+  },
+  "constant_fixtures": [
+    {
+      "name": "demo-input",
+      "shape": [
+        32,
+        16
+      ],
+      "centered": "true",
+      "sha256": "1ead996e794a3ffe17466ee2800d7f1bdaadadcdb552d58d8f6ab5cc2c4d38fa"
+    },
+    {
+      "name": "demo-after-input",
+      "shape": [
+        32,
+        16
+      ],
+      "centered": "true",
+      "sha256": "1ead996e794a3ffe17466ee2800d7f1bdaadadcdb552d58d8f6ab5cc2c4d38fa"
+    }
+  ]
+}

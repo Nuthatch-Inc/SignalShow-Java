@@ -16,9 +16,6 @@ import signals.core.FunctionFactory;
 import signals.gui.plot.Function1DTabPanel;
 import signals.operation.ArrayMath;
 import signals.operation.CalculusOperations;
-import signals.operation.NormalizeOp;
-import signals.operation.ReverseOp1D;
-import signals.operation.TranslateOp1D;
 
 @SuppressWarnings("serial")
 public class Convolve1D extends AnimatedPane {
@@ -38,9 +35,6 @@ public class Convolve1D extends AnimatedPane {
 	// reversed and shifted kernel
 	Function reversedShiftedKernel;
 
-	// product of function and reversed shifted kernel
-	Function product;
-
 	Function1DTabPanel inputPanel, outputPanel;
 
 	Integer stepNumber;
@@ -48,9 +42,7 @@ public class Convolve1D extends AnimatedPane {
 	// dimension of signals
 	int dimension;
 
-	// operators that perform the math
-	TranslateOp1D rotateOp;
-	ReverseOp1D reverseOp;
+	ConvolutionDemoKernel movingKernel;
 	BinaryOperation op;
 
 	double[] outputReal, outputImag;
@@ -67,7 +59,7 @@ public class Convolve1D extends AnimatedPane {
 		this.function = function;
 		this.kernel = input2;
 		this.op = op;
-		this.stepNumber = step;
+		this.stepNumber = 0;
 		this.wrapAround = wrapAround;
 		this.normalize = normalize;
 		this.isConvolution = reverseKernel;
@@ -101,13 +93,12 @@ public class Convolve1D extends AnimatedPane {
 		add(contentPanel, BorderLayout.CENTER);
 		add(createAnimationToolBar(), BorderLayout.NORTH);
 
-		rotateOp = new TranslateOp1D(null);
-		rotateOp.setWrapAround(wrapAround);
-		reverseOp = new ReverseOp1D(null);
-
-		reversedKernel = reverseKernel ? reverseOp.create(kernel) : kernel;
+		movingKernel = new ConvolutionDemoKernel(function, input2, reverseKernel, wrapAround, normalize);
+		kernel = movingKernel.kernel;
+		reversedKernel = movingKernel.at(0, 0);
 
 		step();
+		if (step > 0) gotoStep(step);
 
 	}
 
@@ -117,34 +108,26 @@ public class Convolve1D extends AnimatedPane {
 		outputPanel.sizeChanged();
 	}
 
-	/**
-	 * Calculates the reversed input, shifts it back by dimension/2
-	 */
 	private void reset() {
 
 		stepNumber = 0;
-		rotateOp.setShiftAmount(0);
 
 	}
 
 	public boolean lastStep() {
 
-		return rotateOp.getShiftAmount() == (zeroCentered ? dimension / 2 - 1 : dimension - 1);
+		return stepNumber >= dimension + 3;
 	}
 
 	public void step() {
+
+		if (lastStep()) return;
 
 		switch (stepNumber) {
 
 			case 0:
 
 				// display the input signal and the input kernel, zero the output
-				if (normalize) {
-
-					NormalizeOp normalizer = new NormalizeOp(null);
-					kernel = normalizer.create(kernel);
-
-				}
 
 				outputReal = new double[dimension];
 				outputImag = new double[dimension];
@@ -160,15 +143,7 @@ public class Convolve1D extends AnimatedPane {
 				break;
 			case 1:
 
-				// display the input signal and the rotated kernel
-
-				if (normalize) {
-
-					NormalizeOp normalizer = new NormalizeOp(null);
-					reversedKernel = normalizer.create(reversedKernel);
-
-				}
-
+				// Display the reversed filter, or conjugated correlation reference.
 				inputPanel.removePlots();
 				inputPanel.addFunction((Function1D) function, functionLabel);
 				inputPanel.addFunction((Function1D) reversedKernel, kernelLabel);
@@ -177,8 +152,7 @@ public class Convolve1D extends AnimatedPane {
 			case 2:
 
 				// display the input signal and the rotated kernel that has been shifted back
-				rotateOp.setShiftAmount(zeroCentered ? -dimension / 2 : 0);
-				reversedShiftedKernel = rotateOp.create(reversedKernel);
+				reversedShiftedKernel = movingKernel.atOutput(0);
 
 				inputPanel.removePlots();
 				inputPanel.addFunction((Function1D) function, functionLabel);
@@ -191,8 +165,7 @@ public class Convolve1D extends AnimatedPane {
 				// forward,
 				// the product of the input signal and the shifted, rotated kernel, and the
 				// output.
-				rotateOp.setShiftAmount(zeroCentered ? -dimension / 2 + stepNumber - 2 : stepNumber - 2);
-				reversedShiftedKernel = rotateOp.create(reversedKernel);
+				reversedShiftedKernel = movingKernel.atOutput(stepNumber - 3);
 
 				inputPanel.removePlots();
 				inputPanel.addFunction((Function1D) function, functionLabel);
@@ -224,8 +197,7 @@ public class Convolve1D extends AnimatedPane {
 
 	@Override
 	public void stepBack() {
-		stepNumber -= 2;
-		step();
+		gotoStep(Math.max(0, stepNumber - 2));
 	}
 
 	@Override
@@ -236,8 +208,8 @@ public class Convolve1D extends AnimatedPane {
 
 	public void gotoStep(Integer step) {
 
-		stepNumber = step;
-		step();
+		toBegin();
+		for (int i = 0; i < step && !lastStep(); i++) step();
 	}
 
 	public JComponent createAnimationToolBar() {
@@ -260,7 +232,10 @@ public class Convolve1D extends AnimatedPane {
 	@Override
 	public void toEnd() {
 
-		output = op.create(function, kernel);
+		output = movingKernel.complete(function, op);
+		outputReal = output.getReal();
+		outputImag = output.getImaginary();
+		stepNumber = dimension + 3;
 		outputPanel.removePlots();
 		outputPanel.addFunction((Function1D) output);
 
@@ -276,6 +251,6 @@ public class Convolve1D extends AnimatedPane {
 
 	@Override
 	public boolean firstStep() {
-		return stepNumber == 0;
+		return stepNumber <= 1;
 	}
 }

@@ -116,7 +116,7 @@ The original 195 tests passed on macOS/JDK 25. Thirty new checks of actual
 FunctionFactory/operation classes and Swing parameter editors exposed six failing
 cases caused by reversed threshold outputs and parameter bindings. After the
 threshold correction, all 225 tests passed. Subsequent search, generator and
-image-editing and operation-layout batches now pass 503 tests and build the executable JAR. The
+image-editing and operation-layout batches now pass 529 tests and build the executable JAR. The
 authoritative matrix records the scope and before/after evidence for each batch.
 
 The new fixtures cover 1D eight-sample signals and 4×2 complex images, both origin
@@ -129,13 +129,16 @@ the tests initialize non-window Core services and exercise real production model
 All maintained launcher settings now omit `-Xmx2g`. JVM default sizing still
 imposes a runtime-specific heap budget; this Mac reports an estimated 6 GiB.
 The built-in size picker still stops at 4096, and dense source/channel/result
-arrays can require substantial memory. Actual safe operating sizes remain
-unmeasured; no memory optimization or large-image capacity claim is made.
+arrays can require substantial memory. An ordinary three-source/two-operation workload has been measured through
+1024 square, with two retention paths corrected. This does not establish a
+universal safe size or large-image capacity; see the measured matrix row.
 
-## Current priority from Juliet
+## Initial example supplied by Juliet
 
-Reproduce the nine-step circular-resolution target in the supplied
+The initial scenario was to reproduce the nine-step circular-resolution target in the supplied
 `/Users/julietfiss/Documents/SignalShow Tests/Step by Step.pdf`, compare with
 the two supplied TIFFs and fix the operation-preview layout while retaining
-visible Threshold inputs. Track the native walkthrough separately from model
-and component regressions. The historical TIFF is not a mathematical oracle.
+visible Threshold inputs. Its native walkthrough and preview-layout evidence are now recorded separately
+from model/component regressions in the matrix. The historical TIFF is not a
+mathematical oracle. Continue with varied ordinary usage scenarios under the
+active queue; this example is one class of tests, not the sole acceptance test.
