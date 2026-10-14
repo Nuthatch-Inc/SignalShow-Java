@@ -160,6 +160,28 @@ class TwoTermImageWorkflowTest {
     });
   }
 
+  @Test void groupingAnInnerProductPreservesTheImageCreationFormula() throws Exception {
+    SwingUtilities.invokeAndWait(() -> {
+      CreateFunctionPart2DPanel panel = panel();
+      addConstant(panel, 2);
+      click(panel, "Add"); addConstant(panel, 3);
+      click(panel, "Multiply"); addConstant(panel, 4);
+      click(panel, "Multiply"); addConstant(panel, 5);
+      assertConstantImage(panel, 62); // 2 + 3*4*5
+      HorizontalThumbnailList list = find(panel.getCalculator(), HorizontalThumbnailList.class);
+      list.setSelected(2); click(panel, "Open Parenthesis");
+      list.setSelected(6); click(panel, "Closed Parenthesis");
+      assertArrayEquals(new int[] {FUNCTION_TERM, ADD, LEFT_PAREN, FUNCTION_TERM,
+          MULTIPLY, FUNCTION_TERM, RIGHT_PAREN, MULTIPLY, FUNCTION_TERM}, panel.getCalculator().getCodeList());
+      assertConstantImage(panel, 62); // 2 + (3*4)*5
+      CreateFunctionPart2DPanel reopened = panel();
+      reopened.setFunctionPart2D(panel.getFunctionPart2D());
+      assertConstantImage(reopened, 62);
+      panel.deconstruct();
+      reopened.deconstruct();
+    });
+  }
+
   private static void addConstant(CreateFunctionPart2DPanel panel, double value) {
     panel.setXYTerm();
     select(panel, ConstantFunctionTerm1D.class);

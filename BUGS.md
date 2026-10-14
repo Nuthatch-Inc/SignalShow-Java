@@ -697,3 +697,45 @@ ID format: BUG-### (e.g. BUG-001)
 - Description: The resolution selector had a three-argument signature that did not override the two-argument production resize method. Normal 256/512 creations consequently enlarged the 128 image instead of using the supplied detailed chart; the unreachable old path also bypassed sample normalization.
 - Fix: Override the actual resize method, select the supplied resource using the existing size rule, refresh the cached image when selection changes, and use the shared normalized loader.
 - Verification: Four original 256/512 cases fail against independent PNG decoding. All 30 sampled-image cases pass after correction: nonconstant rectangular scaling/placement, eight packaged images, phase images in magnitude/phase chains, resolution edits, amplitudes and Intensity. Another 165 creation/import-edit regressions pass (195 total). See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-056
+- Title: Clear disconnects rebuilt operation chains from the library
+- Status: resolved; actual headless 1D/2D editing and reopening regressions pass
+- Date: 2026-10-14
+- Description: Clear replaced the editor's system with a new unlisted object. Rebuilding could show a working preview while the original library chain and its downstream results stayed empty.
+- Fix: Clear and republish the expression on the existing system through the shared editor implementation.
+- Verification: Both new cases fail before the fix; all 26 focused editing, insertion, reopening, lifecycle and duplication cases pass after. Real Swing actions and model publication are exercised without a JFrame. Native and Windows checks remain separate. See docs/audit/evidence/2026-10-14-calculator-continuation.md.
+
+
+- ID: BUG-057
+- Title: Parentheses change surrounding arithmetic in creation and operation chains
+- Status: resolved; actual editor and independent 1D/2D expression checks pass
+- Date: 2026-10-14
+- Description: Closing a group popped operations outside the matching opening parenthesis. An ordinary image formula 2+(3*4)*5 returned 70 instead of 62; complex operation chains shared the error.
+- Fix: Stop at the matching opening delimiter in both expression parsers and keep closing delimiters off the operator stack.
+- Verification: Three actual editor cases fail before correction. All 128 focused tests pass after: grouping, nested unary operations, both channels/origins, copying, Intensity and reopening. Chirplet's current parser uses the same group boundary. See docs/audit/evidence/2026-10-14-calculator-continuation.md.
+
+
+- ID: BUG-058
+- Title: Inserting a unary operation before an existing chain loses or miscomputes the result
+- Status: resolved; actual insertion and independent complex expression regressions pass
+- Date: 2026-10-14
+- Description: The calculator permits adjacent prefix operators such as Real Threshold(A). The parser evaluated the first operator before its operand arrived, returning no result or consuming an earlier operand in a larger expression.
+- Fix: Retain pending prefix operators until their operand arrives, nesting right-to-left; preserve existing postfix behavior.
+- Verification: 22 cases fail before correction, including six actual Real/Conjugate/Intensity insertion workflows. All 183 focused cases pass after, including Roger, copying, nested groups and explicit postfix compatibility checks. See docs/audit/evidence/2026-10-14-calculator-continuation.md.
+
+Native follow-up for BUG-056–058 (October 14): all three fixes pass bounded Mac
+creation/editing/export checks. Seven complex result files match independent
+expectations, including after Clear/rebuild/reopen. See
+[calculator native evidence](docs/audit/evidence/2026-10-14-calculator-native.md).
+Windows remains unverified for this continuation.
+
+
+- ID: BUG-059
+- Title: Rectangular image edits corrupt the next image size and another dimension's origin
+- Status: resolved; eight actual-control regressions, 1,130 full tests and native Mac creation/chain checks pass
+- Date: 2026-10-14
+- Description: Editing a 2D image to 128×64 made the next image 64×64; its origin stayed stale while the next 1D signal inherited the 2D origin edit. This prevents ordinary newly created images from combining at the intended shape.
+- Fix: Write height to the 2D height preference, write image origin to the 2D origin preference, and read the height preference for the default image height.
+- Verification: Eight cases fail before correction and pass afterward, covering both 2D representations/origins and 128×64/64×128, with unchanged 1D origin and correct complex addition chains. Native exports verify the correct 128×64 origin/size, mixed-representation sum and independent 1D origin. See docs/audit/evidence/2026-10-14-creation-defaults.md.

@@ -168,12 +168,12 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 				int indexY = heightSelector.getSelectedIndex(); 
 				Integer[] availableDimensions = Core.getFunctionCreationOptions().getAvailableDimensions();
 				Core.getFunctionCreationOptions().setDimensionXIndex2D(indexX); 
-				Core.getFunctionCreationOptions().setDimensionXIndex2D(indexY); 
+				Core.getFunctionCreationOptions().setDimensionYIndex2D(indexY);
 				int width = availableDimensions[indexX];
 				int height = availableDimensions[indexY];
 
 				boolean zeroCentered = zeroCenteredCheckBox.isSelected(); 
-				Core.getFunctionCreationOptions().setZeroCentered1D(zeroCentered); 
+				Core.getFunctionCreationOptions().setZeroCentered2D(zeroCentered);
 
 				editor.setIndices( width, height, zeroCentered);
 
@@ -181,7 +181,7 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 				function.setZeroCentered(zeroCentered); 
 				((Function2D)function).setDimensionX(width);
 				((Function2D)function).setDimensionY(height);
-				Core.getGUI().getFunctionList().refresh();
+				refreshLibrary();
 
 			}
 		};
@@ -269,17 +269,22 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 			if( openTab.equals(EDIT_A ) ){
 
 				((Function2D)function).setPartA(((CreateFunctionPart2DPanel)editor).getFunctionPart2D());  
-				Core.getFunctionList().refresh(); 
+				refreshLibrary();
 
 			} else if( openTab.equals(EDIT_B ) ){
 
 				((Function2D)function).setPartB(((CreateFunctionPart2DPanel)editor).getFunctionPart2D());
-				Core.getFunctionList().refresh();
+				refreshLibrary();
 
 			}
 
 		}
 
+	}
+
+	/** Repaint the desktop library after publishing the edited image. */
+	protected void refreshLibrary() {
+		Core.getFunctionList().refresh();
 	}
 
 	public void textChanged() {

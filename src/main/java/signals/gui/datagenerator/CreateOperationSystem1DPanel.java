@@ -56,12 +56,4 @@ public class CreateOperationSystem1DPanel extends CreateOperationSystemPanel {
 		return output;
 	}
 
-	@Override
-	public void clear() {
-		
-		calculator.removeAllItems(); 
-		system = new OperatorSystem1D();
-		
-	}
-
 }

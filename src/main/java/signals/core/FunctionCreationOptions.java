@@ -228,7 +228,7 @@ public class FunctionCreationOptions {
 
 	public int getDefaultDimensionY2D() {
 
-		return availableDimensions[getDimensionXIndex2D()];
+		return availableDimensions[getDimensionYIndex2D()];
 	}
 
 	/**

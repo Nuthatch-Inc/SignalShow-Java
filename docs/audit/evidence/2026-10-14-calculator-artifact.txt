@@ -1,0 +1,19 @@
+Local audit build; not a new published release.
+Baseline a576f27e720a336d9e398ff87fd07d31671f877b plus uncommitted calculator fixes.
+Artifact: target/signalshow-1.2.5.jar
+SHA-256: c43785bc37ee0bb2d66338724576ad6fce6809390f12e8dd2a85a8186780de7e
+Bytes: 4490413
+Packaged classes match the verified target/classes outputs:
+signals/core/CombineOpsRule.class
+signals/core/CombineTermsRule.class
+signals/gui/datagenerator/CreateOperationSystemPanel.class
+signals/gui/datagenerator/CreateOperationSystem1DPanel.class
+signals/gui/datagenerator/CreateOperationSystem2DPanel.class
+No nested JARs, project test classes, JUnit classes or audit documents in executable JAR.
+Manifest:
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.4.1
+Build-Jdk-Spec: 25
+Main-Class: SignalShow
+
+

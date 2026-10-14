@@ -1,0 +1,54 @@
+{
+  "results": [
+    {
+      "fixture": "edited-source",
+      "status": "PASS",
+      "shape": "2D 128 64",
+      "zero_centered": false,
+      "samples_per_channel": 8192,
+      "real_value": 2,
+      "imaginary_value": 0,
+      "sha256": "6711534465ec182c2a067ce70c671abc8f58719780740c7c39a49e5620b2617a"
+    },
+    {
+      "fixture": "next-polar",
+      "status": "PASS",
+      "shape": "2D 128 64",
+      "zero_centered": false,
+      "samples_per_channel": 8192,
+      "real_value": 3,
+      "imaginary_value": 0,
+      "sha256": "c53d91c7399eebd2f06e8a982308a0f384aecf1861cce800f23ae90bb67bfcbe"
+    },
+    {
+      "fixture": "mixed-rectangular-sum",
+      "status": "PASS",
+      "shape": "2D 128 64",
+      "zero_centered": false,
+      "samples_per_channel": 8192,
+      "real_value": 5,
+      "imaginary_value": 0,
+      "sha256": "0dc836ff99283336f2153dfc2999304dd5713987b330d1c0ea6b254f13059152"
+    },
+    {
+      "fixture": "next-cartesian",
+      "status": "PASS",
+      "shape": "2D 128 64",
+      "zero_centered": false,
+      "samples_per_channel": 8192,
+      "real_value": 0,
+      "imaginary_value": 0,
+      "sha256": "2defa5c0394ea3eb7c94c9b3dc41eaeb9ade233d4922ac79e452d51ffd94a3b8"
+    },
+    {
+      "fixture": "next-one-d",
+      "status": "PASS",
+      "shape": "1D 256",
+      "zero_centered": true,
+      "samples_per_channel": 256,
+      "real_value": 0,
+      "imaginary_value": 0,
+      "sha256": "67464f2e63443770a80f2646bc72a03234d5a81bdf3221fa2da7e51512a7a8ff"
+    }
+  ]
+}

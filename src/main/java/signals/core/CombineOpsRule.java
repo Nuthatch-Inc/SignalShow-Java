@@ -93,6 +93,7 @@ public class CombineOpsRule {
 
 		// index of the postfix expression
 		int postfixIndex = 0;
+		boolean operandComplete = false;
 
 		// push a token signifying the end of the list on the stack
 		stack.push(END_OF_LIST);
@@ -102,14 +103,20 @@ public class CombineOpsRule {
 
 			// read next token from the infix expression
 			int token = infix[infixIndex];
+			boolean unary = token >= UNARY_OP_TIER_1 && token <= UNARY_OP_TIER_3;
+			// Prefix operators wait for their operand and nest from right to left.
+			// Keep the existing postfix form when an operand is already complete.
+			boolean prefixUnary = unary && !operandComplete;
 
 			// remove all the items on the stack that have a stack priority greater than or
 			// equal to the
 			// input priority of this token. If these removed tokens are + or *, add them to
 			// the postfix rule.
-			while (input_priority[token] <= stack_priority[stack.peek()]) {
+			while (!prefixUnary && input_priority[token] <= stack_priority[stack.peek()]) {
 
 				int removed_token = stack.pop();
+				// A closing parenthesis finishes only its matching group.
+				if (removed_token == LEFT_PAREN) break;
 				if ((removed_token != LEFT_PAREN) && (removed_token != RIGHT_PAREN)) {
 
 					postfix_rule[postfixIndex] = removed_token;
@@ -125,11 +132,15 @@ public class CombineOpsRule {
 
 			} // endwhile
 
-			stack.push(token);
+			// Parentheses delimit groups; a closing one is never an operator.
+			if (token != RIGHT_PAREN) stack.push(token);
 			if (((token != LEFT_PAREN) && (token != RIGHT_PAREN)) && (token != FUNCTION)) {
 
 				opStack.push(opsIter.next());
 			}
+
+			if (token == FUNCTION || token == RIGHT_PAREN) operandComplete = true;
+			else if (!unary) operandComplete = false;
 
 		} // endfor
 

@@ -1,0 +1,82 @@
+{
+  "scalar_samples_checked": 917504,
+  "results": [
+    {
+      "fixture": "grouped-source",
+      "status": "PASS",
+      "samples_per_channel": 65536,
+      "max_absolute_error": 1.1102230246251565e-16,
+      "center": [
+        62.0,
+        2.0
+      ],
+      "sha256": "3e8cfb3322fb116c4302b1756a433adf3852ae593c26807c209973d219faa8ea"
+    },
+    {
+      "fixture": "threshold-075",
+      "status": "PASS",
+      "samples_per_channel": 65536,
+      "max_absolute_error": 0.0,
+      "center": [
+        3.0,
+        3.0
+      ],
+      "sha256": "973ab715030ca9658c9966e24de6b03c658b3cc0b62cd94bca2dea06d65e1dbd"
+    },
+    {
+      "fixture": "real-threshold-075",
+      "status": "PASS",
+      "samples_per_channel": 65536,
+      "max_absolute_error": 0.0,
+      "center": [
+        3.0,
+        0.0
+      ],
+      "sha256": "de048aa27d88f1644b9093456c6bbdde776d7717e07efe5184ed72407d2b98b6"
+    },
+    {
+      "fixture": "real-threshold-edited",
+      "status": "PASS",
+      "samples_per_channel": 65536,
+      "max_absolute_error": 0.0,
+      "center": [
+        4.0,
+        0.0
+      ],
+      "sha256": "af1b9d80bba0f33963e8cb9b8c6a9c8e8c666554a0ffb2094a38620f788da665"
+    },
+    {
+      "fixture": "clear-rebuild-sum",
+      "status": "PASS",
+      "samples_per_channel": 65536,
+      "max_absolute_error": 2.220446049250313e-16,
+      "center": [
+        124.0,
+        4.0
+      ],
+      "sha256": "5cd9ff156788325afc703322b9689dabb50f578ad5492f344ff8c1c95b5f26a9"
+    },
+    {
+      "fixture": "clear-rebuild-reopened",
+      "status": "PASS",
+      "samples_per_channel": 65536,
+      "max_absolute_error": 2.220446049250313e-16,
+      "center": [
+        124.0,
+        4.0
+      ],
+      "sha256": "5cd9ff156788325afc703322b9689dabb50f578ad5492f344ff8c1c95b5f26a9"
+    },
+    {
+      "fixture": "grouped-operation",
+      "status": "PASS",
+      "samples_per_channel": 65536,
+      "max_absolute_error": 1.4210854715202004e-14,
+      "center": [
+        3902.0,
+        250.0
+      ],
+      "sha256": "f681b437682a574d1f18b8639d6eef750465ac284b73d5aabaa891590b3aa380"
+    }
+  ]
+}

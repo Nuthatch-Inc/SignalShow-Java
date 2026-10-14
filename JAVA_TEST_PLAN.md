@@ -17,7 +17,7 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 14, weekly window 59% remaining; no other applicable window reported.
+October 14, weekly window 57% remaining; no other applicable window reported.
 On October13 Juliet authorized local commits and preparation of1.2.5. She then
 explicitly authorized merging into main and publishing1.2.5 on GitHub as the latest
 release. Publication is complete; both finished installer payloads were verified
@@ -61,8 +61,8 @@ testing of Java SignalShow. Check the actual creation and operation paths for
 major errors with ordinary inputs: complex channel loss, shifted origins, reversed
 axes, transform signs/scales and incorrect operation composition. Establish
 independent mathematical expectations; Chirplet agreement and test-only formulas
-are not sufficient. Fix demonstrated defects and record bounded evidence. Native
-GUI testing, rare inputs and tiny numerical discrepancies are outside this round.
+are not sufficient. Fix demonstrated defects and record bounded evidence. Juliet subsequently confirmed desktop availability for bounded native follow-up.
+Rare inputs and tiny numerical discrepancies remain outside this round.
 Leave this new work local and reviewable; the previous publication is complete.
 
 The first automated math pass is complete: 52 new production-path cases cover
@@ -159,6 +159,22 @@ exhausted memory, corrupted files or long endurance tests. Long soak tests remai
 manual unless specifically requested. Memory measurements must identify heap
 settings, dimensions, channels, operations, retained documents and hardware.
 
+## Current continuation
+
+Juliet published the math-audit branch at `a576f27` on October 14. The new local
+follow-up corrects Clear/rebuild ownership, group boundaries and consecutive
+unary operators (BUG-056–058), plus rectangular creation defaults and cross-
+dimension origin settings (BUG-059). All **1,130 tests pass**, including 133 new
+cases relative to the published 997-test baseline. Native Mac follow-up verifies
+these fixes through real controls and 12 saved complex-data outcomes. See the
+[current checkpoint](docs/audit/evidence/2026-10-14-checkpoint.md).
+
+No confirmed crash or major wrong-result defect from this follow-up remains
+unfixed. The targeted source/creation/calculator queue is complete. Broader
+parameter combinations, lower-priority labels, and Windows interactive testing
+remain distinct follow-up work. No test app is open and no audit process is
+running; existing user servers are preserved. Changes remain local and uncommitted.
+
 ## Current verified baseline
 
 The original 195 tests passed on macOS/JDK 25. Thirty new checks of actual
@@ -166,9 +182,9 @@ FunctionFactory/operation classes and Swing parameter editors exposed six failin
 cases caused by reversed threshold outputs and parameter bindings. After the
 threshold correction, all 225 tests passed. Subsequent search, generator and
 image-editing and operation-layout batches reached 606 tests. Release 1.2.5
-passed 612 on Mac and Windows CI. The current local math audit package passes
-997 tests on macOS, including 385 new cases across the first and continuation
-passes. The authoritative matrix records each batch's scope and before/after
+passed 612 on Mac and Windows CI. The current local audit package passes
+1,122 tests on macOS, including 385 new math cases from the first passes and 125
+new calculator/editing cases after Juliet published that baseline. The authoritative matrix records each batch's scope and before/after
 evidence; native acceptance remains separate.
 
 The new fixtures cover 1D eight-sample signals and 4×2 complex images, both origin

@@ -82,6 +82,8 @@ public class CombineTermsRule {
 			while( input_priority[token] <= stack_priority[stack.peek()] ) { 
 
 				int removed_token = stack.pop();
+				// A closing parenthesis finishes only its matching group.
+				if (removed_token == LEFT_PAREN) break;
 				if( (removed_token != LEFT_PAREN) && (removed_token != RIGHT_PAREN) ) {
 
 					postfix_rule[postfixIndex] = removed_token; 
@@ -91,7 +93,8 @@ public class CombineTermsRule {
 
 			} //endwhile
 
-			stack.push(token);
+			// Parentheses delimit groups; a closing one is never an operator.
+			if (token != RIGHT_PAREN) stack.push(token);
 
 		}//endfor
 

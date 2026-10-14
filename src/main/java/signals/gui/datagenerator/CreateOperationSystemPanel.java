@@ -198,7 +198,11 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 
 	public abstract void createFunctionSelectorPanel();
 
-	public abstract void clear();
+	public void clear() {
+		calculator.removeAllItems();
+		// Keep the library object and its downstream links attached to this editor.
+		saveStateToModel();
+	}
 
 	public void setupCorrectPanel(Object newTerm) {
 
@@ -244,10 +248,15 @@ public abstract class CreateOperationSystemPanel extends JPanel implements GUIEv
 		system.setOpList(opList);
 		int[] rule = calculator.getCodeList();
 		system.setCombineOpsRule(new CombineOpsRule(rule, opList));
-		Core.getFunctionList().refresh();
+		refreshLibrary();
 
 		// Update the preview with new system output
 		updateSystemPreview();
+	}
+
+	/** Refresh the desktop-owned library after publishing an edit. */
+	protected void refreshLibrary() {
+		Core.getFunctionList().refresh();
 	}
 
 	/**

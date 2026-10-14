@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "reviewedOn": "2026-10-14",
-  "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
+  "baselineCommit": "a576f27e720a336d9e398ff87fd07d31671f877b",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Source-led ordinary-computation pass complete: 997 tests and package verified; no active check",
+    "state": "Calculator and rectangular-creation follow-up verified in headless and native Mac checks; no owned app or check running.",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-14: weekly 59% remaining; no other applicable window",
+    "lastUsageReading": "2026-10-14: weekly 57% remaining; no other applicable window",
     "authorization": "Juliet explicitly requested continuous bug finding/fixing and comparison with Chirplet. Use independent mathematical expectations and ordinary inputs; preserve local audit work."
   },
   "scenarioPlan": {
@@ -4518,6 +4518,122 @@
       "summary": "Four original chart-resolution failures corrected; 30 new sampled-image cases and 165 creation/edit regressions pass.",
       "environment": "macOS arm64; JDK 25; headless Maven",
       "reviewedOn": "2026-10-14"
+    },
+    {
+      "id": "usage-operation-clear-rebuild",
+      "area": "usage",
+      "title": "Clear, rebuild and reopen linked operation chains",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Open an existing complex chain with a cached downstream Intensity result.",
+        "Click Clear, rebuild using actual calculator buttons and input picker, then reopen."
+      ],
+      "expected": "Edits update the original library chain and downstream results without crashes or major wrong values.",
+      "scope": "Headless Swing actions and production publication; native Mac and Windows remain separate.",
+      "evidence": [
+        "calculator-clear-2026-10-14"
+      ],
+      "summary": "BUG-056 corrected; actual Clear, rebuilding, linked results and reopening pass in both editors.",
+      "environment": "macOS arm64; JDK 25; headless Maven",
+      "reviewedOn": "2026-10-14"
+    },
+    {
+      "id": "usage-operation-group-edit",
+      "area": "usage",
+      "title": "Group, replace and edit ordinary operation expressions",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Build and edit grouped complex arithmetic through the actual Swing controls.",
+        "Check preview, saved chain and downstream results against independent channel arithmetic."
+      ],
+      "expected": "Edits update the original library chain and downstream results without crashes or major wrong values.",
+      "scope": "Headless Swing actions and production publication; native Mac and Windows remain separate.",
+      "evidence": [
+        "calculator-grouping-2026-10-14"
+      ],
+      "summary": "BUG-057 fixed in creation and operation parsers. Actual grouping edits plus independent complex/nested formulas pass.",
+      "environment": "macOS arm64; JDK 25; headless Maven",
+      "reviewedOn": "2026-10-14"
+    },
+    {
+      "id": "usage-operation-selector-parameters",
+      "area": "usage",
+      "title": "Replace operations and edit nested Threshold chains",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Build ordinary binary and unary expressions with actual calculator buttons and operation selectors.",
+        "Edit Threshold fields, replace inputs, inspect saved/downstream results and reopen."
+      ],
+      "expected": "Both channels, selected operations and parameter values survive editing and reopening with correct results.",
+      "scope": "Headless Swing events and production model publication; native Mac and Windows remain separate.",
+      "evidence": [
+        "calculator-selection-2026-10-14"
+      ],
+      "summary": "Actual binary selection/input replacement and nested Threshold field edits/reopening pass in both dimensions.",
+      "environment": "macOS arm64; JDK 25; headless Maven",
+      "reviewedOn": "2026-10-14"
+    },
+    {
+      "id": "usage-operation-prefix-insertion",
+      "area": "usage",
+      "title": "Prepend a unary operation to an existing chain",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Open an existing Threshold chain and select the calculator insertion point before its first operation.",
+        "Insert a unary operation, select Real/Conjugate/Intensity, and inspect saved/downstream results before reopening."
+      ],
+      "expected": "The inserted unary operator applies to the following expression and produces the same result as explicit nested parentheses.",
+      "scope": "Ordinary actual calculator insertion, headless Swing and independent complex arithmetic.",
+      "evidence": [
+        "calculator-prefix-2026-10-14"
+      ],
+      "summary": "BUG-058 fixed; actual prefix insertion, saved/downstream results and reopening pass; postfix behavior retained.",
+      "environment": "macOS arm64; JDK 25; headless Maven",
+      "reviewedOn": "2026-10-14"
+    },
+    {
+      "id": "native-calculator-fixes",
+      "area": "usage",
+      "title": "Native Mac verification of Clear, grouping and unary insertion",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "With Zoom finished, use at most one SignalShow instance and verify focus.",
+        "Clear and rebuild an existing complex chain, then leave and reopen it.",
+        "Create grouped constant/Gaussian image; prepend Real to Threshold and edit Maximum; build grouped complex arithmetic and inspect the result controls and exported samples."
+      ],
+      "expected": "The visible app retains and reopens the rebuilt chain, evaluates intended grouping and nesting, and stays responsive with operation inputs visible.",
+      "scope": "Short native check of the three verified headless fixes; no soak or Windows claim.",
+      "evidence": [
+        "calculator-native-2026-10-14"
+      ],
+      "summary": "Native creation grouping, prepend Real to Threshold, parameter edit and Clear/rebuild/reopen pass. Seven complex exports match independent formulas; no crash.",
+      "environment": "macOS arm64; local packaged audit JAR; native CUA; independent Python verification",
+      "reviewedOn": "2026-10-14"
+    },
+    {
+      "id": "usage-creation-defaults",
+      "area": "usage",
+      "title": "Rectangular image creation defaults and origin ownership",
+      "priority": "P1",
+      "status": "checked",
+      "steps": [
+        "Edit an ordinary image to a rectangular size and choose its origin.",
+        "Create the next real/imaginary and magnitude/phase image and combine it with the first.",
+        "Verify 1D creation defaults are unaffected by 2D edits."
+      ],
+      "expected": "New images inherit the requested width, height and 2D origin, without changing 1D settings or causing a normal same-size chain to disappear.",
+      "scope": "128×64/64×128, both 2D representations/origins and complex addition in headless controls; native 128×64 corner-origin creation and mixed-representation addition. Windows and capacity extremes remain separate.",
+      "evidence": [
+        "creation-defaults-2026-10-14"
+      ],
+      "summary": "BUG-059 fixed: next images retain independent width, height and 2D origin; 1D origin remains unchanged. Eight actual-control cases and five native exports pass.",
+      "environment": "macOS arm64; JDK 25; headless Swing controls and bounded native CUA",
+      "reviewedOn": "2026-10-14"
     }
   ],
   "evidence": {
@@ -6226,6 +6342,100 @@
         "docs/audit/evidence/2026-10-14-math-artifact.txt",
         "docs/audit/evidence/2026-10-14-math-continuation.md",
         "docs/audit/evidence/2026-10-14-checkpoint.md"
+      ]
+    },
+    "calculator-clear-2026-10-14": {
+      "date": "2026-10-14",
+      "environment": "macOS arm64; JDK 25; headless Swing/Maven",
+      "summary": "Clear/rebuild failed in both editors before correction; 26 focused cases pass after retaining the library system.",
+      "limits": "Actual Swing events and production model publication; not native visual or Windows acceptance.",
+      "sources": [
+        "docs/audit/evidence/2026-10-14-calculator-continuation.md",
+        "docs/audit/evidence/2026-10-14-operation-clear-before.log.gz",
+        "docs/audit/evidence/2026-10-14-operation-clear-after.log.gz",
+        "src/test/java/signals/gui/datagenerator/OperationEditingWorkflowTest.java"
+      ]
+    },
+    "calculator-grouping-2026-10-14": {
+      "date": "2026-10-14",
+      "environment": "macOS arm64; JDK 25; headless Swing/Maven",
+      "summary": "Three actual editor cases reproduce incorrect grouping. All 128 focused grouping/complex creation checks pass after correction.",
+      "limits": "Actual Swing events and independent mathematical expectations; not native visual or Windows acceptance.",
+      "sources": [
+        "docs/audit/evidence/2026-10-14-calculator-continuation.md",
+        "docs/audit/evidence/2026-10-14-grouping-before.log.gz",
+        "docs/audit/evidence/2026-10-14-grouping-expanded.log.gz",
+        "src/test/java/signals/core/MathTermGroupingTest.java",
+        "src/test/java/signals/core/MathArithmeticPrecedenceTest.java",
+        "src/test/java/signals/core/TwoTermImageWorkflowTest.java",
+        "src/test/java/signals/gui/datagenerator/OperationEditingWorkflowTest.java"
+      ]
+    },
+    "calculator-selection-2026-10-14": {
+      "date": "2026-10-14",
+      "environment": "macOS arm64; JDK 25; headless Swing/Maven",
+      "summary": "All 18 actual editor cases pass, including 14 new operator-selection and nested Threshold parameter scenarios.",
+      "limits": "No additional application bug in this batch; no native visual/typing or Windows acceptance.",
+      "sources": [
+        "docs/audit/evidence/2026-10-14-calculator-continuation.md",
+        "docs/audit/evidence/2026-10-14-operation-selection.log.gz",
+        "src/test/java/signals/gui/datagenerator/OperationEditingWorkflowTest.java"
+      ]
+    },
+    "calculator-prefix-2026-10-14": {
+      "date": "2026-10-14",
+      "environment": "macOS arm64; JDK 25; headless Swing/Maven",
+      "summary": "22 original failures reproduced; 183 focused tests pass after correcting prefix nesting while retaining postfix notation.",
+      "limits": "Actual Swing events and independent math; native Mac visual checks and Windows remain separate.",
+      "sources": [
+        "docs/audit/evidence/2026-10-14-calculator-continuation.md",
+        "docs/audit/evidence/2026-10-14-prefix-before.log.gz",
+        "docs/audit/evidence/2026-10-14-prefix-after.log.gz",
+        "src/test/java/signals/core/MathArithmeticPrecedenceTest.java",
+        "src/test/java/signals/gui/datagenerator/OperationEditingWorkflowTest.java"
+      ]
+    },
+    "calculator-package-2026-10-14": {
+      "date": "2026-10-14",
+      "environment": "macOS arm64; JDK 25; full headless Maven package",
+      "summary": "All 1,122 tests pass: 125 new cases and three calculator/editor fixes. Local JAR inspected and changed class bytes verified.",
+      "limits": "Historical local uncommitted calculator build, not a published release. Native follow-up is recorded separately under calculator-native-2026-10-14; the newer 1,130-test build is under creation-defaults-2026-10-14. Windows remains separate.",
+      "sources": [
+        "docs/audit/evidence/2026-10-14-calculator-continuation.md",
+        "docs/audit/evidence/2026-10-14-calculator-package.log.gz",
+        "docs/audit/evidence/2026-10-14-calculator-artifact.txt"
+      ]
+    },
+    "calculator-native-2026-10-14": {
+      "date": "2026-10-14",
+      "environment": "macOS arm64; local packaged audit JAR; native CUA and independent Python",
+      "summary": "Native checks of all three new calculator fixes pass. Seven exported 256×256 complex results match independent formulas across 917,504 scalar samples. App closed and process exit verified.",
+      "limits": "Bounded native Mac check. No Windows, long-session or whole-application claim; headless package remains a separate result.",
+      "sources": [
+        "docs/audit/evidence/2026-10-14-calculator-native.md",
+        "docs/audit/evidence/2026-10-14-calculator-native.png",
+        "docs/audit/evidence/2026-10-14-calculator-native.log",
+        "docs/audit/evidence/2026-10-14-calculator-native-exports.zip",
+        "docs/audit/evidence/2026-10-14-calculator-native-verify.py",
+        "docs/audit/evidence/2026-10-14-calculator-native-results.json"
+      ]
+    },
+    "creation-defaults-2026-10-14": {
+      "date": "2026-10-14",
+      "environment": "macOS arm64; JDK 25; headless and native packaged application",
+      "summary": "Eight original failures corrected; 200 focused tests and full 1,130-test package pass. Native creation defaults, complex-data headers and mixed-representation sum verify the ordinary caller path.",
+      "limits": "Only stated shapes, origins and workflows. Native fixture is 128×64 with constant values; no Windows or long-session claim. Duplicate default function names noted as lower priority.",
+      "sources": [
+        "src/test/java/signals/core/CreationDefaultsWorkflowTest.java",
+        "docs/audit/evidence/2026-10-14-creation-defaults.md",
+        "docs/audit/evidence/2026-10-14-creation-defaults-before.log.gz",
+        "docs/audit/evidence/2026-10-14-creation-defaults-after.log.gz",
+        "docs/audit/evidence/2026-10-14-creation-defaults-package.log.gz",
+        "docs/audit/evidence/2026-10-14-creation-defaults-artifact.txt",
+        "docs/audit/evidence/2026-10-14-creation-defaults-native.log",
+        "docs/audit/evidence/2026-10-14-creation-defaults-native-exports.zip",
+        "docs/audit/evidence/2026-10-14-creation-defaults-native-verify.py",
+        "docs/audit/evidence/2026-10-14-creation-defaults-native-results.json"
       ]
     }
   },
