@@ -598,10 +598,10 @@ ID format: BUG-### (e.g. BUG-001)
 
 - ID: BUG-045
 - Title: TIFF and BMP exports keep output files locked on Windows
-- Status: in-progress; release CI retest pending
+- Status: resolved; Mac and Windows release CI verified
 - Reported by: GitHub Windows regression job during1.2.5 release
 - Date: 2026-10-13
 - Environment: Windows GitHub runner, Temurin25.0.4
 - Description: Three existing workflow cases could not remove exported TIFF files during cleanup. JAI FileStore owns an output stream until its returned rendered operation is disposed; the application discarded that operation without disposing it. BMP uses the same path.
 - Fix: Dispose the completed FileStore operation after TIFF/BMP encoding, preserving the existing codecs and normalization.
-- Verification: Add repeated ordinary export→rename→pixel-readback→delete checks for both formats. Existing Windows failures, local focused/full checks and the successful release CI retest will be recorded in the publication evidence.
+- Verification: Add repeated ordinary export→rename→pixel-readback→delete checks for both formats. Three before-failing Windows TIFF cleanup cases now pass. Focused16 and full612 local tests pass; the corrected Mac and Windows CI jobs pass all612 tests and final-installer payload inspection. Windows interactive usage remains deferred. See docs/audit/evidence/2026-10-13-publication.md.

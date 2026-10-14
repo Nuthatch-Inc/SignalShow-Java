@@ -1,0 +1,48 @@
+{
+  "version": "1.2.5",
+  "sourceCommit": "684d5219d76ccb563d9261c1e451c9f9f232ac95",
+  "tag": "v1.2.5",
+  "published": true,
+  "releaseUrl": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.5",
+  "workflowUrl": "https://github.com/Nuthatch-Inc/SignalShow-Java/actions/runs/38503319138",
+  "automatedTestsPerPlatform": 612,
+  "macArchitecture": "arm64",
+  "windowsArchitecture": "x64",
+  "windowsNativeUsageTested": false,
+  "releaseId": 412294402,
+  "publishedAt": "2026-10-14T02:58:57Z",
+  "draft": false,
+  "prerelease": false,
+  "publicLatestVerified": true,
+  "anonymousDownloadHttpStatus": 200,
+  "assets": [
+    {
+      "id": 639014257,
+      "name": "SHA256SUMS.txt",
+      "size": 261,
+      "digest": "sha256:7f0d95c903f8716efcc827f1ebae52387dcafb85546f2456a7511ac7f712370b",
+      "browser_download_url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.5/SHA256SUMS.txt"
+    },
+    {
+      "id": 639014262,
+      "name": "SignalShow-1.2.5.dmg",
+      "size": 56734934,
+      "digest": "sha256:82bab0d27a05e011ad0ada1a8447b9349c3438ab61ef9cf134f68ba7b07102cc",
+      "browser_download_url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.5/SignalShow-1.2.5.dmg"
+    },
+    {
+      "id": 639014258,
+      "name": "signalshow-1.2.5.jar",
+      "size": 4491545,
+      "digest": "sha256:1b5bada03423c898fd6a1a030d9a76eb677ed9806c12feda21d1d8f4413d846d",
+      "browser_download_url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.5/signalshow-1.2.5.jar"
+    },
+    {
+      "id": 639014261,
+      "name": "SignalShow-1.2.5.msi",
+      "size": 53473816,
+      "digest": "sha256:165e8aeb6f0d9ee85882e9c27002f057006d5957dd4f608cba39929946af1512",
+      "browser_download_url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.5/SignalShow-1.2.5.msi"
+    }
+  ]
+}

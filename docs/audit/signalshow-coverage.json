@@ -4,11 +4,11 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Publishing SignalShow1.2.5 after verifying finished Mac and Windows installer payloads",
+    "state": "SignalShow 1.2.5 published as latest; this Mac audit and release round is complete",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly71% remaining; no other applicable window reported",
-    "authorization": "Juliet explicitly authorized merging the verified changes into main and publishing1.2.5 as the latest GitHub release. Confirm installers exclude old builds and tests. Windows native usage testing remains deferred; CI build and payload checks are separate evidence."
+    "lastUsageReading": "2026-10-13: weekly 70% remaining; no other applicable window reported",
+    "authorization": "Juliet authorized merging into main and publishing1.2.5 as the latest GitHub release; completed and verified. Future direction: more ordinary usage and math tests, then Chirplet parity features. Windows interactive checks remain deferred."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
@@ -2854,9 +2854,10 @@
         "Re-read values or pixels independently, including shared normalization of complex channels."
       ],
       "expected": "Files represent the selected current result and preserve documented range/orientation conventions.",
-      "scope": "Native ordinary 256×256 sources and operation results; format-specific exact/lossy verification. Other options and Windows remain open.",
+      "scope": "Native ordinary 256×256 sources and operation results; format-specific exact/lossy verification. Other options and Windows remain open. TIFF/BMP release file handles after export; repeated rename/read/delete checks and all612 CI tests pass on Mac and Windows.",
       "evidence": [
-        "exports-2026-10-13"
+        "exports-2026-10-13",
+        "github-publication-2026-10-13"
       ],
       "summary": "Native ring-mask TIFF/PNG/BMP pixels match exactly; JPEG decodes with expected lossy edges. Complex CSV/text samples pass; duplicate suffix and negative shared-scale defects fixed and verified in the rebuilt app.",
       "environment": "macOS arm64/JDK25; 491-test package",
@@ -5445,6 +5446,23 @@
         "docs/audit/evidence/2026-10-13-release.md",
         "src/test/java/signals/io/SavePathTest.java",
         "docs/releases/1.2.5.md"
+      ]
+    },
+    "github-publication-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Published1.2.5 from main/tag684d521 after both native installers passed strict payload inspection; Windows TIFF/BMP locks fixed;612 tests pass on Mac and Windows CI.",
+      "limits": "Windows CI is automated production/headless checking, not native interactive acceptance. Mac is arm64, Windows x64; Mac package not notarized.",
+      "environment": "GitHub Mac/Windows runners, Temurin25.0.4+101; local Mac JDK25+37.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-publication-assets.json",
+        "docs/audit/evidence/2026-10-13-publication-ci-before.log.gz",
+        "docs/audit/evidence/2026-10-13-publication-ci-success.log.gz",
+        "docs/audit/evidence/2026-10-13-publication-focused.log.gz",
+        "docs/audit/evidence/2026-10-13-publication-local-package.log.gz",
+        "docs/audit/evidence/2026-10-13-publication.md",
+        "scripts/verify_installer_payload.py",
+        ".github/workflows/build-installers.yml",
+        "src/test/java/signals/core/ImageExportWorkflowTest.java"
       ]
     }
   },

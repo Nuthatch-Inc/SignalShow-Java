@@ -1,72 +1,73 @@
 # SignalShow checkpoint — October 13, 2026
 
-The Mac usage round and local release preparation are complete. Juliet explicitly
-authorized merging into main and publishing1.2.5 as the latest GitHub release.
-That supersedes the earlier no-push instruction. Verify finished Mac/Windows
-installer contents before publication. No GitHub website action is needed unless
-a permissions/build gate requires it. Windows native usage testing is deferred.
+The Mac usage round and SignalShow 1.2.5 release are complete. Juliet explicitly
+authorized merging into main and publishing the latest GitHub release, superseding
+the earlier no-push instruction. No GitHub website action was required from her.
 
-`check_usage: true`; latest weekly71% remaining, no other applicable window.
-Follow the Continuous Audit usage policy. No agents, new chats, automations or
-resets. Use CUA for native input; keep at most one instance and close when unused.
-Native input works when the Java window is focused. Stop if Juliet uses the desktop.
+- Release: https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.5
+- Latest: https://github.com/Nuthatch-Inc/SignalShow-Java/releases/latest
+- Successful CI: https://github.com/Nuthatch-Inc/SignalShow-Java/actions/runs/38503319138
+- Released code/tag: `684d5219d76ccb563d9261c1e451c9f9f232ac95`.
 
-## Verified state and local files
+Repository: `/Users/julietfiss/src/SignalShow-Java`, branch `main`. All fixes were
+merged and pushed. The final documentation commit records publication on main;
+the published tag remains at the verified code build. Do not retag this release.
 
-Repository `/Users/julietfiss/src/SignalShow-Java`, branch
-`codex/signalshow-usage-stabilization`, baseline28a4ffc. This checkpoint is included
-in the1.2.5 local release commit; obtain its hash with git log rather than relying
-on the previous e0ef990 checkpoint. No push or tag was performed.
+## Verification and remaining scope
 
-Latest production fix: BUG-044 in signals/io/Utils.java. Dot-containing directory
-names redirected saves and caused two distinct filenames to overwrite one external
-path. Four before-failing regressions now pass;18 related focused checks and full
-clean610-test package pass. The packaged Mac app successfully creates a Gaussian,
-edits amplitude, creates Squared Magnitude and saves two separate outputs in the
-requested dotted folder. All131,072 complex samples pass independent references;
-the old unintended file is unchanged. Evidence:2026-10-13-release.md/replay.
+All 612 automated tests pass locally and in the Mac arm64 and Windows x64 CI
+builds. Both finished installers were extracted and inspected. Their app-data
+payloads contain exactly `.package`, `SignalShow.cfg` and the current executable
+JAR; necessary native launcher/runtime/icon files are outside that directory.
+Packaged JARs match their respective builds. Old builds, project tests, JUnit,
+nested JARs and reports are excluded.
 
-The final ordinary resize batch also passed: complex Gaussian/Rectangle
-128×64→256×128→64×256 through existing FFT→inverseFFT→Magnitude;12 exports,
-229,376 samples; clean log. Evidence:2026-10-13-resize.md/replay.
+Downloaded all four release assets and verified sizes, GitHub SHA256 digests and
+SHA256SUMS. Published as Latest, with draft and prerelease disabled. Anonymous
+requests confirmed Latest resolves to 1.2.5 and all executable downloads return
+HTTP 200. Public assets are the Windows MSI, Apple Silicon Mac DMG, portable JAR
+and SHA256SUMS.txt. The JAR requires Java 25+; native installers bundle Java.
+The Mac package is ad-hoc signed, not notarized.
 
-Matrix:130 math entries,78 scenarios:74 checked, two pending Windows, two deferred
-memory checks. These are bounded checks, not whole-app certification. Previous
-complex-power, polar-angle, editor, sampling, rotation, save and memory fixes are
-included, along with their existing evidence.
+The matrix has 130 math entries and 78 scenarios: 74 checked, two pending Windows
+interactive checks and two deferred memory checks. CI does not establish Windows
+native usage acceptance. These counts describe bounded checks, not whole-app
+certification. Further ordinary usage and mathematical testing precede Chirplet
+parity features.
 
-Local downloads in `dist/1.2.5/`:
-- signalshow-1.2.5.jar: Java25+ required; includes JAI.
-- SignalShow-1.2.5-portable.zip: same JAR, instructions and release notes.
-- SignalShow-1.2.5.dmg: Apple Silicon Mac, Java bundled, ad-hoc signed/not notarized.
-- SHA256SUMS.txt: checksums; artifact manifest also committed in release evidence.
+The final native resize batch passed: complex Gaussian/Rectangle images resized
+128×64 → 256×128 → 64×256 through an existing FFT → inverse FFT → Magnitude chain;
+12 exports and 229,376 samples verified, with a clean log.
 
-Final JAR SHA256:8e262633bb114038c47dc76a8625c5c28efa25568e6f870443904e38bf02f795.
-Packaged JAR matches exactly; codesign deep verification, hdiutil verification and
-ZIP integrity pass. Native image copies differed only in identifier/user.home to
-isolate configuration. The DMG itself was not installed into Applications.
+Release verification also fixed two ordinary save/export defects:
+- BUG-044: dots in parent folders redirected saves. Four regressions and the
+  packaged Gaussian → Squared Magnitude save retest pass; two distinct outputs
+  contain all 131,072 expected samples.
+- BUG-045: TIFF/BMP exports retained file handles. Explicit disposal now permits
+  repeated export, rename, readback and deletion. The three original Windows CI
+  cleanup failures are resolved, and both new format regressions pass.
 
-Both native installer scripts requireJava25 and stage only the JAR. Windows script
-syntax checked, not executed. The existing GitHub tag workflow builds native Mac
-and Windows installers and creates a draft release; it has not run for1.2.5.
-Release notes:docs/releases/1.2.5.md. Do not mark Windows accepted after a CI build.
+Evidence is in `2026-10-13-resize.md`, `2026-10-13-release.md` and
+`2026-10-13-publication.md`, with associated replay scripts and logs. The publication
+asset manifest supersedes the historical local 610-test candidate manifest.
+`dist/1.2.5/` contains the final GitHub binaries, an updated local portable ZIP,
+instructions, release notes and checksums; it remains ignored by Git.
 
 ## Resources and next action
 
-Both audit and packaged test apps were closed through CUA; process inspection
-confirmed none remain. No build/sampler is running. Old CUA helper closures retain
-old app bindings: never reuse them for a new app or call getAX after closing, since
-that can relaunch the old bundle. Use fresh helpers with an explicitly bound app.
+No SignalShow app or release build is running. Native test apps were closed and
+process inspection confirmed cleanup. Keep at most one app open during future
+testing and close it when unused. Native input works with the Java window focused;
+inspect the target field and read back values before submitting. Stop input when
+Juliet uses the desktop. Bind fresh CUA helpers to each app instance; old helpers
+can relaunch a closed test bundle.
 
-Audit viewer http://127.0.0.1:8092/docs/audit/ remains available (prior session19418).
-Native fixtures and replay scripts are committed under docs/audit/evidence.
-Temporary homes /private/tmp/signalshow-roger-home and
-/private/tmp/signalshow-1.2.5-home contain only test data. Diagnostic heaps and
-packaged test copies stay uncommitted. Preserve unrelated browser/server state.
+The audit viewer at http://127.0.0.1:8092/docs/audit/ is preserved (prior session
+19418). Test homes under `/private/tmp/signalshow-roger-home` and
+`/private/tmp/signalshow-1.2.5-home` contain test data. Preserve unrelated browser
+and server state. No agents, new chats, automations or resets were created.
 
-Main is merged/pushed at8f6dad1. Initial run38502634539 failed before publishing:
-Windows TIFF file locks (BUG-045) and Mac metadata allowlist. TIFF/BMP disposal fix
-and exact `.package` allowance are locally verified (focused16/full612). Retry the
-unpublished1.2.5 tag with a lease, await all three jobs, inspect assets and publish
-the draft with latest=true. See2026-10-13-publication.md. Verify the public latest endpoint and actual downloads.
-Update this checkpoint with the main commit, workflow run and release URLs.
+`check_usage: true`; latest reading: October 13, weekly 70% remaining, no other
+applicable window reported. Follow the Continuous Audit usage policy on resumption.
+The next requested work is more ordinary usage and math coverage, with Windows
+interactive checks scheduled for a later round; consult the matrix queue.

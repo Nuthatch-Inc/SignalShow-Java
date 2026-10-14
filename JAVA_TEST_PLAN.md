@@ -17,11 +17,11 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 13, weekly window 71% remaining; no other applicable window reported.
+October 13, weekly window 70% remaining; no other applicable window reported.
 On October13 Juliet authorized local commits and preparation of1.2.5. She then
 explicitly authorized merging into main and publishing1.2.5 on GitHub as the latest
-release. Verify both finished installer payloads exclude old builds and tests
-before publishing. Native keystrokes remain authorized when the Java window is
+release. Publication is complete; both finished installer payloads were verified
+to exclude old builds and tests. Native keystrokes remain authorized when the Java window is
 focused; verify the target field and readback before submitting.
 
 ## Standing testing priority and suite plan
@@ -45,10 +45,10 @@ Mathematical accuracy has its own matrix; do not let tiny numerical discrepancie
 or rare edge cases displace ordinary usage fixes. Zero-sized images, unusual
 inputs and capacity extremes are low priority while these workflows are unstable.
 
-**Current scope:** Roger's circular-resolution target and requested layout are
-verified in scoped rows. Continue the authorized audit with one ordinary workflow
-at a time; the matrix owns the active check and next queue. The larger suite is
-implemented incrementally, not all at once.
+**Current scope:** This Mac audit and release round is complete. Roger's
+circular-resolution target and requested layout are verified in scoped rows.
+Future audit work continues one ordinary workflow at a time; the matrix owns
+the next queue. The larger suite is implemented incrementally, not all at once.
 
 October13 resumption: Juliet requested more ordinary **Mac** 2D creation and
 operation chains; check Windows later. The chirp/aperture/conjugation/intensity and
@@ -66,8 +66,12 @@ and operation chains passed. Resizing a source through128×64,256×128 and64×25
 with an existing FFT→inverseFFT→Magnitude chain passed all12 saved-array checks.
 This Mac round is complete. Release verification exposed BUG-044: dots in parent
 folders redirected saves. Its shared path fix passes four new regressions and the
-native packaged save retest. Version1.2.5 passes610 total tests and has local JAR
-and Apple Silicon DMG artifacts; GitHub build/publication is now authorized and underway.
+native packaged save retest. SignalShow 1.2.5 is published as the latest GitHub
+release with Windows MSI, Apple Silicon Mac DMG and portable JAR downloads. Both
+finished installers passed payload inspection. CI also exposed BUG-045: TIFF/BMP
+export handles now close before returning. All 612 automated tests pass on Mac
+and Windows, including the Windows file-handle regressions.
+Windows interactive usage remains pending.
 Further usage and mathematical tests precede future Chirplet parity work. Prior
 checked rows remain bounded evidence, not certification of every combination.
 
