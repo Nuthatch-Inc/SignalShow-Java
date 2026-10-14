@@ -1,0 +1,28 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "gaussian.txt",
+      "sha256": "1f2c274b24c402d71b2bfcf4e31fc14d2c76623702e9c29c1b2a4c94d152a38e",
+      "dimensions": [
+        256,
+        256
+      ],
+      "complexSamples": 65536,
+      "maxComplexError": 1.1102230246251565e-16
+    },
+    {
+      "file": "intensity.txt",
+      "sha256": "d0cedbc92e09058d8c22ace7a985372dc3dd2438828b2f8fe5e08fe7a450a97f",
+      "dimensions": [
+        256,
+        256
+      ],
+      "complexSamples": 65536,
+      "maxComplexError": 1.1102230246251565e-16
+    }
+  ],
+  "passed": 2,
+  "totalComplexSamples": 131072,
+  "maxComplexError": 1.1102230246251565e-16
+}

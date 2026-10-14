@@ -1,82 +1,70 @@
 # SignalShow checkpoint — October 13, 2026
 
-Continuous Audit remains active: ordinary Mac 2D creation and operation chains,
-crashes and major wrong results first. Windows later. Juliet authorized local
-commits; no push/release. No agents, new chats, automations or resets authorized.
-At most one native app; close when unused and verify exit. Use CUA for all native
-actions. Automated typing works; target, type, verify readback, then submit.
+The requested Mac usage round and local release preparation are complete. Juliet
+requested a new executable for Roger, after local check-in. Her prior instruction
+was not to push, so remote branch/tag push, Windows CI build and GitHub publication
+await authorization. Do not silently resume more audit batches before delivering
+this checkpoint. Future direction: further ordinary usage and math tests, then
+features toward Chirplet parity. Windows acceptance remains deferred.
 
-`check_usage: true`; latest weekly 72% remaining, no other applicable window.
-Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
-This checkpoint is not a pause. Continue the active Mac scenario.
+`check_usage: true`; latest weekly71% remaining, no other applicable window.
+Follow the Continuous Audit usage policy. No agents, new chats, automations or
+resets. Use CUA for native input; keep at most one instance and close when unused.
+Native input works when the Java window is focused. Stop if Juliet uses the desktop.
 
-## Verified checkpoint
+## Verified state and local files
 
 Repository `/Users/julietfiss/src/SignalShow-Java`, branch
-`codex/signalshow-usage-stabilization`, baseline 28a4ffc. Recent local commits:
+`codex/signalshow-usage-stabilization`, baseline28a4ffc. This checkpoint is included
+in the1.2.5 local release commit; obtain its hash with git log rather than relying
+on the previous e0ef990 checkpoint. No push or tag was performed.
 
-- 4f9aed3: BUG-041, loaded/exported sampled 2D images opened empty editors.
-  Six before-failing EDT cases; native directional/reuse chain19 exports passed.
-- f0b34ad: Gaussian/Uniform noise→Subtract Mean→Squared Magnitude,12 exports.
-- 2473080: BUG-042, corner-origin polar angle rows disagreed with radius.
-  Five before-failing cases; native polar Divide/Minus retest11 exports passed.
-- 5b20465: magnitude/phase→Phase/Real/Threshold branches,12 exports passed.
-- eede73c: signed Cartesian source→Absolute Value→Reverse X/Y,10 exports passed.
+Latest production fix: BUG-044 in signals/io/Utils.java. Dot-containing directory
+names redirected saves and caused two distinct filenames to overwrite one external
+path. Four before-failing regressions now pass;18 related focused checks and full
+clean610-test package pass. The packaged Mac app successfully creates a Gaussian,
+edits amplitude, creates Squared Magnitude and saves two separate outputs in the
+requested dotted folder. All131,072 complex samples pass independent references;
+the old unintended file is unchanged. Evidence:2026-10-13-release.md/replay.
 
-Latest local fix f6e1192: BUG-043 complex powers lost input phase. Fourteen
-before-failing production cases pass; focused56/full606 tests pass. Native power
-and reciprocal retest9 exports passed; all seven wrong before outputs retained.
+The final ordinary resize batch also passed: complex Gaussian/Rectangle
+128×64→256×128→64×256 through existing FFT→inverseFFT→Magnitude;12 exports,
+229,376 samples; clean log. Evidence:2026-10-13-resize.md/replay.
 
-Local evidence commits63b420c/48061bc/fbbd0cf/9b968bf: annular diffraction,
-Fourier basis edits, spatial autocorrelation/scaling, multi-term grouping/copy
-independence, all passed. Latest batch:256×256 real Sine/Hamming and imaginary
-Rectangle/Sine→Signum→Offset→Magnitude; window/phase and complex offset edits.
-All10 exports/655,360 samples pass independent full-array formulas, including true
-outside-window zeros. Max3.414e−15/tol1e−9; clean log. Evidence:windowed.md/replay.
+Matrix:130 math entries,78 scenarios:74 checked, two pending Windows, two deferred
+memory checks. These are bounded checks, not whole-app certification. Previous
+complex-power, polar-angle, editor, sampling, rotation, save and memory fixes are
+included, along with their existing evidence.
 
-Matrix:130 math entries,77 scenarios:72 checked,1 active Mac,2 pending Windows,
-2 deferred memory stress. These are bounded checks, not whole-app certification.
+Local downloads in `dist/1.2.5/`:
+- signalshow-1.2.5.jar: Java25+ required; includes JAI.
+- SignalShow-1.2.5-portable.zip: same JAR, instructions and release notes.
+- SignalShow-1.2.5.dmg: Apple Silicon Mac, Java bundled, ad-hoc signed/not notarized.
+- SHA256SUMS.txt: checksums; artifact manifest also committed in release evidence.
 
-## Next action and resources
+Final JAR SHA256:8e262633bb114038c47dc76a8625c5c28efa25568e6f870443904e38bf02f795.
+Packaged JAR matches exactly; codesign deep verification, hdiutil verification and
+ZIP integrity pass. Native image copies differed only in identifier/user.home to
+isolate configuration. The DMG itself was not installed into Applications.
 
-Active `gui-2d-resize-transform-chain`: create ordinary128×64 complex Cartesian
-source, suggested real Gaussian A1.3,center(−8,5),widths(18,14); imaginary Rectangle
-A.4,center(10,−9),full widths(16,12). Create FFT→inverseFFT→Magnitude with sqrt(N)
-normalization. Save all stages; resize source256×128, then64×256, and inspect/save
-all stages after each change. Verify actual controls/descriptors and analytic source
-parameters, dimensions and transforms. No unusual sizes or capacity extremes.
+Both native installer scripts requireJava25 and stage only the JAR. Windows script
+syntax checked, not executed. The existing GitHub tag workflow builds native Mac
+and Windows installers and creates a draft release; it has not run for1.2.5.
+Release notes:docs/releases/1.2.5.md. Do not mark Windows accepted after a CI build.
 
-No SignalShow app remains open; CUA Close plus process inspection confirmed exit.
-No build/sampler running. Test bundle:
-`/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app`,606-test JAR SHA256
-`35a110618d7268ee02a2e4290f0b57a2b8e616c0fbf6e66084c681b952a8bee1`.
-Copy/sign only while closed. Launch through CUA; never getAX after closing unless
-intentionally relaunching. Refresh CUA documentation after compaction.
+## Resources and next action
 
-Persistent helpers: ssClick,ssNew2D(exact menu label),ssImageParam,ssDocumentSize,
-ssSaveVerified(base without.txt),ssDemoRow(label,index),ssOperationParam,
-ssFileMenu,ssFs. Always fresh AX after actions. New operation:2D→New2D Mathematical
-System, then New Unary/Binary Operation and explicitly choose the operation.
-Revisit its tile before editing parameters. Source and input-picker lists have
-similar AX rows; main document rows are depth4. AX can briefly return incomplete
-lists; refresh before retry. Coordinate input pickers use screenshot grounding.
+Both audit and packaged test apps were closed through CUA; process inspection
+confirmed none remain. No build/sampler is running. Old CUA helper closures retain
+old app bindings: never reuse them for a new app or call getAX after closing, since
+that can relaunch the old bundle. Use fresh helpers with an explicitly bound app.
 
-Isolated home `/private/tmp/signalshow-roger-home`; append native log
-`/private/tmp/signalshow-roger-native.log`. Keep bounded launch slices beginning
-at the last Loaded configuration. Full current build log
-`/private/tmp/signalshow-power-package.log` is also committed evidence.
-Audit viewer `http://127.0.0.1:8092/docs/audit/` (prior session19418); preserve server.
-Diagnostic heap `/private/tmp/signalshow-preview-memory-resumed-deleted.hprof`
-stays uncommitted. Test exports are disposable; no user documents overwritten.
+Audit viewer http://127.0.0.1:8092/docs/audit/ remains available (prior session19418).
+Native fixtures and replay scripts are committed under docs/audit/evidence.
+Temporary homes /private/tmp/signalshow-roger-home and
+/private/tmp/signalshow-1.2.5-home contain only test data. Diagnostic heaps and
+packaged test copies stay uncommitted. Preserve unrelated browser/server state.
 
-## Limits and conventions
-
-Windows untested; sample-only persistence; dense-memory workloads; picker4096 is
-not capacity certification; binary dimensions must match; phase entry3decimals;
-save replacement not atomic. Obsolete2GiB heap cap removed. Deferred Rectangle
-notation BUG-021 and Translate help omission. No new control/final-copy changes.
-Threshold is componentwise: threshold0 maps imaginary0 to1; final Real discards it.
-Reverse preserves sample index0 and reverses cyclic order; coordinate-reflection
-semantics not approved. Polar angle at radius0 keeps the existing90° convention.
-Custom-equation source rename has not been verified. Do not reopen these low
-priority convention questions at the expense of ordinary broken workflows.
+Next action is deliver local artifact links and request permission for the remote
+release branch/tag build if Roger needs the bundled Windows installer/public link.
+The earlier no-push instruction is why that step awaits Juliet, not a skill gate.

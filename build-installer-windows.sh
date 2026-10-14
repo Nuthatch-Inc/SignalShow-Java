@@ -1,6 +1,6 @@
 #!/bin/bash
 # Build native Windows installer (.exe) for SignalShow
-# Must be run on Windows with Java 17+ and WiX Toolset installed
+# Must be run on Windows with Java 25+ and WiX Toolset installed
 # https://wixtoolset.org/
 
 set -e  # Exit on error
@@ -10,9 +10,9 @@ echo ""
 
 # Check Java version
 JAVA_VERSION=$(java -version 2>&1 | head -n 1 | cut -d'"' -f2 | cut -d'.' -f1)
-if [ "$JAVA_VERSION" -lt 17 ]; then
-    echo "❌ Error: Java 17 or later required (found Java $JAVA_VERSION)"
-    echo "   jpackage is available in Java 17+"
+if [ "$JAVA_VERSION" -lt 25 ]; then
+    echo "❌ Error: Java 25 or later required (found Java $JAVA_VERSION)"
+    echo "   SignalShow is compiled for Java 25"
     exit 1
 fi
 
@@ -40,7 +40,7 @@ echo ""
 
 # Clean and build
 echo "📦 Building JAR with Maven..."
-mvn clean package -q
+mvn clean package -Djava.awt.headless=true -q
 
 if [ ! -f "target/${JAR_NAME}" ]; then
     echo "❌ Error: JAR file not found after build (expected target/${JAR_NAME})"
@@ -50,8 +50,9 @@ fi
 echo "✓ JAR built successfully"
 echo ""
 
-# Create distribution directory
-mkdir -p target/dist
+# Stage only the executable JAR; never package test classes, reports or old builds.
+mkdir -p target/installer-input target/dist
+cp "target/${JAR_NAME}" "target/installer-input/${JAR_NAME}"
 
 # Check if icon exists
 ICON_PATH="assets/icons/SignalShow.ico"
@@ -70,7 +71,7 @@ jpackage \
   --type "$TYPE" \
   --name SignalShow \
   --app-version "$VERSION" \
-  --input target \
+  --input target/installer-input \
   --main-jar "$JAR_NAME" \
   --main-class SignalShow \
   --dest target/dist \

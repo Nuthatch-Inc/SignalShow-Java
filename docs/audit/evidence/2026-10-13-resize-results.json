@@ -1,0 +1,140 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "resize-source-128x64.txt",
+      "sha256": "1050ac9bf61f211a31a38ba4a070b2a3fc66871e9ff1a67e1b6738e5c0f29c0b",
+      "descriptor": "resize-source",
+      "dimensions": [
+        128,
+        64
+      ],
+      "complexSamples": 8192,
+      "maxComplexError": 1.734723475976807e-18
+    },
+    {
+      "file": "resize-forward-128x64.txt",
+      "sha256": "5108bd762e430f8d4d8534137964ee0caeeb2a3a6acab0f079f0e2d8764bfc7b",
+      "descriptor": "FFT{ resize-source }",
+      "dimensions": [
+        128,
+        64
+      ],
+      "complexSamples": 8192,
+      "maxComplexError": 4.846069453529274e-14
+    },
+    {
+      "file": "resize-inverse-128x64.txt",
+      "sha256": "1a81d0aa07bd7daf441242634e866ce220bedf68d0b5a3937408f647a7da1ce9",
+      "descriptor": "FFT{ FFT{ resize-source } }",
+      "dimensions": [
+        128,
+        64
+      ],
+      "complexSamples": 8192,
+      "maxComplexError": 1.8131828433880175e-14
+    },
+    {
+      "file": "resize-magnitude-128x64.txt",
+      "sha256": "d9e67d1ef73dd15808d70e77c34cf042b501bd3ded8ac80408156d06b3989d24",
+      "descriptor": "||FFT{ FFT{ resize-source } }||",
+      "dimensions": [
+        128,
+        64
+      ],
+      "complexSamples": 8192,
+      "maxComplexError": 1.1497538006847813e-14
+    },
+    {
+      "file": "resize-source-256x128.txt",
+      "sha256": "fb304a93b14a0dcf8fcaa712a796f53faee428532e7e3bceafa90eb602b2c814",
+      "descriptor": "resize-source",
+      "dimensions": [
+        256,
+        128
+      ],
+      "complexSamples": 32768,
+      "maxComplexError": 1.734723475976807e-18
+    },
+    {
+      "file": "resize-forward-256x128.txt",
+      "sha256": "b6e432412f6260ab27ef3f92862a5744f783c9cf6ab7ca784793db7e8c6b074c",
+      "descriptor": "FFT{ resize-source }",
+      "dimensions": [
+        256,
+        128
+      ],
+      "complexSamples": 32768,
+      "maxComplexError": 5.0966371751117066e-14
+    },
+    {
+      "file": "resize-inverse-256x128.txt",
+      "sha256": "b063c60e2a7caa41a44efb480b45bd5f21190850d717efb3c0f5e0655a64ad10",
+      "descriptor": "FFT{ FFT{ resize-source } }",
+      "dimensions": [
+        256,
+        128
+      ],
+      "complexSamples": 32768,
+      "maxComplexError": 3.409317407294995e-14
+    },
+    {
+      "file": "resize-magnitude-256x128.txt",
+      "sha256": "dceea20ea6b5aadf5e43b5952c91148a8a35201cb9190613c00526e97757e28b",
+      "descriptor": "||FFT{ FFT{ resize-source } }||",
+      "dimensions": [
+        256,
+        128
+      ],
+      "complexSamples": 32768,
+      "maxComplexError": 9.972131648755252e-15
+    },
+    {
+      "file": "resize-source-64x256.txt",
+      "sha256": "4810651324cbda4dbc21ed1632b0344654e471b85190d3598ae5144ef64001d8",
+      "descriptor": "resize-source",
+      "dimensions": [
+        64,
+        256
+      ],
+      "complexSamples": 16384,
+      "maxComplexError": 1.734723475976807e-18
+    },
+    {
+      "file": "resize-forward-64x256.txt",
+      "sha256": "d6de872548dfe586e13bd49da6b542a7fd85effada976a94eb77a9b1e5bbebc0",
+      "descriptor": "FFT{ resize-source }",
+      "dimensions": [
+        64,
+        256
+      ],
+      "complexSamples": 16384,
+      "maxComplexError": 5.4284797275661496e-14
+    },
+    {
+      "file": "resize-inverse-64x256.txt",
+      "sha256": "4b1566cda790702b9a8dca8181a9e3320a7bb2b35dd8e5cc938e15b5efbae4bf",
+      "descriptor": "FFT{ FFT{ resize-source } }",
+      "dimensions": [
+        64,
+        256
+      ],
+      "complexSamples": 16384,
+      "maxComplexError": 3.356003138649522e-14
+    },
+    {
+      "file": "resize-magnitude-64x256.txt",
+      "sha256": "47a2b99205a31b01afddb5c16aea93451654b088c00f44210603a730de3db96c",
+      "descriptor": "||FFT{ FFT{ resize-source } }||",
+      "dimensions": [
+        64,
+        256
+      ],
+      "complexSamples": 16384,
+      "maxComplexError": 1.0015259862616466e-14
+    }
+  ],
+  "passed": 12,
+  "totalComplexSamples": 229376,
+  "maxComplexError": 5.4284797275661496e-14
+}

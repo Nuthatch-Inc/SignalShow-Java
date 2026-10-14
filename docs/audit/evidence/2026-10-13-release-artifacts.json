@@ -1,0 +1,22 @@
+{
+  "README.txt": {
+    "bytes": 786,
+    "sha256": "bd0549292294b239fedfdf2cdd4282f350003bd394fa3a86839c8a7a1966b395"
+  },
+  "RELEASE-NOTES.md": {
+    "bytes": 2801,
+    "sha256": "4ffd28ff5ecc237aa5b62605fd475217b04f0c76906fa3aac8e68d57bd086838"
+  },
+  "SignalShow-1.2.5-portable.zip": {
+    "bytes": 4197640,
+    "sha256": "8016054b0debfe7e48fb50a3aebc4e3e94b42638d9a8878690f372aa2530beec"
+  },
+  "SignalShow-1.2.5.dmg": {
+    "bytes": 55404278,
+    "sha256": "9ba513d95cce555b75af9f6dbe1e2ad44a4ce9d10f1282d495882f3ee327594e"
+  },
+  "signalshow-1.2.5.jar": {
+    "bytes": 4491511,
+    "sha256": "8e262633bb114038c47dc76a8625c5c28efa25568e6f870443904e38bf02f795"
+  }
+}

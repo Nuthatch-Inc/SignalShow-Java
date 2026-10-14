@@ -4,17 +4,15 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: image dimension edits through transform chains",
+    "state": "SignalShow1.2.5 verified locally; remote build/publication awaits authorization",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly72% remaining; no other applicable window reported",
-    "authorization": "Juliet renewed Continuous Audit on 2026-10-13: test more ordinary Mac 2D creation and operation chains, prioritize crashes and major wrong results, and commit verified batches locally without pushing. Windows checks are deferred until later. No release/deployment authorized."
+    "lastUsageReading": "2026-10-13: weekly71% remaining; no other applicable window reported",
+    "authorization": "Juliet requested finishing this Mac round, checking in code locally and producing a new executable for Roger. Prior no-push instruction remains in effect; prepare local artifacts. Remote tag/build/publication requires authorization. Continue usage and math tests, then Chirplet parity, in a later round."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
-    "activeIds": [
-      "gui-2d-resize-transform-chain"
-    ],
+    "activeIds": [],
     "nextIds": []
   },
   "math": [
@@ -553,14 +551,15 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT. Native128×128 Gaussian/Rectangle/Sine multi-term arithmetic/grouping and edits, independent copy term removal, Clip→sqrt(N) Fourier Transform;12 exported stages checked.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT. Native128×128 Gaussian/Rectangle/Sine multi-term arithmetic/grouping and edits, independent copy term removal, Clip→sqrt(N) Fourier Transform;12 exported stages checked. Native source resizing128×64→256×128→64×256 with existing forward/inverse FFT and Magnitude:12 full-array exports checked.",
       "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
         "filtering-2026-10-13",
         "spatial-filtering-2026-10-13",
         "annular-chain-2026-10-13",
         "basis-chain-2026-10-13",
-        "composite-chain-2026-10-13"
+        "composite-chain-2026-10-13",
+        "resize-transform-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -905,12 +904,13 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT. Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros.",
+      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT. Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros. Native source resizing128×64→256×128→64×256 with existing forward/inverse FFT and Magnitude:12 full-array exports checked.",
       "remaining": "Definition, equations, handbook, broader source families and Windows remain unreviewed.",
       "evidence": [
         "rectangular-rotation-2026-10-13",
         "basis-chain-2026-10-13",
-        "windowed-chain-2026-10-13"
+        "windowed-chain-2026-10-13",
+        "resize-transform-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -3963,17 +3963,39 @@
       "area": "usage",
       "title": "Resize an existing complex image and keep its transform chain current",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create an ordinary rectangular complex image and a forward/inverse Fourier chain.",
         "Change width and height through several normal image dimensions.",
         "Inspect and save source and dependent stages after resizing."
       ],
       "expected": "Changing normal image dimensions updates data and views throughout the existing chain without crashes or stale shapes.",
-      "scope": "Mac image resize workflow; precise fixture pending.",
-      "summary": "Native check pending.",
-      "evidence": [],
-      "environment": "Mac native check pending",
+      "scope": "Centered Gaussian/Rectangle complex source,128×64→256×128→64×256; existing FFT→inverseFFT→Magnitude chain.",
+      "summary": "All12 exports/229,376 complex samples match independent references with updated shapes; clean log and usable controls after refocus.",
+      "evidence": [
+        "resize-transform-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-save-dotted-folder",
+      "area": "files",
+      "title": "Save distinct source and operation files in a folder containing dots",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Launch the packaged Mac app; create a256×256 real Gaussian and Squared Magnitude system.",
+        "Save source as gaussian and result as intensity in a folder named SignalShow1.2.5.",
+        "Confirm exact destinations, distinct files, correct samples and no changes to the old unintended output."
+      ],
+      "expected": "Folder names remain intact, and separate filenames save distinct data at the selected locations.",
+      "scope": "Native bundled Java25 Mac package; GaussianX A2,b16×ConstantY1, centered256×256; save paths without extensions under a dotted directory.",
+      "summary": "Reproduced wrong-path overwrite before BUG-044 fix; two distinct native saves pass after the fix. Four before-failing path checks,18 focused checks and610 full regressions pass.",
+      "evidence": [
+        "release-save-path-2026-10-13"
+      ],
+      "environment": "Native Mac arm64, bundled JDK25; Windows-style path strings checked programmatically only.",
       "reviewedOn": "2026-10-13"
     }
   ],
@@ -5374,6 +5396,55 @@
         "docs/audit/evidence/2026-10-13-windowed-source-initial.txt.gz",
         "docs/audit/evidence/2026-10-13-windowed-verifier.py",
         "docs/audit/evidence/2026-10-13-windowed.md"
+      ]
+    },
+    "resize-transform-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native rectangular source resizing through existing forward/inverseFFT→Magnitude;12 exports/229,376 complex samples pass.",
+      "limits": "Selected centered rectangular source and transform chain; Windows and capacity deferred.",
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package, NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-resize-256x128.png",
+        "docs/audit/evidence/2026-10-13-resize-64x256.png",
+        "docs/audit/evidence/2026-10-13-resize-forward-128x64.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-forward-256x128.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-forward-64x256.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-initial.png",
+        "docs/audit/evidence/2026-10-13-resize-inverse-128x64.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-inverse-256x128.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-inverse-64x256.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-magnitude-128x64.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-magnitude-256x128.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-magnitude-64x256.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-native.log",
+        "docs/audit/evidence/2026-10-13-resize-results.json",
+        "docs/audit/evidence/2026-10-13-resize-source-128x64.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-source-256x128.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-source-64x256.txt.gz",
+        "docs/audit/evidence/2026-10-13-resize-verifier.py",
+        "docs/audit/evidence/2026-10-13-resize.md"
+      ]
+    },
+    "release-save-path-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "BUG-044 save path correction, executable1.2.5 package and native Gaussian→Squared Magnitude save smoke test;2 exports/131,072 samples pass.",
+      "limits": "Native Mac and selected save paths; Windows installer and native Windows acceptance pending. Mac image ad-hoc signed, not notarized.",
+      "environment": "Mac arm64, bundled JDK25+37, JAI1.1.3;610 full tests passed.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-release-artifacts.json",
+        "docs/audit/evidence/2026-10-13-release-dmg-verify.log",
+        "docs/audit/evidence/2026-10-13-release-gaussian.txt.gz",
+        "docs/audit/evidence/2026-10-13-release-intensity.txt.gz",
+        "docs/audit/evidence/2026-10-13-release-native.png",
+        "docs/audit/evidence/2026-10-13-release-package.log",
+        "docs/audit/evidence/2026-10-13-release-results.json",
+        "docs/audit/evidence/2026-10-13-release-save-after.log",
+        "docs/audit/evidence/2026-10-13-release-save-before.log",
+        "docs/audit/evidence/2026-10-13-release-verifier.py",
+        "docs/audit/evidence/2026-10-13-release-wrong-path-before.txt.gz",
+        "docs/audit/evidence/2026-10-13-release.md",
+        "src/test/java/signals/io/SavePathTest.java",
+        "docs/releases/1.2.5.md"
       ]
     }
   },

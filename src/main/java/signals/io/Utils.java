@@ -10,9 +10,9 @@ public class Utils {
      */
     public static String getExtension(String s) {
         String ext = null;
-        int i = s.lastIndexOf('.');
+        int i = extensionIndex(s);
 
-        if (i > 0 &&  i < s.length() - 1) {
+        if (i >= 0) {
             ext = s.substring(i+1).toLowerCase();
         }
         return ext;
@@ -23,12 +23,19 @@ public class Utils {
      */
     public static String getNameNoExtension(String s) {
   
-        int i = s.lastIndexOf('.');
+        int i = extensionIndex(s);
 
-        if (i > 0 &&  i < s.length() - 1) {
+        if (i >= 0) {
             s = s.substring(0, i);
         }
         return s;
+    }
+
+    // Save dialogs pass complete paths; only the final filename has an extension.
+    private static int extensionIndex(String path) {
+        int filenameStart = Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\')) + 1;
+        int dot = path.lastIndexOf('.');
+        return dot > filenameStart && dot < path.length() - 1 ? dot : -1;
     }
 
     /** Returns an ImageIcon, or null if the path was invalid. */

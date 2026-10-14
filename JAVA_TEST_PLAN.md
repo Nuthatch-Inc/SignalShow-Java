@@ -17,9 +17,11 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 13, weekly window 73% remaining; no other applicable window reported.
-On October13 Juliet authorized local commits at verified checkpoints. Do not push,
-distribute installers or deploy. Juliet reauthorized native keystrokes after finishing with her terminal;
+October 13, weekly window 71% remaining; no other applicable window reported.
+On October13 Juliet authorized local commits at verified checkpoints. After the
+current round, she requested a new executable for Roger; prepare version1.2.5
+and local artifacts. Her prior no-push instruction remains in effect. A remote
+tag/build/publication needs authorization. Juliet reauthorized native keystrokes after finishing with her terminal;
 verify the target field and readback before submitting.
 
 ## Standing testing priority and suite plan
@@ -60,9 +62,14 @@ and diffraction intensity passed. Fourier basis editing
 and frequency-domain chains passed. Spatial autocorrelation
 and extraction passed. Multi-term image composition, grouping and independent
 copy edits passed. Windowed signed images
-and operation chains passed. Active work now covers resizing images after creating
-a transform chain. Prior checked rows remain bounded evidence, not certification of every
-combination. Continue verified batches and commit locally without pushing.
+and operation chains passed. Resizing a source through128×64,256×128 and64×256
+with an existing FFT→inverseFFT→Magnitude chain passed all12 saved-array checks.
+This Mac round is complete. Release verification exposed BUG-044: dots in parent
+folders redirected saves. Its shared path fix passes four new regressions and the
+native packaged save retest. Version1.2.5 passes610 total tests and has local JAR
+and Apple Silicon DMG artifacts; remote build/publication awaits authorization.
+Further usage and mathematical tests precede future Chirplet parity work. Prior
+checked rows remain bounded evidence, not certification of every combination.
 
 ## Authoritative matrix
 

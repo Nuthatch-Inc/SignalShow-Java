@@ -578,3 +578,17 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Include input phase in the complex logarithm used by exponentiation; preserve the separate magnitude-logarithm/cepstrum behavior.
 - Verification: All14 new1D/2D cases fail before/pass after; focused56/full606 pass. Nine native after-fix source/power/reciprocal exports independently pass.
 - Evidence: [Power and reciprocal audit](docs/audit/evidence/2026-10-13-power.md).
+
+
+---
+
+- ID: BUG-044
+- Title: Dots in folder names redirect saves and collapse distinct output names
+- Status: resolved within verified save and export path handling
+- Reported by: Codex during authorized release smoke testing
+- Date: 2026-10-13
+- Environment: macOS arm64, JDK25, packaged1.2.5 candidate
+- Description: Saving `gaussian` and `intensity` under `/private/tmp/signalshow-1.2.5-home/` wrote both to `/private/tmp/signalshow-1.2.txt`; the second save replaced the first. The helper treated a dot in the directory as the filename extension.
+- Expected behavior: Preserve the selected directory and distinct basenames, then apply the requested output suffix.
+- Fix: Restrict extension detection/removal to the final filename after either path separator. The shared helper serves complex saves, component/image exports and image-format replacement.
+- Verification: All four regression path cases fail before the fix;18 focused filename, image-export and complex-data checks pass afterward. Windows-style strings are unit checks, not a native Windows acceptance pass. Full release suite610 passed. Native bundled-runtime retest created two distinct files in the requested dotted directory; all131,072 saved complex samples match independent Gaussian and intensity formulas. The unintended prior output remained byte-identical. See docs/audit/evidence/2026-10-13-release.md.
