@@ -1,0 +1,79 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "signed-source-initial.txt",
+      "sha256": "42fc3267c254a81f1d8449163414d382d95b4ae7a935ae437825d02f2a594bb1",
+      "descriptor": "signed image",
+      "complexSamples": 8192,
+      "maxComplexError": 6.772360450213455e-15
+    },
+    {
+      "file": "signed-absolute-initial.txt",
+      "sha256": "b2af079050aeb62a4e1d7db27919a9c21bd9a0f1585d5da89a113258358d8c65",
+      "descriptor": "|signed image|",
+      "complexSamples": 8192,
+      "maxComplexError": 6.772360450213455e-15
+    },
+    {
+      "file": "signed-reverse-x-initial.txt",
+      "sha256": "1a06e0651b0e0c6eee007df2faffdceeb15eb1a49288ed4f1ba6cfc9ac143efc",
+      "descriptor": "reverse_x(|signed image|)",
+      "complexSamples": 8192,
+      "maxComplexError": 6.772360450213455e-15
+    },
+    {
+      "file": "signed-reverse-xy-initial.txt",
+      "sha256": "f4ff63fd2d758ffbe4a48968d1556fb3723c45cd2a71bf8532885ff4b4f0417e",
+      "descriptor": "reverse_y(reverse_x(|signed image|))",
+      "complexSamples": 8192,
+      "maxComplexError": 6.772360450213455e-15
+    },
+    {
+      "file": "signed-source-edited.txt",
+      "sha256": "d88f1d4f3ee15e784a4eb64230065b583e79a5040e0541793a0f88c750c6c190",
+      "descriptor": "signed image",
+      "complexSamples": 8192,
+      "maxComplexError": 6.217248937900877e-15
+    },
+    {
+      "file": "signed-absolute-edited.txt",
+      "sha256": "5ed45472272864f01e2125b0132f39de80ad1aa997fe444bfac7313c5aa84c67",
+      "descriptor": "|signed image|",
+      "complexSamples": 8192,
+      "maxComplexError": 6.217248937900877e-15
+    },
+    {
+      "file": "signed-reverse-x-edited.txt",
+      "sha256": "53e834807d3ec1ac9f7b3f53f39cd4d40e1dd15e8d9b4f819eb2554b222efc0b",
+      "descriptor": "reverse_x(|signed image|)",
+      "complexSamples": 8192,
+      "maxComplexError": 6.217248937900877e-15
+    },
+    {
+      "file": "signed-reverse-xy-edited.txt",
+      "sha256": "db3b852074967c40110de4ccfb9885d5faf4bbb35eebffe6343056ad546af80f",
+      "descriptor": "reverse_y(reverse_x(|signed image|))",
+      "complexSamples": 8192,
+      "maxComplexError": 6.217248937900877e-15
+    },
+    {
+      "file": "signed-reverse-y-switched.txt",
+      "sha256": "3ff039d8dc088249aab17a73534d05a560a974e7190913ad162596e05b3b0371",
+      "descriptor": "reverse_y(|signed image|)",
+      "complexSamples": 8192,
+      "maxComplexError": 6.217248937900877e-15
+    },
+    {
+      "file": "signed-reverse-yy-switched.txt",
+      "sha256": "54070f44d5503c89658a87c649bbd762f27c7665df52a90d3625c14ef2c46211",
+      "descriptor": "reverse_y(reverse_y(|signed image|))",
+      "complexSamples": 8192,
+      "maxComplexError": 6.217248937900877e-15
+    }
+  ],
+  "passed": 10,
+  "totalComplexSamples": 81920,
+  "maxComplexError": 6.772360450213455e-15,
+  "convention": "Cyclic sample-index reversal with first row/column retained; not a geometric flip or independent approval of coordinate-reflection semantics."
+}

@@ -53,8 +53,9 @@ operation chains; check Windows later. The chirp/aperture/conjugation/intensity 
 offset/clipping/square-root batches passed their scoped checks. Directional operations and exported-result reuse passed after fixing empty first-open
 sampled-data editors. Noise creation and mean/intensity chains passed. Polar
 creation with division/subtraction passed after correcting corner-origin angular
-coordinates. Magnitude/phase creation and extraction passed. Active work now covers signed
-images, absolute value and reversal. Prior checked rows remain bounded evidence, not certification of every
+coordinates. Magnitude/phase creation and extraction passed. Signed
+images with absolute value and reversal passed. Active work now covers complex
+powers and reciprocals. Prior checked rows remain bounded evidence, not certification of every
 combination. Continue verified batches and commit locally without pushing.
 
 ## Authoritative matrix

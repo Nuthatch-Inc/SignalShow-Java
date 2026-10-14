@@ -42,15 +42,20 @@ Subsequent magnitude/phase and extraction batch passed12 exports/98,304 samples
 through five live branches; componentwise threshold0 and final Real explicitly
 verified. Clean native log, no code changes. See2026-10-13-phase-chain.md.
 
-Matrix130 math entries,70 scenarios:65 checked,1 active Mac check,2 pending Windows,
+Signed-image batch: Sine×Rectangle real and negative Rectangle×Gaussian imaginary,
+Absolute Value→Reverse X→Reverse Y.10 exports/81,920 samples pass after source and
+direction edits. Existing cyclic first-row/column-preserving reversal convention
+explicitly recorded; no geometric-reflection certification. Native log clean.
+Evidence2026-10-13-signed.md; no product edits or rebuild.
+
+Matrix130 math entries,71 scenarios:66 checked,1 active Mac check,2 pending Windows,
 2 deferred memory stress. Bounded assurance only. Previous documented rotation,
 filtering, sampling, persistence and input fixes remain in their dated records.
 
 ## Next action and resources
 
-Active: gui-2d-signed-reversal-chain. Create an asymmetric signed rectangular
-image; exercise Absolute Value/Reverse, source and direction edits. Inspect local
-reversal conventions, then independently verify saved intermediates. Do not study tiny statistical errors,
+Active: gui-2d-power-reciprocal-chain. Create a normal nonzero complex image;
+exercise Exponent→Invert, edit source/power and independently verify intermediates. Do not study tiny statistical errors,
 capacity extremes or long endurance. Continue Mac batches; Windows does not block.
 
 No SignalShow app remains open; CUA Close and process inspection confirmed exit.
