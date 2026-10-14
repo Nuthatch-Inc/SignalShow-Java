@@ -96,19 +96,26 @@ class MathNoiseTest extends MathAuditSupport {
             GUIEventBroadcaster broadcaster=new GUIEventBroadcaster();
             EditNoiseFunctionTerm2DPanel editor=new EditNoiseFunctionTerm2DPanel(broadcaster,GUIEvent.Descriptor.MODIFIED);
             editor.setIndices(w,h,centered);editor.setFunctionTerm(editedNoise);
-            broadcaster.addGUIEventListener(event->{if(event.getDescriptor()==GUIEvent.Descriptor.MODIFIED)source.setPartA(source.getPartA());});
-            ParameterEditor seed=seedEditor(editor);assertNotNull(seed);
-            double[] previous=source.getReal().clone();
-            for(int value:new int[]{17,29}) {
-                seed.setText(Integer.toString(value));
-                assertEquals(value,editedNoise.getFunctionTerm1D().getSeed(),"edited seed remains an integer");
-                double[] r=editedNoise.create(w,h,centered),i=imaginary.create(w,h,centered),power=new double[w*h];
-                assertFalse(Arrays.equals(previous,r),"seed changes the image");
-                assertImage(source,r,i,w,h,centered);
-                for(int k=0;k<r.length;k++)power[k]=r[k]*r[k]+i[k]*i[k];
-                assertImage(intensity.getFunction(),power,new double[w*h],w,h,centered);
-                Function2D copy=source.clone();assertImage(copy,r,i,w,h,centered);
-                previous=r.clone();
+            // The broadcaster uses weak references; this fixture owns publication
+            // just as the live editor's retained toolbar does in the application.
+            GUIEventListener publishEdit=event->{if(event.getDescriptor()==GUIEvent.Descriptor.MODIFIED)source.setPartA(source.getPartA());};
+            broadcaster.addGUIEventListener(publishEdit);
+            try {
+                ParameterEditor seed=seedEditor(editor);assertNotNull(seed);
+                double[] previous=source.getReal().clone();
+                for(int value:new int[]{17,29}) {
+                    seed.setText(Integer.toString(value));
+                    assertEquals(value,editedNoise.getFunctionTerm1D().getSeed(),"edited seed remains an integer");
+                    double[] r=editedNoise.create(w,h,centered),i=imaginary.create(w,h,centered),power=new double[w*h];
+                    assertFalse(Arrays.equals(previous,r),"seed changes the image");
+                    assertImage(source,r,i,w,h,centered);
+                    for(int k=0;k<r.length;k++)power[k]=r[k]*r[k]+i[k]*i[k];
+                    assertImage(intensity.getFunction(),power,new double[w*h],w,h,centered);
+                    Function2D copy=source.clone();assertImage(copy,r,i,w,h,centered);
+                    previous=r.clone();
+                }
+            } finally {
+                broadcaster.removeGUIEventListener(publishEdit);
             }
         });
     }
