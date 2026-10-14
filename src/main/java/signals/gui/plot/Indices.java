@@ -124,34 +124,17 @@ public class Indices {
 	 * @return
 	 */
 	private static double[] createAngleIndicesZeroStart( int x_dimension, int y_dimension ) {
-	
-		double[][] angle = new double[x_dimension][y_dimension]; 
-	
-		double scale = 180.0 / ( Math.PI );
-	
-		for( int y = 1; y < y_dimension; ++y ) {
-	
-			for( int x = 1; x < x_dimension; x++ ) {
-	
-				double theta_I = Math.atan( (double)y / (double)x );
-				angle[x][y_dimension-y] = theta_I * scale;
-	
+		double[] angle = new double[x_dimension * y_dimension];
+		for (int row = 0; row < y_dimension; row++) {
+			// Match the bottom-left origin used by radial and Cartesian samples.
+			int y = y_dimension - 1 - row;
+			for (int x = 0; x < x_dimension; x++) {
+				// Retain the existing convention at the undefined polar origin.
+				angle[row * x_dimension + x] = x == 0 && y == 0
+						? 90 : Math.toDegrees(Math.atan2(y, x));
 			}
-	
 		}
-	
-		//vertical
-		for( int y = 0; y < y_dimension; y++ ) {
-			angle[0][y] = 90;
-		}
-	
-	
-		//horizontal
-		for( int x = 0; x < x_dimension; x++ ) { 
-			angle[x][0] = 0;
-		}
-	
-		return ArrayUtilities.flattenTranspose(angle);
+		return angle;
 	}
 
 	/**

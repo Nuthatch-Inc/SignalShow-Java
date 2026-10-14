@@ -556,3 +556,14 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Mark populated2D factory results as existing and use the toolbar's normal content attachment path.
 - Verification: Six before-failing first-opening EDT cases, focused23/full584 pass; native loading, both exported editors, gain edits, live chain and detached copy independently verified.
 - Evidence: [Directional/reuse audit](docs/audit/evidence/2026-10-13-directional-reuse.md).
+
+---
+
+- ID: BUG-042
+- Title: Corner-origin polar images misalign angular and radial factors
+- Status: resolved within tested polar creation and arithmetic workflows
+- Date: 2026-10-13
+- Reproduction: Compose radial Gaussian and angular Cosine, uncheck Zero-Centered; the angular samples use a different row from the radius and the error reaches Divide/Minus results.
+- Correction: Calculate each corner-origin angle at the same bottom-left pixel coordinate as radial and Cartesian generation.
+- Verification: Five before-failing cases across normal square/wide/tall images and editable complex chains; focused171/full592 pass. Eleven native after-fix exports, both origins and phase edits, independently pass.
+- Evidence: [Polar arithmetic audit](docs/audit/evidence/2026-10-13-polar.md).

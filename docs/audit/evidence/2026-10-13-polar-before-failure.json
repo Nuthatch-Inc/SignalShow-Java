@@ -1,0 +1,22 @@
+[
+  {
+    "file": "polar-source-zero-start.txt",
+    "maxComplexError": 0.33651500569623505,
+    "pixelsWithErrorAbove1e_6": 1836
+  },
+  {
+    "file": "polar-base-zero-start.txt",
+    "maxComplexError": 0.0,
+    "pixelsWithErrorAbove1e_6": 0
+  },
+  {
+    "file": "polar-divide-zero-start.txt",
+    "maxComplexError": 0.2308473894245104,
+    "pixelsWithErrorAbove1e_6": 1790
+  },
+  {
+    "file": "polar-minus-zero-start.txt",
+    "maxComplexError": 0.1825008856213299,
+    "pixelsWithErrorAbove1e_6": 1762
+  }
+]

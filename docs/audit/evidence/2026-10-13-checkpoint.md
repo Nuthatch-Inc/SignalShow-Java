@@ -7,7 +7,7 @@ resets authorized. At most one native app, closed when unused with exit verified
 Target/readback native typing works after the earlier restart; cause of that
 interruption remains unknown. CUA only for native actions.
 
-`check_usage: true`; latest weekly75% remaining, no other applicable window.
+`check_usage: true`; latest weekly74% remaining, no other applicable window.
 Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 This checkpoint is not a pause; continue with the active Mac scenario.
 
@@ -33,21 +33,28 @@ noise→Subtract Mean→Squared Magnitude passed12 exports/98,304 samples, inclu
 mean/spread/seed edits and Plot/Histogram stability. Clean native log; unchanged
 584-test package. See2026-10-13-noise.md and its replay script.
 
-Matrix130 math entries,68 scenarios:63 checked,1 active Mac check,2 pending Windows,
+Latest batch BUG-042: corner-origin polar angular rows disagreed with radius.
+Fixed Indices.createAngleIndicesZeroStart;8 production tests,5 before-failing,
+171 focused/592 full pass. Native128×64 Gaussian×angular Cosine with Divide/Minus,
+edits/replacement and both origins:9 valid before+11 after exports/163,840 samples
+pass;3 wrong before outputs retained separately. Logs clean. Current fix ready
+for local commit with2026-10-13-polar.md, replay, raw data and screenshots.
+
+Matrix130 math entries,69 scenarios:64 checked,1 active Mac check,2 pending Windows,
 2 deferred memory stress. Bounded assurance only. Previous documented rotation,
 filtering, sampling, persistence and input fixes remain in their dated records.
 
 ## Next action and resources
 
-Active: gui-2d-polar-division-chain. Create a rectangular polar image from radial
-and angular factors, combine with a nonzero complex image using Divide/Minus,
-edit and replace operands; independently verify current saved results. Do not study tiny statistical errors,
+Active: gui-2d-phase-extraction-chain. Create a rectangular magnitude/phase image
+with varying phase; exercise Phase/Real/Threshold, edits and independent saved
+intermediates. Inspect local conventions before interpreting phase wrapping. Do not study tiny statistical errors,
 capacity extremes or long endurance. Continue Mac batches; Windows does not block.
 
 No SignalShow app remains open; CUA Close and process inspection confirmed exit.
 No build/sampler running. Native bundle:
-/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app, verified584-test JAR
-SHA256 c37919a04da1afc01361d148c80aa6b0f141a843a0d001d4577a671a128c5f7b.
+/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app, verified592-test JAR
+SHA256 0d3519910dbf0ac841a1826fec5b4fdd402d3838b831c9191e396037a9328dc1.
 Copy/sign only while closed. Launch/query via CUA. Never query AX after closing
 unless deliberately launching. Refresh CUA docs after compaction.
 
@@ -60,7 +67,7 @@ AX fields may need screenshot-grounded clicks. Custom-equation rename unverified
 
 Isolated home/private/tmp/signalshow-roger-home; append log/private/tmp/signalshow-roger-native.log.
 Save bounded launch slices from last Loaded configuration. Build log:
-/private/tmp/signalshow-sampled-opening-package.log (also committed evidence).
+/private/tmp/signalshow-polar-package.log (also committed evidence).
 Audit viewer http://127.0.0.1:8092/docs/audit/ (prior session19418), preserve server.
 Diagnostic heap/private/tmp/signalshow-preview-memory-resumed-deleted.hprof stays
 uncommitted. Test exports are disposable; no user documents overwritten.

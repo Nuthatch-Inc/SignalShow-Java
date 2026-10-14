@@ -1,0 +1,148 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "polar-source-initial.txt",
+      "sha256": "1aaf322c9e6956ad27ad2ad4d444e6b4b45e95fdd9301e09979a4f661300b8a7",
+      "descriptor": "polar source",
+      "complexSamples": 8192,
+      "maxComplexError": 5.218048215738236e-15
+    },
+    {
+      "file": "polar-base-initial.txt",
+      "sha256": "6aa57365f0f65fdcf047c69626fd2ade79c8bcdf470fa4ec96917baedf96fc51",
+      "descriptor": "complex base",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "polar-divide-initial.txt",
+      "sha256": "3409fae160286dd8b4ebbb6f221218891308392339c25161eaf309d9334acc27",
+      "descriptor": "polar source / complex base",
+      "complexSamples": 8192,
+      "maxComplexError": 2.5319666354326127e-15
+    },
+    {
+      "file": "polar-minus-initial.txt",
+      "sha256": "2701a8740db20c27ff8ab3a10ff186cf0633ea7ff871d8ca9ebd2364e10a7984",
+      "descriptor": "polar source / complex base - complex base",
+      "complexSamples": 8192,
+      "maxComplexError": 2.531698018113677e-15
+    },
+    {
+      "file": "polar-source-edited.txt",
+      "sha256": "521ae12f5d4dadd4ede19c7468378ca3cc5f4cec8ceeeb1e5c9d96c3199b5625",
+      "descriptor": "polar source",
+      "complexSamples": 8192,
+      "maxComplexError": 6.279698983036042e-15
+    },
+    {
+      "file": "polar-base-edited.txt",
+      "sha256": "d5ec62feb0d2c3f4b2945135b0ec4e5d213327f07d2b082087894c64c4d4ba84",
+      "descriptor": "complex base",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "polar-divide-edited.txt",
+      "sha256": "08b7665a1cac22af3a653aa59031f342d52834b11db9b96bff2089d36c0d75f4",
+      "descriptor": "polar source / complex base",
+      "complexSamples": 8192,
+      "maxComplexError": 4.306053317092661e-15
+    },
+    {
+      "file": "polar-minus-edited.txt",
+      "sha256": "ed9820534385ce7a60da27cbeef8929e32c84fc1f82b8f9079fc95dc7137fd00",
+      "descriptor": "polar source / complex base - complex base",
+      "complexSamples": 8192,
+      "maxComplexError": 4.3794041556113366e-15
+    },
+    {
+      "file": "polar-minus-source-replacement.txt",
+      "sha256": "06d788931513de539357190e5161cb7afc206ae3a0a163902af3d9e1236d2d7e",
+      "descriptor": "polar source / complex base - polar source",
+      "complexSamples": 8192,
+      "maxComplexError": 3.407903011524047e-15
+    },
+    {
+      "file": "polar-after-source-centered.txt",
+      "sha256": "b43da267e65dad434f8255dfb808b16c380f70a2f15fca57f1536b7f2cec5e7a",
+      "descriptor": "polar retest",
+      "complexSamples": 8192,
+      "maxComplexError": 4.135580766728708e-15
+    },
+    {
+      "file": "polar-after-divide-centered.txt",
+      "sha256": "0e54f3ae096a2e8f2fdff2c9bb3914887378968c92a13591c15720e75250dec4",
+      "descriptor": "polar retest / base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 2.820333892168394e-15
+    },
+    {
+      "file": "polar-after-minus-centered.txt",
+      "sha256": "ebb2cbf7effaa3e4b38ea10e771c6c5e4ad5f7fd6b8f638b516f90924ebe4264",
+      "descriptor": "polar retest / base retest - base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 2.837048893407221e-15
+    },
+    {
+      "file": "polar-after-base-centered.txt",
+      "sha256": "2a97b961c9bdb675d4a71763e0f656b8953efa2de6bac169828730ddea0274ca",
+      "descriptor": "base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "polar-after-source-zero-start.txt",
+      "sha256": "c8d16902b4ad29b998686c48b2a5452619c59378ff910dc2d33f269adc2584da",
+      "descriptor": "polar retest",
+      "complexSamples": 8192,
+      "maxComplexError": 1.033895191682177e-15
+    },
+    {
+      "file": "polar-after-divide-zero-start.txt",
+      "sha256": "55088d8d5d55a227ed7ca38440affd52711f326a00926f2ca9b3a1f02afea516",
+      "descriptor": "polar retest / base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 7.110335065689956e-16
+    },
+    {
+      "file": "polar-after-minus-zero-start.txt",
+      "sha256": "c39f80f0ca1caee2808aacc553d71c811c4e1cc510e175a356354244d34f6697",
+      "descriptor": "polar retest / base retest - base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 8.005932084973443e-16
+    },
+    {
+      "file": "polar-after-base-zero-start.txt",
+      "sha256": "1fd4a35c2637ea90dda2f59280da37884858ac12deff8a8364b00fa9fdbdcf73",
+      "descriptor": "base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "polar-after-source-phase-edited.txt",
+      "sha256": "23c0d7579d0aa6b0583435d7a0b58511d645eb78bab8ce9890c13288556ed611",
+      "descriptor": "polar retest",
+      "complexSamples": 8192,
+      "maxComplexError": 1.9984014443252818e-15
+    },
+    {
+      "file": "polar-after-divide-phase-edited.txt",
+      "sha256": "b47423e132720de9b373cacde44aa64885c83a04721addbc774ba911d0bf8efa",
+      "descriptor": "polar retest / base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 1.4185244467036104e-15
+    },
+    {
+      "file": "polar-after-minus-phase-edited.txt",
+      "sha256": "00786a1280ec4ce727a76ff86692e8d515df42567db9942cd517c883722511a3",
+      "descriptor": "polar retest / base retest - base retest",
+      "complexSamples": 8192,
+      "maxComplexError": 1.4895204919483639e-15
+    }
+  ],
+  "passed": 20,
+  "totalComplexSamples": 163840,
+  "maxComplexError": 6.279698983036042e-15
+}

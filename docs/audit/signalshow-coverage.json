@@ -4,16 +4,16 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: polar image with division/subtraction chain",
+    "state": "Active Mac audit: magnitude/phase creation and component extraction",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly75% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly74% remaining; no other applicable window reported",
     "authorization": "Juliet renewed Continuous Audit on 2026-10-13: test more ordinary Mac 2D creation and operation chains, prioritize crashes and major wrong results, and commit verified batches locally without pushing. Windows checks are deferred until later. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger\u2019s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-polar-division-chain"
+      "gui-2d-phase-extraction-chain"
     ],
     "nextIds": []
   },
@@ -1088,14 +1088,15 @@
         "definition": "unreviewed",
         "equations": "unreviewed",
         "numerics": "verified",
-        "parameters": "unreviewed",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
-        "arithmetic-2026-10-13"
+        "arithmetic-2026-10-13",
+        "polar-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1133,14 +1134,15 @@
         "definition": "unreviewed",
         "equations": "unreviewed",
         "numerics": "verified",
-        "parameters": "unreviewed",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
-        "arithmetic-2026-10-13"
+        "arithmetic-2026-10-13",
+        "polar-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1409,10 +1411,11 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Existing infinite-support constant definition; actual Cartesian/magnitude-phase image grids, both origins, ordinary resize/edit chains. Native samples verified through 1024 square.",
+      "scope": "Existing infinite-support constant definition; actual Cartesian/magnitude-phase image grids, both origins, ordinary resize/edit chains. Native samples verified through 1024 square. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
       "remaining": "Full handbook cross-reference and presentation of irrelevant general image geometry controls remain outside this usage batch.",
       "evidence": [
-        "memory-usage-2026-10-13"
+        "memory-usage-2026-10-13",
+        "polar-chain-2026-10-13"
       ]
     },
     {
@@ -1781,13 +1784,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "polar-chain-2026-10-13"
+      ]
     },
     {
       "id": "functionTerm1DList:DeltaFunctionTerm1D",
@@ -1887,11 +1892,12 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native centered64\u00d7128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native centered64\u00d7128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
       "remaining": "Other ordinary fixtures/callers, generated equations and full handbook review remain open; this bounded native chain passed.",
       "evidence": [
         "channels-2026-10-13",
-        "intensity-chain-2026-10-13"
+        "intensity-chain-2026-10-13",
+        "polar-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13",
       "executiveSummary": "The named tall-image intensity chain returned correct saved results after source and parameter edits. Duplicated clipping settings remained independent. Square root was checked componentwise on nonnegative channels, consistent with its help; full handbook review is pending."
@@ -2476,13 +2482,14 @@
         "Change a parameter, inspect the thumbnail, open Plot and return to Edit."
       ],
       "expected": "Each family produces an editable function and current image; no exception, frozen editor or process exit.",
-      "scope": "Representative centered256\u00d7256 native workflows: Cylinder/Uniform Noise and polar Gaussian\u00d7Cosine in this batch; Image Gradient/Constant/import edits and Cartesian combinations in earlier evidence. More generators and combinations remain separate.",
+      "scope": "Representative centered256\u00d7256 native workflows: Cylinder/Uniform Noise and polar Gaussian\u00d7Cosine in this batch; Image Gradient/Constant/import edits and Cartesian combinations in earlier evidence. More generators and combinations remain separate. Polar radial/angular corner-origin mismatch fixed and native-retested; earlier bounded geometry checks did not cover this factor combination.",
       "evidence": [
         "creation-2026-10-13",
         "cartesian-composition-2026-10-12",
         "channels-2026-10-13",
         "arithmetic-2026-10-13",
-        "import-edit-2026-10-13"
+        "import-edit-2026-10-13",
+        "polar-chain-2026-10-13"
       ],
       "summary": "All five creation families have representative native parameter, Plot/Edit and linked-operation evidence. New aperture/noise and polar chains save correct current outputs without exceptions.",
       "environment": "macOS arm64, JDK25; 472-test package",
@@ -2607,9 +2614,10 @@
         "Toggle zero-centering, apply threshold/arithmetic and inspect profiles/FFT."
       ],
       "expected": "Dimensions, channel placement and coordinates remain consistent; no array-bound exception.",
-      "scope": "Centered64\u00d732 and corner-origin32\u00d764 Gradient/Constant fixtures, input/product/threshold exports, native source Profiles/FFT and result FFT. Transform numerics and broader image families remain separate.",
+      "scope": "Centered64\u00d732 and corner-origin32\u00d764 Gradient/Constant fixtures, input/product/threshold exports, native source Profiles/FFT and result FFT. Transform numerics and broader image families remain separate. Polar radial/angular corner-origin mismatch fixed and native-retested; earlier bounded geometry checks did not cover this factor combination.",
       "evidence": [
-        "size-native-2026-10-13"
+        "size-native-2026-10-13",
+        "polar-chain-2026-10-13"
       ],
       "summary": "Ordinary wide/tall size and origin edits preserve selected dimensions and current samples. Source oracles and linked products/threshold pass; views open without exception.",
       "environment": "macOS arm64, JDK25; 472-test package",
@@ -3716,14 +3724,34 @@
       "area": "usage",
       "title": "Create a polar image and combine it using division and subtraction",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create a normal rectangular image from radial and angular factors.",
         "Combine it with a nonzero complex image using Divide and Minus.",
         "Edit parameters and replace operands, then inspect and independently verify saved results."
       ],
       "expected": "Polar creation and ordinary complex arithmetic remain usable and produce current results.",
-      "scope": "Ordinary Mac polar/arithmetic workflow; precise fixture pending.",
+      "scope": "128\u00d764 radial Gaussian/angular Cosine with complex Constant, Divide/Minus, source/operand edits, both origins; standalone complex geometry/linked production checks across three shapes.",
+      "summary": "Corner-origin polar indexing was wrong (BUG-042), fixed and native-retested. Nine valid before and11 after exports/163,840 samples pass. Incorrect baseline outputs retained separately. Clean logs.",
+      "evidence": [
+        "polar-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25, after592-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-phase-extraction-chain",
+      "area": "usage",
+      "title": "Edit magnitude and spatial phase, then extract and threshold components",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a normal rectangular magnitude/phase image with spatial phase variation.",
+        "Apply Phase, Real and Threshold through linked systems.",
+        "Edit magnitude/phase parameters and compare saved intermediate results."
+      ],
+      "expected": "Both representation editors and extraction chains use current complex data without crashes or major wrong results.",
+      "scope": "Ordinary Mac magnitude/phase and extraction workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -4864,6 +4892,54 @@
         "docs/audit/evidence/2026-10-13-noise-source-seed-restored.txt.gz",
         "docs/audit/evidence/2026-10-13-noise-verifier.py",
         "docs/audit/evidence/2026-10-13-noise.md"
+      ]
+    },
+    "polar-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "BUG-042 fixed: corner-origin polar angles used a different row from the radius. Five before-failing production cases;171 focused/592 full pass. Native Gaussian\u00d7angular Cosine\u2192Divide\u2192Minus, edits/replacement and both origins independently verified.",
+      "limits": "Native128\u00d764 real polar plus complex Constant; automated two-channel square/tall/wide geometry. Other families/platforms and full handbook review pending. Undefined origin retains existing90-degree convention.",
+      "environment": "Mac arm64/JDK25; before584/after592-test package; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-polar-after-base-centered.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-base-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-divide-centered.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-divide-phase-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-divide-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-final.png",
+        "docs/audit/evidence/2026-10-13-polar-after-minus-centered.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-minus-phase-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-minus-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-native.log",
+        "docs/audit/evidence/2026-10-13-polar-after-source-centered.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-source-phase-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-after-source-zero-start.png",
+        "docs/audit/evidence/2026-10-13-polar-after-source-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-base-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-base-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-base-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-before-failure.json",
+        "docs/audit/evidence/2026-10-13-polar-before-native.log",
+        "docs/audit/evidence/2026-10-13-polar-before.log",
+        "docs/audit/evidence/2026-10-13-polar-divide-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-divide-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-divide-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-final.png",
+        "docs/audit/evidence/2026-10-13-polar-focused.log",
+        "docs/audit/evidence/2026-10-13-polar-minus-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-minus-initial.png",
+        "docs/audit/evidence/2026-10-13-polar-minus-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-minus-source-replacement.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-minus-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-package.log",
+        "docs/audit/evidence/2026-10-13-polar-results.json",
+        "docs/audit/evidence/2026-10-13-polar-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-source-initial.png",
+        "docs/audit/evidence/2026-10-13-polar-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-source-zero-start.txt.gz",
+        "docs/audit/evidence/2026-10-13-polar-verifier.py",
+        "docs/audit/evidence/2026-10-13-polar-zero-start.png",
+        "docs/audit/evidence/2026-10-13-polar.md",
+        "src/test/java/signals/core/PolarImageWorkflowTest.java"
       ]
     }
   },

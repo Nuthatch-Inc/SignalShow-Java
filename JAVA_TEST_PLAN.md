@@ -17,7 +17,7 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 13, weekly window 75% remaining; no other applicable window reported.
+October 13, weekly window 74% remaining; no other applicable window reported.
 On October13 Juliet authorized local commits at verified checkpoints. Do not push,
 distribute installers or deploy. Juliet reauthorized native keystrokes after finishing with her terminal;
 verify the target field and readback before submitting.
@@ -51,8 +51,9 @@ implemented incrementally, not all at once.
 October13 resumption: Juliet requested more ordinary **Mac** 2D creation and
 operation chains; check Windows later. The chirp/aperture/conjugation/intensity and
 offset/clipping/square-root batches passed their scoped checks. Directional operations and exported-result reuse passed after fixing empty first-open
-sampled-data editors. Noise creation and mean/intensity chains passed. Active work now covers polar
-creation with division/subtraction chains. Prior checked rows remain bounded evidence, not certification of every
+sampled-data editors. Noise creation and mean/intensity chains passed. Polar
+creation with division/subtraction passed after correcting corner-origin angular
+coordinates. Active work now covers magnitude/phase creation and extraction. Prior checked rows remain bounded evidence, not certification of every
 combination. Continue verified batches and commit locally without pushing.
 
 ## Authoritative matrix
@@ -123,7 +124,7 @@ The original 195 tests passed on macOS/JDK 25. Thirty new checks of actual
 FunctionFactory/operation classes and Swing parameter editors exposed six failing
 cases caused by reversed threshold outputs and parameter bindings. After the
 threshold correction, all 225 tests passed. Subsequent search, generator and
-image-editing and operation-layout batches now pass 584 tests and build the executable JAR. The
+image-editing and operation-layout batches now pass 592 tests and build the executable JAR. The
 authoritative matrix records the scope and before/after evidence for each batch.
 
 The new fixtures cover 1D eight-sample signals and 4×2 complex images, both origin
