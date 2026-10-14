@@ -17,7 +17,7 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 13, weekly window 77% remaining; no other applicable window reported.
+October 13, weekly window 76% remaining; no other applicable window reported.
 On October13 Juliet authorized local commits at verified checkpoints. Do not push,
 distribute installers or deploy. Juliet reauthorized native keystrokes after finishing with her terminal;
 verify the target field and readback before submitting.
@@ -49,9 +49,9 @@ at a time; the matrix owns the active check and next queue. The larger suite is
 implemented incrementally, not all at once.
 
 October13 resumption: Juliet requested more ordinary **Mac** 2D creation and
-operation chains; check Windows later. The active queue now starts with complex
-chirp/aperture/conjugation/intensity and ordinary offset/clipping/square-root
-workflows. Prior checked rows remain bounded evidence, not certification of every
+operation chains; check Windows later. The chirp/aperture/conjugation/intensity and
+offset/clipping/square-root batches passed their scoped checks. Active work now
+covers directional operations and exported-result reuse. Prior checked rows remain bounded evidence, not certification of every
 combination. Continue verified batches and commit locally without pushing.
 
 ## Authoritative matrix

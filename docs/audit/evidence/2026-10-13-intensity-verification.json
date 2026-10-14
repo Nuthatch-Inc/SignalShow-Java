@@ -1,0 +1,173 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "intensity-source-initial.txt",
+      "sha256": "71a49904d65cf0127f1bce088c467ba7473b98dd884a3c7b0b2758f1ea425df5",
+      "descriptor": "intensity image",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.0,
+        2.0
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "intensity-offset-initial.txt",
+      "sha256": "d4b560c9729e8d2bcdc8b66eadc9f704495dd87850fddc60c08e5ea418d902e3",
+      "descriptor": "(-0.25+ i0.16) + intensity image",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        -0.25,
+        1.75
+      ],
+      "imaginaryRange": [
+        0.16,
+        0.16
+      ]
+    },
+    {
+      "file": "intensity-clip-initial.txt",
+      "sha256": "bcd07f68498f33243bb20997efa9846099969eb7ddfe48b570eaf29c50a89e40",
+      "descriptor": "clip((-0.25+ i0.16) + intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.0,
+        0.9
+      ],
+      "imaginaryRange": [
+        0.16,
+        0.16
+      ]
+    },
+    {
+      "file": "intensity-sqrt-initial.txt",
+      "sha256": "826886f3cfa4aba9bbd784a7571ffd8dbfd3996fe252986b8a05e0ab3bdcfdfc",
+      "descriptor": "\u221a(clip((-0.25+ i0.16) + intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.0,
+        0.9486832980505138
+      ],
+      "imaginaryRange": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "file": "intensity-source-edited.txt",
+      "sha256": "0b510acc5f592f971882800a46c50f860abf6bd44b93d8d307b2233e9b957af8",
+      "descriptor": "intensity image",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.0,
+        1.25
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "intensity-offset-edited.txt",
+      "sha256": "7173e9dbfefd57f1741f50a51f17638e80ecfbc25b866d82d9a98c1136e3cd5d",
+      "descriptor": "(-0.1+ i0.36) + intensity image",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        -0.1,
+        1.15
+      ],
+      "imaginaryRange": [
+        0.36,
+        0.36
+      ]
+    },
+    {
+      "file": "intensity-clip-edited.txt",
+      "sha256": "580d17990424b3b99d85bad2dadc147084417809258eee155d02d2902fa69de6",
+      "descriptor": "clip((-0.1+ i0.36) + intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.0,
+        0.64
+      ],
+      "imaginaryRange": [
+        0.36,
+        0.36
+      ]
+    },
+    {
+      "file": "intensity-sqrt-edited.txt",
+      "sha256": "85f633d89449e818c77702a810dd09dd2f2ca52894de65b1b1dc996125972f8d",
+      "descriptor": "\u221a(clip((-0.1+ i0.36) + intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 1.8041124150158794e-16,
+      "realRange": [
+        0.0,
+        0.8
+      ],
+      "imaginaryRange": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "file": "intensity-clip-copy.txt",
+      "sha256": "da9590465e9f33aec5a6544cfba40bce26fddb142a48b0ef59f9aff828b971a1",
+      "descriptor": "clip((-0.1+ i0.36) + intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1102230246251565e-16,
+      "realRange": [
+        0.0,
+        0.36
+      ],
+      "imaginaryRange": [
+        0.36,
+        0.36
+      ]
+    },
+    {
+      "file": "intensity-clip-original-after-copy.txt",
+      "sha256": "580d17990424b3b99d85bad2dadc147084417809258eee155d02d2902fa69de6",
+      "descriptor": "clip((-0.1+ i0.36) + intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16,
+      "realRange": [
+        0.0,
+        0.64
+      ],
+      "imaginaryRange": [
+        0.36,
+        0.36
+      ]
+    },
+    {
+      "file": "intensity-sqrt-after-copy.txt",
+      "sha256": "85f633d89449e818c77702a810dd09dd2f2ca52894de65b1b1dc996125972f8d",
+      "descriptor": "\u221a(clip((-0.1+ i0.36) + intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 1.8041124150158794e-16,
+      "realRange": [
+        0.0,
+        0.8
+      ],
+      "imaginaryRange": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "passed": 11,
+  "totalComplexSamples": 90112,
+  "maxComplexError": 2.220446049250313e-16
+}

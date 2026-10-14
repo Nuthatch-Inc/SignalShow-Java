@@ -1,0 +1,208 @@
+Window: "SignalShow", App: AuditLauncher.
+0 standard window SignalShow, Secondary Actions: Raise
+	1 menu bar (selectable) File
+Export Function as Data or Image
+Save Screen Shot
+Save Complex Data
+Load Complex Data
+1D
+New 1D Function from Real and Imaginary Parts ⌃F
+New 1D Function from Magnitude and Phase ⌃M
+New 1D Predefined Complex Function
+New 1D Complex Chirp
+New 1D Complex Exponential
+New 1D Mathematical System ⌃O
+1D Convolution Demo
+1D Frequency Filtering Demo
+1D Sampling/Aliasing Demo
+Lissajou Figure
+2D
+New 2D Function from Real and Imaginary Parts ⌥F
+New 2D Function from Magnitude and Phase ⌥M
+New 2D Predefined Complex Function
+New 2D Complex Chirp
+New 2D Radial Complex Exponential
+New 2D Fourier Basis Function
+New 2D Mathematical System ⌥O
+2D Convolution Demo
+2D Frequency Filtering Demo
+2D Frequency Locations
+Help
+About SignalShow
+	2 split group (selectable) 186
+		3 scroll area (selectable) 0
+			4 list (selectable) Description: list, Value: 0
+				5 row (selectable) Description: intensity image[x, y] = 1.25 × TRI[(x + 6) / 20]GAUS[(y + 9) / 24] + i(0[x]0[y]), Value: 0
+					6 JavaAxIgnore (selectable) intensity image[x, y] = 1.25 × TRI[(x + 6) / 20]GAUS[(y + 9) / 24] + i(0[x]0[y])
+				7 row (selectable) Description: Operator System, Value: 0
+					8 JavaAxIgnore (selectable) Operator System
+				9 row (selected) Description: Operator System, Value: 0
+					10 JavaAxIgnore (selectable) Operator System
+				11 row (selectable) Description: Operator System, Value: 0
+					12 JavaAxIgnore (selectable) Operator System
+				13 row (selectable) Description: Operator System, Value: 0
+					14 JavaAxIgnore (selectable) Operator System
+			15 scroll bar (selectable)
+			16 scroll bar (selectable)
+		17 button (selectable) Duplicate
+		18 button (selectable) Delete
+		19 toolbar (selectable) 0
+			20 checkbox (selectable) Edit System
+			21 checkbox (selectable) Plot of Result
+			22 checkbox (selectable) FFT of Result
+			23 checkbox (selectable) Histogram of Result
+		24 button (selectable) Open Parenthesis
+		25 button (selectable) Closed Parenthesis
+		26 button (selectable) Delete
+		27 button (selectable) New Term
+		28 button (selectable) New Unary Operation
+		29 button (selectable) New Binary Operation
+		30 scroll area (selectable) 0
+			31 table (selectable) Description: table, Value: 0
+				32 row (selectable, disabled) 0
+			33 scroll bar (selectable)
+			34 scroll bar (selectable)
+		35 button (selectable) Export Result as Data
+		36 button (selectable) Clear
+		37 scroll area (selectable) 0
+			38 list (selectable) Description: list, Value: 0
+				39 row (selectable) Description: Fourier Transform, Value: 0
+					40 text (selectable) Fourier Transform
+				41 row (selectable) Description: Signum, Value: 0
+					42 text (selectable) Signum
+				43 row (selectable) Description: Auto Correlate, Value: 0
+					44 text (selectable) Auto Correlate
+				45 row (selectable) Description: Rotate, Value: 0
+					46 text (selectable) Rotate
+				47 row (selectable) Description: Scale, Value: 0
+					48 text (selectable) Scale
+				49 row (selectable) Description: Offset, Value: 0
+					50 text (selectable) Offset
+				51 row (selectable) Description: Exponent, Value: 0
+					52 text (selectable) Exponent
+				53 row (selectable) Description: Subtract Mean, Value: 0
+					54 text (selectable) Subtract Mean
+				55 row (selectable) Description: Absolute Value, Value: 0
+					56 text (selectable) Absolute Value
+				57 row (selectable) Description: Negate, Value: 0
+					58 text (selectable) Negate
+				59 row (selectable) Description: Conjugate, Value: 0
+					60 text (selectable) Conjugate
+				61 row (selectable) Description: Derivative, Value: 0
+					62 text (selectable) Derivative
+				63 row (selectable) Description: Integral, Value: 0
+					64 text (selectable) Integral
+				65 row (selectable) Description: Reverse, Value: 0
+					66 text (selectable) Reverse
+				67 row (selected) Description: Clip, Value: 0
+					68 text (selectable) Clip
+				69 row (selectable) Description: Square Root, Value: 0
+					70 text (selectable) Square Root
+				71 row (selectable) Description: Threshold, Value: 0
+					72 text (selectable) Threshold
+				73 row (selectable) Description: Magnitude, Value: 0
+					74 text (selectable) Magnitude
+				75 row (selectable) Description: Squared Magnitude, Value: 0
+					76 text (selectable) Squared Magnitude
+				77 row (selectable) Description: Phase, Value: 0
+					78 text (selectable) Phase
+				79 row (selectable) Description: Translate, Value: 0
+					80 text (selectable) Translate
+				81 row (selectable) Description: Invert, Value: 0
+					82 text (selectable) Invert
+				83 row (selectable) Description: Cepstrum, Value: 0
+					84 text (selectable) Cepstrum
+				85 row (selectable) Description: Phase Detour Hologram, Value: 0
+					86 text (selectable) Phase Detour Hologram
+				87 row (selectable) Description: Hologram Encoder, Value: 0
+					88 text (selectable) Hologram Encoder
+				89 row (selectable) Description: Complement Filter, Value: 0
+					90 text (selectable) Complement Filter
+				91 row (selectable) Description: Real, Value: 0
+					92 text (selectable) Real
+			93 scroll bar (selectable)
+			94 scroll bar (selectable)
+		95 text field (selectable)
+		96 image (selectable)
+		97 scroll area (selectable) 0
+			98 text field (selectable) Description: text/html, Value: 
+Clip
+The clipping operator sets any value in the input greater than the maximum value to the maximum value, and any value in the input less than the minimum value to the minimum value.
+Parameters:
+Minimum: any value in the input less than Minimum will be set to Minimum.
+Maximum: any value in the input greater than Maximum will be set to Maximum.
+Read more about clipping at:
+Wikipedia
+				99 text field (selectable) text/html
+				100 text field (selectable) text/html
+				101 text field (selectable) text/html
+				102 text field (selectable) text/html
+				103 text field (selectable) text/html
+				104 text field (selectable) text/html
+				105 text field (selectable) text/html
+				106 text field (selectable) text/html
+				107 text field (selectable) text/html
+				108 text field (selectable) text/html
+				109 text field (selectable) text/html
+				110 text field (selectable) text/html
+				111 text field (selectable) text/html
+				112 text field (selectable) text/html
+				113 text field (selectable) text/html
+			114 scroll bar (selectable)
+			115 scroll bar (selectable)
+		116 scroll area (selectable) 0
+			117 list (selectable) Description: list, Value: 0
+				118 row (selectable) Description: Plus, Value: 0
+					119 text (selectable) Plus
+				120 row (selectable) Description: Minus, Value: 0
+					121 text (selectable) Minus
+				122 row (selectable) Description: Times, Value: 0
+					123 text (selectable) Times
+				124 row (selectable) Description: Divide, Value: 0
+					125 text (selectable) Divide
+				126 row (selectable) Description: Convolve, Value: 0
+					127 text (selectable) Convolve
+				128 row (selected) Description: Correlate, Value: 0
+					129 text (selectable) Correlate
+			130 scroll bar (selectable)
+			131 scroll bar (selectable)
+		132 text field (selectable)
+		133 image (selectable)
+		134 scroll area (selectable) 0
+			135 text field (selectable) text/plain
+			136 scroll bar (selectable)
+			137 scroll bar (selectable)
+		138 scroll area (selectable) 0
+			139 scroll bar (selectable)
+			140 scroll bar (selectable)
+		141 text (selectable) Clip between maximum and minimum
+		142 stepper (selectable) Value: 0, Secondary Actions: Increment, Decrement
+			143 text field (selectable) 0
+		144 stepper (selectable) Value: 0.64, Secondary Actions: Increment, Decrement
+			145 text field (selectable) 0.64
+		146 scroll area (selectable) 0
+			147 stepper (selectable) Value: 0.64, Secondary Actions: Increment, Decrement
+				148 text field (selectable) 0.64
+			149 stepper (selectable) Value: 0, Secondary Actions: Increment, Decrement
+				150 text field (selectable) 0
+			151 stepper (selectable) Value: 0.37, Secondary Actions: Increment, Decrement
+				152 text field (selectable) 0.37
+			153 stepper (selectable) Value: 0.35, Secondary Actions: Increment, Decrement
+				154 text field (selectable) 0.35
+			155 scroll bar (selectable)
+			156 scroll bar (selectable)
+	157 close button
+	158 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	159 minimize button
+	160 text SignalShow
+161 menu bar
+	162 SignalShowRogerAudit
+	163 File
+	164 1D
+	165 2D
+	166 Help
+
+Selected:
+	32 row (selectable, disabled) 0
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).
