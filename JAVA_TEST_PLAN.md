@@ -18,11 +18,11 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
 October 13, weekly window 71% remaining; no other applicable window reported.
-On October13 Juliet authorized local commits at verified checkpoints. After the
-current round, she requested a new executable for Roger; prepare version1.2.5
-and local artifacts. Her prior no-push instruction remains in effect. A remote
-tag/build/publication needs authorization. Juliet reauthorized native keystrokes after finishing with her terminal;
-verify the target field and readback before submitting.
+On October13 Juliet authorized local commits and preparation of1.2.5. She then
+explicitly authorized merging into main and publishing1.2.5 on GitHub as the latest
+release. Verify both finished installer payloads exclude old builds and tests
+before publishing. Native keystrokes remain authorized when the Java window is
+focused; verify the target field and readback before submitting.
 
 ## Standing testing priority and suite plan
 
@@ -67,7 +67,7 @@ with an existing FFT→inverseFFT→Magnitude chain passed all12 saved-array che
 This Mac round is complete. Release verification exposed BUG-044: dots in parent
 folders redirected saves. Its shared path fix passes four new regressions and the
 native packaged save retest. Version1.2.5 passes610 total tests and has local JAR
-and Apple Silicon DMG artifacts; remote build/publication awaits authorization.
+and Apple Silicon DMG artifacts; GitHub build/publication is now authorized and underway.
 Further usage and mathematical tests precede future Chirplet parity work. Prior
 checked rows remain bounded evidence, not certification of every combination.
 

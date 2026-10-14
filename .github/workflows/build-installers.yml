@@ -41,11 +41,29 @@ jobs:
           chmod +x build-installer-mac.sh
           ./build-installer-mac.sh
 
+      - name: Verify the finished macOS installer payload
+        run: |
+          mount="$RUNNER_TEMP/signalshow-installer"
+          mkdir -p "$mount"
+          hdiutil attach target/dist/*.dmg -readonly -nobrowse -mountpoint "$mount"
+          trap 'hdiutil detach "$mount"' EXIT
+          python3 scripts/verify_installer_payload.py "$mount/SignalShow.app/Contents/app" --jar target/installer-input/*.jar
+          uname -m
+
+      - name: Upload portable Java executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: SignalShow-Java
+          path: target/installer-input/*.jar
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Upload macOS DMG
         uses: actions/upload-artifact@v4
         with:
           name: SignalShow-macOS
           path: target/dist/*.dmg
+          if-no-files-found: error
           retention-days: 90
 
   build-windows:
@@ -93,11 +111,29 @@ jobs:
           chmod +x build-installer-windows.sh
           ./build-installer-windows.sh
 
+      - name: Verify the finished Windows installer payload
+        shell: pwsh
+        run: |
+          $msi = @(Get-ChildItem target/dist -Filter *.msi)
+          if ($msi.Count -ne 1) { throw "Expected one MSI installer" }
+          $extract = Join-Path $env:RUNNER_TEMP 'signalshow-installer'
+          $log = Join-Path $env:RUNNER_TEMP 'signalshow-extract.log'
+          $arguments = @('/a', "`"$($msi[0].FullName)`"", '/qn', "TARGETDIR=`"$extract`"", '/L*v', "`"$log`"")
+          $process = Start-Process msiexec.exe -ArgumentList $arguments -Wait -PassThru
+          if ($process.ExitCode -ne 0) { Get-Content $log; throw "MSI extraction failed: $($process.ExitCode)" }
+          $config = @(Get-ChildItem $extract -Recurse -Filter SignalShow.cfg)
+          if ($config.Count -ne 1) { throw "Expected one installed application" }
+          $jar = @(Get-ChildItem target/installer-input -Filter *.jar)
+          if ($jar.Count -ne 1) { throw "Expected one built executable" }
+          python scripts/verify_installer_payload.py $config[0].DirectoryName --jar $jar[0].FullName
+          if ($LASTEXITCODE -ne 0) { throw "Installer payload check failed" }
+
       - name: Upload Windows Installer
         uses: actions/upload-artifact@v4
         with:
           name: SignalShow-Windows
-          path: target/dist/SignalShow*
+          path: target/dist/*.msi
+          if-no-files-found: error
           retention-days: 90
 
   create-release:
@@ -110,6 +146,9 @@ jobs:
       contents: write
 
     steps:
+      - name: Checkout release notes
+        uses: actions/checkout@v4
+
       - name: Download macOS artifact
         uses: actions/download-artifact@v4
         with:
@@ -122,36 +161,30 @@ jobs:
           name: SignalShow-Windows
           path: dist/
 
+      - name: Download portable Java artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: SignalShow-Java
+          path: dist/
+
+      - name: Write download checksums
+        working-directory: dist
+        run: sha256sum *.dmg *.msi *.jar > SHA256SUMS.txt
+
+      - name: Select versioned release notes
+        run: cp "docs/releases/${GITHUB_REF_NAME#v}.md" RELEASE-NOTES.md
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*
+          files: |
+            dist/*.dmg
+            dist/*.msi
+            dist/*.jar
+            dist/SHA256SUMS.txt
+          fail_on_unmatched_files: true
           draft: true
-          generate_release_notes: true
-          body: |
-            ## SignalShow ${{ github.ref_name }}
-
-            Educational signal and image processing application.
-
-            ### Downloads
-
-            - **macOS**: SignalShow-${{ github.ref_name }}.dmg
-            - **Windows**: SignalShow-${{ github.ref_name }}.exe or .msi
-
-            ### Installation
-
-            **macOS:**
-            1. Download and open the .dmg file
-            2. Drag SignalShow to Applications folder
-            3. Run from Applications
-
-            **Windows:**
-            1. Download and run the installer
-            2. Follow installation wizard
-            3. Run from Start Menu
-
-            ### Requirements
-
-            No Java installation required - bundled with the application.
+          generate_release_notes: false
+          body_path: RELEASE-NOTES.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

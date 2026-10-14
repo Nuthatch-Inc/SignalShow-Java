@@ -1,11 +1,10 @@
 # SignalShow checkpoint — October 13, 2026
 
-The requested Mac usage round and local release preparation are complete. Juliet
-requested a new executable for Roger, after local check-in. Her prior instruction
-was not to push, so remote branch/tag push, Windows CI build and GitHub publication
-await authorization. Do not silently resume more audit batches before delivering
-this checkpoint. Future direction: further ordinary usage and math tests, then
-features toward Chirplet parity. Windows acceptance remains deferred.
+The Mac usage round and local release preparation are complete. Juliet explicitly
+authorized merging into main and publishing1.2.5 as the latest GitHub release.
+That supersedes the earlier no-push instruction. Verify finished Mac/Windows
+installer contents before publication. No GitHub website action is needed unless
+a permissions/build gate requires it. Windows native usage testing is deferred.
 
 `check_usage: true`; latest weekly71% remaining, no other applicable window.
 Follow the Continuous Audit usage policy. No agents, new chats, automations or
@@ -65,6 +64,7 @@ Temporary homes /private/tmp/signalshow-roger-home and
 /private/tmp/signalshow-1.2.5-home contain only test data. Diagnostic heaps and
 packaged test copies stay uncommitted. Preserve unrelated browser/server state.
 
-Next action is deliver local artifact links and request permission for the remote
-release branch/tag build if Roger needs the bundled Windows installer/public link.
-The earlier no-push instruction is why that step awaits Juliet, not a skill gate.
+Next action: finish CI payload checks, merge into main, push main plus annotated
+v1.2.5 tag, await the three installer/release jobs, inspect assets and publish the
+draft with latest=true. Verify the public latest endpoint and actual downloads.
+Update this checkpoint with the main commit, workflow run and release URLs.

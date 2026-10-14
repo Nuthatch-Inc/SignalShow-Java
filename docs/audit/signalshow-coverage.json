@@ -4,11 +4,11 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "SignalShow1.2.5 verified locally; remote build/publication awaits authorization",
+    "state": "Publishing SignalShow1.2.5 after verifying finished Mac and Windows installer payloads",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly71% remaining; no other applicable window reported",
-    "authorization": "Juliet requested finishing this Mac round, checking in code locally and producing a new executable for Roger. Prior no-push instruction remains in effect; prepare local artifacts. Remote tag/build/publication requires authorization. Continue usage and math tests, then Chirplet parity, in a later round."
+    "authorization": "Juliet explicitly authorized merging the verified changes into main and publishing1.2.5 as the latest GitHub release. Confirm installers exclude old builds and tests. Windows native usage testing remains deferred; CI build and payload checks are separate evidence."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
