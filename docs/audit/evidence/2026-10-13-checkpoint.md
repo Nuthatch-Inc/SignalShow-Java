@@ -27,18 +27,21 @@ Derivative→Integral; Export Result as Data; first real/imaginary editors; inde
 exported gain and Negate; later source changes update live chain but not copy.
 All19 exports/155,648 complex samples independently pass, max8.882e−16/tol1e−9.
 Native logs clean. Evidence and replay:2026-10-13-directional-reuse.md and
-2026-10-13-direction-verifier.py. Code/tests, logs, screenshots, raw compressed
-exports and JSON/report ready together for local commit.
+2026-10-13-direction-verifier.py. Committed locally as4f9aed3. Code/tests, logs, screenshots, raw compressed
+exports and JSON/report retained together. Subsequent complex Gaussian/Uniform
+noise→Subtract Mean→Squared Magnitude passed12 exports/98,304 samples, including
+mean/spread/seed edits and Plot/Histogram stability. Clean native log; unchanged
+584-test package. See2026-10-13-noise.md and its replay script.
 
-Matrix130 math entries,67 scenarios:62 checked,1 active Mac check,2 pending Windows,
+Matrix130 math entries,68 scenarios:63 checked,1 active Mac check,2 pending Windows,
 2 deferred memory stress. Bounded assurance only. Previous documented rotation,
 filtering, sampling, persistence and input fixes remain in their dated records.
 
 ## Next action and resources
 
-Active: gui-2d-noise-centering-chain. Create ordinary rectangular noise; save its
-source samples, apply Subtract Mean→Squared Magnitude, edit/revisit and independently
-compare outputs with current source arrays. Do not study tiny statistical errors,
+Active: gui-2d-polar-division-chain. Create a rectangular polar image from radial
+and angular factors, combine with a nonzero complex image using Divide/Minus,
+edit and replace operands; independently verify current saved results. Do not study tiny statistical errors,
 capacity extremes or long endurance. Continue Mac batches; Windows does not block.
 
 No SignalShow app remains open; CUA Close and process inspection confirmed exit.

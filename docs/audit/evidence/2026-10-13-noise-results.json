@@ -1,0 +1,155 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "noise-source-initial.txt",
+      "sha256": "bd05ea6ce15ce87e6697a6568a6de40740fc5583a68101e7f5c43f66fd063ec1",
+      "descriptor": "noise source",
+      "complexSamples": 8192,
+      "realMean": 1.998915416654391,
+      "imaginaryMean": -0.39789703674008553
+    },
+    {
+      "file": "noise-centered-initial.txt",
+      "sha256": "bc40322acd82f70b9ff6fad885c950318f20ac534a2a98ffb4df676befdb0d70",
+      "descriptor": "noise source-mean",
+      "complexSamples": 8192,
+      "realMean": 2.361826012542423e-15,
+      "imaginaryMean": -2.675810961694225e-16
+    },
+    {
+      "file": "noise-intensity-initial.txt",
+      "sha256": "6e793643bcb5cdbbd2a36033ec452623cda2165f7772cc3563bda5cbdb3b8403",
+      "descriptor": "||noise source-mean||\u00b2",
+      "complexSamples": 8192,
+      "realMean": 0.6877392408499031,
+      "imaginaryMean": 0.0
+    },
+    {
+      "file": "noise-source-edited.txt",
+      "sha256": "0c720c4614c90f80d28cead210f9ba303704c8c5cd54772b3a501da46ef9530e",
+      "descriptor": "noise source",
+      "complexSamples": 8192,
+      "realMean": 0.9981923610906515,
+      "imaginaryMean": 0.30315444488987175
+    },
+    {
+      "file": "noise-centered-edited.txt",
+      "sha256": "39701e34f85e716813e885d3b8cbdf96ab0fea2f72a3016eb3ae8a5264f11777",
+      "descriptor": "noise source-mean",
+      "complexSamples": 8192,
+      "realMean": 3.1259717037102064e-15,
+      "imaginaryMean": 7.589415207398531e-17
+    },
+    {
+      "file": "noise-intensity-edited.txt",
+      "sha256": "2230eecfedc57b36c66dc8ea2989e2e7adbc52755c77b52232d3f397f3cd829a",
+      "descriptor": "||noise source-mean||\u00b2",
+      "complexSamples": 8192,
+      "realMean": 1.8464251087410903,
+      "imaginaryMean": 0.0
+    },
+    {
+      "file": "noise-source-seed-changed.txt",
+      "sha256": "9ebac7241108d69deeb5e4f500c79e88246fb37bf90d46bfe28a967108f750f6",
+      "descriptor": "noise source",
+      "complexSamples": 8192,
+      "realMean": 0.9981923610906515,
+      "imaginaryMean": 0.2895867667312685
+    },
+    {
+      "file": "noise-centered-seed-changed.txt",
+      "sha256": "6a974e11e7c344fe48bf0fde03658419c5710dc9fd9ec7427970c0fcaed8d79f",
+      "descriptor": "noise source-mean",
+      "complexSamples": 8192,
+      "realMean": 3.1259717037102064e-15,
+      "imaginaryMean": 2.050226308170089e-15
+    },
+    {
+      "file": "noise-intensity-seed-changed.txt",
+      "sha256": "f0776bf9bd0dc57788429194745a8ff069883ed32c4bbb0c2e58e4692a746efe",
+      "descriptor": "||noise source-mean||\u00b2",
+      "complexSamples": 8192,
+      "realMean": 1.841084513506181,
+      "imaginaryMean": 0.0
+    },
+    {
+      "file": "noise-source-after-views.txt",
+      "sha256": "0c720c4614c90f80d28cead210f9ba303704c8c5cd54772b3a501da46ef9530e",
+      "descriptor": "noise source",
+      "complexSamples": 8192,
+      "realMean": 0.9981923610906515,
+      "imaginaryMean": 0.30315444488987175
+    },
+    {
+      "file": "noise-source-seed-restored.txt",
+      "sha256": "0c720c4614c90f80d28cead210f9ba303704c8c5cd54772b3a501da46ef9530e",
+      "descriptor": "noise source",
+      "complexSamples": 8192,
+      "realMean": 0.9981923610906515,
+      "imaginaryMean": 0.30315444488987175
+    },
+    {
+      "file": "noise-intensity-seed-restored.txt",
+      "sha256": "2230eecfedc57b36c66dc8ea2989e2e7adbc52755c77b52232d3f397f3cd829a",
+      "descriptor": "||noise source-mean||\u00b2",
+      "complexSamples": 8192,
+      "realMean": 1.8464251087410903,
+      "imaginaryMean": 0.0
+    }
+  ],
+  "relations": [
+    {
+      "check": "Subtract Mean initial",
+      "maxComplexError": 2.2452871135843694e-15
+    },
+    {
+      "check": "Squared Magnitude initial",
+      "maxComplexError": 1.4210854715202004e-14
+    },
+    {
+      "check": "Subtract Mean edited",
+      "maxComplexError": 3.1106063782808442e-15
+    },
+    {
+      "check": "Squared Magnitude edited",
+      "maxComplexError": 2.842170943040401e-14
+    },
+    {
+      "check": "Subtract Mean seed-changed",
+      "maxComplexError": 3.756755865433588e-15
+    },
+    {
+      "check": "Squared Magnitude seed-changed",
+      "maxComplexError": 2.842170943040401e-14
+    },
+    {
+      "check": "Gaussian mean/std edit retains seed realization",
+      "maxComplexError": 1.7763568394002505e-15
+    },
+    {
+      "check": "Uniform mean/halfwidth edit retains seed realization",
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "check": "Plot/Histogram/editor revisit preserves source",
+      "maxComplexError": 0.0
+    },
+    {
+      "check": "Changing imaginary seed preserves real channel",
+      "maxComplexError": 0.0
+    },
+    {
+      "check": "Restoring seed restores exact source",
+      "maxComplexError": 0.0
+    },
+    {
+      "check": "Restored downstream intensity",
+      "maxComplexError": 2.842170943040401e-14
+    }
+  ],
+  "passed": 12,
+  "totalComplexSamples": 98304,
+  "maxComplexError": 2.842170943040401e-14,
+  "limits": "Generator checks cover finite samples, broad Gaussian mean/std and uniform range, affine parameter edits, repeatable seeds and native callers; no RNG distribution certification."
+}

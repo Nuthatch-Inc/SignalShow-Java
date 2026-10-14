@@ -51,7 +51,8 @@ implemented incrementally, not all at once.
 October13 resumption: Juliet requested more ordinary **Mac** 2D creation and
 operation chains; check Windows later. The chirp/aperture/conjugation/intensity and
 offset/clipping/square-root batches passed their scoped checks. Directional operations and exported-result reuse passed after fixing empty first-open
-sampled-data editors. Active work now covers noise creation and mean/intensity chains. Prior checked rows remain bounded evidence, not certification of every
+sampled-data editors. Noise creation and mean/intensity chains passed. Active work now covers polar
+creation with division/subtraction chains. Prior checked rows remain bounded evidence, not certification of every
 combination. Continue verified batches and commit locally without pushing.
 
 ## Authoritative matrix

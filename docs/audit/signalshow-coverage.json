@@ -4,7 +4,7 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: noise creation and mean/intensity chain",
+    "state": "Active Mac audit: polar image with division/subtraction chain",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly75% remaining; no other applicable window reported",
@@ -13,7 +13,7 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger\u2019s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-noise-centering-chain"
+      "gui-2d-polar-division-chain"
     ],
     "nextIds": []
   },
@@ -682,13 +682,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "noise-chain-2026-10-13"
+      ]
     },
     {
       "id": "unary2DList:AbsoluteValueOp",
@@ -901,10 +903,11 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered128\u00d764 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "scope": " Native centered128\u00d764 complex chirp/aperture chain and live edits independently checked against every saved complex sample. Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
       "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
-        "chirp-aperture-2026-10-13"
+        "chirp-aperture-2026-10-13",
+        "noise-chain-2026-10-13"
       ],
       "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook.",
       "reviewedOn": "2026-10-13"
@@ -1192,13 +1195,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "noise-chain-2026-10-13"
+      ]
     },
     {
       "id": "noise2DList:ExponentialNoiseFunctionTerm2D",
@@ -1311,14 +1316,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet. Native256\u00d7256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise.",
+      "scope": "Native256\u00d7256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise. Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
-        "creation-2026-10-13"
+        "creation-2026-10-13",
+        "noise-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -3690,14 +3696,34 @@
       "area": "usage",
       "title": "Create noise and center its mean through an intensity chain",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create a normal rectangular noise image and save its actual samples.",
         "Chain Subtract Mean and Squared Magnitude; edit noise controls and revisit views.",
         "Compare each saved result independently against the current source samples."
       ],
       "expected": "Noise creation and ordinary edits remain usable; downstream mean removal and intensity use the current data.",
-      "scope": "Bounded ordinary Mac noise workflow; fixture and native evidence pending.",
+      "scope": "Centered128\u00d764 Gaussian real/Uniform imaginary, mean/spread/seed edits and Plot/Histogram/editor visits.",
+      "summary": "All12 exports/98,304 complex samples pass. Live operations use current channels; views preserve samples and seed restoration is repeatable. Clean native log.",
+      "evidence": [
+        "noise-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25, unchanged584-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-polar-division-chain",
+      "area": "usage",
+      "title": "Create a polar image and combine it using division and subtraction",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a normal rectangular image from radial and angular factors.",
+        "Combine it with a nonzero complex image using Divide and Minus.",
+        "Edit parameters and replace operands, then inspect and independently verify saved results."
+      ],
+      "expected": "Polar creation and ordinary complex arithmetic remain usable and produce current results.",
+      "scope": "Ordinary Mac polar/arithmetic workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -4812,6 +4838,32 @@
         "docs/audit/evidence/2026-10-13-sampled-opening-focused.log",
         "docs/audit/evidence/2026-10-13-sampled-opening-package.log",
         "src/test/java/signals/core/SampledImageOpeningWorkflowTest.java"
+      ]
+    },
+    "noise-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native complex Gaussian/Uniform noise\u2192Subtract Mean\u2192Squared Magnitude; edits, view stability and seed restoration. All12 exports/98,304 samples pass; clean log.",
+      "limits": "Centered128\u00d764 native fixture. RNG checks are broad sanity, affine edits and repeatability, not distribution certification. Other families/platforms and full reference review pending.",
+      "environment": "Mac arm64/JDK25 unchanged584-test package; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-noise-centered-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-centered-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-centered-seed-changed.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-final.png",
+        "docs/audit/evidence/2026-10-13-noise-intensity-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-intensity-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-intensity-seed-changed.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-intensity-seed-restored.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-native.log",
+        "docs/audit/evidence/2026-10-13-noise-results.json",
+        "docs/audit/evidence/2026-10-13-noise-source-after-views.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-source-initial.png",
+        "docs/audit/evidence/2026-10-13-noise-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-source-seed-changed.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-source-seed-restored.txt.gz",
+        "docs/audit/evidence/2026-10-13-noise-verifier.py",
+        "docs/audit/evidence/2026-10-13-noise.md"
       ]
     }
   },
