@@ -1,0 +1,92 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "composite-sum.txt",
+      "sha256": "0af61cafd6c39749d6117119f0445890e6e5b861bfb98b9b58264020629712b3",
+      "descriptor": "composite-source",
+      "complexSamples": 16384,
+      "maxComplexError": 1.734723475976807e-18
+    },
+    {
+      "file": "composite-precedence.txt",
+      "sha256": "d9f0e22c5e0addbb2dc13d3e5ced9f0c774b8eba9e16367986e4f5aa3079ecba",
+      "descriptor": "composite-source",
+      "complexSamples": 16384,
+      "maxComplexError": 6.106226635438361e-16
+    },
+    {
+      "file": "composite-grouped.txt",
+      "sha256": "3d6498b1ef30ef5b3b63a6d40501d4797bde8be8294acdf63a5c4ac65ed86892",
+      "descriptor": "composite-source",
+      "complexSamples": 16384,
+      "maxComplexError": 6.106226635438361e-16
+    },
+    {
+      "file": "composite-edited.txt",
+      "sha256": "399e086d4ae893334ad42829a8f3c591c48e78899377cf22f248386839caa620",
+      "descriptor": "composite-source",
+      "complexSamples": 16384,
+      "maxComplexError": 4.996003610813204e-16
+    },
+    {
+      "file": "composite-clipped-initial.txt",
+      "sha256": "44a970dc8062f5810daa207d8a3a516f0b8a07e947ecddb4916e61d173ad02c7",
+      "descriptor": "clip(composite-source)",
+      "complexSamples": 16384,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "composite-fourier-initial.txt",
+      "sha256": "708d7ca813f21e8a1367c71bc283a7866cf32bd46d8b26b186940c2ae74d6c1a",
+      "descriptor": "FFT{ clip(composite-source) }",
+      "complexSamples": 16384,
+      "maxComplexError": 1.6008503713633186e-14
+    },
+    {
+      "file": "composite-clipped-edited.txt",
+      "sha256": "6477ed705d01c31514b89b83a7e56da42101add7aef46a97c440707af2db04ff",
+      "descriptor": "clip(composite-source)",
+      "complexSamples": 16384,
+      "maxComplexError": 1.3877787807814457e-16
+    },
+    {
+      "file": "composite-fourier-edited.txt",
+      "sha256": "ea84a55ae4e8a33df83cbeff982c28e995335222f0b3291d5c61514243dc7a63",
+      "descriptor": "FFT{ clip(composite-source) }",
+      "complexSamples": 16384,
+      "maxComplexError": 1.9874677661846776e-14
+    },
+    {
+      "file": "composite-copy-without-carrier.txt",
+      "sha256": "e838cf9ccc2851750f4bb140992032ccf827de072e2966d13116ccc0931712c5",
+      "descriptor": "composite-copy",
+      "complexSamples": 16384,
+      "maxComplexError": 1.1102230246251565e-16
+    },
+    {
+      "file": "composite-original-after-copy-edit.txt",
+      "sha256": "399e086d4ae893334ad42829a8f3c591c48e78899377cf22f248386839caa620",
+      "descriptor": "composite-source",
+      "complexSamples": 16384,
+      "maxComplexError": 4.996003610813204e-16
+    },
+    {
+      "file": "composite-clipped-after-copy-edit.txt",
+      "sha256": "6477ed705d01c31514b89b83a7e56da42101add7aef46a97c440707af2db04ff",
+      "descriptor": "clip(composite-source)",
+      "complexSamples": 16384,
+      "maxComplexError": 1.3877787807814457e-16
+    },
+    {
+      "file": "composite-fourier-after-copy-edit.txt",
+      "sha256": "ea84a55ae4e8a33df83cbeff982c28e995335222f0b3291d5c61514243dc7a63",
+      "descriptor": "FFT{ clip(composite-source) }",
+      "complexSamples": 16384,
+      "maxComplexError": 1.9874677661846776e-14
+    }
+  ],
+  "passed": 12,
+  "totalComplexSamples": 196608,
+  "maxComplexError": 1.9874677661846776e-14
+}
