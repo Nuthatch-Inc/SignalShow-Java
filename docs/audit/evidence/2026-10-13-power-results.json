@@ -1,0 +1,71 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "power-after-source-initial.txt",
+      "sha256": "0d867b534c9486d0d378a5eac5f8255f2151c4f2ca48bd83fa22a0dda19d7bd8",
+      "descriptor": "power retest",
+      "complexSamples": 8192,
+      "maxComplexError": 2.3102244613642867e-15
+    },
+    {
+      "file": "power-after-square-initial.txt",
+      "sha256": "3483cb53117bcfadda87666bf2df70775ad173c12de0e6bddfd72951e722b88b",
+      "descriptor": "power retest^(2+ i0)",
+      "complexSamples": 8192,
+      "maxComplexError": 6.0402662910232525e-15
+    },
+    {
+      "file": "power-after-inverse-square-initial.txt",
+      "sha256": "b23c1a17bd7a7c96fbc90f54858ff6b00e3d91231a4640adfd850a2c54180f70",
+      "descriptor": "1/(power retest^(2+ i0))",
+      "complexSamples": 8192,
+      "maxComplexError": 2.8849781364273587e-15
+    },
+    {
+      "file": "power-after-root-initial.txt",
+      "sha256": "1e1e359428d8c5791ac7c8a8872445c013e7e30fc26b0ab770c83a7a2b40d01d",
+      "descriptor": "power retest^(0.5+ i0)",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1801832636420706e-15
+    },
+    {
+      "file": "power-after-inverse-root-initial.txt",
+      "sha256": "0cef8823ce05a4ac97da1f74ef78b6cf3b219d9e67efc4d44f062d336e50f78e",
+      "descriptor": "1/(power retest^(0.5+ i0))",
+      "complexSamples": 8192,
+      "maxComplexError": 1.0235750533041806e-15
+    },
+    {
+      "file": "power-after-source-edited.txt",
+      "sha256": "e0d41612491c5f5f06571579179f9dc3b9a9ee5c896f7ec533a3f7f21e30c147",
+      "descriptor": "power retest",
+      "complexSamples": 8192,
+      "maxComplexError": 1.5700924586837751e-15
+    },
+    {
+      "file": "power-after-root-edited.txt",
+      "sha256": "0e2e63f02354f7770b02c787cc43dbf2ad4ebd27625bd52ca3a2c9acbdf690b0",
+      "descriptor": "power retest^(0.5+ i0)",
+      "complexSamples": 8192,
+      "maxComplexError": 9.930136612989092e-16
+    },
+    {
+      "file": "power-after-complex-edited.txt",
+      "sha256": "d800857f12d09d8ca59dff304d32baf06deaad565c2c005d57033bb3d294ae11",
+      "descriptor": "power retest^(0.5+ i0.25)",
+      "complexSamples": 8192,
+      "maxComplexError": 2.0014830212433605e-15
+    },
+    {
+      "file": "power-after-inverse-complex-edited.txt",
+      "sha256": "9c3b001bd5ceb2ef19e1c7c03c136dbf6bf0cd0735d4901788bd615608841210",
+      "descriptor": "1/(power retest^(0.5+ i0.25))",
+      "complexSamples": 8192,
+      "maxComplexError": 2.8435583831733384e-15
+    }
+  ],
+  "passed": 9,
+  "totalComplexSamples": 73728,
+  "maxComplexError": 6.0402662910232525e-15
+}

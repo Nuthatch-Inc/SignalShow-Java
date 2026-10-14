@@ -567,3 +567,14 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Calculate each corner-origin angle at the same bottom-left pixel coordinate as radial and Cartesian generation.
 - Verification: Five before-failing cases across normal square/wide/tall images and editable complex chains; focused171/full592 pass. Eleven native after-fix exports, both origins and phase edits, independently pass.
 - Evidence: [Polar arithmetic audit](docs/audit/evidence/2026-10-13-polar.md).
+
+---
+
+- ID: BUG-043
+- Title: Complex powers discard the input phase
+- Status: resolved within ordinary nonzero power workflows
+- Date: 2026-10-13
+- Reproduction: Create a radial complex exponential, apply Exponent2; the result becomes constant real magnitude squared. Fractional/complex powers and downstream reciprocals are also wrong.
+- Correction: Include input phase in the complex logarithm used by exponentiation; preserve the separate magnitude-logarithm/cepstrum behavior.
+- Verification: All14 new1D/2D cases fail before/pass after; focused56/full606 pass. Nine native after-fix source/power/reciprocal exports independently pass.
+- Evidence: [Power and reciprocal audit](docs/audit/evidence/2026-10-13-power.md).

@@ -1,0 +1,65 @@
+[
+  {
+    "file": "power-source-initial.txt",
+    "sha256": "bf0807ee6b5db70d92f8541264375610a2c226ce3a2a4cda1ad4ea599d8fa43b",
+    "descriptor": "power source",
+    "maxComplexError": 2.3102244613642867e-15,
+    "passed": true
+  },
+  {
+    "file": "power-square-initial.txt",
+    "sha256": "79843de96b06380b433f92eac682781a9153a7f6ca8fd3ccc076e6498e83efb9",
+    "descriptor": "power source^(2+ i0)",
+    "maxComplexError": 2.879995056836479,
+    "passed": false
+  },
+  {
+    "file": "power-inverse-square-initial.txt",
+    "sha256": "6c700859aa2cef8c7b72c81c7d883fb517e9b1ef7f1ced4aa056b03e61979ddf",
+    "descriptor": "1/(power source^(2+ i0))",
+    "maxComplexError": 1.3888865050330235,
+    "passed": false
+  },
+  {
+    "file": "power-root-initial.txt",
+    "sha256": "cb44340d80e5a160ec387a4cb4f4959d3ee08463d3576c5e57588c8efa9e3b75",
+    "descriptor": "power source^(0.5+ i0)",
+    "maxComplexError": 1.5489952702827783,
+    "passed": false
+  },
+  {
+    "file": "power-inverse-root-initial.txt",
+    "sha256": "d722a618e721d304e2c135ddfd975bca2454d7284ce203f576c16fec692f3309",
+    "descriptor": "1/(power source^(0.5+ i0))",
+    "maxComplexError": 1.2908293919023155,
+    "passed": false
+  },
+  {
+    "file": "power-source-edited.txt",
+    "sha256": "33d11eb128c1b34608f63045625f5d10d5e28795001c2cebd2608181dcc98e9d",
+    "descriptor": "power source",
+    "maxComplexError": 1.5700924586837751e-15,
+    "passed": true
+  },
+  {
+    "file": "power-root-edited.txt",
+    "sha256": "93acd18157b137dce840a32a0d10e9e0acb4d3fa916d5cab5229f4cab990587a",
+    "descriptor": "power source^(0.5+ i0)",
+    "maxComplexError": 1.263704579695557,
+    "passed": false
+  },
+  {
+    "file": "power-complex-edited.txt",
+    "sha256": "11a0420bdd7e67462882427190fe72084ec3f82480d466eb73f228cf265ec4a2",
+    "descriptor": "power source^(0.5+ i0.25)",
+    "maxComplexError": 2.152411745181482,
+    "passed": false
+  },
+  {
+    "file": "power-inverse-complex-edited.txt",
+    "sha256": "01cc1332b3394f86f69e1c967d1d0ac05388baf945cfb533621411b48313773e",
+    "descriptor": "1/(power source^(0.5+ i0.25))",
+    "maxComplexError": 2.6909473250857077,
+    "passed": false
+  }
+]

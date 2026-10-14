@@ -453,8 +453,10 @@ public class ArrayMath {
 
 		for (int i = 0; i < dimension; i++) {
 
-			pwrR[i] = realpower * log[0][i] - imagpower * log[1][i];
-			pwrI[i] = imagpower * log[0][i] + realpower * log[1][i];
+			// logarithm() is log-magnitude for cepstrum; a complex power also needs phase.
+			double angle = phase(real[i], imag[i]);
+			pwrR[i] = realpower * log[0][i] - imagpower * angle;
+			pwrI[i] = imagpower * log[0][i] + realpower * angle;
 
 		}
 

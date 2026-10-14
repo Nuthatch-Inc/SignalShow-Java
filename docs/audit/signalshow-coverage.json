@@ -4,16 +4,16 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: complex image powers and reciprocals",
+    "state": "Active Mac audit: annular aperture and diffraction intensity",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
-    "lastUsageReading": "2026-10-13: weekly74% remaining; no other applicable window reported",
+    "lastUsageReading": "2026-10-13: weekly73% remaining; no other applicable window reported",
     "authorization": "Juliet renewed Continuous Audit on 2026-10-13: test more ordinary Mac 2D creation and operation chains, prioritize crashes and major wrong results, and commit verified batches locally without pushing. Windows checks are deferred until later. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger\u2019s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-power-reciprocal-chain"
+      "gui-2d-annular-diffraction-chain"
     ],
     "nextIds": []
   },
@@ -112,13 +112,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "power-chain-2026-10-13"
+      ]
     },
     {
       "id": "unary1DList:SubtractMeanOp",
@@ -665,13 +667,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "power-chain-2026-10-13"
+      ]
     },
     {
       "id": "unary2DList:SubtractMeanOp",
@@ -965,13 +969,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "power-chain-2026-10-13"
+      ]
     },
     {
       "id": "unary2DList:CepstrumOp",
@@ -1797,10 +1803,11 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
+      "scope": "Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
-        "polar-chain-2026-10-13"
+        "polar-chain-2026-10-13",
+        "power-chain-2026-10-13"
       ]
     },
     {
@@ -2205,10 +2212,11 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128\u00d764 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
+      "scope": "Native128\u00d764 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
-        "signed-chain-2026-10-13"
+        "signed-chain-2026-10-13",
+        "power-chain-2026-10-13"
       ]
     },
     {
@@ -3799,14 +3807,34 @@
       "area": "usage",
       "title": "Raise a complex image to a power and use its reciprocal",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create an ordinary nonzero complex image.",
         "Apply Exponent and Invert through linked systems.",
         "Edit source and exponent controls, then independently verify saved stages."
       ],
       "expected": "Ordinary power/reciprocal chains remain responsive and use the current complex samples.",
-      "scope": "Mac basic operation workflow; precise fixture pending.",
+      "scope": "Centered128\u00d764 nonzero radial complex exponential; powers2,.5,.5+.25i, linked Invert and source edits through imaginary editor.",
+      "summary": "Complex powers lost phase (BUG-043), fixed and native-retested. All9 after-fix exports/73,728 samples pass;7 wrong baseline outputs retained separately. Clean native logs.",
+      "evidence": [
+        "power-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25 after606-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-annular-diffraction-chain",
+      "area": "usage",
+      "title": "Mask a complex image with an annular aperture and inspect diffraction intensity",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create an ordinary annular aperture and matching complex image.",
+        "Multiply them, apply Fourier Transform, and compute Squared Magnitude.",
+        "Edit aperture/source parameters and independently verify saved intermediates."
+      ],
+      "expected": "Normal aperture creation and linked diffraction operations remain usable and return current complex samples.",
+      "scope": "Mac annular aperture workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -5046,6 +5074,46 @@
         "docs/audit/evidence/2026-10-13-signed-source-initial.txt.gz",
         "docs/audit/evidence/2026-10-13-signed-verifier.py",
         "docs/audit/evidence/2026-10-13-signed.md"
+      ]
+    },
+    "power-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "BUG-043 fixed: complex powers discarded input phase. All14 new production cases fail before/pass after; focused56/full606 pass. Native radial complex exponential\u2192Exponent\u2192Invert, source/power edits:9 after-fix exports/73,728 samples pass.",
+      "limits": "Ordinary nonzero inputs; selected powers and centered128\u00d764 native source. Automated1D/2D both origins. Zero/overflow/branch boundaries, Windows and full reference review pending.",
+      "environment": "Native Mac arm64/JDK25 before592/after606-test packages; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-power-after-complex-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-final.png",
+        "docs/audit/evidence/2026-10-13-power-after-inverse-complex-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-inverse-root-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-inverse-square-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-native.log",
+        "docs/audit/evidence/2026-10-13-power-after-root-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-root-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-square-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-after-square.png",
+        "docs/audit/evidence/2026-10-13-power-before-failure.json",
+        "docs/audit/evidence/2026-10-13-power-before-native.log",
+        "docs/audit/evidence/2026-10-13-power-before.log",
+        "docs/audit/evidence/2026-10-13-power-before.png",
+        "docs/audit/evidence/2026-10-13-power-complex-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-final.png",
+        "docs/audit/evidence/2026-10-13-power-focused.log",
+        "docs/audit/evidence/2026-10-13-power-inverse-complex-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-inverse-root-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-inverse-square-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-package.log",
+        "docs/audit/evidence/2026-10-13-power-results.json",
+        "docs/audit/evidence/2026-10-13-power-root-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-root-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-square-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-power-verifier.py",
+        "docs/audit/evidence/2026-10-13-power.md",
+        "src/test/java/signals/core/ComplexPowerWorkflowTest.java"
       ]
     }
   },

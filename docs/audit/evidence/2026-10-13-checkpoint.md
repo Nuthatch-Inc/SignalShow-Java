@@ -1,86 +1,82 @@
 # SignalShow checkpoint — October 13, 2026
 
-Continuous Audit is active at Juliet's request: ordinary Mac2D creation and
-operation chains, crashes and major wrong results first. Windows later. Commit
-verified batches locally; no push/release. No agents, new chats, automations or
-resets authorized. At most one native app, closed when unused with exit verified.
-Target/readback native typing works after the earlier restart; cause of that
-interruption remains unknown. CUA only for native actions.
+Continuous Audit remains active: ordinary Mac 2D creation and operation chains,
+crashes and major wrong results first. Windows later. Juliet authorized local
+commits; no push/release. No agents, new chats, automations or resets authorized.
+At most one native app; close when unused and verify exit. Use CUA for all native
+actions. Automated typing works; target, type, verify readback, then submit.
 
-`check_usage: true`; latest weekly74% remaining, no other applicable window.
+`check_usage: true`; latest weekly 73% remaining, no other applicable window.
 Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
-This checkpoint is not a pause; continue with the active Mac scenario.
+This checkpoint is not a pause. Continue the active Mac scenario.
 
 ## Verified checkpoint
 
-Repo /Users/julietfiss/src/SignalShow-Java, branch codex/signalshow-usage-stabilization,
-baseline28a4ffc. Recent local commits df13c3a (chirp/aperture/conjugate/intensity,
-10 exports),46f05e4 (offset/clip/square-root and duplicate isolation,11 exports).
-Current batch fixes BUG-041: populated2D FunctionFactory results had newState=true,
-so first loaded/exported editors were empty. Mark existing data appropriately;
-use normal toolbar content attachment. Six first-opening EDT cases failed before,
-now pass. Retain the imported-image test fixture's weakly registered listener.
-Full offline package584 tests pass, zero failures/errors/skips; focused23 pass.
+Repository `/Users/julietfiss/src/SignalShow-Java`, branch
+`codex/signalshow-usage-stabilization`, baseline 28a4ffc. Recent local commits:
 
-Native retest: saved64×128 Triangle×Gaussian reload and amplitude edits; X/Y
-Derivative→Integral; Export Result as Data; first real/imaginary editors; independent
-exported gain and Negate; later source changes update live chain but not copy.
-All19 exports/155,648 complex samples independently pass, max8.882e−16/tol1e−9.
-Native logs clean. Evidence and replay:2026-10-13-directional-reuse.md and
-2026-10-13-direction-verifier.py. Committed locally as4f9aed3. Code/tests, logs, screenshots, raw compressed
-exports and JSON/report retained together. Subsequent complex Gaussian/Uniform
-noise→Subtract Mean→Squared Magnitude passed12 exports/98,304 samples, including
-mean/spread/seed edits and Plot/Histogram stability. Clean native log; unchanged
-584-test package. See2026-10-13-noise.md and its replay script.
+- 4f9aed3: BUG-041, loaded/exported sampled 2D images opened empty editors.
+  Six before-failing EDT cases; native directional/reuse chain19 exports passed.
+- f0b34ad: Gaussian/Uniform noise→Subtract Mean→Squared Magnitude,12 exports.
+- 2473080: BUG-042, corner-origin polar angle rows disagreed with radius.
+  Five before-failing cases; native polar Divide/Minus retest11 exports passed.
+- 5b20465: magnitude/phase→Phase/Real/Threshold branches,12 exports passed.
+- eede73c: signed Cartesian source→Absolute Value→Reverse X/Y,10 exports passed.
 
-Latest batch BUG-042: corner-origin polar angular rows disagreed with radius.
-Fixed Indices.createAngleIndicesZeroStart;8 production tests,5 before-failing,
-171 focused/592 full pass. Native128×64 Gaussian×angular Cosine with Divide/Minus,
-edits/replacement and both origins:9 valid before+11 after exports/163,840 samples
-pass;3 wrong before outputs retained separately. Logs clean. Fix committed locally as2473080 with2026-10-13-polar.md and replay evidence.
-Subsequent magnitude/phase and extraction batch passed12 exports/98,304 samples
-through five live branches; componentwise threshold0 and final Real explicitly
-verified. Clean native log, no code changes. See2026-10-13-phase-chain.md.
+Latest batch fixes BUG-043 in ArrayMath.complexPower: it used the magnitude-only
+logarithm and discarded all input phase. Ordinary squaring became a constant
+real result. Include phase in exponentiation while preserving separate cepstrum
+log-magnitude behavior. Fourteen production1D/2D cases failed before and pass now;
+focused56/full606 pass, zero failures/errors/skips. Native radial complex source
+powers2,.5,.5+.25i→Invert and source edits pass9 after-fix exports/73,728 complex
+samples. Seven wrong before operation outputs retained separately; two before
+sources correct. Max after error6.041e−15/tol1e−9. Native logs clean. Evidence:
+`2026-10-13-power.md`, replay script, screenshots, compressed exports and build logs.
 
-Signed-image batch: Sine×Rectangle real and negative Rectangle×Gaussian imaginary,
-Absolute Value→Reverse X→Reverse Y.10 exports/81,920 samples pass after source and
-direction edits. Existing cyclic first-row/column-preserving reversal convention
-explicitly recorded; no geometric-reflection certification. Native log clean.
-Evidence2026-10-13-signed.md; no product edits or rebuild.
-
-Matrix130 math entries,71 scenarios:66 checked,1 active Mac check,2 pending Windows,
-2 deferred memory stress. Bounded assurance only. Previous documented rotation,
-filtering, sampling, persistence and input fixes remain in their dated records.
+Matrix:130 math entries,72 scenarios:67 checked,1 active Mac,2 pending Windows,
+2 deferred memory stress. These are bounded checks, not whole-app certification.
+Older ordinary workflow and memory findings remain in their linked evidence.
 
 ## Next action and resources
 
-Active: gui-2d-power-reciprocal-chain. Create a normal nonzero complex image;
-exercise Exponent→Invert, edit source/power and independently verify intermediates. Do not study tiny statistical errors,
-capacity extremes or long endurance. Continue Mac batches; Windows does not block.
+Active `gui-2d-annular-diffraction-chain`: create a normal Cassegrain annular
+aperture and matching complex image; Times→Fourier Transform→Squared Magnitude.
+Edit aperture and complex-source parameters; independently verify every saved
+stage. Suggested ordinary128×128 grid, aperture radii24/8 with asymmetric center,
+then28/10 and another center. Read actual controls/conventions. Keep normal input
+scope; no capacity extremes or tiny-error investigations. Windows does not block.
 
-No SignalShow app remains open; CUA Close and process inspection confirmed exit.
-No build/sampler running. Native bundle:
-/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app, verified592-test JAR
-SHA256 0d3519910dbf0ac841a1826fec5b4fdd402d3838b831c9191e396037a9328dc1.
-Copy/sign only while closed. Launch/query via CUA. Never query AX after closing
-unless deliberately launching. Refresh CUA docs after compaction.
+No SignalShow app remains open; CUA Close plus process inspection confirmed exit.
+No build/sampler running. Test bundle:
+`/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app`,606-test JAR SHA256
+`35a110618d7268ee02a2e4290f0b57a2b8e616c0fbf6e66084c681b952a8bee1`.
+Copy/sign only while closed. Launch through CUA; never getAX after closing unless
+intentionally relaunching. Refresh CUA documentation after compaction.
 
-CUA helpers: ssClick,ssNew2D(exact menu label),ssImageParam,ssDocumentSize,
-ssSaveVerified(base without .txt),ssDemoRow(label,index),ssOperationParam,
-ssFileMenu,ssFs. New operation: 2D→New 2D Mathematical System, then New Unary
-Operation and choose operator. Revisit operation tile before editing parameters.
-Fresh AX after actions; stop ineffective keyboard attempts. File chooser invisible
-AX fields may need screenshot-grounded clicks. Custom-equation rename unverified.
+Persistent helpers: ssClick,ssNew2D(exact menu label),ssImageParam,ssDocumentSize,
+ssSaveVerified(base without.txt),ssDemoRow(label,index),ssOperationParam,
+ssFileMenu,ssFs. Always fresh AX after actions. New operation:2D→New2D Mathematical
+System, then New Unary/Binary Operation and explicitly choose the operation.
+Revisit its tile before editing parameters. Source and input-picker lists have
+similar AX rows; main document rows are depth4. AX can briefly return incomplete
+lists; refresh before retry. Coordinate input pickers use screenshot grounding.
 
-Isolated home/private/tmp/signalshow-roger-home; append log/private/tmp/signalshow-roger-native.log.
-Save bounded launch slices from last Loaded configuration. Build log:
-/private/tmp/signalshow-polar-package.log (also committed evidence).
-Audit viewer http://127.0.0.1:8092/docs/audit/ (prior session19418), preserve server.
-Diagnostic heap/private/tmp/signalshow-preview-memory-resumed-deleted.hprof stays
-uncommitted. Test exports are disposable; no user documents overwritten.
+Isolated home `/private/tmp/signalshow-roger-home`; append native log
+`/private/tmp/signalshow-roger-native.log`. Keep bounded launch slices beginning
+at the last Loaded configuration. Full current build log
+`/private/tmp/signalshow-power-package.log` is also committed evidence.
+Audit viewer `http://127.0.0.1:8092/docs/audit/` (prior session19418); preserve server.
+Diagnostic heap `/private/tmp/signalshow-preview-memory-resumed-deleted.hprof`
+stays uncommitted. Test exports are disposable; no user documents overwritten.
 
-Limits: Windows untested; sample-only persistence; dense-memory workloads;
-picker4096 is not capacity certification; matching binary dimensions; phase
-entry3decimals; nonatomic save replacement. Obsolete2GiB launcher cap removed.
-Deferred Rectangle notation BUG-021 and Translate help omission. No new control
-or final wording changes authorized.
+## Limits and conventions
+
+Windows untested; sample-only persistence; dense-memory workloads; picker4096 is
+not capacity certification; binary dimensions must match; phase entry3decimals;
+save replacement not atomic. Obsolete2GiB heap cap removed. Deferred Rectangle
+notation BUG-021 and Translate help omission. No new control/final-copy changes.
+Threshold is componentwise: threshold0 maps imaginary0 to1; final Real discards it.
+Reverse preserves sample index0 and reverses cyclic order; coordinate-reflection
+semantics not approved. Polar angle at radius0 keeps the existing90° convention.
+Custom-equation source rename has not been verified. Do not reopen these low
+priority convention questions at the expense of ordinary broken workflows.
