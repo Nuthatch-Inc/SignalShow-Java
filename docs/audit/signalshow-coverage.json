@@ -4,7 +4,7 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: windowed signed image creation",
+    "state": "Active Mac audit: image dimension edits through transform chains",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly72% remaining; no other applicable window reported",
@@ -13,7 +13,7 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-windowed-sign-chain"
+      "gui-2d-resize-transform-chain"
     ],
     "nextIds": []
   },
@@ -573,13 +573,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "windowed-chain-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:AutoCorrelateOp",
@@ -657,10 +660,11 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered64×128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
+      "scope": " Native centered64×128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified. Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros.",
       "remaining": "Other ordinary fixtures/callers, generated equations and full handbook review remain open; this bounded native chain passed.",
       "evidence": [
-        "intensity-chain-2026-10-13"
+        "intensity-chain-2026-10-13",
+        "windowed-chain-2026-10-13"
       ],
       "executiveSummary": "The named tall-image intensity chain returned correct saved results after source and parameter edits. Duplicated clipping settings remained independent. Square root was checked componentwise on nonnegative channels, consistent with its help; full handbook review is pending.",
       "reviewedOn": "2026-10-13"
@@ -901,11 +905,12 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT.",
+      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT. Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros.",
       "remaining": "Definition, equations, handbook, broader source families and Windows remain unreviewed.",
       "evidence": [
         "rectangular-rotation-2026-10-13",
-        "basis-chain-2026-10-13"
+        "basis-chain-2026-10-13",
+        "windowed-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1965,13 +1970,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "windowed-chain-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "functionTerm1DList:HanningWindowFunctionTerm1D",
@@ -2175,14 +2183,15 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Native centered64×128 complex rectangles→Auto Correlate→Scale→Real, source and complex gain edits;10 exports independently checked using direct spatial sums. Native128×128 Gaussian/Rectangle/Sine multi-term arithmetic/grouping and edits, independent copy term removal, Clip→sqrt(N) Fourier Transform;12 exported stages checked.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Native centered64×128 complex rectangles→Auto Correlate→Scale→Real, source and complex gain edits;10 exports independently checked using direct spatial sums. Native128×128 Gaussian/Rectangle/Sine multi-term arithmetic/grouping and edits, independent copy term removal, Clip→sqrt(N) Fourier Transform;12 exported stages checked. Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros.",
       "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
       "evidence": [
         "cartesian-composition-2026-10-12",
         "channels-2026-10-13",
         "signed-chain-2026-10-13",
         "autocorrelation-chain-2026-10-13",
-        "composite-chain-2026-10-13"
+        "composite-chain-2026-10-13",
+        "windowed-chain-2026-10-13"
       ],
       "summary": " Native rectangle text uses stored half-width as the RECT denominator; width control/samples use the full-width convention. Defer this notation correction behind ordinary usage.",
       "reviewedOn": "2026-10-13"
@@ -2234,14 +2243,15 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT. Native128×128 Gaussian/Rectangle/Sine multi-term arithmetic/grouping and edits, independent copy term removal, Clip→sqrt(N) Fourier Transform;12 exported stages checked.",
+      "scope": "Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT. Native128×128 Gaussian/Rectangle/Sine multi-term arithmetic/grouping and edits, independent copy term removal, Clip→sqrt(N) Fourier Transform;12 exported stages checked. Native256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude, window/phase and complex offset edits;10 exports independently checked including zeros.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "signed-chain-2026-10-13",
         "power-chain-2026-10-13",
         "annular-chain-2026-10-13",
         "basis-chain-2026-10-13",
-        "composite-chain-2026-10-13"
+        "composite-chain-2026-10-13",
+        "windowed-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -3933,14 +3943,34 @@
       "area": "usage",
       "title": "Create windowed signed images and chain sign extraction with offset and magnitude",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create normal windowed real/imaginary spatial patterns.",
         "Apply Signum, Offset and Magnitude through linked systems.",
         "Edit window/source parameters and verify every saved stage."
       ],
       "expected": "Normal signed-window creation and operation chains remain usable and return current component values.",
-      "scope": "Mac windowed image workflow; precise fixture pending.",
+      "scope": "Centered256×256 Sine/Hamming and Rectangle/Sine channels→Signum→Offset→Magnitude; window/phase and complex offset edits.",
+      "summary": "All10 exports/655,360 complex samples pass, including outside-window zeros; usable controls and clean log.",
+      "evidence": [
+        "windowed-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-resize-transform-chain",
+      "area": "usage",
+      "title": "Resize an existing complex image and keep its transform chain current",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create an ordinary rectangular complex image and a forward/inverse Fourier chain.",
+        "Change width and height through several normal image dimensions.",
+        "Inspect and save source and dependent stages after resizing."
+      ],
+      "expected": "Changing normal image dimensions updates data and views throughout the existing chain without crashes or stale shapes.",
+      "scope": "Mac image resize workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -5320,6 +5350,30 @@
         "docs/audit/evidence/2026-10-13-composite-sum.txt.gz",
         "docs/audit/evidence/2026-10-13-composite-verifier.py",
         "docs/audit/evidence/2026-10-13-composite.md"
+      ]
+    },
+    "windowed-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native windowed complex source→Signum→Offset→Magnitude, source/window/offset edits:10 exports/655,360 samples pass; clean log.",
+      "limits": "Centered256×256 selected windows, phases and offsets. Other families, origins and Windows pending.",
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-windowed-edited.png",
+        "docs/audit/evidence/2026-10-13-windowed-initial.png",
+        "docs/audit/evidence/2026-10-13-windowed-magnitude-changed.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-magnitude-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-magnitude-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-native.log",
+        "docs/audit/evidence/2026-10-13-windowed-offset-changed.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-offset-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-offset-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-results.json",
+        "docs/audit/evidence/2026-10-13-windowed-sign-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-sign-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-windowed-verifier.py",
+        "docs/audit/evidence/2026-10-13-windowed.md"
       ]
     }
   },

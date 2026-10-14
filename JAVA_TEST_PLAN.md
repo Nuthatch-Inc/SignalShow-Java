@@ -59,8 +59,9 @@ powers and reciprocals passed after fixing lost input phase. Annular aperture ma
 and diffraction intensity passed. Fourier basis editing
 and frequency-domain chains passed. Spatial autocorrelation
 and extraction passed. Multi-term image composition, grouping and independent
-copy edits passed. Active work now covers windowed signed images and operation
-chains. Prior checked rows remain bounded evidence, not certification of every
+copy edits passed. Windowed signed images
+and operation chains passed. Active work now covers resizing images after creating
+a transform chain. Prior checked rows remain bounded evidence, not certification of every
 combination. Continue verified batches and commit locally without pushing.
 
 ## Authoritative matrix

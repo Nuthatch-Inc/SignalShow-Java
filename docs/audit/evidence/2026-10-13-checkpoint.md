@@ -27,26 +27,24 @@ Latest local fix f6e1192: BUG-043 complex powers lost input phase. Fourteen
 before-failing production cases pass; focused56/full606 tests pass. Native power
 and reciprocal retest9 exports passed; all seven wrong before outputs retained.
 
-Local evidence commits63b420c/48061bc/fbbd0cf: annular diffraction(10 exports),
-Fourier basis editing(9) and spatial autocorrelation/scaling(10), all passed.
-Latest batch:128×128 Gaussian/Rectangle/Sine composition with addition,
-multiplication, grouping, subtraction, source edits and Clip→sqrt(N) FFT. Duplicate
-then remove carrier term: original source/chain unchanged.12 exports/196,608
-samples pass independent analytic/arithmetic/direct DFT checks. Max1.988e−14,
-tol1e−9; clean native log. Evidence:composite.md/replay. Buttons insert after selected
-item, so replace arithmetic by inserting new symbol and deleting old symbol.
+Local evidence commits63b420c/48061bc/fbbd0cf/9b968bf: annular diffraction,
+Fourier basis edits, spatial autocorrelation/scaling, multi-term grouping/copy
+independence, all passed. Latest batch:256×256 real Sine/Hamming and imaginary
+Rectangle/Sine→Signum→Offset→Magnitude; window/phase and complex offset edits.
+All10 exports/655,360 samples pass independent full-array formulas, including true
+outside-window zeros. Max3.414e−15/tol1e−9; clean log. Evidence:windowed.md/replay.
 
-Matrix:130 math entries,76 scenarios:71 checked,1 active Mac,2 pending Windows,
+Matrix:130 math entries,77 scenarios:72 checked,1 active Mac,2 pending Windows,
 2 deferred memory stress. These are bounded checks, not whole-app certification.
 
 ## Next action and resources
 
-Active `gui-2d-windowed-sign-chain`: ordinary256×256 complex source. Suggested real
-SineX(period30,phase20°)×HammingY; imaginary RectangleX×SineY(period28,phase10°).
-Then Signum→Offset→Magnitude, source/window edits. Signum is componentwise. Hamming
-width is half-support: A(.54+.46*cos(pi*(x-center)/width)) inside|x-center|<=width,
-zero outside. Pick normal integer parameter values; independently verify sources
-and all stages, including genuine outside-window zeros. No fine-error chasing.
+Active `gui-2d-resize-transform-chain`: create ordinary128×64 complex Cartesian
+source, suggested real Gaussian A1.3,center(−8,5),widths(18,14); imaginary Rectangle
+A.4,center(10,−9),full widths(16,12). Create FFT→inverseFFT→Magnitude with sqrt(N)
+normalization. Save all stages; resize source256×128, then64×256, and inspect/save
+all stages after each change. Verify actual controls/descriptors and analytic source
+parameters, dimensions and transforms. No unusual sizes or capacity extremes.
 
 No SignalShow app remains open; CUA Close plus process inspection confirmed exit.
 No build/sampler running. Test bundle:

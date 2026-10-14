@@ -1,0 +1,78 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "windowed-source-initial.txt",
+      "sha256": "662b458766438478469cb4732ec286036cd32c1baa8e80857b349cef99f1e721",
+      "descriptor": "windowed-source",
+      "complexSamples": 65536,
+      "maxComplexError": 3.4139358007223564e-15
+    },
+    {
+      "file": "windowed-sign-initial.txt",
+      "sha256": "6639e1f3ae40b710e9104e8550c37345d848d37e95a39feed16acb5819c9bd1f",
+      "descriptor": "SGN{windowed-source}",
+      "complexSamples": 65536,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "windowed-offset-initial.txt",
+      "sha256": "a6a10fd62700218a22c91bbe129012fb01db1149bd77eb6f2c82d9dca5368355",
+      "descriptor": "(1+ i0.5) + SGN{windowed-source}",
+      "complexSamples": 65536,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "windowed-magnitude-initial.txt",
+      "sha256": "cb79b8d250b02e06efd30d9e40e20bb4a1ba4b51f19f09bc6895eb2f7c09d5ab",
+      "descriptor": "||(1+ i0.5) + SGN{windowed-source}||",
+      "complexSamples": 65536,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "windowed-source-edited.txt",
+      "sha256": "a7f6daa40e2cd49b70d294f3a9914600fb759e173818b8c8546e2cb9b3700ed0",
+      "descriptor": "windowed-source",
+      "complexSamples": 65536,
+      "maxComplexError": 3.4139358007223564e-15
+    },
+    {
+      "file": "windowed-sign-edited.txt",
+      "sha256": "8408ca06ff141a736fc63ee6e73b0cc89a9ecd883457e5918d032d0d6013880f",
+      "descriptor": "SGN{windowed-source}",
+      "complexSamples": 65536,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "windowed-offset-edited.txt",
+      "sha256": "b14a1e1daa89b2b47dae79a8cb4d69efe653e59fc25878cca164fbf7896c36e6",
+      "descriptor": "(1+ i0.5) + SGN{windowed-source}",
+      "complexSamples": 65536,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "windowed-magnitude-edited.txt",
+      "sha256": "6f7c8731892ec368f090b2d0f8d9f558ef1b0a70ec5ec222622559a3e11e77e6",
+      "descriptor": "||(1+ i0.5) + SGN{windowed-source}||",
+      "complexSamples": 65536,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "windowed-offset-changed.txt",
+      "sha256": "fb1c9caa8448edd6ef4ff989787258a035d1da33ca3f6f90abd92ee5e2f7840c",
+      "descriptor": "(0.25+ i-0.75) + SGN{windowed-source}",
+      "complexSamples": 65536,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "windowed-magnitude-changed.txt",
+      "sha256": "c685c55e4fa3a95b2271a9cc70cc1a530f33231e802dcdf6832b2a0e3d477196",
+      "descriptor": "||(0.25+ i-0.75) + SGN{windowed-source}||",
+      "complexSamples": 65536,
+      "maxComplexError": 2.220446049250313e-16
+    }
+  ],
+  "passed": 10,
+  "totalComplexSamples": 655360,
+  "maxComplexError": 3.4139358007223564e-15
+}
