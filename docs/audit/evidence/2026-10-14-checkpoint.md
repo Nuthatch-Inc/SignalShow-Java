@@ -4,23 +4,25 @@ Juliet published the previous audit branch and authorized continuation. Prioriti
 ordinary creation/editing/chains, crashes and major wrong results. Avoid tiny-error
 and rare-input work. Use independent expectations; Chirplet comparison is allowed.
 Juliet subsequently authorized publication of the fixes as the latest GitHub release
-and requested all future development directly on main. Version 1.2.6 is being
-prepared; publication verification will be recorded in 2026-10-14-release.md.
+and requested all future development directly on main. Version 1.2.6 is now
+published as latest; verification is recorded in 2026-10-14-release.md.
 
 ## Current state
 
-- Repo `/Users/julietfiss/src/SignalShow-Java`, branch `main` (fast-forwarded to the published audit baseline).
-- Published baseline `a576f27e720a336d9e398ff87fd07d31671f877b` (`Fixed bugs`),
-  verified against the remote branch. Working tree was clean on resumption.
-- New fixes/tests/docs are included in the authorized 1.2.6 release preparation. No other workspace code changed.
-- Full headless Maven package: **1,130 tests pass**, zero failures/errors/skips;
-  133 new cases relative to the published 997-test baseline. No check currently running.
-- Latest log: `2026-10-14-creation-defaults-package.log.gz`; evidence:
-  `2026-10-14-calculator-continuation.md` and `2026-10-14-creation-defaults.md`.
-- Local `target/signalshow-1.2.5.jar` SHA-256 `b195e33a79dfbabd1575645f2d62e9aaeb312c2e5cee96994f01a44e368bde96`.
-  Changed production class bytes verified; no project tests/JUnit, nested JARs or
-  audit docs packaged. See `2026-10-14-creation-defaults-artifact.txt`. This is a local audit
-  build retaining the existing version; no release/published download change claimed.
+- Repo `/Users/julietfiss/src/SignalShow-Java`, branch `main`.
+- Release source/tag `3c315c840512b0612e14ac31299b5119b4f097a7`, version **1.2.6**.
+  Release evidence is committed separately afterward; application code is unchanged.
+- Public latest: https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.6
+- Full clean headless package: **1,130 tests pass**, zero failures/errors/skips;
+  both GitHub platform builds pass. Source fixes and native Mac evidence are included.
+- Finished Mac DMG and Windows MSI payloads exclude old builds and tests. All four
+  public asset links, sizes and hashes pass verification. No website action needed.
+- Downloaded Mac/portable JAR SHA-256:
+  `354aa6a2c8ed4f9107f1de0be379af80184a71c501b8d8a97976cc46e4338088`.
+  All 565 production classes match the local tested build. See `2026-10-14-release-assets.json`
+  and the release document for local and CI evidence.
+- Future development goes directly on main. No new branch/worktree is requested.
+- No other workspace code changed. No app, test, build, agent or automation is running.
 
 ## Completed new batches
 
@@ -67,7 +69,7 @@ All owned native processes are closed; both launch sessions exited 0. Do not cal
 an app-bound AX helper after quit: it can reopen an empty app. No build/test,
 automation, agent or background audit job is running. Preserve existing
 http://127.0.0.1:8092/docs/audit/ and other user servers. Release work is now
-authorized; follow the subsequent release evidence for commit, build and download status.
+complete; all publication checks passed. Existing user servers remain available.
 
 `check_usage: true`; latest reading: weekly 57% remaining, no other applicable
 window. Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "reviewedOn": "2026-10-14",
-  "baselineCommit": "a576f27e720a336d9e398ff87fd07d31671f877b",
+  "baselineCommit": "3c315c840512b0612e14ac31299b5119b4f097a7",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Calculator and rectangular-creation follow-up verified in headless and native Mac checks; no owned app or check running.",
+    "state": "SignalShow 1.2.6 published as latest from main; Mac/Windows builds, finished installer payloads and public downloads verified. No owned app or check running.",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-14: weekly 57% remaining; no other applicable window",
-    "authorization": "Juliet explicitly requested continuous bug finding/fixing and comparison with Chirplet. Use independent mathematical expectations and ordinary inputs; preserve local audit work."
+    "authorization": "Juliet authorized the audit and publication of 1.2.6 as latest, and requested future development directly on main. Ordinary usage and major wrong results remain the priority for subsequent testing."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
@@ -6436,6 +6436,26 @@
         "docs/audit/evidence/2026-10-14-creation-defaults-native-exports.zip",
         "docs/audit/evidence/2026-10-14-creation-defaults-native-verify.py",
         "docs/audit/evidence/2026-10-14-creation-defaults-native-results.json"
+      ]
+    },
+    "github-publication-2026-10-14": {
+      "date": "2026-10-14",
+      "summary": "Published 1.2.6 from main/tag 3c315c8 after both platform builds and strict finished-installer payload checks passed; 1,130 tests. All public assets and checksums verified. A CI-only unowned test callback was reproduced with forced GC and corrected without changing production code or assertions.",
+      "limits": "Windows CI is automated/headless evidence, not interactive acceptance. Mac arm64 package uses existing ad-hoc signing; no notarization added. Further ordinary usage/math coverage remains separate.",
+      "environment": "GitHub Mac arm64/Windows x64, Temurin 25; local Mac arm64 JDK 25.",
+      "sources": [
+        "docs/audit/evidence/2026-10-14-release.md",
+        "docs/audit/evidence/2026-10-14-release-assets.json",
+        "docs/audit/evidence/2026-10-14-release-package.log.gz",
+        "docs/audit/evidence/2026-10-14-release-ci-before.log.gz",
+        "docs/audit/evidence/2026-10-14-release-ci-mac.log.gz",
+        "docs/audit/evidence/2026-10-14-release-ci-windows.log.gz",
+        "docs/audit/evidence/2026-10-14-release-noise-gc-before.log.gz",
+        "docs/audit/evidence/2026-10-14-release-noise-gc-after.log.gz",
+        "docs/releases/1.2.6.md",
+        "src/test/java/signals/core/MathNoiseTest.java",
+        "scripts/verify_installer_payload.py",
+        ".github/workflows/build-installers.yml"
       ]
     }
   },

@@ -32,8 +32,8 @@ verified batches. The source-led continuation is now verified through all
 registered ordinary computation paths: nine additional fixes and 333 new cases,
 with the full 997-test package passing. No confirmed major defect from this
 bounded survey remains unfixed. Broader native/parameter coverage and recorded
-convention differences remain follow-up work. Preserve local changes; no new
-commit, push or publication has been performed.
+convention differences remain follow-up work. These fixes and the subsequent native
+calculator/creation fixes are now published in 1.2.6.
 
 ## Standing testing priority and suite plan
 
@@ -63,12 +63,14 @@ axes, transform signs/scales and incorrect operation composition. Establish
 independent mathematical expectations; Chirplet agreement and test-only formulas
 are not sufficient. Fix demonstrated defects and record bounded evidence. Juliet subsequently confirmed desktop availability for bounded native follow-up.
 Rare inputs and tiny numerical discrepancies remain outside this round.
-Leave this new work local and reviewable; the previous publication is complete.
+Juliet subsequently authorized publication of this work as 1.2.6 and requested
+future development directly on main. The release is complete; see the
+[release verification](docs/audit/evidence/2026-10-14-release.md).
 
 The first automated math pass is complete: 52 new production-path cases cover
 coordinates, spectral operations, complex arithmetic/composition and selected
 analytic image creation. BUG-046 (vertical reversal shifting the origin by two
-pixels) is fixed locally. All 664 tests and the executable package pass.
+pixels) was fixed in that batch. All 664 tests and the executable package pass.
 [Evidence and limits](docs/audit/evidence/2026-10-14-math.md) remain distinct from
 native GUI acceptance and the published release.
 
@@ -88,7 +90,7 @@ and operation chains passed. Resizing a source through128×64,256×128 and64×25
 with an existing FFT→inverseFFT→Magnitude chain passed all12 saved-array checks.
 This Mac round is complete. Release verification exposed BUG-044: dots in parent
 folders redirected saves. Its shared path fix passes four new regressions and the
-native packaged save retest. SignalShow 1.2.5 is published as the latest GitHub
+native packaged save retest. SignalShow 1.2.5 was published on October 13 as the latest GitHub
 release with Windows MSI, Apple Silicon Mac DMG and portable JAR downloads. Both
 finished installers passed payload inspection. CI also exposed BUG-045: TIFF/BMP
 export handles now close before returning. All 612 automated tests pass on Mac
@@ -161,7 +163,7 @@ settings, dimensions, channels, operations, retained documents and hardware.
 
 ## Current continuation
 
-Juliet published the math-audit branch at `a576f27` on October 14. The new local
+Juliet published the math-audit branch at `a576f27` on October 14. The subsequent
 follow-up corrects Clear/rebuild ownership, group boundaries and consecutive
 unary operators (BUG-056–058), plus rectangular creation defaults and cross-
 dimension origin settings (BUG-059). All **1,130 tests pass**, including 133 new
@@ -173,7 +175,10 @@ No confirmed crash or major wrong-result defect from this follow-up remains
 unfixed. The targeted source/creation/calculator queue is complete. Broader
 parameter combinations, lower-priority labels, and Windows interactive testing
 remain distinct follow-up work. No test app is open and no audit process is
-running; existing user servers are preserved. Changes remain local and uncommitted.
+running; existing user servers are preserved. The fixes are committed on main and
+published as the latest 1.2.6 release with clean Mac/Windows installers and a JAR.
+All 1,130 tests pass locally and in both platform builds; public downloads and
+checksums were verified. Develop directly on main for subsequent work.
 
 ## Current verified baseline
 
@@ -182,7 +187,7 @@ FunctionFactory/operation classes and Swing parameter editors exposed six failin
 cases caused by reversed threshold outputs and parameter bindings. After the
 threshold correction, all 225 tests passed. Subsequent search, generator and
 image-editing and operation-layout batches reached 606 tests. Release 1.2.5
-passed 612 on Mac and Windows CI. The current local audit package passes
+passed 612 on Mac and Windows CI. The 1.2.6 release package passes
 1,122 tests on macOS, including 385 new math cases from the first passes and 125
 new calculator/editing cases after Juliet published that baseline. The authoritative matrix records each batch's scope and before/after
 evidence; native acceptance remains separate.

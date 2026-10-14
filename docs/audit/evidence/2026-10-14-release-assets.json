@@ -1,0 +1,98 @@
+{
+  "version": "1.2.6",
+  "sourceCommit": "3c315c840512b0612e14ac31299b5119b4f097a7",
+  "releaseUrl": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.6",
+  "publishedAt": "2026-10-14T20:06:06Z",
+  "latest": true,
+  "workflow": {
+    "id": 38628509462,
+    "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/actions/runs/38628509462",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "Build macOS Installer",
+        "conclusion": "success",
+        "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/actions/runs/38628509462/job/116073755252"
+      },
+      {
+        "name": "Build Windows Installer",
+        "conclusion": "success",
+        "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/actions/runs/38628509462/job/116073755297"
+      },
+      {
+        "name": "Create GitHub Release",
+        "conclusion": "success",
+        "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/actions/runs/38628509462/job/116075088923"
+      }
+    ]
+  },
+  "tests": {
+    "tests": 1130,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "downloadVerification": {
+    "checksums": "all four GitHub asset digests match; three binaries match SHA256SUMS.txt",
+    "public": {
+      "latest": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.6",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/SHA256SUMS.txt",
+          "status": 200,
+          "bytes": 261
+        },
+        {
+          "name": "SignalShow-1.2.6.dmg",
+          "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/SignalShow-1.2.6.dmg",
+          "status": 200,
+          "bytes": 56729028
+        },
+        {
+          "name": "signalshow-1.2.6.jar",
+          "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/signalshow-1.2.6.jar",
+          "status": 200,
+          "bytes": 4490406
+        },
+        {
+          "name": "SignalShow-1.2.6.msi",
+          "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/SignalShow-1.2.6.msi",
+          "status": 200,
+          "bytes": 53473816
+        }
+      ]
+    },
+    "localProductionClassComparison": {
+      "count": 565,
+      "different": 0
+    },
+    "macInstaller": "DMG integrity, deep signature, version 1.2.6, arm64 launcher and exact JAR payload verified"
+  },
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 261,
+      "sha256": "bf81b9b1d92549587ff7fd0b04cd193b4067330867f6087662649a278cfcdd29",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/SHA256SUMS.txt"
+    },
+    {
+      "name": "SignalShow-1.2.6.dmg",
+      "bytes": 56729028,
+      "sha256": "bd58cdfcaba463a18f52e886ceaf17929e37a76d226450d501232cdb66a003f6",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/SignalShow-1.2.6.dmg"
+    },
+    {
+      "name": "signalshow-1.2.6.jar",
+      "bytes": 4490406,
+      "sha256": "354aa6a2c8ed4f9107f1de0be379af80184a71c501b8d8a97976cc46e4338088",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/signalshow-1.2.6.jar"
+    },
+    {
+      "name": "SignalShow-1.2.6.msi",
+      "bytes": 53473816,
+      "sha256": "d510b68a052582200f08ca65ce57f740969a376cea509745074a779686f15e91",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.6/SignalShow-1.2.6.msi"
+    }
+  ]
+}
