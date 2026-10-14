@@ -187,7 +187,8 @@ public class ImageWriter {
 
 				case BMP:
 
-					JAI.create("filestore", image, path, "BMP");
+					// FileStore keeps its stream open until the rendered operation is disposed.
+					JAI.create("filestore", image, path, "BMP").dispose();
 
 					break;
 
@@ -205,7 +206,7 @@ public class ImageWriter {
 
 				case TIFF:
 
-					JAI.create("filestore", image, path, "TIFF");
+					JAI.create("filestore", image, path, "TIFF").dispose();
 
 					break;
 

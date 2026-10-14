@@ -592,3 +592,16 @@ ID format: BUG-### (e.g. BUG-001)
 - Expected behavior: Preserve the selected directory and distinct basenames, then apply the requested output suffix.
 - Fix: Restrict extension detection/removal to the final filename after either path separator. The shared helper serves complex saves, component/image exports and image-format replacement.
 - Verification: All four regression path cases fail before the fix;18 focused filename, image-export and complex-data checks pass afterward. Windows-style strings are unit checks, not a native Windows acceptance pass. Full release suite610 passed. Native bundled-runtime retest created two distinct files in the requested dotted directory; all131,072 saved complex samples match independent Gaussian and intensity formulas. The unintended prior output remained byte-identical. See docs/audit/evidence/2026-10-13-release.md.
+
+
+---
+
+- ID: BUG-045
+- Title: TIFF and BMP exports keep output files locked on Windows
+- Status: in-progress; release CI retest pending
+- Reported by: GitHub Windows regression job during1.2.5 release
+- Date: 2026-10-13
+- Environment: Windows GitHub runner, Temurin25.0.4
+- Description: Three existing workflow cases could not remove exported TIFF files during cleanup. JAI FileStore owns an output stream until its returned rendered operation is disposed; the application discarded that operation without disposing it. BMP uses the same path.
+- Fix: Dispose the completed FileStore operation after TIFF/BMP encoding, preserving the existing codecs and normalization.
+- Verification: Add repeated ordinary export→rename→pixel-readback→delete checks for both formats. Existing Windows failures, local focused/full checks and the successful release CI retest will be recorded in the publication evidence.

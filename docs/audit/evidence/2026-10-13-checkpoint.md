@@ -64,7 +64,9 @@ Temporary homes /private/tmp/signalshow-roger-home and
 /private/tmp/signalshow-1.2.5-home contain only test data. Diagnostic heaps and
 packaged test copies stay uncommitted. Preserve unrelated browser/server state.
 
-Next action: finish CI payload checks, merge into main, push main plus annotated
-v1.2.5 tag, await the three installer/release jobs, inspect assets and publish the
-draft with latest=true. Verify the public latest endpoint and actual downloads.
+Main is merged/pushed at8f6dad1. Initial run38502634539 failed before publishing:
+Windows TIFF file locks (BUG-045) and Mac metadata allowlist. TIFF/BMP disposal fix
+and exact `.package` allowance are locally verified (focused16/full612). Retry the
+unpublished1.2.5 tag with a lease, await all three jobs, inspect assets and publish
+the draft with latest=true. See2026-10-13-publication.md. Verify the public latest endpoint and actual downloads.
 Update this checkpoint with the main commit, workflow run and release URLs.

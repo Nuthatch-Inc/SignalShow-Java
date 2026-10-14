@@ -14,7 +14,7 @@ def verify(payload, reference):
     jar_name = f'signalshow-{version}.jar'
     expected = {jar_name, 'SignalShow.cfg'}
     actual = {p.name for p in payload.iterdir()}
-    if not expected <= actual or actual - expected - {'.jpackage.xml'}:
+    if not expected <= actual or actual - expected - {'.jpackage.xml', '.package'}:
         raise ValueError(f'Unexpected installer app files: {sorted(actual)}')
     if any(not p.is_file() for p in payload.iterdir()):
         raise ValueError('Application payload must not include build directories')

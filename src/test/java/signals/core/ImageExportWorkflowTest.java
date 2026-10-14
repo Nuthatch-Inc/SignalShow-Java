@@ -97,6 +97,26 @@ class ImageExportWorkflowTest {
         }
     }
 
+    @ParameterizedTest @EnumSource(value = ImageType.class, names = {"BMP", "TIFF"})
+    void exportedImagesCanBeRenamedAndDeletedImmediately(ImageType type) throws Exception {
+        var original = new java.awt.image.BufferedImage(8, 4,
+            java.awt.image.BufferedImage.TYPE_BYTE_GRAY);
+        for (int y = 0; y < 4; y++) for (int x = 0; x < 8; x++)
+            original.getRaster().setSample(x, y, 0, (y * 8 + x) * 7);
+        Path output = directory.resolve("export" + ImageWriter.typeToExtension(type));
+        Path renamed = directory.resolve("renamed" + ImageWriter.typeToExtension(type));
+        for (int save = 0; save < 3; save++) {
+            assertTrue(ImageWriter.writeImage(output.toFile(), original, type));
+            Files.move(output, renamed); // Windows refuses this while an export handle remains open.
+            var reopened = ImageIO.read(renamed.toFile());
+            assertNotNull(reopened);
+            for (int y = 0; y < 4; y++) for (int x = 0; x < 8; x++)
+                assertEquals(original.getRaster().getSample(x, y, 0),
+                    reopened.getRaster().getSample(x, y, 0));
+            Files.delete(renamed);
+        }
+    }
+
     @Test void chooserAndFilenameExtensionsResolveToTheSameFormat() {
         for (ImageType type : ImageType.values()) {
             String extension = ImageWriter.typeToExtension(type);
