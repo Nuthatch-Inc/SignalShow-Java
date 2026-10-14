@@ -4,7 +4,7 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: spatial autocorrelation and extraction",
+    "state": "Active Mac audit: multi-term image composition and operation chains",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly73% remaining; no other applicable window reported",
@@ -13,7 +13,7 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-spatial-autocorrelation-chain"
+      "gui-2d-multiterm-composition-chain"
     ],
     "nextIds": []
   },
@@ -589,13 +589,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native centered64×128 complex rectangles→Auto Correlate→Scale→Real, source and complex gain edits;10 exports independently checked using direct spatial sums.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "autocorrelation-chain-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:RotateOp2D",
@@ -632,10 +635,11 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered128×64 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample.",
+      "scope": "Native centered128×64 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample. Native centered64×128 complex rectangles→Auto Correlate→Scale→Real, source and complex gain edits;10 exports independently checked using direct spatial sums.",
       "remaining": "Other normal fixtures/origins, definition/equations/handbook review and Windows remain open.",
       "evidence": [
-        "shift-scale-2026-10-13"
+        "shift-scale-2026-10-13",
+        "autocorrelation-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1065,12 +1069,13 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Native complex spatial image through Real→Threshold, saved every-sample check and subsequent live source edit. Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
+      "scope": "Native complex spatial image through Real→Threshold, saved every-sample check and subsequent live source edit. Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller. Native centered64×128 complex rectangles→Auto Correlate→Scale→Real, source and complex gain edits;10 exports independently checked using direct spatial sums.",
       "remaining": "Broader input/parameter variants,1D caller, definition/equation/handbook review remain open.",
       "evidence": [
         "roger-rotation-2026-10-12",
         "channels-2026-10-13",
-        "phase-chain-2026-10-13"
+        "phase-chain-2026-10-13",
+        "autocorrelation-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -2167,12 +2172,13 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Native centered64×128 complex rectangles→Auto Correlate→Scale→Real, source and complex gain edits;10 exports independently checked using direct spatial sums.",
       "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
       "evidence": [
         "cartesian-composition-2026-10-12",
         "channels-2026-10-13",
-        "signed-chain-2026-10-13"
+        "signed-chain-2026-10-13",
+        "autocorrelation-chain-2026-10-13"
       ],
       "summary": " Native rectangle text uses stored half-width as the RECT denominator; width control/samples use the full-width convention. Defer this notation correction behind ordinary usage.",
       "reviewedOn": "2026-10-13"
@@ -3882,14 +3888,34 @@
       "area": "usage",
       "title": "Create a complex spatial image and chain autocorrelation with scaling and extraction",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create normal rectangular real/imaginary spatial patterns.",
         "Apply Auto Correlate, Scale and Real through linked systems.",
         "Edit source geometry and verify both channels of every saved stage."
       ],
       "expected": "Autocorrelation chains remain responsive and retain the expected complex spatial relationships after edits.",
-      "scope": "Mac spatial autocorrelation workflow; precise fixture pending.",
+      "scope": "Centered64×128 distinct real/imaginary Cartesian rectangles→Auto Correlate→Scale→Real; geometry/amplitude and complex gain edits.",
+      "summary": "All10 exports/81,920 complex samples pass direct spatial-sum, energy and complex gain/extraction checks; clean log.",
+      "evidence": [
+        "autocorrelation-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-multiterm-composition-chain",
+      "area": "usage",
+      "title": "Compose an image from several terms and use it in operation chains",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a normal image with several spatial terms and ordinary arithmetic.",
+        "Apply a linked clipping/transform chain.",
+        "Edit component parameters and arithmetic; independently verify saved stages."
+      ],
+      "expected": "Ordinary term creation and arithmetic editing remain usable; dependent results reflect the complete current expression.",
+      "scope": "Mac multi-term image workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -5218,6 +5244,30 @@
         "docs/audit/evidence/2026-10-13-basis.md",
         "src/main/java/signals/action/NewFourierBasisFunction2DAction.java",
         "src/main/java/signals/gui/datagenerator/FourierBasisReImFunction2DToolBar.java"
+      ]
+    },
+    "autocorrelation-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native complex rectangles→Auto Correlate→Scale→Real, geometry/amplitude/gain edits:10 exports/81,920 samples pass; clean log.",
+      "limits": "Centered64×128 selected fixtures. Direct periodic correlation convention; other origins/families and Windows pending.",
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-autocorrelation-complex-gain.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-edited.png",
+        "docs/audit/evidence/2026-10-13-autocorrelation-initial.png",
+        "docs/audit/evidence/2026-10-13-autocorrelation-native.log",
+        "docs/audit/evidence/2026-10-13-autocorrelation-real-complex-gain.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-real-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-real-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-result-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-result-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-results.json",
+        "docs/audit/evidence/2026-10-13-autocorrelation-scaled-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-scaled-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-autocorrelation-verifier.py",
+        "docs/audit/evidence/2026-10-13-autocorrelation.md"
       ]
     }
   },

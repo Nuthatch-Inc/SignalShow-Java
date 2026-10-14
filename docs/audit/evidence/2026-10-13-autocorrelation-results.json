@@ -1,0 +1,78 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "autocorrelation-source-initial.txt",
+      "sha256": "4865208ae7aa3ce538dbdb17e308d3f1c6573505f9695f142e3d9d597c539810",
+      "descriptor": "correlation-source",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "autocorrelation-result-initial.txt",
+      "sha256": "75fc9649d00d12f0a7c8443c770900669f0c6080704b70c5b154f4d45c1e8ddd",
+      "descriptor": "Autocorrelation {correlation-source}",
+      "complexSamples": 8192,
+      "maxComplexError": 3.187079968547244e-12
+    },
+    {
+      "file": "autocorrelation-scaled-initial.txt",
+      "sha256": "a71529a053f28e5f610785bdcf9cf1da4248974698f4c00c2e2a8cab6f73ed60",
+      "descriptor": "(0.01+ i0)* Autocorrelation {correlation-source}",
+      "complexSamples": 8192,
+      "maxComplexError": 3.1870799685472444e-14
+    },
+    {
+      "file": "autocorrelation-real-initial.txt",
+      "sha256": "124da0a159a87c9713d448f439cef91652ff130ee1953ca470859953790d072f",
+      "descriptor": "Re{(0.01+ i0)* Autocorrelation {correlation-source}}",
+      "complexSamples": 8192,
+      "maxComplexError": 9.492406860545088e-15
+    },
+    {
+      "file": "autocorrelation-source-edited.txt",
+      "sha256": "ab6bda7941787f8ca9ec346597419408b10b558065d723f919972d4086072f59",
+      "descriptor": "correlation-source",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "autocorrelation-result-edited.txt",
+      "sha256": "aa86e4bc496ff6f98b37d0db216fb17b83d95aa11ba15b7b255855ec4177c881",
+      "descriptor": "Autocorrelation {correlation-source}",
+      "complexSamples": 8192,
+      "maxComplexError": 5.162454009898162e-12
+    },
+    {
+      "file": "autocorrelation-scaled-edited.txt",
+      "sha256": "c66c5256bb8c70c0951c5db17e7b8ad93f2f965710023098b1e9f1e4556732aa",
+      "descriptor": "(0.01+ i0)* Autocorrelation {correlation-source}",
+      "complexSamples": 8192,
+      "maxComplexError": 5.1624540098981623e-14
+    },
+    {
+      "file": "autocorrelation-real-edited.txt",
+      "sha256": "484236f3765c32a2d14c4ba303c4ec57976792746900397029a00cfd2cdf418c",
+      "descriptor": "Re{(0.01+ i0)* Autocorrelation {correlation-source}}",
+      "complexSamples": 8192,
+      "maxComplexError": 2.042810365310288e-14
+    },
+    {
+      "file": "autocorrelation-complex-gain.txt",
+      "sha256": "edf425d934a02435573fd228eb938a520bddbe79eedae31b2009d01df0698b20",
+      "descriptor": "(0.02+ i0.01)* Autocorrelation {correlation-source}",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1518958471067347e-13
+    },
+    {
+      "file": "autocorrelation-real-complex-gain.txt",
+      "sha256": "4bd03664cbbe4c2e92854d0218a5cf1f8b8725a6e973d8d0dd576eae0a1e8b44",
+      "descriptor": "Re{(0.02+ i0.01)* Autocorrelation {correlation-source}}",
+      "complexSamples": 8192,
+      "maxComplexError": 5.240252676230739e-14
+    }
+  ],
+  "passed": 10,
+  "totalComplexSamples": 81920,
+  "maxComplexError": 5.162454009898162e-12
+}

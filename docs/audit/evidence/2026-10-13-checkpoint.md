@@ -27,23 +27,24 @@ Latest local fix f6e1192: BUG-043 complex powers lost input phase. Fourteen
 before-failing production cases pass; focused56/full606 tests pass. Native power
 and reciprocal retest9 exports passed; all seven wrong before outputs retained.
 
-Local evidence commit63b420c: annular aperture masking and diffraction intensity,
-10 exports/163,840 samples passed independent direct DFT/source/intensity checks.
-Latest batch: centered128×64 Fourier Basis→Divide-by-N FFT→Magnitude→Threshold.
-Edits through both component views keep shared factors synchronized. All9 saved
-stages/73,728 samples pass exact single-bin reference; frequency peak(4,4)→(8,2),
-threshold selects/clears it. Max1.356e−14/tol1e−9; clean log. Evidence:basis.md/replay.
+Local evidence commits63b420c/48061bc: annular diffraction(10 exports) and Fourier
+basis editing/frequency detection(9 exports) passed independent full-array checks.
+Latest batch: centered64×128 distinct complex rectangles→Auto Correlate→Scale→Real.
+Geometry/amplitude and complex gain edits propagate;10 exports/81,920 samples pass
+direct periodic spatial sums, zero-lag energy and complex gain/extraction checks.
+Max5.163e−12/tol1e−9; clean native log. Evidence:autocorrelation.md/replay.
 
-Matrix:130 math entries,74 scenarios:69 checked,1 active Mac,2 pending Windows,
+Matrix:130 math entries,75 scenarios:70 checked,1 active Mac,2 pending Windows,
 2 deferred memory stress. These are bounded checks, not whole-app certification.
 
 ## Next action and resources
 
-Active `gui-2d-spatial-autocorrelation-chain`: create normal64×128 rectangular
-real/imaginary patterns; Auto Correlate→Scale→Real. Edit source geometry and gain,
-independently verify every saved stage. Suggested distinct rectangle centers/sizes
-for both channels; check against direct circular correlation sums. Keep normal
-input scope; Windows does not block.
+Active `gui-2d-multiterm-composition-chain`: create normal128×128 image with several
+spatial terms and arithmetic. Suggested Gaussian plus Rectangle multiplied by Sine,
+then Clip→Fourier Transform. Exercise ordinary term creation/editing and verify each
+saved stage against the actual expression. Source editor has AX buttons New Term,
+Add/Subtract/Multiply/Open Parenthesis/Closed Parenthesis. Read current UI after
+insertion; screenshot-ground expression selection. Keep ordinary scope.
 
 No SignalShow app remains open; CUA Close plus process inspection confirmed exit.
 No build/sampler running. Test bundle:
