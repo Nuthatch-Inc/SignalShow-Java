@@ -208,8 +208,7 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 		heightSelector.addActionListener( listener );
 
 		JPanel main = new FunctionEditorPanel(editor, globalOptionsPanel);
-		Core.getGUI().setContent(main); 
-		content = main; 
+		setContent(main, openTab);
 	}
 
 	public void addButtons() {

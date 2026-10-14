@@ -1,0 +1,141 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "direction-source-initial.txt",
+      "sha256": "71a49904d65cf0127f1bce088c467ba7473b98dd884a3c7b0b2758f1ea425df5",
+      "descriptor": "intensity image",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "direction-derivative-x.txt",
+      "sha256": "f6e77ee2726925f4addf939f65a47b9d9401036f369fdf92abf9eb84a2c894e8",
+      "descriptor": "d/dx(intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "direction-integral-x.txt",
+      "sha256": "555155b1bf419a5f4a8bffc995e32fb3de8ee837c3f40c148bafeeec846e8bcb",
+      "descriptor": "x-int(d/dx(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "direction-derivative-y.txt",
+      "sha256": "a3d247783a98b4f8a79d9e9c89f7d3f72c618cd09d3f7aacb8667c7877dd0828",
+      "descriptor": "d/dy(intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "direction-integral-y.txt",
+      "sha256": "b3dafe5796e0d179b87da991d33c7e187c3b711c16a02e70eee5195802842187",
+      "descriptor": "y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-export-initial.txt",
+      "sha256": "b3dafe5796e0d179b87da991d33c7e187c3b711c16a02e70eee5195802842187",
+      "descriptor": "y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-after-source.txt",
+      "sha256": "1624ae191d9f11b1c5aa701ffd90b8128e9df3d6a3e6f009adb30fa5062af84a",
+      "descriptor": "intensity image",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-after-derivative-x.txt",
+      "sha256": "af06da5510834dba4b24715f7776302a32979ff89da2d69215ebb6346f6cef29",
+      "descriptor": "d/dx(intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-after-integral-x.txt",
+      "sha256": "9fb3054c53dafd484e189b45d079e91b430d48f9f43be3df8b9c533442441033",
+      "descriptor": "x-int(d/dx(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-after-derivative-y.txt",
+      "sha256": "71b372b86d5a22d913e252d3981e1d01458929680a42cede6d61b689c1eb8809",
+      "descriptor": "d/dy(intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-after-integral-y.txt",
+      "sha256": "e75b8743f7b787287d04f982aa966ca7136dff9234e9b6490be46fae4a0f099d",
+      "descriptor": "y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-after-export-initial.txt",
+      "sha256": "e75b8743f7b787287d04f982aa966ca7136dff9234e9b6490be46fae4a0f099d",
+      "descriptor": "y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "direction-after-export-gain.txt",
+      "sha256": "61b7e3b6913c76675b12422b97afccfdd305b65cba6dffb835a19746e3cecda4",
+      "descriptor": "y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 8.881784197001252e-16
+    },
+    {
+      "file": "direction-after-export-negate.txt",
+      "sha256": "89625e72aeff4100c55ecab2a6f8ee2d0eb7feaad0feb61508fce3f8fd358e0a",
+      "descriptor": "-y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 8.881784197001252e-16
+    },
+    {
+      "file": "direction-after-source-edited.txt",
+      "sha256": "3e635f5745406fce92d87aa5cab32fa6ef2481843a94652d5311eac9cb8cc977",
+      "descriptor": "intensity image",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1102230246251565e-16
+    },
+    {
+      "file": "direction-after-derivative-edited.txt",
+      "sha256": "517880fcc2c87643ad32aeda61367b30f7bfab3df532ee159374715aef5c414e",
+      "descriptor": "d/dy(intensity image)",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1102230246251565e-16
+    },
+    {
+      "file": "direction-after-integral-edited.txt",
+      "sha256": "4f39938db5dc83a38eea841db046510a0d7db80b7a57f4a20490cb59b13e23e8",
+      "descriptor": "y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "direction-after-export-unchanged.txt",
+      "sha256": "61b7e3b6913c76675b12422b97afccfdd305b65cba6dffb835a19746e3cecda4",
+      "descriptor": "y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 8.881784197001252e-16
+    },
+    {
+      "file": "direction-after-negate-unchanged.txt",
+      "sha256": "89625e72aeff4100c55ecab2a6f8ee2d0eb7feaad0feb61508fce3f8fd358e0a",
+      "descriptor": "-y-int(d/dy(intensity image))",
+      "complexSamples": 8192,
+      "maxComplexError": 8.881784197001252e-16
+    }
+  ],
+  "passed": 19,
+  "totalComplexSamples": 155648,
+  "maxComplexError": 8.881784197001252e-16
+}

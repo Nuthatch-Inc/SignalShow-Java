@@ -225,6 +225,8 @@ public class FunctionFactory {
 		FunctionPart2D phasePart = new FunctionPart2D( imagList, ctrule ); 
 
 		Function function = new MagPhaseFunction2D( magPart, phasePart, "", x_dimension, y_dimension, zeroCentered );
+		// Samples already define both channels; the first editor must load them.
+		function.newState = false;
 		function.setEquation(name); 
 		return function; 
 	}
@@ -269,6 +271,8 @@ public class FunctionFactory {
 		FunctionPart2D imagPart = new FunctionPart2D( imagList, ctrule ); 
 
 		Function function = new RealImagFunction2D( realPart, imagPart, "", x_dimension, y_dimension, zeroCentered );
+		// Samples already define both channels; the first editor must load them.
+		function.newState = false;
 		function.setEquation(name); 
 		return function; 
 	}

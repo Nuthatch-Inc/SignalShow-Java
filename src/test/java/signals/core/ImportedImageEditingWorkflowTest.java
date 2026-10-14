@@ -19,6 +19,7 @@ import signals.gui.datagenerator.DataFunctionTerm2DEditor;
 import signals.gui.datagenerator.EditImageFunctionTermPanel;
 import signals.gui.datagenerator.GUIEvent;
 import signals.gui.datagenerator.GUIEventBroadcaster;
+import signals.gui.datagenerator.GUIEventListener;
 import signals.gui.plot.InteractiveImageGraphic;
 import signals.operation.ThresholdOp;
 
@@ -28,6 +29,8 @@ class ImportedImageEditingWorkflowTest {
     private DisplayOptions oldDisplay;
     private Colors oldColors;
     private Borders oldBorders;
+    // The production broadcaster holds weak references; this fixture owns its listener.
+    private GUIEventListener editListener;
 
     @BeforeEach void setUp() {
         Core c = Core.get();
@@ -37,6 +40,7 @@ class ImportedImageEditingWorkflowTest {
         c.displayOptions = new DisplayOptions(); c.colors = new Colors(); c.borders = new Borders();
     }
     @AfterEach void tearDown() {
+        editListener = null;
         Core c = Core.get();
         c.functionCreationOptions = oldCreation; c.displayOptions = oldDisplay;
         c.colors = oldColors; c.borders = oldBorders;
@@ -55,7 +59,8 @@ class ImportedImageEditingWorkflowTest {
             DataFunctionTerm2D term = (DataFunctionTerm2D) source.getPartA().getTermsList().get(0);
             assertArrayEquals(input, source.getReal());
             GUIEventBroadcaster bus = new GUIEventBroadcaster();
-            bus.addGUIEventListener(event -> source.setPartA(source.getPartA()));
+            editListener = event -> source.setPartA(source.getPartA());
+            bus.addGUIEventListener(editListener);
             EditImageFunctionTermPanel panel = new EditImageFunctionTermPanel(bus, GUIEvent.Descriptor.MODIFIED);
             panel.setIndices(w, h, centered);
             panel.setDefaultWidthOff();

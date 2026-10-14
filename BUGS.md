@@ -545,3 +545,14 @@ ID format: BUG-### (e.g. BUG-001)
 - Correction: Copy the rotated overlap into the original canvas and zero-fill uncovered pixels for both complex channels.
 - Verification: Three before-failing ordinary cases, independent geometry and editable-chain regressions; focused22/full578 pass. Native90°/180° and30° nearest-neighbor chains, source edits and12 after-fix exports all pass.
 - Evidence: [Rectangular rotation audit](docs/audit/evidence/2026-10-13-rotation.md).
+
+---
+
+- ID: BUG-041
+- Title: Loaded and exported 2D samples open with empty editors
+- Status: resolved within the tested sampled-image workflows
+- Date: 2026-10-13
+- Reproduction: Load a saved image or Export Result as Data; its first real/imaginary editor has no Data term or editing controls despite populated pixels.
+- Correction: Mark populated2D factory results as existing and use the toolbar's normal content attachment path.
+- Verification: Six before-failing first-opening EDT cases, focused23/full584 pass; native loading, both exported editors, gain edits, live chain and detached copy independently verified.
+- Evidence: [Directional/reuse audit](docs/audit/evidence/2026-10-13-directional-reuse.md).

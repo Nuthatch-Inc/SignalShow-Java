@@ -1,0 +1,355 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/opt/homebrew/Cellar/maven/3.9.11/libexec/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.signalshow:signalshow >----------------------
+[INFO] Building SignalShow 1.2.4
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ signalshow ---
+[INFO] Copying 339 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ signalshow ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ signalshow ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ signalshow ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ signalshow ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running signals.operation.DiagnosticTest
+
+=== FFT of delta at index 0 (non-zero-centered) ===
+Real part should be all 1.0:
+[ 0.707 0.707 0.707 0.707 0.707 0.707 0.707 0.707 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 ... ]
+
+=== FFT of delta at index 0 (zero-centered) ===
+Real part (with checkerboard shift):
+[ 0.707 -0.707 0.707 -0.707 0.707 -0.707 0.707 -0.707 -0.000 0.000 -0.000 0.000 -0.000 0.000 -0.000 0.000 ... ]
+
+=== Center index calculation ===
+Center index = (DIM_Y/2) * DIM_X + (DIM_X/2) = 36
+
+=== FFT of delta at center index 36 (non-zero-centered) ===
+Real part:
+[ -0.707 0.707 -0.707 0.707 -0.707 0.707 -0.707 0.707 0.000 -0.000 0.000 -0.000 0.000 -0.000 0.000 -0.000 ... ]
+
+=== FFT of delta at center index 36 (zero-centered) ===
+Real part (should be all 1.0 if this is true origin):
+[ -0.707 -0.707 -0.707 -0.707 -0.707 -0.707 -0.707 -0.707 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 ... ]
+=== y_swap_expand mapping ===
+1D index -> 2D[row][col]:
+Row 0:   56   57   58   59   60   61   62   63 
+Row 1:   48   49   50   51   52   53   54   55 
+Row 2:   40   41   42   43   44   45   46   47 
+Row 3:   32   33   34   35   36   37   38   39 
+Row 4:   24   25   26   27   28   29   30   31 
+Row 5:   16   17   18   19   20   21   22   23 
+Row 6:    8    9   10   11   12   13   14   15 
+Row 7:    0    1    2    3    4    5    6    7 
+
+=== Reverse mapping ===
+For 1D index i = row * DIM_X + col:
+The value ends up in expanded[DIM_Y-1-row][col]
+Index 0 is at 2D position [7][0]
+
+=== Searching for true FFT origin ===
+Looking for delta position that gives constant FFT spectrum...
+
+FOUND: Delta at index 28 (row=3, col=4) gives constant FFT!
+
+=== Convolution of pattern with delta at 0 (non-ZC) ===
+Input pattern values: idx0=1.0, idx1=2.0, idx8=3.0
+Result values: idx0=-3.14018491736755E-16, idx1=-2.349485301059081E-16, idx8=0.9999999999999998
+
+Comparison:
+idx  0: input=1.000000, output=-0.000000
+idx  1: input=2.000000, output=-0.000000
+idx  8: input=3.000000, output=1.000000
+idx  9: input=0.000000, output=2.000000
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in signals.operation.DiagnosticTest
+[INFO] Running signals.operation.NonZCDiagnosticTest
+
+=== Hermitian symmetry index pairs ===
+For an 8x8 zero-centered array:
+  (0,0) idx=0  <->  (0,0) idx=0
+  (1,0) idx=1  <->  (7,0) idx=7
+  (2,0) idx=2  <->  (6,0) idx=6
+  (3,0) idx=3  <->  (5,0) idx=5
+  (4,0) idx=4  <->  (4,0) idx=4
+  (0,1) idx=8  <->  (0,7) idx=56
+  (1,1) idx=9  <->  (7,7) idx=63
+  (2,1) idx=10  <->  (6,7) idx=62
+  (3,1) idx=11  <->  (5,7) idx=61
+  (4,1) idx=12  <->  (4,7) idx=60
+  (5,1) idx=13  <->  (3,7) idx=59
+  (6,1) idx=14  <->  (2,7) idx=58
+  (7,1) idx=15  <->  (1,7) idx=57
+  (0,2) idx=16  <->  (0,6) idx=48
+  (1,2) idx=17  <->  (7,6) idx=55
+  (2,2) idx=18  <->  (6,6) idx=54
+  (3,2) idx=19  <->  (5,6) idx=53
+  (4,2) idx=20  <->  (4,6) idx=52
+  (5,2) idx=21  <->  (3,6) idx=51
+  (6,2) idx=22  <->  (2,6) idx=50
+  (7,2) idx=23  <->  (1,6) idx=49
+  (0,3) idx=24  <->  (0,5) idx=40
+  (1,3) idx=25  <->  (7,5) idx=47
+  (2,3) idx=26  <->  (6,5) idx=46
+  (3,3) idx=27  <->  (5,5) idx=45
+  (4,3) idx=28  <->  (4,5) idx=44
+  (5,3) idx=29  <->  (3,5) idx=43
+  (6,3) idx=30  <->  (2,5) idx=42
+  (7,3) idx=31  <->  (1,5) idx=41
+
+=== Non-ZC Convolution of pattern with delta at 0 ===
+Input pattern values at 0,1,8: 1.0, 2.0, 3.0
+Result values at 0,1,8: -3.14018491736755E-16, -2.349485301059081E-16, 0.9999999999999998
+
+All non-zero results:
+  idx 8: 1.000000
+  idx 9: 2.000000
+  idx 16: 3.000000
+
+FFT of delta at 0 (first 16 real values):
+0.7071 0.7071 0.7071 0.7071 0.7071 0.7071 0.7071 0.7071 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 
+
+=== Searching for non-zero-centered FFT origin ===
+Looking for delta position that gives constant FFT spectrum...
+
+FOUND: Delta at index 56 (row=7, col=0) gives constant FFT!
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.NonZCDiagnosticTest
+[INFO] Running signals.operation.Operations2DTest
+[INFO] Running signals.operation.Operations2DTest$OperatorComparisonTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.Operations2DTest$OperatorComparisonTests
+[INFO] Running signals.operation.Operations2DTest$NumericalPrecisionTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.Operations2DTest$NumericalPrecisionTests
+[INFO] Running signals.operation.Operations2DTest$EdgeCaseTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in signals.operation.Operations2DTest$EdgeCaseTests
+[INFO] Running signals.operation.Operations2DTest$AutocorrelationTests
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.Operations2DTest$AutocorrelationTests
+[INFO] Running signals.operation.Operations2DTest$CorrelationTests
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.Operations2DTest$CorrelationTests
+[INFO] Running signals.operation.Operations2DTest$ConvolutionTests
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.Operations2DTest$ConvolutionTests
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in signals.operation.Operations2DTest
+[INFO] Running signals.operation.Operations1DTest
+[INFO] Running signals.operation.Operations1DTest$EdgeCaseTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.Operations1DTest$EdgeCaseTests
+[INFO] Running signals.operation.Operations1DTest$FFTRoundTripTests
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.Operations1DTest$FFTRoundTripTests
+[INFO] Running signals.operation.Operations1DTest$AutocorrelationTests
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.Operations1DTest$AutocorrelationTests
+[INFO] Running signals.operation.Operations1DTest$CorrelationTests
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.Operations1DTest$CorrelationTests
+[INFO] Running signals.operation.Operations1DTest$ConvolutionTests
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in signals.operation.Operations1DTest$ConvolutionTests
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in signals.operation.Operations1DTest
+[INFO] Running signals.operation.BinaryOperations1DTest
+[INFO] Running signals.operation.BinaryOperations1DTest$EdgeCaseTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.BinaryOperations1DTest$EdgeCaseTests
+[INFO] Running signals.operation.BinaryOperations1DTest$MixedOperationsTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.BinaryOperations1DTest$MixedOperationsTests
+[INFO] Running signals.operation.BinaryOperations1DTest$DivisionTests
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.BinaryOperations1DTest$DivisionTests
+[INFO] Running signals.operation.BinaryOperations1DTest$MultiplicationTests
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.BinaryOperations1DTest$MultiplicationTests
+[INFO] Running signals.operation.BinaryOperations1DTest$SubtractionTests
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.BinaryOperations1DTest$SubtractionTests
+[INFO] Running signals.operation.BinaryOperations1DTest$AdditionTests
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.BinaryOperations1DTest$AdditionTests
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in signals.operation.BinaryOperations1DTest
+[INFO] Running signals.operation.CrossValidation1DTest
+[INFO] Running signals.operation.CrossValidation1DTest$NormalizationTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.CrossValidation1DTest$NormalizationTests
+[INFO] Running signals.operation.CrossValidation1DTest$GeneratorReferenceValues
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.CrossValidation1DTest$GeneratorReferenceValues
+[INFO] Running signals.operation.CrossValidation1DTest$AutocorrelationReferenceValues
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.CrossValidation1DTest$AutocorrelationReferenceValues
+[INFO] Running signals.operation.CrossValidation1DTest$ConvolutionReferenceValues
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.CrossValidation1DTest$ConvolutionReferenceValues
+[INFO] Running signals.operation.CrossValidation1DTest$CorrelationReferenceValues
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.CrossValidation1DTest$CorrelationReferenceValues
+[INFO] Running signals.operation.CrossValidation1DTest$FFTReferenceValues
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.CrossValidation1DTest$FFTReferenceValues
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in signals.operation.CrossValidation1DTest
+[INFO] Running signals.operation.UnaryOperations1DTest
+[INFO] Running signals.operation.UnaryOperations1DTest$OperatorClassTests
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.UnaryOperations1DTest$OperatorClassTests
+[INFO] Running signals.operation.UnaryOperations1DTest$FFTPropertyTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.operation.UnaryOperations1DTest$FFTPropertyTests
+[INFO] Running signals.operation.UnaryOperations1DTest$NormalizeTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.operation.UnaryOperations1DTest$NormalizeTests
+[INFO] Running signals.operation.UnaryOperations1DTest$SquaredMagnitudeTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.UnaryOperations1DTest$SquaredMagnitudeTests
+[INFO] Running signals.operation.UnaryOperations1DTest$RealImagTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.UnaryOperations1DTest$RealImagTests
+[INFO] Running signals.operation.UnaryOperations1DTest$AbsoluteValueTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.UnaryOperations1DTest$AbsoluteValueTests
+[INFO] Running signals.operation.UnaryOperations1DTest$ReverseTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.UnaryOperations1DTest$ReverseTests
+[INFO] Running signals.operation.UnaryOperations1DTest$ScaleTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.UnaryOperations1DTest$ScaleTests
+[INFO] Running signals.operation.UnaryOperations1DTest$NegateTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.operation.UnaryOperations1DTest$NegateTests
+[INFO] Running signals.operation.UnaryOperations1DTest$ConjugateTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.operation.UnaryOperations1DTest$ConjugateTests
+[INFO] Running signals.operation.UnaryOperations1DTest$PhaseTests
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.operation.UnaryOperations1DTest$PhaseTests
+[INFO] Running signals.operation.UnaryOperations1DTest$MagnitudeTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.operation.UnaryOperations1DTest$MagnitudeTests
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in signals.operation.UnaryOperations1DTest
+[INFO] Running signals.core.SampledImageOpeningWorkflowTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.605 s -- in signals.core.SampledImageOpeningWorkflowTest
+[INFO] Running signals.core.ImageEditingWorkflowTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s -- in signals.core.ImageEditingWorkflowTest
+[INFO] Running signals.core.ImportedImageEditingWorkflowTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in signals.core.ImportedImageEditingWorkflowTest
+[INFO] Running signals.core.FrequencyDemoReopenWorkflowTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.662 s -- in signals.core.FrequencyDemoReopenWorkflowTest
+[INFO] Running signals.core.LinkedSourceWorkflowTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in signals.core.LinkedSourceWorkflowTest
+[INFO] Running signals.core.ComplexDataWorkflowTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in signals.core.ComplexDataWorkflowTest
+[INFO] Running signals.core.DemoCalculationWorkflowTest
+2D=false centered=false correlation=false wrap=true normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.730782/0.730782
+2D=false centered=false correlation=false wrap=true normalize=true steps=130/130 maxErrors=0.00000,0.00000 last=0.200000/0.200000
+2D=false centered=false correlation=false wrap=false normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.730782/0.730782
+2D=false centered=false correlation=true wrap=true normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.717984/0.717984
+2D=false centered=false correlation=true wrap=true normalize=true steps=130/130 maxErrors=0.00000,0.00000 last=0.200000/0.200000
+2D=false centered=false correlation=true wrap=false normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.0208859/0.0208859
+2D=false centered=true correlation=false wrap=true normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.734853/0.734853
+2D=false centered=true correlation=false wrap=true normalize=true steps=130/130 maxErrors=0.00000,0.00000 last=0.200000/0.200000
+2D=false centered=true correlation=false wrap=false normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.730782/0.730782
+2D=false centered=true correlation=true wrap=true normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.721980/0.721980
+2D=false centered=true correlation=true wrap=true normalize=true steps=130/130 maxErrors=0.00000,0.00000 last=0.200000/0.200000
+2D=false centered=true correlation=true wrap=false normalize=false steps=130/130 maxErrors=0.00000,0.00000 last=0.0248819/0.0248819
+2D=true centered=false correlation=false wrap=true normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=2.84047/2.84047
+2D=true centered=false correlation=false wrap=true normalize=true steps=514/514 maxErrors=1.44329e-15,2.22045e-16 last=0.210041/0.210041
+2D=true centered=false correlation=false wrap=false normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=0.293769/0.293769
+2D=true centered=false correlation=true wrap=true normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=2.57864/2.57864
+2D=true centered=false correlation=true wrap=true normalize=true steps=514/514 maxErrors=1.33227e-15,2.22045e-16 last=0.200005/0.200005
+2D=true centered=false correlation=true wrap=false normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=0.0694909/0.0694909
+2D=true centered=true correlation=false wrap=true normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=2.95585/2.95585
+2D=true centered=true correlation=false wrap=true normalize=true steps=514/514 maxErrors=5.77316e-15,8.60423e-16 last=0.209714/0.209714
+2D=true centered=true correlation=false wrap=false normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=0.394883/0.394883
+2D=true centered=true correlation=true wrap=true normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=2.68679/2.68679
+2D=true centered=true correlation=true wrap=true normalize=true steps=514/514 maxErrors=5.55112e-15,8.60423e-16 last=0.200008/0.200008
+2D=true centered=true correlation=true wrap=false normalize=false steps=514/514 maxErrors=0.00000,0.00000 last=0.0824104/0.0824104
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.128 s -- in signals.core.DemoCalculationWorkflowTest
+[INFO] Running signals.core.HistogramViewWorkflowTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s -- in signals.core.HistogramViewWorkflowTest
+[INFO] Running signals.core.BasicWorkflowTest
+[INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s -- in signals.core.BasicWorkflowTest
+[INFO] Running signals.core.TwoTermImageWorkflowTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.367 s -- in signals.core.TwoTermImageWorkflowTest
+[INFO] Running signals.core.DemoLifecycleWorkflowTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s -- in signals.core.DemoLifecycleWorkflowTest
+[INFO] Running signals.core.DataGeneratorSelectionTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in signals.core.DataGeneratorSelectionTest
+[INFO] Running signals.core.ImageImportWorkflowTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s -- in signals.core.ImageImportWorkflowTest
+[INFO] Running signals.core.Generator2DWorkflowTest
+[INFO] Tests run: 156, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.530 s -- in signals.core.Generator2DWorkflowTest
+[INFO] Running signals.core.OperationPreviewLayoutTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in signals.core.OperationPreviewLayoutTest
+[INFO] Running signals.core.FilteringChainWorkflowTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s -- in signals.core.FilteringChainWorkflowTest
+[INFO] Running signals.core.FrequencyDemoWorkflowTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.794 s -- in signals.core.FrequencyDemoWorkflowTest
+[INFO] Running signals.core.OperationInsertionWorkflowTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.796 s -- in signals.core.OperationInsertionWorkflowTest
+[INFO] Running signals.core.ImageExportWorkflowTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in signals.core.ImageExportWorkflowTest
+[INFO] Running signals.core.SamplingDemoWorkflowTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.171 s -- in signals.core.SamplingDemoWorkflowTest
+[INFO] Running signals.core.OperationResizeWorkflowTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in signals.core.OperationResizeWorkflowTest
+[INFO] Running signals.core.EditorLifecycleWorkflowTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in signals.core.EditorLifecycleWorkflowTest
+[INFO] Running signals.core.RectangularRotationWorkflowTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s -- in signals.core.RectangularRotationWorkflowTest
+[INFO] Running signals.core.RogerWorkflowTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s -- in signals.core.RogerWorkflowTest
+[INFO] Running signals.core.ThumbnailLifecycleWorkflowTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in signals.core.ThumbnailLifecycleWorkflowTest
+[INFO] Running signals.core.FunctionDuplicationWorkflowTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in signals.core.FunctionDuplicationWorkflowTest
+[INFO] Running signals.core.OperationDuplicationTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in signals.core.OperationDuplicationTest
+[INFO] Running signals.core.ImageProfileWorkflowTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.884 s -- in signals.core.ImageProfileWorkflowTest
+[INFO] Running signals.core.OperationReopenWorkflowTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in signals.core.OperationReopenWorkflowTest
+[INFO] Running signals.functionterm.Generators1DTest
+[INFO] Running signals.functionterm.Generators1DTest$GeneratorPropertyTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.functionterm.Generators1DTest$GeneratorPropertyTests
+[INFO] Running signals.functionterm.Generators1DTest$CombFunctionTests
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$CombFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$BesselFunctionTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.functionterm.Generators1DTest$BesselFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$WindowFunctionTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$WindowFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$ChirpFunctionTests
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.functionterm.Generators1DTest$ChirpFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$ConstantFunctionTests
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$ConstantFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$LorentzianFunctionTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$LorentzianFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$SincFunctionTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.functionterm.Generators1DTest$SincFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$GaussianFunctionTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$GaussianFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$StepFunctionTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$StepFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$DeltaFunctionTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.functionterm.Generators1DTest$DeltaFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$TriangleFunctionTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$TriangleFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$RectangleFunctionTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$RectangleFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$CosineFunctionTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in signals.functionterm.Generators1DTest$CosineFunctionTests
+[INFO] Running signals.functionterm.Generators1DTest$SineFunctionTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in signals.functionterm.Generators1DTest$SineFunctionTests
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in signals.functionterm.Generators1DTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 584, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ signalshow ---
+[INFO] Building jar: /Users/julietfiss/src/SignalShow-Java/target/signalshow-1.2.4.jar
+[INFO] 
+[INFO] --- shade:3.6.0:shade (default) @ signalshow ---
+[INFO] Including javax.media.jai:jai-core:jar:1.1.3 in the shaded jar.
+[INFO] Including javax.media.jai:jai-codec:jar:1.1.3 in the shaded jar.
+[INFO] Dependency-reduced POM written at: /Users/julietfiss/src/SignalShow-Java/dependency-reduced-pom.xml
+[WARNING] jai-codec-1.1.3.jar, jai-core-1.1.3.jar, signalshow-1.2.4.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /Users/julietfiss/src/SignalShow-Java/target/signalshow-1.2.4.jar with /Users/julietfiss/src/SignalShow-Java/target/signalshow-1.2.4-shaded.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.081 s
+[INFO] Finished at: 2026-10-13T17:46:46-07:00
+[INFO] ------------------------------------------------------------------------

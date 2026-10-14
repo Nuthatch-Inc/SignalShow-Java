@@ -1,75 +1,69 @@
 # SignalShow checkpoint — October 13, 2026
 
-Active Mac audit resumed at Juliet's request. Test more ordinary 2D creation and
-operation chains, prioritizing crashes and major wrong results. Windows checks
-are deferred until later and do not block Mac work. Chirp/aperture/Conjugate/Squared Magnitude batch passed10 native exports and
-81,920 complex samples, including live edits through the imaginary editor.
-Offset/Clip/Square Root passed11 exports/90,112 samples with duplicate isolation.
-Current batch: directional operations and exported-result reuse.
+Continuous Audit is active at Juliet's request: ordinary Mac2D creation and
+operation chains, crashes and major wrong results first. Windows later. Commit
+verified batches locally; no push/release. No agents, new chats, automations or
+resets authorized. At most one native app, closed when unused with exit verified.
+Target/readback native typing works after the earlier restart; cause of that
+interruption remains unknown. CUA only for native actions.
 
-Juliet authorized Continuous Audit and local commits, with no push/release.
-She resumed after Zoom and requested restart when manual/automated typing failed.
-Restart restored typing; cause remains unknown. Native input has worked throughout
-the subsequent batches. No agents, new chats, automations or resets authorized.
-At most one SignalShow instance, closed when unused; verify exit.
-
-`check_usage: true`; latest weekly76% remaining, no other applicable window.
+`check_usage: true`; latest weekly75% remaining, no other applicable window.
 Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
-This checkpoint is not a usage-triggered pause.
+This checkpoint is not a pause; continue with the active Mac scenario.
 
-## Current result
+## Verified checkpoint
 
 Repo /Users/julietfiss/src/SignalShow-Java, branch codex/signalshow-usage-stabilization,
-baseline28a4ffc. Current code fixes are committed, with tracking-only evidence
-commits afterward. No push. Relevant recent commits:
+baseline28a4ffc. Recent local commits df13c3a (chirp/aperture/conjugate/intensity,
+10 exports),46f05e4 (offset/clip/square-root and duplicate isolation,11 exports).
+Current batch fixes BUG-041: populated2D FunctionFactory results had newState=true,
+so first loaded/exported editors were empty. Mark existing data appropriately;
+use normal toolbar content attachment. Six first-opening EDT cases failed before,
+now pass. Retain the imported-image test fixture's weakly registered listener.
+Full offline package584 tests pass, zero failures/errors/skips; focused23 pass.
 
-- 8334dd9: sampling reconstruction, default gain and retained settings.
-- 6677b3c: native spatial Convolve/Correlate and forward/inverse FFT chains.
-- 1a4b7df: BUG-040, ordinary rectangular90° rotation failed with a JAI Crop error.
-  Preserve the input canvas and zero-fill outside the rotated overlap.
-- 1e74162: native fill/wrap translation, complex scaling and addition chains.
+Native retest: saved64×128 Triangle×Gaussian reload and amplitude edits; X/Y
+Derivative→Integral; Export Result as Data; first real/imaginary editors; independent
+exported gain and Negate; later source changes update live chain but not copy.
+All19 exports/155,648 complex samples independently pass, max8.882e−16/tol1e−9.
+Native logs clean. Evidence and replay:2026-10-13-directional-reuse.md and
+2026-10-13-direction-verifier.py. Code/tests, logs, screenshots, raw compressed
+exports and JSON/report ready together for local commit.
 
-Full package578 tests passed, zero failures/errors/skips. Focused rotation22
-passed, including three before-failing ordinary rectangles and independent
-both-origin/channel geometry plus editable Magnitude/Threshold chains. Native
-rotation13 exports/106,496 complex samples verified; translation12 exports/98,304
-verified. Both native retest logs clean. Spatial filtering12 exports/98,304 passed;
-that earlier run had six nonblocking JDK AccessibleHTML exceptions, recorded.
-
-Persistence capability scoping is now reconciled: files retain samples, dimensions,
-origin and name, not analytic definitions or linked graphs. Existing1D/2D native
-and production round trips reused; no unnecessary rebuild for documentation.
-The authoritative matrix has130 math entries and66 scenarios:61 checked,
-1 active Mac check,2 pending Windows checks,2 deferred memory stress checks. All assurance is scoped.
+Matrix130 math entries,67 scenarios:62 checked,1 active Mac check,2 pending Windows,
+2 deferred memory stress. Bounded assurance only. Previous documented rotation,
+filtering, sampling, persistence and input fixes remain in their dated records.
 
 ## Next action and resources
 
-Active: gui-2d-directional-result-reuse. Continue ordinary Mac workflows;
-Windows remains unverified and deferred by the latest user instruction. No
-capacity stress or tiny-error investigations.
-No app remains open; last CUA Close followed by process inspection confirmed exit.
-No build/sampler running. Test bundle /private/tmp/signalshow-roger-app/SignalShowRogerAudit.app
-contains verified578-test JAR, SHA256
-c92a82fbaa49f34640451e83568997a6b2c156c7f6cc82806f5b5d7b69bb6d88.
-Copy/sign only while closed; launch via CUA. Never query AX after closing, which
-relaunches it. Refresh CUA documentation after compaction. Helpers ssClick,ssNew2D,
-ssRenameCurrent,ssImageParam,ssDocumentSize,ssSaveVerified,ssDemoRow,
-ssOperationParam(index,value),ssFileMenu,ssFs. ssDemoRow tolerates both AX
-Description/Value orderings. Read back typed fields before Return. ssSaveVerified
-takes a base name without .txt. Select an operation tile after revisiting its
-system before editing its controls. Do not reuse prior evidence-record helpers.
+Active: gui-2d-noise-centering-chain. Create ordinary rectangular noise; save its
+source samples, apply Subtract Mean→Squared Magnitude, edit/revisit and independently
+compare outputs with current source arrays. Do not study tiny statistical errors,
+capacity extremes or long endurance. Continue Mac batches; Windows does not block.
 
-Isolated home /private/tmp/signalshow-roger-home; append-only native log
-/private/tmp/signalshow-roger-native.log. Save bounded launch slices from the last
-Loaded configuration. All completed evidence is in docs/audit/evidence and linked
-from signalshow-coverage.json. Full build log/private/tmp/signalshow-rotation-package.log.
-Audit server previously session19418; preserve/reuse http://127.0.0.1:8092/docs/audit/.
-Diagnostic heap/private/tmp/signalshow-preview-memory-resumed-deleted.hprof is never
-committed. Existing saved native input/output files in isolated home are disposable
-but useful for replay. No user documents were overwritten.
+No SignalShow app remains open; CUA Close and process inspection confirmed exit.
+No build/sampler running. Native bundle:
+/private/tmp/signalshow-roger-app/SignalShowRogerAudit.app, verified584-test JAR
+SHA256 c37919a04da1afc01361d148c80aa6b0f141a843a0d001d4577a671a128c5f7b.
+Copy/sign only while closed. Launch/query via CUA. Never query AX after closing
+unless deliberately launching. Refresh CUA docs after compaction.
+
+CUA helpers: ssClick,ssNew2D(exact menu label),ssImageParam,ssDocumentSize,
+ssSaveVerified(base without .txt),ssDemoRow(label,index),ssOperationParam,
+ssFileMenu,ssFs. New operation: 2D→New 2D Mathematical System, then New Unary
+Operation and choose operator. Revisit operation tile before editing parameters.
+Fresh AX after actions; stop ineffective keyboard attempts. File chooser invisible
+AX fields may need screenshot-grounded clicks. Custom-equation rename unverified.
+
+Isolated home/private/tmp/signalshow-roger-home; append log/private/tmp/signalshow-roger-native.log.
+Save bounded launch slices from last Loaded configuration. Build log:
+/private/tmp/signalshow-sampled-opening-package.log (also committed evidence).
+Audit viewer http://127.0.0.1:8092/docs/audit/ (prior session19418), preserve server.
+Diagnostic heap/private/tmp/signalshow-preview-memory-resumed-deleted.hprof stays
+uncommitted. Test exports are disposable; no user documents overwritten.
 
 Limits: Windows untested; sample-only persistence; dense-memory workloads;
-picker4096 is not capacity certification; binary dimensions must match; phase
-entry3decimals; save replacement not atomic/confirmed. Obsolete2GiB launcher cap
-removed. Deferred Rectangle notation BUG-021 and Translate help omission of
-unchecked zero-fill behavior. No new control/wording changes authorized.
+picker4096 is not capacity certification; matching binary dimensions; phase
+entry3decimals; nonatomic save replacement. Obsolete2GiB launcher cap removed.
+Deferred Rectangle notation BUG-021 and Translate help omission. No new control
+or final wording changes authorized.
