@@ -1,0 +1,78 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "annular-aperture-initial.txt",
+      "sha256": "3283ea34a81809c809d261418bedbf0053274dd04668c338d0511855f8bda3bd",
+      "descriptor": "annular-aperture",
+      "complexSamples": 16384,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "annular-wave-initial.txt",
+      "sha256": "89d68bac1a493180f44c5395e97ddcc4015a8ddfbe7c5de74840242e81a9269b",
+      "descriptor": "annular-wave",
+      "complexSamples": 16384,
+      "maxComplexError": 1.8906416838689214e-15
+    },
+    {
+      "file": "annular-masked-initial.txt",
+      "sha256": "7a82a4c4eea94fc81a418625c2cacc7ef5a62db4a44830050fb07410a72c1687",
+      "descriptor": "annular-aperture x annular-wave",
+      "complexSamples": 16384,
+      "maxComplexError": 7.021666937153402e-16
+    },
+    {
+      "file": "annular-fourier-initial.txt",
+      "sha256": "e4e2274756485c0ae317cc46cd2510a059df0818dbf54a447b792285782f6384",
+      "descriptor": "FFT{ annular-aperture x annular-wave }",
+      "complexSamples": 16384,
+      "maxComplexError": 1.1292097976900676e-13
+    },
+    {
+      "file": "annular-intensity-initial.txt",
+      "sha256": "de862adb7fbc6c67346185aaa74ab183b62a7b4fbdbe96a8aa539d91594f4647",
+      "descriptor": "||FFT{ annular-aperture x annular-wave }||\u00b2",
+      "complexSamples": 16384,
+      "maxComplexError": 1.2079226507921703e-13
+    },
+    {
+      "file": "annular-aperture-edited.txt",
+      "sha256": "19c94b0effdd6e175168e0d80dc95f70be53bff8d0b8f7b9d913c54083d7009d",
+      "descriptor": "annular-aperture",
+      "complexSamples": 16384,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "annular-wave-edited.txt",
+      "sha256": "c07f35a55d5665a7c180b6c07ee1fc695977daeff8f99cc3b073de63b5068bef",
+      "descriptor": "annular-wave",
+      "complexSamples": 16384,
+      "maxComplexError": 2.9057317281871776e-15
+    },
+    {
+      "file": "annular-masked-edited.txt",
+      "sha256": "1a3a648972b229176244d7b576fed973aa2fceb7b33eb379f46ef44875349733",
+      "descriptor": "annular-aperture x annular-wave",
+      "complexSamples": 16384,
+      "maxComplexError": 1.0796169701996886e-15
+    },
+    {
+      "file": "annular-fourier-edited.txt",
+      "sha256": "6b12340422c4867755e1524c97a68fa00b12fe632e0bea07f53a345103b68c38",
+      "descriptor": "FFT{ annular-aperture x annular-wave }",
+      "complexSamples": 16384,
+      "maxComplexError": 8.861443824680183e-14
+    },
+    {
+      "file": "annular-intensity-edited.txt",
+      "sha256": "96fdfebf2ecd286583dec0349ea008a07f07f8d1a890e5e1a494a354ad0ad175",
+      "descriptor": "||FFT{ annular-aperture x annular-wave }||\u00b2",
+      "complexSamples": 16384,
+      "maxComplexError": 8.881784197001252e-14
+    }
+  ],
+  "passed": 10,
+  "totalComplexSamples": 163840,
+  "maxComplexError": 1.2079226507921703e-13
+}

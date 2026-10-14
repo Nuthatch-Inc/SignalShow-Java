@@ -4,16 +4,16 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: annular aperture and diffraction intensity",
+    "state": "Active Mac audit: Fourier basis creation and frequency-domain chains",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly73% remaining; no other applicable window reported",
     "authorization": "Juliet renewed Continuous Audit on 2026-10-13: test more ordinary Mac 2D creation and operation chains, prioritize crashes and major wrong results, and commit verified batches locally without pushing. Windows checks are deferred until later. No release/deployment authorized."
   },
   "scenarioPlan": {
-    "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger\u2019s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
+    "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-annular-diffraction-chain"
+      "gui-2d-basis-spectrum-chain"
     ],
     "nextIds": []
   },
@@ -116,7 +116,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
+      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "power-chain-2026-10-13"
@@ -443,7 +443,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
       "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
       "evidence": [
         "workflow-regressions-2026-10-12"
@@ -462,7 +462,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
       "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
       "evidence": [
         "workflow-regressions-2026-10-12"
@@ -481,7 +481,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
       "remaining": "Generated equations, handbook review and visible desktop operation workflow; broader parameter and dimension coverage remains open.",
       "evidence": [
         "workflow-regressions-2026-10-12"
@@ -500,7 +500,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged.",
       "remaining": "Generated equations, handbook review and visible desktop operation workflow. Division by zero and unequal-size inputs are outside this fixture.",
       "evidence": [
         "workflow-regressions-2026-10-12"
@@ -553,11 +553,12 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32\u00d716/16\u00d732 images, both origins, source edits and independent direct references. Native 256\u00d7256 constant complex filtering/FFT chains verified from every saved sample. Native centered128\u00d764 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
       "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
         "filtering-2026-10-13",
-        "spatial-filtering-2026-10-13"
+        "spatial-filtering-2026-10-13",
+        "annular-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -608,7 +609,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Actual JAI rotations at ordinary square/rectangular sizes preserve sample counts and compose with Times/Plus. Native 180\u00b0 and 45\u00b0 parameter typing, composition and TIFF export checked. Rectangular quarter-turn failure corrected. Independent both-channel geometry, both origins, all four interpolation choices at90/\u221290/180; native128\u00d764 edited chains and30\u00b0 nearest neighbor verified.",
+      "scope": "Actual JAI rotations at ordinary square/rectangular sizes preserve sample counts and compose with Times/Plus. Native 180° and 45° parameter typing, composition and TIFF export checked. Rectangular quarter-turn failure corrected. Independent both-channel geometry, both origins, all four interpolation choices at90/−90/180; native128×64 edited chains and30° nearest neighbor verified.",
       "remaining": "Arbitrary-angle bilinear/bicubic geometric/interpolation review, equations, handbook and Windows remain gaps. Duplicate parameter ownership was separately corrected and checked.",
       "evidence": [
         "roger-rotation-2026-10-12",
@@ -630,7 +631,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered128\u00d764 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample.",
+      "scope": "Native centered128×64 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample.",
       "remaining": "Other normal fixtures/origins, definition/equations/handbook review and Windows remain open.",
       "evidence": [
         "shift-scale-2026-10-13"
@@ -650,7 +651,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered64\u00d7128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
+      "scope": " Native centered64×128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
       "remaining": "Other ordinary fixtures/callers, generated equations and full handbook review remain open; this bounded native chain passed.",
       "evidence": [
         "intensity-chain-2026-10-13"
@@ -671,7 +672,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
+      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "power-chain-2026-10-13"
@@ -690,7 +691,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
+      "scope": "Native centered128×64 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "noise-chain-2026-10-13"
@@ -709,7 +710,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128\u00d764 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
+      "scope": "Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "signed-chain-2026-10-13"
@@ -728,7 +729,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered64\u00d7128 real image: independent adjacent-pixel differences/cumulative sums in both directions and source edits; Negate of an independently exported edited result.",
+      "scope": "Native centered64×128 real image: independent adjacent-pixel differences/cumulative sums in both directions and source edits; Negate of an independently exported edited result.",
       "remaining": "Other origins, complex channels and callers remain; definition, equations and full handbook review remain unreviewed.",
       "evidence": [
         "directional-reuse-2026-10-13"
@@ -747,7 +748,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered128\u00d764 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "scope": " Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
       "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
         "chirp-aperture-2026-10-13"
@@ -768,7 +769,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered64\u00d7128 real image: independent adjacent-pixel differences/cumulative sums in both directions and source edits; Negate of an independently exported edited result.",
+      "scope": "Native centered64×128 real image: independent adjacent-pixel differences/cumulative sums in both directions and source edits; Negate of an independently exported edited result.",
       "remaining": "Other origins, complex channels and callers remain; definition, equations and full handbook review remain unreviewed.",
       "evidence": [
         "directional-reuse-2026-10-13"
@@ -787,7 +788,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered64\u00d7128 real image: independent adjacent-pixel differences/cumulative sums in both directions and source edits; Negate of an independently exported edited result.",
+      "scope": "Native centered64×128 real image: independent adjacent-pixel differences/cumulative sums in both directions and source edits; Negate of an independently exported edited result.",
       "remaining": "Other origins, complex channels and callers remain; definition, equations and full handbook review remain unreviewed.",
       "evidence": [
         "directional-reuse-2026-10-13"
@@ -806,7 +807,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128\u00d764 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
+      "scope": "Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "signed-chain-2026-10-13"
@@ -825,7 +826,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered64\u00d7128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
+      "scope": " Native centered64×128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
       "remaining": "Other ordinary fixtures/callers, generated equations and full handbook review remain open; this bounded native chain passed.",
       "evidence": [
         "intensity-chain-2026-10-13"
@@ -846,7 +847,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered64\u00d7128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
+      "scope": " Native centered64×128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
       "remaining": "Other ordinary fixtures/callers, generated equations and full handbook review remain open; this bounded native chain passed.",
       "evidence": [
         "intensity-chain-2026-10-13"
@@ -867,7 +868,7 @@
         "parameters": "verified",
         "handbook": "unreviewed"
       },
-      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256\u00d7256 composition and TIFF export also exercised. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 magnitude/rotation chain with threshold0.75, source amplitude edits and visible parameters verified. Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
+      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 magnitude/rotation chain with threshold0.75, source amplitude edits and visible parameters verified. Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
@@ -892,7 +893,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Both-origin rectangular production chains and native128\u00d764 Gaussian+constant-imaginary Magnitude\u2192Threshold\u2192Rotate; both source amplitudes independently checked from native exports.",
+      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports.",
       "remaining": "Definition, equations, handbook, broader source families and Windows remain unreviewed.",
       "evidence": [
         "rectangular-rotation-2026-10-13"
@@ -912,11 +913,12 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered128\u00d764 complex chirp/aperture chain and live edits independently checked against every saved complex sample. Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
+      "scope": " Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample. Native centered128×64 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
       "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
         "chirp-aperture-2026-10-13",
-        "noise-chain-2026-10-13"
+        "noise-chain-2026-10-13",
+        "annular-chain-2026-10-13"
       ],
       "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook.",
       "reviewedOn": "2026-10-13"
@@ -934,7 +936,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
+      "scope": "Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "phase-chain-2026-10-13"
@@ -953,7 +955,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered128\u00d764 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample.",
+      "scope": "Native centered128×64 complex Fourier-source chain: fill/wrap two-axis shifts, both complex scale parameters, Plus, source period edit and revisits verified from every saved sample.",
       "remaining": "Other normal fixtures/origins, definition/equations/handbook review and Windows remain open. Translate help does not yet explain its unchecked zero-fill option.",
       "evidence": [
         "shift-scale-2026-10-13"
@@ -973,7 +975,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
+      "scope": "Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "power-chain-2026-10-13"
@@ -1060,7 +1062,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Native complex spatial image through Real\u2192Threshold, saved every-sample check and subsequent live source edit. Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
+      "scope": "Native complex spatial image through Real→Threshold, saved every-sample check and subsequent live source edit. Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Broader input/parameter variants,1D caller, definition/equation/handbook review remain open.",
       "evidence": [
         "roger-rotation-2026-10-12",
@@ -1082,7 +1084,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256\u00d7256 composition and TIFF export also exercised. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 edited Translate/complex Scale chain plus original Fourier source verified.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 edited Translate/complex Scale chain plus original Fourier source verified.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
@@ -1105,7 +1107,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
@@ -1127,13 +1129,14 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256\u00d7256 composition and TIFF export also exercised. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native centered128\u00d764 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
       "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
         "workflow-regressions-2026-10-12",
         "roger-rotation-2026-10-12",
         "arithmetic-2026-10-13",
-        "chirp-aperture-2026-10-13"
+        "chirp-aperture-2026-10-13",
+        "annular-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13",
       "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook."
@@ -1151,7 +1154,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4\u00d72 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
@@ -1173,7 +1176,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32\u00d716/16\u00d732 images, both origins, source edits and independent direct references. Native 256\u00d7256 constant complex filtering/FFT chains verified from every saved sample. Native centered128\u00d764 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
       "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
         "filtering-2026-10-13",
@@ -1194,7 +1197,7 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32\u00d716/16\u00d732 images, both origins, source edits and independent direct references. Native 256\u00d7256 constant complex filtering/FFT chains verified from every saved sample. Native centered128\u00d764 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports.",
       "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
         "filtering-2026-10-13",
@@ -1215,7 +1218,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
+      "scope": "Native centered128×64 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "noise-chain-2026-10-13"
@@ -1336,7 +1339,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native256\u00d7256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise. Native centered128\u00d764 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
+      "scope": "Native256×256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise. Native centered128×64 complex Gaussian/Uniform noise with normal mean/spread/seed edits, view stability, Subtract Mean and Squared Magnitude verified from saved samples. Generator distribution checks are broad sanity only.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "creation-2026-10-13",
@@ -1425,7 +1428,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Existing infinite-support constant definition; actual Cartesian/magnitude-phase image grids, both origins, ordinary resize/edit chains. Native samples verified through 1024 square. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
+      "scope": "Existing infinite-support constant definition; actual Cartesian/magnitude-phase image grids, both origins, ordinary resize/edit chains. Native samples verified through 1024 square. Native128×64 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Full handbook cross-reference and presentation of irrelevant general image geometry controls remain outside this usage batch.",
       "evidence": [
         "memory-usage-2026-10-13",
@@ -1565,13 +1568,16 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": "Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
+      "remaining": "Other ordinary fixtures, origins, generated equations and handbook remain unreviewed; this bounded native chain passed.",
+      "evidence": [
+        "annular-chain-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "analytic2DList:CylinderFunctionTerm2D",
@@ -1586,7 +1592,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native256\u00d7256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise. Native centered128\u00d764 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "scope": "Native256×256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise. Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
       "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
         "creation-2026-10-13",
@@ -1744,7 +1750,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered128\u00d764 complex chirp/aperture chain and live edits independently checked against every saved complex sample. This covers its 2D radial complex-creation caller and paired SineChirp, not direct1D creation.",
+      "scope": " Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample. This covers its 2D radial complex-creation caller and paired SineChirp, not direct1D creation.",
       "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
         "chirp-aperture-2026-10-13"
@@ -1803,12 +1809,14 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
+      "scope": "Native128×64 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "polar-chain-2026-10-13",
-        "power-chain-2026-10-13"
-      ]
+        "power-chain-2026-10-13",
+        "annular-chain-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "functionTerm1DList:DeltaFunctionTerm1D",
@@ -1908,7 +1916,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native centered64\u00d7128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Native128\u00d764 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native centered64×128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified. Native128×64 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
       "remaining": "Other ordinary fixtures/callers, generated equations and full handbook review remain open; this bounded native chain passed.",
       "evidence": [
         "channels-2026-10-13",
@@ -1983,7 +1991,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
+      "scope": "Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "phase-chain-2026-10-13"
@@ -2155,7 +2163,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native128\u00d764 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
+      "scope": "Cartesian2D factors through native authoring, independent channel edits, grouping and saved sample oracles. Gaussian widths16/17/20, Rectangle full width16, Constant amplitude 2. Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate.",
       "remaining": "Standalone1D callers, broader parameters, definition and handbook remain unreviewed; individual equations retain their separate status.",
       "evidence": [
         "cartesian-composition-2026-10-12",
@@ -2212,12 +2220,14 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128\u00d764 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent\u2192Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified.",
+      "scope": "Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "signed-chain-2026-10-13",
-        "power-chain-2026-10-13"
-      ]
+        "power-chain-2026-10-13",
+        "annular-chain-2026-10-13"
+      ],
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "functionTerm1DList:SincFunctionTerm1D",
@@ -2334,7 +2344,7 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": " Native centered64\u00d7128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
+      "scope": " Native centered64×128 Triangle/Gaussian intensity chain, Offset/Clip/Square Root, linked edits and duplicated Clip settings independently verified.",
       "remaining": "Other ordinary fixtures/callers, generated equations and full handbook review remain open; this bounded native chain passed.",
       "evidence": [
         "intensity-chain-2026-10-13"
@@ -2406,7 +2416,7 @@
         "Read values, clear the cached channels, read again."
       ],
       "expected": "All original samples and dimensions survive cache regeneration.",
-      "scope": "Programmatic; eight samples or 4\u00d72, no native editor.",
+      "scope": "Programmatic; eight samples or 4×2, no native editor.",
       "evidence": [
         "workflow-regressions-2026-10-12"
       ],
@@ -2426,7 +2436,7 @@
         "Regenerate result caches and confirm operands remain unchanged."
       ],
       "expected": "Sum, difference, product and quotient retain sample order, complex values and geometry.",
-      "scope": "Programmatic; eight samples or 4\u00d72; both origins; nonzero denominators.",
+      "scope": "Programmatic; eight samples or 4×2; both origins; nonzero denominators.",
       "evidence": [
         "workflow-regressions-2026-10-12"
       ],
@@ -2445,7 +2455,7 @@
         "Read values, clear the cached channels, read again."
       ],
       "expected": "All original samples and dimensions survive cache regeneration.",
-      "scope": "Programmatic; eight samples or 4\u00d72, no native editor.",
+      "scope": "Programmatic; eight samples or 4×2, no native editor.",
       "evidence": [
         "workflow-regressions-2026-10-12"
       ],
@@ -2465,7 +2475,7 @@
         "Regenerate result caches and confirm operands remain unchanged."
       ],
       "expected": "Sum, difference, product and quotient retain sample order, complex values and geometry.",
-      "scope": "Programmatic; eight samples or 4\u00d72; both origins; nonzero denominators.",
+      "scope": "Programmatic; eight samples or 4×2; both origins; nonzero denominators.",
       "evidence": [
         "workflow-regressions-2026-10-12"
       ],
@@ -2505,7 +2515,7 @@
         "Change a parameter, inspect the thumbnail, open Plot and return to Edit."
       ],
       "expected": "Each family produces an editable function and current image; no exception, frozen editor or process exit.",
-      "scope": "Representative centered256\u00d7256 native workflows: Cylinder/Uniform Noise and polar Gaussian\u00d7Cosine in this batch; Image Gradient/Constant/import edits and Cartesian combinations in earlier evidence. More generators and combinations remain separate. Polar radial/angular corner-origin mismatch fixed and native-retested; earlier bounded geometry checks did not cover this factor combination.",
+      "scope": "Representative centered256×256 native workflows: Cylinder/Uniform Noise and polar Gaussian×Cosine in this batch; Image Gradient/Constant/import edits and Cartesian combinations in earlier evidence. More generators and combinations remain separate. Polar radial/angular corner-origin mismatch fixed and native-retested; earlier bounded geometry checks did not cover this factor combination.",
       "evidence": [
         "creation-2026-10-13",
         "cartesian-composition-2026-10-12",
@@ -2530,7 +2540,7 @@
         "Change inputs and threshold bounds; inspect result and both channels."
       ],
       "expected": "The four basic arithmetic operations and Threshold are selectable and produce current complex outputs without crashes.",
-      "scope": "Native centered 256\u00d7256 Gradient + imaginary Constant and complex Constant; Plus/Minus/Times/Divide, Threshold 0.2, source amplitude edit, operand reversal, plots and 13 exported arrays.",
+      "scope": "Native centered 256×256 Gradient + imaginary Constant and complex Constant; Plus/Minus/Times/Divide, Threshold 0.2, source amplitude edit, operand reversal, plots and 13 exported arrays.",
       "evidence": [
         "complex-insertion-2026-10-12",
         "arithmetic-2026-10-13"
@@ -2551,13 +2561,13 @@
         "Keep the imaginary channel and two downstream operations intact; compare saved samples after each change."
       ],
       "expected": "Edits reach the intended term; invalid drafts do not break the editor or leave stale output.",
-      "scope": "Native 256\u00d7256 controls and saved outputs; representative families. Dragging, invalid drafts and every generator are separate gaps.",
+      "scope": "Native 256×256 controls and saved outputs; representative families. Dragging, invalid drafts and every generator are separate gaps.",
       "evidence": [
         "two-term-2026-10-12",
         "import-edit-2026-10-13",
         "replacement-2026-10-13"
       ],
-      "summary": "Representative parameter edits and family replacement pass, including negative values, unchanged imaginary samples and live Squared Magnitude \u2192 Threshold results. Eighteen exports match the scoped checks.",
+      "summary": "Representative parameter edits and family replacement pass, including negative values, unchanged imaginary samples and live Squared Magnitude → Threshold results. Eighteen exports match the scoped checks.",
       "environment": "macOS arm64/JDK25; 484-test executable",
       "reviewedOn": "2026-10-13"
     },
@@ -2593,11 +2603,11 @@
       "status": "checked",
       "steps": [
         "Create a polar Rectangle (full width 64), Add, then Cartesian Gaussian (width 24).",
-        "Select Rectangle, edit full width to 80, reselect Gaussian, then Plot \u2192 Edit and save.",
+        "Select Rectangle, edit full width to 80, reselect Gaussian, then Plot → Edit and save.",
         "Check symbol, individual thumbnails, equation, parameters and saved samples."
       ],
       "expected": "Each term and arithmetic symbol retain their role; saved samples agree with the authored expression.",
-      "scope": "BUG-006 ordinary native 256\u00d7256 circle/Gaussian editing; component Add/Subtract/Multiply, Cartesian terms and polar resize.",
+      "scope": "BUG-006 ordinary native 256×256 circle/Gaussian editing; component Add/Subtract/Multiply, Cartesian terms and polar resize.",
       "evidence": [
         "two-term-2026-10-12"
       ],
@@ -2612,8 +2622,8 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Create a 128\u00d764 complex chirp with nonzero phase and visit each view.",
-        "Create a 256\u00d7256 complex chirp, edit phase through both channel editors and revisit the views.",
+        "Create a 128×64 complex chirp with nonzero phase and visit each view.",
+        "Create a 256×256 complex chirp, edit phase through both channel editors and revisit the views.",
         "Inspect the four Profile channels and change Histogram bins from 30 to 40."
       ],
       "expected": "Views display the current data with correct geometry and remain responsive; no crash or stale result.",
@@ -2623,7 +2633,7 @@
         "histogram-2026-10-12"
       ],
       "summary": "All view transitions complete after source edits; saved data agrees with the edited chirp. Rectangular Profiles and Histogram display defects are fixed, with native screenshots and focused regressions.",
-      "environment": "macOS arm64, JDK 25; native 128\u00d764 and 256\u00d7256 chirps",
+      "environment": "macOS arm64, JDK 25; native 128×64 and 256×256 chirps",
       "reviewedOn": "2026-10-12"
     },
     {
@@ -2633,11 +2643,11 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Use an asymmetric image at 64\u00d732 and 32\u00d764.",
+        "Use an asymmetric image at 64×32 and 32×64.",
         "Toggle zero-centering, apply threshold/arithmetic and inspect profiles/FFT."
       ],
       "expected": "Dimensions, channel placement and coordinates remain consistent; no array-bound exception.",
-      "scope": "Centered64\u00d732 and corner-origin32\u00d764 Gradient/Constant fixtures, input/product/threshold exports, native source Profiles/FFT and result FFT. Transform numerics and broader image families remain separate. Polar radial/angular corner-origin mismatch fixed and native-retested; earlier bounded geometry checks did not cover this factor combination.",
+      "scope": "Centered64×32 and corner-origin32×64 Gradient/Constant fixtures, input/product/threshold exports, native source Profiles/FFT and result FFT. Transform numerics and broader image families remain separate. Polar radial/angular corner-origin mismatch fixed and native-retested; earlier bounded geometry checks did not cover this factor combination.",
       "evidence": [
         "size-native-2026-10-13",
         "polar-chain-2026-10-13"
@@ -2658,12 +2668,12 @@
         "Change parameters, view results and use each as an operation input."
       ],
       "expected": "Representation meaning and dimensions survive edits and handoffs without exceptions.",
-      "scope": "Native special-menu and ordinary representation edits at 256\u00d7256; exact equivalence beyond three-decimal entry precision is deferred.",
+      "scope": "Native special-menu and ordinary representation edits at 256×256; exact equivalence beyond three-decimal entry precision is deferred.",
       "evidence": [
         "complex-native-2026-10-13",
         "filtering-2026-10-13"
       ],
-      "summary": "Chirp, radial exponential and Fourier-basis operations match independent formulas. Magnitude/phase \u2192 Real \u2192 Threshold follows a phase edit with every saved sample verified against the accepted phase; fresh-app typing works again.",
+      "summary": "Chirp, radial exponential and Fourier-basis operations match independent formulas. Magnitude/phase → Real → Threshold follows a phase edit with every saved sample verified against the accepted phase; fresh-app typing works again.",
       "environment": "macOS arm64, JDK25; 484-test executable",
       "reviewedOn": "2026-10-13"
     },
@@ -2684,7 +2694,7 @@
         "linked-sources-2026-10-12"
       ],
       "summary": "All native complex samples agree before/after a source edit and operand replacement. Corrected permanent dirty-state allocations; model checks also cover later edits and cache eviction.",
-      "environment": "macOS arm64, JDK 25; native 256\u00d7256 and production 128\u00d764/1D",
+      "environment": "macOS arm64, JDK 25; native 256×256 and production 128×64/1D",
       "reviewedOn": "2026-10-12"
     },
     {
@@ -2699,7 +2709,7 @@
         "Return to the original and save both results."
       ],
       "expected": "The copy opens its existing definition; its edits leave the original unchanged.",
-      "scope": "Native 256\u00d7256 predefined complex chirp; production checks cover 1D/2D real/imaginary and magnitude/phase, nested terms, arrays, image modes and seeded noise.",
+      "scope": "Native 256×256 predefined complex chirp; production checks cover 1D/2D real/imaginary and magnitude/phase, nested terms, arrays, image modes and seeded noise.",
       "evidence": [
         "duplicate-images-2026-10-12"
       ],
@@ -2741,7 +2751,7 @@
       "evidence": [
         "demos-2026-10-13"
       ],
-      "summary": "Convolution, frequency filtering and frequency-location views open and respond to bounded controls at 64\u00d732. Shared animation timer cleanup fixed and verified separately from numerical accuracy.",
+      "summary": "Convolution, frequency filtering and frequency-location views open and respond to bounded controls at 64×32. Shared animation timer cleanup fixed and verified separately from numerical accuracy.",
       "environment": "macOS arm64/JDK25; 495-test package",
       "reviewedOn": "2026-10-13"
     },
@@ -2752,12 +2762,12 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Save a native 128\u00d764 complex image using Save Complex Data.",
+        "Save a native 128×64 complex image using Save Complex Data.",
         "Reload and compare dimensions, origin, both channels and a name with spaces.",
         "Use the reloaded non-centered image in Threshold followed by Times; save and compare results."
       ],
       "expected": "Supported sample content survives save/reopen and subsequent operations without crashes.",
-      "scope": "Native centered and non-centered 128\u00d764 persistence; subsequent Threshold/Times on the non-centered fixture. Production 32\u00d716 both-origin checks remain separate evidence. First-open loaded/exported numeric-data editors and amplitude edits verified on Mac after BUG-041; earlier round trips alone did not establish this.",
+      "scope": "Native centered and non-centered 128×64 persistence; subsequent Threshold/Times on the non-centered fixture. Production 32×16 both-origin checks remain separate evidence. First-open loaded/exported numeric-data editors and amplitude edits verified on Mac after BUG-041; earlier round trips alone did not establish this.",
       "evidence": [
         "complex-insertion-2026-10-12",
         "profiles-2026-10-12",
@@ -2796,7 +2806,7 @@
       "status": "checked",
       "steps": [
         "Decode ordinary JPEG, PNG, TIFF and BMP files with known sample values; verify centered padding.",
-        "Load Roger\u2019s JPEG and TIFF in the native app, threshold the TIFF at 127.5 and save numeric outputs."
+        "Load Roger’s JPEG and TIFF in the native app, threshold the TIFF at 127.5 and save numeric outputs."
       ],
       "expected": "Import creates a usable correctly oriented image and later operations remain consistent.",
       "scope": "Five programmatic image cases plus rectangular text padding; native Roger JPEG/TIFF and TIFF threshold. Imported-image edits/resampling are tracked separately.",
@@ -2818,7 +2828,7 @@
         "Re-read values or pixels independently, including shared normalization of complex channels."
       ],
       "expected": "Files represent the selected current result and preserve documented range/orientation conventions.",
-      "scope": "Native ordinary 256\u00d7256 sources and operation results; format-specific exact/lossy verification. Other options and Windows remain open.",
+      "scope": "Native ordinary 256×256 sources and operation results; format-specific exact/lossy verification. Other options and Windows remain open.",
       "evidence": [
         "exports-2026-10-13"
       ],
@@ -2838,7 +2848,7 @@
         "Attempt one controlled unwritable destination and recover."
       ],
       "expected": "Cancellation preserves current work; success/error reporting matches the actual file.",
-      "scope": "Temporary 256\u00d7256 constant images on macOS; missing-folder save failure. Windows, interrupted writes and atomic replacement remain outside this evidence.",
+      "scope": "Temporary 256×256 constant images on macOS; missing-folder save failure. Windows, interrupted writes and atomic replacement remain outside this evidence.",
       "evidence": [
         "dialogs-2026-10-13"
       ],
@@ -2911,11 +2921,11 @@
     {
       "id": "launch-native-windows",
       "area": "platform",
-      "title": "Verify Roger\u2019s Windows build and launch path",
+      "title": "Verify Roger’s Windows build and launch path",
       "priority": "P0",
       "status": "pending",
       "steps": [
-        "Confirm Roger\u2019s OS, Java/bundled runtime and app version.",
+        "Confirm Roger’s OS, Java/bundled runtime and app version.",
         "Build/launch the intended Windows package; run the small 2D creation/operation script."
       ],
       "expected": "The actual Windows application launches and supports the tested workflows.",
@@ -2933,7 +2943,7 @@
       "status": "pending",
       "steps": [
         "Use a writable path containing spaces and non-ASCII characters.",
-        "Check the primary 2D controls and file dialogs at Roger\u2019s display scaling."
+        "Check the primary 2D controls and file dialogs at Roger’s display scaling."
       ],
       "expected": "Ordinary path names, keyboard input and visible controls work correctly.",
       "scope": "Windows-specific acceptance.",
@@ -2951,14 +2961,14 @@
       "steps": [
         "Remove Xmx2g from every maintained native packaging path and example.",
         "Check shell syntax, Maven XML and the assembled test launcher configuration.",
-        "Read the installed JVM\u2019s default heap estimate."
+        "Read the installed JVM’s default heap estimate."
       ],
       "expected": "New packages use JVM default heap sizing; no hidden fixed 2 GiB override remains.",
       "scope": "Source checks and a macOS test app image. Windows packaging remains unexecuted.",
       "evidence": [
         "heap-policy-2026-10-12"
       ],
-      "summary": "All five maintained cap settings removed; this Mac\u2019s JVM estimates a 6 GiB default budget.",
+      "summary": "All five maintained cap settings removed; this Mac’s JVM estimates a 6 GiB default budget.",
       "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
       "reviewedOn": "2026-10-12"
     },
@@ -2977,7 +2987,7 @@
       "evidence": [
         "memory-source-2026-10-12"
       ],
-      "summary": "One 4096\u00d74096 double channel is 128 MiB; four such channels are 512 MiB, excluding other owners and temporaries.",
+      "summary": "One 4096×4096 double channel is 128 MiB; four such channels are 512 MiB, excluding other owners and temporaries.",
       "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
       "reviewedOn": "2026-10-12"
     },
@@ -2989,7 +2999,7 @@
       "status": "checked",
       "steps": [
         "Record JVM heap limit, heap usage, process memory and elapsed time.",
-        "Create/edit/apply threshold and arithmetic at 256\u00d7256, 512\u00d7512 and, if healthy, 1024\u00d71024.",
+        "Create/edit/apply threshold and arithmetic at 256×256, 512×512 and, if healthy, 1024×1024.",
         "Record steady and peak observations per workload; stop on unresponsiveness."
       ],
       "expected": "A bounded measured envelope distinguishes ordinary defects from capacity limits.",
@@ -3110,7 +3120,7 @@
         "Render the empty result and restore dimensions/center."
       ],
       "expected": "An empty image renders without a scaler exception; subsequent normal edits recover.",
-      "scope": "Eight headless component/rendering cases at 128\u00d764, both origins.",
+      "scope": "Eight headless component/rendering cases at 128×64, both origins.",
       "summary": "Fixed the shared zero-scale failure; all eight cases pass.",
       "evidence": [
         "empty-image-2026-10-12"
@@ -3142,7 +3152,7 @@
     {
       "id": "roger-resolution-target",
       "area": "usage",
-      "title": "Reproduce Roger\u2019s circular-resolution target walkthrough",
+      "title": "Reproduce Roger’s circular-resolution target walkthrough",
       "priority": "P0",
       "status": "checked",
       "steps": [
@@ -3150,13 +3160,13 @@
         "Duplicate and edit the operation system, inspect intermediate results, export TIFF and compare with the supplied files."
       ],
       "expected": "Stable editable workflow, real nonnegative final output and independently checked composition.",
-      "scope": "256\u00d7256 zero-centered images; supplied PDF/TIFF references, actual model and native UI paths.",
+      "scope": "256×256 zero-centered images; supplied PDF/TIFF references, actual model and native UI paths.",
       "summary": "All nine supplied steps recreated in the corrected native app; final rotated-mask multiplication and TIFF export succeed with no logged exception. Exact historical pixel parity is not asserted. Duplicate parameter independence is a separate known bug.",
       "evidence": [
         "roger-walkthrough-2026-10-12",
         "roger-rotation-2026-10-12"
       ],
-      "environment": "macOS/JDK 25 native 256\u00d7256 workflow and TIFF readback; Windows untested",
+      "environment": "macOS/JDK 25 native 256×256 workflow and TIFF readback; Windows untested",
       "reviewedOn": "2026-10-12"
     },
     {
@@ -3170,7 +3180,7 @@
         "Inspect both result previews and parameter fields at normal and smaller window sizes."
       ],
       "expected": "Previews are not squeezed into a narrow corner; inputs remain visible and usable.",
-      "scope": "Native macOS 2D Threshold/Rotate at large and about 1153\u00d7742 logical points, plus real Swing sizing regressions. Other operation layouts and Windows remain separate checks.",
+      "scope": "Native macOS 2D Threshold/Rotate at large and about 1153×742 logical points, plus real Swing sizing regressions. Other operation layouts and Windows remain separate checks.",
       "summary": "Threshold and Rotate parameters, help and readable result previews are accessible at large and smaller desktop sizes. Threshold fields remain visible and editable while scrolling to the imaginary result.",
       "evidence": [
         "roger-walkthrough-2026-10-12",
@@ -3178,7 +3188,7 @@
         "roger-rotation-2026-10-12",
         "copy-layout-2026-10-12"
       ],
-      "environment": "macOS/JDK 25; large and 2306\u00d71484-pixel smaller windows inspected",
+      "environment": "macOS/JDK 25; large and 2306×1484-pixel smaller windows inspected",
       "reviewedOn": "2026-10-12"
     },
     {
@@ -3192,8 +3202,8 @@
         "Change the original Threshold from 0.5 to 0.75; inspect both parameter values and outputs."
       ],
       "expected": "The duplicate preserves the copied settings and later parameter edits affect only the edited chain; linked source images remain linked.",
-      "scope": "Normal 1D/2D operation-system ownership; actual native failure reproduced in Roger\u2019s 2D chain.",
-      "summary": "Configured operation copies retain their settings and subsequent edits stay independent. Linked source producers remain linked; replacing one copy\u2019s operand does not replace the other\u2019s. Native 2D cutoff edits and 1D/2D production outputs verified.",
+      "scope": "Normal 1D/2D operation-system ownership; actual native failure reproduced in Roger’s 2D chain.",
+      "summary": "Configured operation copies retain their settings and subsequent edits stay independent. Linked source producers remain linked; replacing one copy’s operand does not replace the other’s. Native 2D cutoff edits and 1D/2D production outputs verified.",
       "evidence": [
         "roger-rotation-2026-10-12",
         "copy-layout-2026-10-12"
@@ -3218,7 +3228,7 @@
         "Compare stored dimensions, origin, names and both channels."
       ],
       "expected": "Native generated and operation-result files reopen and retain their current samples and names.",
-      "scope": "Native 256\u00d7256 zero-centered; production rectangular and 1D checks separately documented.",
+      "scope": "Native 256×256 zero-centered; production rectangular and 1D checks separately documented.",
       "summary": "Native save/load/resave succeeds. Every saved channel sample matches independent Threshold/Real/Times expectations exactly; names and geometry survive."
     },
     {
@@ -3248,12 +3258,12 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Open a 128\u00d764 centered complex image in Profiles.",
+        "Open a 128×64 centered complex image in Profiles.",
         "Switch Real/Imaginary/Magnitude/Phase and horizontal/vertical directions.",
         "Export x = y + 3 and y = 0 as 1D signals; save and compare their samples."
       ],
       "expected": "Profiles opens without errors and exported samples/name match the selected line.",
-      "scope": "Native centered 128\u00d764 image; component/model wide/tall and both-origin checks.",
+      "scope": "Native centered 128×64 image; component/model wide/tall and both-origin checks.",
       "summary": "BUG-015 repaired. All eight fixtures pass; native two exported cuts match both source channels exactly; full package passes 434 tests.",
       "environment": "macOS arm64, JDK 25; Swing and native app",
       "reviewedOn": "2026-10-12",
@@ -3288,7 +3298,7 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Resize a source used twice in a multiplication to 128\u00d764.",
+        "Resize a source used twice in a multiplication to 128×64.",
         "Resize one independent input and inspect the unavailable result.",
         "Replace operands with compatible rectangular data and save the recovered result."
       ],
@@ -3330,11 +3340,11 @@
       "status": "checked",
       "steps": [
         "Create two images and multiply them.",
-        "Resize one source to 128\u00d764.",
-        "Resize the other to128\u00d764 and return to the result."
+        "Resize one source to 128×64.",
+        "Resize the other to128×64 and return to the result."
       ],
       "expected": "The result returns with the selected dimensions and current samples.",
-      "scope": "Actual native width/height dropdowns, mismatched128\u00d764 input then restored matching dimensions; all8,192 complex result samples verified.",
+      "scope": "Actual native width/height dropdowns, mismatched128×64 input then restored matching dimensions; all8,192 complex result samples verified.",
       "evidence": [
         "resize-linked-2026-10-12",
         "size-native-2026-10-13"
@@ -3355,7 +3365,7 @@
         "Apply Threshold0.5 and save both source and result."
       ],
       "expected": "Operator symbol and independent term parameters remain correct; saved samples agree with the authored controls.",
-      "scope": "Native 256\u00d7256 real image with x/y factors and one two-term sum; formula wording reviewed separately.",
+      "scope": "Native 256×256 real image with x/y factors and one two-term sum; formula wording reviewed separately.",
       "evidence": [
         "cartesian-composition-2026-10-12"
       ],
@@ -3375,7 +3385,7 @@
         "Insert grouping into an existing native expression and save before/after results."
       ],
       "expected": "Precedence, icons, saved samples and subsequent edits agree.",
-      "scope": "Actual Swing components and native 256\u00d7256 constants; distinct spatial/imaginary scenarios remain pending.",
+      "scope": "Actual Swing components and native 256×256 constants; distinct spatial/imaginary scenarios remain pending.",
       "summary": "Seven component tests and native 3/4/2 all-pixel outputs pass; no production correction needed.",
       "evidence": [
         "grouping-2026-10-13"
@@ -3396,7 +3406,7 @@
       ],
       "expected": "Channel controls, expression tokens, source and operation outputs remain independent and current.",
       "scope": "Ordinary 2D authoring and chained component operations.",
-      "summary": "Native grouped imaginary expression, independent real edit, Real\u2192Threshold and subsequent linked update pass; all exported pixels independently checked.",
+      "summary": "Native grouped imaginary expression, independent real edit, Real→Threshold and subsequent linked update pass; all exported pixels independently checked.",
       "evidence": [
         "channels-2026-10-13"
       ],
@@ -3433,7 +3443,7 @@
         "Change amplitude, center and size; inspect preview and Plot, save source and linked operation results."
       ],
       "expected": "Displayed parameters, previews, saved samples and linked results describe the same edited image.",
-      "scope": "128\u00d764 production/Swing cases in both origin modes; native centered 256\u00d7256 TIFF with amplitude 2, shift (+16,+8), size 128\u00d7128, crop and Threshold(200). Other formats/dragging and Windows remain separate. First-open loaded/exported numeric-data editors and amplitude edits verified on Mac after BUG-041; earlier round trips alone did not establish this.",
+      "scope": "128×64 production/Swing cases in both origin modes; native centered 256×256 TIFF with amplitude 2, shift (+16,+8), size 128×128, crop and Threshold(200). Other formats/dragging and Windows remain separate. First-open loaded/exported numeric-data editors and amplitude edits verified on Mac after BUG-041; earlier round trips alone did not establish this.",
       "evidence": [
         "image-import-2026-10-13",
         "import-edit-2026-10-13",
@@ -3451,7 +3461,7 @@
       "status": "checked",
       "steps": [
         "Create ordinary complex images and a small smoothing kernel through the production factories.",
-        "Apply Convolve/Correlate\u2192Real\u2192Threshold and forward/inverse FFT through operation systems.",
+        "Apply Convolve/Correlate→Real→Threshold and forward/inverse FFT through operation systems.",
         "Edit a source and replace a kernel, then compare current outputs with independent references."
       ],
       "expected": "Correct dimensions/current samples survive composition and edits without crashes or stale caches.",
@@ -3470,8 +3480,8 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Create two complex 256\u00d7256 Constant images and apply Convolve, then Correlate.",
-        "Create forward and inverse FFT systems from the correlation result, using \u221aN normalization.",
+        "Create two complex 256×256 Constant images and apply Convolve, then Correlate.",
+        "Create forward and inverse FFT systems from the correlation result, using √N normalization.",
         "Edit the source real amplitude and save the source and each linked result."
       ],
       "expected": "Current complex values and centered DC output agree with independent references without exceptions.",
@@ -3517,7 +3527,7 @@
         "Save the 1D result as data and compare exported samples."
       ],
       "expected": "Displayed and saved samples match the selected operation and settings, including the last sample.",
-      "scope": "Native centered 32\u00d716 normalized Constant and 256-sample complex sine/rectangle correlation; independent component cases cover both origins and no-wrap. Frequency demos remain separate.",
+      "scope": "Native centered 32×16 normalized Constant and 256-sample complex sine/rectangle correlation; independent component cases cover both origins and no-wrap. Frequency demos remain separate.",
       "summary": "Fixed BUG-032: ignored 2D normalization, shifted/missing samples, absent reference conjugation and wrong imaginary overlay. Native amplitude 2 remains2; all 256 complex correlation samples match independent sums after editing/reopening.",
       "evidence": [
         "demo-calculations-2026-10-13"
@@ -3537,7 +3547,7 @@
         "Select independent DC/low/mid/high components and inspect the spatial preview."
       ],
       "expected": "Displayed intermediate and final values follow the selected demonstration settings.",
-      "scope": "Native 32\u00d716 uncentered Gaussian cosine and centered/uncentered DC-only Constant; component checks include 1D, Ideal, both origins and three frequency bands. Filtering Band Pass/Band Reject remain separate.",
+      "scope": "Native 32×16 uncentered Gaussian cosine and centered/uncentered DC-only Constant; component checks include 1D, Ideal, both origins and three frequency bands. Filtering Band Pass/Band Reject remain separate.",
       "summary": "Fixed wrong uncentered frequency bins, suppressed DC-only output and invalid RGB scales. Native cosine gain, imaginary result and DC-only Constant reconstructions agree with independent expectations.",
       "evidence": [
         "frequency-2026-10-13"
@@ -3557,7 +3567,7 @@
         "Check an uncentered rectangular constant and recover from a failed save."
       ],
       "expected": "The constant covers the entire requested grid and linked operations follow edits.",
-      "scope": "Native centered chains and an uncentered 512\u00d7256 constant; production Cartesian/magnitude-phase, both origins, resizing and amplitude edits.",
+      "scope": "Native centered chains and an uncentered 512×256 constant; production Cartesian/magnitude-phase, both origins, resizing and amplitude edits.",
       "summary": "Fixed old finite image extent cropping a mathematically constant function. Native exports and four formerly failing regressions pass.",
       "evidence": [
         "memory-usage-2026-10-13"
@@ -3575,7 +3585,7 @@
         "Create ordinary inputs, choose Band Pass/Band Reject, edit center/separation/width and switch Ideal/Gaussian."
       ],
       "expected": "Controls and displayed samples agree with the selected pass/reject band.",
-      "scope": "Centered/uncentered 32\u00d716 complex images in Swing; uncentered 256\u00d7256 native cosine. 1D, Windows and reopening are separate scope.",
+      "scope": "Centered/uncentered 32×16 complex images in Swing; uncentered 256×256 native cosine. 1D, Windows and reopening are separate scope.",
       "summary": "Four EDT workflows verify known-mode results and controls; native 256-square cosine exercises nine filter/channel states with expected output scales and patterns.",
       "evidence": [
         "band-filter-2026-10-13"
@@ -3614,7 +3624,7 @@
         "Exercise forward/inverse FFT on the nonconstant image chain."
       ],
       "expected": "Nonconstant spatial results, source edits and transforms remain correct and usable.",
-      "scope": "Centered128\u00d764 complex Gaussian/translated rectangle, two amplitudes, circular Convolve/Correlate and square-root-N forward/inverse FFT.",
+      "scope": "Centered128×64 complex Gaussian/translated rectangle, two amplitudes, circular Convolve/Correlate and square-root-N forward/inverse FFT.",
       "summary": "All98,304 complex samples from12 native exports match independent references; live source and operator edits propagate. Native controls remained usable; six separate JDK accessibility exceptions recorded.",
       "evidence": [
         "spatial-filtering-2026-10-13"
@@ -3629,12 +3639,12 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Create a128\u00d764 image with off-center structure and two channels.",
+        "Create a128×64 image with off-center structure and two channels.",
         "Use Magnitude, Threshold and Rotate with ordinary angles90/180/30; inspect and save results.",
         "Edit a source and angle, revisit and verify linked results remain usable."
       ],
       "expected": "Normal-angle rotations retain a usable image canvas and compose with subsequent operations; visible controls and saved samples agree.",
-      "scope": "Native centered128\u00d764 Gaussian+imaginary Constant;90\u00b0/180\u00b0 bilinear,30\u00b0 nearest neighbor, Magnitude/Threshold/Rotate, source and angle edits.",
+      "scope": "Native centered128×64 Gaussian+imaginary Constant;90°/180° bilinear,30° nearest neighbor, Magnitude/Threshold/Rotate, source and angle edits.",
       "summary": "BUG-040 corrected.12 after-fix exports plus before-source match independent geometry; full578 pass. Native retest log clean; controls usable.",
       "evidence": [
         "rectangular-rotation-2026-10-13"
@@ -3654,7 +3664,7 @@
         "Edit source and shift/scale parameters; revisit and compare saved samples independently."
       ],
       "expected": "Both complex channels, shift directions, fill/wrap behavior and downstream arithmetic remain correct and usable.",
-      "scope": "Native centered128\u00d764 Fourier basis, shifts(13,\u22127)/(\u22129,5), fill/wrap, scales0.5+0.25i/\u22120.25+0.75i, Plus and source period edit.",
+      "scope": "Native centered128×64 Fourier basis, shifts(13,−7)/(−9,5), fill/wrap, scales0.5+0.25i/−0.25+0.75i, Plus and source period edit.",
       "summary": "All12 exports/98,304 complex samples match independent references. Imaginary-editor source edit updates both channels and downstream stages; log clean.",
       "evidence": [
         "shift-scale-2026-10-13"
@@ -3674,7 +3684,7 @@
         "Edit source and aperture parameters, revisit controls and compare saved results independently."
       ],
       "expected": "Creation, linked edits, conjugation and intensity results remain correct and usable.",
-      "scope": "Centered128\u00d764 radial chirp at two amplitudes/widths/phases; off-center Cylinder at two centers/radii, Times, Conjugate and Squared Magnitude with live edits and result Plot.",
+      "scope": "Centered128×64 radial chirp at two amplitudes/widths/phases; off-center Cylinder at two centers/radii, Times, Conjugate and Squared Magnitude with live edits and result Plot.",
       "summary": "All10 exports/81,920 complex samples independently verified. Coupled real/imaginary parameters retained; no crash or stale result; clean native log.",
       "evidence": [
         "chirp-aperture-2026-10-13"
@@ -3694,7 +3704,7 @@
         "Revisit the chain and compare saved samples independently."
       ],
       "expected": "Ordinary intensity adjustment chains remain responsive and return current correct results.",
-      "scope": "Centered64\u00d7128 Triangle \u00d7 Gaussian, two source/offset/clip settings; componentwise Square Root and independent duplicated Clip settings.",
+      "scope": "Centered64×128 Triangle × Gaussian, two source/offset/clip settings; componentwise Square Root and independent duplicated Clip settings.",
       "summary": "All11 exports/90,112 complex samples pass. Live edits and duplication isolation verified; controls remain usable and native log clean.",
       "evidence": [
         "intensity-chain-2026-10-13"
@@ -3714,7 +3724,7 @@
         "Export a result as an independent data function, edit/reuse it and verify the original chain remains correct."
       ],
       "expected": "Direction controls and linked results agree; exported data can be reused without corrupting the original chain.",
-      "scope": "Centered64\u00d7128 saved Triangle\u00d7Gaussian; X/Y Derivative and Integral, source gain edits, independent exported-data gain and Negate.",
+      "scope": "Centered64×128 saved Triangle×Gaussian; X/Y Derivative and Integral, source gain edits, independent exported-data gain and Negate.",
       "summary": "First loaded/exported editors were empty (BUG-041), now fixed and native-retested. All19 exports/155,648 complex samples pass; live chain updates and detached copy remains independent. Clean native logs.",
       "evidence": [
         "directional-reuse-2026-10-13"
@@ -3734,7 +3744,7 @@
         "Compare each saved result independently against the current source samples."
       ],
       "expected": "Noise creation and ordinary edits remain usable; downstream mean removal and intensity use the current data.",
-      "scope": "Centered128\u00d764 Gaussian real/Uniform imaginary, mean/spread/seed edits and Plot/Histogram/editor visits.",
+      "scope": "Centered128×64 Gaussian real/Uniform imaginary, mean/spread/seed edits and Plot/Histogram/editor visits.",
       "summary": "All12 exports/98,304 complex samples pass. Live operations use current channels; views preserve samples and seed restoration is repeatable. Clean native log.",
       "evidence": [
         "noise-chain-2026-10-13"
@@ -3754,7 +3764,7 @@
         "Edit parameters and replace operands, then inspect and independently verify saved results."
       ],
       "expected": "Polar creation and ordinary complex arithmetic remain usable and produce current results.",
-      "scope": "128\u00d764 radial Gaussian/angular Cosine with complex Constant, Divide/Minus, source/operand edits, both origins; standalone complex geometry/linked production checks across three shapes.",
+      "scope": "128×64 radial Gaussian/angular Cosine with complex Constant, Divide/Minus, source/operand edits, both origins; standalone complex geometry/linked production checks across three shapes.",
       "summary": "Corner-origin polar indexing was wrong (BUG-042), fixed and native-retested. Nine valid before and11 after exports/163,840 samples pass. Incorrect baseline outputs retained separately. Clean logs.",
       "evidence": [
         "polar-chain-2026-10-13"
@@ -3774,7 +3784,7 @@
         "Edit magnitude/phase parameters and compare saved intermediate results."
       ],
       "expected": "Both representation editors and extraction chains use current complex data without crashes or major wrong results.",
-      "scope": "Centered64\u00d7128 Constant magnitude, Cartesian Line\u00d7Line phase; five linked results including final real extraction after threshold; two source parameter sets.",
+      "scope": "Centered64×128 Constant magnitude, Cartesian Line×Line phase; five linked results including final real extraction after threshold; two source parameter sets.",
       "summary": "All12 exports/98,304 samples pass. Both authored components update all live branches. Principal phase and componentwise threshold independently verified; clean native log.",
       "evidence": [
         "phase-chain-2026-10-13"
@@ -3794,7 +3804,7 @@
         "Edit the source and direction controls; independently verify saved intermediates."
       ],
       "expected": "Signed-value and spatial operations remain usable and produce current, correctly positioned results.",
-      "scope": "Centered128\u00d764 different signed spatial real/imaginary expressions, componentwise Absolute Value, cyclic X/Y reversal, source/direction edits.",
+      "scope": "Centered128×64 different signed spatial real/imaginary expressions, componentwise Absolute Value, cyclic X/Y reversal, source/direction edits.",
       "summary": "All10 exports/81,920 complex samples pass. Both intermediate reversals and double-Y result checked. Controls/layout remain usable; clean native log.",
       "evidence": [
         "signed-chain-2026-10-13"
@@ -3814,7 +3824,7 @@
         "Edit source and exponent controls, then independently verify saved stages."
       ],
       "expected": "Ordinary power/reciprocal chains remain responsive and use the current complex samples.",
-      "scope": "Centered128\u00d764 nonzero radial complex exponential; powers2,.5,.5+.25i, linked Invert and source edits through imaginary editor.",
+      "scope": "Centered128×64 nonzero radial complex exponential; powers2,.5,.5+.25i, linked Invert and source edits through imaginary editor.",
       "summary": "Complex powers lost phase (BUG-043), fixed and native-retested. All9 after-fix exports/73,728 samples pass;7 wrong baseline outputs retained separately. Clean native logs.",
       "evidence": [
         "power-chain-2026-10-13"
@@ -3827,14 +3837,34 @@
       "area": "usage",
       "title": "Mask a complex image with an annular aperture and inspect diffraction intensity",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create an ordinary annular aperture and matching complex image.",
         "Multiply them, apply Fourier Transform, and compute Squared Magnitude.",
         "Edit aperture/source parameters and independently verify saved intermediates."
       ],
       "expected": "Normal aperture creation and linked diffraction operations remain usable and return current complex samples.",
-      "scope": "Mac annular aperture workflow; precise fixture pending.",
+      "scope": "Centered128×128 Cassegrain annulus and radial complex exponential, Times→sqrt(N) Fourier Transform→Squared Magnitude, aperture/wave edits.",
+      "summary": "All10 exports/163,840 complex samples pass; direct DFT and energy checks, usable controls/layout and clean native log.",
+      "evidence": [
+        "annular-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-basis-spectrum-chain",
+      "area": "usage",
+      "title": "Create and edit a Fourier basis image and inspect its frequency peak",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create an ordinary rectangular Fourier Basis image with nontrivial X/Y parameters.",
+        "Apply Fourier Transform, Magnitude and Threshold through linked systems.",
+        "Edit parameters through real and imaginary editors; independently verify saved stages."
+      ],
+      "expected": "Predefined image editors keep channels consistent and frequency-domain results update correctly.",
+      "scope": "Mac Fourier Basis workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -3858,7 +3888,7 @@
       "date": "2026-10-12",
       "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
       "summary": "30 new production-workflow checks: six failures reproduced before correction, all 30 pass afterward. Threshold outputs and parameter bindings corrected. Full Maven package passes 225 tests and produces the executable JAR.",
-      "limits": "Headless component and production-model evidence only. Images are 4\u00d72 and signals have eight samples. No native rendering, operation-expression editor, persistence, large workloads or Windows certification.",
+      "limits": "Headless component and production-model evidence only. Images are 4×2 and signals have eight samples. No native rendering, operation-expression editor, persistence, large workloads or Windows certification.",
       "sources": [
         "src/test/java/signals/core/BasicWorkflowTest.java",
         "src/main/java/signals/operation/ThresholdOp.java",
@@ -3885,7 +3915,7 @@
     "heap-policy-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64; installed JDK 25; native app image assembled with jpackage",
-      "summary": "At Juliet\u2019s request, removed the fixed -Xmx2g setting from macOS and both Windows packaging scripts, Maven native-installer configuration and the signing example. Java now selects its default heap budget. This machine reports an estimated 6.00G default max heap; the test app image has no Xmx option.",
+      "summary": "At Juliet’s request, removed the fixed -Xmx2g setting from macOS and both Windows packaging scripts, Maven native-installer configuration and the signing example. Java now selects its default heap budget. This machine reports an estimated 6.00G default max heap; the test app image has no Xmx option.",
       "limits": "The 6 GiB observation is specific to this Mac/runtime. No Windows installer was built or installed. The Windows batch script has older version/JAR naming that needs a separate packaging check.",
       "sources": [
         "build-installer-mac.sh",
@@ -3898,8 +3928,8 @@
     },
     "user-reports-2026-10-12": {
       "date": "2026-10-12",
-      "environment": "Juliet\u2019s report; Roger\u2019s platform believed to be Windows, not yet confirmed",
-      "summary": "Juliet reports intermittent crashes during ordinary 2D creation and operations. She prioritizes stabilizing Roger\u2019s workflows before feature parity, authorizes Continuous Audit and asks for memory limitations to be documented before later refactoring.",
+      "environment": "Juliet’s report; Roger’s platform believed to be Windows, not yet confirmed",
+      "summary": "Juliet reports intermittent crashes during ordinary 2D creation and operations. She prioritizes stabilizing Roger’s workflows before feature parity, authorizes Continuous Audit and asks for memory limitations to be documented before later refactoring.",
       "limits": "No exact crash steps, exception, exit code or failing build supplied. BUG-006 is an older open stale-thumbnail report; its current status needs reproduction.",
       "sources": [
         "docs/audit/evidence/2026-10-12-checkpoint.md",
@@ -3921,7 +3951,7 @@
     "generators-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
-      "summary": "All 26 registered image, noise and aperture generators pass 156 bounded cases: four finite channels and a rasterized production thumbnail at 256\u00d7256, 64\u00d732 and 32\u00d764, both origins. Image parameters match the editor\u2019s initial fit-to-document settings.",
+      "summary": "All 26 registered image, noise and aperture generators pass 156 bounded cases: four finite channels and a rasterized production thumbnail at 256×256, 64×32 and 32×64, both origins. Image parameters match the editor’s initial fit-to-document settings.",
       "limits": "Creation/rendering smoke coverage, not full numerical certification. Cartesian/polar composition, parameter ranges, interactions and native behavior remain separate. The initial audit assertion was corrected to preserve thumbnail aspect ratio; this was a test expectation error, not an app bug.",
       "sources": [
         "src/test/java/signals/core/Generator2DWorkflowTest.java",
@@ -3932,7 +3962,7 @@
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
       "summary": "Eight actual image-editor cases reproduced IllegalArgumentException: Scale operation requires both scale factors be greater than 0. Zero width/height or fully off-canvas placement caused the shared image scaler to receive an empty target. The renderer now returns an empty canvas. All eight pass, including thumbnail rendering and recovery. Full package: 397 tests.",
-      "limits": "Headless controls and production rendering at 128\u00d764, both origins. No process crash claimed; native drag/type reproduction and partially clipped image mathematics remain pending.",
+      "limits": "Headless controls and production rendering at 128×64, both origins. No process crash claimed; native drag/type reproduction and partially clipped image mathematics remain pending.",
       "sources": [
         "src/test/java/signals/core/ImageEditingWorkflowTest.java",
         "src/main/java/signals/functionterm/ImageFunctionTerm2D.java",
@@ -3943,7 +3973,7 @@
     "native-baseline-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
-      "summary": "Launched an isolated jpackage app with stdout/stderr and JVM fatal-error capture. Created a 256\u00d7256 cylinder, edited radius in the first instance, created an operation system with the cylinder twice, observed addition range 0..2 and subtraction zero. Plot/FFT view switching remained responsive. No native process crash or UI exception captured in this bounded pass.",
+      "summary": "Launched an isolated jpackage app with stdout/stderr and JVM fatal-error capture. Created a 256×256 cylinder, edited radius in the first instance, created an operation system with the cylinder twice, observed addition range 0..2 and subtraction zero. Plot/FFT view switching remained responsive. No native process crash or UI exception captured in this bounded pass.",
       "limits": "Post-relaunch text entry/size changes did not take effect through automation. Rectangular native behavior and the fixed search therefore remain unverified. The test app currently contains the 233-test build, predating the empty-image fix. One sandboxed launch exited 134 with no output; relaunch outside the sandbox succeeded, so that exit is not attributed to an application workflow.",
       "sources": [
         "docs/audit/evidence/2026-10-12-checkpoint.md"
@@ -3952,7 +3982,7 @@
     "roger-walkthrough-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; actual production classes and headless Swing controls",
-      "summary": "Juliet supplied a seven-page walkthrough, operation screenshot, two 256\u00d7256 TIFF outputs and a circular-resolution target. The walkthrough composes magnitude/phase radial monomial, a step mask, Real/Threshold/Times, a radial chirp, 180\u00b0 rotation, duplication, addition, a radial rectangle and final 45\u00b0 rotation. The screenshots also show the cramped operation-result previews.",
+      "summary": "Juliet supplied a seven-page walkthrough, operation screenshot, two 256×256 TIFF outputs and a circular-resolution target. The walkthrough composes magnitude/phase radial monomial, a step mask, Real/Threshold/Times, a radial chirp, 180° rotation, duplication, addition, a radial rectangle and final 45° rotation. The screenshots also show the cramped operation-result previews.",
       "limits": "User-provided historical evidence; not proof of current correctness. The two TIFFs differ and the threshold settings are not shown. Compare against independent mathematics as well as visual references.",
       "sources": [
         "docs/audit/evidence/2026-10-12-checkpoint.md"
@@ -3961,7 +3991,7 @@
     "roger-rotation-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64; Oracle JDK 25+37; native CUA walkthrough and actual production/JAI/Swing classes",
-      "summary": "Reproduced an AWT array-bounds failure when multiplying a rotated 256\u00d7256 image by its mask. Corrected rotation raster length; four before/after regressions and all 402 tests pass. Recreated all nine native steps and exported a readable TIFF with a clean log. Foreground startup activation enables native typing into existing fields.",
+      "summary": "Reproduced an AWT array-bounds failure when multiplying a rotated 256×256 image by its mask. Corrected rotation raster length; four before/after regressions and all 402 tests pass. Recreated all nine native steps and exported a readable TIFF with a clean log. Foreground startup activation enables native typing into existing fields.",
       "limits": "Windows untested. Historical TIFFs differ in black/white regions and do not specify Threshold settings. Direct AX value writes remain unsupported; typing requires keyboard focus. Smaller-window documentation crowding and duplicate sharing were discovered here and subsequently resolved in copy-layout-2026-10-12.",
       "sources": [
         "docs/audit/evidence/2026-10-12-roger-rotation.md",
@@ -3979,7 +4009,7 @@
     "copy-layout-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; native CUA and production/JAI/Swing regressions",
-      "summary": "Fixed shared operation settings in duplicates and compacted existing parameter groups. Four ownership and two layout checks fail before and pass after; all 408 tests and package pass. Native duplicate edits remain independent and Threshold/Rotate controls, help and scrollable previews work at about 1153\u00d7742 logical points.",
+      "summary": "Fixed shared operation settings in duplicates and compacted existing parameter groups. Four ownership and two layout checks fail before and pass after; all 408 tests and package pass. Native duplicate edits remain independent and Threshold/Rotate controls, help and scrollable previews work at about 1153×742 logical points.",
       "limits": "Windows and other operator layouts remain unverified. Native duplication checked in 2D; production ownership checked in 1D and 2D. Preview can scroll horizontally at this size.",
       "sources": [
         "docs/audit/evidence/2026-10-12-copy-layout.md",
@@ -3996,7 +4026,7 @@
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; actual Swing calculator buttons, production ComplexIO and native CUA",
       "summary": "Fixed default multiword-name save/load failures and self-references introduced by normal operation insertion. Thirteen before/after regressions and the full 421-test package pass. Native complex-image load, Threshold/Real/Times insertion, save/reopen/resave complete with a clean log; all saved samples match independent expectations exactly.",
-      "limits": "Native fixture is 256\u00d7256 zero-centered; rectangular/both-origin and 1D paths tested in production code, with native variants pending. Saved complex data preserves samples, not editable formulas or chains. Result filenames still need an explicit basename.",
+      "limits": "Native fixture is 256×256 zero-centered; rectangular/both-origin and 1D paths tested in production code, with native variants pending. Saved complex data preserves samples, not editable formulas or chains. Result filenames still need an explicit basename.",
       "sources": [
         "docs/audit/evidence/2026-10-12-complex-insertion.md",
         "docs/audit/evidence/2026-10-12-complex-before.log",
@@ -4018,7 +4048,7 @@
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; real Swing controls and native CUA",
       "summary": "Fixed BUG-006 event ownership corrupting arithmetic symbols and term parameters. Five Swing workflows pass, four failed before; full package passes 426 tests. Native circle-plus-Gaussian editing and Plot/Edit retain symbols and widths; all saved samples agree with an independent oracle.",
-      "limits": "Named 256\u00d7256 native workflow, Add/Subtract/Multiply component checks and ordinary polar resize. Remaining families, views and Windows are not certified.",
+      "limits": "Named 256×256 native workflow, Add/Subtract/Multiply component checks and ordinary polar resize. Remaining families, views and Windows are not certified.",
       "sources": [
         "docs/audit/evidence/2026-10-12-two-term.md",
         "docs/audit/evidence/2026-10-12-two-term-before.log",
@@ -4037,7 +4067,7 @@
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; real Swing ProfilePlot, production sampling and native CUA",
       "summary": "Fixed rectangular Profiles crash and mathematical intercept labels. Eight focused fixtures pass, four failed before; full 434-test package passes. Native four-channel profiles and horizontal/diagonal exports agree with source samples exactly. Source phase edits survive four-view revisits and saved samples match analytic expectations.",
-      "limits": "Native 128\u00d764 centered profiles and 256\u00d7256 chirp view lifecycle only; wide/tall and both origins also have component/model evidence. Histogram horizontal-axis clipping remains open; transform/histogram numerical certification and Windows not claimed.",
+      "limits": "Native 128×64 centered profiles and 256×256 chirp view lifecycle only; wide/tall and both origins also have component/model evidence. Histogram horizontal-axis clipping remains open; transform/histogram numerical certification and Windows not claimed.",
       "sources": [
         "docs/audit/evidence/2026-10-12-profiles.md",
         "docs/audit/evidence/2026-10-12-profiles-before.log",
@@ -4056,7 +4086,7 @@
     "histogram-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; native app and actual Swing components",
-      "summary": "Histogram baseline/decimal labels/full last bin now fit; nonnegative imaginary channels remain visible. Three focused checks pass (two failed before); full 437-test package passes. Native 128\u00d764 chirp shows readable 30/40-bin layouts and commits typed bin changes.",
+      "summary": "Histogram baseline/decimal labels/full last bin now fit; nonnegative imaginary channels remain visible. Three focused checks pass (two failed before); full 437-test package passes. Native 128×64 chirp shows readable 30/40-bin layouts and commits typed bin changes.",
       "limits": "Bounded display and channel checks; no all-mode histogram/FFT numerical certification or Windows validation.",
       "sources": [
         "docs/audit/evidence/2026-10-12-histogram.md",
@@ -4073,7 +4103,7 @@
     "corner-persistence-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, Oracle JDK 25+37; native 437-test build",
-      "summary": "Non-centered 128\u00d764 complex image preserves dimensions, origin, multiword name and all complex samples exactly through save/load/resave. Reloaded source works in Threshold/Times; cutoff 0.25 typed and confirmed in a fresh session, saved outputs match independent calculations exactly.",
+      "summary": "Non-centered 128×64 complex image preserves dimensions, origin, multiword name and all complex samples exactly through save/load/resave. Reloaded source works in Threshold/Times; cutoff 0.25 typed and confirmed in a fresh session, saved outputs match independent calculations exactly.",
       "limits": "An earlier session lost automated keyboard focus; only displayed/committed values count. No speculative focus fix. Native Windows and editable-definition persistence remain outside this check.",
       "sources": [
         "docs/audit/evidence/2026-10-12-corner-persistence.md",
@@ -4085,7 +4115,7 @@
     "linked-sources-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, JDK 25; native 439-test build and production 1D/2D models",
-      "summary": "Fixed perpetual dirty state after source edits: three result reads formerly ran 27 additions and 9 thresholds, now one each. Two before/after regressions and 439-test package pass. Native A\u00d7B \u2192 Real updates and operand replacement match all 65,536 saved complex samples.",
+      "summary": "Fixed perpetual dirty state after source edits: three result reads formerly ran 27 additions and 9 thresholds, now one each. Two before/after regressions and 439-test package pass. Native A×B → Real updates and operand replacement match all 65,536 saved complex samples.",
       "limits": "Keyboard focus remains intermittent; later native edits use spinner controls and default filenames copied to evidence names. Native resize, Windows and peak memory remain unchecked. Reopened input-picker defect recorded separately.",
       "sources": [
         "docs/audit/evidence/2026-10-12-linked-sources.md",
@@ -4119,7 +4149,7 @@
       "date": "2026-10-12",
       "environment": "macOS arm64, JDK 25; full 449-test package",
       "summary": "BUG-019 fixed: eight before/after copy ownership regressions and native complex-chirp duplicate/edit/save verify independent originals, linked copied channels and immediately usable controls.",
-      "limits": "Native 256\u00d7256 chirp; deletion is a separate pending scenario. Full test count is not a count of usage scenarios.",
+      "limits": "Native 256×256 chirp; deletion is a separate pending scenario. Full test count is not a count of usage scenarios.",
       "sources": [
         "docs/audit/evidence/2026-10-12-duplicate-images.md",
         "docs/audit/evidence/2026-10-12-duplicate-image-before.png",
@@ -4168,7 +4198,7 @@
     "cartesian-composition-2026-10-12": {
       "date": "2026-10-12",
       "environment": "macOS arm64, JDK25; unchanged455-test build",
-      "summary": "Native Rectangle(x) \u00d7 Gaussian(y) + Gaussian(x), independent term edit, Plot/Edit and Threshold0.5 all complete. Operator icon stays correct; every saved source and threshold sample independently checked.",
+      "summary": "Native Rectangle(x) × Gaussian(y) + Gaussian(x), independent term edit, Plot/Edit and Threshold0.5 all complete. Operator icon stays correct; every saved source and threshold sample independently checked.",
       "limits": "Default filenames used; rectangle text equation has a separately recorded half-width notation issue. Grouping/removal pending.",
       "sources": [
         "docs/audit/evidence/2026-10-12-cartesian-composition.md",
@@ -4194,8 +4224,8 @@
     "channels-2026-10-13": {
       "date": "2026-10-13",
       "environment": "macOS arm64, JDK25; native unchanged455-test production code",
-      "summary": "Different spatial real/imaginary expressions retain grouping and independent parameters across channel/Plot switches. Real\u2192Threshold and live source edits match every exported sample.",
-      "limits": "One Cartesian fixture,256\u00d7256; no Windows or editable-definition persistence assurance.",
+      "summary": "Different spatial real/imaginary expressions retain grouping and independent parameters across channel/Plot switches. Real→Threshold and live source edits match every exported sample.",
+      "limits": "One Cartesian fixture,256×256; no Windows or editable-definition persistence assurance.",
       "sources": [
         "docs/audit/evidence/2026-10-13-channels.md",
         "docs/audit/evidence/2026-10-13-channels-plot.png",
@@ -4256,7 +4286,7 @@
       "date": "2026-10-13",
       "environment": "macOS arm64, JDK25; efebd69 package with 472 passing tests",
       "summary": "Native complex Plus/Minus/Times/Divide, linked Threshold, input edits and reversal agree with independent per-pixel oracles; no crash or log exception. Search div/plu and clear pass.",
-      "limits": "Centered256\u00d7256 only; other operation families and platforms remain open. Native unmatched/Minus search is pending.",
+      "limits": "Centered256×256 only; other operation families and platforms remain open. Native unmatched/Minus search is pending.",
       "sources": [
         "docs/audit/evidence/2026-10-13-arithmetic.md",
         "docs/audit/evidence/2026-10-13-arithmetic-verification.json",
@@ -4270,7 +4300,7 @@
       "date": "2026-10-13",
       "environment": "macOS arm64, JDK25; efebd69 package,472 regression tests",
       "summary": "Ordinary aperture/noise and polar creation edits compose through arithmetic, Absolute Value and Threshold. Source edits propagate; all checked downstream arrays match independent oracles. Native search recovery complete.",
-      "limits": "Representative centered256\u00d7256 fixtures. Noise distribution and exact polar sampling are not certified. Windows and other creation variants remain open.",
+      "limits": "Representative centered256×256 fixtures. Noise distribution and exact polar sampling are not certified. Windows and other creation variants remain open.",
       "sources": [
         "docs/audit/evidence/2026-10-13-creation-verification.json",
         "docs/audit/evidence/2026-10-13-creation-native.log",
@@ -4339,7 +4369,7 @@
     "replacement-2026-10-13": {
       "date": "2026-10-13",
       "environment": "macOS arm64/JDK25; 484-test executable",
-      "summary": "A complex source survives ordinary picker replacement and real-term deletion/recreation across five generator families while Squared Magnitude \u2192 Threshold stays linked. Eighteen exports verified.",
+      "summary": "A complex source survives ordinary picker replacement and real-term deletion/recreation across five generator families while Squared Magnitude → Threshold stays linked. Eighteen exports verified.",
       "limits": "Representative native cases only; noise distribution, remaining generators, drag/invalid drafts, Windows and capacity remain open.",
       "sources": [
         "docs/audit/evidence/2026-10-13-replacement.md",
@@ -4416,7 +4446,7 @@
     "usage1d-2026-10-13": {
       "date": "2026-10-13",
       "environment": "macOS arm64/JDK 25; unchanged 497-test package",
-      "summary": "Native complex sine and rectangle \u2192 multiply \u2192 threshold \u2192 Real, source edits, plots, save/reopen in both origins and squared magnitude. Fourteen exports independently verified.",
+      "summary": "Native complex sine and rectangle → multiply → threshold → Real, source edits, plots, save/reopen in both origins and squared magnitude. Fourteen exports independently verified.",
       "limits": "Bounded ordinary 1D regression; Windows and broader 1D scenarios remain untested. Aqua chooser required visual clicks.",
       "sources": [
         "docs/audit/evidence/2026-10-13-1d.md",
@@ -4737,7 +4767,7 @@
     "spatial-filtering-2026-10-13": {
       "date": "2026-10-13",
       "environment": "macOS arm64/JDK25 native CUA;567-test package;independent NumPy2.4.1 references",
-      "summary": "12 native 128\u00d764 complex exports match direct spatial sums and DFT matrices, including source edits and operation replacement through the FFT chain.",
+      "summary": "12 native 128×64 complex exports match direct spatial sums and DFT matrices, including source edits and operation replacement through the FFT chain.",
       "limits": "Centered normal-size fixtures only. Six nonblocking JDK help-image accessibility exceptions; no observed app crash. Windows and other settings remain gaps.",
       "sources": [
         "docs/audit/evidence/2026-10-13-spatial-convolve-edited.txt.gz",
@@ -4767,8 +4797,8 @@
     "rectangular-rotation-2026-10-13": {
       "date": "2026-10-13",
       "environment": "macOS arm64/JDK25; production-model geometry checks and native CUA;578-test package",
-      "summary": "Fixed ordinary90\u00b0 rectangular-image crop failure. Both-channel geometry, magnitude/threshold chains, source edits and13 native exports independently verified.",
-      "limits": "Native centered128\u00d764; models both origins and wide/tall images.30\u00b0 native geometry covers nearest neighbor; other arbitrary-angle interpolation and Windows remain gaps.",
+      "summary": "Fixed ordinary90° rectangular-image crop failure. Both-channel geometry, magnitude/threshold chains, source edits and13 native exports independently verified.",
+      "limits": "Native centered128×64; models both origins and wide/tall images.30° native geometry covers nearest neighbor; other arbitrary-angle interpolation and Windows remain gaps.",
       "sources": [
         "docs/audit/evidence/2026-10-13-rotation-after-90-ax.txt",
         "docs/audit/evidence/2026-10-13-rotation-after-90.png",
@@ -4811,7 +4841,7 @@
       "date": "2026-10-13",
       "environment": "macOS arm64/JDK25 native CUA;578-test package; independent NumPy2.4.1",
       "summary": "Fourier source edits, two-axis fill/wrap translation, complex Scale and Plus remain correct through native edits/revisits;12 exports independently pass.",
-      "limits": "Centered128\u00d764 and stated parameters only; no product changes. Uncentered native variants, other families and Windows remain gaps.",
+      "limits": "Centered128×64 and stated parameters only; no product changes. Uncentered native variants, other families and Windows remain gaps.",
       "sources": [
         "docs/audit/evidence/2026-10-13-shift-fill-controls-ax.txt",
         "docs/audit/evidence/2026-10-13-shift-fill-controls.png",
@@ -4859,7 +4889,7 @@
     },
     "chirp-aperture-2026-10-13": {
       "date": "2026-10-13",
-      "summary": "Native rectangular complex chirp \u00d7 off-center Cylinder \u2192 Conjugate \u2192 Squared Magnitude; edits through imaginary source editor and aperture move propagate. All10 exports/81,920 complex samples match independent formulas; clean native log.",
+      "summary": "Native rectangular complex chirp × off-center Cylinder → Conjugate → Squared Magnitude; edits through imaginary source editor and aperture move propagate. All10 exports/81,920 complex samples match independent formulas; clean native log.",
       "limits": "Mac only; named fixtures and ordinary edits. Other orders/origins and handbook remain unreviewed. No new product changes or full-suite rerun.",
       "environment": "macOS arm64/JDK25, native578-test package; independent NumPy2.4.1 replay.",
       "sources": [
@@ -4884,8 +4914,8 @@
     },
     "intensity-chain-2026-10-13": {
       "date": "2026-10-13",
-      "summary": "Native Triangle \u00d7 Gaussian \u2192 Offset \u2192 Clip \u2192 Square Root, source/parameter edits and Clip duplication isolation. All11 exports/90,112 complex samples independently verified; clean native log.",
-      "limits": "Centered64\u00d7128 Mac fixture and nonnegative square-root inputs only; componentwise square root is intentional. Other callers/origins and full handbook review pending.",
+      "summary": "Native Triangle × Gaussian → Offset → Clip → Square Root, source/parameter edits and Clip duplication isolation. All11 exports/90,112 complex samples independently verified; clean native log.",
+      "limits": "Centered64×128 Mac fixture and nonnegative square-root inputs only; componentwise square root is intentional. Other callers/origins and full handbook review pending.",
       "environment": "macOS arm64/JDK25, unchanged578-test native package; independent NumPy2.4.1.",
       "sources": [
         "docs/audit/evidence/2026-10-13-intensity-clip-copy.txt.gz",
@@ -4911,7 +4941,7 @@
     "directional-reuse-2026-10-13": {
       "date": "2026-10-13",
       "summary": "BUG-041 fixed: loaded and exported2D sample functions now open existing data in both editors. Six before-failing EDT cases; full584 pass. Native directional/reuse chain19 exports/155,648 samples pass with live-versus-detached ownership.",
-      "limits": "Native centered real64\u00d7128; both-origin and magnitude/phase factory first opening via EDT. Windows and full handbook review pending.",
+      "limits": "Native centered real64×128; both-origin and magnitude/phase factory first opening via EDT. Windows and full handbook review pending.",
       "environment": "macOS arm64/JDK25; before578-test and after584-test native packages; NumPy2.4.1.",
       "sources": [
         "docs/audit/evidence/2026-10-13-direction-after-derivative-edited.txt.gz",
@@ -4953,8 +4983,8 @@
     },
     "noise-chain-2026-10-13": {
       "date": "2026-10-13",
-      "summary": "Native complex Gaussian/Uniform noise\u2192Subtract Mean\u2192Squared Magnitude; edits, view stability and seed restoration. All12 exports/98,304 samples pass; clean log.",
-      "limits": "Centered128\u00d764 native fixture. RNG checks are broad sanity, affine edits and repeatability, not distribution certification. Other families/platforms and full reference review pending.",
+      "summary": "Native complex Gaussian/Uniform noise→Subtract Mean→Squared Magnitude; edits, view stability and seed restoration. All12 exports/98,304 samples pass; clean log.",
+      "limits": "Centered128×64 native fixture. RNG checks are broad sanity, affine edits and repeatability, not distribution certification. Other families/platforms and full reference review pending.",
       "environment": "Mac arm64/JDK25 unchanged584-test package; NumPy2.4.1.",
       "sources": [
         "docs/audit/evidence/2026-10-13-noise-centered-edited.txt.gz",
@@ -4979,8 +5009,8 @@
     },
     "polar-chain-2026-10-13": {
       "date": "2026-10-13",
-      "summary": "BUG-042 fixed: corner-origin polar angles used a different row from the radius. Five before-failing production cases;171 focused/592 full pass. Native Gaussian\u00d7angular Cosine\u2192Divide\u2192Minus, edits/replacement and both origins independently verified.",
-      "limits": "Native128\u00d764 real polar plus complex Constant; automated two-channel square/tall/wide geometry. Other families/platforms and full handbook review pending. Undefined origin retains existing90-degree convention.",
+      "summary": "BUG-042 fixed: corner-origin polar angles used a different row from the radius. Five before-failing production cases;171 focused/592 full pass. Native Gaussian×angular Cosine→Divide→Minus, edits/replacement and both origins independently verified.",
+      "limits": "Native128×64 real polar plus complex Constant; automated two-channel square/tall/wide geometry. Other families/platforms and full handbook review pending. Undefined origin retains existing90-degree convention.",
       "environment": "Mac arm64/JDK25; before584/after592-test package; NumPy2.4.1.",
       "sources": [
         "docs/audit/evidence/2026-10-13-polar-after-base-centered.txt.gz",
@@ -5027,8 +5057,8 @@
     },
     "phase-chain-2026-10-13": {
       "date": "2026-10-13",
-      "summary": "Native magnitude/phase with Cartesian Line\u00d7Line spatial phase; Phase/Real/Threshold branches and subsequent edits. All12 exports/98,304 samples pass; clean native log.",
-      "limits": "Centered64\u00d7128 nonzero constant magnitude; componentwise threshold convention explicit. Exact phase cuts, near-zero magnitude, Windows and full reference review pending.",
+      "summary": "Native magnitude/phase with Cartesian Line×Line spatial phase; Phase/Real/Threshold branches and subsequent edits. All12 exports/98,304 samples pass; clean native log.",
+      "limits": "Centered64×128 nonzero constant magnitude; componentwise threshold convention explicit. Exact phase cuts, near-zero magnitude, Windows and full reference review pending.",
       "environment": "Mac arm64/JDK25 unchanged592-test package; NumPy2.4.1.",
       "sources": [
         "docs/audit/evidence/2026-10-13-phase-chain-final.png",
@@ -5054,8 +5084,8 @@
     },
     "signed-chain-2026-10-13": {
       "date": "2026-10-13",
-      "summary": "Native signed Sine\u00d7Rectangle and Rectangle\u00d7Gaussian channels\u2192Absolute Value\u2192Reverse X\u2192Reverse Y; source edits and direction switch. All10 exports/81,920 samples pass; clean log.",
-      "limits": "Centered128\u00d764; Reverse checked against established cyclic index convention, not geometric-flip or coordinate-reflection certification. Other origins/platforms and full handbook review pending.",
+      "summary": "Native signed Sine×Rectangle and Rectangle×Gaussian channels→Absolute Value→Reverse X→Reverse Y; source edits and direction switch. All10 exports/81,920 samples pass; clean log.",
+      "limits": "Centered128×64; Reverse checked against established cyclic index convention, not geometric-flip or coordinate-reflection certification. Other origins/platforms and full handbook review pending.",
       "environment": "Native Mac arm64/JDK25 unchanged592-test package; NumPy2.4.1.",
       "sources": [
         "docs/audit/evidence/2026-10-13-signed-absolute-edited.txt.gz",
@@ -5078,8 +5108,8 @@
     },
     "power-chain-2026-10-13": {
       "date": "2026-10-13",
-      "summary": "BUG-043 fixed: complex powers discarded input phase. All14 new production cases fail before/pass after; focused56/full606 pass. Native radial complex exponential\u2192Exponent\u2192Invert, source/power edits:9 after-fix exports/73,728 samples pass.",
-      "limits": "Ordinary nonzero inputs; selected powers and centered128\u00d764 native source. Automated1D/2D both origins. Zero/overflow/branch boundaries, Windows and full reference review pending.",
+      "summary": "BUG-043 fixed: complex powers discarded input phase. All14 new production cases fail before/pass after; focused56/full606 pass. Native radial complex exponential→Exponent→Invert, source/power edits:9 after-fix exports/73,728 samples pass.",
+      "limits": "Ordinary nonzero inputs; selected powers and centered128×64 native source. Automated1D/2D both origins. Zero/overflow/branch boundaries, Windows and full reference review pending.",
       "environment": "Native Mac arm64/JDK25 before592/after606-test packages; NumPy2.4.1.",
       "sources": [
         "docs/audit/evidence/2026-10-13-power-after-complex-edited.txt.gz",
@@ -5115,6 +5145,30 @@
         "docs/audit/evidence/2026-10-13-power.md",
         "src/test/java/signals/core/ComplexPowerWorkflowTest.java"
       ]
+    },
+    "annular-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native annular aperture and radial complex wave, masking, Fourier intensity and source edits:10 exports/163,840 samples pass; clean log.",
+      "limits": "Centered128×128 selected parameters and sqrt(N) forward transform. Other origins/apertures/normalizations and Windows pending.",
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-annular-aperture-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-aperture-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-edited.png",
+        "docs/audit/evidence/2026-10-13-annular-fourier-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-fourier-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-initial.png",
+        "docs/audit/evidence/2026-10-13-annular-intensity-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-intensity-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-masked-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-masked-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-native.log",
+        "docs/audit/evidence/2026-10-13-annular-results.json",
+        "docs/audit/evidence/2026-10-13-annular-verifier.py",
+        "docs/audit/evidence/2026-10-13-annular-wave-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular-wave-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-annular.md"
+      ]
     }
   },
   "limitations": [
@@ -5122,7 +5176,7 @@
       "id": "dense-memory",
       "title": "Dense arrays and intermediate results require substantial memory",
       "basis": "measurement",
-      "impact": "Memory scales with pixel count and the number of retained source/result/channel arrays. Doubling both image dimensions multiplies one array\u2019s payload by four. FFTs and other operations may allocate additional buffers.",
+      "impact": "Memory scales with pixel count and the number of retained source/result/channel arrays. Doubling both image dimensions multiplies one array’s payload by four. FFTs and other operations may allocate additional buffers.",
       "scope": "Short native three-source/two-operation workload measured through 1024 square. After-fix heap checkpoints 71.4/184.2/493.0 MiB; overall sampled RSS peak 1411.6 MiB. Not general capacity certification.",
       "next": "Observed retired-editor retention is corrected in the matched Constant/Cylinder native run. Verify additional ordinary image families, imported-data lifetimes and Windows before broader capacity claims. The obsolete 2 GiB launcher cap remains removed.",
       "evidence": [
@@ -5171,7 +5225,7 @@
       "title": "Numeric parameter entry commits three decimal places",
       "basis": "measurement",
       "impact": "Requested magnitude/phase angles are rounded on commit; exact representation equivalence may be limited by editor precision.",
-      "scope": "Observed phase entries0.927295218\u21920.927 and2.214297436\u21922.214 in the native Constant image editor.",
+      "scope": "Observed phase entries0.927295218→0.927 and2.214297436→2.214 in the native Constant image editor.",
       "next": "Deferred precision improvement; prioritize ordinary crashes and major wrong results.",
       "evidence": [
         "filtering-2026-10-13"

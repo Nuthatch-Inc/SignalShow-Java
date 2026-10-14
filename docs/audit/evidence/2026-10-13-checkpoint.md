@@ -23,28 +23,25 @@ Repository `/Users/julietfiss/src/SignalShow-Java`, branch
 - 5b20465: magnitude/phase→Phase/Real/Threshold branches,12 exports passed.
 - eede73c: signed Cartesian source→Absolute Value→Reverse X/Y,10 exports passed.
 
-Latest batch fixes BUG-043 in ArrayMath.complexPower: it used the magnitude-only
-logarithm and discarded all input phase. Ordinary squaring became a constant
-real result. Include phase in exponentiation while preserving separate cepstrum
-log-magnitude behavior. Fourteen production1D/2D cases failed before and pass now;
-focused56/full606 pass, zero failures/errors/skips. Native radial complex source
-powers2,.5,.5+.25i→Invert and source edits pass9 after-fix exports/73,728 complex
-samples. Seven wrong before operation outputs retained separately; two before
-sources correct. Max after error6.041e−15/tol1e−9. Native logs clean. Evidence:
-`2026-10-13-power.md`, replay script, screenshots, compressed exports and build logs.
+Latest local fix f6e1192: BUG-043 complex powers lost input phase. Fourteen
+before-failing production cases pass; focused56/full606 tests pass. Native power
+and reciprocal retest9 exports passed; all seven wrong before outputs retained.
 
-Matrix:130 math entries,72 scenarios:67 checked,1 active Mac,2 pending Windows,
+Latest evidence-only batch: centered128×128 Cassegrain aperture and radial complex
+wave→Times→sqrt(N) Fourier Transform→Squared Magnitude. Edit aperture center/radii
+and wave amplitude/period/phase. All10 exports/163,840 complex samples pass a direct
+DFT and independent source/intensity checks, max1.208e−13/tol1e−9. Clean native log,
+usable source/operation/result views. Evidence:2026-10-13-annular.md and replay.
+
+Matrix:130 math entries,73 scenarios:68 checked,1 active Mac,2 pending Windows,
 2 deferred memory stress. These are bounded checks, not whole-app certification.
-Older ordinary workflow and memory findings remain in their linked evidence.
 
 ## Next action and resources
 
-Active `gui-2d-annular-diffraction-chain`: create a normal Cassegrain annular
-aperture and matching complex image; Times→Fourier Transform→Squared Magnitude.
-Edit aperture and complex-source parameters; independently verify every saved
-stage. Suggested ordinary128×128 grid, aperture radii24/8 with asymmetric center,
-then28/10 and another center. Read actual controls/conventions. Keep normal input
-scope; no capacity extremes or tiny-error investigations. Windows does not block.
+Active `gui-2d-basis-spectrum-chain`: create an ordinary rectangular Fourier Basis
+image; edit X/Y factors through real and imaginary editors, then Fourier Transform
+→Magnitude→Threshold. Independently verify sources and all saved stages. Read the
+actual parameters/conventions first. Keep normal input scope; Windows does not block.
 
 No SignalShow app remains open; CUA Close plus process inspection confirmed exit.
 No build/sampler running. Test bundle:
