@@ -1,0 +1,92 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "phase-chain-source-initial.txt",
+      "sha256": "e853942b80921fb9d3dec85b8a3a0ec27b042cfe697c7f06a4060d54daf7d4a7",
+      "descriptor": "phase image",
+      "complexSamples": 8192,
+      "maxComplexError": 2.482534153247273e-16
+    },
+    {
+      "file": "phase-chain-phase-initial.txt",
+      "sha256": "bc4f1264df60bc85f15feec77d447620aa5272afecfc3f484638c489b3366c3a",
+      "descriptor": "\u03a6{phase image}",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "phase-chain-phase-mask-initial.txt",
+      "sha256": "585e6ee8019a599b39199d28d822fef460ce69abf37445cf8993d30d3f0e5d36",
+      "descriptor": "threshold(\u03a6{phase image})",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "phase-chain-real-initial.txt",
+      "sha256": "d3f76e22edadef7e96b004d031d10efb2b7143b12cad563c7937b66b36eebf1c",
+      "descriptor": "Re{phase image}",
+      "complexSamples": 8192,
+      "maxComplexError": 2.220446049250313e-16
+    },
+    {
+      "file": "phase-chain-real-mask-initial.txt",
+      "sha256": "9d553c65bd26a6a801be6c383ef44dce0a75ae40ef4f1e60fcb8c898270b6a8c",
+      "descriptor": "threshold(Re{phase image})",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "phase-chain-real-phase-mask-initial.txt",
+      "sha256": "160c689c46c30892071dfa8b7a44ad6036d7960fd9a3299bdc6acef17f91133c",
+      "descriptor": "Re{threshold(\u03a6{phase image})}",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "phase-chain-source-edited.txt",
+      "sha256": "d64a532ad27acbb3b41a7cd5ee3a9e43b1c3828fdd6818b749f3d553387320e4",
+      "descriptor": "phase image",
+      "complexSamples": 8192,
+      "maxComplexError": 1.2412670766236366e-16
+    },
+    {
+      "file": "phase-chain-phase-edited.txt",
+      "sha256": "bce38b9176d76d84ba4026468b459cd6774c26f7d0e0bae70c27bdf86bc121b2",
+      "descriptor": "\u03a6{phase image}",
+      "complexSamples": 8192,
+      "maxComplexError": 4.440892098500626e-16
+    },
+    {
+      "file": "phase-chain-phase-mask-edited.txt",
+      "sha256": "a2601b8c4d4801833233e35f982a8973245946ab15626965e077795b901b84fd",
+      "descriptor": "threshold(\u03a6{phase image})",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "phase-chain-real-edited.txt",
+      "sha256": "15c77ac6322d322d5906bf5630e84b64406fca0eb69dabe87ce1276973d9d629",
+      "descriptor": "Re{phase image}",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1102230246251565e-16
+    },
+    {
+      "file": "phase-chain-real-mask-edited.txt",
+      "sha256": "0806303c36d5e0f129a81dc72d9503df7cc9f2c8b97a0229614d5b90f92f5906",
+      "descriptor": "threshold(Re{phase image})",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "phase-chain-real-phase-mask-edited.txt",
+      "sha256": "b3346d86cc552fd90df77ca085f85ef640613f484689f68ee68ac114d1f16c35",
+      "descriptor": "Re{threshold(\u03a6{phase image})}",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    }
+  ],
+  "passed": 12,
+  "totalComplexSamples": 98304,
+  "maxComplexError": 4.440892098500626e-16
+}

@@ -37,18 +37,20 @@ Latest batch BUG-042: corner-origin polar angular rows disagreed with radius.
 Fixed Indices.createAngleIndicesZeroStart;8 production tests,5 before-failing,
 171 focused/592 full pass. Native128×64 Gaussian×angular Cosine with Divide/Minus,
 edits/replacement and both origins:9 valid before+11 after exports/163,840 samples
-pass;3 wrong before outputs retained separately. Logs clean. Current fix ready
-for local commit with2026-10-13-polar.md, replay, raw data and screenshots.
+pass;3 wrong before outputs retained separately. Logs clean. Fix committed locally as2473080 with2026-10-13-polar.md and replay evidence.
+Subsequent magnitude/phase and extraction batch passed12 exports/98,304 samples
+through five live branches; componentwise threshold0 and final Real explicitly
+verified. Clean native log, no code changes. See2026-10-13-phase-chain.md.
 
-Matrix130 math entries,69 scenarios:64 checked,1 active Mac check,2 pending Windows,
+Matrix130 math entries,70 scenarios:65 checked,1 active Mac check,2 pending Windows,
 2 deferred memory stress. Bounded assurance only. Previous documented rotation,
 filtering, sampling, persistence and input fixes remain in their dated records.
 
 ## Next action and resources
 
-Active: gui-2d-phase-extraction-chain. Create a rectangular magnitude/phase image
-with varying phase; exercise Phase/Real/Threshold, edits and independent saved
-intermediates. Inspect local conventions before interpreting phase wrapping. Do not study tiny statistical errors,
+Active: gui-2d-signed-reversal-chain. Create an asymmetric signed rectangular
+image; exercise Absolute Value/Reverse, source and direction edits. Inspect local
+reversal conventions, then independently verify saved intermediates. Do not study tiny statistical errors,
 capacity extremes or long endurance. Continue Mac batches; Windows does not block.
 
 No SignalShow app remains open; CUA Close and process inspection confirmed exit.

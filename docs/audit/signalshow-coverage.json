@@ -4,7 +4,7 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: magnitude/phase creation and component extraction",
+    "state": "Active Mac audit: signed image, absolute value and reversal",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly74% remaining; no other applicable window reported",
@@ -13,7 +13,7 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger\u2019s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-phase-extraction-chain"
+      "gui-2d-signed-reversal-chain"
     ],
     "nextIds": []
   },
@@ -859,14 +859,15 @@
         "parameters": "verified",
         "handbook": "unreviewed"
       },
-      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256\u00d7256 composition and TIFF export also exercised. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 magnitude/rotation chain with threshold0.75, source amplitude edits and visible parameters verified.",
+      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256\u00d7256 composition and TIFF export also exercised. Native 256\u00d7256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128\u00d764 magnitude/rotation chain with threshold0.75, source amplitude edits and visible parameters verified. Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
         "roger-rotation-2026-10-12",
         "channels-2026-10-13",
         "arithmetic-2026-10-13",
-        "rectangular-rotation-2026-10-13"
+        "rectangular-rotation-2026-10-13",
+        "phase-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -921,13 +922,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "phase-chain-2026-10-13"
+      ]
     },
     {
       "id": "unary2DList:TranslateOp2D",
@@ -1047,11 +1050,12 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Native complex spatial image through Real\u2192Threshold, saved every-sample check and subsequent live source edit.",
+      "scope": "Native complex spatial image through Real\u2192Threshold, saved every-sample check and subsequent live source edit. Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Broader input/parameter variants,1D caller, definition/equation/handbook review remain open.",
       "evidence": [
         "roger-rotation-2026-10-12",
-        "channels-2026-10-13"
+        "channels-2026-10-13",
+        "phase-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1411,11 +1415,12 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Existing infinite-support constant definition; actual Cartesian/magnitude-phase image grids, both origins, ordinary resize/edit chains. Native samples verified through 1024 square. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only.",
+      "scope": "Existing infinite-support constant definition; actual Cartesian/magnitude-phase image grids, both origins, ordinary resize/edit chains. Native samples verified through 1024 square. Native128\u00d764 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Full handbook cross-reference and presentation of irrelevant general image geometry controls remain outside this usage batch.",
       "evidence": [
         "memory-usage-2026-10-13",
-        "polar-chain-2026-10-13"
+        "polar-chain-2026-10-13",
+        "phase-chain-2026-10-13"
       ]
     },
     {
@@ -1962,13 +1967,15 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
+      "scope": "Native64\u00d7128 magnitude/phase image with Line\u00d7Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "evidence": [
+        "phase-chain-2026-10-13"
+      ]
     },
     {
       "id": "functionTerm1DList:LorentzianFunctionTerm1D",
@@ -3744,14 +3751,34 @@
       "area": "usage",
       "title": "Edit magnitude and spatial phase, then extract and threshold components",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create a normal rectangular magnitude/phase image with spatial phase variation.",
         "Apply Phase, Real and Threshold through linked systems.",
         "Edit magnitude/phase parameters and compare saved intermediate results."
       ],
       "expected": "Both representation editors and extraction chains use current complex data without crashes or major wrong results.",
-      "scope": "Ordinary Mac magnitude/phase and extraction workflow; precise fixture pending.",
+      "scope": "Centered64\u00d7128 Constant magnitude, Cartesian Line\u00d7Line phase; five linked results including final real extraction after threshold; two source parameter sets.",
+      "summary": "All12 exports/98,304 samples pass. Both authored components update all live branches. Principal phase and componentwise threshold independently verified; clean native log.",
+      "evidence": [
+        "phase-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25, unchanged592-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-signed-reversal-chain",
+      "area": "usage",
+      "title": "Create signed spatial images and use absolute value and reversal",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a normal rectangular signed image with asymmetric spatial content.",
+        "Apply Absolute Value and Reverse in a linked chain.",
+        "Edit the source and direction controls; independently verify saved intermediates."
+      ],
+      "expected": "Signed-value and spatial operations remain usable and produce current, correctly positioned results.",
+      "scope": "Ordinary Mac signed-image workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -4940,6 +4967,33 @@
         "docs/audit/evidence/2026-10-13-polar-zero-start.png",
         "docs/audit/evidence/2026-10-13-polar.md",
         "src/test/java/signals/core/PolarImageWorkflowTest.java"
+      ]
+    },
+    "phase-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native magnitude/phase with Cartesian Line\u00d7Line spatial phase; Phase/Real/Threshold branches and subsequent edits. All12 exports/98,304 samples pass; clean native log.",
+      "limits": "Centered64\u00d7128 nonzero constant magnitude; componentwise threshold convention explicit. Exact phase cuts, near-zero magnitude, Windows and full reference review pending.",
+      "environment": "Mac arm64/JDK25 unchanged592-test package; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-phase-chain-final.png",
+        "docs/audit/evidence/2026-10-13-phase-chain-mask-initial.png",
+        "docs/audit/evidence/2026-10-13-phase-chain-native.log",
+        "docs/audit/evidence/2026-10-13-phase-chain-phase-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-phase-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-phase-mask-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-phase-mask-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-real-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-real-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-real-mask-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-real-mask-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-real-phase-mask-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-real-phase-mask-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-results.json",
+        "docs/audit/evidence/2026-10-13-phase-chain-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-source-initial.png",
+        "docs/audit/evidence/2026-10-13-phase-chain-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-phase-chain-verifier.py",
+        "docs/audit/evidence/2026-10-13-phase-chain.md"
       ]
     }
   },
