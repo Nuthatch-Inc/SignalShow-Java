@@ -156,29 +156,30 @@ public class Transforms {
 	}//IDCT
 	
 	/**
-	* Cepstrum
+	* Magnitude cepstrum: IFFT(log(abs(FFT(input)))).
+	* Inverse mode uses IFFT(exp(FFT(input))); discarded spectral phase is not restored.
 	*/ 
 	public static double[][] cepstrum1D( double real[], double imaginary[], boolean zeroCentered, boolean inverse ) {
 		
-		double[][] transformed = computeFFT1D( real, imaginary, zeroCentered, inverse, NORMALIZE_NONE); 
+		double[][] transformed = computeFFT1D( real, imaginary, zeroCentered, false, NORMALIZE_NONE);
 		
 		double[][] output = inverse ? ArrayMath.exponent( transformed[0], transformed[1]) : 
 					ArrayMath.logarithm( transformed[0], transformed[1]); 
 		
-		return computeFFT1D( output[0], output[1], zeroCentered, false, NORMALIZE_N );
+		return computeFFT1D( output[0], output[1], zeroCentered, true, NORMALIZE_N );
 		
 	} 
 	
 	public static double[][] cepstrum2D( double real[], double imaginary[], boolean zeroCentered, boolean inverse, 
 					int x_dimension, int y_dimension ) {
 		
-		double[][] transformed = computeFFT2D( real, imaginary, zeroCentered, inverse,
+		double[][] transformed = computeFFT2D( real, imaginary, zeroCentered, false,
 								x_dimension, y_dimension, NORMALIZE_NONE); 
 		
 		double[][] output = inverse ? ArrayMath.exponent( transformed[0], transformed[1]) : 
 					ArrayMath.logarithm( transformed[0], transformed[1]); 
 		
-		return computeFFT2D( output[0], output[1], zeroCentered, false,
+		return computeFFT2D( output[0], output[1], zeroCentered, true,
 							x_dimension, y_dimension, NORMALIZE_N );
 		
 	} 

@@ -34,10 +34,13 @@ public abstract class PredefinedImageFunctionTerm2D extends ImageFunctionTerm2D 
 	/**
 	 * Loads the image and scales it so that 0 -> 0 and 255 -> 1
 	 */
-	public PlanarImage loadImage() { 
+	public PlanarImage loadImage() {
+		return loadImage(getFilename(filename_idx));
+	}
 
-		//read in the image and scale it between 0 and 1
-		PlanarImage tempImage = ResourceLoader.loadImage(getFilename(filename_idx));
+	/** Load the selected resource through the same scalar/phase normalization. */
+	protected PlanarImage loadImage(String filename) {
+		PlanarImage tempImage = ResourceLoader.loadImage(filename);
 		SampleModel sm = tempImage.getSampleModel();
 		int nbands = sm.getNumBands();
 		Raster inputRaster = tempImage.getData();

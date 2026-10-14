@@ -17,12 +17,23 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 13, weekly window 70% remaining; no other applicable window reported.
+October 14, weekly window 59% remaining; no other applicable window reported.
 On October13 Juliet authorized local commits and preparation of1.2.5. She then
 explicitly authorized merging into main and publishing1.2.5 on GitHub as the latest
 release. Publication is complete; both finished installer payloads were verified
 to exclude old builds and tests. Native keystrokes remain authorized when the Java window is
 focused; verify the target field and readback before submitting.
+
+October 14 continuation: Juliet explicitly requested Continuous Audit to find and
+fix more bugs and authorized comparison with Chirplet. Continue the major-error
+queue using independent mathematical references and production Java callers.
+[Continuation evidence](docs/audit/evidence/2026-10-14-math-continuation.md) records
+verified batches. The source-led continuation is now verified through all
+registered ordinary computation paths: nine additional fixes and 333 new cases,
+with the full 997-test package passing. No confirmed major defect from this
+bounded survey remains unfixed. Broader native/parameter coverage and recorded
+convention differences remain follow-up work. Preserve local changes; no new
+commit, push or publication has been performed.
 
 ## Standing testing priority and suite plan
 
@@ -45,10 +56,21 @@ Mathematical accuracy has its own matrix; do not let tiny numerical discrepancie
 or rare edge cases displace ordinary usage fixes. Zero-sized images, unusual
 inputs and capacity extremes are low priority while these workflows are unstable.
 
-**Current scope:** This Mac audit and release round is complete. Roger's
-circular-resolution target and requested layout are verified in scoped rows.
-Future audit work continues one ordinary workflow at a time; the matrix owns
-the next queue. The larger suite is implemented incrementally, not all at once.
+**Current scope (October 14):** Juliet requested automated, source-led mathematical
+testing of Java SignalShow. Check the actual creation and operation paths for
+major errors with ordinary inputs: complex channel loss, shifted origins, reversed
+axes, transform signs/scales and incorrect operation composition. Establish
+independent mathematical expectations; Chirplet agreement and test-only formulas
+are not sufficient. Fix demonstrated defects and record bounded evidence. Native
+GUI testing, rare inputs and tiny numerical discrepancies are outside this round.
+Leave this new work local and reviewable; the previous publication is complete.
+
+The first automated math pass is complete: 52 new production-path cases cover
+coordinates, spectral operations, complex arithmetic/composition and selected
+analytic image creation. BUG-046 (vertical reversal shifting the origin by two
+pixels) is fixed locally. All 664 tests and the executable package pass.
+[Evidence and limits](docs/audit/evidence/2026-10-14-math.md) remain distinct from
+native GUI acceptance and the published release.
 
 October13 resumption: Juliet requested more ordinary **Mac** 2D creation and
 operation chains; check Windows later. The chirp/aperture/conjugation/intensity and
@@ -79,7 +101,7 @@ checked rows remain bounded evidence, not certification of every combination.
 
 - [Read-only report](docs/audit/index.html)
 - [Coverage data](docs/audit/signalshow-coverage.json)
-- [Current evidence and handoff](docs/audit/evidence/2026-10-13-checkpoint.md)
+- [Current evidence and handoff](docs/audit/evidence/2026-10-14-checkpoint.md)
 
 The JSON owns statuses, evidence, limitations and the ordered queue. The report
 is generated from it. Its 130 initial mathematical entries come from the actual
@@ -143,8 +165,11 @@ The original 195 tests passed on macOS/JDK 25. Thirty new checks of actual
 FunctionFactory/operation classes and Swing parameter editors exposed six failing
 cases caused by reversed threshold outputs and parameter bindings. After the
 threshold correction, all 225 tests passed. Subsequent search, generator and
-image-editing and operation-layout batches now pass 606 tests and build the executable JAR. The
-authoritative matrix records the scope and before/after evidence for each batch.
+image-editing and operation-layout batches reached 606 tests. Release 1.2.5
+passed 612 on Mac and Windows CI. The current local math audit package passes
+997 tests on macOS, including 385 new cases across the first and continuation
+passes. The authoritative matrix records each batch's scope and before/after
+evidence; native acceptance remains separate.
 
 The new fixtures cover 1D eight-sample signals and 4×2 complex images, both origin
 modes, arithmetic with nonzero denominators, threshold boundaries, source

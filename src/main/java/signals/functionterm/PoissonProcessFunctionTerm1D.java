@@ -65,51 +65,17 @@ public class PoissonProcessFunctionTerm1D extends AnalyticFunctionTerm1D {
 	 */
 	@Override
 	public double[] create(double[] indices) {
-		
-		int dimension = indices.length; 	
-		double[] noise = new double[ dimension ];
-		if( getWidth() < 0.007 ) return noise; 
-		
-		double lambda = 1/getWidth(); 
-		double amplitude = getAmplitude();
-		int seed = getSeed();	
-
-		Random rand = new Random( seed );
-																		
-		double ea = Math.exp( lambda ); 
-		int i = 0;  //i is the index that will randomly be set or not.
-		boolean done = false; 
-								
-		while( !done ) {
-			
-			double alpha = ea * rand.nextDouble();  //mean ^ ( n/n! )
-			double sum = 1; 
-			double product = 1; 
-			int index = 1;
-			
-			while( sum <= alpha ) {
-				
-				product = product * lambda / (double)index;
-				sum += product;
-				index++; 
-			}
-			
-			i += index; 
-			
-			if( i < dimension && i >= 0 ) {
-				
-				noise[i] = amplitude;
-				
-			} else {
-			
-				done = true;
-			}
-		
-		} //end outer loop 
-		
-		return noise;
-		
-	}
+        double[] noise = new double[indices.length];
+        double amplitude = getAmplitude();
+        Random random = new Random(getSeed());
+        // The output records occupancy, not event counts. For a Poisson process,
+        // each unit sample is independently occupied with probability 1-exp(-rate).
+        double occupiedProbability = -Math.expm1(-getWidth());
+        for (int i = 0; i < noise.length; i++) {
+            if (random.nextDouble() < occupiedProbability) noise[i] = amplitude;
+        }
+        return noise;
+    }
 
 	/* (non-Javadoc)
 	 * @see signals.core.AnalyticFunctionTerm1D#initTypeModel(signals.core.DataGeneratorTypeModel)

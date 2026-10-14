@@ -392,7 +392,9 @@ public class ArrayMath {
 
 	public static double[] reverse2D(double[] input, int x_dimension, int y_dimension, boolean x) {
 
-		double[][] expanded = ArrayUtilities.expand(input, x_dimension, y_dimension);
+		// Reverse in increasing physical y, then restore top-to-bottom image storage.
+		// Reversing stored row indices directly moves y=0 by two samples.
+		double[][] expanded = ArrayUtilities.y_swap_expand(input, x_dimension, y_dimension);
 		double[][] output = new double[y_dimension][x_dimension];
 
 		if (x) {
@@ -424,7 +426,7 @@ public class ArrayMath {
 
 		}
 
-		return ArrayUtilities.flatten(output);
+		return ArrayUtilities.y_swap_flatten(output);
 	}
 
 	/*

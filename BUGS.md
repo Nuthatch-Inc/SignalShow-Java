@@ -605,3 +605,95 @@ ID format: BUG-### (e.g. BUG-001)
 - Description: Three existing workflow cases could not remove exported TIFF files during cleanup. JAI FileStore owns an output stream until its returned rendered operation is disposed; the application discarded that operation without disposing it. BMP uses the same path.
 - Fix: Dispose the completed FileStore operation after TIFF/BMP encoding, preserving the existing codecs and normalization.
 - Verification: Add repeated ordinary export→rename→pixel-readback→delete checks for both formats. Three before-failing Windows TIFF cleanup cases now pass. Focused16 and full612 local tests pass; the corrected Mac and Windows CI jobs pass all612 tests and final-installer payload inspection. Windows interactive usage remains deferred. See docs/audit/evidence/2026-10-13-publication.md.
+
+
+- ID: BUG-046
+- Title: Vertical image reversal shifts the coordinate origin by two pixels
+- Status: resolved; automated mathematical verification passed
+- Reported by: source-led mathematical audit
+- Date: 2026-10-14
+- Environment: macOS arm64, JDK 25, headless production operation classes
+- Description: Reverse Y negated top-to-bottom array row indices rather than upward physical y coordinates. A point at y=0 moved to y=-2 (cyclically), and an entire normal image was shifted after reflection. Both channels and both origin modes were affected. Earlier usage evidence verified the array rule, not its mathematical meaning.
+- Fix: Reverse in the existing upward-y array representation and restore image row order afterward. Reverse X remains unchanged.
+- Verification: Eight independent rectangular-coordinate and origin cases failed before the change. All 32 new coordinate/spectral checks pass, including fixed origins and agreement with two unitary Fourier transforms. The complete 664-test package passes after correcting the old top-row reversal expectation. See docs/audit/evidence/2026-10-14-math.md for scope.
+
+
+- ID: BUG-047
+- Title: Hologram encoding corrupts its source and uses incorrect phase/error quantization
+- Status: resolved; scoped automated production checks pass
+- Date: 2026-10-14
+- Description: Encoding overwrites the source magnitude/phase arrays. A normal authored +pi phase selects an out-of-range column and crashes; seven steps are used for eight periodic phase columns, and error diffusion loses the complex phase error. The duplicate Phase Detour encoder shares the math defects.
+- Fix: One read-only shared encoder with eight wrapped phase bins, bounded aperture heights and actual complex residual feedback. Both operations use it.
+- Verification: 12 of 14 final cases fail on original code (including two exceptions); all 14 pass after correction. Optical first-order and enumerated-quantizer references are independent; a separate current Chirplet comparison agrees on 65,536 binary pixels. No native acceptance claimed. See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-048
+- Title: Cepstrum reverses the imaginary result for complex inputs
+- Status: resolved; automated 1D/2D production and chain checks pass
+- Date: 2026-10-14
+- Description: The second transform was forward instead of inverse. Normal asymmetric complex signals/images returned a conjugated magnitude cepstrum; inverse chains consequently reconstructed the wrong spectrum. Real-only examples could hide the error.
+- Fix: Use the standard inverse transform after the log-magnitude spectrum. Express inverse mode consistently as IFFT(exp(FFT(input))); correct the help's unsupported phase-unwrapping claim. Existing zero-bin handling remains.
+- Verification: 12 forward/chain cases fail before the fix; all 28 kernel cases and 16 transform regressions pass. Direct DFT sums independently check directions, scales and both origins. See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-049
+- Title: Editing the Poisson noise Seed field breaks subsequent generation
+- Status: resolved; actual 1D/2D editor regressions pass
+- Date: 2026-10-14
+- Description: The Poisson type model inherited a decimal type for its Seed field. Typing an ordinary integer stored Double, and generation threw ClassCastException when reading Integer.
+- Fix: Declare the two Poisson parameter types explicitly as Double and Integer. The 2D wrapper inherits the correction.
+- Verification: Five original-code editor cases throw; all 37 noise distribution/editor cases and 11 copy/histogram regressions pass after correction. Two seed edits, complex Intensity chains and copies are checked. Headless Swing evidence only. See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-050
+- Title: Polar Delta and Delta Pair images place impulses at unrelated coordinates
+- Status: resolved; ordinary 1D and complex polar-image checks pass
+- Date: 2026-10-14
+- Description: All three impulse generators treated centers as array offsets even when polar creation supplied nonuniform radii/angles. Radius 5 could select radius sqrt(8), and an angular impulse could become one unrelated pixel.
+- Fix: Evaluate every supplied physical coordinate against the requested impulse locations; retain the pair sign convention and discrete point-support definition.
+- Verification: All 24 original polar cases fail; all 36 new coordinate/chain cases and 46 polar/1D regressions pass (82 total). Both origins and rectangular shapes covered. No native UI check claimed. See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-051
+- Title: Poisson Process produces too few events and incorrect spacing at normal rates
+- Status: resolved; ordinary rate and complex image-chain checks pass
+- Date: 2026-10-14
+- Description: Integer Poisson waiting gaps plus one gave the wrong occupancy and adjacent-bin dependence. Rate 1 filled about 50% of samples instead of the correct 63.2%; rate 2 filled 66.5% instead of 86.5%.
+- Fix: Directly sample independent unit-bin Poisson occupancy using probability 1-exp(-rate), retaining one amplitude per occupied sample and deterministic seeded generation. Old seed patterns necessarily change.
+- Verification: Three of 12 original cases fail; all 12 pass after correction, including distribution/independence checks, rate edits in complex 2D chains, copying, and separate random-phase images. See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-052
+- Title: Rectangular and E apertures fill an extra border outside their requested bounds
+- Status: resolved; independent complex image geometry and chain checks pass
+- Date: 2026-10-14
+- Description: The rectangle helper filled its expanded search bounding box without a membership check. Normal half-width 8 / half-height 5 produced 247 pixels instead of 187, with further asymmetry at fractional centers. The E generator shares this helper.
+- Fix: Include only pixel centers within the requested half-extents using ceiling/floor bounds. Preserve the established half-extent convention and document it in the two help pages.
+- Verification: Eight original rectangle/E cases fail. All 16 new aperture cases and 12 existing generator regressions pass; both rectangular orientations/origins, both complex channels, fractional center edits and Intensity chains covered. Multiarm and annular multiarm independent checks also pass. See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-053
+- Title: Division uses addition precedence in mixed calculator expressions
+- Status: resolved; independent 1D/2D complex expression checks pass
+- Date: 2026-10-14
+- Description: DivideOp declared addition/subtraction priority. The actual calculator consequently evaluated A+B/C as (A+B)/C and A/B*C as A/(B*C), producing substantial wrong answers with ordinary inputs. Earlier grouped tests supplied their own correct priority tokens and missed this metadata error.
+- Fix: Give division multiplication/division priority, as documented by CombineOpsRule and used by Chirplet.
+- Verification: 12 of 40 expression cases fail on original metadata; all 40 pass after correction. Tests use actual default operation metadata, independent polar complex arithmetic, grouping, left associativity and linked Intensity in 1D/2D with both origins. Another 16 operation-selection/complex regressions pass. See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-054
+- Title: Moving scaled 1D data off the viewport squeezes the whole signal into view
+- Status: resolved; ordinary sampled complex signal checks pass
+- Date: 2026-10-14
+- Description: Scale-and-zero-pad clipped the placement bounds before resizing. Normal center edits consequently compressed all input samples into the remaining visible interval, and the exclusive right bound incorrectly discarded the last canvas sample.
+- Fix: Resize to the authored width first, then copy only the visible part using an exclusive canvas-end bound. Existing crop mode and half-width convention remain unchanged.
+- Verification: Four original scale/pad cases fail. All eight new 32/64-sample, both-origin, crop/pad cases pass with independent ramp interpolation and opposite channel shifts, width edits, amplitudes and Intensity. Seven persistence and 16 coordinate regressions also pass (31 total). See docs/audit/evidence/2026-10-14-math-continuation.md.
+
+
+- ID: BUG-055
+- Title: Bar Chart always enlarges its 128-pixel resource and loses higher-resolution detail
+- Status: resolved; resource pixel and complex chain checks pass
+- Date: 2026-10-14
+- Description: The resolution selector had a three-argument signature that did not override the two-argument production resize method. Normal 256/512 creations consequently enlarged the 128 image instead of using the supplied detailed chart; the unreachable old path also bypassed sample normalization.
+- Fix: Override the actual resize method, select the supplied resource using the existing size rule, refresh the cached image when selection changes, and use the shared normalized loader.
+- Verification: Four original 256/512 cases fail against independent PNG decoding. All 30 sampled-image cases pass after correction: nonconstant rectangular scaling/placement, eight packaged images, phase images in magnitude/phase chains, resolution edits, amplitudes and Intensity. Another 165 creation/import-edit regressions pass (195 total). See docs/audit/evidence/2026-10-14-math-continuation.md.

@@ -34,33 +34,15 @@ public class DeltaPairOddFunctionTerm1D extends AnalyticFunctionTerm1D {
 	 */
 	@Override
 	public double[] create(double[] indices) {
-		
-		int dimension = indices.length; 
-		double[] deltaPairOdd = new double[ dimension ];		
-		
-		double width = getWidth(); 
-		double center = getCenter();
-		double amplitude = getAmplitude();
-		
-		int index = (int) (center - indices[0]);				
-
-		//check to make sure that the the larger index is not out of bounds, and add it
-		int right = index + (int)width; 
-		if ( right <  dimension && right >= 0 ) {
-			
-			deltaPairOdd[right] = -amplitude; 
-		}
-		
-		//check to makes sure the smaller index is not out of bounds
-		int left  = index - (int)width; 
-		if( ( left >= 0 && left < dimension ) ) {
-			
-			deltaPairOdd[left] = amplitude;
-		}	
-		
-		return deltaPairOdd;
-		
-	}
+        double center = getCenter(), width = getWidth(), amplitude = getAmplitude();
+        double[] pair = new double[indices.length];
+        // Match the requested coordinates even on nonuniform polar samples.
+        for (int i = 0; i < indices.length; i++) {
+            if (indices[i] == center - width) pair[i] = amplitude;
+            else if (indices[i] == center + width) pair[i] = -amplitude;
+        }
+        return pair;
+    }
 	
 	/* (non-Javadoc)
 	 * @see signals.core.AnalyticFunctionTerm1D#isHalfWidthDefined()

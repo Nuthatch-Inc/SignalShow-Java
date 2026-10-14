@@ -143,30 +143,19 @@ public class DataFunctionTerm1D extends AnalyticFunctionTerm1D {
 	}
 
 	private double[] createScaledPadded(int dimension, boolean zeroCentered) {
-		
-		int center = (int)getCenter();  
-		int width = 2*(int)getWidth(); 
+		int center = (int)getCenter() + (zeroCentered ? dimension / 2 : 0);
+		int width = 2 * (int)getWidth();
+		int dataLeft = center - width / 2;
+		int left = Math.max(0, dataLeft);
+		int right = Math.min(dimension, dataLeft + width);
+		double[] output = new double[dimension];
+		if (right <= left) return output;
 
-		if( zeroCentered ) {
-
-			center += dimension/2; ; 
-		}
-
-		int left = boundValue( center - width/2, 0, dimension-1 ); 
-		int right = boundValue( center + width/2, 0, dimension-1 );
-		int w = right - left; 
-		
-		double[] resized = getScaledResizedData(w, zeroCentered);
-		
-		double[] output = new double[dimension]; 
-		
-		int idx = 0; 
-		for( int i = left; i < right; ++i ) {
-			
-			output[i] = resized[idx++];
-		}
-
-		return output; 
+		// Preserve the authored scale when only part of the signal is visible.
+		// Clipping the bounds before resizing would squeeze all samples into view.
+		double[] resized = getScaledResizedData(width, zeroCentered);
+		System.arraycopy(resized, left - dataLeft, output, left, right - left);
+		return output;
 	}
 
 	private double[] createCropped(int dimension, boolean zeroCentered) {

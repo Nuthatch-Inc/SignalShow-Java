@@ -23,7 +23,7 @@ public class DivideOp extends BinaryOperation {
 	}
 
 	public DivideOp(ParameterBlock paramBlock) {
-		super(paramBlock, CombineOpsRule.BINARY_OP_TIER_1);
+		super(paramBlock, CombineOpsRule.BINARY_OP_TIER_2);
 	}
 	
 	@Override

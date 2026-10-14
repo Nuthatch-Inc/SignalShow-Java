@@ -74,6 +74,10 @@ public class PoissonNoiseFunctionTerm1D extends NoiseFunctionTerm1D {
 //		model.setLargeIcon("/functionIcons/PoissonNoiseDistribution1DLarge.png");
 //		model.setSmallIcon("/functionIcons/PoissonNoiseDistribution1DSmall.png");
 		model.setName("Poisson Noise");
+
+        // The seed editor must store Integer, as required by getSeed().
+        Class[] param_classes = { Double.class, Integer.class };
+        model.setParamClasses(param_classes);
 		
 		String[] param_names = { "" + '\u03BB', "Seed"}; 
 		model.setParamNames( param_names );

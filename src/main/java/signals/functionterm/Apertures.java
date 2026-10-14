@@ -62,11 +62,12 @@ public class Apertures {
 		int offsetX = zeroCentered ? x_dimension / 2 : 0; 
 		int offsetY = zeroCentered ? y_dimension / 2 : 0; 
 
-		int xStart = Math.max( 0, (int)(xCenter - width - 1 + offsetX )); 
-		int yStart = Math.max( 0, (int)(yCenter - height - 1 + offsetY )); 
+		// Include only pixel centers within the requested half-extents.
+		int xStart = Math.max( 0, (int)Math.ceil(xCenter - width + offsetX));
+		int yStart = Math.max( 0, (int)Math.ceil(yCenter - height + offsetY));
 
-		int xEnd = Math.min( x_dimension - 1, (int)(xCenter + width + 1 + offsetX )); 
-		int yEnd = Math.min( y_dimension - 1, (int)(yCenter + height + 1 + offsetY ));
+		int xEnd = Math.min( x_dimension - 1, (int)Math.floor(xCenter + width + offsetX));
+		int yEnd = Math.min( y_dimension - 1, (int)Math.floor(yCenter + height + offsetY));
 
 		for( int y = yStart; y <= yEnd; y++ ) {
 

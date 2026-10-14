@@ -3,6 +3,13 @@
  <body>
  <h1>Poisson Process (Shot Noise)</h1>
 
+ <p>Each sample records whether at least one event occurs in a unit sampling
+ interval. At rate &lambda;, the probability that a sample is occupied is
+ <code>1 - exp(-&lambda;)</code>. Disjoint intervals are independent. An occupied
+ sample has the specified amplitude, even if more than one event occurs in its
+ interval; this output represents occupancy rather than event counts.</p>
+
+
  <p>If rare and independent events (such as the arrival of photons from a faint star)
  occur continuously and independently at a constant average rate &#955, the number
 of arrivals in a fixed time interval (a, b], given as N(b) - N(a) is

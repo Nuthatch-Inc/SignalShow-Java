@@ -695,8 +695,8 @@ public class UnaryOperations1DTest {
     }
 
     @Test
-    @DisplayName("ArrayMath.reverse2D y-direction preserves first row")
-    void arrayMathReverse2DYPreservesFirstRow() {
+    @DisplayName("ArrayMath.reverse2D y-direction preserves the bottom-left coordinate origin")
+    void arrayMathReverse2DYPreservesCoordinateOrigin() {
       double[] input = new double[] {
           1.0, 2.0, 3.0,
           4.0, 5.0, 6.0,
@@ -705,13 +705,15 @@ public class UnaryOperations1DTest {
 
       double[] reversed = ArrayMath.reverse2D(input, 3, 3, false);
 
+      // Top-to-bottom rows represent y=2, y=1, y=0. Cyclic y -> -y
+      // swaps y=1 with y=2 and keeps the coordinate origin at the bottom.
       double[] expected = new double[] {
+          4.0, 5.0, 6.0,
           1.0, 2.0, 3.0,
-          7.0, 8.0, 9.0,
-          4.0, 5.0, 6.0
+          7.0, 8.0, 9.0
       };
 
-      assertSignalsEqual(expected, reversed, "reverse2D y should preserve row 0 and reverse remaining rows");
+      assertSignalsEqual(expected, reversed, "reverse2D y should negate physical y, preserving y=0");
     }
   }
 }

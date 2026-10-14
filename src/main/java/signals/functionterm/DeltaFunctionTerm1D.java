@@ -35,20 +35,14 @@ public class DeltaFunctionTerm1D extends AnalyticFunctionTerm1D {
 	 */
 	@Override
 	public double[] create(double[] indices) {
-
-		double center = getCenter();
-		double amplitude = getAmplitude();
-
-		int dimension = indices.length; 
-		double[] delta = new double[ dimension ];	
-		
-		int location = (int) (center-indices[0]);
-		if( location < dimension && location >= 0 )
-		delta[location] = amplitude;
-
-		return delta;
-
-	}
+        double center = getCenter(), amplitude = getAmplitude();
+        double[] delta = new double[indices.length];
+        // Polar callers provide radii/angles, not a unit-spaced array index.
+        for (int i = 0; i < indices.length; i++) {
+            if (indices[i] == center) delta[i] = amplitude;
+        }
+        return delta;
+    }
 
 	/* (non-Javadoc)
 	 * @see signals.core.AnalyticFunctionTerm1D#initTypeModel(signals.core.DataGeneratorTypeModel)
