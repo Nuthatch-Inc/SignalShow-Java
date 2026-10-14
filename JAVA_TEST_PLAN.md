@@ -56,8 +56,9 @@ creation with division/subtraction passed after correcting corner-origin angular
 coordinates. Magnitude/phase creation and extraction passed. Signed
 images with absolute value and reversal passed. Complex
 powers and reciprocals passed after fixing lost input phase. Annular aperture masking
-and diffraction intensity passed. Active work now covers Fourier basis creation
-and frequency-domain chains. Prior checked rows remain bounded evidence, not certification of every
+and diffraction intensity passed. Fourier basis editing
+and frequency-domain chains passed. Active work now covers spatial autocorrelation
+and extraction. Prior checked rows remain bounded evidence, not certification of every
 combination. Continue verified batches and commit locally without pushing.
 
 ## Authoritative matrix

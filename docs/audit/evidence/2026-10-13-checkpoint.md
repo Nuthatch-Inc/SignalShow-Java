@@ -27,21 +27,23 @@ Latest local fix f6e1192: BUG-043 complex powers lost input phase. Fourteen
 before-failing production cases pass; focused56/full606 tests pass. Native power
 and reciprocal retest9 exports passed; all seven wrong before outputs retained.
 
-Latest evidence-only batch: centered128×128 Cassegrain aperture and radial complex
-wave→Times→sqrt(N) Fourier Transform→Squared Magnitude. Edit aperture center/radii
-and wave amplitude/period/phase. All10 exports/163,840 complex samples pass a direct
-DFT and independent source/intensity checks, max1.208e−13/tol1e−9. Clean native log,
-usable source/operation/result views. Evidence:2026-10-13-annular.md and replay.
+Local evidence commit63b420c: annular aperture masking and diffraction intensity,
+10 exports/163,840 samples passed independent direct DFT/source/intensity checks.
+Latest batch: centered128×64 Fourier Basis→Divide-by-N FFT→Magnitude→Threshold.
+Edits through both component views keep shared factors synchronized. All9 saved
+stages/73,728 samples pass exact single-bin reference; frequency peak(4,4)→(8,2),
+threshold selects/clears it. Max1.356e−14/tol1e−9; clean log. Evidence:basis.md/replay.
 
-Matrix:130 math entries,73 scenarios:68 checked,1 active Mac,2 pending Windows,
+Matrix:130 math entries,74 scenarios:69 checked,1 active Mac,2 pending Windows,
 2 deferred memory stress. These are bounded checks, not whole-app certification.
 
 ## Next action and resources
 
-Active `gui-2d-basis-spectrum-chain`: create an ordinary rectangular Fourier Basis
-image; edit X/Y factors through real and imaginary editors, then Fourier Transform
-→Magnitude→Threshold. Independently verify sources and all saved stages. Read the
-actual parameters/conventions first. Keep normal input scope; Windows does not block.
+Active `gui-2d-spatial-autocorrelation-chain`: create normal64×128 rectangular
+real/imaginary patterns; Auto Correlate→Scale→Real. Edit source geometry and gain,
+independently verify every saved stage. Suggested distinct rectangle centers/sizes
+for both channels; check against direct circular correlation sums. Keep normal
+input scope; Windows does not block.
 
 No SignalShow app remains open; CUA Close plus process inspection confirmed exit.
 No build/sampler running. Test bundle:

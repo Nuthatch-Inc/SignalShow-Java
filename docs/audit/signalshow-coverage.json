@@ -4,7 +4,7 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Active Mac audit: Fourier basis creation and frequency-domain chains",
+    "state": "Active Mac audit: spatial autocorrelation and extraction",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly73% remaining; no other applicable window reported",
@@ -13,7 +13,7 @@
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
     "activeIds": [
-      "gui-2d-basis-spectrum-chain"
+      "gui-2d-spatial-autocorrelation-chain"
     ],
     "nextIds": []
   },
@@ -553,12 +553,13 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
+      "scope": "Actual OperatorSystem2D on complex 32×16/16×32 images, both origins, source edits and independent direct references. Native 256×256 constant complex filtering/FFT chains verified from every saved sample. Native centered128×64 spatial Gaussian/rectangle chains, both source amplitudes and operation replacement independently verified from12 exports. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT.",
       "remaining": "Definition, generated equation and handbook review remain open. Other parameters/normalizations, native uncentered spatial chains, larger workloads and Windows are separate gaps.",
       "evidence": [
         "filtering-2026-10-13",
         "spatial-filtering-2026-10-13",
-        "annular-chain-2026-10-13"
+        "annular-chain-2026-10-13",
+        "basis-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -868,7 +869,7 @@
         "parameters": "verified",
         "handbook": "unreviewed"
       },
-      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 magnitude/rotation chain with threshold0.75, source amplitude edits and visible parameters verified. Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller.",
+      "scope": "Default and configured threshold through actual 1D/2D functions; below/equal/above boundaries, both origins, both channels, and existing Swing Maximum/Minimum/Threshold editors. Contract checked against bundled threshold documentation. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native128×64 magnitude/rotation chain with threshold0.75, source amplitude edits and visible parameters verified. Native64×128 magnitude/phase image with Line×Line phase and Constant magnitude; Phase/Real/Threshold branches and edits independently checked. Line evidence is through the2D caller. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT.",
       "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
       "evidence": [
         "workflow-regressions-2026-10-12",
@@ -876,7 +877,8 @@
         "channels-2026-10-13",
         "arithmetic-2026-10-13",
         "rectangular-rotation-2026-10-13",
-        "phase-chain-2026-10-13"
+        "phase-chain-2026-10-13",
+        "basis-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -893,10 +895,11 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports.",
+      "scope": "Both-origin rectangular production chains and native128×64 Gaussian+constant-imaginary Magnitude→Threshold→Rotate; both source amplitudes independently checked from native exports. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT.",
       "remaining": "Definition, equations, handbook, broader source families and Windows remain unreviewed.",
       "evidence": [
-        "rectangular-rotation-2026-10-13"
+        "rectangular-rotation-2026-10-13",
+        "basis-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -1809,12 +1812,13 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128×64 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
+      "scope": "Native128×64 radial Gaussian/angular Cosine with complex Constant and Divide/Minus, source/operand edits and both origins checked; polar angle/radius row mismatch fixed. Shared1D generators verified through the2D polar caller only. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "polar-chain-2026-10-13",
         "power-chain-2026-10-13",
-        "annular-chain-2026-10-13"
+        "annular-chain-2026-10-13",
+        "basis-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -2220,12 +2224,13 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked.",
+      "scope": "Native128×64 signed Cartesian Sine/Rectangle/Gaussian two-channel source, componentwise Absolute Value and established cyclic Reverse X/Y, with source/direction edits.1D generators checked through2D caller only; reflection-definition review remains separate. Ordinary nonzero complex powers checked through production1D/2D callers and native2D Exponent→Invert chains with source/power edits. Radial sine/cosine creation verified through the2D predefined complex caller. BUG-043 phase-loss correction verified. Native centered128×128 Cassegrain aperture×radial complex wave→sqrt(N) Fourier Transform→Squared Magnitude, aperture/source edits;10 saved stages independently checked. Native128×64 predefined Fourier Basis: selected real/imaginary product edits, Divide-by-N Fourier Transform→Magnitude→Threshold;9 exports independently checked against complex exponential and exact single-bin DFT.",
       "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
       "evidence": [
         "signed-chain-2026-10-13",
         "power-chain-2026-10-13",
-        "annular-chain-2026-10-13"
+        "annular-chain-2026-10-13",
+        "basis-chain-2026-10-13"
       ],
       "reviewedOn": "2026-10-13"
     },
@@ -3857,14 +3862,34 @@
       "area": "usage",
       "title": "Create and edit a Fourier basis image and inspect its frequency peak",
       "priority": "P0",
-      "status": "pending",
+      "status": "checked",
       "steps": [
         "Create an ordinary rectangular Fourier Basis image with nontrivial X/Y parameters.",
         "Apply Fourier Transform, Magnitude and Threshold through linked systems.",
         "Edit parameters through real and imaginary editors; independently verify saved stages."
       ],
       "expected": "Predefined image editors keep channels consistent and frequency-domain results update correctly.",
-      "scope": "Mac Fourier Basis workflow; precise fixture pending.",
+      "scope": "Centered128×64 predefined Fourier Basis, edits through both component editors, normalized FFT→Magnitude→Threshold.",
+      "summary": "All9 exports/73,728 complex samples pass; peak moves from(4,4) to(8,2), threshold selects/clears it; clean native log.",
+      "evidence": [
+        "basis-chain-2026-10-13"
+      ],
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-spatial-autocorrelation-chain",
+      "area": "usage",
+      "title": "Create a complex spatial image and chain autocorrelation with scaling and extraction",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create normal rectangular real/imaginary spatial patterns.",
+        "Apply Auto Correlate, Scale and Real through linked systems.",
+        "Edit source geometry and verify both channels of every saved stage."
+      ],
+      "expected": "Autocorrelation chains remain responsive and retain the expected complex spatial relationships after edits.",
+      "scope": "Mac spatial autocorrelation workflow; precise fixture pending.",
       "summary": "Native check pending.",
       "evidence": [],
       "environment": "Mac native check pending",
@@ -5168,6 +5193,31 @@
         "docs/audit/evidence/2026-10-13-annular-wave-edited.txt.gz",
         "docs/audit/evidence/2026-10-13-annular-wave-initial.txt.gz",
         "docs/audit/evidence/2026-10-13-annular.md"
+      ]
+    },
+    "basis-chain-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native rectangular Fourier Basis, real/imaginary edits, FFT→Magnitude→Threshold:9 exports/73,728 samples pass; clean log.",
+      "limits": "Centered128×64 selected product edits, Divide-by-N forward transform and thresholds. Other origins/compositions and Windows pending.",
+      "environment": "Native Mac arm64/JDK25 unchanged606-test package; NumPy2.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-basis-edited.png",
+        "docs/audit/evidence/2026-10-13-basis-fourier-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-fourier-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-initial.png",
+        "docs/audit/evidence/2026-10-13-basis-magnitude-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-magnitude-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-native.log",
+        "docs/audit/evidence/2026-10-13-basis-results.json",
+        "docs/audit/evidence/2026-10-13-basis-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-threshold-above-peak.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-threshold-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-threshold-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-basis-verifier.py",
+        "docs/audit/evidence/2026-10-13-basis.md",
+        "src/main/java/signals/action/NewFourierBasisFunction2DAction.java",
+        "src/main/java/signals/gui/datagenerator/FourierBasisReImFunction2DToolBar.java"
       ]
     }
   },

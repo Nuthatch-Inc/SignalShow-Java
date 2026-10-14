@@ -1,0 +1,71 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "basis-source-initial.txt",
+      "sha256": "0dc3418a7eef48ac58ad842cc1a92a013eaa566c1d4480d528b67ecdc4d57bd0",
+      "descriptor": "basis-source",
+      "complexSamples": 8192,
+      "maxComplexError": 4.3920512659784106e-15
+    },
+    {
+      "file": "basis-fourier-initial.txt",
+      "sha256": "8a511b2dba1971ad43a34d9b0b2b0a5210266fc94529dfee4e1d2725f1bbedc9",
+      "descriptor": "FFT{ basis-source }",
+      "complexSamples": 8192,
+      "maxComplexError": 1.3551999095955062e-14
+    },
+    {
+      "file": "basis-magnitude-initial.txt",
+      "sha256": "726e643d9c031c5b6eeb9525d77cd89963548736ebb363e4f53f27f8d1c8c090",
+      "descriptor": "||FFT{ basis-source }||",
+      "complexSamples": 8192,
+      "maxComplexError": 4.308994054606244e-15
+    },
+    {
+      "file": "basis-threshold-initial.txt",
+      "sha256": "2bad4be7d4b1224647efe82527a0c213b785a4b2d69580946924618f82d85bfb",
+      "descriptor": "threshold(||FFT{ basis-source }||)",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "basis-source-edited.txt",
+      "sha256": "e8d9942a393e80d5ada122f31976e069bc98da3e9e6c6450ed0b70e3d187733d",
+      "descriptor": "basis-source",
+      "complexSamples": 8192,
+      "maxComplexError": 5.114261372743299e-15
+    },
+    {
+      "file": "basis-fourier-edited.txt",
+      "sha256": "ccf2413bff6716b5f1abcfe80375b503d8e5379e8c12025bb6b3de73d1c83846",
+      "descriptor": "FFT{ basis-source }",
+      "complexSamples": 8192,
+      "maxComplexError": 9.24156474531335e-15
+    },
+    {
+      "file": "basis-magnitude-edited.txt",
+      "sha256": "bda4eb1ec9d277d7cb4bec098b121a087807cac60103941591cbf1a1c75624a0",
+      "descriptor": "||FFT{ basis-source }||",
+      "complexSamples": 8192,
+      "maxComplexError": 3.3110074742126535e-15
+    },
+    {
+      "file": "basis-threshold-edited.txt",
+      "sha256": "52e360e0eabe551b62a6d46c6bdb4ad060ade85d8e1b9c06e350c9fbfc789bc1",
+      "descriptor": "threshold(||FFT{ basis-source }||)",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    },
+    {
+      "file": "basis-threshold-above-peak.txt",
+      "sha256": "15202363567dcabe196326f1384d71d895de9734ac076f55aa0079fb84ab9e24",
+      "descriptor": "threshold(||FFT{ basis-source }||)",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0
+    }
+  ],
+  "passed": 9,
+  "totalComplexSamples": 73728,
+  "maxComplexError": 1.3551999095955062e-14
+}
