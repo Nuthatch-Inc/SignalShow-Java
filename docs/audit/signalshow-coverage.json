@@ -4,19 +4,18 @@
   "baselineCommit": "28a4ffc072dafed81896e991fd43daab73b7a767",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Mac checkpoint complete; Windows verification pending",
+    "state": "Active Mac audit: offset, clipping and square-root chains",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-13: weekly77% remaining; no other applicable window reported",
-    "authorization": "Juliet authorized Continuous Audit on 2026-10-12 and renewed it on 2026-10-13, prioritizing crashes and major wrong results. She authorized local commits at verified checkpoints; do not push. No release/deployment authorized."
+    "authorization": "Juliet renewed Continuous Audit on 2026-10-13: test more ordinary Mac 2D creation and operation chains, prioritize crashes and major wrong results, and commit verified batches locally without pushing. Windows checks are deferred until later. No release/deployment authorized."
   },
   "scenarioPlan": {
     "focus": "Ordinary image creation, edits and operation chains first. Build hundreds of distinct usage scenarios incrementally. Roger’s supplied example and preview layout are verified in scoped rows; continue bounded basic workflows without rare-edge or tiny-error work.",
-    "activeIds": [],
-    "nextIds": [
-      "launch-native-windows",
-      "windows-files-display"
-    ]
+    "activeIds": [
+      "gui-2d-intensity-clipping-chain"
+    ],
+    "nextIds": []
   },
   "math": [
     {
@@ -730,13 +729,17 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": " Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
+      "evidence": [
+        "chirp-aperture-2026-10-13"
+      ],
+      "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook.",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:DerivativeOp2D",
@@ -876,13 +879,17 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
+        "numerics": "partial",
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": " Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
+      "evidence": [
+        "chirp-aperture-2026-10-13"
+      ],
+      "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook.",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "unary2DList:PhaseOp",
@@ -1084,14 +1091,16 @@
         "parameters": "unreviewed",
         "handbook": "unreviewed"
       },
-      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands.",
-      "remaining": "Broader ordinary compositions, other dimensions/platforms, generated equations and handbook review remain open; this native arithmetic fixture is verified.",
+      "scope": "Production operation and FunctionFactory; eight samples in 1D or a 4×2 image, both origins and both complex channels. Explicit independent expected arrays; operands unchanged. Native Roger 256×256 composition and TIFF export also exercised. Native 256×256 complex-image arithmetic and linked Threshold 0.2 checked against every saved sample, including source edit and reversed operands. Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
         "workflow-regressions-2026-10-12",
         "roger-rotation-2026-10-12",
-        "arithmetic-2026-10-13"
+        "arithmetic-2026-10-13",
+        "chirp-aperture-2026-10-13"
       ],
-      "reviewedOn": "2026-10-13"
+      "reviewedOn": "2026-10-13",
+      "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook."
     },
     {
       "id": "binary2DList:DivideOp",
@@ -1534,12 +1543,14 @@
         "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet. Native256×256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
+      "scope": "Native256×256 edits, Plot/Edit and linked multiplication/threshold pass; independent disk samples for Cylinder and bounded range/repeatability for Uniform Noise. Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample.",
+      "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
       "evidence": [
-        "creation-2026-10-13"
+        "creation-2026-10-13",
+        "chirp-aperture-2026-10-13"
       ],
-      "reviewedOn": "2026-10-13"
+      "reviewedOn": "2026-10-13",
+      "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook."
     },
     {
       "id": "analytic2DList:CassegrainMultiArmFunctionTerm2D",
@@ -1686,13 +1697,17 @@
       "checks": {
         "definition": "unreviewed",
         "equations": "unreviewed",
-        "numerics": "unreviewed",
-        "parameters": "unreviewed",
+        "numerics": "partial",
+        "parameters": "partial",
         "handbook": "unreviewed"
       },
-      "scope": "Registered production implementation. No audit assurance recorded yet.",
-      "remaining": "Review the definition, generated equations, actual numerical callers, parameter behavior and handbook. Map existing tests before adding new ones.",
-      "evidence": []
+      "scope": " Native centered128×64 complex chirp/aperture chain and live edits independently checked against every saved complex sample. This covers its 2D radial complex-creation caller and paired SineChirp, not direct1D creation.",
+      "remaining": "Other ordinary fixtures/callers, generated equations and handbook remain unreviewed; this bounded native chain passed.",
+      "evidence": [
+        "chirp-aperture-2026-10-13"
+      ],
+      "executiveSummary": "The named Mac chirp/aperture chain returned the expected results before and after source edits. Both channels were compared independently. This does not certify other creation callers or the handbook.",
+      "reviewedOn": "2026-10-13"
     },
     {
       "id": "functionTerm1DList:CombFunctionTerm1D",
@@ -3582,6 +3597,44 @@
       ],
       "environment": "macOS arm64/JDK25 native578-test package",
       "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-chirp-aperture-chain",
+      "area": "usage",
+      "title": "Create and edit a complex chirp through aperture, conjugation and intensity chains",
+      "priority": "P0",
+      "status": "checked",
+      "steps": [
+        "Create a rectangular complex chirp and an off-center aperture with ordinary parameters.",
+        "Multiply, conjugate and calculate squared magnitude through linked operations.",
+        "Edit source and aperture parameters, revisit controls and compare saved results independently."
+      ],
+      "expected": "Creation, linked edits, conjugation and intensity results remain correct and usable.",
+      "scope": "Centered128×64 radial chirp at two amplitudes/widths/phases; off-center Cylinder at two centers/radii, Times, Conjugate and Squared Magnitude with live edits and result Plot.",
+      "summary": "All10 exports/81,920 complex samples independently verified. Coupled real/imaginary parameters retained; no crash or stale result; clean native log.",
+      "evidence": [
+        "chirp-aperture-2026-10-13"
+      ],
+      "environment": "macOS arm64/JDK25 native578-test package",
+      "reviewedOn": "2026-10-13"
+    },
+    {
+      "id": "gui-2d-intensity-clipping-chain",
+      "area": "usage",
+      "title": "Apply offset, clipping and square root to an editable intensity image",
+      "priority": "P0",
+      "status": "pending",
+      "steps": [
+        "Create a spatially varying real image with normal parameters.",
+        "Chain Offset, Clip and Square Root; edit parameters and inspect results.",
+        "Revisit the chain and compare saved samples independently."
+      ],
+      "expected": "Ordinary intensity adjustment chains remain responsive and return current correct results.",
+      "scope": "Selected ordinary native Mac workflow; exact fixture and evidence pending.",
+      "summary": "Native check pending.",
+      "evidence": [],
+      "environment": "Mac native check pending",
+      "reviewedOn": "2026-10-13"
     }
   ],
   "evidence": {
@@ -4598,6 +4651,31 @@
         "src/main/java/signals/gui/SaveFunction1DDialog.java",
         "src/main/java/signals/gui/SaveFunction2DDialog.java",
         "src/test/java/signals/core/ComplexDataWorkflowTest.java"
+      ]
+    },
+    "chirp-aperture-2026-10-13": {
+      "date": "2026-10-13",
+      "summary": "Native rectangular complex chirp × off-center Cylinder → Conjugate → Squared Magnitude; edits through imaginary source editor and aperture move propagate. All10 exports/81,920 complex samples match independent formulas; clean native log.",
+      "limits": "Mac only; named fixtures and ordinary edits. Other orders/origins and handbook remain unreviewed. No new product changes or full-suite rerun.",
+      "environment": "macOS arm64/JDK25, native578-test package; independent NumPy2.4.1 replay.",
+      "sources": [
+        "docs/audit/evidence/2026-10-13-chirp-mask-aperture-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-aperture-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-conjugate-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-conjugate-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-edited.png",
+        "docs/audit/evidence/2026-10-13-chirp-mask-initial.png",
+        "docs/audit/evidence/2026-10-13-chirp-mask-intensity-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-intensity-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-native.log",
+        "docs/audit/evidence/2026-10-13-chirp-mask-product-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-product-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-revisited-ax.txt",
+        "docs/audit/evidence/2026-10-13-chirp-mask-source-edited.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-source-initial.txt.gz",
+        "docs/audit/evidence/2026-10-13-chirp-mask-verification.json",
+        "docs/audit/evidence/2026-10-13-chirp-mask-verifier.py",
+        "docs/audit/evidence/2026-10-13-chirp-mask.md"
       ]
     }
   },

@@ -1,0 +1,158 @@
+{
+  "environment": "NumPy 2.4.1",
+  "checks": [
+    {
+      "file": "chirp-mask-source-initial.txt",
+      "sha256": "babd975f8ded340f5d9014c90ec419adb2078ac218c1faceedadbba8ef8c45d8",
+      "descriptor": "aperture chirp",
+      "complexSamples": 8192,
+      "maxComplexError": 2.1140932018581383e-14,
+      "realRange": [
+        -1.4999996770292343,
+        1.4999584077621533
+      ],
+      "imaginaryRange": [
+        -1.499995079278104,
+        1.4999975147351359
+      ]
+    },
+    {
+      "file": "chirp-mask-aperture-initial.txt",
+      "sha256": "b166573e3adcf723e884d1063277bfa89d20d38e600797d180abae0abab85fc4",
+      "descriptor": "chirp stop",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        0.8
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "chirp-mask-product-initial.txt",
+      "sha256": "30a552e496980f6cdd971bd79e7dc49d63784c80897855fbbbad650f9defdad2",
+      "descriptor": "aperture chirp x chirp stop",
+      "complexSamples": 8192,
+      "maxComplexError": 2.3603665272841412e-15,
+      "realRange": [
+        -1.1999966513216591,
+        1.1998899149527604
+      ],
+      "imaginaryRange": [
+        -1.1999651529207238,
+        1.1999871505678017
+      ]
+    },
+    {
+      "file": "chirp-mask-conjugate-initial.txt",
+      "sha256": "fc2a9a9389e3b98c41060776f3957b59b4c13a587322f4f28efc4228a01fd2d3",
+      "descriptor": "(aperture chirp x chirp stop)*",
+      "complexSamples": 8192,
+      "maxComplexError": 2.3603665272841412e-15,
+      "realRange": [
+        -1.1999966513216591,
+        1.1998899149527604
+      ],
+      "imaginaryRange": [
+        -1.1999871505678017,
+        1.1999651529207238
+      ]
+    },
+    {
+      "file": "chirp-mask-intensity-initial.txt",
+      "sha256": "adf512baf8fea372003014539b5b065775ed250917bd14fa2c80890df3d5ab48",
+      "descriptor": "||(aperture chirp x chirp stop)*||\u00b2",
+      "complexSamples": 8192,
+      "maxComplexError": 1.1102230246251565e-15,
+      "realRange": [
+        0.0,
+        1.4400000000000006
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "chirp-mask-source-edited.txt",
+      "sha256": "62e07c365209ada9f3e42031348e878b036988c2a58347f69bfdacfa4b58ff6d",
+      "descriptor": "aperture chirp",
+      "complexSamples": 8192,
+      "maxComplexError": 1.4190022764522377e-14,
+      "realRange": [
+        -1.9999516079618398,
+        1.9999989253981287
+      ],
+      "imaginaryRange": [
+        -1.9999949974567826,
+        1.999998521834626
+      ]
+    },
+    {
+      "file": "chirp-mask-aperture-edited.txt",
+      "sha256": "b97505e7c62ce6c70d72cab8edc98c890bed823281589635dae94f23ddab2347",
+      "descriptor": "chirp stop",
+      "complexSamples": 8192,
+      "maxComplexError": 0.0,
+      "realRange": [
+        0.0,
+        0.8
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "chirp-mask-product-edited.txt",
+      "sha256": "883d6daf399ec1e4bf5d3b0412feec885a0677a48573c8db080214d3880b349e",
+      "descriptor": "aperture chirp x chirp stop",
+      "complexSamples": 8192,
+      "maxComplexError": 2.84147705365001e-15,
+      "realRange": [
+        -1.5998611262737539,
+        0.4141104721640332
+      ],
+      "imaginaryRange": [
+        -1.5999117262900036,
+        1.599998817467701
+      ]
+    },
+    {
+      "file": "chirp-mask-conjugate-edited.txt",
+      "sha256": "ef961fbe209b3af69bb6847b9f5b82dd50f407ddcf979fea3acec1093b5f5aff",
+      "descriptor": "(aperture chirp x chirp stop)*",
+      "complexSamples": 8192,
+      "maxComplexError": 2.84147705365001e-15,
+      "realRange": [
+        -1.5998611262737539,
+        0.4141104721640332
+      ],
+      "imaginaryRange": [
+        -1.599998817467701,
+        1.5999117262900036
+      ]
+    },
+    {
+      "file": "chirp-mask-intensity-edited.txt",
+      "sha256": "a2061d17e602ffa5fa51d53ba21e9b4aaa4e659fea9e8ee3f19d7ff93c0d956d",
+      "descriptor": "||(aperture chirp x chirp stop)*||\u00b2",
+      "complexSamples": 8192,
+      "maxComplexError": 1.7763568394002505e-15,
+      "realRange": [
+        0.0,
+        2.5600000000000014
+      ],
+      "imaginaryRange": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "passed": 10,
+  "totalComplexSamples": 81920,
+  "maxComplexError": 2.1140932018581383e-14
+}

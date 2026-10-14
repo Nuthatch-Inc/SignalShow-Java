@@ -48,11 +48,11 @@ verified in scoped rows. Continue the authorized audit with one ordinary workflo
 at a time; the matrix owns the active check and next queue. The larger suite is
 implemented incrementally, not all at once.
 
-October13 checkpoint: the63 currently scoped scenarios contain59 checked rows,
-2 pending Windows checks and2 deferred memory stress checks. No native test app
-is left open. The checked rows are bounded evidence, not certification of every
-function combination. Further ordinary usage scenarios remain part of the
-incremental suite plan; the next queued platform checks require Windows.
+October13 resumption: Juliet requested more ordinary **Mac** 2D creation and
+operation chains; check Windows later. The active queue now starts with complex
+chirp/aperture/conjugation/intensity and ordinary offset/clipping/square-root
+workflows. Prior checked rows remain bounded evidence, not certification of every
+combination. Continue verified batches and commit locally without pushing.
 
 ## Authoritative matrix
 

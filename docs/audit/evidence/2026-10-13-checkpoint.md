@@ -1,11 +1,10 @@
 # SignalShow checkpoint — October 13, 2026
 
-Current planned Mac baseline complete. Next queued acceptance checks require a
-Windows environment and confirmation of Roger's actual OS/runtime/version.
-No native test or build is running. This is a scoped checkpoint, not a claim that
-all possible ordinary function/operation combinations have been tested. Continue
-the incremental suite plan as further batches are selected; do not manufacture
-edge cases or numerical trivia to expand it.
+Active Mac audit resumed at Juliet's request. Test more ordinary 2D creation and
+operation chains, prioritizing crashes and major wrong results. Windows checks
+are deferred until later and do not block Mac work. Chirp/aperture/Conjugate/Squared Magnitude batch passed10 native exports and
+81,920 complex samples, including live edits through the imaginary editor.
+Current batch: Offset/Clip/Square Root on an intensity image.
 
 Juliet authorized Continuous Audit and local commits, with no push/release.
 She resumed after Zoom and requested restart when manual/automated typing failed.
@@ -39,17 +38,14 @@ that earlier run had six nonblocking JDK AccessibleHTML exceptions, recorded.
 Persistence capability scoping is now reconciled: files retain samples, dimensions,
 origin and name, not analytic definitions or linked graphs. Existing1D/2D native
 and production round trips reused; no unnecessary rebuild for documentation.
-The authoritative matrix has130 math entries and63 scenarios:59 checked,
-2 pending Windows checks,2 deferred memory stress checks. All assurance is scoped.
+The authoritative matrix has130 math entries and65 scenarios:60 checked,
+1 active Mac check,2 pending Windows checks,2 deferred memory stress checks. All assurance is scoped.
 
 ## Next action and resources
 
-Next queue: launch-native-windows, windows-files-display. Requires Windows; Mac
-checks cannot satisfy them. Confirm Roger's actual environment before choosing
-packaging/runtime assumptions. No destructive memory stress or large-capacity
-claim. The plan remains hundreds of meaningful usage scenarios incrementally,
-prioritizing ordinary crashes and major wrong results over exotic inputs.
-
+Next queue: gui-2d-intensity-clipping-chain. Continue ordinary Mac workflows;
+Windows remains unverified and deferred by the latest user instruction. No
+capacity stress or tiny-error investigations.
 No app remains open; last CUA Close followed by process inspection confirmed exit.
 No build/sampler running. Test bundle /private/tmp/signalshow-roger-app/SignalShowRogerAudit.app
 contains verified578-test JAR, SHA256
