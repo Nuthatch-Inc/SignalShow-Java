@@ -79,33 +79,12 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 	}
 	
 	public void selectButton(String buttonCode) {
-		
-		if( buttonCode.equals(PLOT) ) {
-			
-			plotButton.setSelected(true); 
-			plot(); 
-			
-		} else if( buttonCode.equals(EDIT_A)) {
-			
-			editPartAButton.setSelected(true); 
-			editPartA();
-			
-		} else if( buttonCode.equals(EDIT_B)) {
-			
-			editPartBButton.setSelected(true); 
-			editPartB();
-			
-		} else if( buttonCode.equals(FFT)) {
-			
-			fftButton.setSelected(true); 
-			plotFFT(); 
-			
-		} else if( buttonCode.equals(PROFILE)) {
-			
-			profileButton.setSelected(true); 
-			plotProfile(); 
-		}
-		
+        if (buttonCode.equals(PROFILE)) {
+            profileButton.setSelected(true);
+            plotProfile();
+        } else {
+            super.selectButton(buttonCode);
+        }
 	}
 
 	public void showEditor( boolean newState, FunctionPart2D part ) {
@@ -190,13 +169,19 @@ public abstract class Function2DToolBar extends FunctionToolBar {
 		JPanel globalOptionsPanel = new JPanel();
 		globalOptionsPanel.setLayout( new BoxLayout( globalOptionsPanel, BoxLayout.LINE_AXIS));
 		globalOptionsPanel.add( Box.createHorizontalStrut( 5 ) );
-		globalOptionsPanel.add( new JLabel( " Function Name: " ) );
+		JLabel nameLabel = new JLabel(" Function Name: ");
+		nameLabel.setLabelFor(nameTextField);
+		globalOptionsPanel.add(nameLabel);
 		globalOptionsPanel.add( nameTextField );
 		globalOptionsPanel.add( Box.createHorizontalStrut( 20 ) );
-		globalOptionsPanel.add( new JLabel( " Width: " ) );
+		JLabel widthLabel = new JLabel(" Width: ");
+		widthLabel.setLabelFor(widthSelector);
+		globalOptionsPanel.add(widthLabel);
 		globalOptionsPanel.add( widthSelector ); 
 		globalOptionsPanel.add( Box.createHorizontalStrut( 20 ) );
-		globalOptionsPanel.add( new JLabel( " Height: " ) );
+		JLabel heightLabel = new JLabel(" Height: ");
+		heightLabel.setLabelFor(heightSelector);
+		globalOptionsPanel.add(heightLabel);
 		globalOptionsPanel.add( heightSelector ); 
 		globalOptionsPanel.add( Box.createHorizontalStrut( 20 ) );
 		globalOptionsPanel.add( zeroCenteredCheckBox );

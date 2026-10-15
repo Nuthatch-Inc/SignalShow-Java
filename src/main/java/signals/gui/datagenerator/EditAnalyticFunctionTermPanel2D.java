@@ -112,7 +112,7 @@ public class EditAnalyticFunctionTermPanel2D extends EditAnalyticFunctionTermPan
 
 			
 			textFields[i] = new ParameterEditor( 3, model, i, this ); //3 columns 
-			l.setLabelFor(textFields[i]);
+			textFields[i].setLabel(l);
 			paramPanel.add(textFields[i]);
 		}
 	

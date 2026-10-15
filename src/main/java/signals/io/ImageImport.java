@@ -18,14 +18,15 @@ public final class ImageImport {
         if (image == null) throw new IOException("Unsupported image format: " + file.getName());
         int width = image.getWidth();
         int height = image.getHeight();
-        int[] red;
+        double[] red;
         if (image.getColorModel().getColorSpace().getType() == ColorSpace.TYPE_GRAY) {
-            // Preserve grayscale sample values; getRGB would apply a color conversion.
-            red = image.getRaster().getSamples(0, 0, width, height, 0, (int[]) null);
+            // Preserve integer and floating grayscale samples without color conversion or truncation.
+            red = image.getRaster().getSamples(0, 0, width, height, 0, (double[]) null);
         } else {
             // Import the red channel, independent of the decoder's band ordering.
-            red = image.getRGB(0, 0, width, height, null, 0, width);
-            for (int i = 0; i < red.length; i++) red[i] = (red[i] >>> 16) & 0xff;
+            int[] rgb = image.getRGB(0, 0, width, height, null, 0, width);
+            red = new double[rgb.length];
+            for (int i = 0; i < red.length; i++) red[i] = (rgb[i] >>> 16) & 0xff;
         }
         double[] data = ArrayUtilities.centerAndPad2D(width, height, red);
         int side = ArrayUtilities.getSquareDimension(width, height);

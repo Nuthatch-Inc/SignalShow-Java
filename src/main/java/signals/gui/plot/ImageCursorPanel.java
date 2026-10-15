@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.lang.ref.SoftReference;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
@@ -40,9 +39,6 @@ public class ImageCursorPanel extends DisplayCursorPanel implements Deconstructa
 	int cursorIndexX, cursorIndexY;
 
 	SourceData2D sourceData; 
-	
-	@SuppressWarnings("unchecked")
-	SoftReference displayedData; 
 
 	int xOffset, yOffset;
 	
@@ -347,7 +343,6 @@ public class ImageCursorPanel extends DisplayCursorPanel implements Deconstructa
 		if( sourceData != null ) label.setText( sourceData.getCompactLabel() );
 	}
 
-	@SuppressWarnings("unchecked")
 	public void setCursorLabels() {
 	
 		NumberFormat formatter = Core.getDisplayOptions().getFormat();
@@ -363,44 +358,16 @@ public class ImageCursorPanel extends DisplayCursorPanel implements Deconstructa
 			if( index < (xDimension * yDimension) && index >= 0 ) { //in bounds
 				
 				
-				if( displayedData == null ) { 
-					
-					if( sourceData.getPart() == Part.PHASE ) {
-						
-						if( unwrapPhaseCheckBox != null && unwrapPhaseCheckBox.isSelected() ) {
-							
-							PhaseUnwrapper2D unwrapper = new PhaseUnwrapper2D( sourceData.getData(), sourceData.getDimensionX(), sourceData.getDimensionY() );
-							displayedData = new SoftReference( unwrapper.unwrap() ) ; 
-						
-						} else {
-							
-							displayedData = new SoftReference( sourceData.getData() ); 
-						}
-						
-					} else if ( sourceData.getPart() == Part.MAGNITUDE )  {
-						
-						if( logMagnitudeCheckBox != null && squaredMagnitudeCheckBox != null ) {
-							
-							displayedData = new SoftReference( ArrayMath.logSquare(sourceData.getData(), logMagnitudeCheckBox.isSelected(), 
-									squaredMagnitudeCheckBox.isSelected()) ); 
-						} else {
-							
-							displayedData = new SoftReference( sourceData.getData() ) ; 
-						}
-					} else {
-						
-						displayedData = new SoftReference( sourceData.getData() ); 
-					}
-						
-				} // null condition
-				
+				// Use the same samples as the image, including current display options.
+				double[] displayedData = graphic.data;
+
 				if( sourceData.getPart() == Part.PHASE ) {
 				
-					value = formatter.format( ((double[])displayedData.get())[index]/Math.PI ) + "\u03C0)"; 
+					value = formatter.format( displayedData[index]/Math.PI ) + "\u03C0)";
 					
 				} else {
 					
-					value = formatter.format( ((double[])displayedData.get())[index] ); 
+					value = formatter.format( displayedData[index] );
 				}
 			}
 			

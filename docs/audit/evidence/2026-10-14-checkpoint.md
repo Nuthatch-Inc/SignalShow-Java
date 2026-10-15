@@ -7,7 +7,26 @@ Juliet subsequently authorized publication of the fixes as the latest GitHub rel
 and requested all future development directly on main. Version 1.2.6 is now
 published as latest; verification is recorded in 2026-10-14-release.md.
 
-## Current state
+## Active release preparation — October 15
+
+Juliet requested a new SignalShow release and a link when ready. Prepare **1.2.7**
+on main from the verified BUG-060–070 fixes, tests and evidence. No branch or
+worktree is requested. Publication is authorized; no website action is needed if
+the existing GitHub access remains available.
+
+The prior clean package passes **1,256 tests** with all 566 production classes
+checked. Nineteen focused native keyboard/paste entries and four independently
+verified exports pass; see `2026-10-15-native-input.md`. No experimental focus
+handlers or diagnostic launchers remain in production. Direct native setValue
+and recovery after hiding remain unsupported/unresolved. Broader native checks,
+Windows interactive acceptance and capacity checks remain separate.
+
+Next: clean-package version 1.2.7, commit/push main and its tag, verify both CI
+installers and all four downloaded assets, then publish as latest. Record the
+finished evidence in `2026-10-15-release.md`. No native app is open; preserve user
+servers including 8092. Build downloads belong in temporary storage, not the repo.
+
+## Released state (unchanged)
 
 - Repo `/Users/julietfiss/src/SignalShow-Java`, branch `main`.
 - Release source/tag `3c315c840512b0612e14ac31299b5119b4f097a7`, version **1.2.6**.
@@ -71,7 +90,7 @@ automation, agent or background audit job is running. Preserve existing
 http://127.0.0.1:8092/docs/audit/ and other user servers. Release work is now
 complete; all publication checks passed. Existing user servers remain available.
 
-`check_usage: true`; latest reading: weekly 57% remaining, no other applicable
+`check_usage: true`; release-end reading: weekly 57% remaining, no other applicable
 window. Follow [usage policy](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 
 ## Accepted contracts and prior evidence

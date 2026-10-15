@@ -30,6 +30,17 @@ public class DataFunctionTerm1D extends AnalyticFunctionTerm1D {
 		super(paramBlock);
 	}
 
+	@Override
+	public DataFunctionTerm1D getInstance(ParameterBlock paramBlock) {
+		DataFunctionTerm1D result = new DataFunctionTerm1D(paramBlock);
+		// Definition copies supply independent samples, but these settings live
+		// outside the parameter block and must also survive duplication.
+		result.mode = mode;
+		result.hasDescriptor = hasDescriptor;
+		result.descriptor = descriptor;
+		return result;
+	}
+
 	public void setDescriptor(String descriptor) {
 		this.descriptor = descriptor;
 		hasDescriptor = true; 
@@ -63,11 +74,45 @@ public class DataFunctionTerm1D extends AnalyticFunctionTerm1D {
 	 * @see signals.core.FunctionTerm1D#addTo(double[], double[])
 	 */
 	@Override
-	public double[] create(double[] indices ) {
+	public double[] create(double[] indices) {
+		return create(indices, indices.length, indices.length > 0 && indices[0] != 0);
+	}
 
-		int dimension = indices.length; 
-		boolean zeroCentered = indices[0] != 0;
-		return create( dimension, zeroCentered );
+	@Override
+	public double[] create(double[] indices, int referenceDimension, boolean referenceZeroCentered) {
+		double[] output = new double[indices.length];
+		if (!hasData()) return output;
+		double[] data = getOriginalData();
+		if (data.length == 0) return output;
+
+		int center = (int)getCenter();
+		int halfWidth = (int)getWidth();
+		double start, end;
+		if (mode == Constants.CROP_MODE) {
+			// Crop the same domain shown in the 1D editor, regardless of how many
+			// pixels request samples from it (or the order of those coordinates).
+			start = referenceZeroCentered ? -referenceDimension / 2 : 0;
+			end = start + referenceDimension - 1;
+		} else if (mode == Constants.SCALE_AND_PAD_MODE) {
+			start = center - halfWidth;
+			end = start + 2 * halfWidth - 1;
+		} else {
+			return create(indices.length, referenceZeroCentered);
+		}
+		if (end < start) return output;
+
+		for (int i = 0; i < indices.length; i++) {
+			double coordinate = indices[i];
+			if (coordinate < start || coordinate > end) continue;
+			if (mode == Constants.CROP_MODE
+					&& (coordinate < center - halfWidth || coordinate > center + halfWidth)) continue;
+			double position = end == start ? 0 : (coordinate - start) * (data.length - 1) / (end - start);
+			int left = Math.min((int)Math.floor(position), data.length - 1);
+			int right = Math.min(left + 1, data.length - 1);
+			double fraction = position - left;
+			output[i] = getAmplitude() * (data[left] + fraction * (data[right] - data[left]));
+		}
+		return output;
 	}
 
 	public double[] getResizedData(int dimension, boolean zeroCentered) {

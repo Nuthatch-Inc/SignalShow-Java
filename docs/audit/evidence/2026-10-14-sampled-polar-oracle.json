@@ -1,0 +1,9 @@
+{
+  "oracle": "numpy.interp",
+  "numpyVersion": "2.4.1",
+  "checks": 408,
+  "maximumAbsoluteError": 1.4432899320127035e-15,
+  "passed": true,
+  "scope": "Compiled Java DataFunctionTerm1D; crop/scale, radial and both angular domains, two edits, both channels",
+  "limits": "Does not execute native input, file import, or Chirplet GPU paths"
+}

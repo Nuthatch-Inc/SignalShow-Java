@@ -35,6 +35,14 @@ public abstract class FunctionTerm1D extends DataGenerator implements FunctionTe
 	 * @return the output array with the sum stored in it
 	 */
 	public abstract double[] create( double[] indices );
+
+	/**
+	 * Evaluate coordinates using the supplied 1D preview domain for sampled data.
+	 * Analytic functions depend only on the coordinates, not the preview domain.
+	 */
+	public double[] create(double[] indices, int referenceDimension, boolean referenceZeroCentered) {
+		return create(indices);
+	}
 	
 	/**
 	 * Adds the data represented by this function at equally spaced integer indices to the output

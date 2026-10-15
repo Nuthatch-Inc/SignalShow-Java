@@ -1,0 +1,330 @@
+{
+  "oracle": "numpy.fft.ifft2 with physical-coordinate ordering and enumerated binary cells",
+  "numpyVersion": "2.4.1",
+  "passed": true,
+  "cases": [
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 16,
+      "height": 8,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": false,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": false,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": false,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": false,
+      "pixels": 8192,
+      "mismatches": 0
+    },
+    {
+      "width": 8,
+      "height": 16,
+      "centered": true,
+      "randomPhase": true,
+      "errorDiffusion": true,
+      "wideApertures": true,
+      "pixels": 8192,
+      "mismatches": 0
+    }
+  ],
+  "totalPixels": 262144,
+  "phaseDetourClassSHA256": "408698feee8dbbd7e36ea7bb453b5a8c65261d2ef38b341964381d2cb3a069bb",
+  "limits": "Java retains inverse FFT and fixed seed 1; Chirplet uses forward FFT and fresh random phase. No native/GPU or Windows run."
+}

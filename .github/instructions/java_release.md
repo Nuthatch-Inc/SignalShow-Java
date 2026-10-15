@@ -2,122 +2,66 @@
 applyTo: "**"
 ---
 
-# Java Release Workflow
+# Java release workflow
 
-## When This Applies
+Use this procedure when Juliet requests a SignalShow release. An explicit request
+to publish authorizes the necessary commit, push, tag and GitHub publication.
+Develop directly on main unless Juliet requests otherwise. Build-only requests do
+not authorize publication. Complete the authorized release and provide its link;
+do not hand off routine Actions monitoring or draft publication to Juliet when
+available tools can perform them.
 
-Any time the user asks to release, publish, build, or deploy SignalShow-Java. Common phrasings:
+## Prepare and verify
 
-- "build the java and publish a new release"
-- "release a new version"
-- "push and release"
-- "deploy the java app"
+1. Inspect main, the working tree, origin/main and the latest published version.
+   Preserve unrelated work. Bump the project version in `pom.xml` (patch for fixes).
+2. Write `docs/releases/<version>.md` with changes, downloads, verification scope
+   and material remaining limitations. Keep native and automated evidence distinct.
+3. Run a clean full package, normally
+   `mvn -o -B -ntp -Djava.awt.headless=true clean package`. Inspect the result and
+   executable contents; retain a compact evidence record. Validate the audit
+   matrix with `python3 scripts/signalshow_audit.py --check` and the diff.
+4. Commit the intended release on main, push origin/main, then create and push an
+   annotated `v<version>` tag at that tested commit. Never rewrite a published tag.
 
-## Overview
+## Build and inspect the release
 
-SignalShow-Java uses GitHub Actions to automatically build native Mac (.dmg) and Windows (.exe/.msi) installers whenever a version tag is pushed. The user always expects both platform installers to be available on GitHub as downloadable release assets.
+The tag triggers `.github/workflows/build-installers.yml`. It builds macOS arm64
+and Windows x64 installers with Java 25, runs the suite on both platforms, and
+checks each finished installer's extracted payload. Use the root installer
+scripts, which stage only the current executable JAR into `target/installer-input`.
 
-## Release Steps (follow every time)
+Track the matching tag/commit run through completion. Use completion-aware waits
+and concise updates. Inspect failed logs and fix the actual cause if needed;
+passing local tests do not substitute for both platform jobs. A failed unpublished
+tag/draft may be replaced only after confirming that it was never published.
 
-### 1. Bump the version in pom.xml
+The final job creates a **draft** with exactly four assets:
 
-The version lives in `pom.xml` under `<version>`. Bump it appropriately:
+- `SignalShow-<version>.dmg`
+- `SignalShow-<version>.msi`
+- `signalshow-<version>.jar`
+- `SHA256SUMS.txt`
 
-- Bug fixes: patch bump (e.g., 1.2.3 → 1.2.4)
-- New features: minor bump (e.g., 1.2.3 → 1.3.0)
+Download the assets into temporary storage. Verify their hashes against GitHub's
+asset digests and the checksum file. Mount the Mac DMG read-only, inspect its
+payload with `scripts/verify_installer_payload.py`, confirm version, launcher
+architecture and signature, and compare packaged production classes with the
+local tested build. Detach the image afterward. CI verifies the extracted Windows
+payload; Windows interactive usage remains separate evidence.
 
-The build scripts (`build-installer-mac.sh`, `build-installer-windows.sh`) extract the version from pom.xml automatically — no need to update them.
+No old builds, project tests, JUnit, test reports, audit documents, nested JARs or
+diagnostic launchers belong in the application payload. Do not add downloaded
+installers or temporary application bundles to the source repository.
 
-### 2. Compile and verify locally
+## Publish and hand off
 
-```bash
-mvn compile -q
-```
+Once all checks pass, publish the draft as the latest non-prerelease. Verify the
+public latest-release URL and anonymous asset downloads. Save the CI run, source
+commit, asset hashes and bounded verification evidence in `docs/audit/evidence/`,
+update the active checkpoint, and commit/push the evidence on main.
 
-If this fails, fix the errors before proceeding.
-
-### 3. Commit and push to main
-
-```bash
-git add -A
-git commit -m "v<VERSION>: <description>"
-git push origin main
-```
-
-### 4. Create and push an annotated tag
-
-The tag MUST match the pattern `v*` (e.g., `v1.2.4`) to trigger the CI workflow.
-
-```bash
-git tag -a v<VERSION> -m "v<VERSION>: <description>"
-git push origin v<VERSION>
-```
-
-### 5. Direct the user to check the build
-
-Always provide these exact instructions and links:
-
-> The build is now running. Check the status here:
->
-> **https://github.com/Nuthatch-Inc/SignalShow-Java/actions**
->
-> Look for the "Build Native Installers" workflow run triggered by the `v<VERSION>` tag. It has three jobs:
->
-> 1. **Build macOS Installer** — builds the .dmg file
-> 2. **Build Windows Installer** — builds the .exe/.msi file
-> 3. **Create GitHub Release** — creates a draft release with both installers attached
->
-> Wait for all three jobs to show green checkmarks (this usually takes several minutes).
-
-### 6. Direct the user to publish the release
-
-Once the build succeeds, always provide these exact instructions:
-
-> The build succeeded! Now publish the release:
->
-> 1. Go to **https://github.com/Nuthatch-Inc/SignalShow-Java/releases**
-> 2. You should see a **draft** release for `v<VERSION>`
-> 3. Click the pencil icon (Edit) on the draft release
-> 4. Review the release notes — edit if you want
-> 5. Click **Publish release**
->
-> Once published, the Mac .dmg and Windows installer will be available for download on that release page.
-
-## If the Build Fails
-
-- Check the failed job's logs at **https://github.com/Nuthatch-Inc/SignalShow-Java/actions**
-- Click on the failed workflow run, then click the failed job to see the error
-- Common issues:
-  - **JAR file not found**: Check that pom.xml version matches what the build scripts expect (should be automatic now)
-  - **Java version mismatch**: The CI uses Java 25 (Temurin). If pom.xml specifies a different version, update it
-  - **Maven build failure**: Compilation errors — fix locally with `mvn compile`, commit, then re-tag
-
-### Re-triggering after a fix
-
-If you need to fix something and re-trigger the build:
-
-```bash
-# Delete the old tag locally and remotely
-git tag -d v<VERSION>
-git push origin :refs/tags/v<VERSION>
-
-# Delete any draft release on GitHub for this version (user must do this manually on the website)
-
-# Commit your fix, push, then create a new tag
-git add -A
-git commit -m "Fix: <description>"
-git push origin main
-git tag -a v<VERSION> -m "v<VERSION>: <description>"
-git push origin v<VERSION>
-```
-
-Then direct the user to check the build status again (step 5).
-
-## Important Notes
-
-- **Always provide clickable links** — do not assume the user knows where to find things on GitHub
-- **Always prompt the user to check the build** — never assume it will succeed
-- **Always prompt the user to publish** — the workflow creates a DRAFT release, not a published one
-- **Never skip the version bump** — the pom.xml version flows into the JAR filename, installer version, and release tag
-- The workflow is defined in `.github/workflows/build-installers.yml`
-- Build scripts are `build-installer-mac.sh` and `build-installer-windows.sh`
+Provide a clickable release-page link and Roger's Windows installer link. Explain
+any remaining blocker plainly; ask for website action only if access actually
+prevents completion. Close owned test applications and verify exit if any were
+launched. Keep user servers and applications intact.

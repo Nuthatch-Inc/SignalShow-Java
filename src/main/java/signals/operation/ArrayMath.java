@@ -232,7 +232,7 @@ public class ArrayMath {
 				// ~ numer1# = dreal1 * dreal2 + dimag1 * dimag2
 				double numer1 = dreal1 * dreal2 + dimag1 * dimag2;
 				// ~ numer2# = dimag1 * dreal2 - dreal1 * dimag2
-				double numer2 = dimag1 * dreal2 - dreal2 * dimag2;
+				double numer2 = dimag1 * dreal2 - dreal1 * dimag2;
 				// ~ denom# = dreal2 * dreal2 + dimag2 * dimag2
 				denom = dreal2 * dreal2 + dimag2 * dimag2;
 				// ~ IF denom# <> 0 THEN
@@ -497,7 +497,9 @@ public class ArrayMath {
 
 				re = 709.78;
 
-			} else if ((re < -700) || ((im < -700) && (re == 0))) {
+			} else if (re < -700) {
+
+				// Only the real component controls magnitude; imaginary phase cannot underflow it.
 
 				exponentR[i] = 0;
 				exponentI[i] = 0;

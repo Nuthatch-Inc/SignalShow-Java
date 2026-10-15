@@ -1,0 +1,14 @@
+{
+  "tests": {
+    "tests": 1256,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "jar": "target/signalshow-1.2.6.jar",
+  "sha256": "a7e3581a021becbe974102b333c9491dfb99e33726ae0392a4370ffc2401ae95",
+  "productionClassesMatch": 566,
+  "excludedPayloads": [],
+  "normalLauncherRestored": true,
+  "note": "Local unpublished audit build. Experimental focus handlers removed; no production source change from this typing investigation."
+}

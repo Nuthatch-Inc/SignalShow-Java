@@ -12,6 +12,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JButton;
+import javax.swing.AbstractButton;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 import javax.swing.ListModel;
 import javax.swing.SwingUtilities;
 import org.junit.jupiter.api.AfterEach;
@@ -35,6 +38,17 @@ import signals.operation.DivideOp;
 import signals.operation.RealOp;
 import signals.operation.ConjugateOp;
 import signals.operation.ThresholdOp;
+import signals.operation.TranslateOp2D;
+import signals.operation.DerivativeOp2D;
+import signals.operation.FourierTransformOp;
+import signals.operation.HologramEncoderOp;
+import signals.operation.PhaseDetourHologramOp;
+import signals.gui.plot.ImageDisplayPanel;
+import java.awt.Dimension;
+import java.awt.image.RenderedImage;
+import java.awt.image.Raster;
+import signals.functionterm.*;
+import java.awt.image.renderable.ParameterBlock;
 
 /** Actual Swing actions and model publication, with only the desktop library supplied. */
 class OperationEditingWorkflowTest {
@@ -179,6 +193,15 @@ class OperationEditingWorkflowTest {
 
     @ParameterizedTest @CsvSource({"false,real", "true,real", "false,conjugate", "true,conjugate", "false,intensity", "true,intensity"})
     void nestedThresholdSelectionAndTypingUpdateSavedAndLinkedResults(boolean image, String outer) throws Exception {
+        thresholdEditingWorkflow(image, outer, false);
+    }
+
+    @ParameterizedTest @CsvSource({"false,real", "true,real", "false,conjugate", "true,conjugate", "false,intensity", "true,intensity"})
+    void accessibleThresholdEditsUpdateSavedAndLinkedResults(boolean image, String outer) throws Exception {
+        thresholdEditingWorkflow(image, outer, true);
+    }
+
+    private void thresholdEditingWorkflow(boolean image, String outer, boolean accessible) throws Exception {
         SwingUtilities.invokeAndWait(() -> {
             Function source = source(image, 1);
             double[] originalReal = source.getReal().clone(), originalImag = source.getImaginary().clone();
@@ -203,14 +226,22 @@ class OperationEditingWorkflowTest {
                 List<ParameterEditor> fields = new ArrayList<>();
                 collect(panel.operationPanel.getEditor(), ParameterEditor.class, fields);
                 assertEquals(3, fields.size());
-                fields.get(0).setText("3"); fields.get(1).setText("-1"); fields.get(2).setText("0.75");
+                editParameter(fields.get(0), "3", accessible);
+                editParameter(fields.get(1), "-1", accessible);
+                editParameter(fields.get(2), "0.75", accessible);
                 assertThresholdChain(chain, downstream, source, outer, 0.75);
                 // Keep the populated downstream cache while changing an ordinary parameter.
-                fields.get(2).setText("1.25");
+                editParameter(fields.get(2), "1.25", accessible);
                 assertThresholdChain(chain, downstream, source, outer, 1.25);
                 ThresholdOp edited = assertInstanceOf(ThresholdOp.class, chain.getOpList().get(1));
                 assertEquals(3, edited.getValue(0)); assertEquals(-1, edited.getValue(1)); assertEquals(1.25, edited.getValue(2));
                 assertArrayEquals(originalReal, source.getReal()); assertArrayEquals(originalImag, source.getImaginary());
+                if (accessible) for (int i = 0; i < fields.size(); i++) {
+                    ParameterEditor field = fields.get(i);
+                    javax.swing.JTextField text = ((javax.swing.JSpinner.DefaultEditor) field.getEditor()).getTextField();
+                    assertEquals(edited.getParamName(i), field.getAccessibleContext().getAccessibleName());
+                    assertEquals(edited.getParamName(i), text.getAccessibleContext().getAccessibleName());
+                }
             } finally { panel.deconstruct(); }
             CreateOperationSystemPanel reopened = editor(image, chain);
             try {
@@ -253,6 +284,268 @@ class OperationEditingWorkflowTest {
         });
     }
 
+    @ParameterizedTest @ValueSource(booleans = {false, true})
+    void gaussianTranslationControlsUpdateWrappingAndLinkedIntensity(boolean centered) throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            Function2D source = gaussianSource(centered);
+            TranslateOp2D op = (TranslateOp2D) new TranslateOp2D().getDefaultInstance();
+            OperatorSystem chain = chain(true, List.of(source), List.of(op), op.getPriority(), FUNCTION);
+            OperatorSystem power = intensityOf(chain);
+            prepareLibrary(source, chain, power);
+            double[][] expectedSource = gaussianSamples();
+            assertChannels(source, expectedSource[0], expectedSource[1]);
+            CreateOperationSystemPanel panel = editor(true, chain);
+            try {
+                find(panel.calculator, HorizontalThumbnailList.class).setSelected(1);
+                List<ParameterEditor> fields = new ArrayList<>();
+                collect(panel.operationPanel.getEditor(), ParameterEditor.class, fields);
+                assertEquals(2, fields.size());
+                fields.get(0).setText("3"); fields.get(1).setText("-2");
+                JCheckBox wrap = option(panel, JCheckBox.class, "wrap around");
+                for (boolean wrapping : new boolean[]{false, true, false}) {
+                    if (wrap.isSelected() != wrapping) wrap.doClick();
+                    assertEquals(wrapping, op.isWrapAround());
+                    double[][] expected = new double[2][32*16];
+                    for (int row=0;row<16;row++) for (int col=0;col<32;col++) {
+                        int sx=col-3, sy=row-2;
+                        if (wrapping || sx>=0 && sx<32 && sy>=0 && sy<16) {
+                            int index=Math.floorMod(sy,16)*32+Math.floorMod(sx,32);
+                            for(int channel=0;channel<2;channel++) expected[channel][row*32+col]=expectedSource[channel][index];
+                        }
+                    }
+                    assertWithIntensity(chain,power,expected);
+                }
+            } finally { panel.deconstruct(); }
+            CreateOperationSystemPanel reopened = editor(true, chain);
+            try {
+                find(reopened.calculator, HorizontalThumbnailList.class).setSelected(1);
+                assertFalse(option(reopened,JCheckBox.class,"wrap around").isSelected());
+                assertEquals(3,op.getValue(0)); assertEquals(-2,op.getValue(1));
+                assertChannels(reopened.getFunction(),chain.getFunction().getReal(),chain.getFunction().getImaginary());
+            } finally { reopened.deconstruct(); }
+            assertChannels(source,expectedSource[0],expectedSource[1]);
+        });
+    }
+
+    @ParameterizedTest @ValueSource(booleans = {false, true})
+    void gaussianDerivativeDirectionControlsUpdateLinkedIntensity(boolean centered) throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            Function2D source=gaussianSource(centered);
+            DerivativeOp2D op=(DerivativeOp2D)new DerivativeOp2D().getDefaultInstance();
+            OperatorSystem chain=chain(true,List.of(source),List.of(op),op.getPriority(),FUNCTION);
+            OperatorSystem power=intensityOf(chain);
+            prepareLibrary(source,chain,power);
+            double[][] input=gaussianSamples(),last=null;
+            CreateOperationSystemPanel panel=editor(true,chain);
+            try {
+                find(panel.calculator,HorizontalThumbnailList.class).setSelected(1);
+                for(boolean xDirection:new boolean[]{false,true,false}) {
+                    option(panel,JRadioButton.class,xDirection?"X-Direction":"Y-Direction").doClick();
+                    assertEquals(xDirection,op.isXDirection());
+                    double[][] expected=new double[2][32*16];
+                    for(int row=0;row<16;row++) for(int col=0;col<32;col++) {
+                        if(xDirection?col>0:row<15) {
+                            int index=row*32+col,previous=xDirection?index-1:index+32;
+                            for(int c=0;c<2;c++)expected[c][index]=input[c][index]-input[c][previous];
+                        }
+                    }
+                    assertWithIntensity(chain,power,expected); last=expected;
+                }
+            } finally { panel.deconstruct(); }
+            CreateOperationSystemPanel reopened=editor(true,chain);
+            try {
+                find(reopened.calculator,HorizontalThumbnailList.class).setSelected(1);
+                assertTrue(option(reopened,JRadioButton.class,"Y-Direction").isSelected());
+                assertWithIntensity(chain,power,last);
+            } finally { reopened.deconstruct(); }
+        });
+    }
+
+    @ParameterizedTest @ValueSource(booleans = {false, true})
+    void gaussianFftOptionControlsUpdateDirectionNormalizationAndLinkedIntensity(boolean centered) throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            Function2D source=gaussianSource(centered);
+            FourierTransformOp op=(FourierTransformOp)new FourierTransformOp().getDefaultInstance();
+            OperatorSystem chain=chain(true,List.of(source),List.of(op),op.getPriority(),FUNCTION);
+            OperatorSystem power=intensityOf(chain);
+            prepareLibrary(source,chain,power);
+            double[][] input=gaussianSamples();
+            CreateOperationSystemPanel panel=editor(true,chain);
+            try {
+                find(panel.calculator,HorizontalThumbnailList.class).setSelected(1);
+                for(boolean inverse:new boolean[]{false,true}) {
+                    JCheckBox checkbox=option(panel,JCheckBox.class,"inverse");
+                    if(checkbox.isSelected()!=inverse)checkbox.doClick();
+                    assertEquals(inverse,op.isInverse());
+                    double[][] unscaled=directGaussianDft(input,centered,inverse);
+                    String[] labels={"No Normalization","Divide by N","Divide by \u221aN"};
+                    double[] divisors={1,512,Math.sqrt(512)};
+                    for(int n=0;n<labels.length;n++) {
+                        option(panel,JRadioButton.class,labels[n]).doClick();
+                        double[][] expected={unscaled[0].clone(),unscaled[1].clone()};
+                        for(double[] channel:expected) for(int i=0;i<channel.length;i++)channel[i]/=divisors[n];
+                        assertWithIntensity(chain,power,expected);
+                    }
+                }
+            } finally { panel.deconstruct(); }
+            CreateOperationSystemPanel reopened=editor(true,chain);
+            try {
+                find(reopened.calculator,HorizontalThumbnailList.class).setSelected(1);
+                assertTrue(option(reopened,JCheckBox.class,"inverse").isSelected());
+                assertTrue(option(reopened,JRadioButton.class,"Divide by \u221aN").isSelected());
+                assertChannels(reopened.getFunction(),chain.getFunction().getReal(),chain.getFunction().getImaginary());
+            } finally { reopened.deconstruct(); }
+            assertChannels(source,input[0],input[1]);
+        });
+    }
+
+    @ParameterizedTest @CsvSource({"false,false", "false,true", "true,false", "true,true"})
+    void hologramOptionEditsUpdatePreviewPublicationAndCachedIntensity(boolean phaseDetour, boolean centered) throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            Function2D source = gaussianSource(centered);
+            double[][] original = {source.getReal().clone(), source.getImaginary().clone()};
+            UnaryOperation op = hologram(phaseDetour, false, false, false);
+            OperatorSystem chain = chain(true, List.of(source), List.of(op), op.getPriority(), FUNCTION);
+            OperatorSystem intensity = intensityOf(chain);
+            prepareLibrary(source, chain, intensity);
+            double[] previous = chain.getFunction().getReal().clone();
+            intensity.getFunction().getReal();
+            // Each row is diffusion, wide apertures, random phase. Revisit ordinary settings.
+            boolean[][] settings = phaseDetour
+                ? new boolean[][]{{false,false,true},{true,false,true},{true,true,true},{true,true,false},{false,false,false},{true,true,true}}
+                : new boolean[][]{{false,true,false},{true,true,false},{true,false,false},{false,false,false},{true,true,false}};
+            CreateOperationSystemPanel panel = editor(true, chain);
+            Function2D expected = null;
+            try {
+                find(panel.calculator, HorizontalThumbnailList.class).setSelected(1);
+                for (boolean[] state : settings) {
+                    setOption(panel, "Error Diffusion", state[0]);
+                    setOption(panel, "3-Pixel-Wide Apertures", state[1]);
+                    if (phaseDetour) setOption(panel, "Random Phase", state[2]);
+                    // Fresh operation supplies the intended option configuration, independent
+                    // of editor state/caches. MathHologramTest separately checks its mathematics.
+                    expected = (Function2D) hologram(phaseDetour, state[0], state[1], state[2]).create(source);
+                    assertFalse(java.util.Arrays.equals(previous, expected.getReal()), "Fixture must distinguish successive option states");
+                    assertWithIntensity(chain, intensity, new double[][]{expected.getReal(), expected.getImaginary()});
+                    assertChannels(panel.getFunction(), expected.getReal(), expected.getImaginary());
+                    assertEquals(256, ((Function2D) chain.getFunction()).getDimensionX());
+                    assertEquals(128, ((Function2D) chain.getFunction()).getDimensionY());
+                    assertTrue(chain.getFunction().isZeroCentered());
+                    assertPreview(panel.systemPreviewPanel, expected);
+                    assertTrue(panel.saveButton.isEnabled());
+                    previous = expected.getReal().clone();
+                }
+            } finally { panel.deconstruct(); }
+            CreateOperationSystemPanel reopened = editor(true, chain);
+            try {
+                find(reopened.calculator, HorizontalThumbnailList.class).setSelected(1);
+                assertTrue(option(reopened, JCheckBox.class, "Error Diffusion").isSelected());
+                assertTrue(option(reopened, JCheckBox.class, "3-Pixel-Wide Apertures").isSelected());
+                if (phaseDetour) assertTrue(option(reopened, JCheckBox.class, "Random Phase").isSelected());
+                assertWithIntensity(chain, intensity, new double[][]{expected.getReal(), expected.getImaginary()});
+                assertPreview(reopened.systemPreviewPanel, expected);
+                assertChannels(source, original[0], original[1]);
+            } finally { reopened.deconstruct(); }
+        });
+    }
+
+    private static UnaryOperation hologram(boolean phaseDetour, boolean diffusion, boolean wide, boolean random) {
+        if (phaseDetour) {
+            PhaseDetourHologramOp op = new PhaseDetourHologramOp(new ParameterBlock());
+            op.setErrorDiffusion(diffusion); op.setWiderApertures(wide); op.setRandomPhase(random);
+            return op;
+        }
+        HologramEncoderOp op = new HologramEncoderOp(new ParameterBlock());
+        op.setErrorDiffusion(diffusion); op.setWiderApertures(wide);
+        return op;
+    }
+
+    private static void setOption(CreateOperationSystemPanel panel, String name, boolean selected) {
+        JCheckBox checkbox = option(panel, JCheckBox.class, name);
+        if (checkbox.isSelected() != selected) checkbox.doClick(0);
+    }
+
+    private static void assertPreview(OperationPreviewPanel preview, Function2D expected) {
+        String[] fields = {"realImagePanel", "imagImagePanel"};
+        double[][] channels = {expected.getReal(), expected.getImaginary()};
+        for (int channel = 0; channel < 2; channel++) {
+            ImageDisplayPanel reference = new ImageDisplayPanel(new Dimension(200, 200));
+            try {
+                reference.setIndices(expected.getDimensionX(), expected.getDimensionY(), expected.isZeroCentered());
+                reference.display(channels[channel]);
+                ImageDisplayPanel actual = readField(preview, fields[channel]);
+                RenderedImage expectedImage = readField(reference, "image"), actualImage = readField(actual, "image");
+                assertEquals(expectedImage.getWidth(), actualImage.getWidth());
+                assertEquals(expectedImage.getHeight(), actualImage.getHeight());
+                Raster a = actualImage.getData(), b = expectedImage.getData();
+                assertArrayEquals(b.getPixels(b.getMinX(), b.getMinY(), b.getWidth(), b.getHeight(), (int[]) null),
+                        a.getPixels(a.getMinX(), a.getMinY(), a.getWidth(), a.getHeight(), (int[]) null),
+                        "actual preview pixels channel " + channel);
+            } finally { reference.deconstruct(); }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> T readField(Object owner, String name) {
+        try { Field field = owner.getClass().getDeclaredField(name); field.setAccessible(true); return (T) field.get(owner); }
+        catch (ReflectiveOperationException failure) { throw new AssertionError(failure); }
+    }
+
+    private static Function2D gaussianSource(boolean centered) {
+        GaussianFunctionTerm1D x=(GaussianFunctionTerm1D)new GaussianFunctionTerm1D().getDefaultInstance();
+        GaussianFunctionTerm1D y=(GaussianFunctionTerm1D)new GaussianFunctionTerm1D().getDefaultInstance();
+        x.setAmplitude(2);x.setWidth(5);x.setCenter((centered?0:16)+3);
+        y.setWidth(3);y.setCenter((centered?0:8)-2);
+        XYFunctionTerm2D magnitude=new XYFunctionTerm2D(new ParameterBlock().addSource(x).addSource(y));
+        ConstantFunctionTerm2D phase=(ConstantFunctionTerm2D)new ConstantFunctionTerm2D().getDefaultInstance();
+        phase.setAmplitude(.7);
+        FunctionPart2D a=new FunctionPart2D(new ArrayList<>(List.of(magnitude)),CombineTermsRule.getDefaultRule());
+        FunctionPart2D b=new FunctionPart2D(new ArrayList<>(List.of(phase)),CombineTermsRule.getDefaultRule());
+        return new MagPhaseFunction2D(a,b,"complex Gaussian",32,16,centered);
+    }
+
+    private static double[][] gaussianSamples() {
+        double[][] result=new double[2][512];
+        for(int row=0;row<16;row++)for(int col=0;col<32;col++) {
+            double dx=(col-19)/5.0,dy=(9-row)/3.0;
+            double magnitude=2*Math.exp(-Math.PI*(dx*dx+dy*dy));
+            result[0][row*32+col]=magnitude*Math.cos(.7);
+            result[1][row*32+col]=magnitude*Math.sin(.7);
+        }
+        return result;
+    }
+
+    private static double[][] directGaussianDft(double[][] input,boolean centered,boolean inverse) {
+        double[][] result=new double[2][512];
+        for(int fr=0;fr<16;fr++)for(int fc=0;fc<32;fc++) {
+            int fx=fc-(centered?16:0),fy=15-fr-(centered?8:0),out=fr*32+fc;
+            for(int row=0;row<16;row++)for(int col=0;col<32;col++) {
+                int x=col-(centered?16:0),y=15-row-(centered?8:0),in=row*32+col;
+                double angle=(inverse?1:-1)*2*Math.PI*(x*fx/32.0+y*fy/16.0);
+                result[0][out]+=input[0][in]*Math.cos(angle)-input[1][in]*Math.sin(angle);
+                result[1][out]+=input[1][in]*Math.cos(angle)+input[0][in]*Math.sin(angle);
+            }
+        }
+        return result;
+    }
+
+    private static OperatorSystem intensityOf(OperatorSystem source) {
+        Operation op=(Operation)new SquaredMagnitudeOp().getDefaultInstance();
+        return chain(true,List.of(source),List.of(op),op.getPriority(),FUNCTION);
+    }
+
+    private static void assertWithIntensity(OperatorSystem chain,OperatorSystem intensity,double[][] expected) {
+        assertChannels(chain.getFunction(),expected[0],expected[1]);
+        double[] power=new double[expected[0].length];
+        for(int i=0;i<power.length;i++)power[i]=expected[0][i]*expected[0][i]+expected[1][i]*expected[1][i];
+        assertChannels(intensity.getFunction(),power,new double[power.length]);
+    }
+
+    private static <T extends AbstractButton> T option(CreateOperationSystemPanel panel,Class<T> type,String label) {
+        List<T> controls=new ArrayList<>();collect(panel.operationPanel.getEditor(),type,controls);
+        return controls.stream().filter(c->label.equals(c.getText())).findFirst().orElseThrow(()->new AssertionError("Missing option "+label));
+    }
+
     private static void assertBinary(Function result, Function a, Function b, char operator) {
         double[] real = new double[a.getReal().length], imag = new double[real.length];
         for (int i = 0; i < real.length; i++) {
@@ -267,6 +560,16 @@ class OperationEditingWorkflowTest {
             }
         }
         assertChannels(result, real, imag);
+    }
+
+    private static void editParameter(ParameterEditor editor, String value, boolean accessible) {
+        if (!accessible) { editor.setText(value); return; }
+        javax.swing.JTextField field = ((javax.swing.JSpinner.DefaultEditor) editor.getEditor()).getTextField();
+        javax.accessibility.AccessibleContext context = field.getAccessibleContext();
+        assertTrue(context.getAccessibleStateSet().contains(javax.accessibility.AccessibleState.EDITABLE));
+        assertNotNull(context.getAccessibleEditableText());
+        context.getAccessibleEditableText().setTextContents(value);
+        assertEquals(value, field.getText());
     }
 
     private static void assertThresholdChain(OperatorSystem chain, OperatorSystem downstream, Function source, String outer, double level) {

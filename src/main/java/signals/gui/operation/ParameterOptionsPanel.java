@@ -46,6 +46,7 @@ public class ParameterOptionsPanel extends OperationOptionsPanel implements Para
 			
 			SpinnerNumberModel scaleModel = new SpinnerNumberModel(paramOp.getValue(i), -100000.0, 100000.0, 0.1); 
 			ParameterEditor editor = new ParameterEditor(5, scaleModel, i, this);
+			editor.setAccessibleName(paramOp.getParamName(i));
 			JPanel editorPanel = new JPanel(); 
 			editorPanel.add( editor );
 			editorPanel.setBorder( new TitledBorder( paramOp.getParamName( i )));

@@ -172,7 +172,7 @@ public abstract class EditAnalyticFunctionTermPanel extends JPanel implements Pa
 			}
 			
 			textFields[i] = new ParameterEditor( 3, model, i, this ); //3 columns 
-			l.setLabelFor(textFields[i]);
+			textFields[i].setLabel(l);
 			paramPanel.add(textFields[i]);
 		}
 	

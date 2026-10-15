@@ -71,6 +71,66 @@ class FunctionDuplicationWorkflowTest {
     assertEquals(24, edited.getWidth(), "Later original edits must also stay independent");
   }
 
+  @ParameterizedTest
+  @CsvSource({"1D,false,false", "1D,false,true", "1D,true,false", "1D,true,true",
+      "Cartesian,false,false", "Cartesian,false,true", "Cartesian,true,false", "Cartesian,true,true",
+      "Polar,false,false", "Polar,false,true", "Polar,true,false", "Polar,true,true"})
+  void sampledProfileCopiesKeepTheirModeAndLinkedResults(String geometry, boolean magPhase, boolean centered) {
+    DataFunctionTerm1D real = sampled(new double[]{1,.2,-.6,1.8,.4,-1.2,.8,2}, "real-profile.txt");
+    DataFunctionTerm1D imag = sampled(new double[]{-.3,1.1,.7,-.8,.2,.9,-1.3,.5}, "imag-profile.txt");
+    boolean image = !geometry.equals("1D");
+    Function original;
+    if (image) {
+      SeparableFunctionTerm2D a = sampledImageTerm(real, geometry), b = sampledImageTerm(imag, geometry);
+      original = magPhase ? new MagPhaseFunction2D(part2D(a), part2D(b), "sampled", 128, 64, centered)
+          : new RealImagFunction2D(part2D(a), part2D(b), "sampled", 128, 64, centered);
+    } else {
+      original = magPhase ? new MagPhaseFunction1D(part1D(real), part1D(imag), "sampled", 128, centered)
+          : new RealImagFunction1D(part1D(real), part1D(imag), "sampled", 128, centered);
+    }
+    double[] er = original.getReal().clone(), ei = original.getImaginary().clone();
+    Function copy = original.clone();
+    assertArrayEquals(er, copy.getReal(), "Duplicating must retain the sampled shape");
+    assertArrayEquals(ei, copy.getImaginary(), "Duplicating must retain the second channel");
+    DataFunctionTerm1D copied = (DataFunctionTerm1D) firstAnalytic(copy);
+    assertEquals(Constants.SCALE_AND_PAD_MODE, copied.getMode());
+    assertEquals("real-profile.txt", copied.getEquation(new String[]{"x"}));
+    assertNotSame(real.getOriginalData(), copied.getOriginalData());
+    signals.operation.SquaredMagnitudeOp power = new signals.operation.SquaredMagnitudeOp(new ParameterBlock());
+    ArrayList<Operation> ops = new ArrayList<>(java.util.List.of(power));
+    CombineOpsRule rule = new CombineOpsRule(new int[]{power.getPriority(), CombineOpsRule.FUNCTION}, ops);
+    OperatorSystem downstream = image ? new OperatorSystem2D(rule, new ArrayList<>(java.util.List.of(copy)), ops)
+        : new OperatorSystem1D(rule, new ArrayList<>(java.util.List.of(copy)), ops);
+    assertNotNull(downstream.getFunction());
+    copied.setAmplitude(2 * real.getAmplitude()); publishPartA(copy);
+    original.freeMemory();
+    assertArrayEquals(er, original.getReal()); assertArrayEquals(ei, original.getImaginary());
+    Function result = downstream.getFunction();
+    for (int i = 0; i < er.length; i++) {
+      double re = 2 * er[i], im = (magPhase ? 2 : 1) * ei[i];
+      assertEquals(re, copy.getReal()[i], 1e-10); assertEquals(im, copy.getImaginary()[i], 1e-10);
+      assertEquals(re * re + im * im, result.getReal()[i], 1e-9);
+      assertEquals(0, result.getImaginary()[i]);
+    }
+    copied.setMode(Constants.CROP_MODE); copied.getOriginalData()[0] = 99; publishPartA(copy);
+    original.freeMemory();
+    assertEquals(Constants.SCALE_AND_PAD_MODE, real.getMode());
+    assertEquals(1, real.getOriginalData()[0]);
+    assertArrayEquals(er, original.getReal()); assertArrayEquals(ei, original.getImaginary());
+  }
+
+  private static DataFunctionTerm1D sampled(double[] values, String descriptor) {
+    ParameterBlock pb = new DataFunctionTerm1D().getDefaultParamBlock(); pb.addSource(values);
+    DataFunctionTerm1D term = new DataFunctionTerm1D(pb);
+    term.setMode(Constants.SCALE_AND_PAD_MODE); term.setCenter(8); term.setWidth(12);
+    term.setAmplitude(1.2); term.setDescriptor(descriptor); return term;
+  }
+
+  private static SeparableFunctionTerm2D sampledImageTerm(DataFunctionTerm1D data, String geometry) {
+    ParameterBlock pb = new ParameterBlock().addSource(data).addSource(constant(1));
+    return geometry.equals("Polar") ? new PolarFunctionTerm2D(pb) : new XYFunctionTerm2D(pb);
+  }
+
   @Test void complexCopyRetainsLinkedChannelEditingAndIndependentSharedChildren() {
     FunctionTerm1D angle = constant(1);
     FunctionTerm1D cosine = (FunctionTerm1D) new ChirpFunctionTerm1D().getDefaultInstance();

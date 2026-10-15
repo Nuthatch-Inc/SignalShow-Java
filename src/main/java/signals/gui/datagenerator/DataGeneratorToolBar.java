@@ -94,19 +94,16 @@ public abstract class DataGeneratorToolBar extends JToolBar implements Deconstru
 	}
 
 	public void selectButton(String buttonCode) {
-			
-	
-		if( buttonCode.equals(PLOT)) {
-			
-			plotButton.setSelected(true); 
-			plot(); 
-			
-		} else if( buttonCode.equals(FFT)) {
-			
-			fftButton.setSelected(true); 
-			plotFFT(); 
-		}
-		
+        if (buttonCode.equals(PLOT)) {
+            plotButton.setSelected(true);
+            plot();
+        } else if (buttonCode.equals(FFT)) {
+            fftButton.setSelected(true);
+            plotFFT();
+        } else if (buttonCode.equals(HISTOGRAM)) {
+            histogramButton.setSelected(true);
+            plotHistogram();
+        }
 	}
 
 	public abstract void plot();

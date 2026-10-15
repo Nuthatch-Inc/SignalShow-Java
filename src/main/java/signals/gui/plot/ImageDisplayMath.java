@@ -94,7 +94,7 @@ public class ImageDisplayMath {
 		double[] allMins = (double[])extrema.getProperty("minimum");
 		double[] allMaxs = (double[])extrema.getProperty("maximum");
 
-		double max = Double.MIN_VALUE; 
+		double max = Double.NEGATIVE_INFINITY;
 		double min = Double.MAX_VALUE; 
 
 		for( int i = 0; i < allMins.length; i++ ) {

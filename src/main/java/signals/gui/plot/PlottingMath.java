@@ -174,7 +174,7 @@ public class PlottingMath {
 	 */
 	public static double[] extrema( double[] array ) {
 
-		double[] input_extrema = {Double.MAX_VALUE, Double.MIN_VALUE}; 
+		double[] input_extrema = {Double.MAX_VALUE, Double.NEGATIVE_INFINITY};
 		return extrema( array, input_extrema );
 	}
 

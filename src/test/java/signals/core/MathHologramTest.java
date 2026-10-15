@@ -2,6 +2,7 @@ package signals.core;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.awt.image.renderable.ParameterBlock;
+import java.util.Random;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -78,30 +79,54 @@ class MathHologramTest extends MathAuditSupport {
     }
 
     @ParameterizedTest
-    @CsvSource({"16,8", "8,16"})
-    void phaseDetourUsesTheSameVerifiedCellsAfterItsInverseTransform(int w,int h) {
-        double[] real=new double[w*h];
+    @CsvSource({"16,8,true,false", "8,16,true,false", "16,8,false,false", "8,16,false,false",
+        "16,8,true,true", "8,16,true,true", "16,8,false,true", "8,16,false,true"})
+    void phaseDetourUsesTheSameVerifiedCellsAfterItsInverseTransform(int w,int h,boolean centered,boolean randomPhase) {
+        double[] real=new double[w*h], imag=new double[w*h], objectReal=new double[w*h], objectImag=new double[w*h];
+        // The existing Java operation uses the Random Phase generator's fixed default seed 1.
+        Random random = new Random(1);
         for(int row=0;row<h;row++) for(int col=0;col<w;col++) {
-            double px=x(col,w,true),py=y(row,h,true);
-            real[row*w+col]=Math.exp(-(px-1.7)*(px-1.7)/17-(py+.8)*(py+.8)/6);
+            double px=x(col,w,centered),py=y(row,h,centered);
+            int k=row*w+col;
+            real[k]=Math.exp(-(px-1.7)*(px-1.7)/17-(py+.8)*(py+.8)/6);
+            imag[k]=.4*Math.cos(.2*k); // The documented object amplitude is the signed real channel.
+            double phase=randomPhase ? 2*Math.PI*random.nextDouble()-Math.PI : 0;
+            objectReal[k]=real[k]*Math.cos(phase); objectImag[k]=real[k]*Math.sin(phase);
         }
-        // Preserve Java's established inverse-transform convention for this operation.
+        // Independent physical-coordinate DFT: retain Java's inverse sign and centered output,
+        // while respecting the source's actual origin. No FFT or production shift helper here.
         double[] spectrumReal=new double[w*h],spectrumImag=new double[w*h];
         for(int row=0;row<h;row++) for(int col=0;col<w;col++) {
             int k=row*w+col;
             for(int sr=0;sr<h;sr++) for(int sc=0;sc<w;sc++) {
-                double angle=2*Math.PI*(x(col,w,true)*(double)x(sc,w,true)/w+y(row,h,true)*(double)y(sr,h,true)/h);
-                spectrumReal[k]+=real[sr*w+sc]*Math.cos(angle);
-                spectrumImag[k]+=real[sr*w+sc]*Math.sin(angle);
+                double angle=2*Math.PI*(x(col,w,true)*(double)x(sc,w,centered)/w+y(row,h,true)*(double)y(sr,h,centered)/h);
+                double a=objectReal[sr*w+sc], b=objectImag[sr*w+sc];
+                spectrumReal[k]+=a*Math.cos(angle)-b*Math.sin(angle);
+                spectrumImag[k]+=a*Math.sin(angle)+b*Math.cos(angle);
             }
         }
         for(boolean diffuse:new boolean[]{false,true}) for(boolean wide:new boolean[]{false,true}) {
             PhaseDetourHologramOp op=new PhaseDetourHologramOp(new ParameterBlock());
-            op.setRandomPhase(false);op.setErrorDiffusion(diffuse);op.setWiderApertures(wide);
-            Function2D source=image(real,new double[w*h],w,h,true);
+            op.setRandomPhase(randomPhase);op.setErrorDiffusion(diffuse);op.setWiderApertures(wide);
+            Function2D source=image(real,imag,w,h,centered);
             assertImage(op.create(source),referenceCells(spectrumReal,spectrumImag,w,h,diffuse,wide),new double[w*h*64],w*8,h*8,true);
-            assertImage(source,real,new double[w*h],w,h,true);
+            assertImage(source,real,imag,w,h,centered);
         }
+    }
+
+    @ParameterizedTest
+    @CsvSource({"16,8,true", "8,16,true", "16,8,false", "8,16,false"})
+    void originImpulseProducesIdenticalZeroPhaseHologramCells(int w,int h,boolean centered) {
+        double[] real=new double[w*h], imag=new double[w*h];
+        real[index(0,0,w,h,centered)]=1;
+        Function2D source=image(real,imag,w,h,centered);
+        PhaseDetourHologramOp op=new PhaseDetourHologramOp(new ParameterBlock());
+        double[] actual=op.create(source).getReal();
+        // The unnormalized transform of delta(x,y) is exactly 1 at every frequency.
+        // Every cell therefore has full height and the zero-phase carrier column 4.
+        for(int row=0;row<h*8;row++) for(int col=0;col<w*8;col++)
+            assertEquals(col%8==4 ? 1 : 0,actual[row*w*8+col],0,"origin impulse cell at "+col+","+row);
+        assertImage(source,real,imag,w,h,centered);
     }
 
     @ParameterizedTest

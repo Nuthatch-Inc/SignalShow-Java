@@ -739,3 +739,126 @@ Windows remains unverified for this continuation.
 - Description: Editing a 2D image to 128×64 made the next image 64×64; its origin stayed stale while the next 1D signal inherited the 2D origin edit. This prevents ordinary newly created images from combining at the intended shape.
 - Fix: Write height to the 2D height preference, write image origin to the 2D origin preference, and read the height preference for the default image height.
 - Verification: Eight cases fail before correction and pass afterward, covering both 2D representations/origins and 128×64/64×128, with unchanged 1D origin and correct complex addition chains. Native exports verify the correct 128×64 origin/size, mixed-representation sum and independent 1D origin. See docs/audit/evidence/2026-10-14-creation-defaults.md.
+
+
+- ID: BUG-060
+- Title: Complex division gives the wrong imaginary value at common zero crossings
+- Status: resolved; six new 1D/2D chain cases and 44 focused regressions pass
+- Date: 2026-10-14
+- Description: The neighbor-derivative fallback used the denominator’s real derivative where the numerator’s was required. Scaling a complex sinusoid by 2+3i and dividing by the original yielded 2+2i at its zero, with incorrect downstream Intensity.
+- Fix: Correct the imaginary numerator factor in the shared ArrayMath division helper; retain existing zero-denominator handling.
+- Verification: All six original cases fail with imaginary 2 instead of 3. Both rectangular orientations/origins, source edits, linked Intensity and source preservation pass after correction. Independent algebra and NumPy confirm the removable limit; Chirplet’s separate regularized-zero convention is recorded. See docs/audit/evidence/2026-10-14-post-release.md.
+
+
+- ID: BUG-061
+- Title: Integer powers erase unit-magnitude complex samples at sufficiently negative phases
+- Status: resolved; six new power-chain cases and 64 affected math regressions pass
+- Date: 2026-10-14
+- Description: The exponential helper treated imaginary phase below -700 as magnitude underflow when the real exponent was zero. Even (-1)^256 became zero instead of one; affected mask/image regions disappeared despite bounded input and output.
+- Fix: Apply the existing underflow cutoff only to the real exponent. Phase rotates a complex value and does not reduce its magnitude.
+- Verification: All six original-code cases fail. Powers 2, ±256 and ±512, axis/non-axis unit phasors, zero masks and linked Intensity pass in 1D/2D with both origins. Repeated multiplication provides an independent oracle; NumPy and Chirplet CPU powers confirm the nonzero cases. Existing complex arithmetic and shared cepstrum callers pass. See docs/audit/evidence/2026-10-14-post-release.md.
+
+
+- ID: BUG-062
+- Title: Negative images lose contrast and their histograms use an incorrect upper bound
+- Status: resolved; eight new view cases and 44 display/editor regressions pass
+- Date: 2026-10-14
+- Description: Image and plot extrema started their maximum at Double.MIN_VALUE (a positive number). An ordinary Offset result spanning -7 to -3 was rendered only from grayscale 0 to 145, and all-negative histograms extended to zero instead of the observed maximum.
+- Fix: Initialize the two display maxima to negative infinity. Explicit zero baselines for histogram counts remain controlled separately.
+- Verification: Eight cases fail before correction. Actual ImageDisplayPanel channel switches, edits, all rendered pixels, range fields, histogram bins/counts and line-plot extrema pass afterward for both rectangular orientations/origins. Existing histogram baseline, preview layout and operation editor regressions pass. See docs/audit/evidence/2026-10-14-post-release.md.
+
+
+- ID: BUG-063
+- Title: Sampled polar profiles used array positions instead of physical radius/angle
+- Status: resolved
+- Reported by: Continuous Audit
+- Date: 2026-10-14
+- Environment: Java 25, macOS arm64; production and headless Swing paths
+- Steps to reproduce: Create a 128×64 or 64×128 polar image with a nonconstant imported Data radial/angular profile; use ordinary crop or scale-and-zero-pad settings, edit amplitude/center/width, and chain Scale → Intensity. Compare with the 1D profile and the combined preview.
+- Expected behavior: Evaluate the profile at each physical radius/angle; equal radii agree, both complex channels survive, and all previews use the editor's coordinate domain.
+- Actual behavior: DataFunctionTerm1D discarded the coordinate values and resized to the number of queried pixels/slice entries. Visible samples became zero or had the wrong value. The combined preview also used Cartesian ranges for radial/angular plots.
+- Notes / PR: Supply the existing 1D editor domain explicitly for cropped profiles, interpolate at actual coordinates, and align the combined preview domains. Sixteen original math cases and four preview cases fail before their fixes. All 174 affected checks pass, plus 408 compiled-Java comparisons with NumPy. Source preservation, parameter edits, caches, both origins/shapes and editor reopening checked; native import/input and Windows remain separate.
+
+
+- ID: BUG-064
+- Title: Duplicating sampled profiles reset scaling mode and changed the image
+- Status: resolved
+- Reported by: Continuous Audit
+- Date: 2026-10-14
+- Environment: Java 25; ordinary 1D, Cartesian 2D and polar 2D duplication
+- Steps to reproduce: Load a nonconstant Data profile, choose scale-and-zero-pad, set ordinary center/width values, then duplicate the function. Edit the duplicate and reuse it in Intensity.
+- Expected behavior: The duplicate initially has identical samples and retains the mode and source label; later edits and source samples are independent.
+- Actual behavior: The factory recreated the term from its parameter block but lost the mode stored outside that block. The copy reverted to crop, immediately changing the image. Its file descriptor was also lost.
+- Notes / PR: DataFunctionTerm1D now carries mode/descriptor through its factory method; FunctionCopy continues cloning sample ownership. Twelve original-code cases fail; all 54 affected tests pass after the fix. Both representations/origins, linked Intensity, cache invalidation, source-array ownership and later mode edits checked. Native Duplicate interaction remains separate.
+
+
+- ID: BUG-065
+- Title: Floating-point grayscale TIFF import truncated pixel values to integers
+- Status: resolved
+- Reported by: Continuous Audit
+- Date: 2026-10-14
+- Environment: Java 25, ImageIO grayscale TIFF import
+- Steps to reproduce: Import a 128×64 or 64×128 floating-point grayscale TIFF with ordinary signed/fractional values; apply Real → Threshold at 0.5.
+- Expected behavior: Preserve decoded pixel values and padding before applying the threshold.
+- Actual behavior: The importer requested an integer sample buffer, so values such as -0.5 and 0.75 became zero. Threshold then gave wrong results.
+- Notes / PR: Read grayscale samples as doubles and pad without integer conversion. Both original fractional cases fail; all 64 affected import/edit/open/export/math tests pass after correction. Added 16-bit PNG/TIFF regression coverage also passes. Color imports retain their established 8-bit red-channel conversion; native file selection and Windows remain separate.
+
+
+- ID: BUG-066
+- Title: Profiles cut marker was displaced on wide corner-origin images
+- Status: resolved
+- Reported by: Continuous Audit
+- Date: 2026-10-14
+- Environment: Java 25; actual Swing Profiles view, 128×64 corner-origin image
+- Steps to reproduce: Open Profiles and select y = 0 or an offset/diagonal y cut on a wide image with a corner origin.
+- Expected behavior: The marker passes through the image pixels used for the plotted profile.
+- Actual behavior: A padding offset was applied twice. The horizontal marker was 100 pixels above its selected row in the 200-pixel preview, although the profile samples were correct.
+- Notes / PR: Remove the extra offset for bottom-aligned corner-origin images. One of four new overlay cases fails before correction. All 23 affected checks pass, including strengthened actual channel-data assertions and real parameter-field edits for wide/tall shapes and both origins. Native Mac interaction and Windows remain separate.
+
+
+- ID: BUG-067
+- Title: Image cursor reused stale samples and failed after ordinary image growth
+- Status: resolved
+- Reported by: Continuous Audit
+- Date: 2026-10-14
+- Environment: Java 25; actual enlarged image overview, channels, display options and cursor controls
+- Steps to reproduce: Inspect a pixel, switch channels or select Squared/Logarithm/Unwrap, edit the operation result, or display a larger image in the same overview and inspect again.
+- Expected behavior: Cursor values match the current displayed samples; ordinary size changes remain usable.
+- Actual behavior: A separate cached sample array survived image and option changes. Squared magnitude showed 25.361 but reported 5.036. Increasing the image dimensions caused ArrayIndexOutOfBoundsException by indexing the previous smaller buffer.
+- Notes / PR: Remove the redundant cursor cache and read the image graphic's current sample array. Sixteen original-code value cases fail and four isolated resize cases throw. All 43 affected checks pass after correction. Actual overview thumbnail events, cursor buttons, option toggles, linked Scale edits, resize refresh and both rectangular shapes/origins tested. This is headless Swing evidence, not a claim of a native process crash or Windows acceptance.
+
+
+- ID: BUG-068
+- Title: Phase Detour reinterpreted corner-origin objects as centered images
+- Status: resolved
+- Reported by: Continuous Audit
+- Date: 2026-10-14
+- Environment: Java 25; rectangular Phase Detour Hologram, both origins and all existing options
+- Steps to reproduce: Create an impulse at (0,0), or an ordinary asymmetric object, with a corner origin and apply Phase Detour. Compare its encoded transform with the physical source coordinates.
+- Expected behavior: Preserve source coordinates before forming the centered hologram. The transform of an origin impulse is constant.
+- Actual behavior: A centered intermediate was assigned to unchanged corner-origin samples, shifting the interpreted object by half its width and height. The origin impulse acquired alternating phase instead of a constant spectrum.
+- Notes / PR: Reorder corner-origin amplitude and generated phase together before assigning the centered intermediate. Six original-code cases fail. All 68 affected tests pass, including both shapes/origins, existing random-phase seed, diffusion and aperture widths. An independent NumPy replay matches 262,144 binary pixels across 32 combinations. Java's inverse-transform, signed-real amplitude, fixed random seed and centered output contracts remain unchanged; native/Windows checks and full Chirplet parity remain separate.
+
+
+- ID: BUG-069
+- Title: Returning to a function's Histogram left another document's view visible
+- Status: resolved
+- Reported by: Continuous Audit
+- Date: 2026-10-14
+- Environment: Java 25; actual function toolbar saved-view dispatch and histogram components
+- Steps to reproduce: Open Histogram on a function, select another document, then return to the first function.
+- Expected behavior: Restore the first function's Histogram and select its toolbar button.
+- Actual behavior: Histogram was saved as the function's current view but omitted from the function toolbar restoration paths. Returning did not replace the previous document's content.
+- Notes / PR: The shared toolbar restores Plot/FFT/Histogram; function toolbars handle their own editing, Argand or Profiles views and delegate shared views. Twelve original-code cases fail. All 43 affected tests pass, including 1D and rectangular 2D, real/imaginary and magnitude/phase functions, both origins, actual histogram distributions and Plot/FFT dispatch regressions. Native document selection remains separate.
+
+
+- ID: BUG-070
+- Title: Ordinary editable controls lacked accessible names
+- Status: resolved for the existing creation and parameter labels; broader accessibility remains unverified
+- Reported by: Juliet / Continuous Audit
+- Date: 2026-10-15
+- Environment: Java 25 Swing accessibility; native Mac field-name and stepper check
+- Steps to reproduce: Inspect Function Name and dimension controls, generator parameter text children and Threshold fields through their accessible contexts.
+- Expected behavior: Assistive tools can identify the editable controls by their existing visible names.
+- Actual behavior: Name/dimension labels were not associated with controls, operation fields relied on border titles, and numeric text children lacked names.
+- Notes / PR: Associate existing labels and propagate parameter names to spinner text children, preserving label-to-spinner semantics. Ten original cases fail at missing names after their accessible edits/computations succeed. All 91 affected checks and the full 1,252-test package pass. Mac state exposes the names and native Increment updates Gaussian amplitude/expression. Native direct text replacement still fails with -10005; the missing labels do not fully explain that separate limitation. See docs/audit/evidence/2026-10-15-accessibility.md.

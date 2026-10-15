@@ -1,0 +1,17 @@
+{
+  "version": "1.2.7",
+  "tests": {
+    "tests": 1256,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "testReportFiles": 118,
+  "jar": "target/signalshow-1.2.7.jar",
+  "sha256": "a12e9cbdca8886cde8f5bef71c045c8234f163cdd2bde0c97ced2c1f694cf748",
+  "bytes": 4491363,
+  "productionClassesMatch": 566,
+  "excludedPayloads": [],
+  "entryPoint": "SignalShow",
+  "note": "Clean local release build; CI installer and public asset verification follow separately."
+}

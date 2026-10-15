@@ -18,6 +18,10 @@ Juliet's standing direction, recorded October 12, 2026:
 - Rare edge cases, technically allowed but unlikely inputs such as zero-sized
   images, tiny numerical discrepancies, and capacity extremes are lower priority.
   Do not pursue them while normal creation and operation workflows are broken.
+- After a few additional ordinary-use checks pass, broaden into mathematical edge
+  cases. Juliet authorized this progression on October 14 after the 1.2.6 release.
+  Compare with Chirplet and independent external solutions where helpful; agreement
+  between implementations alone does not establish the intended mathematics.
 - Track mathematical checks separately. Keep repeatable production-path and
   Swing-component evidence distinct from use of the running desktop application;
   neither test counts nor isolated arithmetic checks certify an entire workflow.
@@ -41,6 +45,13 @@ explicitly authorized keystrokes again after finishing with the terminal. Prefer
 targeted accessibility actions where practical. Before typing, inspect the target
 field; read back the value before Return or submitting a dialog. If input does not
 reach the field, stop that attempt rather than sending more keys blindly.
+
+On the tested Mac/Java 25 path, use keyboard typing or paste only after AX state
+confirms the target field has keyboard focus. Direct `setValue` is unsupported for
+the tested text fields and numeric steppers. Preserve explicit focus/readback
+checks; use the [native input procedure](docs/audit/evidence/2026-10-15-native-input.md)
+and [CUA helper](scripts/cua_signalshow_input.js). In-process recovery after hiding
+remains unresolved; only restart owned disposable sessions with preserved results.
 
 For native Swing dropdowns, the AX value may be a provisional choice. Commit
 with Return after inspecting it, then confirm the rendered control and resulting

@@ -1,0 +1,33 @@
+{
+  "scalar_samples_checked": 524288,
+  "results": [
+    {
+      "fixture": "native-source",
+      "status": "PASS",
+      "scalar_samples": 131072,
+      "max_absolute_error": 8.881784197001252e-16,
+      "sha256": "0996007201e07897d708ffbf3382dd6b87af9d913cbe3504e75cdf7144fd44c6"
+    },
+    {
+      "fixture": "native-chain",
+      "status": "PASS",
+      "scalar_samples": 131072,
+      "max_absolute_error": 0.0,
+      "sha256": "145e5b6711541d7feb51e37f5ab25e10381418a2bf41e3c9d4111e5c25810330"
+    },
+    {
+      "fixture": "native-chain-edited",
+      "status": "PASS",
+      "scalar_samples": 131072,
+      "max_absolute_error": 0.0,
+      "sha256": "f206dfe5d521af0677c1b437add13ab0c6274d7eced9ed2c2501dd8c8cbe1175"
+    },
+    {
+      "fixture": "native-reloaded",
+      "status": "PASS",
+      "scalar_samples": 131072,
+      "max_absolute_error": 0.0,
+      "sha256": "f206dfe5d521af0677c1b437add13ab0c6274d7eced9ed2c2501dd8c8cbe1175"
+    }
+  ]
+}

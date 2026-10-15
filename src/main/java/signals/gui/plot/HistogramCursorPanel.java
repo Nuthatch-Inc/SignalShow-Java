@@ -191,7 +191,7 @@ public class HistogramCursorPanel extends PlotCursorPanel implements ParameterUs
 		SpinnerNumberModel model = new SpinnerNumberModel( numBins, 2, 10000, 1); 
 		numBinsEditor = new ParameterEditor(3, model, NUM_BINS_INDEX, this); 
 		JLabel numBinsLabel = new JLabel( "Number of Bins: "); 
-		numBinsLabel.setLabelFor(numBinsEditor); 
+		numBinsEditor.setLabel(numBinsLabel);
 		toolBar.add(numBinsLabel);
 		toolBar.add(numBinsEditor);
 		toolBar.add( Box.createHorizontalGlue() ); 

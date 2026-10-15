@@ -225,6 +225,17 @@ public class ArrayUtilities {
 
 	}
 
+	public static double[] centerAndPad2D(int width, int height, double[] values) {
+		int side = getSquareDimension(width, height);
+		double[] output = new double[side * side];
+		int offsetX = (side - width) / 2;
+		int offsetY = (side - height) / 2;
+		for (int row = 0; row < height; row++) {
+			System.arraycopy(values, row * width, output, (row + offsetY) * side + offsetX, width);
+		}
+		return output;
+	}
+
 	public static double[] centerAndPad2D( int width, int height, ArrayList<Double> values ) {
 
 		int power2Size = getSquareDimension( width, height );

@@ -78,6 +78,13 @@ public class PhaseDetourHologramOp extends UnaryOperation {
 		int yDimension = f2D.getDimensionY();
 		double[] randomPhase = randomPhaseTerm.create(xDimension, yDimension, input.isZeroCentered());
 
+        // The hologram is centered. Reorder a corner-origin object's samples before
+        // assigning that origin, so physical coordinates survive the preparation.
+        if (!input.isZeroCentered()) {
+            magnitude = ArrayUtilities.translate2D(magnitude, xDimension, yDimension, xDimension / 2, yDimension / 2);
+            randomPhase = ArrayUtilities.translate2D(randomPhase, xDimension, yDimension, xDimension / 2, yDimension / 2);
+        }
+
 		Function inputFunction = FunctionFactory.createMagPhaseFunction2D(
 				magnitude, randomPhase, true, "", xDimension, yDimension);
 

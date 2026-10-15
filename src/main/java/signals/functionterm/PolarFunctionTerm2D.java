@@ -33,10 +33,14 @@ public class PolarFunctionTerm2D extends SeparableFunctionTerm2D {
 	@Override
 	public double[] create( int x_dimension, int y_dimension, boolean zeroCentered ) {
 		
-		double[] radius = Indices.sliceRadius( x_dimension, y_dimension, zeroCentered ); 		
-		double[] r_data = PolarFunctionMath.reflect( functionTerm1DA.create( radius ), x_dimension, y_dimension, zeroCentered );
-		double[] angle = Indices.angleIndices(x_dimension, y_dimension, zeroCentered );
-		double[] angle_data = functionTerm1DB.create( angle );
+		// Match the radial/angular domains shown by CreateFunctionTerm2DPolarPanel.
+		// Sampled profiles need these domains; the pixel count is not a 1D scale.
+		int radialDimension = Math.max(x_dimension, y_dimension) / 2;
+		double[] radius = Indices.sliceRadius(x_dimension, y_dimension, zeroCentered);
+		double[] r_data = PolarFunctionMath.reflect(
+				functionTerm1DA.create(radius, radialDimension, false), x_dimension, y_dimension, zeroCentered);
+		double[] angle = Indices.angleIndices(x_dimension, y_dimension, zeroCentered);
+		double[] angle_data = functionTerm1DB.create(angle, zeroCentered ? 360 : 90, zeroCentered);
 				
 		int dimension = x_dimension*y_dimension;
 		

@@ -2,6 +2,25 @@
 
 ## Active scope
 
+October 15 release preparation: Juliet requested a new downloadable release.
+Prepare and publish **1.2.7** from main, including the verified BUG-060–070 fixes,
+with clean Mac/Windows installers and a portable JAR. Verify CI, finished payloads
+and public downloads before marking publication complete.
+
+The preceding October 14 post-release audit worked on main from `3437460`.
+Juliet requested more basic 2D creation/operation chains and major mathematical
+errors. After a few ordinary workflows pass, expand into meaningful mathematical
+edge cases. Compare actual Java paths with Chirplet and independent external
+solutions where useful. The October 15 request now authorizes publication of this work.
+`check_usage: true`; latest October 15 checkpoint: weekly 97% remaining.
+The current local build passes 1,256 tests. Nineteen native typing/paste entries
+pass through ordinary creation, Threshold → Real, reopening and controlled restart.
+Four exports pass independent sample verification. Use confirmed focus and exact
+readback before committing each edit. Direct native setValue and in-process focus
+recovery after hiding remain unsupported/unresolved; restart recovery is verified.
+See [the current evidence and procedure](docs/audit/evidence/2026-10-15-native-input.md).
+
+
 Juliet authorized Continuous Audit on October 12, 2026. Prioritize ordinary
 2D creation, editing and operations that crash or produce wrong/stale results.
 Reproduce the failure, inspect its actual owner and callers, fix it, verify the
@@ -17,7 +36,7 @@ excuse ordinary failures. Juliet requested removal of the obsolete 2 GiB heap ca
 `check_usage: true` for this new SignalShow run. Follow
 [Continuous Audit usage monitoring](/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage).
 The Chirplet-specific `false` override does not apply to this run. Last reading:
-October 14, weekly window 57% remaining; no other applicable window reported.
+October 15 continuation, weekly window 98% remaining; no other applicable window reported.
 On October13 Juliet authorized local commits and preparation of1.2.5. She then
 explicitly authorized merging into main and publishing1.2.5 on GitHub as the latest
 release. Publication is complete; both finished installer payloads were verified
@@ -56,7 +75,7 @@ Mathematical accuracy has its own matrix; do not let tiny numerical discrepancie
 or rare edge cases displace ordinary usage fixes. Zero-sized images, unusual
 inputs and capacity extremes are low priority while these workflows are unstable.
 
-**Current scope (October 14):** Juliet requested automated, source-led mathematical
+**Released audit scope (October 14, superseded by the active scope above):** Juliet requested automated, source-led mathematical
 testing of Java SignalShow. Check the actual creation and operation paths for
 major errors with ordinary inputs: complex channel loss, shifted origins, reversed
 axes, transform signs/scales and incorrect operation composition. Establish

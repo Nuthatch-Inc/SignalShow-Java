@@ -62,8 +62,9 @@ public class SeparableFunctionTerm2DPreviewPanel extends JPanel {
 		if( function instanceof PolarFunctionTerm2D ) {
 			
 			int dimension = Math.max( xDimension, yDimension ); 
-			 a_indices = Indices.indices1D(dimension, zeroCentered);
-			 b_indices = Indices.indices1D(dimension, zeroCentered);
+			// Use the same physical domains as the separate radial/angular editors.
+			 a_indices = Indices.indices1D(dimension / 2, false);
+			 b_indices = Indices.indices1D(zeroCentered ? 360 : 90, zeroCentered);
 			
 		} else {
 			

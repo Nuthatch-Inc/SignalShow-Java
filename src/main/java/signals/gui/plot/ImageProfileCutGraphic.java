@@ -211,7 +211,8 @@ public class ImageProfileCutGraphic extends ImageCursorGraphic {
 		} else {
 			
 			//xOffset = 0;
-			yOffset = Math.max( 0, (x_dimension - y_dimension) );
+			// Corner-origin images are already bottom-aligned in the display.
+			yOffset = 0;
 		}
 		
 		

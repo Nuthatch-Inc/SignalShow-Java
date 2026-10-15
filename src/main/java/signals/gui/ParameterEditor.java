@@ -3,6 +3,7 @@ package signals.gui;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -33,6 +34,18 @@ public class ParameterEditor extends JSpinner implements DocumentListener, Focus
 		textField.getDocument().addDocumentListener( this );
 		textField.addFocusListener( this );
 		currentText = ""; 
+	}
+
+	/** Associate the visible label with the spinner and name its editable child. */
+	public void setLabel(JLabel label) {
+		label.setLabelFor(this);
+		setAccessibleName(label.getText());
+	}
+
+	/** Name both the numeric control and its editable child for assistive tools. */
+	public void setAccessibleName(String name) {
+		getAccessibleContext().setAccessibleName(name);
+		textField.getAccessibleContext().setAccessibleName(name);
 	}
 
 	public void changedUpdate(DocumentEvent e) {}

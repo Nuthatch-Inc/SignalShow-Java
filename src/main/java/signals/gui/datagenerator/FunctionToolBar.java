@@ -103,28 +103,15 @@ public abstract class FunctionToolBar extends DataGeneratorToolBar implements GU
 	}
 	
 	public void selectButton(String buttonCode) {
-	
-		if( buttonCode.equals(PLOT) ) {
-			
-			plotButton.setSelected(true); 
-			plot(); 
-			
-		} else if( buttonCode.equals(EDIT_A)) {
-			
-			editPartAButton.setSelected(true); 
-			editPartA();
-			
-		} else if( buttonCode.equals(EDIT_B)) {
-			
-			editPartBButton.setSelected(true); 
-			editPartB();
-			
-		} else if( buttonCode.equals(FFT)) {
-			
-			fftButton.setSelected(true); 
-			plotFFT(); 
-		} 
-		
+        if (buttonCode.equals(EDIT_A)) {
+            editPartAButton.setSelected(true);
+            editPartA();
+        } else if (buttonCode.equals(EDIT_B)) {
+            editPartBButton.setSelected(true);
+            editPartB();
+        } else {
+            super.selectButton(buttonCode);
+        }
 	}
 
 	public abstract String getPartAName();
