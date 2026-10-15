@@ -1,47 +1,44 @@
-# SignalShow audit checkpoint — October 14, 2026
+# SignalShow audit checkpoint — October 15, 2026
 
-Juliet published the previous audit branch and authorized continuation. Prioritize
-ordinary creation/editing/chains, crashes and major wrong results. Avoid tiny-error
-and rare-input work. Use independent expectations; Chirplet comparison is allowed.
-Juliet subsequently authorized publication of the fixes as the latest GitHub release
-and requested all future development directly on main. Version 1.2.6 is now
-published as latest; verification is recorded in 2026-10-14-release.md.
+## Current state
 
-## Active release preparation — October 15
+Juliet requested a new release and a link when ready. **1.2.7 is published as the
+latest release**. Work remains directly on main; no branch/worktree was created.
 
-Juliet requested a new SignalShow release and a link when ready. Prepare **1.2.7**
-on main from the verified BUG-060–070 fixes, tests and evidence. No branch or
-worktree is requested. Publication is authorized; no website action is needed if
-the existing GitHub access remains available.
+- Repo: `/Users/julietfiss/src/SignalShow-Java`.
+- Tested source/tag: `9cc68bf56a6a8c1d43cebb23164b7a8c14e7e72d`.
+- Public release: https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.7
+- Includes BUG-060–070 math, sampled-profile, import, display and field-name fixes.
+- Local clean package: **1,256 tests**, zero failures/errors/skips. Both Mac/Windows
+  CI builds and finished-installer payload checks pass. All four public assets,
+  hashes and latest-release redirect are verified. No website action is needed.
+- Mac/portable JAR SHA-256:
+  `dbd3d91504fadb27e88303632d4197804db5ce4451624c4b896f41cc184dc79e`.
+  All 566 production classes match the local tested build. See
+  `2026-10-15-release.md` and `2026-10-15-release-assets.json`.
+- Downloads remain under `/private/tmp/signalshow-release-1.2.7`; no old builds or
+  tests are included in the installers. The mounted DMG was detached.
 
-The prior clean package passes **1,256 tests** with all 566 production classes
-checked. Nineteen focused native keyboard/paste entries and four independently
-verified exports pass; see `2026-10-15-native-input.md`. No experimental focus
-handlers or diagnostic launchers remain in production. Direct native setValue
-and recovery after hiding remain unsupported/unresolved. Broader native checks,
-Windows interactive acceptance and capacity checks remain separate.
+## Next audit and limits
 
-Next: clean-package version 1.2.7, commit/push main and its tag, verify both CI
-installers and all four downloaded assets, then publish as latest. Record the
-finished evidence in `2026-10-15-release.md`. No native app is open; preserve user
-servers including 8092. Build downloads belong in temporary storage, not the repo.
+Continue ordinary creation/editing/chains, crashes and major wrong results; use
+independent expectations and compare with Chirplet where helpful. After a few
+ordinary checks pass, broaden into meaningful math edge cases. Do not prioritize
+tiny errors or rare inputs. The pending native post-release scenario is next.
 
-## Released state (unchanged)
+Nineteen focused Mac keyboard/paste entries and four independently verified
+exports pass; see `2026-10-15-native-input.md` and the CUA focus/readback helper.
+Direct native setValue and recovery after hiding remain unsupported/unresolved.
+Experimental focus handlers were removed; no diagnostic launcher is shipped.
+Save checkpoints before restarting owned disposable sessions; complex-data files
+preserve samples, not editable operation graphs. Broader native Mac, Windows
+interactive acceptance and capacity checks remain separate.
 
-- Repo `/Users/julietfiss/src/SignalShow-Java`, branch `main`.
-- Release source/tag `3c315c840512b0612e14ac31299b5119b4f097a7`, version **1.2.6**.
-  Release evidence is committed separately afterward; application code is unchanged.
-- Public latest: https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.6
-- Full clean headless package: **1,130 tests pass**, zero failures/errors/skips;
-  both GitHub platform builds pass. Source fixes and native Mac evidence are included.
-- Finished Mac DMG and Windows MSI payloads exclude old builds and tests. All four
-  public asset links, sizes and hashes pass verification. No website action needed.
-- Downloaded Mac/portable JAR SHA-256:
-  `354aa6a2c8ed4f9107f1de0be379af80184a71c501b8d8a97976cc46e4338088`.
-  All 565 production classes match the local tested build. See `2026-10-14-release-assets.json`
-  and the release document for local and CI evidence.
-- Future development goes directly on main. No new branch/worktree is requested.
-- No other workspace code changed. No app, test, build, agent or automation is running.
+No build, test, watcher, automation, agent or owned native app remains running.
+Preserve user servers, including audit server 8092. Native work requires current
+confirmed focus/readback. Latest usage reading was weekly 97% remaining on
+October 15, check_usage true; no reset used. Final release evidence is committed
+separately after the source tag, without changing the application.
 
 ## Completed new batches
 

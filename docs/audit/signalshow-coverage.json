@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "reviewedOn": "2026-10-15",
-  "baselineCommit": "34374608b53a3df6f6bf9fe4fb0a0a377c824e21",
+  "baselineCommit": "9cc68bf56a6a8c1d43cebb23164b7a8c14e7e72d",
   "purpose": "Stabilize ordinary Java SignalShow use, especially creating and editing 2D signals and applying operations. Record mathematical accuracy, real usage, file behavior and memory evidence before considering broader Chirplet feature parity or architectural changes.",
   "activity": {
-    "state": "Preparing authorized SignalShow 1.2.7 release on main. Prior clean package: 1,256 tests; native focused-entry checks pass. Verify release build, both installer payloads and public downloads before publication is complete.",
+    "state": "SignalShow 1.2.7 published as latest from main. All 1,256 local tests, both platform builds, finished-installer payload checks, downloaded checksums and public links pass. Focused Mac typing is verified; broader native follow-up, hidden-window recovery and Windows interaction remain separate.",
     "check_usage": true,
     "usagePolicy": "/Users/julietfiss/src/nuthatch-desktop/.github/skills/continuous_audit/continuous_audit.md#monitor-usage",
     "lastUsageReading": "2026-10-15: weekly 97% remaining; no other applicable window",
@@ -12,10 +12,10 @@
   },
   "scenarioPlan": {
     "focus": "Prioritize ordinary creation/editing/chains and major wrong results. Build hundreds of distinct usage scenarios incrementally. After a few ordinary checks pass, broaden to meaningful math edge cases with independent expectations; Juliet authorized this progression after 1.2.6.",
-    "activeIds": [
+    "activeIds": [],
+    "nextIds": [
       "platform-post-release-fixes-mac"
-    ],
-    "nextIds": []
+    ]
   },
   "math": [
     {
@@ -3136,17 +3136,19 @@
       "priority": "P0",
       "status": "checked",
       "steps": [
-        "Run mvn -o -B -ntp -Djava.awt.headless=true package."
+        "Run mvn -o -B -ntp -Djava.awt.headless=true clean package.",
+        "Verify both CI installer jobs and the downloaded release payloads."
       ],
       "expected": "Compilation, all tests and JAR packaging succeed.",
-      "scope": "Local macOS JDK 25; baseline plus threshold correction.",
+      "scope": "Clean local macOS headless package and both Mac/Windows CI builds. Finished installer payloads and public assets checked separately from native interaction.",
       "evidence": [
         "baseline-2026-10-12",
-        "workflow-regressions-2026-10-12"
+        "workflow-regressions-2026-10-12",
+        "github-publication-2026-10-15"
       ],
-      "summary": "225 tests pass and the executable JAR builds.",
-      "environment": "macOS arm64; Oracle JDK 25+37; Maven; headless Swing controls",
-      "reviewedOn": "2026-10-12"
+      "summary": "1,256 local tests pass; executable 1.2.7 builds. Both platform jobs, installer payloads, release assets and public links pass.",
+      "environment": "Local macOS arm64/JDK 25; GitHub Mac arm64 and Windows x64/Temurin 25.",
+      "reviewedOn": "2026-10-15"
     },
     {
       "id": "launch-native-mac",
@@ -7097,6 +7099,24 @@
         "docs/audit/evidence/2026-10-15-native-input-package.log.gz",
         "docs/audit/evidence/2026-10-15-native-input-artifact.json",
         "scripts/cua_signalshow_input.js"
+      ]
+    },
+    "github-publication-2026-10-15": {
+      "date": "2026-10-15",
+      "summary": "Published 1.2.7 from main/tag 9cc68bf with BUG-060–070. Clean local package passes 1,256 tests; both CI builds and finished-installer payload checks pass. Four assets, hashes and anonymous public links verified. All 566 downloaded production classes match the tested build.",
+      "limits": "Windows CI is automated/headless evidence, not interactive acceptance. Broader native Mac follow-up and focus recovery after hiding remain pending. Mac arm64 package uses ad-hoc signing; no notarization added.",
+      "environment": "Local macOS arm64/JDK 25; GitHub Mac arm64 and Windows x64, Temurin 25; downloaded Mac runtime 25.0.4.1.",
+      "sources": [
+        "docs/audit/evidence/2026-10-15-release.md",
+        "docs/audit/evidence/2026-10-15-release-artifact.json",
+        "docs/audit/evidence/2026-10-15-release-assets.json",
+        "docs/audit/evidence/2026-10-15-release-package.log.gz",
+        "docs/audit/evidence/2026-10-15-release-ci-mac.log.gz",
+        "docs/audit/evidence/2026-10-15-release-ci-windows.log.gz",
+        "docs/audit/evidence/2026-10-15-release-dmg.log.gz",
+        "docs/releases/1.2.7.md",
+        "scripts/verify_installer_payload.py",
+        ".github/workflows/build-installers.yml"
       ]
     }
   },

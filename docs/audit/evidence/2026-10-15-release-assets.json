@@ -1,0 +1,135 @@
+{
+  "version": "1.2.7",
+  "sourceCommit": "9cc68bf56a6a8c1d43cebb23164b7a8c14e7e72d",
+  "workflowRun": 38779207104,
+  "releaseUrl": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.7",
+  "draftAtAssetVerification": true,
+  "productionClassesMatch": 566,
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 261,
+      "sha256": "a7b843ec1712e013c966a893e885784da3b861559a9a4e3fe6d07c42d4f3f360",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/SHA256SUMS.txt",
+      "githubDigestMatches": true,
+      "checksumFileMatches": null
+    },
+    {
+      "name": "SignalShow-1.2.7.dmg",
+      "bytes": 56730661,
+      "sha256": "c452b863794569ff811f79836c80ff037b684f62bb8e7b9cb70ff666a6e5a2d6",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/SignalShow-1.2.7.dmg",
+      "githubDigestMatches": true,
+      "checksumFileMatches": true
+    },
+    {
+      "name": "signalshow-1.2.7.jar",
+      "bytes": 4491371,
+      "sha256": "dbd3d91504fadb27e88303632d4197804db5ce4451624c4b896f41cc184dc79e",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/signalshow-1.2.7.jar",
+      "githubDigestMatches": true,
+      "checksumFileMatches": true
+    },
+    {
+      "name": "SignalShow-1.2.7.msi",
+      "bytes": 53477912,
+      "sha256": "9de3c8e8ebc8d20074f68822c94efa137fe15b8fb0714f6eceb268147251b0f8",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/SignalShow-1.2.7.msi",
+      "githubDigestMatches": true,
+      "checksumFileMatches": true
+    }
+  ],
+  "publishedAt": "2026-10-15T17:48:59Z",
+  "latestPublicRelease": true,
+  "publicLatest": {
+    "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/latest",
+    "resolvesTo": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/tag/v1.2.7",
+    "status": 200,
+    "anonymous": true
+  },
+  "publicAssets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/SHA256SUMS.txt",
+      "status": 200,
+      "bytes": 261,
+      "anonymous": true
+    },
+    {
+      "name": "SignalShow-1.2.7.dmg",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/SignalShow-1.2.7.dmg",
+      "status": 200,
+      "bytes": 56730661,
+      "anonymous": true
+    },
+    {
+      "name": "signalshow-1.2.7.jar",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/signalshow-1.2.7.jar",
+      "status": 200,
+      "bytes": 4491371,
+      "anonymous": true
+    },
+    {
+      "name": "SignalShow-1.2.7.msi",
+      "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/releases/download/v1.2.7/SignalShow-1.2.7.msi",
+      "status": 200,
+      "bytes": 53477912,
+      "anonymous": true
+    }
+  ],
+  "macInstaller": {
+    "version": "1.2.7",
+    "bundleId": "org.signalshow",
+    "architecture": "arm64",
+    "runtimeVersion": "25.0.4.1",
+    "runtimeArchitecture": "arm64 (verified native JVM and launcher libraries)",
+    "diskImageIntegrityVerified": true,
+    "strictDeepSignatureVerified": true,
+    "signature": "ad-hoc; notarization not added",
+    "payloadMatchesPortableJar": true,
+    "normalLauncher": true,
+    "appLaunched": false,
+    "runtimeNote": "Standard jpackage runtime omits the standalone bin/java command and OS_ARCH metadata. JAVA_VERSION and native JVM libraries verified directly.",
+    "payloadLog": "Installer app payload verified: ['.package', 'SignalShow.cfg', 'signalshow-1.2.7.jar']\nExecutable SHA256: dbd3d91504fadb27e88303632d4197804db5ce4451624c4b896f41cc184dc79e"
+  },
+  "ci": {
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/Nuthatch-Inc/SignalShow-Java/actions/runs/38779207104",
+    "headSha": "9cc68bf56a6a8c1d43cebb23164b7a8c14e7e72d",
+    "jobs": [
+      {
+        "id": 116574714863,
+        "name": "Build macOS Installer",
+        "conclusion": "success"
+      },
+      {
+        "id": 116574714937,
+        "name": "Build Windows Installer",
+        "conclusion": "success"
+      },
+      {
+        "id": 116576795211,
+        "name": "Create GitHub Release",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "localJarComparison": {
+    "identicalNonManifestEntries": 1897,
+    "localManifest": {
+      "Manifest-Version": "1.0",
+      "Created-By": "Maven JAR Plugin 3.4.1",
+      "Build-Jdk-Spec": "25",
+      "Main-Class": "SignalShow"
+    },
+    "downloadManifest": {
+      "Manifest-Version": "1.0",
+      "Created-By": "Maven JAR Plugin 3.5.1",
+      "Java-Version": "25",
+      "Build-Jdk-Spec": "25",
+      "Main-Class": "SignalShow"
+    },
+    "note": "Only build-tool manifest metadata differs in decoded content; source classes and all other entries are identical."
+  }
+}

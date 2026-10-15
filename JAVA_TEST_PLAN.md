@@ -2,10 +2,13 @@
 
 ## Active scope
 
-October 15 release preparation: Juliet requested a new downloadable release.
-Prepare and publish **1.2.7** from main, including the verified BUG-060–070 fixes,
-with clean Mac/Windows installers and a portable JAR. Verify CI, finished payloads
-and public downloads before marking publication complete.
+October 15 publication complete: **1.2.7** is the latest GitHub release from main,
+including BUG-060–070. The clean local package passes 1,256 tests; both platform
+CI builds and extracted installer payloads pass. All four public assets, hashes
+and the latest-release link are verified. See
+[release evidence](docs/audit/evidence/2026-10-15-release.md).
+Further audit work remains scoped to ordinary creation/chains and major errors;
+Windows interactive acceptance and broader native Mac follow-up remain pending.
 
 The preceding October 14 post-release audit worked on main from `3437460`.
 Juliet requested more basic 2D creation/operation chains and major mathematical
@@ -13,7 +16,7 @@ errors. After a few ordinary workflows pass, expand into meaningful mathematical
 edge cases. Compare actual Java paths with Chirplet and independent external
 solutions where useful. The October 15 request now authorizes publication of this work.
 `check_usage: true`; latest October 15 checkpoint: weekly 97% remaining.
-The current local build passes 1,256 tests. Nineteen native typing/paste entries
+The released code passes 1,256 tests locally. Nineteen native typing/paste entries
 pass through ordinary creation, Threshold → Real, reopening and controlled restart.
 Four exports pass independent sample verification. Use confirmed focus and exact
 readback before committing each edit. Direct native setValue and in-process focus

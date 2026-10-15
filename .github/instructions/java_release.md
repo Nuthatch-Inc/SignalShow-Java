@@ -47,7 +47,9 @@ Download the assets into temporary storage. Verify their hashes against GitHub's
 asset digests and the checksum file. Mount the Mac DMG read-only, inspect its
 payload with `scripts/verify_installer_payload.py`, confirm version, launcher
 architecture and signature, and compare packaged production classes with the
-local tested build. Detach the image afterward. CI verifies the extracted Windows
+local tested build. The trimmed jpackage runtime may omit `bin/java` and OS_ARCH
+metadata; inspect its release file and native JVM libraries directly. Detach the
+image afterward. CI verifies the extracted Windows
 payload; Windows interactive usage remains separate evidence.
 
 No old builds, project tests, JUnit, test reports, audit documents, nested JARs or
